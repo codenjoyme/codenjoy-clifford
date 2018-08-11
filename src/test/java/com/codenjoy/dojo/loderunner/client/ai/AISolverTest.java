@@ -37,15 +37,15 @@ import static com.codenjoy.dojo.services.PointImpl.pt;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 
-public class ApofigSolverTest {
+public class AISolverTest {
 
-    private ApofigSolver solver;
+    private AISolver solver;
     private Dice dice;
 
     @Before
     public void setup() {
         dice = mock(Dice.class);
-        solver = new ApofigSolver(dice);
+        solver = new AISolver(dice);
     }
 
     @Test
@@ -352,7 +352,7 @@ public class ApofigSolverTest {
     private void assertW(String boardString, String expected) {
         DeikstraFindWay way = new DeikstraFindWay();
         Board board = (Board) new Board().forString(boardString);
-        ApofigSolver solver = new ApofigSolver(dice);
+        AISolver solver = new AISolver(dice);
         solver.getDirections(board);
         Map<Point, List<Direction>> possibleWays = solver.getWay().getPossibleWays();
 
@@ -387,7 +387,7 @@ public class ApofigSolverTest {
 
     private void assertB(String boardString, Point pt, String expected) {
         Board board = (Board) new Board().forString(boardString);
-        ApofigSolver solver = new ApofigSolver(dice);
+        AISolver solver = new AISolver(dice);
         List<Direction> possible = new LinkedList<Direction>();
         for (Direction direction : Arrays.asList(Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT)) {
             boolean possible1 =  solver.possible(board).possible(pt, direction);
@@ -400,7 +400,7 @@ public class ApofigSolverTest {
 
     private void assertC(String boardString, String expected) {
         Board board = (Board) new Board().forString(boardString);
-        List<Direction> command = new ApofigSolver(dice).getDirections(board);
+        List<Direction> command = new AISolver(dice).getDirections(board);
         assertEquals(expected, command.toString());
     }
 }

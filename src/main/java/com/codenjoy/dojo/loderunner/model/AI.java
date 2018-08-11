@@ -30,7 +30,7 @@ import java.util.*;
 
 import static com.codenjoy.dojo.services.PointImpl.pt;
 
-public class ApofigAI implements EnemyAI {
+public class AI implements EnemyAI {
 
     Map<Point, List<Direction>> possibleWays = new TreeMap<>();
 

@@ -36,9 +36,9 @@ import java.util.TreeMap;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 
-public class ApofigAITest {
+public class AITest {
 
-    private ApofigAI ai;
+    private AI ai;
     private Loderunner loderunner;
     private LevelImpl level;
 
@@ -182,7 +182,7 @@ public class ApofigAITest {
             hero.init(loderunner);
         }
 
-        ai = new ApofigAI();
+        ai = new AI();
         ai.setupPossibleWays(loderunner);
     }
 
