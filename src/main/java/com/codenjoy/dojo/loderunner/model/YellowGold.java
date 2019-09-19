@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.loderunner.services;
+package com.codenjoy.dojo.loderunner.model;
 
 /*-
  * #%L
@@ -22,6 +22,23 @@ package com.codenjoy.dojo.loderunner.services;
  * #L%
  */
 
-public enum Events {
-    KILL_ENEMY, KILL_HERO, GET_YELLOW_GOLD, GET_GREEN_GOLD, GET_RED_GOLD, SUICIDE;
+
+import com.codenjoy.dojo.services.Point;
+import com.codenjoy.dojo.services.PointImpl;
+import com.codenjoy.dojo.services.State;
+
+public class YellowGold extends PointImpl implements State<Elements, Player> {
+
+    public YellowGold(Point point) {
+        super(point);
+    }
+
+    public YellowGold(int x, int y) {
+        super(x, y);
+    }
+
+    @Override
+    public Elements state(Player player, Object... alsoAtPoint) {
+        return Elements.YELLOW_GOLD;
+    }
 }
