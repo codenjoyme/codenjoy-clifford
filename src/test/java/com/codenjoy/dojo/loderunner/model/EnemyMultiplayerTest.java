@@ -37,7 +37,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
-public class SingleWithEnemyTest {
+public class EnemyMultiplayerTest {
 
     private Dice dice;
     private EventListener listener;
