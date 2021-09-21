@@ -1873,7 +1873,7 @@ public class GameTest extends AbstractGameTest {
         assertE("☼☼☼☼☼☼" +
                 "☼    ☼" +
                 "☼    ☼" +
-                "☼2⍃ #☼" +
+                "☼2Я #☼" +
                 "☼ # #☼" +
                 "☼☼☼☼☼☼");
 
