@@ -27,10 +27,7 @@ import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.clifford.model.items.Ladder;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.Pipe;
-import com.codenjoy.dojo.services.Direction;
-import com.codenjoy.dojo.services.Point;
-import com.codenjoy.dojo.services.State;
-import com.codenjoy.dojo.services.StateUtils;
+import com.codenjoy.dojo.services.*;
 import com.codenjoy.dojo.services.round.RoundPlayerHero;
 
 import java.util.HashMap;
@@ -261,6 +258,12 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
             return HERO_DIE;
         }
 
+        if (isPit()) {
+            return isLeftTurn()
+                    ? HERO_PIT_LEFT
+                    : HERO_PIT_RIGHT;
+        }
+
         if (ladder != null) {
             return HERO_LADDER;
         }
@@ -286,6 +289,15 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         return isLeftTurn()
                 ? HERO_LEFT
                 : HERO_RIGHT;
+    }
+
+    private boolean isPit() {
+        if (!field.isBrick(this)) {
+            return false;
+        }
+        PointImpl point = new PointImpl(this);
+        point.move(DOWN);
+        return field.isBarrier(point);
     }
 
     private boolean isLeftTurn() {
