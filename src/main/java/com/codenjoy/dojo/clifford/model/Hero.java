@@ -292,12 +292,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     }
 
     private boolean isPit() {
-        if (!field.isBrick(this)) {
-            return false;
-        }
-        PointImpl point = new PointImpl(this);
-        point.move(DOWN);
-        return field.isBarrier(point);
+        return field.isBrick(this) && field.isBarrier(underHero());
     }
 
     private boolean isLeftTurn() {
