@@ -79,7 +79,7 @@
 2: 2:
 2: 2:Scores: 0
 2: 2:Answer: DOWN
-2: 2:Fire Event: GET_RING_CLUE
+2: 2:Fire Event: GET_CLUE_RING
 ------------------------------------------
 3: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 3: 1:☼~~~~~~~~H$S ~~~☼
@@ -121,7 +121,7 @@
 3: 2:
 3: 2:Scores: 5
 3: 2:Answer: DOWN
-3: 2:Fire Event: GET_RING_CLUE
+3: 2:Fire Event: GET_CLUE_RING
 ------------------------------------------
 4: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 4: 1:☼~~~~~~~~H$S ~~~☼
@@ -163,8 +163,8 @@
 4: 2:
 4: 2:Scores: 11
 4: 2:Answer: DOWN
-4: 1:Fire Event: GET_GLOVE_CLUE
-4: 2:Fire Event: GET_KNIFE_CLUE
+4: 1:Fire Event: GET_CLUE_GLOVE
+4: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 5: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 5: 1:☼~~~~~~~~H$S ~~~☼
@@ -370,7 +370,7 @@
 9: 2:
 9: 2:Scores: 13
 9: 2:Answer: RIGHT
-9: 1:Fire Event: GET_KNIFE_CLUE
+9: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 10: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 10: 1:☼~~~~~~~~H$S ~~~☼
@@ -658,7 +658,7 @@
 16: 2:
 16: 2:Scores: 13
 16: 2:Answer: LEFT
-16: 2:Fire Event: GET_RING_CLUE
+16: 2:Fire Event: GET_CLUE_RING
 ------------------------------------------
 17: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 17: 1:☼~~~~~~~~H$S ~~~☼
@@ -741,7 +741,7 @@
 18: 2:
 18: 2:Scores: 20
 18: 2:Answer:
-18: 1:Fire Event: GET_RING_CLUE
+18: 1:Fire Event: GET_CLUE_RING
 ------------------------------------------
 19: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 19: 1:☼~~~~~~~~H$S ~~~☼
@@ -783,7 +783,7 @@
 19: 2:
 19: 2:Scores: 20
 19: 2:Answer: DOWN
-19: 1:Fire Event: GET_GLOVE_CLUE
+19: 1:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 20: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 20: 1:☼~~~~~~~~H$S ~~~☼
@@ -909,7 +909,7 @@
 22: 2:
 22: 2:Scores: 19
 22: 2:Answer: RIGHT
-22: 2:Fire Event: GET_KNIFE_CLUE
+22: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 23: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 23: 1:☼~~~~~~~~H$S ~~~☼
@@ -951,7 +951,7 @@
 23: 2:
 23: 2:Scores: 21
 23: 2:Answer: LEFT
-23: 2:Fire Event: GET_KNIFE_CLUE
+23: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 24: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 24: 1:☼~~~~~~~~H$S ~~~☼
@@ -1075,7 +1075,7 @@
 26: 2:
 26: 2:Scores: 24
 26: 2:Answer: DOWN
-26: 1:Fire Event: GET_KNIFE_CLUE
+26: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 27: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 27: 1:☼~~~~~~~~H$S ~~~☼
@@ -1240,7 +1240,7 @@
 30: 2:
 30: 2:Scores: 24
 30: 2:Answer: DOWN
-30: 1:Fire Event: GET_GLOVE_CLUE
+30: 1:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 31: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 31: 1:☼~~~~~~~~H$S ~~~☼
@@ -1282,7 +1282,7 @@
 31: 2:
 31: 2:Scores: 24
 31: 2:Answer: RIGHT
-31: 1:Fire Event: GET_KNIFE_CLUE
+31: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 32: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 32: 1:☼~~~~~~~~H$S ~~~☼
@@ -1654,7 +1654,7 @@
 40: 2:
 40: 2:Scores: 24
 40: 2:Answer: RIGHT
-40: 1:Fire Event: GET_KNIFE_CLUE
+40: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 41: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 41: 1:☼~~~~~~~~H$S ~~~☼
@@ -1696,7 +1696,7 @@
 41: 2:
 41: 2:Scores: 24
 41: 2:Answer: RIGHT
-41: 2:Fire Event: GET_KNIFE_CLUE
+41: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 42: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 42: 1:☼~~~~~~~~H$S ~~~☼
@@ -1902,7 +1902,7 @@
 46: 2:
 46: 2:Scores: 28
 46: 2:Answer: DOWN
-46: 2:Fire Event: GET_GLOVE_CLUE
+46: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 47: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 47: 1:☼~~~~~~~~H$S ~~~☼
@@ -2313,7 +2313,7 @@
 56: 2:
 56: 2:Scores: 29
 56: 2:Answer: DOWN
-56: 2:Fire Event: GET_RING_CLUE
+56: 2:Fire Event: GET_CLUE_RING
 ------------------------------------------
 57: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 57: 1:☼~~~~~~~~H$S ~~~☼
@@ -3468,7 +3468,7 @@
 84: 2:
 84: 2:Scores: 33
 84: 2:Answer: DOWN
-84: 2:Fire Event: GET_KNIFE_CLUE
+84: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 85: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 85: 1:☼~~~~~~~~H$S ~~~☼
@@ -3881,7 +3881,7 @@
 94: 2:
 94: 2:Scores: 35
 94: 2:Answer: DOWN
-94: 2:Fire Event: GET_KNIFE_CLUE
+94: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 95: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 95: 1:☼~~~~~~~~H$S ~~~☼
@@ -4374,7 +4374,7 @@
 106: 2:
 106: 2:Scores: 38
 106: 2:Answer: DOWN
-106: 2:Fire Event: GET_KNIFE_CLUE
+106: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 107: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 107: 1:☼~~~~~~~~H$S ~~~☼
@@ -4498,7 +4498,7 @@
 109: 2:
 109: 2:Scores: 42
 109: 2:Answer: RIGHT
-109: 1:Fire Event: GET_RING_CLUE
+109: 1:Fire Event: GET_CLUE_RING
 ------------------------------------------
 110: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 110: 1:☼~~~~~~~~H$S ~~~☼
@@ -4827,7 +4827,7 @@
 117: 2:
 117: 2:Scores: 42
 117: 2:Answer: LEFT
-117: 2:Fire Event: GET_KNIFE_CLUE
+117: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 118: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 118: 1:☼~~~~~~~~H$S ~~~☼
@@ -5033,7 +5033,7 @@
 122: 2:
 122: 2:Scores: 47
 122: 2:Answer: UP
-122: 1:Fire Event: GET_RING_CLUE
+122: 1:Fire Event: GET_CLUE_RING
 ------------------------------------------
 123: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 123: 1:☼~~~~~~~~H$S ~~~☼
@@ -6272,7 +6272,7 @@
 152: 2:
 152: 2:Scores: 44
 152: 2:Answer: LEFT
-152: 1:Fire Event: GET_KNIFE_CLUE
+152: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 153: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 153: 1:☼~~~~~~~~H$S ~~~☼
@@ -6601,7 +6601,7 @@
 160: 2:
 160: 2:Scores: 44
 160: 2:Answer: RIGHT
-160: 1:Fire Event: GET_KNIFE_CLUE
+160: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 161: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 161: 1:☼~~~~~~~~H$S ~~~☼
@@ -6930,7 +6930,7 @@
 168: 2:
 168: 2:Scores: 44
 168: 2:Answer: RIGHT
-168: 1:Fire Event: GET_KNIFE_CLUE
+168: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 169: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 169: 1:☼~~~~~~~~H$S ~~~☼
@@ -7386,7 +7386,7 @@
 179: 2:
 179: 2:Scores: 43
 179: 2:Answer: RIGHT
-179: 2:Fire Event: GET_KNIFE_CLUE
+179: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 180: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 180: 1:☼~~~~~~~~H$S ~~~☼
@@ -7594,7 +7594,7 @@
 184: 2:
 184: 2:Scores: 45
 184: 2:Answer: DOWN
-184: 2:Fire Event: GET_KNIFE_CLUE
+184: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 185: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 185: 1:☼~~~~~~~~H$S ~~~☼
@@ -7636,7 +7636,7 @@
 185: 2:
 185: 2:Scores: 48
 185: 2:Answer: DOWN
-185: 1:Fire Event: GET_KNIFE_CLUE
+185: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 186: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 186: 1:☼~~~~~~~~H$S ~~~☼
@@ -7883,7 +7883,7 @@
 191: 2:
 191: 2:Scores: 48
 191: 2:Answer:
-191: 1:Fire Event: GET_KNIFE_CLUE
+191: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 192: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 192: 1:☼~~~~~~~~H$S ~~~☼
@@ -8132,7 +8132,7 @@
 197: 2:
 197: 2:Scores: 47
 197: 2:Answer:
-197: 1:Fire Event: GET_KNIFE_CLUE
+197: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 198: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 198: 1:☼~~~~~~~~H$S ~~~☼
@@ -8379,7 +8379,7 @@
 203: 2:
 203: 2:Scores: 47
 203: 2:Answer: DOWN
-203: 2:Fire Event: GET_KNIFE_CLUE
+203: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 204: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 204: 1:☼~~~~~~~~H$S ~~~☼
@@ -8915,7 +8915,7 @@
 216: 2:
 216: 2:Scores: 48
 216: 2:Answer:
-216: 1:Fire Event: GET_KNIFE_CLUE
+216: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 217: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 217: 1:☼~~~~~~~~H$S ~~~☼
@@ -8957,7 +8957,7 @@
 217: 2:
 217: 2:Scores: 48
 217: 2:Answer: LEFT
-217: 1:Fire Event: GET_KNIFE_CLUE
+217: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 218: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 218: 1:☼~~~~~~~~H$S ~~~☼
@@ -8999,7 +8999,7 @@
 218: 2:
 218: 2:Scores: 48
 218: 2:Answer: UP
-218: 1:Fire Event: GET_RING_CLUE
+218: 1:Fire Event: GET_CLUE_RING
 ------------------------------------------
 219: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 219: 1:☼~~~~~~~~H$S ~~~☼
@@ -9123,7 +9123,7 @@
 221: 2:
 221: 2:Scores: 48
 221: 2:Answer: RIGHT
-221: 1:Fire Event: GET_KNIFE_CLUE
+221: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 222: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 222: 1:☼~~~~~~~~H$S ~~~☼
@@ -9206,8 +9206,8 @@
 223: 2:
 223: 2:Scores: 48
 223: 2:Answer: RIGHT
-223: 1:Fire Event: GET_KNIFE_CLUE
-223: 2:Fire Event: GET_KNIFE_CLUE
+223: 1:Fire Event: GET_CLUE_KNIFE
+223: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 224: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 224: 1:☼~~~~~~~~H$S ~~~☼
@@ -9536,7 +9536,7 @@
 231: 2:
 231: 2:Scores: 50
 231: 2:Answer: RIGHT
-231: 1:Fire Event: GET_KNIFE_CLUE
+231: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 232: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 232: 1:☼~~~~~~~~H$S ~~~☼
@@ -9578,7 +9578,7 @@
 232: 2:
 232: 2:Scores: 50
 232: 2:Answer: RIGHT
-232: 1:Fire Event: GET_KNIFE_CLUE
+232: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 233: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 233: 1:☼~~~~~~~~H$S ~~~☼
@@ -9786,7 +9786,7 @@
 237: 2:Scores: 50
 237: 2:Answer: DOWN
 237: 1:PLAYER_GAME_OVER -> START_NEW_GAME
-237: 2:Fire Event: GET_KNIFE_CLUE
+237: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 238: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 238: 1:☼~~~~~~~~H$S ~~~☼
@@ -10240,7 +10240,7 @@
 248: 2:
 248: 2:Scores: 53
 248: 2:Answer: RIGHT
-248: 2:Fire Event: GET_KNIFE_CLUE
+248: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 249: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 249: 1:☼~~~~~~~~H$S ~~~☼
@@ -10282,7 +10282,7 @@
 249: 2:
 249: 2:Scores: 57
 249: 2:Answer: DOWN
-249: 2:Fire Event: GET_KNIFE_CLUE
+249: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 250: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 250: 1:☼~~~~~~~~H$S ~~~☼
@@ -10324,7 +10324,7 @@
 250: 2:
 250: 2:Scores: 62
 250: 2:Answer: DOWN
-250: 1:Fire Event: GET_RING_CLUE
+250: 1:Fire Event: GET_CLUE_RING
 ------------------------------------------
 251: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 251: 1:☼~~~~~~~~H$S ~~~☼
@@ -10448,7 +10448,7 @@
 253: 2:
 253: 2:Scores: 62
 253: 2:Answer: DOWN
-253: 1:Fire Event: GET_KNIFE_CLUE
+253: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 254: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 254: 1:☼~~~~~~~~H$S ~~~☼
@@ -10697,7 +10697,7 @@
 259: 2:
 259: 2:Scores: 61
 259: 2:Answer: LEFT
-259: 1:Fire Event: GET_KNIFE_CLUE
+259: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 260: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 260: 1:☼~~~~~~~~H$S ~~~☼
@@ -11192,7 +11192,7 @@
 271: 2:
 271: 2:Scores: 60
 271: 2:Answer: DOWN
-271: 1:Fire Event: GET_KNIFE_CLUE
+271: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 272: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 272: 1:☼~~~~~~~~H$S ~~~☼
@@ -11359,7 +11359,7 @@
 275: 2:Scores: 60
 275: 2:Answer: LEFT
 275: 1:PLAYER_GAME_OVER -> START_NEW_GAME
-275: 1:Fire Event: GET_KNIFE_CLUE
+275: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 276: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 276: 1:☼~~~~~~~~H$S ~~~☼
@@ -11524,7 +11524,7 @@
 279: 2:
 279: 2:Scores: 60
 279: 2:Answer: DOWN
-279: 1:Fire Event: GET_KNIFE_CLUE
+279: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 280: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 280: 1:☼~~~~~~~~H$S ~~~☼
@@ -11648,7 +11648,7 @@
 282: 2:
 282: 2:Scores: 60
 282: 2:Answer:
-282: 1:Fire Event: GET_KNIFE_CLUE
+282: 1:Fire Event: GET_CLUE_KNIFE
 282: 2:Fire Event: HERO_DIE
 ------------------------------------------
 283: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
@@ -11897,7 +11897,7 @@
 288: 2:
 288: 2:Scores: 59
 288: 2:Answer: LEFT
-288: 1:Fire Event: GET_KNIFE_CLUE
+288: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 289: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 289: 1:☼~~~~~~~~H$S ~~~☼
@@ -12640,7 +12640,7 @@
 306: 2:Scores: 57
 306: 2:Answer:
 306: 2:PLAYER_GAME_OVER -> START_NEW_GAME
-306: 1:Fire Event: GET_KNIFE_CLUE
+306: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 307: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 307: 1:☼~~~~~~~~H$S ~~~☼
@@ -12887,7 +12887,7 @@
 312: 2:
 312: 2:Scores: 57
 312: 2:Answer:
-312: 1:Fire Event: GET_RING_CLUE
+312: 1:Fire Event: GET_CLUE_RING
 312: 2:Fire Event: HERO_DIE
 ------------------------------------------
 313: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
@@ -13218,7 +13218,7 @@
 320: 2:
 320: 2:Scores: 56
 320: 2:Answer: LEFT
-320: 2:Fire Event: GET_RING_CLUE
+320: 2:Fire Event: GET_CLUE_RING
 ------------------------------------------
 321: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 321: 1:☼~~~~~~~~H$S ~~~☼
@@ -13957,7 +13957,7 @@
 338: 2:
 338: 2:Scores: 61
 338: 2:Answer: LEFT
-338: 2:Fire Event: GET_RING_CLUE
+338: 2:Fire Event: GET_CLUE_RING
 ------------------------------------------
 339: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 339: 1:☼~~~~~~~~H$S ~~~☼
@@ -13999,7 +13999,7 @@
 339: 2:
 339: 2:Scores: 67
 339: 2:Answer: DOWN
-339: 1:Fire Event: GET_KNIFE_CLUE
+339: 1:Fire Event: GET_CLUE_KNIFE
 339: 2:Fire Event: HERO_DIE
 ------------------------------------------
 340: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
@@ -14166,7 +14166,7 @@
 343: 2:
 343: 2:Scores: 66
 343: 2:Answer: DOWN
-343: 2:Fire Event: GET_KNIFE_CLUE
+343: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 344: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 344: 1:☼~~~~~~~~H$S ~~~☼
@@ -14290,7 +14290,7 @@
 346: 2:
 346: 2:Scores: 68
 346: 2:Answer: LEFT
-346: 1:Fire Event: GET_KNIFE_CLUE
+346: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 347: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 347: 1:☼~~~~~~~~H$S ~~~☼
@@ -14537,7 +14537,7 @@
 352: 2:
 352: 2:Scores: 68
 352: 2:Answer: LEFT
-352: 1:Fire Event: GET_KNIFE_CLUE
+352: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 353: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 353: 1:☼~~~~~~~~H$S ~~~☼
@@ -14579,7 +14579,7 @@
 353: 2:
 353: 2:Scores: 68
 353: 2:Answer: DOWN
-353: 1:Fire Event: GET_KNIFE_CLUE
+353: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 354: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 354: 1:☼~~~~~~~~H$S ~~~☼
@@ -14621,7 +14621,7 @@
 354: 2:
 354: 2:Scores: 68
 354: 2:Answer: DOWN
-354: 1:Fire Event: GET_RING_CLUE
+354: 1:Fire Event: GET_CLUE_RING
 ------------------------------------------
 355: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 355: 1:☼~~~~~~~~H$S ~~~☼
@@ -14868,7 +14868,7 @@
 360: 2:
 360: 2:Scores: 68
 360: 2:Answer: DOWN
-360: 2:Fire Event: GET_KNIFE_CLUE
+360: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 361: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 361: 1:☼~~~~~~~~H$S ~~~☼
@@ -14910,7 +14910,7 @@
 361: 2:
 361: 2:Scores: 71
 361: 2:Answer: DOWN
-361: 2:Fire Event: GET_RING_CLUE
+361: 2:Fire Event: GET_CLUE_RING
 ------------------------------------------
 362: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 362: 1:☼~~~~~~~~H$S ~~~☼
@@ -15034,7 +15034,7 @@
 364: 2:
 364: 2:Scores: 76
 364: 2:Answer: LEFT
-364: 2:Fire Event: GET_KNIFE_CLUE
+364: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 365: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 365: 1:☼~~~~~~~~H$S ~~~☼
@@ -15076,7 +15076,7 @@
 365: 2:
 365: 2:Scores: 80
 365: 2:Answer: RIGHT
-365: 1:Fire Event: GET_KNIFE_CLUE
+365: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 366: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 366: 1:☼~~~~~~~~H$S ~~~☼
@@ -15159,7 +15159,7 @@
 367: 2:
 367: 2:Scores: 80
 367: 2:Answer: DOWN
-367: 2:Fire Event: GET_KNIFE_CLUE
+367: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 368: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 368: 1:☼~~~~~~~~H$S ~~~☼
@@ -15533,7 +15533,7 @@
 376: 2:
 376: 2:Scores: 84
 376: 2:Answer: RIGHT
-376: 2:Fire Event: GET_KNIFE_CLUE
+376: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 377: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 377: 1:☼~~~~~~~~H(S ~~~☼
@@ -15739,7 +15739,7 @@
 381: 2:
 381: 2:Scores: 86
 381: 2:Answer: DOWN
-381: 2:Fire Event: GET_GLOVE_CLUE
+381: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 382: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 382: 1:☼~~~~~~~~H S ~~~☼
@@ -15781,7 +15781,7 @@
 382: 2:
 382: 2:Scores: 87
 382: 2:Answer: DOWN
-382: 1:Fire Event: GET_KNIFE_CLUE
+382: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 383: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 383: 1:☼~~~~~~~~H S ~~~☼
@@ -15905,7 +15905,7 @@
 385: 2:
 385: 2:Scores: 87
 385: 2:Answer: DOWN
-385: 2:Fire Event: GET_KNIFE_CLUE
+385: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 386: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 386: 1:☼~~~~~~~~H S ~~~☼
@@ -16193,7 +16193,7 @@
 392: 2:
 392: 2:Scores: 90
 392: 2:Answer: LEFT
-392: 1:Fire Event: GET_RING_CLUE
+392: 1:Fire Event: GET_CLUE_RING
 ------------------------------------------
 393: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 393: 1:☼~~~~~~~~H S ~~~☼
@@ -16399,7 +16399,7 @@
 397: 2:
 397: 2:Scores: 90
 397: 2:Answer: UP
-397: 1:Fire Event: GET_KNIFE_CLUE
+397: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 398: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 398: 1:☼~~~~~~~~H S ~~~☼
@@ -16523,7 +16523,7 @@
 400: 2:
 400: 2:Scores: 90
 400: 2:Answer: UP
-400: 1:Fire Event: GET_RING_CLUE
+400: 1:Fire Event: GET_CLUE_RING
 ------------------------------------------
 401: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 401: 1:☼~~~~~~~~H S ~~~☼
@@ -16606,7 +16606,7 @@
 402: 2:
 402: 2:Scores: 90
 402: 2:Answer: RIGHT
-402: 2:Fire Event: GET_GLOVE_CLUE
+402: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 403: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 403: 1:☼~~~~~~~~H S ~~~☼
@@ -16812,7 +16812,7 @@
 407: 2:
 407: 2:Scores: 92
 407: 2:Answer: DOWN
-407: 2:Fire Event: GET_GLOVE_CLUE
+407: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 408: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 408: 1:☼~~~~~~~~H S ~~~☼
@@ -17100,7 +17100,7 @@
 414: 2:
 414: 2:Scores: 95
 414: 2:Answer: DOWN
-414: 2:Fire Event: GET_RING_CLUE
+414: 2:Fire Event: GET_CLUE_RING
 ------------------------------------------
 415: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 415: 1:☼~~~~~~~~H@S ~~~☼
@@ -17269,7 +17269,7 @@
 418: 2:Scores: 99
 418: 2:Answer:
 418: 2:PLAYER_GAME_OVER -> START_NEW_GAME
-418: 1:Fire Event: GET_KNIFE_CLUE
+418: 1:Fire Event: GET_CLUE_KNIFE
 418: 2:Fire Event: HERO_DIE
 ------------------------------------------
 419: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
@@ -17850,7 +17850,7 @@
 432: 2:Scores: 96
 432: 2:Answer:
 432: 2:PLAYER_GAME_OVER -> START_NEW_GAME
-432: 1:Fire Event: GET_KNIFE_CLUE
+432: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 433: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 433: 1:☼~~~~~~~~H@S ~~~☼
@@ -18923,7 +18923,7 @@
 458: 2:
 458: 2:Scores: 96
 458: 2:Answer: RIGHT
-458: 2:Fire Event: GET_KNIFE_CLUE
+458: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 459: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 459: 1:☼~~~~~~~~H@S ~~~☼
@@ -18965,7 +18965,7 @@
 459: 2:
 459: 2:Scores: 98
 459: 2:Answer: DOWN
-459: 2:Fire Event: GET_KNIFE_CLUE
+459: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 460: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 460: 1:☼~~~~~~~~H@S ~~~☼
@@ -19089,7 +19089,7 @@
 462: 2:
 462: 2:Scores: 101
 462: 2:Answer: DOWN
-462: 2:Fire Event: GET_KNIFE_CLUE
+462: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 463: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 463: 1:☼~~~~~~~~H@S ~~~☼
@@ -19172,7 +19172,7 @@
 464: 2:
 464: 2:Scores: 105
 464: 2:Answer: LEFT
-464: 2:Fire Event: GET_KNIFE_CLUE
+464: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 465: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 465: 1:☼~~~~~~~~H@S ~~~☼
@@ -19296,7 +19296,7 @@
 467: 2:
 467: 2:Scores: 110
 467: 2:Answer: RIGHT
-467: 1:Fire Event: GET_KNIFE_CLUE
+467: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 468: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 468: 1:☼~~~~~~~~H@S ~~~☼
@@ -19338,7 +19338,7 @@
 468: 2:
 468: 2:Scores: 110
 468: 2:Answer: RIGHT
-468: 2:Fire Event: GET_KNIFE_CLUE
+468: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 469: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 469: 1:☼~~~~~~~~H@S ~~~☼
@@ -19544,8 +19544,8 @@
 473: 2:
 473: 2:Scores: 116
 473: 2:Answer: DOWN
-473: 1:Fire Event: GET_KNIFE_CLUE
-473: 2:Fire Event: GET_KNIFE_CLUE
+473: 1:Fire Event: GET_CLUE_KNIFE
+473: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 474: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 474: 1:☼~~~~~~~~H@S ~~~☼
@@ -20040,7 +20040,7 @@
 485: 2:
 485: 2:Scores: 122
 485: 2:Answer: DOWN
-485: 1:Fire Event: GET_KNIFE_CLUE
+485: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 486: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 486: 1:☼~~~~~~~~H@S ~~~☼
@@ -20164,7 +20164,7 @@
 488: 2:
 488: 2:Scores: 122
 488: 2:Answer: DOWN
-488: 2:Fire Event: GET_GLOVE_CLUE
+488: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 489: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 489: 1:☼~~~~~~~~H@S ~~~☼
@@ -20288,7 +20288,7 @@
 491: 2:
 491: 2:Scores: 123
 491: 2:Answer: LEFT
-491: 2:Fire Event: GET_GLOVE_CLUE
+491: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 492: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 492: 1:☼~~~~~~~~H@S ~~~☼
@@ -20535,7 +20535,7 @@
 497: 2:
 497: 2:Scores: 125
 497: 2:Answer: RIGHT
-497: 2:Fire Event: GET_GLOVE_CLUE
+497: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 498: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 498: 1:☼~~~~~~~~H@S ~~~☼
@@ -20659,7 +20659,7 @@
 500: 2:
 500: 2:Scores: 128
 500: 2:Answer: DOWN
-500: 1:Fire Event: GET_KNIFE_CLUE
+500: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 501: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 501: 1:☼~~~~~~~~H@S ~~~☼
@@ -20783,7 +20783,7 @@
 503: 2:
 503: 2:Scores: 128
 503: 2:Answer: DOWN
-503: 2:Fire Event: GET_GLOVE_CLUE
+503: 2:Fire Event: GET_CLUE_GLOVE
 503: 1:Fire Event: HERO_DIE
 ------------------------------------------
 504: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
@@ -21034,7 +21034,7 @@
 509: 2:
 509: 2:Scores: 132
 509: 2:Answer: LEFT
-509: 1:Fire Event: GET_KNIFE_CLUE
+509: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 510: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 510: 1:☼~~~~~~~~H@S ~~~☼
@@ -21445,7 +21445,7 @@
 519: 2:
 519: 2:Scores: 132
 519: 2:Answer: LEFT
-519: 1:Fire Event: GET_GLOVE_CLUE
+519: 1:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 520: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 520: 1:☼~~~~~~~~H@S ~~~☼
@@ -21899,7 +21899,7 @@
 530: 2:
 530: 2:Scores: 131
 530: 2:Answer: LEFT
-530: 2:Fire Event: GET_GLOVE_CLUE
+530: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 531: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 531: 1:☼~~~~~~~~H@S ~~~☼
@@ -22515,7 +22515,7 @@
 545: 2:
 545: 2:Scores: 132
 545: 2:Answer: UP
-545: 1:Fire Event: GET_GLOVE_CLUE
+545: 1:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 546: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 546: 1:☼~~~~~~~~H@S ~~~☼
@@ -22723,7 +22723,7 @@
 550: 2:
 550: 2:Scores: 132
 550: 2:Answer: RIGHT
-550: 2:Fire Event: GET_KNIFE_CLUE
+550: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 551: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 551: 1:☼~~~~~~~~H@S ~~~☼
@@ -22765,7 +22765,7 @@
 551: 2:
 551: 2:Scores: 134
 551: 2:Answer: RIGHT
-551: 1:Fire Event: GET_RING_CLUE
+551: 1:Fire Event: GET_CLUE_RING
 ------------------------------------------
 552: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 552: 1:☼~~~~~~~~H@S ~~~☼
@@ -22971,7 +22971,7 @@
 556: 2:
 556: 2:Scores: 134
 556: 2:Answer: DOWN
-556: 2:Fire Event: GET_KNIFE_CLUE
+556: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 557: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 557: 1:☼~~~~~~~~H@S ~~~☼
@@ -23259,7 +23259,7 @@
 563: 2:
 563: 2:Scores: 137
 563: 2:Answer: LEFT
-563: 1:Fire Event: GET_RING_CLUE
+563: 1:Fire Event: GET_CLUE_RING
 ------------------------------------------
 564: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 564: 1:☼~~~~~~~~H@S ~~~☼
@@ -23301,7 +23301,7 @@
 564: 2:
 564: 2:Scores: 137
 564: 2:Answer: LEFT
-564: 1:Fire Event: GET_RING_CLUE
+564: 1:Fire Event: GET_CLUE_RING
 ------------------------------------------
 565: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 565: 1:☼~~~~~~~~H@S ~~~☼
@@ -23466,7 +23466,7 @@
 568: 2:
 568: 2:Scores: 137
 568: 2:Answer: DOWN
-568: 2:Fire Event: GET_KNIFE_CLUE
+568: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 569: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 569: 1:☼~~~~~~~~H@S ~~~☼
@@ -23836,7 +23836,7 @@
 577: 2:
 577: 2:Scores: 141
 577: 2:Answer: RIGHT
-577: 2:Fire Event: GET_KNIFE_CLUE
+577: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 578: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 578: 1:☼~~~~~~~~H@S ~~~☼
@@ -24249,7 +24249,7 @@
 587: 2:
 587: 2:Scores: 146
 587: 2:Answer: RIGHT
-587: 2:Fire Event: GET_KNIFE_CLUE
+587: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 588: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 588: 1:☼~~~~~~~~H@S ~~~☼
@@ -24291,7 +24291,7 @@
 588: 2:
 588: 2:Scores: 152
 588: 2:Answer:
-588: 1:Fire Event: GET_RING_CLUE
+588: 1:Fire Event: GET_CLUE_RING
 ------------------------------------------
 589: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 589: 1:☼~~~~~~~~H@S ~~~☼
@@ -24497,7 +24497,7 @@
 593: 2:
 593: 2:Scores: 152
 593: 2:Answer: LEFT
-593: 1:Fire Event: GET_RING_CLUE
+593: 1:Fire Event: GET_CLUE_RING
 593: 2:Fire Event: HERO_DIE
 ------------------------------------------
 594: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
@@ -24955,7 +24955,7 @@
 604: 2:Scores: 150
 604: 2:Answer: UP
 604: 1:PLAYER_GAME_OVER -> START_NEW_GAME
-604: 1:Fire Event: GET_KNIFE_CLUE
+604: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 605: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 605: 1:☼~~~~~~~~H@S ~~~☼
@@ -25038,7 +25038,7 @@
 606: 2:
 606: 2:Scores: 150
 606: 2:Answer: RIGHT
-606: 2:Fire Event: GET_KNIFE_CLUE
+606: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 607: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 607: 1:☼~~~~~~~~H@S ~~~☼
@@ -25162,7 +25162,7 @@
 609: 2:
 609: 2:Scores: 152
 609: 2:Answer: RIGHT
-609: 1:Fire Event: GET_KNIFE_CLUE
+609: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 610: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 610: 1:☼~~~~~~~~H@S ~~~☼
@@ -25286,7 +25286,7 @@
 612: 2:
 612: 2:Scores: 152
 612: 2:Answer: DOWN
-612: 2:Fire Event: GET_KNIFE_CLUE
+612: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 613: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 613: 1:☼~~~~~~~~H@S ~~~☼
@@ -25410,7 +25410,7 @@
 615: 2:
 615: 2:Scores: 155
 615: 2:Answer: DOWN
-615: 1:Fire Event: GET_KNIFE_CLUE
+615: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 616: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 616: 1:☼~~~~~~~~H@S ~~~☼
@@ -25657,7 +25657,7 @@
 621: 2:
 621: 2:Scores: 155
 621: 2:Answer: RIGHT
-621: 1:Fire Event: GET_KNIFE_CLUE
+621: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 622: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 622: 1:☼~~~~~~~~H@S ~~~☼
@@ -26562,7 +26562,7 @@
 643: 2:
 643: 2:Scores: 154
 643: 2:Answer: LEFT
-643: 1:Fire Event: GET_KNIFE_CLUE
+643: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 644: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 644: 1:☼~~~~~~~~H@S ~~~☼
@@ -27061,7 +27061,7 @@
 655: 2:
 655: 2:Scores: 154
 655: 2:Answer: DOWN
-655: 2:Fire Event: GET_GLOVE_CLUE
+655: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 656: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 656: 1:☼~~~~~~~~H@S ~~~☼
@@ -27349,7 +27349,7 @@
 662: 2:
 662: 2:Scores: 155
 662: 2:Answer: RIGHT
-662: 1:Fire Event: GET_GLOVE_CLUE
+662: 1:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 663: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 663: 1:☼~~~~~~~~H@S ~~~☼
@@ -28254,7 +28254,7 @@
 684: 2:
 684: 2:Scores: 154
 684: 2:Answer: DOWN
-684: 2:Fire Event: GET_KNIFE_CLUE
+684: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 685: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 685: 1:☼~~~~~~~~H@S ~~~☼
@@ -28460,7 +28460,7 @@
 689: 2:
 689: 2:Scores: 156
 689: 2:Answer: LEFT
-689: 2:Fire Event: GET_KNIFE_CLUE
+689: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 690: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 690: 1:☼~~~~~~~~H@S ~~~☼
@@ -28707,7 +28707,7 @@
 695: 2:
 695: 2:Scores: 159
 695: 2:Answer: RIGHT
-695: 2:Fire Event: GET_KNIFE_CLUE
+695: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 696: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 696: 1:☼~~~~~~~~H@S ~~~☼
@@ -28872,7 +28872,7 @@
 699: 2:
 699: 2:Scores: 163
 699: 2:Answer: DOWN
-699: 1:Fire Event: GET_GLOVE_CLUE
+699: 1:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 700: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 700: 1:☼~~~~~~~~H@S ~~~☼
@@ -29326,7 +29326,7 @@
 710: 2:
 710: 2:Scores: 162
 710: 2:Answer: DOWN
-710: 1:Fire Event: GET_KNIFE_CLUE
+710: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 711: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 711: 1:☼~~~~~~~~H@S ~~~☼
@@ -29696,7 +29696,7 @@
 719: 2:
 719: 2:Scores: 162
 719: 2:Answer: RIGHT
-719: 1:Fire Event: GET_KNIFE_CLUE
+719: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 720: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 720: 1:☼~~~~~~~~H@S ~~~☼
@@ -30189,7 +30189,7 @@
 731: 2:
 731: 2:Scores: 162
 731: 2:Answer: UP
-731: 1:Fire Event: GET_KNIFE_CLUE
+731: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 732: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 732: 1:☼~~~~~~~~H@S ~~~☼
@@ -30354,7 +30354,7 @@
 735: 2:
 735: 2:Scores: 162
 735: 2:Answer: LEFT
-735: 2:Fire Event: GET_GLOVE_CLUE
+735: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 736: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 736: 1:☼~~~~~~~~H@S ~~~☼
@@ -31300,7 +31300,7 @@
 758: 2:
 758: 2:Scores: 162
 758: 2:Answer: UP
-758: 1:Fire Event: GET_KNIFE_CLUE
+758: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 759: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 759: 1:☼~~~~~~~~H@S ~~~☼
@@ -31506,7 +31506,7 @@
 763: 2:
 763: 2:Scores: 162
 763: 2:Answer: UP
-763: 1:Fire Event: GET_KNIFE_CLUE
+763: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 764: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 764: 1:☼~~~~~~~~H@S ~~~☼
@@ -31630,7 +31630,7 @@
 766: 2:
 766: 2:Scores: 162
 766: 2:Answer: RIGHT
-766: 2:Fire Event: GET_KNIFE_CLUE
+766: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 767: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 767: 1:☼~~~~~~~~H@S ~~~☼
@@ -32455,7 +32455,7 @@
 786: 2:
 786: 2:Scores: 163
 786: 2:Answer: DOWN
-786: 2:Fire Event: GET_GLOVE_CLUE
+786: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 787: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 787: 1:☼~~~~~~~~H@S ~~~☼
@@ -32702,7 +32702,7 @@
 792: 2:
 792: 2:Scores: 164
 792: 2:Answer:
-792: 1:Fire Event: GET_GLOVE_CLUE
+792: 1:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 793: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 793: 1:☼~~~~~~~~H@S ~~~☼
@@ -32949,7 +32949,7 @@
 798: 2:
 798: 2:Scores: 164
 798: 2:Answer: RIGHT
-798: 1:Fire Event: GET_GLOVE_CLUE
+798: 1:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 799: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 799: 1:☼~~~~~~~~H@S ~~~☼
@@ -34022,7 +34022,7 @@
 824: 2:
 824: 2:Scores: 164
 824: 2:Answer: RIGHT
-824: 2:Fire Event: GET_KNIFE_CLUE
+824: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 825: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 825: 1:☼~~~~~~~~H@S ~~~☼
@@ -34064,8 +34064,8 @@
 825: 2:
 825: 2:Scores: 166
 825: 2:Answer: RIGHT
-825: 1:Fire Event: GET_GLOVE_CLUE
-825: 2:Fire Event: GET_KNIFE_CLUE
+825: 1:Fire Event: GET_CLUE_GLOVE
+825: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 826: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 826: 1:☼~~~~~~~~H@S ~~~☼
@@ -34107,7 +34107,7 @@
 826: 2:
 826: 2:Scores: 169
 826: 2:Answer: DOWN
-826: 2:Fire Event: GET_KNIFE_CLUE
+826: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 827: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 827: 1:☼~~~~~~~~H@S ~~~☼
@@ -34313,7 +34313,7 @@
 831: 2:
 831: 2:Scores: 173
 831: 2:Answer: DOWN
-831: 2:Fire Event: GET_RING_CLUE
+831: 2:Fire Event: GET_CLUE_RING
 ------------------------------------------
 832: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 832: 1:☼~~~~~~~~H@S ~~~☼
@@ -34396,7 +34396,7 @@
 833: 2:
 833: 2:Scores: 178
 833: 2:Answer: LEFT
-833: 1:Fire Event: GET_KNIFE_CLUE
+833: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 834: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 834: 1:☼~~~~~~~~H@S ~~~☼
@@ -34438,7 +34438,7 @@
 834: 2:
 834: 2:Scores: 178
 834: 2:Answer: LEFT
-834: 1:Fire Event: GET_KNIFE_CLUE
+834: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 835: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 835: 1:☼~~~~~~~~H@S ~~~☼
@@ -34769,7 +34769,7 @@
 842: 2:
 842: 2:Scores: 177
 842: 2:Answer: LEFT
-842: 2:Fire Event: GET_KNIFE_CLUE
+842: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 843: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 843: 1:☼~~~~~~~~H@S ~~~☼
@@ -34811,7 +34811,7 @@
 843: 2:
 843: 2:Scores: 179
 843: 2:Answer: RIGHT
-843: 1:Fire Event: GET_GLOVE_CLUE
+843: 1:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 844: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 844: 1:☼~~~~~~~~H@S ~~~☼
@@ -35304,7 +35304,7 @@
 855: 2:
 855: 2:Scores: 179
 855: 2:Answer: DOWN
-855: 2:Fire Event: GET_GLOVE_CLUE
+855: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 856: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 856: 1:☼~~~~~~~~H@S ~~~☼
@@ -35346,8 +35346,8 @@
 856: 2:
 856: 2:Scores: 180
 856: 2:Answer: DOWN
-856: 1:Fire Event: GET_KNIFE_CLUE
-856: 2:Fire Event: GET_GLOVE_CLUE
+856: 1:Fire Event: GET_CLUE_KNIFE
+856: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 857: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 857: 1:☼~~~~~~~~H@S ~~~☼
@@ -35678,7 +35678,7 @@
 864: 2:
 864: 2:Scores: 182
 864: 2:Answer: DOWN
-864: 2:Fire Event: GET_KNIFE_CLUE
+864: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 865: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 865: 1:☼~~~~~~~~H@S ~~~☼
@@ -35804,7 +35804,7 @@
 867: 2:
 867: 2:Scores: 184
 867: 2:Answer: LEFT
-867: 1:Fire Event: GET_GLOVE_CLUE
+867: 1:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 868: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 868: 1:☼~~~~~~~~H@S ~~~☼
@@ -35887,7 +35887,7 @@
 869: 2:
 869: 2:Scores: 184
 869: 2:Answer: LEFT
-869: 1:Fire Event: GET_KNIFE_CLUE
+869: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 870: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 870: 1:☼~~~~~~~~H@S ~~~☼
@@ -36341,8 +36341,8 @@
 880: 2:
 880: 2:Scores: 184
 880: 2:Answer: DOWN
-880: 1:Fire Event: GET_KNIFE_CLUE
-880: 2:Fire Event: GET_GLOVE_CLUE
+880: 1:Fire Event: GET_CLUE_KNIFE
+880: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 881: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 881: 1:☼~~~~~~~~H@S ~~~☼
@@ -36714,7 +36714,7 @@
 889: 2:
 889: 2:Scores: 184
 889: 2:Answer: LEFT
-889: 1:Fire Event: GET_RING_CLUE
+889: 1:Fire Event: GET_CLUE_RING
 ------------------------------------------
 890: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 890: 1:☼~~~~~~~~H►S ~~~☼
@@ -36920,7 +36920,7 @@
 894: 2:
 894: 2:Scores: 184
 894: 2:Answer: DOWN
-894: 1:Fire Event: GET_KNIFE_CLUE
+894: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 895: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 895: 1:☼~~~~~~~~H S ~~~☼
@@ -37044,7 +37044,7 @@
 897: 2:
 897: 2:Scores: 184
 897: 2:Answer: DOWN
-897: 1:Fire Event: GET_RING_CLUE
+897: 1:Fire Event: GET_CLUE_RING
 ------------------------------------------
 898: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 898: 1:☼~~~~~~~~H S ~~~☼
@@ -37127,7 +37127,7 @@
 899: 2:
 899: 2:Scores: 184
 899: 2:Answer: DOWN
-899: 2:Fire Event: GET_KNIFE_CLUE
+899: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 900: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 900: 1:☼~~~~~~~~H S ~~~☼
@@ -37210,7 +37210,7 @@
 901: 2:
 901: 2:Scores: 186
 901: 2:Answer: RIGHT
-901: 1:Fire Event: GET_KNIFE_CLUE
+901: 1:Fire Event: GET_CLUE_KNIFE
 901: 1:Fire Event: HERO_DIE
 ------------------------------------------
 902: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
@@ -37461,7 +37461,7 @@
 907: 2:
 907: 2:Scores: 186
 907: 2:Answer: RIGHT
-907: 1:Fire Event: GET_KNIFE_CLUE
+907: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 908: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 908: 1:☼~~~~~~~~H$S ~~~☼
@@ -37585,7 +37585,7 @@
 910: 2:
 910: 2:Scores: 186
 910: 2:Answer: RIGHT
-910: 2:Fire Event: GET_RING_CLUE
+910: 2:Fire Event: GET_CLUE_RING
 ------------------------------------------
 911: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 911: 1:☼~~~~~~~~H$S ~~~☼
@@ -37627,7 +37627,7 @@
 911: 2:
 911: 2:Scores: 191
 911: 2:Answer: DOWN
-911: 1:Fire Event: GET_KNIFE_CLUE
+911: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 912: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 912: 1:☼~~~~~~~~H$S ~~~☼
@@ -38038,7 +38038,7 @@
 921: 2:
 921: 2:Scores: 191
 921: 2:Answer: LEFT
-921: 1:Fire Event: GET_KNIFE_CLUE
+921: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 922: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 922: 1:☼~~~~~~~~H$S ~~~☼
@@ -38164,7 +38164,7 @@
 924: 2:Scores: 191
 924: 2:Answer: RIGHT
 924: 1:PLAYER_GAME_OVER -> START_NEW_GAME
-924: 2:Fire Event: GET_KNIFE_CLUE
+924: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 925: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 925: 1:☼~~~~~~~~H$S ~~~☼
@@ -38493,7 +38493,7 @@
 932: 2:
 932: 2:Scores: 194
 932: 2:Answer: LEFT
-932: 1:Fire Event: GET_KNIFE_CLUE
+932: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 933: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 933: 1:☼~~~~~~~~H$S ~~~☼
@@ -38699,7 +38699,7 @@
 937: 2:
 937: 2:Scores: 194
 937: 2:Answer: LEFT
-937: 2:Fire Event: GET_KNIFE_CLUE
+937: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 938: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 938: 1:☼~~~~~~~~H$S ~~~☼
@@ -39028,7 +39028,7 @@
 945: 2:
 945: 2:Scores: 198
 945: 2:Answer: UP
-945: 1:Fire Event: GET_KNIFE_CLUE
+945: 1:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 946: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 946: 1:☼~~~~~~~~H$S ~~~☼
@@ -39236,8 +39236,8 @@
 950: 2:
 950: 2:Scores: 198
 950: 2:Answer: RIGHT
-950: 1:Fire Event: GET_KNIFE_CLUE
-950: 2:Fire Event: GET_GLOVE_CLUE
+950: 1:Fire Event: GET_CLUE_KNIFE
+950: 2:Fire Event: GET_CLUE_GLOVE
 ------------------------------------------
 951: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 951: 1:☼~~~~~~~~H$S ~~~☼
@@ -39525,8 +39525,8 @@
 957: 2:
 957: 2:Scores: 199
 957: 2:Answer: DOWN
-957: 1:Fire Event: GET_GLOVE_CLUE
-957: 2:Fire Event: GET_RING_CLUE
+957: 1:Fire Event: GET_CLUE_GLOVE
+957: 2:Fire Event: GET_CLUE_RING
 ------------------------------------------
 958: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 958: 1:☼~~~~~~~~H$S ~~~☼
@@ -39855,7 +39855,7 @@
 965: 2:
 965: 2:Scores: 205
 965: 2:Answer: DOWN
-965: 2:Fire Event: GET_KNIFE_CLUE
+965: 2:Fire Event: GET_CLUE_KNIFE
 ------------------------------------------
 966: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 966: 1:☼~~~~~~~~H$S ~~~☼
@@ -39938,7 +39938,7 @@
 967: 2:
 967: 2:Scores: 210
 967: 2:Answer:
-967: 1:Fire Event: GET_KNIFE_CLUE
+967: 1:Fire Event: GET_CLUE_KNIFE
 967: 2:Fire Event: HERO_DIE
 ------------------------------------------
 968: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
@@ -40804,8 +40804,8 @@
 988: 2:
 988: 2:Scores: 208
 988: 2:Answer: DOWN
-988: 1:Fire Event: GET_GLOVE_CLUE
-988: 2:Fire Event: GET_RING_CLUE
+988: 1:Fire Event: GET_CLUE_GLOVE
+988: 2:Fire Event: GET_CLUE_RING
 ------------------------------------------
 989: 1:☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼
 989: 1:☼~~~~~~~~H$S ~~~☼

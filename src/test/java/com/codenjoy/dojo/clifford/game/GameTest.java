@@ -742,7 +742,7 @@ public class GameTest extends AbstractGameTest {
         dice(2, 3);
         hero().right();
         tick();
-        events.verifyAllEvents("[GET_KNIFE_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE]");
 
         assertE("☼☼☼☼☼" +
                 "☼ $ ☼" +
@@ -772,7 +772,7 @@ public class GameTest extends AbstractGameTest {
         dice(3, 3);
         hero().right();
         tick();
-        events.verifyAllEvents("[GET_KNIFE_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE]");
 
         assertE("☼☼☼☼☼" +
                 "☼  $☼" +
@@ -1283,7 +1283,7 @@ public class GameTest extends AbstractGameTest {
                 "☼ $   ☼" +
                 "☼☼☼☼☼☼☼");
 
-        events.verifyAllEvents("[GET_KNIFE_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE]");
 
         dice(2, 5);
         tick();
@@ -1296,7 +1296,7 @@ public class GameTest extends AbstractGameTest {
                 "☼ $   ☼" +
                 "☼☼☼☼☼☼☼");
 
-        events.verifyAllEvents("[GET_KNIFE_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE]");
 
         dice(3, 5);
         tick();
@@ -1309,7 +1309,7 @@ public class GameTest extends AbstractGameTest {
                 "☼ $   ☼" +
                 "☼☼☼☼☼☼☼");
 
-        events.verifyAllEvents("[GET_KNIFE_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE]");
 
         dice(4, 5);
         tick();
@@ -1322,7 +1322,7 @@ public class GameTest extends AbstractGameTest {
                 "☼ ◄   ☼" +
                 "☼☼☼☼☼☼☼");
 
-        events.verifyAllEvents("[GET_KNIFE_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE]");
     }
 
     // если я прострелил дырку и падаю в нее, а под ней ничего нет - то я падаю пока не найду препятствие
@@ -2855,7 +2855,7 @@ public class GameTest extends AbstractGameTest {
                 "☼####⍈#☼" +
                 "☼☼☼☼☼☼☼☼");
 
-        events.verifyAllEvents("[GET_KNIFE_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE]");
 
         hero().left();
         tick();
@@ -2873,7 +2873,7 @@ public class GameTest extends AbstractGameTest {
         dice(2, 6);
         tick();
 
-        events.verifyAllEvents("[GET_KNIFE_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE]");
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼$$    ☼" +
@@ -2949,7 +2949,7 @@ public class GameTest extends AbstractGameTest {
         hero().left();
         tick();
 
-        events.verifyAllEvents("[GET_KNIFE_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE]");
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼$     ☼" +
@@ -2987,7 +2987,7 @@ public class GameTest extends AbstractGameTest {
 
         tick();
 
-        events.verifyAllEvents("[GET_KNIFE_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE]");
 
         tick();
         tick();
@@ -4112,7 +4112,7 @@ public class GameTest extends AbstractGameTest {
         hero().right();
         tick();
 
-        events.verifyAllEvents("[GET_KNIFE_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE]");
         events.verifyNoEvents();
         listeners.forEach(Mockito::reset);
 
@@ -4128,7 +4128,7 @@ public class GameTest extends AbstractGameTest {
         hero().right();
         tick();
 
-        events.verifyAllEvents("[GET_KNIFE_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE]");
         events.verifyNoEvents();
         listeners.forEach(Mockito::reset);
 
@@ -4144,7 +4144,7 @@ public class GameTest extends AbstractGameTest {
         hero().right();
         tick();
 
-        events.verifyAllEvents("[GET_GLOVE_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_GLOVE]");
         events.verifyNoEvents();
         listeners.forEach(Mockito::reset);
 
@@ -4160,7 +4160,7 @@ public class GameTest extends AbstractGameTest {
         hero().right();
         tick();
 
-        events.verifyAllEvents("[GET_RING_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_RING]");
         events.verifyNoEvents();
         listeners.forEach(Mockito::reset);
 
@@ -4176,7 +4176,7 @@ public class GameTest extends AbstractGameTest {
         hero().right();
         tick();
 
-        events.verifyAllEvents("[GET_RING_CLUE]");
+        events.verifyAllEvents("[GET_CLUE_RING]");
         events.verifyNoEvents();
         listeners.forEach(Mockito::reset);
 

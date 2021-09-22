@@ -232,7 +232,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼\n", 2);
 
         events.verifyAllEvents(
-                "listener(0) => [GET_KNIFE_CLUE]\n" +
+                "listener(0) => [GET_CLUE_KNIFE]\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n");
     }
