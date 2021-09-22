@@ -23,14 +23,18 @@ package com.codenjoy.dojo.clifford.model.levels;
  */
 
 
-import com.codenjoy.dojo.clifford.model.items.clue.ClueGlove;
-import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
-import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
-import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.items.*;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
+import com.codenjoy.dojo.clifford.model.items.clue.ClueGlove;
+import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
+import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
+import com.codenjoy.dojo.clifford.model.items.door.DoorClosed;
+import com.codenjoy.dojo.clifford.model.items.door.DoorOpened;
+import com.codenjoy.dojo.clifford.model.items.door.Key;
+import com.codenjoy.dojo.clifford.model.items.door.KeyType;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
+import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.field.AbstractLevel;
 import com.codenjoy.dojo.services.field.PointField;
@@ -59,6 +63,9 @@ public class Level extends AbstractLevel {
         field.addAll(clueGlove());
         field.addAll(clueRing());
         field.addAll(robbers());
+        field.addAll(openedDoors());
+        field.addAll(closedDoors());
+        field.addAll(keys());
     }
 
     public List<Hero> heroes() {
@@ -119,5 +126,29 @@ public class Level extends AbstractLevel {
 
     public List<Backway> backways() {
         return find(Backway::new, BACKWAY);
+    }
+
+    public List<DoorOpened> openedDoors() {
+        return find(new HashMap<>() {{
+            put(OPENED_DOOR_GOLD, pt -> new DoorOpened(pt, KeyType.GOLD));
+            put(OPENED_DOOR_SILVER, pt -> new DoorOpened(pt, KeyType.SILVER));
+            put(OPENED_DOOR_BRONZE, pt -> new DoorOpened(pt, KeyType.BRONZE));
+        }});
+    }
+
+    public List<DoorClosed> closedDoors() {
+        return find(new HashMap<>() {{
+            put(CLOSED_DOOR_GOLD, pt -> new DoorClosed(pt, KeyType.GOLD));
+            put(CLOSED_DOOR_SILVER, pt -> new DoorClosed(pt, KeyType.SILVER));
+            put(CLOSED_DOOR_BRONZE, pt -> new DoorClosed(pt, KeyType.BRONZE));
+        }});
+    }
+
+    public List<Key> keys() {
+        return find(new HashMap<>() {{
+            put(KEY_GOLD, pt -> new Key(pt, KeyType.GOLD));
+            put(KEY_SILVER, pt -> new Key(pt, KeyType.SILVER));
+            put(KEY_BRONZE, pt -> new Key(pt, KeyType.BRONZE));
+        }});
     }
 }
