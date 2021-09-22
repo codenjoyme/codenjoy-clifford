@@ -23,18 +23,21 @@ package com.codenjoy.dojo.clifford.model;
  */
 
 
+import com.codenjoy.dojo.clifford.model.items.Ladder;
+import com.codenjoy.dojo.clifford.model.items.Pipe;
+import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.door.KeyType;
 import com.codenjoy.dojo.games.clifford.Element;
-import com.codenjoy.dojo.clifford.model.items.Ladder;
-import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
-import com.codenjoy.dojo.clifford.model.items.Pipe;
-import com.codenjoy.dojo.services.*;
+import com.codenjoy.dojo.services.Direction;
+import com.codenjoy.dojo.services.Point;
+import com.codenjoy.dojo.services.State;
+import com.codenjoy.dojo.services.StateUtils;
 import com.codenjoy.dojo.services.round.RoundPlayerHero;
 
 import java.util.*;
 
-import static com.codenjoy.dojo.games.clifford.Element.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_TICKS;
+import static com.codenjoy.dojo.games.clifford.Element.*;
 import static com.codenjoy.dojo.services.Direction.DOWN;
 import static com.codenjoy.dojo.services.StateUtils.filter;
 import static com.codenjoy.dojo.services.StateUtils.filterOne;
@@ -42,8 +45,8 @@ import static com.codenjoy.dojo.services.StateUtils.filterOne;
 public class Hero extends RoundPlayerHero<Field> implements State<Element, Player> {
 
     protected Direction direction;
-    private Map<PotionType, Integer> potions = new EnumMap<>(PotionType.class);
-    private Map<KeyType, Integer> keys = new EnumMap<>(KeyType.class);
+    private Map<PotionType, Integer> potions;
+    private Map<KeyType, Integer> keys;
     private boolean moving;
     private boolean crack;
     private boolean cracked;
@@ -53,11 +56,21 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     public Hero(Point xy, Direction direction) {
         super(xy);
         this.direction = direction;
-        score = 0;
         moving = false;
         cracked = false;
         crack = false;
         jump = false;
+        clearScores();
+    }
+
+    public void clearScores() {
+        score = 0;
+        potions = new EnumMap<>(PotionType.class);
+        keys = new EnumMap<>(KeyType.class) {{
+            put(KeyType.GOLD, 0);
+            put(KeyType.SILVER, 0);
+            put(KeyType.BRONZE, 0);
+        }};
     }
 
     public Map<KeyType, Integer> getKeys() {
@@ -193,12 +206,6 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
 
     public void increaseScore() {
         score++;
-    }
-
-    public void clearScores() {
-        score = 0;
-        potions.clear();
-        keys.clear();
     }
 
     @Override

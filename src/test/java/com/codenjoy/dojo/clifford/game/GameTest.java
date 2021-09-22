@@ -4648,7 +4648,7 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼" +
                 "☼      ☼" +
                 "☼☼☼☼☼☼☼☼");
-        assertEquals("{}", hero().getKeys().toString());
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
@@ -4661,7 +4661,7 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼" +
                 "☼      ☼" +
                 "☼☼☼☼☼☼☼☼");
-        assertEquals("{GOLD=1}", hero().getKeys().toString());
+        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
@@ -4674,7 +4674,7 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼" +
                 "☼      ☼" +
                 "☼☼☼☼☼☼☼☼");
-        assertEquals("{GOLD=2}", hero().getKeys().toString());
+        assertEquals("{GOLD=2, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
@@ -4687,7 +4687,7 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼" +
                 "☼      ☼" +
                 "☼☼☼☼☼☼☼☼");
-        assertEquals("{GOLD=2, SILVER=1}", hero().getKeys().toString());
+        assertEquals("{GOLD=2, SILVER=1, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
@@ -4703,7 +4703,7 @@ public class GameTest extends AbstractGameTest {
         assertEquals("{GOLD=2, SILVER=1, BRONZE=1}", hero().getKeys().toString());
 
         hero().clearScores();
-        assertEquals("{}", hero().getKeys().toString());
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
     }
 
     @Test
@@ -4718,7 +4718,7 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼" +
                 "☼      ☼" +
                 "☼☼☼☼☼☼☼☼");
-        assertEquals("{}", hero().getKeys().toString());
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         dice(1, 5);
         hero().right();
@@ -4732,7 +4732,7 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼" +
                 "☼      ☼" +
                 "☼☼☼☼☼☼☼☼");
-        assertEquals("{GOLD=1}", hero().getKeys().toString());
+        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         dice(2, 5);
         hero().right();
@@ -4746,7 +4746,7 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼" +
                 "☼      ☼" +
                 "☼☼☼☼☼☼☼☼");
-        assertEquals("{GOLD=2}", hero().getKeys().toString());
+        assertEquals("{GOLD=2, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         dice(3, 5);
         hero().right();
@@ -4760,7 +4760,7 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼" +
                 "☼      ☼" +
                 "☼☼☼☼☼☼☼☼");
-        assertEquals("{GOLD=2, SILVER=1}", hero().getKeys().toString());
+        assertEquals("{GOLD=2, SILVER=1, BRONZE=0}", hero().getKeys().toString());
 
         dice(4, 5);
         hero().right();
@@ -4777,7 +4777,7 @@ public class GameTest extends AbstractGameTest {
         assertEquals("{GOLD=2, SILVER=1, BRONZE=1}", hero().getKeys().toString());
 
         hero().clearScores();
-        assertEquals("{}", hero().getKeys().toString());
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
     }
 
     @Test
