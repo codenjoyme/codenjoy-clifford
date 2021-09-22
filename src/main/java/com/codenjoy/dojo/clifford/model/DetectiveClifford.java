@@ -340,7 +340,8 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                 || pt.getY() < 0 || pt.getY() > size() - 1
                 || isFullBrick(pt)
                 || isBorder(pt)
-                || (isHeroAt(pt) && !under(pt, PotionType.MASK_POTION));
+                || (isHeroAt(pt) && !under(pt, PotionType.MASK_POTION))
+                || doors().getAt(pt).stream().anyMatch(Door::isClosed);
     }
 
     @Override
