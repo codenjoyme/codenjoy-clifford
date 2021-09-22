@@ -52,6 +52,8 @@ public class GameSettings extends SettingsImpl
 
         ROBBERS_COUNT("[Game] Robbers count"),
 
+        GENERATE_KEYS("[Game] Generate picked keys"),
+
         CLUE_COUNT_GLOVE("[Game] Glove clue count"),
         CLUE_SCORE_GLOVE("[Score] Glove clue score"),
         CLUE_SCORE_GLOVE_INCREMENT("[Score] Glove clue score increment"),
@@ -100,6 +102,8 @@ public class GameSettings extends SettingsImpl
         integer(BACKWAY_TICKS, 10);
 
         integer(ROBBERS_COUNT, 5);
+
+        bool(GENERATE_KEYS, false);
 
         integer(CLUE_COUNT_GLOVE, 40);
         integer(CLUE_SCORE_GLOVE, 1);

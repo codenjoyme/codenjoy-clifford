@@ -182,6 +182,14 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                 pt -> new Backway(pt));
     }
 
+    private void generateKeys(List<Key> keys) {
+        for (Key prototype : keys) {
+            generate(keys(), 1,
+                    player -> freeRandom((Player) player),
+                    pt -> new Key(pt, prototype.getKeyType()));
+        }
+    }
+
     private List<Player> getDied() {
         return players.stream()
                 .filter(player -> !player.isAlive())
@@ -260,8 +268,12 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
             }
 
             if (keys().contains(hero)) {
-                keys().getAt(hero).forEach(key -> hero.pick(key.getKeyType()));
+                List<Key> keys = keys().getAt(hero);
+                keys.forEach(key -> hero.pick(key.getKeyType()));
                 keys().removeAt(hero);
+                if (settings.bool(GENERATE_KEYS)) {
+                    generateKeys(keys);
+                }
             }
 
             if (potions().contains(hero)) {

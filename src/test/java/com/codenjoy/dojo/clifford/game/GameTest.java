@@ -4637,7 +4637,9 @@ public class GameTest extends AbstractGameTest {
     }
 
     @Test
-    public void pickKeys() {
+    public void pickKeysWithoutGeneration() {
+        settings.bool(GENERATE_KEYS, false);
+
         givenFl("☼☼☼☼☼☼☼☼" +
                 "☼      ☼" +
                 "☼      ☼" +
@@ -4693,6 +4695,80 @@ public class GameTest extends AbstractGameTest {
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼      ☼" +
                 "☼      ☼" +
+                "☼      ☼" +
+                "☼     ►☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{GOLD=2, SILVER=1, BRONZE=1}", hero().getKeys().toString());
+
+        hero().clearScores();
+        assertEquals("{}", hero().getKeys().toString());
+    }
+
+    @Test
+    public void pickKeysWithGeneration() {
+        settings.bool(GENERATE_KEYS, true);
+
+        givenFl("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼ ►✦✦✼⍟☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{}", hero().getKeys().toString());
+
+        dice(1, 5);
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼✦     ☼" +
+                "☼      ☼" +
+                "☼  ►✦✼⍟☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{GOLD=1}", hero().getKeys().toString());
+
+        dice(2, 5);
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼✦✦    ☼" +
+                "☼      ☼" +
+                "☼   ►✼⍟☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{GOLD=2}", hero().getKeys().toString());
+
+        dice(3, 5);
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼✦✦✼   ☼" +
+                "☼      ☼" +
+                "☼    ►⍟☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{GOLD=2, SILVER=1}", hero().getKeys().toString());
+
+        dice(4, 5);
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼✦✦✼⍟  ☼" +
                 "☼      ☼" +
                 "☼     ►☼" +
                 "☼######☼" +
