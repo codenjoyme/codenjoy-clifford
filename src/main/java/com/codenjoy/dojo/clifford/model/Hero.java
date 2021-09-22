@@ -140,9 +140,9 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         } else if (p[0] == 0) {
             die();
             field.suicide(this);
-        } else if (p[0] == 1) {
-            openDoor = true;
         } else if (p[0] == 2) {
+            openDoor = true;
+        } else if (p[0] == 3) {
             closeDoor = true;
         }
     }

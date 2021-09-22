@@ -309,7 +309,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
-        hero().act(1);
+        hero().act(2);
         tick();
 
         assertE("☼☼☼☼☼☼☼☼☼" +
@@ -380,7 +380,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
-        hero().act(1);
+        hero().act(2);
         tick();
 
         assertE("☼☼☼☼☼☼☼☼☼" +
@@ -523,7 +523,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼☼");
 
         hero().left();
-        hero().act(2);
+        hero().act(3);
         tick();
 
         assertE("☼☼☼☼☼☼☼☼☼" +
@@ -595,7 +595,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼☼");
 
         hero().right();
-        hero().act(2);
+        hero().act(3);
         tick();
 
         assertE("☼☼☼☼☼☼☼☼☼" +
