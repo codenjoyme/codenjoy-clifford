@@ -28,6 +28,7 @@ import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
+import com.codenjoy.dojo.clifford.model.items.door.KeyType;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.clifford.model.items.*;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
@@ -122,6 +123,14 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     }
 
     @Override
+    public void oneMoreDead(Player player) {
+        if (!settings.bool(GENERATE_KEYS)) {
+            releaseKeys(player.getHero().getKeys());
+        }
+        super.oneMoreDead(player);
+    }
+
+    @Override
     protected void setNewObjects() {
         // do nothing
     }
@@ -180,6 +189,14 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         generate(backways(), settings, BACKWAYS_COUNT,
                 player -> freeRandom((Player) player),
                 pt -> new Backway(pt));
+    }
+
+    private void releaseKeys(Map<KeyType, Integer> keys) {
+        for (Map.Entry<KeyType, Integer> entry : keys.entrySet()) {
+            generate(keys(), entry.getValue(),
+                    player -> freeRandom((Player) player),
+                    pt -> new Key(pt, entry.getKey()));
+        }
     }
 
     private void generateKeys(List<Key> keys) {

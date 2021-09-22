@@ -737,4 +737,156 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼" +
                 "☼☼☼☼☼☼☼☼☼");
     }
+
+    @Test
+    public void heroShouldReleaseKeysAfterDeath_ifGenerateDisable() {
+        settings.bool(GENERATE_KEYS, false);
+
+        givenFl("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼ ►✦✼⍟ ☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼  ►✼⍟ ☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼   ►⍟ ☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{GOLD=1, SILVER=1, BRONZE=0}", hero().getKeys().toString());
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼    ► ☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{GOLD=1, SILVER=1, BRONZE=1}", hero().getKeys().toString());
+
+        dice(1, 5,
+             2, 5,
+             3, 5);
+        hero().die();
+        tick();
+
+        events.verifyAllEvents("[HERO_DIE]");
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼✦✼⍟   ☼" +
+                "☼      ☼" +
+                "☼    Ѡ ☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+    }
+
+    @Test
+    public void heroShouldNotReleaseKeysAfterDeath_itGenerateEnable() {
+        settings.bool(GENERATE_KEYS, true);
+
+        givenFl("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼ ►✦✼⍟ ☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        dice(4, 6);
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼   ✦  ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼  ►✼⍟ ☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        dice(5, 6);
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼   ✦✼ ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼   ►⍟ ☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{GOLD=1, SILVER=1, BRONZE=0}", hero().getKeys().toString());
+
+        dice(6, 6);
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼   ✦✼⍟☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼    ► ☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{GOLD=1, SILVER=1, BRONZE=1}", hero().getKeys().toString());
+
+        dice(1, 5,
+             2, 5,
+             3, 5);
+        hero().die();
+        tick();
+
+        events.verifyAllEvents("[HERO_DIE]");
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼   ✦✼⍟☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼    Ѡ ☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+    }
+
 }
