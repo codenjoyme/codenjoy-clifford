@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.clifford.model.items;
+package com.codenjoy.dojo.clifford.model.items.clue;
 
 /*-
  * #%L

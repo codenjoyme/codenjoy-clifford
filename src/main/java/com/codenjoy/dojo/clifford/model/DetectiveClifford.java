@@ -23,6 +23,9 @@ package com.codenjoy.dojo.clifford.model;
  */
 
 
+import com.codenjoy.dojo.clifford.model.items.clue.ClueGlove;
+import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
+import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.clifford.model.items.*;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
