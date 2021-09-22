@@ -25,6 +25,9 @@ package com.codenjoy.dojo.clifford.model;
 
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
+import com.codenjoy.dojo.clifford.model.items.door.DoorClosed;
+import com.codenjoy.dojo.clifford.model.items.door.DoorOpened;
+import com.codenjoy.dojo.clifford.model.items.door.Key;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.field.Accessor;
@@ -73,4 +76,10 @@ public interface Field extends RoundGameField<Player> {
     List<Hero> visibleHeroes();
 
     Accessor<Robber> robbers();
+
+    Accessor<DoorOpened> openedDoors();
+
+    Accessor<DoorClosed> closedDoors();
+
+    Accessor<Key> keys();
 }

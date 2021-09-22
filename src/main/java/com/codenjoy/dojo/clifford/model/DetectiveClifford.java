@@ -26,6 +26,9 @@ package com.codenjoy.dojo.clifford.model;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueGlove;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
+import com.codenjoy.dojo.clifford.model.items.door.DoorClosed;
+import com.codenjoy.dojo.clifford.model.items.door.DoorOpened;
+import com.codenjoy.dojo.clifford.model.items.door.Key;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.clifford.model.items.*;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
@@ -139,7 +142,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                 });
     }
 
-    private void generateClue()  {
+    private void generateClue() {
         generate(knifeClue(),
                 settings, CLUE_COUNT_KNIFE,
                 player -> freeRandom((Player) player),
@@ -315,7 +318,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 
     @Override
     public boolean isBarrier(Point pt) {
-          return pt.getX() > size() - 1 || pt.getX() < 0
+        return pt.getX() > size() - 1 || pt.getX() < 0
                 || pt.getY() < 0 || pt.getY() > size() - 1
                 || isFullBrick(pt)
                 || isBorder(pt)
@@ -539,5 +542,20 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 
     public int getBackwaysTimer() {
         return backwaysTimer;
+    }
+
+    @Override
+    public Accessor<DoorOpened> openedDoors() {
+        return field.of(DoorOpened.class);
+    }
+
+    @Override
+    public Accessor<DoorClosed> closedDoors() {
+        return field.of(DoorClosed.class);
+    }
+
+    @Override
+    public Accessor<Key> keys() {
+        return field.of(Key.class);
     }
 }

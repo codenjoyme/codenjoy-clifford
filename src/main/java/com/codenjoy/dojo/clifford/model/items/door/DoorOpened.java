@@ -15,6 +15,10 @@ public class DoorOpened extends PointImpl implements State<Element, Player> {
         this.keyType = keyType;
     }
 
+    public KeyType getKeyType() {
+        return keyType;
+    }
+
     @Override
     public Element state(Player player, Object... alsoAtPoint) {
         switch (keyType) {
