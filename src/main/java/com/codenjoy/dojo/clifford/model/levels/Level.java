@@ -55,9 +55,9 @@ public class Level extends AbstractLevel {
         field.addAll(bricks());
         field.addAll(backways());
         field.addAll(potions());
-        field.addAll(knifeClue());
-        field.addAll(gloveClue());
-        field.addAll(ringClue());
+        field.addAll(clueKnife());
+        field.addAll(clueGlove());
+        field.addAll(clueRing());
         field.addAll(robbers());
     }
 
@@ -86,15 +86,15 @@ public class Level extends AbstractLevel {
         return find(Border::new, STONE);
     }
 
-    public List<ClueKnife> knifeClue() {
+    public List<ClueKnife> clueKnife() {
         return find(ClueKnife::new, CLUE_KNIFE);
     }
 
-    public List<ClueGlove> gloveClue() {
+    public List<ClueGlove> clueGlove() {
         return find(ClueGlove::new, CLUE_GLOVE);
     }
 
-    public List<ClueRing> ringClue() {
+    public List<ClueRing> clueRing() {
         return find(ClueRing::new, CLUE_RING);
     }
 
