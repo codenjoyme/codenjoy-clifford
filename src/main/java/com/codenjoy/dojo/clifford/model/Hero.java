@@ -23,6 +23,7 @@ package com.codenjoy.dojo.clifford.model;
  */
 
 
+import com.codenjoy.dojo.clifford.model.items.door.KeyType;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.clifford.model.items.Ladder;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
@@ -30,10 +31,7 @@ import com.codenjoy.dojo.clifford.model.items.Pipe;
 import com.codenjoy.dojo.services.*;
 import com.codenjoy.dojo.services.round.RoundPlayerHero;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static com.codenjoy.dojo.games.clifford.Element.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_TICKS;
@@ -44,7 +42,8 @@ import static com.codenjoy.dojo.services.StateUtils.filterOne;
 public class Hero extends RoundPlayerHero<Field> implements State<Element, Player> {
 
     protected Direction direction;
-    private Map<PotionType, Integer> potions = new HashMap<>();
+    private Map<PotionType, Integer> potions = new EnumMap<>(PotionType.class);
+    private Map<KeyType, Integer> keys = new EnumMap<>(KeyType.class);
     private boolean moving;
     private boolean crack;
     private boolean cracked;
@@ -59,6 +58,10 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         cracked = false;
         crack = false;
         jump = false;
+    }
+
+    public Map<KeyType, Integer> getKeys() {
+        return Collections.unmodifiableMap(keys);
     }
 
     @Override
@@ -195,6 +198,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     public void clearScores() {
         score = 0;
         potions.clear();
+        keys.clear();
     }
 
     @Override
@@ -212,6 +216,10 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
 
     public void pick(PotionType potion) {
         potions.put(potion, settings().integer(MASK_TICKS));
+    }
+
+    public void pick(KeyType key) {
+        keys.put(key, keys.getOrDefault(key, 0) + 1);
     }
 
     private void checkAlive() {

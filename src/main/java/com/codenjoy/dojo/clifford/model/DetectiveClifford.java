@@ -259,6 +259,11 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                 getClueEvent(player, Events.GET_CLUE_RING, ClueRing.class);
             }
 
+            if (keys().contains(hero)) {
+                keys().getAt(hero).forEach(key -> hero.pick(key.getKeyType()));
+                keys().removeAt(hero);
+            }
+
             if (potions().contains(hero)) {
                 potions().removeAt(hero);
                 hero.pick(PotionType.MASK_POTION);

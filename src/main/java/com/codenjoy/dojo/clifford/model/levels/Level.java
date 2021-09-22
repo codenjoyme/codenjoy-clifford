@@ -143,8 +143,8 @@ public class Level extends AbstractLevel {
     public List<Key> keys() {
         return find(new HashMap<>() {{
             put(KEY_GOLD, pt -> new Key(pt, GOLD));
-            put(KEY_SILVER, pt -> new Key(pt, KeyType.SILVER));
-            put(KEY_BRONZE, pt -> new Key(pt, KeyType.BRONZE));
+            put(KEY_SILVER, pt -> new Key(pt, SILVER));
+            put(KEY_BRONZE, pt -> new Key(pt, BRONZE));
         }});
     }
 }

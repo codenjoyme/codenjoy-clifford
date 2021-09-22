@@ -4635,4 +4635,72 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼" +
                 "☼☼☼☼☼☼☼☼");
     }
+
+    @Test
+    public void pickKeys() {
+        givenFl("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼ ►✦✦✼⍟☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{}", hero().getKeys().toString());
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼  ►✦✼⍟☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{GOLD=1}", hero().getKeys().toString());
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼   ►✼⍟☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{GOLD=2}", hero().getKeys().toString());
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼    ►⍟☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{GOLD=2, SILVER=1}", hero().getKeys().toString());
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼     ►☼" +
+                "☼######☼" +
+                "☼      ☼" +
+                "☼☼☼☼☼☼☼☼");
+        assertEquals("{GOLD=2, SILVER=1, BRONZE=1}", hero().getKeys().toString());
+
+        hero().clearScores();
+        assertEquals("{}", hero().getKeys().toString());
+    }
 }
