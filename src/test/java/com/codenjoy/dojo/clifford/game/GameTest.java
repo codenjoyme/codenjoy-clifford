@@ -4597,4 +4597,27 @@ public class GameTest extends AbstractGameTest {
     // карта намного больше, чем квардартик вьюшка, и я подходя к границе просто передвигаю вьюшку
     // повляется многопользовательский режим игры в формате "стенка на стенку"
 
+
+    @Test
+    public void accessGivenDoorsAndKeys() {
+        // given
+        givenFl("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼⍙⍙⍚⍚⍜⍜☼" +
+                "☼ ⍍⌺⌺⌼ ☼" +
+                "☼ ✦✼⍟  ☼" +
+                "☼ ✦ ⍟ ►☼" +
+                "☼######☼" +
+                "☼☼☼☼☼☼☼☼");
+
+        // then
+        assertEquals(6, field.openedDoors().all().size());
+        assertEquals(4, field.closedDoors().all().size());
+        assertEquals(5, field.keys().all().size());
+
+        // then
+        assertEquals(2, field.keys().all().stream()
+                .filter(key -> key.getKeyType().isGold())
+                .count());
+    }
 }
