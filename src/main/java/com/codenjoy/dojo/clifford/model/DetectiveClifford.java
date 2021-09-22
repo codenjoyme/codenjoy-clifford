@@ -200,7 +200,9 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                 Ladder.class,
                 Potion.class,
                 Pipe.class,
-                Backway.class);
+                Backway.class,
+                Door.class,
+                Key.class);
     }
 
     private List<Player> bricksGo() {

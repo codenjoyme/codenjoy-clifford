@@ -4625,5 +4625,14 @@ public class GameTest extends AbstractGameTest {
         assertEquals(2, field.keys().all().stream()
                 .filter(key -> key.getKeyType().isGold())
                 .count());
+
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼⍙⍙⍚⍚⍜⍜☼" +
+                "☼ ⍍⌺⌺⌼ ☼" +
+                "☼ ✦✼⍟  ☼" +
+                "☼ ✦ ⍟ ►☼" +
+                "☼######☼" +
+                "☼☼☼☼☼☼☼☼");
     }
 }
