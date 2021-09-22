@@ -26,8 +26,7 @@ package com.codenjoy.dojo.clifford.model;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueGlove;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
-import com.codenjoy.dojo.clifford.model.items.door.DoorClosed;
-import com.codenjoy.dojo.clifford.model.items.door.DoorOpened;
+import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.clifford.model.items.*;
@@ -545,13 +544,8 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     }
 
     @Override
-    public Accessor<DoorOpened> openedDoors() {
-        return field.of(DoorOpened.class);
-    }
-
-    @Override
-    public Accessor<DoorClosed> closedDoors() {
-        return field.of(DoorClosed.class);
+    public Accessor<Door> doors() {
+        return field.of(Door.class);
     }
 
     @Override

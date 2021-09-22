@@ -29,8 +29,7 @@ import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueGlove;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
-import com.codenjoy.dojo.clifford.model.items.door.DoorClosed;
-import com.codenjoy.dojo.clifford.model.items.door.DoorOpened;
+import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
 import com.codenjoy.dojo.clifford.model.items.door.KeyType;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
@@ -43,6 +42,9 @@ import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.codenjoy.dojo.clifford.model.items.door.Door.State.CLOSED;
+import static com.codenjoy.dojo.clifford.model.items.door.Door.State.OPENED;
+import static com.codenjoy.dojo.clifford.model.items.door.KeyType.*;
 import static com.codenjoy.dojo.games.clifford.Element.*;
 
 public class Level extends AbstractLevel {
@@ -63,8 +65,7 @@ public class Level extends AbstractLevel {
         field.addAll(clueGlove());
         field.addAll(clueRing());
         field.addAll(robbers());
-        field.addAll(openedDoors());
-        field.addAll(closedDoors());
+        field.addAll(doors());
         field.addAll(keys());
     }
 
@@ -128,25 +129,20 @@ public class Level extends AbstractLevel {
         return find(Backway::new, BACKWAY);
     }
 
-    public List<DoorOpened> openedDoors() {
+    public List<Door> doors() {
         return find(new HashMap<>() {{
-            put(OPENED_DOOR_GOLD, pt -> new DoorOpened(pt, KeyType.GOLD));
-            put(OPENED_DOOR_SILVER, pt -> new DoorOpened(pt, KeyType.SILVER));
-            put(OPENED_DOOR_BRONZE, pt -> new DoorOpened(pt, KeyType.BRONZE));
-        }});
-    }
-
-    public List<DoorClosed> closedDoors() {
-        return find(new HashMap<>() {{
-            put(CLOSED_DOOR_GOLD, pt -> new DoorClosed(pt, KeyType.GOLD));
-            put(CLOSED_DOOR_SILVER, pt -> new DoorClosed(pt, KeyType.SILVER));
-            put(CLOSED_DOOR_BRONZE, pt -> new DoorClosed(pt, KeyType.BRONZE));
+            put(OPENED_DOOR_GOLD, pt -> new Door(pt, OPENED, GOLD));
+            put(OPENED_DOOR_SILVER, pt -> new Door(pt, OPENED, SILVER));
+            put(OPENED_DOOR_BRONZE, pt -> new Door(pt, OPENED, BRONZE));
+            put(CLOSED_DOOR_GOLD, pt -> new Door(pt, CLOSED, GOLD));
+            put(CLOSED_DOOR_SILVER, pt -> new Door(pt, CLOSED, SILVER));
+            put(CLOSED_DOOR_BRONZE, pt -> new Door(pt, CLOSED, BRONZE));
         }});
     }
 
     public List<Key> keys() {
         return find(new HashMap<>() {{
-            put(KEY_GOLD, pt -> new Key(pt, KeyType.GOLD));
+            put(KEY_GOLD, pt -> new Key(pt, GOLD));
             put(KEY_SILVER, pt -> new Key(pt, KeyType.SILVER));
             put(KEY_BRONZE, pt -> new Key(pt, KeyType.BRONZE));
         }});

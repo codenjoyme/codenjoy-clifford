@@ -25,6 +25,7 @@ package com.codenjoy.dojo.clifford.game;
 
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.Potion;
+import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.services.Point;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -4610,12 +4611,17 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼" +
                 "☼☼☼☼☼☼☼☼");
 
-        // then
-        assertEquals(6, field.openedDoors().all().size());
-        assertEquals(4, field.closedDoors().all().size());
-        assertEquals(5, field.keys().all().size());
+        // then door
+        assertEquals(10, field.doors().all().size());
+        assertEquals(6, field.doors().all().stream()
+                .filter(Door::isOpened)
+                .count());
+        assertEquals(4, field.doors().all().stream()
+                .filter(Door::isClosed)
+                .count());
 
-        // then
+        // then keys
+        assertEquals(5, field.keys().all().size());
         assertEquals(2, field.keys().all().stream()
                 .filter(key -> key.getKeyType().isGold())
                 .count());
