@@ -51,16 +51,16 @@ public class ScoresTest {
         scores.event(Events.SUICIDE);
     }
 
-    public void knifeClue() {
-        scores.event(Events.GET_KNIFE_CLUE);
+    public void clueKnife() {
+        scores.event(Events.GET_CLUE_KNIFE);
     }
 
-    public void ringClue() {
-        scores.event(Events.GET_RING_CLUE);
+    public void clueRing() {
+        scores.event(Events.GET_CLUE_RING);
     }
 
-    public void gloveClue() {
-        scores.event(Events.GET_GLOVE_CLUE);
+    public void clueGlove() {
+        scores.event(Events.GET_CLUE_GLOVE);
     }
 
     @Before
@@ -92,16 +92,16 @@ public class ScoresTest {
         killHero();
         killEnemy();
 
-        knifeClue();
-        ringClue();
-        ringClue();
-        ringClue();
-        gloveClue();
-        gloveClue();
-        knifeClue();
-        knifeClue();
-        knifeClue();
-        knifeClue();
+        clueKnife();
+        clueRing();
+        clueRing();
+        clueRing();
+        clueGlove();
+        clueGlove();
+        clueKnife();
+        clueKnife();
+        clueKnife();
+        clueKnife();
 
         heroDie();
 
@@ -132,12 +132,12 @@ public class ScoresTest {
     @Test
     public void shouldClearScore() {
         // given
-        knifeClue();
-        ringClue();
-        ringClue();
-        gloveClue();
-        gloveClue();
-        gloveClue();
+        clueKnife();
+        clueRing();
+        clueRing();
+        clueGlove();
+        clueGlove();
+        clueGlove();
 
         assertEquals(529, scores.getScore());
         assertEquals("Scores{score=529, ring=200, glove=3, knife=10}",
@@ -156,10 +156,10 @@ public class ScoresTest {
     public void shouldIncreaseForNextClue() {
         scores = new Scores(0, settings);
 
-        knifeClue();
-        knifeClue();
-        knifeClue();
-        knifeClue();
+        clueKnife();
+        clueKnife();
+        clueKnife();
+        clueKnife();
 
         assertEquals(4 * settings.integer(CLUE_SCORE_KNIFE)
                 + (1 + 2 + 3) * settings.integer(CLUE_SCORE_KNIFE_INCREMENT),
@@ -171,9 +171,9 @@ public class ScoresTest {
         // given
         scores = new Scores(0, settings);
 
-        knifeClue();
-        knifeClue();
-        knifeClue();
+        clueKnife();
+        clueKnife();
+        clueKnife();
 
         // when
         heroDie();
@@ -186,8 +186,8 @@ public class ScoresTest {
                 (int)score);
 
         // when
-        knifeClue();
-        knifeClue();
+        clueKnife();
+        clueKnife();
 
         // then
         assertEquals(score
@@ -201,9 +201,9 @@ public class ScoresTest {
         // given
         scores = new Scores(0, settings);
 
-        knifeClue();
-        knifeClue();
-        knifeClue();
+        clueKnife();
+        clueKnife();
+        clueKnife();
 
         // when
         scores.clear();
@@ -211,8 +211,8 @@ public class ScoresTest {
         assertEquals(0, scores.getScore());
 
         // then
-        knifeClue();
-        knifeClue();
+        clueKnife();
+        clueKnife();
 
         assertEquals(2 * settings.integer(CLUE_SCORE_KNIFE)
                         + 1 * settings.integer(CLUE_SCORE_KNIFE_INCREMENT),
@@ -224,9 +224,9 @@ public class ScoresTest {
         // given
         scores = new Scores(0, settings);
 
-        knifeClue();
-        knifeClue();
-        knifeClue();
+        clueKnife();
+        clueKnife();
+        clueKnife();
 
         // when
         suicide();
@@ -238,8 +238,8 @@ public class ScoresTest {
                 scores.getScore());
 
         // then
-        knifeClue();
-        knifeClue();
+        clueKnife();
+        clueKnife();
 
         assertEquals(saved
                         + 2 * settings.integer(CLUE_SCORE_KNIFE)
@@ -252,9 +252,9 @@ public class ScoresTest {
         // given
         scores = new Scores(0, settings);
 
-        knifeClue();
-        knifeClue();
-        knifeClue();
+        clueKnife();
+        clueKnife();
+        clueKnife();
 
         // when
         heroDie();
@@ -266,8 +266,8 @@ public class ScoresTest {
                 scores.getScore());
 
         // then
-        knifeClue();
-        knifeClue();
+        clueKnife();
+        clueKnife();
 
         assertEquals(saved
                         + 2 * settings.integer(CLUE_SCORE_KNIFE)

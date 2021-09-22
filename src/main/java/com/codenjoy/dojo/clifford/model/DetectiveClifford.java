@@ -143,17 +143,17 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     }
 
     private void generateClue() {
-        generate(knifeClue(),
+        generate(clueKnife(),
                 settings, CLUE_COUNT_KNIFE,
                 player -> freeRandom((Player) player),
                 pt -> new ClueKnife(pt));
 
-        generate(gloveClue(),
+        generate(clueGlove(),
                 settings, CLUE_COUNT_GLOVE,
                 player -> freeRandom((Player) player),
                 pt -> new ClueGlove(pt));
 
-        generate(ringClue(),
+        generate(clueRing(),
                 settings, CLUE_COUNT_RING,
                 player -> freeRandom((Player) player),
                 pt -> new ClueRing(pt));
@@ -247,15 +247,15 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
             Hero hero = player.getHero();
 
             hero.tick();
-            if (knifeClue().contains(hero)) {
-                knifeClue().removeAt(hero);
-                getClueEvent(player, Events.GET_KNIFE_CLUE, ClueKnife.class);
-            } else if (gloveClue().contains(hero)) {
-                gloveClue().removeAt(hero);
-                getClueEvent(player, Events.GET_GLOVE_CLUE, ClueGlove.class);
-            } else if (ringClue().contains(hero)) {
-                ringClue().removeAt(hero);
-                getClueEvent(player, Events.GET_RING_CLUE, ClueRing.class);
+            if (clueKnife().contains(hero)) {
+                clueKnife().removeAt(hero);
+                getClueEvent(player, Events.GET_CLUE_KNIFE, ClueKnife.class);
+            } else if (clueGlove().contains(hero)) {
+                clueGlove().removeAt(hero);
+                getClueEvent(player, Events.GET_CLUE_GLOVE, ClueGlove.class);
+            } else if (clueRing().contains(hero)) {
+                clueRing().removeAt(hero);
+                getClueEvent(player, Events.GET_CLUE_RING, ClueRing.class);
             }
 
             if (potions().contains(hero)) {
@@ -284,14 +284,14 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         for (Robber robber : robbers().copy()) {
             robber.tick();
 
-            if (knifeClue().contains(robber) && !robber.withClue()) {
-                knifeClue().removeAt(robber);
+            if (clueKnife().contains(robber) && !robber.withClue()) {
+                clueKnife().removeAt(robber);
                 robber.getClue(ClueKnife.class);
-            } else if (gloveClue().contains(robber) && !robber.withClue()) {
-                gloveClue().removeAt(robber);
+            } else if (clueGlove().contains(robber) && !robber.withClue()) {
+                clueGlove().removeAt(robber);
                 robber.getClue(ClueGlove.class);
-            } else if (ringClue().contains(robber) && !robber.withClue()) {
-                ringClue().removeAt(robber);
+            } else if (clueRing().contains(robber) && !robber.withClue()) {
+                clueRing().removeAt(robber);
                 robber.getClue(ClueRing.class);
             }
 
@@ -338,9 +338,9 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 
         Point over = Direction.UP.change(pt);
         if (isLadder(over)
-                || knifeClue().contains(over)
-                || gloveClue().contains(over)
-                || ringClue().contains(over)
+                || clueKnife().contains(over)
+                || clueGlove().contains(over)
+                || clueRing().contains(over)
                 || isFullBrick(over)
                 || activeHeroes().contains(over)
                 || robbers().contains(over)) {
@@ -430,11 +430,11 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     @Override
     public void leaveClue(Point pt, Class type) {
         if (type == ClueKnife.class) {
-            knifeClue().add(new ClueKnife(pt));
+            clueKnife().add(new ClueKnife(pt));
         } else if (type == ClueGlove.class) {
-            gloveClue().add(new ClueGlove(pt));
+            clueGlove().add(new ClueGlove(pt));
         } else if (type == ClueRing.class) {
-            ringClue().add(new ClueRing(pt));
+            clueRing().add(new ClueRing(pt));
         }
     }
 
@@ -495,15 +495,15 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         return field.of(Backway.class);
     }
 
-    public Accessor<ClueKnife> knifeClue() {
+    public Accessor<ClueKnife> clueKnife() {
         return field.of(ClueKnife.class);
     }
 
-    public Accessor<ClueGlove> gloveClue() {
+    public Accessor<ClueGlove> clueGlove() {
         return field.of(ClueGlove.class);
     }
 
-    public Accessor<ClueRing> ringClue() {
+    public Accessor<ClueRing> clueRing() {
         return field.of(ClueRing.class);
     }
 

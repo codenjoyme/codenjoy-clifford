@@ -59,13 +59,13 @@ public class Scores implements PlayerScores {
 
     @Override
     public void event(Object event) {
-        if (event.equals(Events.GET_KNIFE_CLUE)) {
+        if (event.equals(Events.GET_CLUE_KNIFE)) {
             score += settings.integer(CLUE_SCORE_KNIFE) + countKnife;
             countKnife += settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
-        } else if (event.equals(Events.GET_GLOVE_CLUE)) {
+        } else if (event.equals(Events.GET_CLUE_GLOVE)) {
             score += settings.integer(CLUE_SCORE_GLOVE) + countGlove;
             countGlove += settings.integer(CLUE_SCORE_GLOVE_INCREMENT);
-        } else if (event.equals(Events.GET_RING_CLUE)) {
+        } else if (event.equals(Events.GET_CLUE_RING)) {
             score += settings.integer(CLUE_SCORE_RING) + countRing;
             countRing += settings.integer(CLUE_SCORE_RING_INCREMENT);
         } else if (event.equals(Events.KILL_HERO)) {

@@ -31,9 +31,9 @@ public enum Events {
     KILL_ENEMY,        // герой замуровал в стенке другого вражеского героя
     HERO_DIE,          // героя убили
 
-    GET_KNIFE_CLUE,  // подобрано улику
-    GET_GLOVE_CLUE,
-    GET_RING_CLUE,
+    GET_CLUE_KNIFE,  // подобрано улику
+    GET_CLUE_GLOVE,
+    GET_CLUE_RING,
 
     SUICIDE;          // герой заблудился и решил суициднуться
 }
