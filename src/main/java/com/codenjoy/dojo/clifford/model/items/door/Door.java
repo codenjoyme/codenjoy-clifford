@@ -21,8 +21,16 @@ public class Door extends PointImpl implements State<Element, Player> {
         return state == State.OPENED;
     }
 
+    public void open() {
+        state = State.OPENED;
+    }
+
     public boolean isClosed() {
         return state == State.CLOSED;
+    }
+
+    public void close() {
+        state = State.CLOSED;
     }
 
     public KeyType getKeyType() {

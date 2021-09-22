@@ -26,6 +26,7 @@ package com.codenjoy.dojo.clifford.model;
 import com.codenjoy.dojo.clifford.model.items.Ladder;
 import com.codenjoy.dojo.clifford.model.items.Pipe;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
+import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.KeyType;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Direction;
@@ -35,6 +36,8 @@ import com.codenjoy.dojo.services.StateUtils;
 import com.codenjoy.dojo.services.round.RoundPlayerHero;
 
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_TICKS;
 import static com.codenjoy.dojo.games.clifford.Element.*;
@@ -51,6 +54,8 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     private boolean crack;
     private boolean cracked;
     private boolean jump;
+    private boolean openDoor;
+    private boolean closeDoor;
     private int score;
 
     public Hero(Point xy, Direction direction) {
@@ -60,6 +65,8 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         cracked = false;
         crack = false;
         jump = false;
+        openDoor = false;
+        closeDoor = false;
         clearScores();
     }
 
@@ -128,13 +135,16 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     public void act(int... p) {
         if (!isActiveAndAlive()) return;
 
-        if (p.length == 1 && p[0] == 0) {
+        if (p.length == 0) {
+            crack = true;
+        } else if (p[0] == 0) {
             die();
             field.suicide(this);
-            return;
+        } else if (p[0] == 1) {
+            openDoor = true;
+        } else if (p[0] == 2) {
+            closeDoor = true;
         }
-
-        crack = true;
     }
 
     public Direction getDirection() {
@@ -149,17 +159,27 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     public void tick() {
         if (!isActiveAndAlive()) return;
 
+        Point destination = direction.change(this);
+
+        if (field.doors().contains(destination)) {
+            if (openDoor) {
+                tryToInteractWithDoor(destination, Door::isClosed, Door::open);
+            } else if(closeDoor) {
+                tryToInteractWithDoor(destination, Door::isOpened, Door::close);
+            }
+        }
+
         if (isFall()) {
             move(DOWN);
         } else if (crack) {
-            Point hole = DOWN.change(direction.change(this));
+            Point hole = DOWN.change(destination);
             cracked = field.tryToCrack(this, hole);
         } else if (moving || jump) {
             Point dest;
             if (jump) {
                 dest = DOWN.change(this);
             } else {
-                dest = direction.change(this);
+                dest = destination;
             }
 
             boolean noPhysicalBarrier = !field.isBarrier(dest);
@@ -171,7 +191,22 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         crack = false;
         moving = false;
         jump = false;
+        openDoor = false;
+        closeDoor = false;
         dissolvePotions();
+    }
+
+    private void tryToInteractWithDoor(Point destination,
+                                       Predicate<Door> validState, Consumer<Door> action) {
+        field.doors().getAt(destination).stream()
+                .filter(validState)
+                .forEach(door -> {
+                    Integer availableKeys = keys.getOrDefault(door.getKeyType(), 0);
+                    if (availableKeys > 0) {
+                        action.accept(door);
+                        keys.put(door.getKeyType(), availableKeys - 1);
+                    }
+                });
     }
 
     private boolean isMask() {

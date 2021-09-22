@@ -4870,4 +4870,463 @@ public class GameTest extends AbstractGameTest {
                 "☼       ☼" +
                 "☼☼☼☼☼☼☼☼☼");
     }
+
+    @Test
+    public void openDoor_right() {
+        givenFl("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼  ►✦⍍  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   ►⍍  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().act(1);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   ►⍙  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼    ►  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼    ⍙► ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+    }
+
+    @Test
+    public void openDoor_left() {
+        givenFl("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼  ⍍✦◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().left();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼  ⍍◄   ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().act(1);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼  ⍙◄   ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().left();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼  ◄    ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero().left();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼ ◄⍙    ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+    }
+
+    @Test
+    public void heroCannotOpenDoorWithoutKeys() {
+        givenFl("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   ►⍍  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   ►⍍  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().act(1);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   ►⍍  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+    }
+
+    @Test
+    public void closeDoor_right() {
+        givenFl("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼  ►✦⍙  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   ►⍙  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼    ►  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼    ⍙► ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero().left();
+        hero().act(2);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼    ⍍◄ ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+    }
+
+    @Test
+    public void closeDoor_left() {
+        givenFl("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼  ⍙✦◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().left();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼  ⍙◄   ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().left();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼  ◄    ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero().left();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼ ◄⍙    ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero().right();
+        hero().act(2);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼ ►⍍    ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+    }
+
+    @Test
+    public void closeDoorAtHeroPositionHasNoEffect() {
+        givenFl("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼  ⍙✦◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().left();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼  ⍙◄   ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().left();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼  ◄    ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero().right();
+        hero().act(2);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼  ⍙►   ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+    }
+
+
+    @Test
+    public void heroCannotCloseDoorWithoutKeys() {
+        givenFl("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   ►⍙  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼    ►  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero().right();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼    ⍙► ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        hero().left();
+        hero().act(2);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼    ◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero().left();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   ◄⍙  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+    }
 }
