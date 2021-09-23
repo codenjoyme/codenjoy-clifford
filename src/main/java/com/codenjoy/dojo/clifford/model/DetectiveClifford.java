@@ -227,7 +227,8 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                 Pipe.class,
                 Backway.class,
                 Door.class,
-                Key.class);
+                Key.class,
+                Bullet.class);
     }
 
     private List<Player> bricksGo() {
@@ -588,5 +589,10 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     @Override
     public Accessor<Key> keys() {
         return field.of(Key.class);
+    }
+
+    @Override
+    public Accessor<Bullet> bullets() {
+        return field.of(Bullet.class);
     }
 }

@@ -4593,6 +4593,28 @@ public class GameTest extends AbstractGameTest {
         assertEquals(5, field.getBackwaysTimer());
     }
 
+    @Test
+    public void accessGivenBullets() {
+        givenFl("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼ ► •••☼" +
+                "☼######☼" +
+                "☼☼☼☼☼☼☼☼");
+
+        assertEquals(3, field.bullets().all().size());
+        assertE("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼ ► •••☼" +
+                "☼######☼" +
+                "☼☼☼☼☼☼☼☼");
+    }
+
     // прострелить находясь на трубе нельзя, в оригинале только находясь на краю трубы
 
     // карта намного больше, чем квардартик вьюшка, и я подходя к границе просто передвигаю вьюшку

@@ -31,7 +31,6 @@ import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
-import com.codenjoy.dojo.clifford.model.items.door.KeyType;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Direction;
@@ -67,6 +66,7 @@ public class Level extends AbstractLevel {
         field.addAll(robbers());
         field.addAll(doors());
         field.addAll(keys());
+        field.addAll(bullets());
     }
 
     public List<Hero> heroes() {
@@ -146,5 +146,9 @@ public class Level extends AbstractLevel {
             put(KEY_SILVER, pt -> new Key(pt, SILVER));
             put(KEY_BRONZE, pt -> new Key(pt, BRONZE));
         }});
+    }
+
+    public List<Bullet> bullets() {
+        return find(Bullet::new, BULLET);
     }
 }
