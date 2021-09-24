@@ -4029,8 +4029,6 @@ public class GameTest extends AbstractGameTest {
 
         tick();
 
-        events.verifyNoEvents();
-
         assertEquals(0, hero(0).scores());
         assertEquals(0, hero(1).scores());
         assertEquals(true, hero(0).isAlive());
@@ -4113,7 +4111,6 @@ public class GameTest extends AbstractGameTest {
         tick();
 
         events.verifyAllEvents("[GET_CLUE_KNIFE]");
-        events.verifyNoEvents();
         listeners.forEach(Mockito::reset);
 
         assertE("☼☼☼☼☼☼☼☼" +
@@ -4129,7 +4126,6 @@ public class GameTest extends AbstractGameTest {
         tick();
 
         events.verifyAllEvents("[GET_CLUE_KNIFE]");
-        events.verifyNoEvents();
         listeners.forEach(Mockito::reset);
 
         assertE("☼☼☼☼☼☼☼☼" +
@@ -4145,7 +4141,6 @@ public class GameTest extends AbstractGameTest {
         tick();
 
         events.verifyAllEvents("[GET_CLUE_GLOVE]");
-        events.verifyNoEvents();
         listeners.forEach(Mockito::reset);
 
         assertE("☼☼☼☼☼☼☼☼" +
@@ -4161,7 +4156,6 @@ public class GameTest extends AbstractGameTest {
         tick();
 
         events.verifyAllEvents("[GET_CLUE_RING]");
-        events.verifyNoEvents();
         listeners.forEach(Mockito::reset);
 
         assertE("☼☼☼☼☼☼☼☼" +
@@ -4177,7 +4171,6 @@ public class GameTest extends AbstractGameTest {
         tick();
 
         events.verifyAllEvents("[GET_CLUE_RING]");
-        events.verifyNoEvents();
         listeners.forEach(Mockito::reset);
 
         assertE("☼☼☼☼☼☼☼☼" +
