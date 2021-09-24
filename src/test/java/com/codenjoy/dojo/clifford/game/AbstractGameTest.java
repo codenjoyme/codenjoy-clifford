@@ -55,20 +55,28 @@ import static org.mockito.Mockito.*;
 
 public abstract class AbstractGameTest {
 
-    protected List<EventListener> listeners = new LinkedList<>();
-    protected List<Player> players = new LinkedList<>();
-    protected List<Game> games = new LinkedList<>();
+    protected List<EventListener> listeners;
+    protected List<Player> players;
+    protected List<Game> games;
 
-    protected Dice dice = mock(Dice.class);
-    protected PrinterFactory<Element, Player> printer = new PrinterFactoryImpl<>();
+    protected Dice dice;
+    protected PrinterFactory<Element, Player> printer;
     protected DetectiveClifford field;
-    protected GameSettings settings = settings();
-    protected EventsListenersAssert events = new EventsListenersAssert(() -> listeners, Events.class);
+    protected GameSettings settings;
+    protected EventsListenersAssert events;
 
-    protected List<RobberJoystick> robbers = new LinkedList<>();
+    protected List<RobberJoystick> robbers;
 
     @Before
     public void setup() {
+        listeners = new LinkedList<>();
+        players = new LinkedList<>();
+        games = new LinkedList<>();
+        dice = mock(Dice.class);
+        printer = new PrinterFactoryImpl<>();
+        settings = settings();
+        events = new EventsListenersAssert(() -> listeners, Events.class);
+        robbers = new LinkedList<>();
         Brick.CRACK_TIMER = 13;
     }
 
