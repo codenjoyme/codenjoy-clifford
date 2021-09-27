@@ -77,6 +77,46 @@ public class BulletGameTest extends AbstractGameTest {
     }
 
     @Test
+    public void bulletIsRemovedOutOfBoard() {
+        givenFl("☼☼☼☼☼" +
+                "☼   ☼" +
+                "   ◄☼" +
+                "☼###☼" +
+                "☼☼☼☼☼");
+
+        assertBulletCount(0);
+
+        hero().act(1);
+        tick();
+
+        assertE("☼☼☼☼☼" +
+                "☼   ☼" +
+                "   ◄☼" +
+                "☼###☼" +
+                "☼☼☼☼☼");
+        assertBulletAt(3, 2);
+
+        tick();
+
+        assertE("☼☼☼☼☼" +
+                "☼   ☼" +
+                " • ◄☼" +
+                "☼###☼" +
+                "☼☼☼☼☼");
+        assertBulletCount(1);
+
+        tick();
+
+        assertE("☼☼☼☼☼" +
+                "☼   ☼" +
+                "   ◄☼" +
+                "☼###☼" +
+                "☼☼☼☼☼");
+        assertBulletCount(0);
+    }
+
+
+    @Test
     public void heroNotMoveWhenShoot() {
         givenFl("☼☼☼☼☼" +
                 "☼   ☼" +
