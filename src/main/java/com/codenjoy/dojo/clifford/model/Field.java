@@ -24,6 +24,7 @@ package com.codenjoy.dojo.clifford.model;
 
 
 import com.codenjoy.dojo.clifford.model.items.Brick;
+import com.codenjoy.dojo.clifford.model.items.Bullet;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
@@ -79,4 +80,6 @@ public interface Field extends RoundGameField<Player> {
     Accessor<Door> doors();
 
     Accessor<Key> keys();
+
+    Accessor<Bullet> bullets();
 }
