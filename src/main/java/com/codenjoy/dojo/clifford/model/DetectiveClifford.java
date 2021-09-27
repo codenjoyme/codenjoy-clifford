@@ -257,6 +257,11 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                         brick.crack(bullet.getOwner());
                         bullet.remove();
                     });
+
+            borders().getAt(bullet)
+                    .forEach(border -> {
+                        bullet.invertDirection();
+                    });
     }
 
     private List<Player> bricksGo() {

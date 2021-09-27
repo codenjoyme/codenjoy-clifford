@@ -3,6 +3,8 @@ package com.codenjoy.dojo.clifford.game;
 import com.codenjoy.dojo.clifford.model.items.Potion;
 import org.junit.Test;
 
+import static com.codenjoy.dojo.services.Direction.LEFT;
+import static com.codenjoy.dojo.services.Direction.RIGHT;
 import static com.codenjoy.dojo.services.PointImpl.pt;
 import static org.junit.Assert.assertEquals;
 
@@ -183,6 +185,64 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼ 4  ◄☼" +
                 "☼#####☼" +
                 "☼☼☼☼☼☼☼");
+    }
+
+    @Test
+    public void bulletInteractWithBorder() {
+        givenFl("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼   ◄ ☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+
+        hero().act(1);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼   ◄ ☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+        assertBulletAt(4, 2);
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼ • ◄ ☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+        assertEquals(true, field.bullets().getAt(pt(2, 2)).stream()
+                .allMatch(bullet -> bullet.getDirection() == LEFT));
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼   ◄ ☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+        assertBulletAt(0, 2);
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼ • ◄ ☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+        assertEquals(true, field.bullets().getAt(pt(2, 2)).stream()
+                .allMatch(bullet -> bullet.getDirection() == RIGHT));
     }
 
     @Test

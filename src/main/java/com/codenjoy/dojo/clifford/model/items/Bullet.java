@@ -26,6 +26,10 @@ public class Bullet extends MovingObject implements State<Element, Player> {
         return owner;
     }
 
+    public void invertDirection() {
+        direction = direction.inverted();
+    }
+
     @Override
     protected void moving(Point pt) {
         if (pt.isOutOf(field.size())) {
