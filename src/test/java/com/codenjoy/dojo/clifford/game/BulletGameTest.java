@@ -564,4 +564,61 @@ public class BulletGameTest extends AbstractGameTest {
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n");
     }
+
+    @Test
+    public void twoShootersKillHero() {
+        givenFl("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼► ► ◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼( ( ◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero(0).act(1);
+        hero(1).act(1);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼( ( ◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+        assertBulletAt(1, 3);
+        assertBulletAt(5, 3);
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼( Z ◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertBulletCount(0);
+        events.verifyAllEvents(
+                "listener(0) => [KILL_HERO]\n" +
+                "listener(1) => [KILL_HERO]\n" +
+                "listener(2) => [HERO_DIE]\n");
+    }
 }
