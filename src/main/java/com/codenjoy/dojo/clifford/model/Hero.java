@@ -176,7 +176,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         if (isFall()) {
             move(DOWN);
         } else if (shoot) {
-            Bullet bullet = new Bullet(destination, direction);
+            Bullet bullet = new Bullet(this, destination, direction);
             field.bullets().add(bullet);
         } else if (crack) {
             Point hole = DOWN.change(destination);

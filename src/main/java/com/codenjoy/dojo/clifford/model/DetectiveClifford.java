@@ -44,6 +44,7 @@ import com.codenjoy.dojo.services.round.RoundField;
 
 import java.util.*;
 
+import static com.codenjoy.dojo.clifford.services.Events.KILL_HERO;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.field.Generator.generate;
 import static java.util.stream.Collectors.toList;
@@ -104,6 +105,9 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 
         Set<Player> die = new LinkedHashSet<>();
 
+        bulletsGo();
+        die.addAll(getDied());
+
         heroesGo();
         die.addAll(getDied());
 
@@ -143,7 +147,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                 .forEach(murderer -> {
                     int murderTeam = murderer.getPlayer().getTeamId();
                     if (murderTeam == deadHeroTeam) {
-                        murderer.event(Events.KILL_HERO);
+                        murderer.event(KILL_HERO);
                     } else {
                         murderer.event(Events.KILL_ENEMY);
                     }
@@ -231,6 +235,23 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                 Bullet.class);
     }
 
+    private void bulletsGo() {
+        for (Bullet bullet : bullets().copy()) {
+            bullet.move();
+        }
+    }
+
+    @Override
+    public void affect(Bullet bullet) {
+            heroes().getAt(bullet).stream()
+                    .filter(hero -> !hero.under(PotionType.MASK_POTION))
+                    .forEach(hero -> {
+                        hero.die();
+                        bullet.getOwner().event(KILL_HERO);
+                        bullet.remove();
+                    });
+    }
+
     private List<Player> bricksGo() {
         List<Player> die = new LinkedList<>();
 
@@ -252,7 +273,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                 Player killerPlayer = (Player) killer.getPlayer();
                 if (killerPlayer != null & killerPlayer != player) {
                     if (killerPlayer.getTeamId() == player.getTeamId()) {
-                        killerPlayer.event(Events.KILL_HERO);
+                        killerPlayer.event(KILL_HERO);
                     } else {
                         killerPlayer.event(Events.KILL_ENEMY);
                     }
