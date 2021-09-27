@@ -46,6 +46,27 @@ public class BulletGameTest extends AbstractGameTest {
     }
 
     @Test
+    public void heroNotMoveWhenShoot() {
+        givenFl("☼☼☼☼☼" +
+                "☼   ☼" +
+                "☼►  ☼" +
+                "☼###☼" +
+                "☼☼☼☼☼");
+
+        hero().right();
+        hero().act(1);
+        tick();
+
+        assertE("☼☼☼☼☼" +
+                "☼   ☼" +
+                "☼►• ☼" +
+                "☼###☼" +
+                "☼☼☼☼☼");
+        assertEquals(1, field.bullets().size());
+    }
+
+
+    @Test
     public void heroKillOtherHero() {
         givenFl("☼☼☼☼☼☼☼☼☼" +
                 "☼       ☼" +
@@ -92,6 +113,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼" +
                 "☼☼☼☼☼☼☼☼☼");
 
+        assertEquals(0, field.bullets().size());
         events.verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n");
@@ -157,9 +179,93 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼" +
                 "☼☼☼☼☼☼☼☼☼");
 
+        assertEquals(0, field.bullets().size());
         events.verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => []\n" +
                 "listener(2) => [HERO_DIE]\n");
+    }
+
+    @Test
+    public void heroFallOnBullet() {
+        givenFl("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   ►   ☼" +
+                "☼    ◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   ⊏   ☼" +
+                "☼    ◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero().act(1);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   Z◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals(0, field.bullets().size());
+        events.verifyAllEvents(
+                "listener(0) => [KILL_HERO]\n" +
+                "listener(1) => [HERO_DIE]\n");
+    }
+
+    @Test
+    public void heroFallOnBullet_notTakeClue() {
+        givenFl("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   ►   ☼" +
+                "☼   $◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   ⊏   ☼" +
+                "☼   $◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero().act(1);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   Z◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertEquals(0, field.bullets().size());
+        assertEquals(1, field.clueKnife().size());
+        events.verifyAllEvents(
+                "listener(0) => [KILL_HERO]\n" +
+                "listener(1) => [HERO_DIE]\n");
     }
 }

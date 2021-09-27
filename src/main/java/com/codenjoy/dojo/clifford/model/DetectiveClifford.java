@@ -295,6 +295,12 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
             Hero hero = player.getHero();
 
             hero.tick();
+
+            if (bullets().contains(hero)) {
+                bullets().getAt(hero).forEach(this::affect);
+                continue;
+            }
+
             if (clueKnife().contains(hero)) {
                 clueKnife().removeAt(hero);
                 getClueEvent(player, Events.GET_CLUE_KNIFE, ClueKnife.class);
