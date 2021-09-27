@@ -251,6 +251,12 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                         bullet.getOwner().event(KILL_HERO);
                         bullet.remove();
                     });
+
+            bricks().getAt(bullet)
+                    .forEach(brick -> {
+                        brick.crack(bullet.getOwner());
+                        bullet.remove();
+                    });
     }
 
     private List<Player> bricksGo() {

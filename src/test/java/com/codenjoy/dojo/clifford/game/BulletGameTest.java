@@ -115,6 +115,75 @@ public class BulletGameTest extends AbstractGameTest {
         assertBulletCount(0);
     }
 
+    @Test
+    public void bulletInteractWithBrick() {
+        givenFl("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼ #  ◄☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+
+        hero().act(1);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼ #  ◄☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+        assertBulletAt(5, 2);
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼ #• ◄☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼ *  ◄☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+        assertBulletCount(0);
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼    ◄☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+
+        tick();
+        tick();
+        tick();
+        tick();
+        tick();
+        tick();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼ 4  ◄☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+    }
 
     @Test
     public void heroNotMoveWhenShoot() {
