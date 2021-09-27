@@ -245,6 +245,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     public void affect(Bullet bullet) {
             heroes().getAt(bullet).stream()
                     .filter(hero -> !hero.under(PotionType.MASK_POTION))
+                    .filter(hero -> hero != bullet.getOwner())
                     .forEach(hero -> {
                         hero.die();
                         bullet.getOwner().event(KILL_HERO);
