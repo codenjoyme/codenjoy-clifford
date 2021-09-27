@@ -44,7 +44,7 @@ import com.codenjoy.dojo.services.round.RoundField;
 
 import java.util.*;
 
-import static com.codenjoy.dojo.clifford.services.Events.KILL_HERO;
+import static com.codenjoy.dojo.clifford.services.Events.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.field.Generator.generate;
 import static java.util.stream.Collectors.toList;
@@ -149,7 +149,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                     if (murderTeam == deadHeroTeam) {
                         murderer.event(KILL_HERO);
                     } else {
-                        murderer.event(Events.KILL_ENEMY);
+                        murderer.event(KILL_ENEMY);
                     }
                 });
     }
@@ -243,25 +243,27 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 
     @Override
     public void affect(Bullet bullet) {
-            heroes().getAt(bullet).stream()
-                    .filter(hero -> !hero.under(PotionType.MASK_POTION))
-                    .filter(hero -> hero != bullet.getOwner())
-                    .forEach(hero -> {
-                        hero.die();
-                        bullet.getOwner().event(KILL_HERO);
-                        bullet.remove();
-                    });
+        for (Hero hero : heroes().getAt(bullet)) {
+            if (hero.under(PotionType.MASK_POTION)) continue;
+            if (hero == bullet.getOwner() && !bullet.isBounced()) continue;
 
-            bricks().getAt(bullet)
-                    .forEach(brick -> {
-                        brick.crack(bullet.getOwner());
-                        bullet.remove();
-                    });
+            hero.die();
+            bullet.remove();
+            if (hero == bullet.getOwner()) {
+                bullet.getOwner().event(SUICIDE);
+            } else {
+                bullet.getOwner().event(KILL_HERO);
+            }
+        }
 
-            borders().getAt(bullet)
-                    .forEach(border -> {
-                        bullet.invertDirection();
-                    });
+        for (Brick brick : bricks().getAt(bullet)) {
+            brick.crack(bullet.getOwner());
+            bullet.remove();
+        }
+
+        for (Border border : borders().getAt(bullet)) {
+            bullet.invertDirection();
+        }
     }
 
     private List<Player> bricksGo() {
@@ -287,7 +289,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                     if (killerPlayer.getTeamId() == player.getTeamId()) {
                         killerPlayer.event(KILL_HERO);
                     } else {
-                        killerPlayer.event(Events.KILL_ENEMY);
+                        killerPlayer.event(KILL_ENEMY);
                     }
                 }
             }

@@ -13,6 +13,7 @@ public class Bullet extends MovingObject implements State<Element, Player> {
 
     private Hero owner;
     private Field field;
+    private boolean bounced;
 
     public Bullet(Hero owner) {
         super(owner.getX(), owner.getY(), owner.getDirection());
@@ -26,7 +27,12 @@ public class Bullet extends MovingObject implements State<Element, Player> {
         return owner;
     }
 
+    public boolean isBounced() {
+        return bounced;
+    }
+
     public void invertDirection() {
+        bounced = true;
         direction = direction.inverted();
     }
 

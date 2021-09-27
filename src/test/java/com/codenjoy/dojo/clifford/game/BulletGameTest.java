@@ -246,6 +246,53 @@ public class BulletGameTest extends AbstractGameTest {
     }
 
     @Test
+    public void bouncedBulletKillOwner() {
+        givenFl("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼ ☼ ◄ ☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+
+        hero().act(1);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼ ☼ ◄ ☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+        assertBulletAt(4, 2);
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼ ☼ ◄ ☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+        assertBulletAt(2, 2);
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼     ☼" +
+                "☼ ☼ Ѡ ☼" +
+                "☼#####☼" +
+                "☼☼☼☼☼☼☼");
+
+        events.verifyAllEvents("[HERO_DIE, SUICIDE]");
+    }
+
+
+    @Test
     public void heroNotMoveWhenShoot() {
         givenFl("☼☼☼☼☼" +
                 "☼   ☼" +
