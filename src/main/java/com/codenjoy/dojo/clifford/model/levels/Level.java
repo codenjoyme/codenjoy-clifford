@@ -31,7 +31,6 @@ import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
-import com.codenjoy.dojo.clifford.model.items.door.KeyType;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Direction;
@@ -40,6 +39,7 @@ import com.codenjoy.dojo.services.field.PointField;
 
 import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import static com.codenjoy.dojo.clifford.model.items.door.Door.State.CLOSED;
@@ -80,7 +80,7 @@ public class Level extends AbstractLevel {
                 HERO_MASK_CRACK_RIGHT,
                 HERO_MASK_RIGHT, HERO_MASK_FALL_RIGHT, HERO_MASK_PIPE_RIGHT);
 
-        return find(new HashMap<>() {{
+        return find(new LinkedHashMap<>() {{
             left.forEach(element -> put(element, pt -> new Hero(pt, Direction.LEFT)));
             right.forEach(element -> put(element, pt -> new Hero(pt, Direction.RIGHT)));
         }});
