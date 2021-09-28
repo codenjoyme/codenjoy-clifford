@@ -740,4 +740,64 @@ public class BulletGameTest extends AbstractGameTest {
                 "listener(1) => [KILL_HERO]\n" +
                 "listener(2) => [HERO_DIE]\n");
     }
+
+    @Test
+    public void noEventIfOwnerNotAlive() {
+        givenFl("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼ ►   ► ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero(0).act(1);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼ ►   ( ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+        assertBulletAt(2, 3);
+
+        hero(0).die();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼ Ѡ • ( ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        events.verifyAllEvents(
+                "listener(0) => [HERO_DIE]\n" +
+                "listener(1) => []\n");
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼ Ѡ   Z ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertBulletCount(0);
+        events.verifyAllEvents(
+                "listener(0) => []\n" +
+                "listener(1) => [HERO_DIE]\n");
+    }
 }

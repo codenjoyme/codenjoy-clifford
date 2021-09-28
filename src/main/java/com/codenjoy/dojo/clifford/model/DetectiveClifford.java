@@ -249,9 +249,10 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 
             hero.die();
             bullet.remove();
+
             if (hero == bullet.getOwner()) {
                 bullet.getOwner().event(SUICIDE);
-            } else {
+            } else if (bullet.getOwner().isAlive()) {
                 bullet.getOwner().event(KILL_HERO);
             }
         }
