@@ -82,4 +82,6 @@ public interface Field extends RoundGameField<Player> {
     Accessor<Key> keys();
 
     Accessor<Bullet> bullets();
+
+    void affect(Bullet bullet);
 }

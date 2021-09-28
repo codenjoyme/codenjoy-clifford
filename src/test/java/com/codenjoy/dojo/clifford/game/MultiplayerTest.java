@@ -309,7 +309,7 @@ public class MultiplayerTest extends AbstractGameTest {
     }
 
     @Test
-    public void thatMaskKillsNonMaskPlayer() {
+    public void thatMaskKillsNonMaskPlayer_killHero() {
         settings.integer(MASK_POTIONS_COUNT, 1);
         givenFl("☼☼☼☼☼☼☼☼" +
                 "☼      ☼" +
@@ -346,6 +346,93 @@ public class MultiplayerTest extends AbstractGameTest {
 
         events.verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
+                "listener(1) => [HERO_DIE]\n");
+
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ ⊳    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n", 0);
+
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ Ѡ    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n", 1);
+
+        field.remove(player(1)); // он геймовер его уберут
+        tick();
+
+        events.verifyAllEvents(
+                "listener(0) => []\n" +
+                "listener(1) => []\n");
+
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ ⊳    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n", 0);
+
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ Ѡ    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n", 1);
+    }
+
+    @Test
+    public void thatMaskKillsNonMaskPlayer_killEnemy() {
+        settings.integer(MASK_POTIONS_COUNT, 1);
+        givenFl("☼☼☼☼☼☼☼☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼      ☼" +
+                "☼►►    ☼" +
+                "☼######☼" +
+                "☼☼☼☼☼☼☼☼");
+
+        player(0).inTeam(1);
+        player(1).inTeam(2);
+
+        hero().pick(PotionType.MASK_POTION);
+
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼⊳❪    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n", 0);
+
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼⧑►    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n", 1);
+
+        hero().right();
+
+        tick();
+
+        events.verifyAllEvents(
+                "listener(0) => [KILL_ENEMY]\n" +
                 "listener(1) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -533,7 +620,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         events.verifyAllEvents(
                 "listener(0) => [HERO_DIE]\n" +
-                        "listener(1) => [KILL_HERO]\n");
+                "listener(1) => [KILL_HERO]\n");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +

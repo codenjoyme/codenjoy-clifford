@@ -41,9 +41,13 @@ import com.codenjoy.dojo.services.field.PointField;
 import com.codenjoy.dojo.services.multiplayer.GamePlayer;
 import com.codenjoy.dojo.services.printer.BoardReader;
 import com.codenjoy.dojo.services.round.RoundField;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 
 import java.util.*;
 
+import static com.codenjoy.dojo.clifford.model.items.Potion.PotionType.MASK_POTION;
+import static com.codenjoy.dojo.clifford.services.Events.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.field.Generator.generate;
 import static java.util.stream.Collectors.toList;
@@ -56,6 +60,8 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     private GameSettings settings;
 
     private int backwaysTimer;
+    private Multimap<Hero, Hero> killerWithDeads;
+
 
     public DetectiveClifford(Dice dice, GameSettings settings) {
         super(Events.START_ROUND, Events.WIN_ROUND, Events.HERO_DIE, settings);
@@ -63,6 +69,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         this.settings = settings;
         this.field = new PointField();
         this.players = new LinkedList<>();
+        this.killerWithDeads = ArrayListMultimap.create();
 
         clearScore();
     }
@@ -102,23 +109,13 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 //            init();
 //        } TODO сделать по другому автоперезагрузку уровней
 
-        Set<Player> die = new LinkedHashSet<>();
-
+        bulletsGo();
         heroesGo();
-        die.addAll(getDied());
-
         robbersGo();
-        die.addAll(getDied());
-
-        die.addAll(bricksGo());
-
+        bricksGo();
         backwaysGo();
 
-        for (Player player : die) {
-            Hero deadHero = player.getHero();
-            rewardMurderers(deadHero);
-        }
-
+        rewardMurderers();
         generateAll();
     }
 
@@ -135,19 +132,22 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         // do nothing
     }
 
-    private void rewardMurderers(Hero deadHero) {
-        int deadHeroTeam = deadHero.getPlayer().getTeamId();
-        heroes().stream()
-                .filter(hero -> hero.under(PotionType.MASK_POTION))
-                .filter(mask -> mask.itsMe(deadHero))
-                .forEach(murderer -> {
-                    int murderTeam = murderer.getPlayer().getTeamId();
-                    if (murderTeam == deadHeroTeam) {
-                        murderer.event(Events.KILL_HERO);
-                    } else {
-                        murderer.event(Events.KILL_ENEMY);
-                    }
-                });
+    private void rewardMurderers() {
+        killerWithDeads.asMap().forEach((killer, deads) -> {
+            for (Hero dead : deads) {
+                if (killer == dead) {
+                    killer.event(SUICIDE);
+                }
+                if (!killer.isAlive()) continue;
+
+                if (killer.getTeamId() == dead.getTeamId()) {
+                    killer.event(KILL_HERO);
+                } else {
+                    killer.event(KILL_ENEMY);
+                }
+            }
+        });
+        killerWithDeads.clear();
     }
 
     private void generateClue() {
@@ -207,12 +207,6 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         }
     }
 
-    private List<Player> getDied() {
-        return players.stream()
-                .filter(player -> !player.isAlive())
-                .collect(toList());
-    }
-
     public BoardReader reader() {
         return field.reader(
                 Hero.class,
@@ -231,36 +225,46 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                 Bullet.class);
     }
 
-    private List<Player> bricksGo() {
-        List<Player> die = new LinkedList<>();
+    private void bulletsGo() {
+        for (Bullet bullet : bullets().copy()) {
+            bullet.move();
+        }
+    }
 
-        bricks().forEach(Brick::tick);
+    @Override
+    public void affect(Bullet bullet) {
+        for (Hero hero : heroes().getAt(bullet)) {
+            if (hero.under(MASK_POTION)) continue;
+            if (hero == bullet.getOwner() && !bullet.isBounced()) continue;
 
-        for (Player player : players) {
-            Hero hero = player.getHero();
-
-            if (!hero.isAlive()) {
-                List<Brick> bricks = bricks().getAt(hero);
-                if (bricks.isEmpty()) continue;
-
-                // Умер от того что кто-то прострелил стенку
-                die.add(player);
-
-                Hero killer = bricks.get(0).getCrackedBy();
-                if (killer == null) continue;
-
-                Player killerPlayer = (Player) killer.getPlayer();
-                if (killerPlayer != null & killerPlayer != player) {
-                    if (killerPlayer.getTeamId() == player.getTeamId()) {
-                        killerPlayer.event(Events.KILL_HERO);
-                    } else {
-                        killerPlayer.event(Events.KILL_ENEMY);
-                    }
-                }
-            }
+            hero.die();
+            bullet.remove();
+            killerWithDeads.put(bullet.getOwner(), hero);
         }
 
-        return die;
+        for (Brick brick : bricks().getAt(bullet)) {
+            brick.crack(bullet.getOwner());
+            bullet.remove();
+        }
+
+        if (borders().contains(bullet)) {
+            if (!bullet.isBounced()) {
+                bullet.invertDirection();
+            } else {
+                bullet.remove();
+            }
+        }
+    }
+
+    private void bricksGo() {
+        bricks().forEach(Brick::tick);
+        players.stream()
+                .map(GamePlayer::getHero)
+                .filter(hero -> !hero.isAlive())
+                .forEach(dead -> bricks().getAt(dead).stream()
+                        .map(Brick::getCrackedBy)
+                        .filter(Objects::nonNull)
+                        .forEach(killer -> killerWithDeads.put(killer, dead)));
     }
 
     private Optional<Brick> getBrick(Point pt) {
@@ -274,6 +278,12 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
             Hero hero = player.getHero();
 
             hero.tick();
+
+            if (bullets().contains(hero)) {
+                bullets().getAt(hero).forEach(this::affect);
+                continue;
+            }
+
             if (clueKnife().contains(hero)) {
                 clueKnife().removeAt(hero);
                 getClueEvent(player, Events.GET_CLUE_KNIFE, ClueKnife.class);
@@ -303,6 +313,12 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                 transport(hero);
             }
         }
+        heroes().stream()
+                .filter(hero -> hero.under(MASK_POTION))
+                .forEach(maskHero -> heroes().getAt(maskHero).stream()
+                        .filter(hero -> hero != maskHero)
+                        .filter(hero -> !hero.under(MASK_POTION))
+                        .forEach(hero -> killerWithDeads.put(maskHero, hero)));
     }
 
     private void transport(PointImpl point) {
@@ -591,7 +607,6 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         return field.of(Key.class);
     }
 
-    @Override
     public Accessor<Bullet> bullets() {
         return field.of(Bullet.class);
     }

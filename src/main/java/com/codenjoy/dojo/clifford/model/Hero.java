@@ -23,6 +23,7 @@ package com.codenjoy.dojo.clifford.model;
  */
 
 
+import com.codenjoy.dojo.clifford.model.items.Bullet;
 import com.codenjoy.dojo.clifford.model.items.Ladder;
 import com.codenjoy.dojo.clifford.model.items.Pipe;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
@@ -56,6 +57,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     private boolean jump;
     private boolean openDoor;
     private boolean closeDoor;
+    private boolean shoot;
     private int score;
 
     public Hero(Point xy, Direction direction) {
@@ -82,6 +84,10 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
 
     public Map<KeyType, Integer> getKeys() {
         return Collections.unmodifiableMap(keys);
+    }
+
+    public int getTeamId() {
+        return getPlayer().getTeamId();
     }
 
     @Override
@@ -140,6 +146,8 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         } else if (p[0] == 0) {
             die();
             field.suicide(this);
+        } else if (p[0] == 1) {
+            shoot = true;
         } else if (p[0] == 2) {
             openDoor = true;
         } else if (p[0] == 3) {
@@ -171,6 +179,8 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
 
         if (isFall()) {
             move(DOWN);
+        } else if (shoot) {
+            field.bullets().add(new Bullet(this));
         } else if (crack) {
             Point hole = DOWN.change(destination);
             cracked = field.tryToCrack(this, hole);
@@ -193,6 +203,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         jump = false;
         openDoor = false;
         closeDoor = false;
+        shoot = false;
         dissolvePotions();
     }
 
