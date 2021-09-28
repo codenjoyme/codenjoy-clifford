@@ -86,6 +86,10 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         return Collections.unmodifiableMap(keys);
     }
 
+    public int getTeamId() {
+        return getPlayer().getTeamId();
+    }
+
     @Override
     public void init(Field field) {
         super.init(field);

@@ -287,14 +287,13 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                 die.add(player);
 
                 Hero killer = bricks.get(0).getCrackedBy();
-                if (killer == null) continue;
-
-                Player killerPlayer = (Player) killer.getPlayer();
-                if (killerPlayer != null & killerPlayer != player) {
-                    if (killerPlayer.getTeamId() == player.getTeamId()) {
-                        killerPlayer.event(KILL_HERO);
+                if (killer != null){
+                    if (killer == hero) {
+                        hero.event(SUICIDE);
+                    } else if (killer.getTeamId() == hero.getTeamId()) {
+                        killer.event(KILL_HERO);
                     } else {
-                        killerPlayer.event(KILL_ENEMY);
+                        killer.event(KILL_ENEMY);
                     }
                 }
             }

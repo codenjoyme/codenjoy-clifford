@@ -549,7 +549,7 @@ public class GameTest extends AbstractGameTest {
                 "☼Ѡ##☼" +
                 "☼☼☼☼☼");
 
-        events.verifyAllEvents("[HERO_DIE]");
+        events.verifyAllEvents("[HERO_DIE, SUICIDE]");
 
         dice(2, 3);
         tick();         // ну а после смерти он появляется в рендомном месте
@@ -606,7 +606,7 @@ public class GameTest extends AbstractGameTest {
                 "☼Ѡ##☼" +
                 "☼☼☼☼☼");
 
-        events.verifyAllEvents("[HERO_DIE]");
+        events.verifyAllEvents("[HERO_DIE, SUICIDE]");
 
         dice(2, 3);
         tick();         // ну а после смерти он появляется в рендомном месте
@@ -1810,7 +1810,7 @@ public class GameTest extends AbstractGameTest {
                 "☼Ѡ#☼" +
                 "☼☼☼☼");
 
-        events.verifyAllEvents("[HERO_DIE]");
+        events.verifyAllEvents("[HERO_DIE, SUICIDE]");
     }
 
     // я могу прострелить стенки под стенками, если те разрушены
@@ -3764,7 +3764,7 @@ public class GameTest extends AbstractGameTest {
         tick();
         tick();
 
-        events.verifyAllEvents("[HERO_DIE]");
+        events.verifyAllEvents("[HERO_DIE, SUICIDE]");
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼      ☼" +
