@@ -67,7 +67,6 @@ public class Level extends AbstractLevel {
         field.addAll(robbers());
         field.addAll(doors());
         field.addAll(keys());
-        field.addAll(bullets());
     }
 
     public List<Hero> heroes() {
@@ -147,9 +146,5 @@ public class Level extends AbstractLevel {
             put(KEY_SILVER, pt -> new Key(pt, SILVER));
             put(KEY_BRONZE, pt -> new Key(pt, BRONZE));
         }});
-    }
-
-    public List<Bullet> bullets() {
-        return find(Bullet::new, BULLET);
     }
 }
