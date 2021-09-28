@@ -246,6 +246,125 @@ public class BulletGameTest extends AbstractGameTest {
     }
 
     @Test
+    public void bulletCanBounceOnlyOnce() {
+        givenFl("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼     ◄ ☼" +
+                "☼#### ##☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero().act(1);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼     ◄ ☼" +
+                "☼#### ##☼" +
+                "☼☼☼☼☼☼☼☼☼");
+        assertBulletAt(6, 2);
+
+        hero().left();
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   •]  ☼" +
+                "☼#### ##☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼ •     ☼" +
+                "☼####◄##☼" +
+                "☼☼☼☼☼☼☼☼☼");
+        assertEquals(true, field.bullets().getAt(pt(2, 2)).stream()
+                .allMatch(bullet -> bullet.getDirection() == LEFT));
+
+        // bounce from border
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼####◄##☼" +
+                "☼☼☼☼☼☼☼☼☼");
+        assertBulletAt(0, 2);
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼ •     ☼" +
+                "☼####◄##☼" +
+                "☼☼☼☼☼☼☼☼☼");
+        assertEquals(true, field.bullets().getAt(pt(2, 2)).stream()
+                .allMatch(bullet -> bullet.getDirection() == RIGHT));
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼   •   ☼" +
+                "☼####◄##☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼     • ☼" +
+                "☼####◄##☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼####◄##☼" +
+                "☼☼☼☼☼☼☼☼☼");
+        assertBulletCount(0);
+    }
+
+    @Test
     public void bouncedBulletKillOwner() {
         givenFl("☼☼☼☼☼☼☼" +
                 "☼     ☼" +

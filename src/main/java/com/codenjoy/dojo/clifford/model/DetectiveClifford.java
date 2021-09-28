@@ -262,7 +262,11 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         }
 
         if (borders().contains(bullet)) {
-            bullet.invertDirection();
+            if (!bullet.isBounced()) {
+                bullet.invertDirection();
+            } else {
+                bullet.remove();
+            }
         }
     }
 
