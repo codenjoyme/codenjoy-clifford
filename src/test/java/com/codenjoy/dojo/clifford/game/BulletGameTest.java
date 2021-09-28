@@ -800,4 +800,62 @@ public class BulletGameTest extends AbstractGameTest {
                 "listener(0) => []\n" +
                 "listener(1) => [HERO_DIE]\n");
     }
+
+    @Test
+    public void twoShootersKillEachOther() {
+        givenFl("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼►   ◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        hero(0).act(1);
+        hero(1).act(1);
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼(   ◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+        assertBulletAt(1, 3);
+        assertBulletAt(5, 3);
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼( • ◄  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        tick();
+
+        assertE("☼☼☼☼☼☼☼☼☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼       ☼" +
+                "☼Z   Ѡ  ☼" +
+                "☼#######☼" +
+                "☼       ☼" +
+                "☼☼☼☼☼☼☼☼☼");
+
+        assertBulletCount(0);
+        events.verifyAllEvents(
+                "listener(0) => [HERO_DIE]\n" +
+                "listener(1) => [HERO_DIE]\n");
+    }
 }

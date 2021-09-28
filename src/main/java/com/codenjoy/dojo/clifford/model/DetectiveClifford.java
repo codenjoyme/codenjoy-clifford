@@ -41,9 +41,12 @@ import com.codenjoy.dojo.services.field.PointField;
 import com.codenjoy.dojo.services.multiplayer.GamePlayer;
 import com.codenjoy.dojo.services.printer.BoardReader;
 import com.codenjoy.dojo.services.round.RoundField;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 
 import java.util.*;
 
+import static com.codenjoy.dojo.clifford.model.items.Potion.PotionType.MASK_POTION;
 import static com.codenjoy.dojo.clifford.services.Events.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.field.Generator.generate;
@@ -57,6 +60,8 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     private GameSettings settings;
 
     private int backwaysTimer;
+    private Multimap<Hero, Hero> killerWithDeads;
+
 
     public DetectiveClifford(Dice dice, GameSettings settings) {
         super(Events.START_ROUND, Events.WIN_ROUND, Events.HERO_DIE, settings);
@@ -64,6 +69,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         this.settings = settings;
         this.field = new PointField();
         this.players = new LinkedList<>();
+        this.killerWithDeads = ArrayListMultimap.create();
 
         clearScore();
     }
@@ -103,26 +109,13 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 //            init();
 //        } TODO сделать по другому автоперезагрузку уровней
 
-        Set<Player> die = new LinkedHashSet<>();
-
         bulletsGo();
-        die.addAll(getDied());
-
         heroesGo();
-        die.addAll(getDied());
-
         robbersGo();
-        die.addAll(getDied());
-
-        die.addAll(bricksGo());
-
+        bricksGo();
         backwaysGo();
 
-        for (Player player : die) {
-            Hero deadHero = player.getHero();
-            rewardMurderers(deadHero);
-        }
-
+        rewardMurderers();
         generateAll();
     }
 
@@ -139,19 +132,22 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         // do nothing
     }
 
-    private void rewardMurderers(Hero deadHero) {
-        int deadHeroTeam = deadHero.getPlayer().getTeamId();
-        heroes().stream()
-                .filter(hero -> hero.under(PotionType.MASK_POTION))
-                .filter(mask -> mask.itsMe(deadHero))
-                .forEach(murderer -> {
-                    int murderTeam = murderer.getPlayer().getTeamId();
-                    if (murderTeam == deadHeroTeam) {
-                        murderer.event(KILL_HERO);
-                    } else {
-                        murderer.event(KILL_ENEMY);
-                    }
-                });
+    private void rewardMurderers() {
+        killerWithDeads.asMap().forEach((killer, deads) -> {
+            for (Hero dead : deads) {
+                if (killer == dead) {
+                    killer.event(SUICIDE);
+                }
+                if (!killer.isAlive()) continue;
+
+                if (killer.getTeamId() == dead.getTeamId()) {
+                    killer.event(KILL_HERO);
+                } else {
+                    killer.event(KILL_ENEMY);
+                }
+            }
+        });
+        killerWithDeads.clear();
     }
 
     private void generateClue() {
@@ -211,12 +207,6 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         }
     }
 
-    private List<Player> getDied() {
-        return players.stream()
-                .filter(player -> !player.isAlive())
-                .collect(toList());
-    }
-
     public BoardReader reader() {
         return field.reader(
                 Hero.class,
@@ -244,17 +234,12 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     @Override
     public void affect(Bullet bullet) {
         for (Hero hero : heroes().getAt(bullet)) {
-            if (hero.under(PotionType.MASK_POTION)) continue;
+            if (hero.under(MASK_POTION)) continue;
             if (hero == bullet.getOwner() && !bullet.isBounced()) continue;
 
             hero.die();
             bullet.remove();
-
-            if (hero == bullet.getOwner()) {
-                bullet.getOwner().event(SUICIDE);
-            } else if (bullet.getOwner().isAlive()) {
-                bullet.getOwner().event(KILL_HERO);
-            }
+            killerWithDeads.put(bullet.getOwner(), hero);
         }
 
         for (Brick brick : bricks().getAt(bullet)) {
@@ -271,35 +256,15 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         }
     }
 
-    private List<Player> bricksGo() {
-        List<Player> die = new LinkedList<>();
-
+    private void bricksGo() {
         bricks().forEach(Brick::tick);
-
-        for (Player player : players) {
-            Hero hero = player.getHero();
-
-            if (!hero.isAlive()) {
-                List<Brick> bricks = bricks().getAt(hero);
-                if (bricks.isEmpty()) continue;
-
-                // Умер от того что кто-то прострелил стенку
-                die.add(player);
-
-                Hero killer = bricks.get(0).getCrackedBy();
-                if (killer != null){
-                    if (killer == hero) {
-                        hero.event(SUICIDE);
-                    } else if (killer.getTeamId() == hero.getTeamId()) {
-                        killer.event(KILL_HERO);
-                    } else {
-                        killer.event(KILL_ENEMY);
-                    }
-                }
-            }
-        }
-
-        return die;
+        players.stream()
+                .map(GamePlayer::getHero)
+                .filter(hero -> !hero.isAlive())
+                .forEach(dead -> bricks().getAt(dead).stream()
+                        .map(Brick::getCrackedBy)
+                        .filter(Objects::nonNull)
+                        .forEach(killer -> killerWithDeads.put(killer, dead)));
     }
 
     private Optional<Brick> getBrick(Point pt) {
@@ -348,6 +313,12 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                 transport(hero);
             }
         }
+        heroes().stream()
+                .filter(hero -> hero.under(MASK_POTION))
+                .forEach(maskHero -> heroes().getAt(maskHero).stream()
+                        .filter(hero -> hero != maskHero)
+                        .filter(hero -> !hero.under(MASK_POTION))
+                        .forEach(hero -> killerWithDeads.put(maskHero, hero)));
     }
 
     private void transport(PointImpl point) {
