@@ -23,18 +23,18 @@ package com.codenjoy.dojo.clifford.model;
  */
 
 
+import com.codenjoy.dojo.clifford.model.items.*;
+import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueGlove;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
 import com.codenjoy.dojo.clifford.model.items.door.KeyType;
-import com.codenjoy.dojo.games.clifford.Element;
-import com.codenjoy.dojo.clifford.model.items.*;
-import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
 import com.codenjoy.dojo.clifford.services.Events;
 import com.codenjoy.dojo.clifford.services.GameSettings;
+import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.*;
 import com.codenjoy.dojo.services.field.Accessor;
 import com.codenjoy.dojo.services.field.PointField;
@@ -286,13 +286,13 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 
             if (clueKnife().contains(hero)) {
                 clueKnife().removeAt(hero);
-                getClueEvent(player, Events.GET_CLUE_KNIFE, ClueKnife.class);
+                player.event(Events.GET_CLUE_KNIFE);
             } else if (clueGlove().contains(hero)) {
                 clueGlove().removeAt(hero);
-                getClueEvent(player, Events.GET_CLUE_GLOVE, ClueGlove.class);
+                player.event(Events.GET_CLUE_GLOVE);
             } else if (clueRing().contains(hero)) {
                 clueRing().removeAt(hero);
-                getClueEvent(player, Events.GET_CLUE_RING, ClueRing.class);
+                player.event(Events.GET_CLUE_RING);
             }
 
             if (keys().contains(hero)) {
@@ -534,14 +534,6 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     @Override
     public GameSettings settings() {
         return settings;
-    }
-
-    private void getClueEvent(Player player, Events event, Class type) {
-        player.event(event);
-        Optional<Point> pt = freeRandom(null);
-        if (pt.isPresent()) {
-            leaveClue(pt.get(), type);
-        }
     }
 
     public Accessor<Backway> backways() {
