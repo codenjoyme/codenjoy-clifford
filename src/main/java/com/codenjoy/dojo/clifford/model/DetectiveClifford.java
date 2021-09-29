@@ -509,26 +509,13 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     }
 
     @Override
-    public void newGame(Player player) {
-        if (!players.contains(player)) {
-            players.add(player);
-        }
+    protected void onAdd(Player player) {
         player.newHero(this);
-        removeAloneHeroes();
     }
 
     @Override
-    public void remove(Player player) {
-        super.remove(player);
-        removeAloneHeroes();
-    }
-
-    // TODO DF3D попробовать избавиться от этого метода
-    private void removeAloneHeroes() {
-        List<Hero> aloneHeroes = players.stream()
-                .map(GamePlayer::getHero)
-                .collect(toList());
-        heroes().removeNotSame(aloneHeroes);
+    protected void onRemove(Player player) {
+        heroes().removeExact(player.getHero());
     }
 
     @Override
