@@ -25,6 +25,7 @@ package com.codenjoy.dojo.clifford.services;
 
 import com.codenjoy.dojo.clifford.model.levels.Level;
 import com.codenjoy.dojo.clifford.services.levels.Big;
+import com.codenjoy.dojo.services.incativity.InactivitySettings;
 import com.codenjoy.dojo.services.round.RoundSettings;
 import com.codenjoy.dojo.services.semifinal.SemifinalSettings;
 import com.codenjoy.dojo.services.settings.SettingsImpl;
@@ -37,10 +38,9 @@ import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 
 public class GameSettings extends SettingsImpl
         implements SettingsReader<GameSettings>,
-                    RoundSettings<GameSettings>,
-                    SemifinalSettings<GameSettings> {
-
-    public static final String MAP_PATH_NONE = "none";
+                   InactivitySettings<GameSettings>,
+                   RoundSettings<GameSettings>,
+                   SemifinalSettings<GameSettings> {
 
     public enum Keys implements Key {
 
@@ -91,6 +91,7 @@ public class GameSettings extends SettingsImpl
     }
 
     public GameSettings() {
+        initInactivity();
         initRound();
         initSemifinal();
 
