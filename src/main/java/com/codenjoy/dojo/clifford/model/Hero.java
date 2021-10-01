@@ -225,7 +225,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     }
 
     private boolean isRegularPlayerAt(Point pt) {
-        return field.isHeroAt(pt)
+        return field.isHero(pt)
                 && !field.under(pt, PotionType.MASK_POTION);
     }
 

@@ -116,7 +116,7 @@ public class Robber extends PointImpl implements Tickable, Fieldable<Field>, Sta
         // чертик чертику не помеха - пусть проходят друг сквозь друга
         // if (field.isRobberAt(pt.getX(), pt.getY())) return;
 
-        if (!field.isHeroAt(pt)
+        if (!field.isHero(pt)
                 && field.isBarrier(pt)) return;
 
         move(pt);

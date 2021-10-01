@@ -51,7 +51,7 @@ public interface Field extends RoundGameField<Player> {
 
     boolean isFullBrick(Point pt);
 
-    boolean isHeroAt(Point pt);
+    boolean isHero(Point pt);
 
     boolean isBrick(Point pt);
 

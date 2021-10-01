@@ -374,7 +374,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
                 || pt.getY() < 0 || pt.getY() > size() - 1
                 || isFullBrick(pt)
                 || isBorder(pt)
-                || (isHeroAt(pt) && !under(pt, PotionType.MASK_POTION))
+                || (isHero(pt) && !under(pt, PotionType.MASK_POTION))
                 || doors().getAt(pt).stream().anyMatch(Door::isClosed);
     }
 
@@ -415,7 +415,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         return !(isFullBrick(under)
                 || isLadder(under)
                 || isBorder(under)
-                || isHeroAt(under)
+                || isHero(under)
                 || robbers().contains(under));
     }
 
@@ -446,7 +446,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     }
 
     @Override
-    public boolean isHeroAt(Point pt) {
+    public boolean isHero(Point pt) {
         return activeHeroes().contains(pt);
     }
 
