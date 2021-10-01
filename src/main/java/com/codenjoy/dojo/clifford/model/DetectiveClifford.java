@@ -106,10 +106,6 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 
     @Override
     protected void tickField() {
-//        if (!level.getMapUUID().equals(mapUUID)) {
-//            init();
-//        } TODO сделать по другому автоперезагрузку уровней
-
         bulletsGo();
         heroesGo();
         robbersGo();
