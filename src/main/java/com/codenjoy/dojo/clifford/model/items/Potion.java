@@ -43,7 +43,6 @@ public class Potion extends PointImpl implements State<Element, Player> {
     }
 
     public enum PotionType {
-        MASK_POTION,
-        SPEED_POTION  // TODO закончить тут
+        MASK_POTION
     }
 }

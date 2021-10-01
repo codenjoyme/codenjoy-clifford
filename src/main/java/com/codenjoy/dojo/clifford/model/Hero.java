@@ -49,7 +49,8 @@ import static com.codenjoy.dojo.services.StateUtils.filterOne;
 public class Hero extends RoundPlayerHero<Field> implements State<Element, Player> {
 
     protected Direction direction;
-    private Map<PotionType, Integer> potions;
+    private PotionType potion;
+    private int potionTicks;
     private Map<KeyType, Integer> keys;
     private boolean moving;
     private boolean crack;
@@ -74,7 +75,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
 
     public void clearScores() {
         score = 0;
-        potions = new EnumMap<>(PotionType.class);
+        potion = null;
         keys = new EnumMap<>(KeyType.class) {{
             put(KeyType.GOLD, 0);
             put(KeyType.SILVER, 0);
@@ -230,15 +231,10 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     }
 
     private void dissolvePotions() {
-        Set<PotionType> active = potions.keySet();
-        for (PotionType potion : active) {
-            int ticksLeft = potions.get(potion);
-            ticksLeft--;
-            if (ticksLeft < 0) {
-                potions.remove(potion);
-            } else {
-                potions.put(potion, ticksLeft);
-            }
+        potionTicks--;
+        if (potionTicks < 0) {
+            potionTicks = 0;
+            potion = null;
         }
     }
 
@@ -264,11 +260,13 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     }
 
     public boolean under(PotionType potion) {
-        return potions.containsKey(potion);
+        return this.potion == potion;
     }
 
     public void pick(PotionType potion) {
-        potions.put(potion, settings().integer(MASK_TICKS));
+        this.potion = potion;
+        // TODO test +=
+        potionTicks += settings().integer(MASK_TICKS);
     }
 
     public void pick(KeyType key) {
