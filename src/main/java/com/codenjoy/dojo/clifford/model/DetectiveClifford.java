@@ -36,6 +36,7 @@ import com.codenjoy.dojo.clifford.services.Events;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.*;
+import com.codenjoy.dojo.services.annotations.PerformanceOptimized;
 import com.codenjoy.dojo.services.field.Accessor;
 import com.codenjoy.dojo.services.field.PointField;
 import com.codenjoy.dojo.services.multiplayer.GamePlayer;
@@ -117,6 +118,14 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 
         rewardMurderers();
         generateAll();
+    }
+
+    private void diedFromHunter() {
+        activeHeroes().forEach(Hero::checkDiedFromHunter);
+    }
+
+    private void diedFromWall() {
+        activeHeroes().forEach(Hero::checkDiedFromWall);
     }
 
     @Override
@@ -258,6 +267,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 
     private void bricksGo() {
         bricks().forEach(Brick::tick);
+        diedFromWall();
         players.stream()
                 .map(GamePlayer::getHero)
                 .filter(hero -> !hero.isAlive())
@@ -276,8 +286,12 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     private void heroesGo() {
         for (Player player : players) {
             Hero hero = player.getHero();
+            if (!hero.isActiveAndAlive()) {
+                continue;
+            }
 
             hero.tick();
+            diedFromHunter();
 
             if (bullets().contains(hero)) {
                 bullets().getAt(hero).forEach(this::affect);
@@ -335,6 +349,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     private void robbersGo() {
         for (Robber robber : robbers().copy()) {
             robber.tick();
+            diedFromHunter();
 
             if (clueKnife().contains(robber) && !robber.withClue()) {
                 clueKnife().removeAt(robber);
@@ -473,11 +488,20 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     }
 
     @Override
-    public boolean isRobberAt(Point pt) {
-        List<Hero> masks = heroes().stream()
-                .filter(hero -> hero.under(PotionType.MASK_POTION))
-                .collect(toList());
-        return robbers().contains(pt) || masks.contains(pt);
+    public boolean isHunter(Point pt) {
+        return robbers().contains(pt) || isAnyHeroMaskAt(pt);
+    }
+
+    @PerformanceOptimized
+    private boolean isAnyHeroMaskAt(Point pt) {
+        for (Hero hero : heroes().getAt(pt)) {
+            if (hero.under(PotionType.MASK_POTION)) {
+                if (hero.equals(pt)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override

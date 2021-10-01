@@ -47,7 +47,7 @@ public class SmokeTest {
     public void testSoft() {
         Dice dice = LocalGameRunner.getDice("435874345435874365843564398", 100, 200);
 
-        // about 2.6 sec
+        // about 7 sec
         int ticks = 1000;
         int players = 2;
         Supplier<Solver> solver = () -> new AISolver(dice);
@@ -100,7 +100,7 @@ public class SmokeTest {
     public void testHard() {
         Dice dice = LocalGameRunner.getDice("435874345435874365843564398", 100, 20000);
 
-        // about 14 sec
+        // about 21 sec
         int ticks = 100;
         int players = 10;
         int robbers = 5;

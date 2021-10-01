@@ -240,9 +240,6 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
 
     @Override
     public boolean isAlive() {
-        if (super.isAlive()) {
-            checkAlive(); // TODO точно это надо делать в геттере?
-        }
         return super.isAlive();
     }
 
@@ -273,10 +270,21 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         keys.put(key, keys.getOrDefault(key, 0) + 1);
     }
 
-    private void checkAlive() {
-        // TODO: перепроверить. Кажется, где-то проскакивает ArrayIndexOutOfBoundsException
-        boolean killedByRobber = field.isRobberAt(this) && !isMask() && super.isActive(); // TODO test me
-        if (field.isFullBrick(this) || killedByRobber) {
+    // TODO test me
+    public void checkDiedFromHunter() {
+        if (!super.isActive()) return;
+        if (isMask()) return;
+
+        if (field.isHunter(this)) {
+            die();
+        }
+    }
+
+    // TODO test me
+    public void checkDiedFromWall() {
+        if (!super.isActive()) return;
+
+        if (field.isFullBrick(this)) {
             die();
         }
     }

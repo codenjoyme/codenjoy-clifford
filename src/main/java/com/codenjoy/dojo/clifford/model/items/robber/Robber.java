@@ -158,7 +158,7 @@ public class Robber extends PointImpl implements Tickable, Fieldable<Field>, Sta
 
     public boolean isFall() {
         return !field.isBrick(this)
-                && (field.isHeroAt(under(this))
+                && (field.isHero(under(this))
                     || field.isPit(this))
                 && !field.isPipe(this)
                 && !field.isLadder(this);

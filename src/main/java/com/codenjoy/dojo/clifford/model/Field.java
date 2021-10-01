@@ -55,7 +55,7 @@ public interface Field extends RoundGameField<Player> {
 
     boolean isBrick(Point pt);
 
-    boolean isRobberAt(Point pt);
+    boolean isHunter(Point pt);
 
     void leaveClue(Point pt, Class<? extends Point> clazz);
 
