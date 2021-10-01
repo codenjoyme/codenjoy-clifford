@@ -127,15 +127,7 @@ public class GameSettings extends SettingsImpl
     }
 
     public Level level() {
-        return new Level(map());
+        return new Level(string(LEVEL_MAP));
     }
 
-    public String map() {
-        String path = string(MAP_PATH);
-        if (MAP_PATH_NONE.equals(path)) {
-            return string(LEVEL_MAP);
-        } else {
-            return MapLoader.loadMapFromFile(path);
-        }
-    }
 }
