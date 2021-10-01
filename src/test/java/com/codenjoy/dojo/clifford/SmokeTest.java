@@ -24,36 +24,44 @@ package com.codenjoy.dojo.clifford;
 
 
 import com.codenjoy.dojo.client.Solver;
-import com.codenjoy.dojo.client.local.LocalGameRunner;
-import com.codenjoy.dojo.games.clifford.Board;
 import com.codenjoy.dojo.clifford.services.GameRunner;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.clifford.services.ai.AISolver;
 import com.codenjoy.dojo.clifford.services.levels.Big;
+import com.codenjoy.dojo.games.clifford.Board;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.utils.Smoke;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.round.RoundSettings.Keys.ROUNDS_ENABLED;
-import static java.util.stream.Collectors.toList;
 
 public class SmokeTest {
 
+    private Smoke smoke;
+    private Dice dice;
+    private Supplier<Solver> solver;
+
+    @Before
+    public void setup() {
+        smoke = new Smoke();
+        dice = smoke.dice();
+
+        solver = () -> new AISolver(dice);
+    }
+
     @Test
     public void testSoft() {
-        Dice dice = LocalGameRunner.getDice("435874345435874365843564398", 100, 200);
-
         // about 7 sec
         int ticks = 1000;
         int players = 2;
-        Supplier<Solver> solver = () -> new AISolver(dice);
 
-        LocalGameRunner.showPlayers = null;
-        Smoke.play(ticks, "SmokeTest.data",
+        smoke.settings().showPlayers(null);
+
+        smoke.play(ticks, "SmokeTest.data",
                 new GameRunner() {
                     @Override
                     public Dice getDice() {
@@ -90,24 +98,21 @@ public class SmokeTest {
                                 .integer(ROBBERS_COUNT, 2);
                     }
                 },
-                Stream.generate(solver)
-                        .limit(players).collect(toList()),
-                Stream.generate(() -> new Board())
-                        .limit(players).collect(toList()));
+                players, solver, Board::new);
     }
 
     @Test
     public void testHard() {
-        Dice dice = LocalGameRunner.getDice("435874345435874365843564398", 100, 20000);
-
         // about 21 sec
         int ticks = 100;
         int players = 10;
         int robbers = 5;
-        Supplier<Solver> solver = () -> new AISolver(dice);
 
-        LocalGameRunner.showPlayers = "1";
-        Smoke.play(ticks, "SmokeTestHard.data",
+        dice = smoke.dice(100, 20000);
+
+        smoke.settings().showPlayers("1");
+
+        smoke.play(ticks, "SmokeTestHard.data",
                 new GameRunner() {
                     @Override
                     public Dice getDice() {
@@ -122,9 +127,6 @@ public class SmokeTest {
                                 .integer(ROBBERS_COUNT, robbers);
                     }
                 },
-                Stream.generate(solver)
-                        .limit(players).collect(toList()),
-                Stream.generate(() -> new Board())
-                        .limit(players).collect(toList()));
+                players, solver, Board::new);
     }
 }
