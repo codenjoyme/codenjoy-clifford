@@ -132,11 +132,6 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         super.oneMoreDead(player);
     }
 
-    @Override
-    protected void setNewObjects() {
-        // do nothing
-    }
-
     private void rewardMurderers() {
         killerWithDeads.asMap().forEach((killer, deads) -> {
             for (Hero dead : deads) {
