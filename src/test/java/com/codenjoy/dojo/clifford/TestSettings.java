@@ -41,7 +41,6 @@ public class TestSettings extends GameSettings {
         integer(MASK_POTIONS_COUNT, 0);
         integer(BACKWAY_TICKS, 10);
         integer(BACKWAYS_COUNT, 0);
-        string(MAP_PATH, "none");
 
         integer(CLUE_COUNT_KNIFE, -1);
         integer(CLUE_COUNT_GLOVE, 0);

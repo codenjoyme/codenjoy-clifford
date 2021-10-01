@@ -71,8 +71,7 @@ public class GameSettings extends SettingsImpl
         HERO_DIE_PENALTY("[Score] Hero die penalty"),
         SUICIDE_PENALTY("[Score] Suicide penalty"),
 
-        LEVEL_MAP("[Level] Map"),
-        MAP_PATH("[Level] Custom map path (or 'none')");
+        LEVEL_MAP("[Level] Map");
 
         private String key;
 
@@ -123,7 +122,6 @@ public class GameSettings extends SettingsImpl
         integer(SUICIDE_PENALTY, 10);
 
         multiline(LEVEL_MAP, Big.all().get(0));
-        string(MAP_PATH, MAP_PATH_NONE);
     }
 
     public Level level() {
