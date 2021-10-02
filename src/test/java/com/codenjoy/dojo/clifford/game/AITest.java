@@ -41,7 +41,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
-import static com.codenjoy.dojo.utils.TestUtils.split;
+import static com.codenjoy.dojo.client.Utils.split;
 import static org.junit.Assert.assertEquals;
 
 public class AITest extends AbstractGameTest {
