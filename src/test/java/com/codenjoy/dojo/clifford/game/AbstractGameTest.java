@@ -49,6 +49,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
+import static java.util.stream.Collectors.joining;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
@@ -154,9 +155,14 @@ public abstract class AbstractGameTest {
         assertEquals(expected, game(index).getBoardAsString());
     }
 
-    protected void assertScores(int score1, int score2) {
-        assertEquals(score1, hero(0).scores());
-        assertEquals(score2, hero(1).scores());
+    public void assertScores(String expected) {
+        assertEquals(expected,
+                players.stream()
+                        .filter(player -> player.getHero().scores() > 0)
+                        .map(player -> String.format("hero(%s)=%s",
+                                        players.indexOf(player),
+                                        player.getHero().scores()))
+                        .collect(joining("\n")));
     }
 
     protected Game game() {

@@ -1316,7 +1316,8 @@ public class MultiplayerTest extends AbstractGameTest {
 
         goUp();
 
-        assertScores(0, 0);
+        assertScores("");
+        
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -1329,7 +1330,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(1, 1);
+        assertScores(
+                "hero(0)=1\n" +
+                "hero(1)=1");
+        
         events.verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
@@ -1393,7 +1397,10 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertScores(1, 1);
+        assertScores(
+                "hero(0)=1\n" +
+                "hero(1)=1");
+        
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -1406,7 +1413,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(2, 2);
+        assertScores(
+                "hero(0)=2\n" +
+                "hero(1)=2");
+        
         events.verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
@@ -1449,7 +1459,10 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertScores(2, 2);
+        assertScores(
+                "hero(0)=2\n" +
+                "hero(1)=2");
+        
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -1462,7 +1475,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(3, 3);
+        assertScores(
+                "hero(0)=3\n" +
+                "hero(1)=3");
+        
         events.verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
@@ -1486,7 +1502,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(3, 3);
+        assertScores(
+                "hero(0)=3\n" +
+                "hero(1)=3");
+        
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -1523,7 +1542,8 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(0, 0);
+        assertScores("");
+        
         events.verifyAllEvents(
                 "listener(0) => [WIN_ROUND]\n" +
                 "listener(1) => [WIN_ROUND]\n" +
@@ -1547,8 +1567,9 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(0, 0);
+        assertScores("");
         assertEquals(0, field.players().size());
+        
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -1572,8 +1593,9 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(0, 0);
+        assertScores("");
         assertEquals(0, field.players().size());
+       
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -1630,7 +1652,8 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(0, 0);
+        assertScores("");
+        
         events.verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 1]]\n" +
                 "listener(1) => [START_ROUND, [Round 1]]\n" +
@@ -1693,7 +1716,8 @@ public class MultiplayerTest extends AbstractGameTest {
 
         goUp();
 
-        assertScores(0, 0);
+        assertScores("");
+       
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -1706,7 +1730,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(1, 1);
+        assertScores(
+                "hero(0)=1\n" +
+                "hero(1)=1");
+       
         events.verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
@@ -1770,7 +1797,10 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertScores(1, 1);
+        assertScores(
+                "hero(0)=1\n" +
+                "hero(1)=1");
+      
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -1783,7 +1813,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(2, 2);
+        assertScores(
+                "hero(0)=2\n" +
+                "hero(1)=2");
+     
         events.verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
@@ -1825,7 +1858,10 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertScores(2, 2);
+        assertScores(
+                "hero(0)=2\n" +
+                "hero(1)=2");
+      
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -1838,7 +1874,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(3, 2);
+        assertScores(
+                "hero(0)=3\n" +
+                "hero(1)=2");
+     
         events.verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => []\n" +
@@ -1862,7 +1901,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(3, 2);
+        assertScores(
+                "hero(0)=3\n" +
+                "hero(1)=2");
+      
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -1886,11 +1928,16 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(3, 2);
+        assertScores(
+                "hero(0)=3\n" +
+                "hero(1)=2");
 
         tick();
 
-        assertScores(0, 2);    // TODO тут надо чистить так же очки hero когда ему приходит [Time is over]
+        // TODO тут надо чистить так же очки hero когда ему приходит [Time is over]
+        assertScores(
+                "hero(1)=2");
+
         events.verifyAllEvents(
                 "listener(0) => [WIN_ROUND]\n" +
                 "listener(1) => [[Time is over]]\n" +
@@ -1914,8 +1961,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(0, 2);
+        assertScores(
+                "hero(1)=2");
         assertEquals(0, field.players().size());
+     
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -1972,7 +2021,8 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(0, 0);
+        assertScores("");
+     
         events.verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 1]]\n" +
                 "listener(1) => [START_ROUND, [Round 1]]\n" +
@@ -2035,7 +2085,8 @@ public class MultiplayerTest extends AbstractGameTest {
 
         goUp();
 
-        assertScores(0, 0);
+        assertScores("");
+      
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -2048,7 +2099,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(1, 1);
+        assertScores(
+                "hero(0)=1\n" +
+                "hero(1)=1");
+        
         events.verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
@@ -2112,7 +2166,10 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertScores(1, 1);
+        assertScores(
+                "hero(0)=1\n" +
+                "hero(1)=1");
+       
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -2125,7 +2182,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(2, 2);
+        assertScores(
+                "hero(0)=2\n" +
+                "hero(1)=2");
+        
         events.verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
@@ -2167,7 +2227,10 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertScores(2, 2);
+        assertScores(
+                "hero(0)=2\n" +
+                "hero(1)=2");
+       
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -2180,7 +2243,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(3, 2);
+        assertScores(
+                "hero(0)=3\n" +
+                "hero(1)=2");
+        
         events.verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => []\n" +
@@ -2204,7 +2270,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(3, 2);
+        assertScores(
+                "hero(0)=3\n" +
+                "hero(1)=2");
+      
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -2228,7 +2297,9 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(3, 2);
+        assertScores(
+                "hero(0)=3\n" +
+                "hero(1)=2");
 
         dice(3, 2,
             6, 2,
@@ -2236,7 +2307,8 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(0, 0);
+        assertScores("");
+      
         events.verifyAllEvents(
                 "listener(0) => [WIN_ROUND]\n" +
                 "listener(1) => [[Time is over]]\n" +
@@ -2260,7 +2332,8 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(0, 0);
+        assertScores("");
+      
         events.verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 2]]\n" +
                 "listener(1) => [START_ROUND, [Round 2]]\n" +
@@ -2284,7 +2357,8 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(0, 0);
+        assertScores("");
+       
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -2332,7 +2406,8 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(0, 0);
+        assertScores("");
+        
         events.verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 1]]\n" +
                 "listener(1) => [START_ROUND, [Round 1]]\n" +
@@ -2391,7 +2466,8 @@ public class MultiplayerTest extends AbstractGameTest {
 
         goUp();
 
-        assertScores(0, 0);
+        assertScores("");
+        
         events.verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
@@ -2400,14 +2476,16 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores(1, 1);
+        assertScores(
+                "hero(0)=1\n" +
+                "hero(1)=1");
+        
         events.verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_ENEMY]\n" +
                 "listener(2) => [HERO_DIE]\n" +
                 "listener(3) => [HERO_DIE]\n");
     }
-
 
     private void goUp() {
         // идут на следующий этаж
