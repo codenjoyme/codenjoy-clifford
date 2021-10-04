@@ -2452,13 +2452,12 @@ public class MultiplayerTest extends AbstractGameTest {
     protected void tick() {
         removeAllDied();
         // эмуляция проверки загрузки комнаты, если комната недогружена то не тикаем
-        // вообше это делает фреймворк, тут лишь эмулируем
-        if (settings.bool(ROUNDS_ENABLED)) {
-            if (settings.integer(ROUNDS_PLAYERS_PER_ROOM) != players.size()) {
-                return;
-            }
+        // вообще это делает фреймворк, тут лишь эмулируем
+        if (settings.isRoundsDisabled() ||
+                settings.getPlayersPerRoom() == players.size())
+        {
+            field.tick();
         }
-        field.tick();
     }
 
     // TODO тут дублирование с mollymage, может продумать единую архитектуру
