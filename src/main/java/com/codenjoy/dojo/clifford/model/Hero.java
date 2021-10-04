@@ -83,6 +83,10 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         }};
     }
 
+    public void addScore(int added) {
+        score = Math.max(0, score + added);
+    }
+
     public Map<KeyType, Integer> getKeys() {
         return Collections.unmodifiableMap(keys);
     }
@@ -241,10 +245,6 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     @Override
     public boolean isAlive() {
         return super.isAlive();
-    }
-
-    public void increaseScore() {
-        score++;
     }
 
     @Override
