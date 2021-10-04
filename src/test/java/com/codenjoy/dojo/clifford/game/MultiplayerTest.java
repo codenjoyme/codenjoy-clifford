@@ -32,7 +32,6 @@ import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.ROBBERS_COUN
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_POTIONS_COUNT;
 import static com.codenjoy.dojo.services.round.RoundSettings.Keys.*;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
 public class MultiplayerTest extends AbstractGameTest {
@@ -2527,7 +2526,7 @@ public class MultiplayerTest extends AbstractGameTest {
     }
 
     @Override
-    protected void tick() {
+    public void tick() {
         removeAllDied();
         // эмуляция проверки загрузки комнаты, если комната недогружена то не тикаем
         // вообще это делает фреймворк, тут лишь эмулируем

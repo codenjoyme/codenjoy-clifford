@@ -33,8 +33,10 @@ import com.codenjoy.dojo.clifford.model.Level;
 import com.codenjoy.dojo.clifford.services.Events;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.services.Dice;
+import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.EventListener;
 import com.codenjoy.dojo.services.Game;
+import com.codenjoy.dojo.services.multiplayer.LevelProgress;
 import com.codenjoy.dojo.services.multiplayer.Single;
 import com.codenjoy.dojo.services.printer.PrinterFactory;
 import com.codenjoy.dojo.services.printer.PrinterFactoryImpl;
@@ -49,6 +51,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
+import static com.codenjoy.dojo.services.PointImpl.pt;
 import static java.util.stream.Collectors.joining;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -56,12 +59,12 @@ import static org.mockito.Mockito.*;
 
 public abstract class AbstractGameTest {
 
-    protected List<EventListener> listeners;
+    private List<EventListener> listeners;
     protected List<Player> players;
-    protected List<Game> games;
+    private List<Game> games;
 
-    protected Dice dice;
-    protected PrinterFactory<Element, Player> printer;
+    private Dice dice;
+    private PrinterFactory<Element, Player> printer;
     protected DetectiveClifford field;
     protected GameSettings settings;
     protected EventsListenersAssert events;
@@ -132,11 +135,11 @@ public abstract class AbstractGameTest {
         return spy(new TestSettings());
     }
 
-    protected void tick() {
+    public void tick() {
         field.tick();
     }
 
-    protected void assertE(String expected) {
+    public void assertE(String expected) {
         assertEquals(TestUtils.injectN(expected),
                 printer.getPrinter(field.reader(), player()).print());
     }
@@ -165,27 +168,27 @@ public abstract class AbstractGameTest {
                         .collect(joining("\n")));
     }
 
-    protected Game game() {
+    public Game game() {
         return games.get(0);
     }
 
-    protected Game game(int index) {
+    public Game game(int index) {
         return games.get(index);
     }
 
-    protected EventListener listener() {
+    public EventListener listener() {
         return listeners.get(0);
     }
 
-    protected EventListener listener(int index) {
+    public EventListener listener(int index) {
         return listeners.get(index);
     }
 
-    protected Hero hero() {
+    public Hero hero() {
         return hero(0);
     }
 
-    protected Hero hero(int index) {
+    public Hero hero(int index) {
         return (Hero) game(index).getPlayer().getHero();
     }
 
@@ -193,7 +196,7 @@ public abstract class AbstractGameTest {
         return player(0);
     }
 
-    protected Player player(int index) {
+    public Player player(int index) {
         return players.get(index);
     }
 
@@ -203,11 +206,11 @@ public abstract class AbstractGameTest {
         listeners.remove(index);
     }
 
-    protected RobberJoystick robber() {
+    public RobberJoystick robber() {
         return robbers.get(0);
     }
 
-    protected RobberJoystick robber(int index) {
+    public RobberJoystick robber(int index) {
         return robbers.get(index);
     }
 
