@@ -30,9 +30,9 @@ import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 public class Scores implements PlayerScores {
 
     private volatile int score;
-    private volatile int countRing;
-    private volatile int countGlove;
-    private volatile int countKnife;
+    private volatile int rings;
+    private volatile int gloves;
+    private volatile int knives;
     private GameSettings settings;
 
     public Scores(int startScore, GameSettings settings) {
@@ -47,9 +47,9 @@ public class Scores implements PlayerScores {
     }
 
     private void clearSeries() {
-        countRing = 0;
-        countGlove = 0;
-        countKnife = 0;
+        rings = 0;
+        gloves = 0;
+        knives = 0;
     }
 
     @Override
@@ -67,15 +67,15 @@ public class Scores implements PlayerScores {
 
     public int scoreFor(GameSettings settings, Object event) {
         if (event.equals(Events.GET_CLUE_KNIFE)) {
-            return settings.integer(CLUE_SCORE_KNIFE) + countKnife;
+            return settings.integer(CLUE_SCORE_KNIFE) + knives;
         }
 
         if (event.equals(Events.GET_CLUE_GLOVE)) {
-            return settings.integer(CLUE_SCORE_GLOVE) + countGlove;
+            return settings.integer(CLUE_SCORE_GLOVE) + gloves;
         }
 
         if (event.equals(Events.GET_CLUE_RING)) {
-            return settings.integer(CLUE_SCORE_RING) + countRing;
+            return settings.integer(CLUE_SCORE_RING) + rings;
         }
 
         if (event.equals(Events.KILL_HERO)) {
@@ -99,17 +99,17 @@ public class Scores implements PlayerScores {
 
     public void process(Object event) {
         if (event.equals(Events.GET_CLUE_KNIFE)) {
-            countKnife += settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
+            knives += settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
             return;
         }
 
         if (event.equals(Events.GET_CLUE_GLOVE)) {
-            countGlove += settings.integer(CLUE_SCORE_GLOVE_INCREMENT);
+            gloves += settings.integer(CLUE_SCORE_GLOVE_INCREMENT);
             return;
         }
 
         if (event.equals(Events.GET_CLUE_RING)) {
-            countRing += settings.integer(CLUE_SCORE_RING_INCREMENT);
+            rings += settings.integer(CLUE_SCORE_RING_INCREMENT);
             return;
         }
 
@@ -130,9 +130,9 @@ public class Scores implements PlayerScores {
     public String toString() {
         return "Scores{" +
                 "score=" + score +
-                ", ring=" + countRing +
-                ", glove=" + countGlove +
-                ", knife=" + countKnife +
+                ", ring=" + rings +
+                ", glove=" + gloves +
+                ", knife=" + knives +
                 '}';
     }
 }
