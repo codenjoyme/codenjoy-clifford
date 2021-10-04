@@ -23,7 +23,7 @@ package com.codenjoy.dojo.clifford.services;
  */
 
 
-import com.codenjoy.dojo.clifford.model.levels.Level;
+import com.codenjoy.dojo.clifford.model.Level;
 import com.codenjoy.dojo.clifford.services.levels.Big;
 import com.codenjoy.dojo.services.incativity.InactivitySettings;
 import com.codenjoy.dojo.services.round.RoundSettings;

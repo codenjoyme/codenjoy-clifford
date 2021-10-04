@@ -29,7 +29,7 @@ import com.codenjoy.dojo.clifford.model.DetectiveClifford;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.robber.RobberJoystick;
-import com.codenjoy.dojo.clifford.model.levels.Level;
+import com.codenjoy.dojo.clifford.model.Level;
 import com.codenjoy.dojo.clifford.services.Events;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.services.Dice;

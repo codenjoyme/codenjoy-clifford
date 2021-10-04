@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.clifford.model.levels;
+package com.codenjoy.dojo.clifford.model;
 
 /*-
  * #%L
@@ -23,7 +23,6 @@ package com.codenjoy.dojo.clifford.model.levels;
  */
 
 
-import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.items.*;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueGlove;
