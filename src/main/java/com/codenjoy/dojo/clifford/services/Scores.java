@@ -30,10 +30,10 @@ import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 public class Scores implements PlayerScores {
 
     private volatile int score;
-    private GameSettings settings;
     private volatile int countRing;
     private volatile int countGlove;
     private volatile int countKnife;
+    private GameSettings settings;
 
     public Scores(int startScore, GameSettings settings) {
         this.score = startScore;
@@ -59,27 +59,66 @@ public class Scores implements PlayerScores {
 
     @Override
     public void event(Object event) {
-        if (event.equals(Events.GET_CLUE_KNIFE)) {
-            score += settings.integer(CLUE_SCORE_KNIFE) + countKnife;
-            countKnife += settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
-        } else if (event.equals(Events.GET_CLUE_GLOVE)) {
-            score += settings.integer(CLUE_SCORE_GLOVE) + countGlove;
-            countGlove += settings.integer(CLUE_SCORE_GLOVE_INCREMENT);
-        } else if (event.equals(Events.GET_CLUE_RING)) {
-            score += settings.integer(CLUE_SCORE_RING) + countRing;
-            countRing += settings.integer(CLUE_SCORE_RING_INCREMENT);
-        } else if (event.equals(Events.KILL_HERO)) {
-            score += settings.integer(KILL_HERO_SCORE);
-        } else if (event.equals(Events.KILL_ENEMY)) {
-            score += settings.integer(KILL_ENEMY_SCORE);
-        } else if (event.equals(Events.HERO_DIE)) {
-            clearSeries();
-            score -= settings.integer(HERO_DIE_PENALTY);
-        } else if (event.equals(Events.SUICIDE)) {
-            clearSeries();
-            score -= settings.integer(SUICIDE_PENALTY);
-        }
+        score += scoreFor(settings, event);
         score = Math.max(0, score);
+
+        process(event);
+    }
+
+    public int scoreFor(GameSettings settings, Object event) {
+        if (event.equals(Events.GET_CLUE_KNIFE)) {
+            return settings.integer(CLUE_SCORE_KNIFE) + countKnife;
+        }
+
+        if (event.equals(Events.GET_CLUE_GLOVE)) {
+            return settings.integer(CLUE_SCORE_GLOVE) + countGlove;
+        }
+
+        if (event.equals(Events.GET_CLUE_RING)) {
+            return settings.integer(CLUE_SCORE_RING) + countRing;
+        }
+
+        if (event.equals(Events.KILL_HERO)) {
+            return settings.integer(KILL_HERO_SCORE);
+        }
+
+        if (event.equals(Events.KILL_ENEMY)) {
+            return settings.integer(KILL_ENEMY_SCORE);
+        }
+
+        if (event.equals(Events.HERO_DIE)) {
+            return - settings.integer(HERO_DIE_PENALTY);
+        }
+
+        if (event.equals(Events.SUICIDE)) {
+            return - settings.integer(SUICIDE_PENALTY);
+        }
+
+        return 0;
+    }
+
+    public void process(Object event) {
+        if (event.equals(Events.GET_CLUE_KNIFE)) {
+            countKnife += settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
+            return;
+        }
+
+        if (event.equals(Events.GET_CLUE_GLOVE)) {
+            countGlove += settings.integer(CLUE_SCORE_GLOVE_INCREMENT);
+            return;
+        }
+
+        if (event.equals(Events.GET_CLUE_RING)) {
+            countRing += settings.integer(CLUE_SCORE_RING_INCREMENT);
+            return;
+        }
+
+        if (event.equals(Events.HERO_DIE)
+                || event.equals(Events.SUICIDE))
+        {
+            clearSeries();
+            return;
+        }
     }
 
     @Override
