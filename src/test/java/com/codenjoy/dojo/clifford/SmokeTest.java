@@ -26,8 +26,8 @@ package com.codenjoy.dojo.clifford;
 import com.codenjoy.dojo.client.Solver;
 import com.codenjoy.dojo.clifford.services.GameRunner;
 import com.codenjoy.dojo.clifford.services.GameSettings;
+import com.codenjoy.dojo.clifford.services.Levels;
 import com.codenjoy.dojo.clifford.services.ai.AISolver;
-import com.codenjoy.dojo.clifford.services.levels.Big;
 import com.codenjoy.dojo.games.clifford.Board;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.utils.Smoke;
@@ -123,7 +123,8 @@ public class SmokeTest {
                     public GameSettings getSettings() {
                         return super.getSettings()
                                 .bool(ROUNDS_ENABLED, false)
-                                .string(LEVEL_MAP, Big.all().get(0))
+                                .string(LEVEL_MAP,
+                                        Levels.BIG_LEVEL.replaceAll("[◄«]", " "))
                                 .integer(ROBBERS_COUNT, robbers);
                     }
                 },
