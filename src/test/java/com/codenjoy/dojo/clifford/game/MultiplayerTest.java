@@ -2510,18 +2510,18 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
     }
 
-    private void crack(int left, int right) {
+    private void crack(int leftPrey, int rightPrey) {
         // простреливают ямки
         hero(0).left();
         hero(0).act();
         hero(1).right();
         hero(1).act();
         // падают в ямки
-        if (left != -1) {
-            hero(left).right();
+        if (leftPrey != -1) {
+            hero(leftPrey).right();
         }
-        if (right != -1) {
-            hero(right).left();
+        if (rightPrey != -1) {
+            hero(rightPrey).left();
         }
         tick();
     }
