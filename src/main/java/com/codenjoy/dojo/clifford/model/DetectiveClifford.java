@@ -406,10 +406,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
             return false;
         }
 
-        Optional<Brick> brick = getBrick(pt);
-        if (brick.isPresent()) {
-            brick.get().crack(byHero);
-        }
+        getBrick(pt).ifPresent(brick -> brick.crack(byHero));
 
         return true;
     }
