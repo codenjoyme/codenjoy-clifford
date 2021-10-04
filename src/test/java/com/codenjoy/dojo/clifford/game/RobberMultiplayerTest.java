@@ -37,12 +37,6 @@ public class RobberMultiplayerTest extends AbstractGameTest {
         robbers.forEach(RobberJoystick::disableMock);
     }
 
-    private void removePlayer(int index) {
-        field.remove(players.get(index));
-        players.remove(index);
-        listeners.remove(index);
-    }
-
     // чертик идет за тобой
     @Test
     public void shouldRobberGoToHero() {
@@ -482,8 +476,8 @@ public class RobberMultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼\n", 1);
 
         // даже если на поле никого нет, чертики стоят на месте
-        removePlayer(1);
-        removePlayer(0);
+        remove(1);
+        remove(0);
 
         tick();
 
@@ -522,7 +516,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼\n", 3);
 
         // если один вдруг пропадет, то его воры переключится
-        removePlayer(0);
+        remove(0);
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼    ► ☼\n" +

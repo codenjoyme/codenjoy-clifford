@@ -189,12 +189,18 @@ public abstract class AbstractGameTest {
         return (Hero) game(index).getPlayer().getHero();
     }
 
-    protected Player player() {
+    public Player player() {
         return player(0);
     }
 
     protected Player player(int index) {
         return players.get(index);
+    }
+
+    public void remove(int index) {
+        field.remove(players.get(index));
+        players.remove(index);
+        listeners.remove(index);
     }
 
     protected RobberJoystick robber() {
