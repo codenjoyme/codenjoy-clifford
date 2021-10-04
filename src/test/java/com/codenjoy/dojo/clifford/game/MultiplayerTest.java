@@ -2544,7 +2544,7 @@ public class MultiplayerTest extends AbstractGameTest {
     private void removeAllDied() {
         players.forEach(player -> {
             if (!player.isAlive()) {
-                field.remove(player(players.indexOf(player)));
+                field.remove(player);
             }
         });
     }
