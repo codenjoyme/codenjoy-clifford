@@ -154,17 +154,17 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         generate(clueKnife(),
                 settings, CLUE_COUNT_KNIFE,
                 player -> freeRandom((Player) player),
-                pt -> new ClueKnife(pt));
+                ClueKnife::new);
 
         generate(clueGlove(),
                 settings, CLUE_COUNT_GLOVE,
                 player -> freeRandom((Player) player),
-                pt -> new ClueGlove(pt));
+                ClueGlove::new);
 
         generate(clueRing(),
                 settings, CLUE_COUNT_RING,
                 player -> freeRandom((Player) player),
-                pt -> new ClueRing(pt));
+                ClueRing::new);
     }
 
     private void generatePotions() {
@@ -188,7 +188,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     private void generateBackways() {
         generate(backways(), settings, BACKWAYS_COUNT,
                 player -> freeRandom((Player) player),
-                pt -> new Backway(pt));
+                Backway::new);
     }
 
     private void releaseKeys(Map<KeyType, Integer> keys) {
