@@ -4112,7 +4112,6 @@ public class GameTest extends AbstractGameTest {
         tick();
 
         events.verifyAllEvents("[GET_CLUE_KNIFE]");
-        listeners.forEach(Mockito::reset);
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼      ☼" +
@@ -4127,7 +4126,6 @@ public class GameTest extends AbstractGameTest {
         tick();
 
         events.verifyAllEvents("[GET_CLUE_KNIFE]");
-        listeners.forEach(Mockito::reset);
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼      ☼" +
@@ -4142,7 +4140,6 @@ public class GameTest extends AbstractGameTest {
         tick();
 
         events.verifyAllEvents("[GET_CLUE_GLOVE]");
-        listeners.forEach(Mockito::reset);
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼      ☼" +
@@ -4157,7 +4154,6 @@ public class GameTest extends AbstractGameTest {
         tick();
 
         events.verifyAllEvents("[GET_CLUE_RING]");
-        listeners.forEach(Mockito::reset);
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼      ☼" +
@@ -4172,7 +4168,6 @@ public class GameTest extends AbstractGameTest {
         tick();
 
         events.verifyAllEvents("[GET_CLUE_RING]");
-        listeners.forEach(Mockito::reset);
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼      ☼" +
