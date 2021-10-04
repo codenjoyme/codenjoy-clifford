@@ -207,7 +207,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
         }
     }
 
-    public BoardReader reader() {
+    public BoardReader<?> reader() {
         return field.reader(
                 Hero.class,
                 Robber.class,
@@ -493,7 +493,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     }
 
     @Override
-    public void leaveClue(Point pt, Class type) {
+    public void leaveClue(Point pt, Class<? extends Point> type) {
         if (type == ClueKnife.class) {
             clueKnife().add(new ClueKnife(pt));
         } else if (type == ClueGlove.class) {
