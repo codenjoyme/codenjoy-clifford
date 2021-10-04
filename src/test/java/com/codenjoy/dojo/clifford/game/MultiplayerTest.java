@@ -191,7 +191,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "listener(2) => [HERO_DIE]\n");
         assertEquals(true, game(1).isGameOver());
 
-        when(dice.next(anyInt())).thenReturn(1, 4);
+        dice(1, 4);
 
         game(2).newGame();
 
@@ -213,7 +213,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         hero(0).right();
 
-        when(dice.next(anyInt())).thenReturn(1, 2);
+        dice(1, 2);
 
         tick();
 
