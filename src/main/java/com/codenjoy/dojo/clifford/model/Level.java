@@ -52,22 +52,6 @@ public class Level extends AbstractLevel {
         super(map);
     }
 
-    @Override
-    protected void fill(PointField field) {
-        field.addAll(borders());
-        field.addAll(pipe());
-        field.addAll(ladder());
-        field.addAll(bricks());
-        field.addAll(backways());
-        field.addAll(potions());
-        field.addAll(clueKnife());
-        field.addAll(clueGlove());
-        field.addAll(clueRing());
-        field.addAll(robbers());
-        field.addAll(doors());
-        field.addAll(keys());
-    }
-
     public List<Hero> heroes() {
         EnumSet<Element> left = EnumSet.of(
                 HERO_CRACK_LEFT, HERO_LEFT, HERO_FALL_LEFT, HERO_PIPE_LEFT,
@@ -145,5 +129,21 @@ public class Level extends AbstractLevel {
             put(KEY_SILVER, pt -> new Key(pt, SILVER));
             put(KEY_BRONZE, pt -> new Key(pt, BRONZE));
         }});
+    }
+
+    @Override
+    protected void fill(PointField field) {
+        field.addAll(borders());
+        field.addAll(pipe());
+        field.addAll(ladder());
+        field.addAll(bricks());
+        field.addAll(backways());
+        field.addAll(potions());
+        field.addAll(clueKnife());
+        field.addAll(clueGlove());
+        field.addAll(clueRing());
+        field.addAll(robbers());
+        field.addAll(doors());
+        field.addAll(keys());
     }
 }
