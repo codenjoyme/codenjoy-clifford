@@ -30,6 +30,7 @@ import com.codenjoy.dojo.clifford.services.Levels;
 import com.codenjoy.dojo.clifford.services.ai.AISolver;
 import com.codenjoy.dojo.games.clifford.Board;
 import com.codenjoy.dojo.services.Dice;
+import com.codenjoy.dojo.services.multiplayer.LevelProgress;
 import com.codenjoy.dojo.utils.Smoke;
 import org.junit.Before;
 import org.junit.Test;
@@ -72,7 +73,7 @@ public class SmokeTest {
                     public GameSettings getSettings() {
                         return super.getSettings()
                                 .bool(ROUNDS_ENABLED, false)
-                                .string(LEVEL_MAP,
+                                .setLevelMaps(LevelProgress.levelsStartsFrom1,
                                         "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼\n" +
                                         "☼~~~~~~~~H   ~~~☼\n" +
                                         "☼        H###   ☼\n" +
@@ -123,7 +124,7 @@ public class SmokeTest {
                     public GameSettings getSettings() {
                         return super.getSettings()
                                 .bool(ROUNDS_ENABLED, false)
-                                .string(LEVEL_MAP,
+                                .setLevelMaps(LevelProgress.levelsStartsFrom1,
                                         Levels.BIG_LEVEL.replaceAll("[◄«]", " "))
                                 .integer(ROBBERS_COUNT, robbers);
                     }

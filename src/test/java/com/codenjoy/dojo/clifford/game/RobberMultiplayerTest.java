@@ -32,8 +32,9 @@ import static org.junit.Assert.assertEquals;
 public class RobberMultiplayerTest extends AbstractGameTest {
 
     @Override
-    protected void givenFl(String map) {
-        super.givenFl(map);
+    protected void givenFl(String... maps) {
+        super.givenFl(maps);
+
         robbers.forEach(RobberJoystick::disableMock);
     }
 

@@ -55,6 +55,7 @@ import static java.util.stream.Collectors.toList;
 
 public class DetectiveClifford extends RoundField<Player> implements Field {
 
+    private Level level;
     private PointField field;
     private List<Player> players;
     private Dice dice;
@@ -63,14 +64,14 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     private int backwaysTimer;
     private Multimap<Hero, Hero> killerWithDeads;
 
-
-    public DetectiveClifford(Dice dice, GameSettings settings) {
+    public DetectiveClifford(Dice dice, Level level, GameSettings settings) {
         super(Events.START_ROUND, Events.WIN_ROUND, Events.HERO_DIE, settings);
+
+        this.level = level;
         this.dice = dice;
         this.settings = settings;
         this.field = new PointField();
         this.players = new LinkedList<>();
-        this.killerWithDeads = ArrayListMultimap.create();
 
         clearScore();
     }
@@ -84,9 +85,10 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 
     @Override
     public void clearScore() {
-        settings.level().saveTo(field);
+        level.saveTo(field);
         field.init(this);
 
+        this.killerWithDeads = ArrayListMultimap.create();
         resetBackwaysTimer();
         robbers().forEach(robber -> robber.init(this));
         generateAll();

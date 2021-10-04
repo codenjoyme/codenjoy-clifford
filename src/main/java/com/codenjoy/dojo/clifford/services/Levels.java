@@ -22,8 +22,7 @@ package com.codenjoy.dojo.clifford.services;
  * #L%
  */
 
-import java.util.Arrays;
-import java.util.List;
+import com.codenjoy.dojo.services.multiplayer.LevelProgress;
 
 public class Levels {
 
@@ -87,8 +86,9 @@ public class Levels {
             "☼##############H       H#################################☼\n" +
             "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼\n";
 
-    public static List<String> all() {
-        return Arrays.asList(
+    public static void setup(GameSettings settings) {
+        int level = LevelProgress.levelsStartsFrom1;
+        settings.setLevelMaps(level,
                 "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼                            ☼\n" +
                 "☼##H########################H☼\n" +

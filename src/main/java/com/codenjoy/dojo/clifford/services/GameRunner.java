@@ -25,6 +25,7 @@ package com.codenjoy.dojo.clifford.services;
 
 import com.codenjoy.dojo.client.ClientBoard;
 import com.codenjoy.dojo.client.Solver;
+import com.codenjoy.dojo.clifford.model.Level;
 import com.codenjoy.dojo.games.clifford.Board;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.clifford.model.DetectiveClifford;
@@ -35,6 +36,7 @@ import com.codenjoy.dojo.services.EventListener;
 import com.codenjoy.dojo.services.PlayerScores;
 import com.codenjoy.dojo.services.multiplayer.GameField;
 import com.codenjoy.dojo.services.multiplayer.GamePlayer;
+import com.codenjoy.dojo.services.multiplayer.LevelProgress;
 import com.codenjoy.dojo.services.multiplayer.MultiplayerType;
 import com.codenjoy.dojo.services.printer.CharElement;
 import com.codenjoy.dojo.services.settings.Parameter;
@@ -50,17 +52,18 @@ public class GameRunner extends AbstractGameType<GameSettings> {
 
     @Override
     public PlayerScores getPlayerScores(Object score, GameSettings settings) {
-        return new Scores(Integer.valueOf(score.toString()), settings);
+        return new Scores(Integer.parseInt(score.toString()), settings);
     }
 
     @Override
     public GameField createGame(int levelNumber, GameSettings settings) {
-        return new DetectiveClifford(getDice(), settings);
+        Level level = settings.level(levelNumber, getDice());
+        return new DetectiveClifford(getDice(), level, settings);
     }
 
     @Override
     public Parameter<Integer> getBoardSize(GameSettings settings) {
-        return v(settings.level().size());
+        return v(settings.level(LevelProgress.levelsStartsFrom1, getDice()).size());
     }
 
     @Override

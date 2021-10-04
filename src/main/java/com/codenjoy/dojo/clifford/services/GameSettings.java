@@ -24,8 +24,9 @@ package com.codenjoy.dojo.clifford.services;
 
 
 import com.codenjoy.dojo.clifford.model.Level;
-import com.codenjoy.dojo.clifford.services.levels.Big;
+import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.incativity.InactivitySettings;
+import com.codenjoy.dojo.services.level.LevelsSettings;
 import com.codenjoy.dojo.services.round.RoundSettings;
 import com.codenjoy.dojo.services.semifinal.SemifinalSettings;
 import com.codenjoy.dojo.services.settings.SettingsImpl;
@@ -40,6 +41,7 @@ public class GameSettings extends SettingsImpl
         implements SettingsReader<GameSettings>,
                    InactivitySettings<GameSettings>,
                    RoundSettings<GameSettings>,
+                   LevelsSettings<GameSettings>,
                    SemifinalSettings<GameSettings> {
 
     public enum Keys implements Key {
@@ -69,9 +71,7 @@ public class GameSettings extends SettingsImpl
         KILL_HERO_SCORE("[Score] Kill hero score"),
         KILL_ENEMY_SCORE("[Score] Kill enemy score"),
         HERO_DIE_PENALTY("[Score] Hero die penalty"),
-        SUICIDE_PENALTY("[Score] Suicide penalty"),
-
-        LEVEL_MAP("[Level] Map");
+        SUICIDE_PENALTY("[Score] Suicide penalty");
 
         private String key;
 
@@ -122,11 +122,10 @@ public class GameSettings extends SettingsImpl
         integer(HERO_DIE_PENALTY, 1);
         integer(SUICIDE_PENALTY, 10);
 
-        multiline(LEVEL_MAP, Big.all().get(0));
+        Levels.setup(this);
     }
 
-    public Level level() {
-        return new Level(string(LEVEL_MAP));
+    public Level level(int level, Dice dice) {
+        return new Level(getRandomLevelMap(level, dice));
     }
-
 }

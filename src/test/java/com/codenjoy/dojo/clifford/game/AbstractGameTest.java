@@ -96,10 +96,11 @@ public abstract class AbstractGameTest {
         }
     }
 
-    protected void givenFl(String map) {
-        settings.string(LEVEL_MAP, map);
+    protected void givenFl(String... maps) {
+        int levelNumber = LevelProgress.levelsStartsFrom1;
+        settings.setLevelMaps(levelNumber, maps);
+        Level level = settings.level(levelNumber, dice);
 
-        Level level = settings.level();
         settings.integer(CLUE_COUNT_KNIFE, level.clueKnife().size())
                 .integer(CLUE_COUNT_GLOVE, level.clueGlove().size())
                 .integer(CLUE_COUNT_RING, level.clueRing().size())
@@ -107,28 +108,34 @@ public abstract class AbstractGameTest {
                 .integer(BACKWAYS_COUNT, level.backways().size())
                 .integer(ROBBERS_COUNT, level.robbers().size());
 
-        field = new DetectiveClifford(dice, settings);
+        field = new DetectiveClifford(dice, level, settings);
 
-        for (Hero hero : level.heroes()) {
-            Player player = givenPlayer(hero.getX(), hero.getY());
-            player.getHero().setDirection(hero.getDirection());
-        }
+        level.heroes().forEach(this::givenPlayer);
+
         reloadAllRobbers();
-
         dice(0); // всегда дальше выбираем нулевой индекс
     }
 
-    protected Player givenPlayer(int x, int y) {
+    protected void givenPlayer(Hero hero) {
         EventListener listener = mock(EventListener.class);
         listeners.add(listener);
+
         Player player = new Player(listener, settings);
         players.add(player);
+
         Single game = new Single(player, printer);
         games.add(game);
-        dice(x, y);
+
+        dice(hero.getX(), hero.getY());
         game.on(field);
         game.newGame();
-        return player;
+
+        player.getHero().setDirection(hero.getDirection());
+    }
+
+    public Player givenPlayer(int x, int y) {
+        givenPlayer(new Hero(pt(x, y), Direction.RIGHT));
+        return players.get(players.size() - 1);
     }
 
     protected GameSettings settings() {
