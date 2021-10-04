@@ -61,8 +61,8 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     private boolean shoot;
     private int score;
 
-    public Hero(Point xy, Direction direction) {
-        super(xy);
+    public Hero(Point pt, Direction direction) {
+        super(pt);
         this.direction = direction;
         moving = false;
         cracked = false;
