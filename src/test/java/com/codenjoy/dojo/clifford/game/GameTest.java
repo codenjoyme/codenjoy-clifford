@@ -4603,6 +4603,115 @@ public class GameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼");
     }
 
+    @Test
+    public void shouldClearField_whenClearScoresOnGame() {
+        // given
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼►$ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        // when then
+        assertWalkThenClearScore();
+    }
+
+    @Test
+    public void shouldHeroCanWalk_whenClearScoresOnGame() {
+        // given
+        shouldClearField_whenClearScoresOnGame();
+
+        // when
+        hero(0).right();
+        dice(1, 3);
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼$  ☼\n" +
+                "☼ ► ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        events.verifyAllEvents(
+                "[GET_CLUE_KNIFE(1)]");
+    }
+
+    @Test
+    public void shouldSameLevel_whenClearScoresOnGame_andSeveralLevelsInTheSettings() {
+        // given
+        dice(1); // second level selected
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼ ► ☼\n" +
+                "☼☼☼☼☼\n",
+
+                "☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼►$ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n",
+
+                "☼☼☼☼☼\n" +
+                "☼ $ ☼\n" +
+                "☼►  ☼\n" +
+                "☼# #☼\n" +
+                "☼☼☼☼☼\n");
+
+        // when then
+        assertWalkThenClearScore();
+    }
+
+    private void assertWalkThenClearScore() {
+        hero().right();
+        dice(1, 3);
+        tick();
+
+        assertF("☼☼☼☼☼\n" +
+                "☼$  ☼\n" +
+                "☼ ► ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        events.verifyAllEvents(
+                "[GET_CLUE_KNIFE(1)]");
+
+        assertEquals(2, hero(0).scores());
+
+        hero().act();
+        hero().left();
+        tick();
+
+        assertF("☼☼☼☼☼\n" +
+                "☼$  ☼\n" +
+                "☼ Я ☼\n" +
+                "☼*##☼\n" +
+                "☼☼☼☼☼\n");
+
+        hero().right();
+        tick();
+
+        assertF("☼☼☼☼☼\n" +
+                "☼$  ☼\n" +
+                "☼  ►☼\n" +
+                "☼ ##☼\n" +
+                "☼☼☼☼☼\n");
+
+        // when
+        dice(1, 2); // new hero position
+        field.clearScore();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼►$ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        assertEquals(0, hero(0).scores());
+    }
+
     // прострелить находясь на трубе нельзя, в оригинале только находясь на краю трубы
 
     // карта намного больше, чем квардартик вьюшка, и я подходя к границе просто передвигаю вьюшку
