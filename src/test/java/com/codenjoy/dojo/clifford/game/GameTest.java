@@ -25,11 +25,9 @@ package com.codenjoy.dojo.clifford.game;
 
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.Potion;
-import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.services.Point;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.PointImpl.pt;
@@ -743,7 +741,7 @@ public class GameTest extends AbstractGameTest {
         dice(2, 3);
         hero().right();
         tick();
-        events.verifyAllEvents("[GET_CLUE_KNIFE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         assertE("☼☼☼☼☼" +
                 "☼ $ ☼" +
@@ -773,7 +771,7 @@ public class GameTest extends AbstractGameTest {
         dice(3, 3);
         hero().right();
         tick();
-        events.verifyAllEvents("[GET_CLUE_KNIFE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         assertE("☼☼☼☼☼" +
                 "☼  $☼" +
@@ -1284,7 +1282,7 @@ public class GameTest extends AbstractGameTest {
                 "☼ $   ☼" +
                 "☼☼☼☼☼☼☼");
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         dice(2, 5);
         tick();
@@ -1297,7 +1295,7 @@ public class GameTest extends AbstractGameTest {
                 "☼ $   ☼" +
                 "☼☼☼☼☼☼☼");
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE(2)]");
 
         dice(3, 5);
         tick();
@@ -1310,7 +1308,7 @@ public class GameTest extends AbstractGameTest {
                 "☼ $   ☼" +
                 "☼☼☼☼☼☼☼");
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE(3)]");
 
         dice(4, 5);
         tick();
@@ -1323,7 +1321,7 @@ public class GameTest extends AbstractGameTest {
                 "☼ ◄   ☼" +
                 "☼☼☼☼☼☼☼");
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE(4)]");
     }
 
     // если я прострелил дырку и падаю в нее, а под ней ничего нет - то я падаю пока не найду препятствие
@@ -2856,7 +2854,7 @@ public class GameTest extends AbstractGameTest {
                 "☼####⍈#☼" +
                 "☼☼☼☼☼☼☼☼");
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         hero().left();
         tick();
@@ -2874,7 +2872,7 @@ public class GameTest extends AbstractGameTest {
         dice(2, 6);
         tick();
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE(2)]");
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼$$    ☼" +
@@ -2950,7 +2948,7 @@ public class GameTest extends AbstractGameTest {
         hero().left();
         tick();
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼$     ☼" +
@@ -2988,7 +2986,7 @@ public class GameTest extends AbstractGameTest {
 
         tick();
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE(2)]");
 
         tick();
         tick();
@@ -4050,7 +4048,7 @@ public class GameTest extends AbstractGameTest {
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n");
 
-        assertEquals(1, hero(0).scores());
+        assertEquals(20, hero(0).scores());
         assertEquals(0, hero(1).scores());
         assertEquals(true, hero(0).isAlive());
         assertEquals(false, hero(1).isAlive());
@@ -4111,7 +4109,7 @@ public class GameTest extends AbstractGameTest {
         hero().right();
         tick();
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼      ☼" +
@@ -4125,7 +4123,7 @@ public class GameTest extends AbstractGameTest {
         hero().right();
         tick();
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE]");
+        events.verifyAllEvents("[GET_CLUE_KNIFE(2)]");
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼      ☼" +
@@ -4139,7 +4137,7 @@ public class GameTest extends AbstractGameTest {
         hero().right();
         tick();
 
-        events.verifyAllEvents("[GET_CLUE_GLOVE]");
+        events.verifyAllEvents("[GET_CLUE_GLOVE(1)]");
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼      ☼" +
@@ -4153,7 +4151,7 @@ public class GameTest extends AbstractGameTest {
         hero().right();
         tick();
 
-        events.verifyAllEvents("[GET_CLUE_RING]");
+        events.verifyAllEvents("[GET_CLUE_RING(1)]");
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼      ☼" +
@@ -4167,7 +4165,7 @@ public class GameTest extends AbstractGameTest {
         hero().right();
         tick();
 
-        events.verifyAllEvents("[GET_CLUE_RING]");
+        events.verifyAllEvents("[GET_CLUE_RING(2)]");
 
         assertE("☼☼☼☼☼☼☼☼" +
                 "☼      ☼" +

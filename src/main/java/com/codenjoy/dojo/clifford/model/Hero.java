@@ -29,6 +29,7 @@ import com.codenjoy.dojo.clifford.model.items.Pipe;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.KeyType;
+import com.codenjoy.dojo.clifford.services.Events;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.Point;
@@ -36,7 +37,10 @@ import com.codenjoy.dojo.services.State;
 import com.codenjoy.dojo.services.StateUtils;
 import com.codenjoy.dojo.services.round.RoundPlayerHero;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -60,6 +64,9 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     private boolean closeDoor;
     private boolean shoot;
     private int score;
+    private int rings;
+    private int gloves;
+    private int knives;
 
     public Hero(Point pt, Direction direction) {
         super(pt);
@@ -75,6 +82,9 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
 
     public void clearScores() {
         score = 0;
+        rings = 0;
+        gloves = 0;
+        knives = 0;
         potion = null;
         keys = new EnumMap<>(KeyType.class) {{
             put(KeyType.GOLD, 0);
@@ -370,4 +380,21 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         return heroes.stream()
                 .anyMatch(h -> player.getTeamId() != h.getPlayer().getTeamId());
     }
+
+    public void pickClue(Events.Event clue) {
+        getPlayer().event(new Events(clue).with(increaseClue(clue)));
+    }
+
+    private int increaseClue(Events.Event clue) {
+        switch (clue) {
+            case GET_CLUE_KNIFE :
+                return ++knives;
+            case GET_CLUE_RING :
+                return ++rings;
+            case GET_CLUE_GLOVE :
+                return ++gloves;
+        }
+        return 0;
+    }
+
 }

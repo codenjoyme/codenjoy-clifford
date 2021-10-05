@@ -32,7 +32,6 @@ import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
 import com.codenjoy.dojo.clifford.model.items.door.KeyType;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
-import com.codenjoy.dojo.clifford.services.Events;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.*;
@@ -48,7 +47,7 @@ import com.google.common.collect.Multimap;
 import java.util.*;
 
 import static com.codenjoy.dojo.clifford.model.items.Potion.PotionType.MASK_POTION;
-import static com.codenjoy.dojo.clifford.services.Events.*;
+import static com.codenjoy.dojo.clifford.services.Events.Event.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.field.Generator.generate;
 import static java.util.stream.Collectors.toList;
@@ -65,7 +64,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     private Multimap<Hero, Hero> killerWithDeads;
 
     public DetectiveClifford(Dice dice, Level level, GameSettings settings) {
-        super(Events.START_ROUND, Events.WIN_ROUND, Events.HERO_DIE, settings);
+        super(START_ROUND, WIN_ROUND, HERO_DIE, settings);
 
         this.level = level;
         this.dice = dice;
@@ -293,13 +292,13 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 
             if (clueKnife().contains(hero)) {
                 clueKnife().removeAt(hero);
-                player.event(Events.GET_CLUE_KNIFE);
+                hero.pickClue(GET_CLUE_KNIFE);
             } else if (clueGlove().contains(hero)) {
                 clueGlove().removeAt(hero);
-                player.event(Events.GET_CLUE_GLOVE);
+                hero.pickClue(GET_CLUE_GLOVE);
             } else if (clueRing().contains(hero)) {
                 clueRing().removeAt(hero);
-                player.event(Events.GET_CLUE_RING);
+                hero.pickClue(GET_CLUE_RING);
             }
 
             if (keys().contains(hero)) {
@@ -388,7 +387,7 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
 
     @Override
     public void suicide(Hero hero) {
-        hero.getPlayer().event(Events.SUICIDE);
+        hero.getPlayer().event(SUICIDE);
     }
 
     @Override

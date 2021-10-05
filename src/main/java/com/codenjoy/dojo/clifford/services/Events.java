@@ -22,18 +22,57 @@ package com.codenjoy.dojo.clifford.services;
  * #L%
  */
 
-public enum Events {
-    START_ROUND,      // раунд стартовал
-    WIN_ROUND,        // герой победил в раунде
+public class Events {
 
-    // TODO: implement KILL_ROBBER (for this time robber cannot be killed);
-    KILL_HERO,         // герой замуровал в стенке другого героя
-    KILL_ENEMY,        // герой замуровал в стенке другого вражеского героя
-    HERO_DIE,          // героя убили
+    private Event type;
+    private int amount;
 
-    GET_CLUE_KNIFE,  // подобрано улику
-    GET_CLUE_GLOVE,
-    GET_CLUE_RING,
+    public enum Event {
+        START_ROUND,      // раунд стартовал
+        WIN_ROUND,        // герой победил в раунде
 
-    SUICIDE;          // герой заблудился и решил суициднуться
+        // TODO: implement KILL_ROBBER (for this time robber cannot be killed);
+        KILL_HERO,         // герой замуровал в стенке другого героя
+        KILL_ENEMY,        // герой замуровал в стенке другого вражеского героя
+        HERO_DIE,          // героя убили
+
+        GET_CLUE_KNIFE,  // подобрано улику
+        GET_CLUE_GLOVE,
+        GET_CLUE_RING,
+
+        SUICIDE;          // герой заблудился и решил суициднуться
+    }
+
+    public static Object wrap(Object input) {
+        return (input instanceof Events.Event)
+                ? new Events((Events.Event) input)
+                : input;
+    }
+
+    public Events with(int amount) {
+        this.amount = amount;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return type + ((amount != 0)?("(" + amount + ")"):"");
+    }
+
+    public Events(Event type) {
+        this.type = type;
+    }
+
+    public Events(Event type, int amount) {
+        this.type = type;
+        this.amount = amount;
+    }
+
+    public int amount() {
+        return amount;
+    }
+
+    public Event type() {
+        return type;
+    }
 }

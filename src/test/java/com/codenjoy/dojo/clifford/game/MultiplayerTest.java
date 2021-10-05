@@ -25,14 +25,14 @@ package com.codenjoy.dojo.clifford.game;
 
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
-import com.codenjoy.dojo.clifford.services.Events;
 import org.junit.Test;
 
-import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.ROBBERS_COUNT;
-import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_POTIONS_COUNT;
+import static com.codenjoy.dojo.clifford.services.Events.Event.*;
+import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.round.RoundSettings.Keys.*;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 
 public class MultiplayerTest extends AbstractGameTest {
 
@@ -188,10 +188,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n" +
                 "listener(2) => [HERO_DIE]\n");
+
         assertEquals(true, game(1).isGameOver());
 
         dice(1, 4);
-
         game(2).newGame();
 
         tick();
@@ -231,7 +231,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼\n", 2);
 
         events.verifyAllEvents(
-                "listener(0) => [GET_CLUE_KNIFE]\n" +
+                "listener(0) => [GET_CLUE_KNIFE(1)]\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n");
     }
@@ -302,9 +302,9 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
-        verify(listener(0), never()).event(Events.KILL_HERO);
-        verify(listener(0), never()).event(Events.KILL_ENEMY);
-        verify(listener(1), never()).event(Events.HERO_DIE);
+        verify(listener(0), never()).event(KILL_HERO);
+        verify(listener(0), never()).event(KILL_ENEMY);
+        verify(listener(1), never()).event(HERO_DIE);
     }
 
     @Test
@@ -1226,7 +1226,8 @@ public class MultiplayerTest extends AbstractGameTest {
                 .integer(ROUNDS_PER_MATCH, 1)
                 .integer(ROUNDS_TIME, 30)
                 .integer(ROUNDS_TIME_FOR_WINNER, 5)
-                .integer(ROUNDS_PLAYERS_PER_ROOM, 8);
+                .integer(ROUNDS_PLAYERS_PER_ROOM, 8)
+                .integer(KILL_HERO_SCORE, 1);
 
         givenFl("☼☼☼☼☼☼☼☼☼☼" +
                 "☼        ☼" +
@@ -1541,7 +1542,9 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        assertScores("");
+        assertScores(
+                "hero(0)=3\n" +
+                "hero(1)=3");
         
         events.verifyAllEvents(
                 "listener(0) => [WIN_ROUND]\n" +
@@ -1564,10 +1567,17 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
-        tick();
+        assertEquals(false, hero(0).isAlive());
+        assertEquals(false, hero(1).isAlive());
+
+        dice(1, 2);
+        game(0).newGame();
+
+        dice(8, 2);
+        game(1).newGame();
 
         assertScores("");
-        assertEquals(0, field.players().size());
+        assertEquals(2, field.players().size());
         
         events.verifyAllEvents(
                 "listener(0) => []\n" +
@@ -1586,18 +1596,18 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼   HH   ☼\n" +
+                "☼Ѡ  HH  Z☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         tick();
 
         assertScores("");
-        assertEquals(0, field.players().size());
+        assertEquals(2, field.players().size());
        
         events.verifyAllEvents(
-                "listener(0) => []\n" +
-                "listener(1) => []\n" +
+                "listener(0) => [START_ROUND, [Round 2]]\n" +
+                "listener(1) => [START_ROUND, [Round 2]]\n" +
                 "listener(2) => []\n" +
                 "listener(3) => []\n" +
                 "listener(4) => []\n" +
@@ -1612,7 +1622,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼   HH   ☼\n" +
+                "☼►  HH  (☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
     }
@@ -1624,7 +1634,8 @@ public class MultiplayerTest extends AbstractGameTest {
                 .integer(ROUNDS_PER_MATCH, 1)
                 .integer(ROUNDS_TIME, 30)
                 .integer(ROUNDS_TIME_FOR_WINNER, 5)
-                .integer(ROUNDS_PLAYERS_PER_ROOM, 8);
+                .integer(ROUNDS_PLAYERS_PER_ROOM, 8)
+                .integer(KILL_HERO_SCORE, 1);
 
         givenFl("☼☼☼☼☼☼☼☼☼☼" +
                 "☼        ☼" +
@@ -1933,8 +1944,8 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        // TODO тут надо чистить так же очки hero когда ему приходит [Time is over]
         assertScores(
+                "hero(0)=3\n" +
                 "hero(1)=2");
 
         events.verifyAllEvents(
@@ -1958,11 +1969,37 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
-        tick();
+        assertEquals(false, hero(0).isAlive());
+        assertEquals(false, hero(1).isAlive());
+        assertEquals(false, hero(7).isAlive());
 
-        assertScores(
-                "hero(1)=2");
-        assertEquals(0, field.players().size());
+        dice(1, 2);
+        game(0).newGame();
+
+        dice(2, 2);
+        game(1).newGame();
+
+        dice(3, 2);
+        game(2).newGame();
+
+        dice(6, 2);
+        game(3).newGame();
+
+        dice(7, 2);
+        game(4).newGame();
+
+        dice(8, 2);
+        game(5).newGame();
+
+        dice(1, 5);
+        game(6).newGame();
+
+        dice(2, 5);
+        game(7).newGame();
+
+
+        assertScores("");
+        assertEquals(8, field.players().size());
      
         events.verifyAllEvents(
                 "listener(0) => []\n" +
@@ -1978,10 +2015,36 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼        ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼   HH   ☼\n" +
+                "☼ZZ HH   ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼   HH   ☼\n" +
+                "☼ѠZZHHZZZ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼☼☼☼☼☼☼\n", 0);
+
+        tick();
+
+        assertScores("");
+        assertEquals(8, field.players().size());
+
+        events.verifyAllEvents(
+                "listener(0) => [START_ROUND, [Round 2]]\n" +
+                "listener(1) => [START_ROUND, [Round 2]]\n" +
+                "listener(2) => [START_ROUND, [Round 2]]\n" +
+                "listener(3) => [START_ROUND, [Round 2]]\n" +
+                "listener(4) => [START_ROUND, [Round 2]]\n" +
+                "listener(5) => [START_ROUND, [Round 2]]\n" +
+                "listener(6) => [START_ROUND, [Round 2]]\n" +
+                "listener(7) => [START_ROUND, [Round 2]]\n");
+
+        assertF("☼☼☼☼☼☼☼☼☼☼\n" +
+                "☼        ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼(( HH   ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼►((HH(((☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
     }
@@ -1993,7 +2056,8 @@ public class MultiplayerTest extends AbstractGameTest {
                 .integer(ROUNDS_PER_MATCH, 2)
                 .integer(ROUNDS_TIME, 30)
                 .integer(ROUNDS_TIME_FOR_WINNER, 5)
-                .integer(ROUNDS_PLAYERS_PER_ROOM, 8);
+                .integer(ROUNDS_PLAYERS_PER_ROOM, 8)
+                .integer(KILL_HERO_SCORE, 1);
 
         givenFl("☼☼☼☼☼☼☼☼☼☼" +
                 "☼        ☼" +
@@ -2384,7 +2448,9 @@ public class MultiplayerTest extends AbstractGameTest {
     public void heroKillHeroAndKillEnemy() {
         settings.bool(ROUNDS_ENABLED, true)
                 .integer(ROUNDS_TIME_BEFORE_START, 1)
-                .integer(ROUNDS_PLAYERS_PER_ROOM, 4);
+                .integer(ROUNDS_PLAYERS_PER_ROOM, 4)
+                .integer(KILL_HERO_SCORE, 1)
+                .integer(KILL_ENEMY_SCORE, 10);
 
         givenFl("☼☼☼☼☼☼☼☼☼☼" +
                 "☼        ☼" +
@@ -2477,7 +2543,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         assertScores(
                 "hero(0)=1\n" +
-                "hero(1)=1");
+                "hero(1)=10");
         
         events.verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
@@ -2533,7 +2599,7 @@ public class MultiplayerTest extends AbstractGameTest {
         if (settings.isRoundsDisabled() ||
                 settings.getPlayersPerRoom() == players.size())
         {
-            field.tick();
+            super.tick();
         }
     }
 

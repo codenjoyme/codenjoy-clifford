@@ -25,14 +25,12 @@ package com.codenjoy.dojo.clifford.services;
 
 import com.codenjoy.dojo.services.PlayerScores;
 
+import static com.codenjoy.dojo.clifford.services.Events.Event.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 
 public class Scores implements PlayerScores {
 
     private volatile int score;
-    private volatile int rings;
-    private volatile int gloves;
-    private volatile int knives;
     private GameSettings settings;
 
     public Scores(int startScore, GameSettings settings) {
@@ -42,14 +40,7 @@ public class Scores implements PlayerScores {
 
     @Override
     public int clear() {
-        clearSeries();
         return score = 0;
-    }
-
-    private void clearSeries() {
-        rings = 0;
-        gloves = 0;
-        knives = 0;
     }
 
     @Override
@@ -61,78 +52,52 @@ public class Scores implements PlayerScores {
     public void event(Object event) {
         score += scoreFor(settings, event);
         score = Math.max(0, score);
-
-        process(event);
     }
 
-    public int scoreFor(GameSettings settings, Object event) {
-        if (event.equals(Events.GET_CLUE_KNIFE)) {
-            return settings.integer(CLUE_SCORE_KNIFE) + knives;
+    public static int scoreFor(GameSettings settings, Object input) {
+        if (!(input instanceof Events)) {
+            return 0;
         }
 
-        if (event.equals(Events.GET_CLUE_GLOVE)) {
-            return settings.integer(CLUE_SCORE_GLOVE) + gloves;
+        Events event = (Events) input;
+        Events.Event type = event.type();
+
+        if (type.equals(GET_CLUE_KNIFE)) {
+            return settings.integer(CLUE_SCORE_KNIFE)
+                    + event.amount() * settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
         }
 
-        if (event.equals(Events.GET_CLUE_RING)) {
-            return settings.integer(CLUE_SCORE_RING) + rings;
+        if (type.equals(GET_CLUE_GLOVE)) {
+            return settings.integer(CLUE_SCORE_GLOVE)
+                    + event.amount() * settings.integer(CLUE_SCORE_GLOVE_INCREMENT);
         }
 
-        if (event.equals(Events.KILL_HERO)) {
+        if (type.equals(GET_CLUE_RING)) {
+            return settings.integer(CLUE_SCORE_RING)
+                    + event.amount() * settings.integer(CLUE_SCORE_RING_INCREMENT);
+        }
+
+        if (type.equals(KILL_HERO)) {
             return settings.integer(KILL_HERO_SCORE);
         }
 
-        if (event.equals(Events.KILL_ENEMY)) {
+        if (type.equals(KILL_ENEMY)) {
             return settings.integer(KILL_ENEMY_SCORE);
         }
 
-        if (event.equals(Events.HERO_DIE)) {
+        if (type.equals(HERO_DIE)) {
             return - settings.integer(HERO_DIE_PENALTY);
         }
 
-        if (event.equals(Events.SUICIDE)) {
+        if (type.equals(SUICIDE)) {
             return - settings.integer(SUICIDE_PENALTY);
         }
 
         return 0;
     }
 
-    public void process(Object event) {
-        if (event.equals(Events.GET_CLUE_KNIFE)) {
-            knives += settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
-            return;
-        }
-
-        if (event.equals(Events.GET_CLUE_GLOVE)) {
-            gloves += settings.integer(CLUE_SCORE_GLOVE_INCREMENT);
-            return;
-        }
-
-        if (event.equals(Events.GET_CLUE_RING)) {
-            rings += settings.integer(CLUE_SCORE_RING_INCREMENT);
-            return;
-        }
-
-        if (event.equals(Events.HERO_DIE)
-                || event.equals(Events.SUICIDE))
-        {
-            clearSeries();
-            return;
-        }
-    }
-
     @Override
     public void update(Object score) {
-        this.score = Integer.valueOf(score.toString());
-    }
-
-    @Override
-    public String toString() {
-        return "Scores{" +
-                "score=" + score +
-                ", ring=" + rings +
-                ", glove=" + gloves +
-                ", knife=" + knives +
-                '}';
+        this.score = Integer.parseInt(score.toString());
     }
 }

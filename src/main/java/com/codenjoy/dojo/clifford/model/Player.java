@@ -25,6 +25,7 @@ package com.codenjoy.dojo.clifford.model;
 
 import com.codenjoy.dojo.clifford.services.Events;
 import com.codenjoy.dojo.clifford.services.GameSettings;
+import com.codenjoy.dojo.clifford.services.Scores;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.EventListener;
 import com.codenjoy.dojo.services.Point;
@@ -51,21 +52,12 @@ public class Player extends RoundGamePlayer<Hero, Field> {
 
     @Override
     public void event(Object event) {
+        event = Events.wrap(event);
+        hero.addScore(Scores.scoreFor(settings(), event));
         super.event(event);
+    }
 
-        if (event instanceof Events) {
-            switch ((Events) event) {
-                case KILL_HERO:
-                case KILL_ENEMY:
-                    hero.addScore(1);
-                    break;
-                case START_ROUND:
-                case SUICIDE:
-                case HERO_DIE:
-                case WIN_ROUND:
-                    hero.clearScores();
-                    break;
-            }
-        }
+    private GameSettings settings() {
+        return (GameSettings) settings;
     }
 }
