@@ -41,8 +41,8 @@ import com.codenjoy.dojo.services.multiplayer.Single;
 import com.codenjoy.dojo.services.printer.PrinterFactory;
 import com.codenjoy.dojo.services.printer.PrinterFactoryImpl;
 import com.codenjoy.dojo.utils.events.EventsListenersAssert;
+import com.codenjoy.dojo.utils.smart.SmartAssert;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.mockito.stubbing.OngoingStubbing;
 
@@ -86,6 +86,7 @@ public abstract class AbstractGameTest {
     @After
     public void after() {
         events.verifyNoEvents();
+        SmartAssert.checkResult(getClass());
     }
 
     protected void dice(int... ints) {
@@ -170,13 +171,11 @@ public abstract class AbstractGameTest {
     }
 
     public void assertEquals(String message, Object expected, Object actual) {
-        // TODO to use there SmartAssert
-        Assert.assertEquals(message, expected, actual);
+        SmartAssert.assertEquals(message, expected, actual);
     }
 
     public void assertEquals(Object expected, Object actual) {
-        // TODO to use there SmartAssert
-        Assert.assertEquals(expected, actual);
+        SmartAssert.assertEquals(expected, actual);
     }
 
     public GameSettings settings() {
