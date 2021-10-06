@@ -1,0 +1,56 @@
+
+before()
+
+shouldJumpFromLadderDown()
+    givenFl(
+        ☼☼☼☼☼☼
+        ☼ ◄  ☼
+        ☼ H##☼
+        ☼#H  ☼
+        ☼    ☼
+        ☼☼☼☼☼☼)
+        givenPlayer([2,4])
+            dice(2, 4)
+        dice(0)
+    hero(0).down()
+    tick()
+    hero(0).down()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼ H##☼
+        ☼#Y  ☼
+        ☼    ☼
+        ☼☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼ H##☼
+        ☼#Y  ☼
+        ☼    ☼
+        ☼☼☼☼☼☼,
+        0)
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼ H##☼
+        ☼#H[ ☼
+        ☼    ☼
+        ☼☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼ H##☼
+        ☼#H  ☼
+        ☼  ► ☼
+        ☼☼☼☼☼☼,
+        0)
+
+after()

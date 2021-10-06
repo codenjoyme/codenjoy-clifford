@@ -22,16 +22,16 @@ package com.codenjoy.dojo.clifford.game;
  * #L%
  */
 
-import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.clifford.TestSettings;
-import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.DetectiveClifford;
+import com.codenjoy.dojo.clifford.model.Hero;
+import com.codenjoy.dojo.clifford.model.Level;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.robber.RobberJoystick;
-import com.codenjoy.dojo.clifford.model.Level;
 import com.codenjoy.dojo.clifford.services.Events;
 import com.codenjoy.dojo.clifford.services.GameSettings;
+import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.EventListener;
@@ -40,9 +40,9 @@ import com.codenjoy.dojo.services.multiplayer.LevelProgress;
 import com.codenjoy.dojo.services.multiplayer.Single;
 import com.codenjoy.dojo.services.printer.PrinterFactory;
 import com.codenjoy.dojo.services.printer.PrinterFactoryImpl;
-import com.codenjoy.dojo.utils.TestUtils;
 import com.codenjoy.dojo.utils.events.EventsListenersAssert;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.mockito.stubbing.OngoingStubbing;
 
@@ -53,22 +53,20 @@ import java.util.stream.Collectors;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.PointImpl.pt;
 import static java.util.stream.Collectors.joining;
-import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public abstract class AbstractGameTest {
 
     private List<EventListener> listeners;
     protected List<Player> players;
     private List<Game> games;
-
     private Dice dice;
     private PrinterFactory<Element, Player> printer;
-    protected DetectiveClifford field;
-    protected GameSettings settings;
-    protected EventsListenersAssert events;
-
+    private DetectiveClifford field;
+    private GameSettings settings;
+    private EventsListenersAssert events;
     protected List<RobberJoystick> robbers;
 
     @Before
@@ -78,14 +76,15 @@ public abstract class AbstractGameTest {
         games = new LinkedList<>();
         dice = mock(Dice.class);
         printer = new PrinterFactoryImpl<>();
-        settings = settings();
+        settings = new TestSettings();
+        setupSettings();
         events = new EventsListenersAssert(() -> listeners, Events.class);
         robbers = new LinkedList<>();
         Brick.CRACK_TIMER = 13;
     }
 
     @After
-    public void tearDown() {
+    public void after() {
         events.verifyNoEvents();
     }
 
@@ -138,17 +137,12 @@ public abstract class AbstractGameTest {
         return players.get(players.size() - 1);
     }
 
-    protected GameSettings settings() {
-        return spy(new TestSettings());
+    protected void setupSettings() {
+        // do something with settings
     }
 
     public void tick() {
         field.tick();
-    }
-
-    public void assertE(String expected) {
-        assertEquals(TestUtils.injectN(expected),
-                printer.getPrinter(field.reader(), player()).print());
     }
 
     public void assertF(String expected) {
@@ -173,6 +167,28 @@ public abstract class AbstractGameTest {
                                         players.indexOf(player),
                                         player.getHero().scores()))
                         .collect(joining("\n")));
+    }
+
+    public void assertEquals(String message, Object expected, Object actual) {
+        // TODO to use there SmartAssert
+        Assert.assertEquals(message, expected, actual);
+    }
+
+    public void assertEquals(Object expected, Object actual) {
+        // TODO to use there SmartAssert
+        Assert.assertEquals(expected, actual);
+    }
+
+    public GameSettings settings() {
+        return settings;
+    }
+
+    public DetectiveClifford field() {
+        return field;
+    }
+
+    public EventsListenersAssert events() {
+        return events;
     }
 
     public Game game() {

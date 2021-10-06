@@ -1,0 +1,49 @@
+
+before()
+
+shouldRobberCantGoLeftIfWall()
+    givenFl(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼◄ «☼
+        ☼###☼
+        ☼☼☼☼☼)
+        givenPlayer([1,2])
+            dice(1, 2)
+        dice(0)
+    hero(0).right()
+    hero(0).act()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼R «☼
+        ☼#*#☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼R‹ ☼
+        ☼# #☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼R  ☼
+        ☼#⍇#☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼R  ☼
+        ☼#⍇#☼
+        ☼☼☼☼☼,
+        0)
+
+after()

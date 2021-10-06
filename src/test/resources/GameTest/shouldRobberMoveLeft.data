@@ -1,0 +1,22 @@
+
+before()
+
+shouldRobberMoveLeft()
+    givenFl(
+        ☼☼☼☼►☼   ☼
+        ☼ « ☼
+        ☼###☼
+        ☼☼☼☼☼)
+        givenPlayer([4,4])
+            dice(4, 4)
+        dice(0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼   ☼
+        ☼«  ☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+
+after()

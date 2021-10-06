@@ -1,0 +1,32 @@
+
+before()
+
+shouldCrackLeft_onyActCommand()
+    givenFl(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ ◄ ☼
+        ☼###☼
+        ☼☼☼☼☼)
+        givenPlayer([2,2])
+            dice(2, 2)
+        dice(0)
+    hero(0).act()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ Я ☼
+        ☼*##☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ Я ☼
+        ☼ ##☼
+        ☼☼☼☼☼,
+        0)
+
+after()

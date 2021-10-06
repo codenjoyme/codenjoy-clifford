@@ -1,0 +1,88 @@
+
+before()
+
+thatMaskStairsUpTheLadderAtTheRegularPlayerAndKillsHim()
+    settings().integer(MASK_POTIONS_COUNT, 1)
+    givenFl(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  ►   ☼
+        ☼ ►H   ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼)
+        givenPlayer([3,3])
+            dice(3, 3)
+        givenPlayer([2,2])
+            dice(2, 2)
+        dice(0)
+    hero(1).pick(MASK_POTION)
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  ►   ☼
+        ☼ ⋉H   ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  (   ☼
+        ☼ ⊳H   ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    hero(1).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  ►   ☼
+        ☼  ⋕   ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  (   ☼
+        ☼  ⍬   ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    hero(1).up()
+    tick()
+    events().verifyAllEvents(
+        listener(0) => [HERO_DIE]
+        listener(1) => [KILL_HERO],
+        [])
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  Ѡ   ☼
+        ☼  H   ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  ⊳   ☼
+        ☼  H   ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)

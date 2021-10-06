@@ -1,0 +1,14 @@
+
+before()
+
+shouldBoardIsFree()
+    givenFl(
+        ☼☼☼☼☼☼
+        ☼~◄$H☼
+        ☼####☼
+        ☼☼☼☼☼☼
+        ☼☼☼☼☼☼
+        ☼☼☼☼☼☼)
+        givenPlayer([2,4])
+            dice(2, 4)
+        dice(0)

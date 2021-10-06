@@ -1,0 +1,59 @@
+
+before()
+
+shouldICantGoViaAnotherPlayer_whenAtLadder()
+    givenFl(
+        ☼☼☼☼☼☼
+        ☼ ►  ☼
+        ☼ H  ☼
+        ☼►H  ☼
+        ☼####☼
+        ☼☼☼☼☼☼)
+        givenPlayer([2,4])
+            dice(2, 4)
+        givenPlayer([1,2])
+            dice(1, 2)
+        dice(0)
+    assertF(
+        ☼☼☼☼☼☼
+        ☼ (  ☼
+        ☼ H  ☼
+        ☼►H  ☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        1)
+    hero(0).down()
+    hero(1).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼ U  ☼
+        ☼ Y  ☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        1)
+    hero(0).down()
+    hero(1).up()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼ U  ☼
+        ☼ Y  ☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        1)
+    hero(0).down()
+    hero(1).up()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼ U  ☼
+        ☼ Y  ☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        1)
+
+after()

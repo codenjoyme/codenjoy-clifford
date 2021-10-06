@@ -1,0 +1,86 @@
+
+before()
+
+shouldCrackFilled()
+    givenFl(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ ◄ ☼
+        ☼###☼
+        ☼☼☼☼☼)
+        givenPlayer([2,2])
+            dice(2, 2)
+        dice(0)
+    hero(0).act()
+    hero(0).left()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ Я ☼
+        ☼*##☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ Я ☼
+        ☼ ##☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ Я ☼
+        ☼ ##☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ Я ☼
+        ☼4##☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ Я ☼
+        ☼3##☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ Я ☼
+        ☼2##☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ Я ☼
+        ☼1##☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ Я ☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+
+after()

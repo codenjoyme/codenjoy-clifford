@@ -1,0 +1,67 @@
+
+before()
+
+shouldSameLevel_whenClearScoresOnGame_andSeveralLevelsInTheSettings()
+    dice(1)
+    givenFl(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼   ☼
+        ☼ ► ☼
+        ☼☼☼☼☼,
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼►$ ☼
+        ☼###☼
+        ☼☼☼☼☼,
+        ☼☼☼☼☼
+        ☼ $ ☼
+        ☼►  ☼
+        ☼# #☼
+        ☼☼☼☼☼)
+        givenPlayer([1,2])
+            dice(1, 2)
+        dice(0)
+    hero(0).right()
+    dice(1, 3)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼$  ☼
+        ☼ ► ☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+    events().verifyAllEvents([GET_CLUE_KNIFE(1)], [])
+    hero(0).scores() = 2
+    hero(0).act()
+    hero(0).left()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼$  ☼
+        ☼ Я ☼
+        ☼*##☼
+        ☼☼☼☼☼,
+        0)
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼$  ☼
+        ☼  ►☼
+        ☼ ##☼
+        ☼☼☼☼☼,
+        0)
+    dice(1, 2)
+    field().clearScore()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼►$ ☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+    hero(0).scores() = 0
+
+after()

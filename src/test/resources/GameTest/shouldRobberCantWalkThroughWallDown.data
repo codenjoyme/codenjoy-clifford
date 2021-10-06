@@ -1,0 +1,30 @@
+
+before()
+
+shouldRobberCantWalkThroughWallDown()
+    givenFl(
+        ☼☼☼☼►☼ « ☼
+        ☼ H ☼
+        ☼☼☼☼☼
+        ☼☼☼☼☼)
+        givenPlayer([4,4])
+            dice(4, 4)
+        dice(0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼   ☼
+        ☼ Q ☼
+        ☼☼☼☼☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼   ☼
+        ☼ Q ☼
+        ☼☼☼☼☼
+        ☼☼☼☼☼,
+        0)
+
+after()

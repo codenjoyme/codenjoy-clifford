@@ -31,52 +31,51 @@ import org.junit.Test;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.PointImpl.pt;
-import static org.junit.Assert.assertEquals;
 
-public class GameTest extends AbstractGameTest {
+public class GameTest extends AbstractGameCheckTest {
 
     // есть карта со мной
     @Test
     public void shouldFieldAtStart() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ◄ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ◄ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // я могу простреливать дырки
     @Test
     public void shouldCrackLeft() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ◄ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().act();
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼*##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼*##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼ ##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼ ##☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
@@ -90,115 +89,115 @@ public class GameTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼ ##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼ ##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼4##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼4##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼3##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼3##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼2##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼2##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼1##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼1##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldCrackRight() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ◄ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().act();
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ R ☼" +
-                "☼##*☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ R ☼\n" +
+                "☼##*☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ R ☼" +
-                "☼## ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ R ☼\n" +
+                "☼## ☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // я могу ходить влево и вправо
     @Test
     public void shouldMoveLeft() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ◄ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼◄  ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼◄  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldMoveRight() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ◄ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼  ►☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼  ►☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // если небыло команды я никуда не иду
@@ -208,11 +207,11 @@ public class GameTest extends AbstractGameTest {
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼  ►☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼  ►☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // я останавливаюсь возле границы
@@ -223,11 +222,11 @@ public class GameTest extends AbstractGameTest {
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼  ►☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼  ►☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
@@ -237,11 +236,11 @@ public class GameTest extends AbstractGameTest {
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼◄  ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼◄  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // яма заростает со временем
@@ -251,11 +250,11 @@ public class GameTest extends AbstractGameTest {
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼ ##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼ ##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
         tick();
@@ -264,43 +263,43 @@ public class GameTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼4##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼4##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼3##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼3##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼2##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼2##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼1##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼1##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // В простреливаю яму я легко могу упасть
@@ -308,56 +307,56 @@ public class GameTest extends AbstractGameTest {
     public void shouldFallInPitLeft() {
         shouldCrackLeft();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼ ##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼ ##☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼]  ☼" +
-                "☼ ##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼]  ☼\n" +
+                "☼ ##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼⍃##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼⍃##☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldFallInPitRight() {
         shouldCrackRight();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ R ☼" +
-                "☼## ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ R ☼\n" +
+                "☼## ☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼  [☼" +
-                "☼## ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼  [☼\n" +
+                "☼## ☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼##⍄☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼##⍄☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // я если упал то не могу передвигаться влево и вправо поскольку мне мешают стены
@@ -368,11 +367,11 @@ public class GameTest extends AbstractGameTest {
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼##⍃☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼##⍃☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
@@ -382,131 +381,131 @@ public class GameTest extends AbstractGameTest {
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼⍄##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼⍄##☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // я если упал, то могу перемещаться влево и вправо, если мне не мешают стены
     @Test
     public void shouldСanGoInPitIfNoWall() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ◄ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼*##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼*##☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼  ►☼" +
-                "☼ ##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼  ►☼\n" +
+                "☼ ##☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼  Я☼" +
-                "☼ *#☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼  Я☼\n" +
+                "☼ *#☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ] ☼" +
-                "☼  #☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ] ☼\n" +
+                "☼  #☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();  // при падении я не могу передвигаться
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼ ⍃#☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼ ⍃#☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left(); // а вот в яме куда угодно, пока есть место
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼⍃ #☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼⍃ #☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right(); // пока стенки не заростут
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼ ⍄#☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼ ⍄#☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         tick();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼4⍄#☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼4⍄#☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼⍃ #☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼⍃ #☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼2⍄#☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼2⍄#☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼⍃3#☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼⍃3#☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼#⍄#☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼#⍄#☼\n" +
+                "☼☼☼☼☼\n");
 
     }
 
@@ -525,40 +524,40 @@ public class GameTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼2##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼2##☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼]  ☼" +
-                "☼1##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼]  ☼\n" +
+                "☼1##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼Ѡ##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼Ѡ##☼\n" +
+                "☼☼☼☼☼\n");
 
-        events.verifyAllEvents("[HERO_DIE, SUICIDE]");
+        events().verifyAllEvents("[HERO_DIE, SUICIDE]");
 
         dice(2, 3);
         tick();         // ну а после смерти он появляется в рендомном месте
-        field.newGame(player());
+        field().newGame(player());
 
-        assertE("☼☼☼☼☼" +
-                "☼ [ ☼" +
-                "☼   ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼ [ ☼\n" +
+                "☼   ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
@@ -574,48 +573,48 @@ public class GameTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼3##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼3##☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼]  ☼" +
-                "☼2##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼]  ☼\n" +
+                "☼2##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼⍃##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼⍃##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼Ѡ##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼Ѡ##☼\n" +
+                "☼☼☼☼☼\n");
 
-        events.verifyAllEvents("[HERO_DIE, SUICIDE]");
+        events().verifyAllEvents("[HERO_DIE, SUICIDE]");
 
         dice(2, 3);
         tick();         // ну а после смерти он появляется в рендомном месте
-        field.newGame(player());
+        field().newGame(player());
 
-        assertE("☼☼☼☼☼" +
-                "☼ [ ☼" +
-                "☼   ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼ [ ☼\n" +
+                "☼   ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
     }
 
@@ -629,31 +628,31 @@ public class GameTest extends AbstractGameTest {
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ◄ ☼" +
-                "☼ ##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼ ##☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ◄ ☼" +
-                "☼ ##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼ ##☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // выполнения команд left + act не зависят от порядка - если они сделаны в одном тике, то будет дырка слева без перемещения
     @Test
     public void shouldCrackLeft_otherCommandSequence() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ◄ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
 //        hero().act();
         hero().left();
@@ -661,188 +660,188 @@ public class GameTest extends AbstractGameTest {
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼*##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼*##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼ ##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼ ##☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // если я повернут в какую-то сторону и просто нажимаю прострелить то будет с той стороны дырка
     @Test
     public void shouldCrackLeft_onyActCommand() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ◄ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼*##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼*##☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Я ☼" +
-                "☼ ##☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Я ☼\n" +
+                "☼ ##☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldCrackRight_onyActCommand() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ► ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ► ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ R ☼" +
-                "☼##*☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ R ☼\n" +
+                "☼##*☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ R ☼" +
-                "☼## ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ R ☼\n" +
+                "☼## ☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // на карте появляется улика, если я его беру то получаю +
     @Test
     public void shouldClueOnMap_iCanGetIt() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ►$☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ►$☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         dice(2, 3);
         hero().right();
         tick();
-        events.verifyAllEvents("[GET_CLUE_KNIFE(1)]");
+        events().verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
-        assertE("☼☼☼☼☼" +
-                "☼ $ ☼" +
-                "☼  ►☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼ $ ☼\n" +
+                "☼  ►☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼ $ ☼" +
-                "☼ ◄ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼ $ ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // проверить, что если новому обекту не где появится то программа не зависает - там бесконечный цикл потенциальный есть
     @Test(timeout = 1000)
     public void shouldNoDeadLoopWhenNewObjectCreation() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ►$☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ►$☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         dice(3, 3);
         hero().right();
         tick();
-        events.verifyAllEvents("[GET_CLUE_KNIFE(1)]");
+        events().verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
-        assertE("☼☼☼☼☼" +
-                "☼  $☼" +
-                "☼  ►☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  $☼\n" +
+                "☼  ►☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // на карте появляются лестницы, я могу зайти на нее и выйти обратно
     @Test
     public void shouldICanGoOnLadder() {
-        givenFl("☼☼☼☼☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼ ►H☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼ ►H☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼  Y☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼  Y☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼ ◄H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼ ◄H☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // я могу карабкаться по лестнице вверх
     @Test
     public void shouldICanGoOnLadderUp() {
-        givenFl("☼☼☼☼☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼ ►H☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼ ►H☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼  Y☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼  Y☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().up();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  H☼" +
-                "☼  Y☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  H☼\n" +
+                "☼  Y☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().up();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  Y☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  Y☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // я не могу вылезти с лестницей за границы
@@ -850,29 +849,29 @@ public class GameTest extends AbstractGameTest {
     public void shouldICantGoOnBarrierFromLadder() {
         shouldICanGoOnLadderUp();
 
-        assertE("☼☼☼☼☼" +
-                "☼  Y☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  Y☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().up();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  Y☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  Y☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  Y☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  Y☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // я могу спустится вниз, но не дальше границы экрана
@@ -880,38 +879,38 @@ public class GameTest extends AbstractGameTest {
     public void shouldICanGoOnLadderDown() {
         shouldICanGoOnLadderUp();
 
-        assertE("☼☼☼☼☼" +
-                "☼  Y☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  Y☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().down();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  H☼" +
-                "☼  Y☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  H☼\n" +
+                "☼  Y☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().down();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼  Y☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼  Y☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().down();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼  Y☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼  Y☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // я мошгу в любой момент спрыгнуть с лестницы и я буду падать до тех пор пока не наткнусь на препятствие
@@ -919,267 +918,267 @@ public class GameTest extends AbstractGameTest {
     public void shouldICanFly() {
         shouldICanGoOnLadderUp();
 
-        assertE("☼☼☼☼☼" +
-                "☼  Y☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  Y☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼ ]H☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼ ]H☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  H☼" +
-                "☼ ]H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  H☼\n" +
+                "☼ ]H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼ ◄H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼ ◄H☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // под стеной я не могу прострелить
     @Test
     public void shouldICantCrackUnderLadder() {
-        givenFl("☼☼☼☼☼" +
-                "☼  H☼" +
-                "☼ ►H☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼  H☼\n" +
+                "☼ ►H☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  H☼" +
-                "☼ ►H☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  H☼\n" +
+                "☼ ►H☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // под уликой я не могу прострелить
     @Test
     public void shouldICantCrackUnderClue() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ►$☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ►$☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ►$☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ►$☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // я могу поднятся по лестнице и зайти на площадку
     @Test
     public void shouldICanGoFromLadderToArea() {
-        givenFl("☼☼☼☼☼" +
-                "☼H  ☼" +
-                "☼H# ☼" +
-                "☼H◄ ☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼H  ☼\n" +
+                "☼H# ☼\n" +
+                "☼H◄ ☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼H  ☼" +
-                "☼H# ☼" +
-                "☼Y  ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼H  ☼\n" +
+                "☼H# ☼\n" +
+                "☼Y  ☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().up();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼H  ☼" +
-                "☼Y# ☼" +
-                "☼H  ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼H  ☼\n" +
+                "☼Y# ☼\n" +
+                "☼H  ☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().up();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼Y  ☼" +
-                "☼H# ☼" +
-                "☼H  ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼Y  ☼\n" +
+                "☼H# ☼\n" +
+                "☼H  ☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼H► ☼" +
-                "☼H# ☼" +
-                "☼H  ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼H► ☼\n" +
+                "☼H# ☼\n" +
+                "☼H  ☼\n" +
+                "☼☼☼☼☼\n");
 
         // и упасть
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼H [☼" +
-                "☼H# ☼" +
-                "☼H  ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼H [☼\n" +
+                "☼H# ☼\n" +
+                "☼H  ☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼H  ☼" +
-                "☼H#[☼" +
-                "☼H  ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼H  ☼\n" +
+                "☼H#[☼\n" +
+                "☼H  ☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼H  ☼" +
-                "☼H# ☼" +
-                "☼H ►☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼H  ☼\n" +
+                "☼H# ☼\n" +
+                "☼H ►☼\n" +
+                "☼☼☼☼☼\n");
 
     }
 
     // я не могу прострелить бетон
     @Test
     public void shouldICantCrackWall() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ► ☼" +
-                "☼☼☼☼☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ► ☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ► ☼" +
-                "☼☼☼☼☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ► ☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // пока я падаю я не могу двигаться влево и справо, даже если там есть площадки
     @Test
     public void shouldICantMoveWhenFall() {
-        givenFl("☼☼☼☼☼☼☼" +
-                "☼  ►  ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼## ##☼" +
-                "☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼  ►  ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼## ##☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼  ]  ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼## ##☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼  ]  ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼## ##☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼  [  ☼" +
-                "☼     ☼" +
-                "☼## ##☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼  [  ☼\n" +
+                "☼     ☼\n" +
+                "☼## ##☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼  ]  ☼" +
-                "☼## ##☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼  ]  ☼\n" +
+                "☼## ##☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼##◄##☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼##◄##☼\n" +
+                "☼☼☼☼☼☼☼\n");
     }
 
     // появляются на карте трубы, если я с площадки захожу на трубу то я ползу по ней
     @Test
     public void shouldIPipe() {
-        givenFl("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼►~~~ ☼" +
-                "☼#    ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼►~~~ ☼\n" +
+                "☼#    ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼ }~~ ☼" +
-                "☼#    ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼ }~~ ☼\n" +
+                "☼#    ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼ ~}~ ☼" +
-                "☼#    ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼ ~}~ ☼\n" +
+                "☼#    ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼ ~~} ☼" +
-                "☼#    ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~} ☼\n" +
+                "☼#    ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
     }
 
     // с трубы я могу спрыгунть и тогда я буду падать до препятствия
@@ -1187,278 +1186,278 @@ public class GameTest extends AbstractGameTest {
     public void shouldIFallFromPipe() {
         shouldIPipe();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼ ~~} ☼" +
-                "☼#    ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~} ☼\n" +
+                "☼#    ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼ ~~~[☼" +
-                "☼#    ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~[☼\n" +
+                "☼#    ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼#   [☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼#   [☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼#    ☼" +
-                "☼    [☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼#    ☼\n" +
+                "☼    [☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼#    ☼" +
-                "☼     ☼" +
-                "☼    ►☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼#    ☼\n" +
+                "☼     ☼\n" +
+                "☼    ►☼\n" +
+                "☼☼☼☼☼☼☼\n");
     }
 
     // если по дороге я встречаюсь с уликой, то я его захвачу
     @Test
     public void shouldIGetClueWhenFallenFromPipe() {
-        givenFl("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼ $~~◄☼" +
-                "☼ $  #☼" +
-                "☼ $   ☼" +
-                "☼ $   ☼" +
-                "☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼ $~~◄☼\n" +
+                "☼ $  #☼\n" +
+                "☼ $   ☼\n" +
+                "☼ $   ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼ $~{ ☼" +
-                "☼ $  #☼" +
-                "☼ $   ☼" +
-                "☼ $   ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼ $~{ ☼\n" +
+                "☼ $  #☼\n" +
+                "☼ $   ☼\n" +
+                "☼ $   ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼ ${~ ☼" +
-                "☼ $  #☼" +
-                "☼ $   ☼" +
-                "☼ $   ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼ ${~ ☼\n" +
+                "☼ $  #☼\n" +
+                "☼ $   ☼\n" +
+                "☼ $   ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         dice(1, 5);
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼$    ☼" +
-                "☼ ]~~ ☼" +
-                "☼ $  #☼" +
-                "☼ $   ☼" +
-                "☼ $   ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼$    ☼\n" +
+                "☼ ]~~ ☼\n" +
+                "☼ $  #☼\n" +
+                "☼ $   ☼\n" +
+                "☼ $   ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE(1)]");
+        events().verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         dice(2, 5);
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼$$   ☼" +
-                "☼  ~~ ☼" +
-                "☼ ]  #☼" +
-                "☼ $   ☼" +
-                "☼ $   ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼$$   ☼\n" +
+                "☼  ~~ ☼\n" +
+                "☼ ]  #☼\n" +
+                "☼ $   ☼\n" +
+                "☼ $   ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE(2)]");
+        events().verifyAllEvents("[GET_CLUE_KNIFE(2)]");
 
         dice(3, 5);
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼$$$  ☼" +
-                "☼  ~~ ☼" +
-                "☼    #☼" +
-                "☼ ]   ☼" +
-                "☼ $   ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼$$$  ☼\n" +
+                "☼  ~~ ☼\n" +
+                "☼    #☼\n" +
+                "☼ ]   ☼\n" +
+                "☼ $   ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE(3)]");
+        events().verifyAllEvents("[GET_CLUE_KNIFE(3)]");
 
         dice(4, 5);
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼$$$$ ☼" +
-                "☼  ~~ ☼" +
-                "☼    #☼" +
-                "☼     ☼" +
-                "☼ ◄   ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼$$$$ ☼\n" +
+                "☼  ~~ ☼\n" +
+                "☼    #☼\n" +
+                "☼     ☼\n" +
+                "☼ ◄   ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE(4)]");
+        events().verifyAllEvents("[GET_CLUE_KNIFE(4)]");
     }
 
     // если я прострелил дырку и падаю в нее, а под ней ничего нет - то я падаю пока не найду препятствие
     @Test
     public void shouldIFallWhenUnderPitIsFree() {
-        givenFl("☼☼☼☼☼☼☼" +
-                "☼  ◄  ☼" +
-                "☼#####☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼  ◄  ☼\n" +
+                "☼#####☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼  Я  ☼" +
-                "☼#*###☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼  Я  ☼\n" +
+                "☼#*###☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼ ]   ☼" +
-                "☼# ###☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼ ]   ☼\n" +
+                "☼# ###☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼#]###☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼#]###☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼# ###☼" +
-                "☼ ]   ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼# ###☼\n" +
+                "☼ ]   ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼# ###☼" +
-                "☼     ☼" +
-                "☼ ]   ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼# ###☼\n" +
+                "☼     ☼\n" +
+                "☼ ]   ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼# ###☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ ◄   ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼# ###☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ ◄   ☼\n" +
+                "☼☼☼☼☼☼☼\n");
     }
 
     // если в процессе падения я вдург наткнулся на трубу то я повисаю на ней
     @Test
     public void shouldIPipeWhenFall() {
-        givenFl("☼☼☼☼☼☼☼" +
-                "☼  ◄  ☼" +
-                "☼# ###☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼  ◄  ☼\n" +
+                "☼# ###☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼ ]   ☼" +
-                "☼# ###☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼ ]   ☼\n" +
+                "☼# ###☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼#]###☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼#]###☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼# ###☼" +
-                "☼ ]   ☼" +
-                "☼ ~~~ ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼# ###☼\n" +
+                "☼ ]   ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼# ###☼" +
-                "☼     ☼" +
-                "☼ {~~ ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼# ###☼\n" +
+                "☼     ☼\n" +
+                "☼ {~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼# ###☼" +
-                "☼     ☼" +
-                "☼ {~~ ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼# ###☼\n" +
+                "☼     ☼\n" +
+                "☼ {~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
     }
 
     // TODO я могу прострелить дырку под лестницей, а потом спуститься туда
@@ -1466,257 +1465,257 @@ public class GameTest extends AbstractGameTest {
     // я не могу прострелить дырку под другим камнем
     @Test
     public void shouldICantCrackUnderBrick() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ►#☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ►#☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ►#☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ►#☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // я могу спрыгнуть с трубы
     @Test
     public void shouldCanJumpFromPipe() {
-        givenFl("☼☼☼☼☼☼☼" +
-                "☼  ◄  ☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼  ◄  ☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼  ]  ☼" +
-                "☼ ~~~ ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼  ]  ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ ~{~ ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ ~{~ ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().down();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼  ]  ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼  ]  ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼     ☼" +
-                "☼  ◄  ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼  ◄  ☼\n" +
+                "☼☼☼☼☼☼☼\n");
     }
 
     // бага: мне нельзя спускаться с лестницы в бетон, так же как и подниматься
     // плюс я должен иметь возможность спустится по лестнице
     @Test
     public void shouldCantWalkThroughWallDown() {
-        givenFl("☼☼☼☼☼" +
-                "☼ ◄ ☼" +
-                "☼ H ☼" +
-                "☼☼☼☼☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().down();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Y ☼" +
-                "☼☼☼☼☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Y ☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().down();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Y ☼" +
-                "☼☼☼☼☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Y ☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldCantWalkThroughWallUp() {
-        givenFl("☼☼☼☼☼" +
-                "☼☼☼☼☼" +
-                "☼ H ☼" +
-                "☼ H◄☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼ H ☼\n" +
+                "☼ H◄☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼☼☼☼☼" +
-                "☼ H ☼" +
-                "☼ Y ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼ H ☼\n" +
+                "☼ Y ☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().up();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼☼☼☼☼" +
-                "☼ Y ☼" +
-                "☼ H ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼ Y ☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().up();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼☼☼☼☼" +
-                "☼ Y ☼" +
-                "☼ H ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼ Y ☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // бага: мне нельзя проходить с лестницы через бетон направо или налево
     @Test
     public void shouldCantWalkThroughWallLeftRight() {
-        givenFl("☼☼☼☼☼" +
-                "☼☼☼☼☼" +
-                "☼☼H☼☼" +
-                "☼ H◄☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼☼H☼☼\n" +
+                "☼ H◄☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼☼☼☼☼" +
-                "☼☼H☼☼" +
-                "☼ Y ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼☼H☼☼\n" +
+                "☼ Y ☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().up();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼☼☼☼☼" +
-                "☼☼Y☼☼" +
-                "☼ H ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼☼Y☼☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼☼☼☼☼" +
-                "☼☼Y☼☼" +
-                "☼ H ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼☼Y☼☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼☼☼☼☼" +
-                "☼☼Y☼☼" +
-                "☼ H ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼☼Y☼☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // бага: мне нельзя проходить через бетон
     @Test
     public void shouldCantWalkThroughWallLeftRight2() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼☼◄☼☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼☼◄☼☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼☼◄☼☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼☼◄☼☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼☼►☼☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼☼►☼☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // бага: мне нельзя спрыгивать с трубы что сразу над бетоном, протелая сквозь него
     @Test
     public void shouldCantJumpThroughWall() {
-        givenFl("☼☼☼☼☼☼" +
-                "☼  ◄ ☼" +
-                "☼  ~ ☼" +
-                "☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼\n" +
+                "☼  ◄ ☼\n" +
+                "☼  ~ ☼\n" +
+                "☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼  { ☼" +
-                "☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼  { ☼\n" +
+                "☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         hero().down();
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼  { ☼" +
-                "☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼  { ☼\n" +
+                "☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldBoardIsFree() {
-        givenFl("☼☼☼☼☼☼" +
-                "☼~◄$H☼" +
-                "☼####☼" +
-                "☼☼☼☼☼☼" +
-                "☼☼☼☼☼☼" +
-                "☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼\n" +
+                "☼~◄$H☼\n" +
+                "☼####☼\n" +
+                "☼☼☼☼☼☼\n" +
+                "☼☼☼☼☼☼\n" +
+                "☼☼☼☼☼☼\n");
 
-        for (int x = 0; x < field.size(); x++) {
-            for (int y = 0; y < field.size(); y++) {
+        for (int x = 0; x < field().size(); x++) {
+            for (int y = 0; y < field().size(); y++) {
                 Point pt = pt(x, y);
-                assertEquals("At:" + pt, false, field.isFree(pt));
+                assertEquals("At:" + pt, false, field().isFree(pt));
             }
 
         }
@@ -1726,61 +1725,61 @@ public class GameTest extends AbstractGameTest {
     // но она многоптточная
     @Test
     public void shouldCrackDown() {
-        givenFl("☼☼☼☼☼☼" +
-                "☼  ◄ ☼" +
-                "☼  ~ ☼" +
-                "☼    ☼" +
-                "☼####☼" +
-                "☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼\n" +
+                "☼  ◄ ☼\n" +
+                "☼  ~ ☼\n" +
+                "☼    ☼\n" +
+                "☼####☼\n" +
+                "☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼  { ☼" +
-                "☼    ☼" +
-                "☼####☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼  { ☼\n" +
+                "☼    ☼\n" +
+                "☼####☼\n" +
+                "☼☼☼☼☼☼\n");
 
         hero().down();
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼  { ☼" +
-                "☼    ☼" +
-                "☼####☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼  { ☼\n" +
+                "☼    ☼\n" +
+                "☼####☼\n" +
+                "☼☼☼☼☼☼\n");
 
         hero().down();
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼  ~ ☼" +
-                "☼  ◄ ☼" +
-                "☼####☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼  ~ ☼\n" +
+                "☼  ◄ ☼\n" +
+                "☼####☼\n" +
+                "☼☼☼☼☼☼\n");
 
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼  ~ ☼" +
-                "☼  Я ☼" +
-                "☼#*##☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼  ~ ☼\n" +
+                "☼  Я ☼\n" +
+                "☼#*##☼\n" +
+                "☼☼☼☼☼☼\n");
     }
 
     // если я сам себя закопаю, то получу ли я за это очки? не должен!
     @Test
     public void shouldNoScoreWhenKamikadze() {
-        givenFl("☼☼☼☼" +
-                "☼ ◄☼" +
-                "☼##☼" +
-                "☼☼☼☼");
+        givenFl("☼☼☼☼\n" +
+                "☼ ◄☼\n" +
+                "☼##☼\n" +
+                "☼☼☼☼\n");
 
         hero().act();
         tick();
@@ -1788,39 +1787,39 @@ public class GameTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertE("☼☼☼☼" +
-                "☼  ☼" +
-                "☼⍃#☼" +
-                "☼☼☼☼");
+        assertF("☼☼☼☼\n" +
+                "☼  ☼\n" +
+                "☼⍃#☼\n" +
+                "☼☼☼☼\n");
 
         for (int c = 3; c < Brick.CRACK_TIMER; c++) {
             tick();
         }
 
-        assertE("☼☼☼☼" +
-                "☼  ☼" +
-                "☼Ѡ#☼" +
-                "☼☼☼☼");
+        assertF("☼☼☼☼\n" +
+                "☼  ☼\n" +
+                "☼Ѡ#☼\n" +
+                "☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼" +
-                "☼  ☼" +
-                "☼Ѡ#☼" +
-                "☼☼☼☼");
+        assertF("☼☼☼☼\n" +
+                "☼  ☼\n" +
+                "☼Ѡ#☼\n" +
+                "☼☼☼☼\n");
 
-        events.verifyAllEvents("[HERO_DIE, SUICIDE]");
+        events().verifyAllEvents("[HERO_DIE, SUICIDE]");
     }
 
     // я могу прострелить стенки под стенками, если те разрушены
     @Test
     public void shouldCrackUnderCrackedBrick() {
-        givenFl("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼ ◄  ☼" +
-                "☼####☼" +
-                "☼####☼" +
-                "☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼ ◄  ☼\n" +
+                "☼####☼\n" +
+                "☼####☼\n" +
+                "☼☼☼☼☼☼\n");
 
         hero().act();
         tick();
@@ -1839,12 +1838,12 @@ public class GameTest extends AbstractGameTest {
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼   Я☼" +
-                "☼  *#☼" +
-                "☼####☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼   Я☼\n" +
+                "☼  *#☼\n" +
+                "☼####☼\n" +
+                "☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
@@ -1853,12 +1852,12 @@ public class GameTest extends AbstractGameTest {
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼    ☼" +
-                "☼ ⍃ #☼" +
-                "☼####☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼    ☼\n" +
+                "☼ ⍃ #☼\n" +
+                "☼####☼\n" +
+                "☼☼☼☼☼☼\n");
 
         hero().right();
         hero().act();
@@ -1870,43 +1869,43 @@ public class GameTest extends AbstractGameTest {
 
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼    ☼" +
-                "☼2Я #☼" +
-                "☼ # #☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼    ☼\n" +
+                "☼2Я #☼\n" +
+                "☼ # #☼\n" +
+                "☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼    ☼" +
-                "☼]3 #☼" +
-                "☼ # #☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼    ☼\n" +
+                "☼]3 #☼\n" +
+                "☼ # #☼\n" +
+                "☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼    ☼" +
-                "☼#24#☼" +
-                "☼⍃# #☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼    ☼\n" +
+                "☼#24#☼\n" +
+                "☼⍃# #☼\n" +
+                "☼☼☼☼☼☼\n");
     }
 
     // если я спрыгива с последней секции лестницы, то как-то неудачно этто делаю. Бага!
     @Test
     public void shouldJumpFromLadderDown() {
-        givenFl("☼☼☼☼☼☼" +
-                "☼ ◄  ☼" +
-                "☼ H##☼" +
-                "☼#H  ☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼\n" +
+                "☼ ◄  ☼\n" +
+                "☼ H##☼\n" +
+                "☼#H  ☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         hero().down();
         tick();
@@ -1914,151 +1913,151 @@ public class GameTest extends AbstractGameTest {
         hero().down();
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼ H##☼" +
-                "☼#Y  ☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼ H##☼\n" +
+                "☼#Y  ☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼ H##☼" +
-                "☼#Y  ☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼ H##☼\n" +
+                "☼#Y  ☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼ H##☼" +
-                "☼#H[ ☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼ H##☼\n" +
+                "☼#H[ ☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼ H##☼" +
-                "☼#H  ☼" +
-                "☼  ► ☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼ H##☼\n" +
+                "☼#H  ☼\n" +
+                "☼  ► ☼\n" +
+                "☼☼☼☼☼☼\n");
     }
 
     // чертик двигается так же как и обычный игрок - мжет ходить влево и вправо
     @Test
     public void shouldRobberMoveLeft() {
         givenFl("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼ « ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+                "☼   ☼\n" +
+                "☼ « ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼«  ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼   ☼\n" +
+                "☼«  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldRobberMoveRight() {
         givenFl("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼ « ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+                "☼   ☼\n" +
+                "☼ « ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼  »☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼   ☼\n" +
+                "☼  »☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // если небыло команды чертик никуда не идет
     @Test
     public void shouldRobberStopWhenNoMoreRightCommand() {
         givenFl("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼  «☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+                "☼   ☼\n" +
+                "☼  «☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼ « ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼   ☼\n" +
+                "☼ « ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼ « ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼   ☼\n" +
+                "☼ « ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // Чертик останавливается возле границы
     @Test
     public void shouldRobberStopWhenWallRight() {
         givenFl("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼  »☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+                "☼   ☼\n" +
+                "☼  »☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼  »☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼   ☼\n" +
+                "☼  »☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldRobberStopWhenWallLeft() {
         givenFl("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼«  ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+                "☼   ☼\n" +
+                "☼«  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼«  ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼   ☼\n" +
+                "☼«  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // В простреленную яму чертик легко может упасть
     @Test
     public void shouldRobberFallInPitLeft() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼« ◄☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼« ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().act();
         tick();
@@ -2066,55 +2065,55 @@ public class GameTest extends AbstractGameTest {
         robber().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ›Я☼" +
-                "☼# #☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ›Я☼\n" +
+                "☼# #☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼  Я☼" +
-                "☼#⍈#☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼  Я☼\n" +
+                "☼#⍈#☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldRobberFallInPitRight() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼◄ «☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼◄ «☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼R «☼" +
-                "☼#*#☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼R «☼\n" +
+                "☼#*#☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼R‹ ☼" +
-                "☼# #☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼R‹ ☼\n" +
+                "☼# #☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼R  ☼" +
-                "☼#⍇#☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼R  ☼\n" +
+                "☼#⍇#☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // при падении чертик не может передвигаться влево и вправо - ему мешают стены
@@ -2125,11 +2124,11 @@ public class GameTest extends AbstractGameTest {
         robber().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼R  ☼" +
-                "☼#⍇#☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼R  ☼\n" +
+                "☼#⍇#☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
@@ -2139,11 +2138,11 @@ public class GameTest extends AbstractGameTest {
         robber().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼  Я☼" +
-                "☼#⍈#☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼  Я☼\n" +
+                "☼#⍈#☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // монстр сидит в ямке некоторое количество тиков, потом он вылазит
@@ -2162,221 +2161,221 @@ public class GameTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼  Я☼" +
-                "☼#⍈#☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼  Я☼\n" +
+                "☼#⍈#☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ »Я☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ »Я☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().left(); // после этого он может двигаться
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼« Я☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼« Я☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // если чертик попадает на героя - тот погибает
     @Test
     public void shouldHeroDieWhenMeetWithRobber() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼◄ «☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼◄ «☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         robber().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Ѡ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Ѡ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
-        events.verifyAllEvents("[HERO_DIE]");
+        events().verifyAllEvents("[HERO_DIE]");
 
         dice(1, 3);
         tick();         // ну а после смерти он появляется в рендомном месте причем чертик остается на своем месте
-        field.newGame(player());
+        field().newGame(player());
 
-        assertE("☼☼☼☼☼" +
-                "☼[  ☼" +
-                "☼ « ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼[  ☼\n" +
+                "☼ « ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // другой кейс, когда оба двигаются на встречу друг к другу
     @Test
     public void shouldHeroDieWhenMeetWithRobber2() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼◄« ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼◄« ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         robber().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼«Ѡ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼«Ѡ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
-        events.verifyAllEvents("[HERO_DIE]");
+        events().verifyAllEvents("[HERO_DIE]");
 
         dice(0,  // охотимся за первым игроком
             3, 3);
         tick();         // ну а после смерти он появляется в рендомном месте причем чертик остается на своем месте
-        field.newGame(player());
+        field().newGame(player());
 
-        assertE("☼☼☼☼☼" +
-                "☼  [☼" +
-                "☼«  ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  [☼\n" +
+                "☼«  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // другой кейс, когда игрок идет на чертика
     @Test
     public void shouldHeroDieWhenMeetWithRobber_whenHeroWalk() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼◄« ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼◄« ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Ѡ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Ѡ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
-        events.verifyAllEvents("[HERO_DIE]");
+        events().verifyAllEvents("[HERO_DIE]");
 
         dice(3, 3);
         tick();         // ну а после смерти он появляется в рендомном месте причем чертик остается на своем месте
-        field.newGame(player());
+        field().newGame(player());
 
-        assertE("☼☼☼☼☼" +
-                "☼  [☼" +
-                "☼ « ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  [☼\n" +
+                "☼ « ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // другой кейс, когда чертик идет на игрока
     @Test
     public void shouldHeroDieWhenMeetWithRobber_whenRobberWalk() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼◄« ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼◄« ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼Ѡ  ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼Ѡ  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
-        events.verifyAllEvents("[HERO_DIE]");
+        events().verifyAllEvents("[HERO_DIE]");
 
         dice(0,  // охотимся за первым игроком
             3, 3);
         tick();         // ну а после смерти он появляется в рендомном месте причем чертик остается на своем месте
-        field.newGame(player());
+        field().newGame(player());
 
-        assertE("☼☼☼☼☼" +
-                "☼  [☼" +
-                "☼«  ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  [☼\n" +
+                "☼«  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // Чертик может зайти на лестницу и выйти обратно
     @Test
     public void shouldRobberCanGoOnLadder() {
         givenFl("☼☼☼☼►" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼ «H☼" +
-                "☼☼☼☼☼");
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼ «H☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼  Q☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼  Q☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼ «H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼ «H☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // Чертик может карабкаться по лестнице вверх
     @Test
     public void shouldRobberCanGoOnLadderUp() {
         givenFl("☼☼☼☼►" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼ «H☼" +
-                "☼☼☼☼☼");
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼ «H☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼  Q☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼  Q☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().up();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼  H☼" +
-                "☼  Q☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  H☼\n" +
+                "☼  Q☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().up();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼  Q☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  Q☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // Чертик не может вылезти с лестницей за границы
@@ -2384,29 +2383,29 @@ public class GameTest extends AbstractGameTest {
     public void shouldRobberCantGoOnBarrierFromLadder() {
         shouldRobberCanGoOnLadderUp();
 
-        assertE("☼☼☼☼►" +
-                "☼  Q☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  Q☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().up();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼  Q☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  Q☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼  Q☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  Q☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // Чертик может спустится вниз, но не дальше границы экрана
@@ -2414,38 +2413,38 @@ public class GameTest extends AbstractGameTest {
     public void shouldRobberCanGoOnLadderDown() {
         shouldRobberCanGoOnLadderUp();
 
-        assertE("☼☼☼☼►" +
-                "☼  Q☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  Q☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().down();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼  H☼" +
-                "☼  Q☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  H☼\n" +
+                "☼  Q☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().down();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼  Q☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼  Q☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().down();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼  Q☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼  Q☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // Чертик может в любой момент спрыгнуть с лестницы и будет падать до тех пор пока не наткнется на препятствие
@@ -2453,209 +2452,209 @@ public class GameTest extends AbstractGameTest {
     public void shouldRobberCanFly() {
         shouldRobberCanGoOnLadderUp();
 
-        assertE("☼☼☼☼►" +
-                "☼  Q☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  Q☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼ ‹H☼" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼ ‹H☼\n" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼  H☼" +
-                "☼ ‹H☼" +
-                "☼  H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  H☼\n" +
+                "☼ ‹H☼\n" +
+                "☼  H☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼  H☼" +
-                "☼  H☼" +
-                "☼ «H☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼  H☼\n" +
+                "☼  H☼\n" +
+                "☼ «H☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // Чертик может поднятся по лестнице и зайти на площадку
     @Test
     public void shouldRobberCanGoFromLadderToArea() {
         givenFl("☼☼☼☼►" +
-                "☼H  ☼" +
-                "☼H# ☼" +
-                "☼H« ☼" +
-                "☼☼☼☼☼");
+                "☼H  ☼\n" +
+                "☼H# ☼\n" +
+                "☼H« ☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼H  ☼" +
-                "☼H# ☼" +
-                "☼Q  ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼H  ☼\n" +
+                "☼H# ☼\n" +
+                "☼Q  ☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().up();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼H  ☼" +
-                "☼Q# ☼" +
-                "☼H  ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼H  ☼\n" +
+                "☼Q# ☼\n" +
+                "☼H  ☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().up();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼Q  ☼" +
-                "☼H# ☼" +
-                "☼H  ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼Q  ☼\n" +
+                "☼H# ☼\n" +
+                "☼H  ☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼H» ☼" +
-                "☼H# ☼" +
-                "☼H  ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼H» ☼\n" +
+                "☼H# ☼\n" +
+                "☼H  ☼\n" +
+                "☼☼☼☼☼\n");
 
         // и упасть
         robber().right();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼H ›☼" +
-                "☼H# ☼" +
-                "☼H  ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼H ›☼\n" +
+                "☼H# ☼\n" +
+                "☼H  ☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼H  ☼" +
-                "☼H#›☼" +
-                "☼H  ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼H  ☼\n" +
+                "☼H#›☼\n" +
+                "☼H  ☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼H  ☼" +
-                "☼H# ☼" +
-                "☼H »☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼H  ☼\n" +
+                "☼H# ☼\n" +
+                "☼H »☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // пока чертик падает он не может двигаться влево и справо, даже если там есть площадки
     @Test
     public void shouldRobberCantMoveWhenFall() {
         givenFl("☼☼☼☼☼☼►" +
-                "☼  »  ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼## ##☼" +
-                "☼☼☼☼☼☼☼");
+                "☼  »  ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼## ##☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼  ›  ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼## ##☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼  ›  ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼## ##☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼  ›  ☼" +
-                "☼     ☼" +
-                "☼## ##☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼  ›  ☼\n" +
+                "☼     ☼\n" +
+                "☼## ##☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼  ›  ☼" +
-                "☼## ##☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼  ›  ☼\n" +
+                "☼## ##☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼##»##☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼##»##☼\n" +
+                "☼☼☼☼☼☼☼\n");
     }
 
     // если чертик с площадки заходит на трубу то он ползет по ней
     @Test
     public void shouldRobberPipe() {
         givenFl("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼»~~~ ☼" +
-                "☼#    ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+                "☼     ☼\n" +
+                "☼»~~~ ☼\n" +
+                "☼#    ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼ >~~ ☼" +
-                "☼#    ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼ >~~ ☼\n" +
+                "☼#    ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼ ~>~ ☼" +
-                "☼#    ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼ ~>~ ☼\n" +
+                "☼#    ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼ ~~> ☼" +
-                "☼#    ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼ ~~> ☼\n" +
+                "☼#    ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
     }
 
     // с трубы чертик может спрыгунть и тогда он будет падать до препятствия
@@ -2663,136 +2662,136 @@ public class GameTest extends AbstractGameTest {
     public void shouldRobberFallFromPipe() {
         shouldRobberPipe();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼ ~~> ☼" +
-                "☼#    ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼ ~~> ☼\n" +
+                "☼#    ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼ ~~~›☼" +
-                "☼#    ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼ ~~~›☼\n" +
+                "☼#    ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼#   ›☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼#   ›☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼#    ☼" +
-                "☼    ›☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼#    ☼\n" +
+                "☼    ›☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼#    ☼" +
-                "☼     ☼" +
-                "☼    »☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼#    ☼\n" +
+                "☼     ☼\n" +
+                "☼    »☼\n" +
+                "☼☼☼☼☼☼☼\n");
     }
 
     // чертик может похитить 1 улику в падении
     @Test
     public void shouldRobberGetClueWhenFallenFromPipe() {
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼  $~~«☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $  ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼  $~~«☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $  ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼  $~< ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $  ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼  $~< ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $  ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼  $<~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $  ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼  $<~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $  ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼  ‹~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $  ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼  ‹~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $  ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();      // чертик не берет больше 1 улики
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼   ~~ ☼" +
-                "☼  ‹  #☼" +
-                "☼  $   ☼" +
-                "☼  $  ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  ‹  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $  ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  ‹   ☼" +
-                "☼  $  ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  ‹   ☼\n" +
+                "☼  $  ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  «  ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  «  ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
@@ -2803,38 +2802,38 @@ public class GameTest extends AbstractGameTest {
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $» Я☼" +
-                "☼####*#☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $» Я☼\n" +
+                "☼####*#☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().right();     // если чертик с уликой падает в ямку - он оставляет улику на поверхности
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $ ›Я☼" +
-                "☼#### #☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $ ›Я☼\n" +
+                "☼#### #☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $ $Я☼" +
-                "☼####⍈#☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $ $Я☼\n" +
+                "☼####⍈#☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
@@ -2845,43 +2844,43 @@ public class GameTest extends AbstractGameTest {
         dice(1, 6);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼$     ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $ ◄ ☼" +
-                "☼####⍈#☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼$     ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $ ◄ ☼\n" +
+                "☼####⍈#☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE(1)]");
+        events().verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼$     ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $◄  ☼" +
-                "☼####⍈#☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼$     ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $◄  ☼\n" +
+                "☼####⍈#☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         hero().left();
         dice(2, 6);
         tick();
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE(2)]");
+        events().verifyAllEvents("[GET_CLUE_KNIFE(2)]");
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼$$    ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  ◄   ☼" +
-                "☼####⍈#☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼$$    ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  ◄   ☼\n" +
+                "☼####⍈#☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
@@ -2897,37 +2896,37 @@ public class GameTest extends AbstractGameTest {
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼$$    ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  R « ☼" +
-                "☼###*##☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼$$    ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  R « ☼\n" +
+                "☼###*##☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼$$    ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  R‹  ☼" +
-                "☼### ##☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼$$    ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  R‹  ☼\n" +
+                "☼### ##☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();  // уликы у него больше нет
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼$$    ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  R   ☼" +
-                "☼###⍇##☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼$$    ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  R   ☼\n" +
+                "☼###⍇##☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     // я могу ходить по монстру, который в ямке
@@ -2935,58 +2934,58 @@ public class GameTest extends AbstractGameTest {
     public void shouldIWalkOnRobber() {
         shouldRobberLeaveClueWhenFallInPit();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $ $Я☼" +
-                "☼####⍈#☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $ $Я☼\n" +
+                "☼####⍈#☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         dice(1, 6);
         hero().left();
         tick();
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE(1)]");
+        events().verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼$     ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $ ◄ ☼" +
-                "☼####⍈#☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼$     ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $ ◄ ☼\n" +
+                "☼####⍈#☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼$     ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $◄  ☼" +
-                "☼####⍈#☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼$     ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $◄  ☼\n" +
+                "☼####⍈#☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         dice(2, 6);
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼$$    ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  ◄   ☼" +
-                "☼####⍈#☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼$$    ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  ◄   ☼\n" +
+                "☼####⍈#☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE(2)]");
+        events().verifyAllEvents("[GET_CLUE_KNIFE(2)]");
 
         tick();
         tick();
@@ -2996,78 +2995,78 @@ public class GameTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼$$    ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  ◄ » ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼$$    ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  ◄ » ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     // я не могу прострелить дырку непосредственно под монстром
     // TODO сделать так, чтобы мог
     @Test
     public void shouldICantCrackUnderRobber() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ►»☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ►»☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ►»☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ►»☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // если я прострелил дырку монстр падает в нее, а под ней ничего нет - монстр не проваливается сквозь
     @Test
     public void shouldRobberStayOnPitWhenUnderPitIsFree() {
-        givenFl("☼☼☼☼☼☼☼" +
-                "☼» ◄  ☼" +
-                "☼#####☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼» ◄  ☼\n" +
+                "☼#####☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼» Я  ☼" +
-                "☼#*###☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼» Я  ☼\n" +
+                "☼#*###☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼ ›Я  ☼" +
-                "☼# ###☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼ ›Я  ☼\n" +
+                "☼# ###☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼  Я  ☼" +
-                "☼#⍈###☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼  Я  ☼\n" +
+                "☼#⍈###☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
         tick();
@@ -3080,139 +3079,139 @@ public class GameTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼  Я  ☼" +
-                "☼#⍈###☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼  Я  ☼\n" +
+                "☼#⍈###☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼ »Я  ☼" +
-                "☼#####☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼ »Я  ☼\n" +
+                "☼#####☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
     }
 
     // если в процессе падения чертик вдург наткнулся на трубу то он повисаю на ней
     @Test
     public void shouldRobberPipeWhenFall() {
         givenFl("☼☼☼☼☼☼►" +
-                "☼  »  ☼" +
-                "☼# ###☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+                "☼  »  ☼\n" +
+                "☼# ###☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼ ‹   ☼" +
-                "☼# ###☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼ ‹   ☼\n" +
+                "☼# ###☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼#‹###☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼#‹###☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼# ###☼" +
-                "☼ ‹   ☼" +
-                "☼ ~~~ ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼# ###☼\n" +
+                "☼ ‹   ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼# ###☼" +
-                "☼     ☼" +
-                "☼ <~~ ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼# ###☼\n" +
+                "☼     ☼\n" +
+                "☼ <~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼# ###☼" +
-                "☼     ☼" +
-                "☼ <~~ ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼# ###☼\n" +
+                "☼     ☼\n" +
+                "☼ <~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
     }
 
     // чертик может спрыгнуть с трубы
     @Test
     public void shouldRobberCanJumpFromPipe() {
         givenFl("☼☼☼☼☼☼►" +
-                "☼  «  ☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+                "☼  «  ☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼  ‹  ☼" +
-                "☼ ~~~ ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼  ‹  ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ ~<~ ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ ~<~ ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         robber().down();
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼  ‹  ☼" +
-                "☼     ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼  ‹  ☼\n" +
+                "☼     ☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼►" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ ~~~ ☼" +
-                "☼     ☼" +
-                "☼  «  ☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼►" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ ~~~ ☼\n" +
+                "☼     ☼\n" +
+                "☼  «  ☼\n" +
+                "☼☼☼☼☼☼☼\n");
     }
 
     // чертику нельзя спускаться с лестницы в бетон, так же как и подниматься
@@ -3220,180 +3219,180 @@ public class GameTest extends AbstractGameTest {
     @Test
     public void shouldRobberCantWalkThroughWallDown() {
         givenFl("☼☼☼☼►" +
-                "☼ « ☼" +
-                "☼ H ☼" +
-                "☼☼☼☼☼" +
-                "☼☼☼☼☼");
+                "☼ « ☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().down();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼ Q ☼" +
-                "☼☼☼☼☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼   ☼\n" +
+                "☼ Q ☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().down();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼ Q ☼" +
-                "☼☼☼☼☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼   ☼\n" +
+                "☼ Q ☼\n" +
+                "☼☼☼☼☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldRobberCantWalkThroughWallUp() {
-        settings.integer(ROBBERS_COUNT, 1);
+        settings().integer(ROBBERS_COUNT, 1);
         givenFl("☼☼☼☼►" +
-                "☼☼☼☼☼" +
-                "☼ H ☼" +
-                "☼ H«☼" +
-                "☼☼☼☼☼");
+                "☼☼☼☼☼\n" +
+                "☼ H ☼\n" +
+                "☼ H«☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼☼☼☼☼" +
-                "☼ H ☼" +
-                "☼ Q ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼☼☼☼☼\n" +
+                "☼ H ☼\n" +
+                "☼ Q ☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().up();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼☼☼☼☼" +
-                "☼ Q ☼" +
-                "☼ H ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼☼☼☼☼\n" +
+                "☼ Q ☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().up();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼☼☼☼☼" +
-                "☼ Q ☼" +
-                "☼ H ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼☼☼☼☼\n" +
+                "☼ Q ☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // Чертику нельзя проходить с лестницы через бетон направо или налево
     @Test
     public void shouldRobberCantWalkThroughWallLeftRight() {
         givenFl("☼☼☼☼►" +
-                "☼☼☼☼☼" +
-                "☼☼H☼☼" +
-                "☼ H«☼" +
-                "☼☼☼☼☼");
+                "☼☼☼☼☼\n" +
+                "☼☼H☼☼\n" +
+                "☼ H«☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼☼☼☼☼" +
-                "☼☼H☼☼" +
-                "☼ Q ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼☼☼☼☼\n" +
+                "☼☼H☼☼\n" +
+                "☼ Q ☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().up();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼☼☼☼☼" +
-                "☼☼Q☼☼" +
-                "☼ H ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼☼☼☼☼\n" +
+                "☼☼Q☼☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼☼☼☼☼" +
-                "☼☼Q☼☼" +
-                "☼ H ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼☼☼☼☼\n" +
+                "☼☼Q☼☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼☼☼☼☼" +
-                "☼☼Q☼☼" +
-                "☼ H ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼☼☼☼☼\n" +
+                "☼☼Q☼☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // чертику нельзя проходить через бетон
     @Test
     public void shouldRobberCantWalkThroughWallLeftRight2() {
         givenFl("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼☼«☼☼" +
-                "☼☼☼☼☼");
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼☼«☼☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼☼«☼☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼☼«☼☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼►" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼☼»☼☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼►" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼☼»☼☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // Чертику нельзя спрыгивать с трубы что сразу над бетоном, протелая сквозь него
     @Test
     public void shouldRobberCantJumpThroughWall() {
         givenFl("☼☼☼☼☼►" +
-                "☼  » ☼" +
-                "☼  ~ ☼" +
-                "☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+                "☼  » ☼\n" +
+                "☼  ~ ☼\n" +
+                "☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼►" +
-                "☼    ☼" +
-                "☼  > ☼" +
-                "☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼►" +
+                "☼    ☼\n" +
+                "☼  > ☼\n" +
+                "☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         robber().down();
         tick();
 
-        assertE("☼☼☼☼☼►" +
-                "☼    ☼" +
-                "☼  > ☼" +
-                "☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼►" +
+                "☼    ☼\n" +
+                "☼  > ☼\n" +
+                "☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
     }
 
     // если чертик спрыгивает с последней секции лестницы
     @Test
     public void shouldRobberJumpFromLadderDown() {
         givenFl("☼☼☼☼☼►" +
-                "☼ »  ☼" +
-                "☼ H##☼" +
-                "☼#H  ☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+                "☼ »  ☼\n" +
+                "☼ H##☼\n" +
+                "☼#H  ☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         robber().down();
         tick();
@@ -3401,104 +3400,104 @@ public class GameTest extends AbstractGameTest {
         robber().down();
         tick();
 
-        assertE("☼☼☼☼☼►" +
-                "☼    ☼" +
-                "☼ H##☼" +
-                "☼#Q  ☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼►" +
+                "☼    ☼\n" +
+                "☼ H##☼\n" +
+                "☼#Q  ☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼►" +
-                "☼    ☼" +
-                "☼ H##☼" +
-                "☼#Q  ☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼►" +
+                "☼    ☼\n" +
+                "☼ H##☼\n" +
+                "☼#Q  ☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼☼►" +
-                "☼    ☼" +
-                "☼ H##☼" +
-                "☼#H› ☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼►" +
+                "☼    ☼\n" +
+                "☼ H##☼\n" +
+                "☼#H› ☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼►" +
-                "☼    ☼" +
-                "☼ H##☼" +
-                "☼#H  ☼" +
-                "☼  » ☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼►" +
+                "☼    ☼\n" +
+                "☼ H##☼\n" +
+                "☼#H  ☼\n" +
+                "☼  » ☼\n" +
+                "☼☼☼☼☼☼\n");
     }
 
     // Чертик не может прыгять вверх :)
     @Test
     public void shouldRobberCantJump() {
         givenFl("☼☼☼☼☼►" +
-                "☼    ☼" +
-                "☼    ☼" +
-                "☼    ☼" +
-                "☼ »  ☼" +
-                "☼☼☼☼☼☼");
+                "☼    ☼\n" +
+                "☼    ☼\n" +
+                "☼    ☼\n" +
+                "☼ »  ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         robber().up();
         tick();
 
-        assertE("☼☼☼☼☼►" +
-                "☼    ☼" +
-                "☼    ☼" +
-                "☼    ☼" +
-                "☼ »  ☼" +
-                "☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼►" +
+                "☼    ☼\n" +
+                "☼    ☼\n" +
+                "☼    ☼\n" +
+                "☼ »  ☼\n" +
+                "☼☼☼☼☼☼\n");
     }
 
     // я могу прыгнуть на голову монстру и мне ничего не будет
     @Test
     public void shouldICanJumpAtRobberHead() {
-        givenFl("☼☼☼☼☼" +
-                "☼ ◄ ☼" +
-                "☼   ☼" +
-                "☼ » ☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼   ☼\n" +
+                "☼ » ☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ◄ ☼" +
-                "☼ » ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼ » ☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ◄ ☼" +
-                "☼ » ☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼ » ☼\n" +
+                "☼☼☼☼☼\n");
 
         robber().right();     // если он отойдет - я упаду дальше
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ] ☼" +
-                "☼  »☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ] ☼\n" +
+                "☼  »☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼   ☼" +
-                "☼ ◄»☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄»☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // если чертик после того, как упал в ямку оставил улику, то когда он выберется - он свою улику заберет
@@ -3507,28 +3506,28 @@ public class GameTest extends AbstractGameTest {
     public void shouldGetClueWheExitFromPit() {
         shouldRobberLeaveClueWhenFallInPit();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $ $Я☼" +
-                "☼####⍈#☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $ $Я☼\n" +
+                "☼####⍈#☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         for (int c = 3; c < Brick.CRACK_TIMER; c++) { // враг вылазит
             tick();
         }
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $ »Я☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $ »Я☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().left();
         tick();
@@ -3536,444 +3535,444 @@ public class GameTest extends AbstractGameTest {
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $« Я☼" +
-                "☼####*#☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $« Я☼\n" +
+                "☼####*#☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().right();
         tick();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼   ~~ ☼" +
-                "☼  $  #☼" +
-                "☼  $   ☼" +
-                "☼  $ $Я☼" +
-                "☼####⍈#☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼   ~~ ☼\n" +
+                "☼  $  #☼\n" +
+                "☼  $   ☼\n" +
+                "☼  $ $Я☼\n" +
+                "☼####⍈#☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     // Если чертик упал на другого чертика который был на трубе, то они складываются в один :)
     @Test
     public void shouldRobberStayOnOtherAtThePipe() {
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼  «   ☼" +
-                "☼      ☼" +
-                "☼  «   ☼" +
-                "☼  ~   ☼" +
-                "☼     ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼  «   ☼\n" +
+                "☼      ☼\n" +
+                "☼  «   ☼\n" +
+                "☼  ~   ☼\n" +
+                "☼     ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼  ‹   ☼" +
-                "☼      ☼" +
-                "☼  <   ☼" +
-                "☼     ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼  ‹   ☼\n" +
+                "☼      ☼\n" +
+                "☼  <   ☼\n" +
+                "☼     ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
         tick();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  «   ☼" +
-                "☼  <   ☼" +
-                "☼     ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  «   ☼\n" +
+                "☼  <   ☼\n" +
+                "☼     ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().down();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  <   ☼" +
-                "☼     ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  <   ☼\n" +
+                "☼     ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().left();
         tick();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  <   ☼" +
-                "☼ «   ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  <   ☼\n" +
+                "☼ «   ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldRobberDontStopOnPipe() {
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  ««  ☼" +
-                "☼  ~~  ☼" +
-                "☼     ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  ««  ☼\n" +
+                "☼  ~~  ☼\n" +
+                "☼     ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  <<  ☼" +
-                "☼     ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  <<  ☼\n" +
+                "☼     ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  ~<  ☼" +
-                "☼     ◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  ~<  ☼\n" +
+                "☼     ◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().right();
         tick();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  ~<  ☼" +
-                "☼    »◄☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  ~<  ☼\n" +
+                "☼    »◄☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     // Чертик должен сам проваливаться на героя, а не впрыгивать в него
     @Test
     public void shouldRobberStayOnHeroAtThePipe() {
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼  «   ☼" +
-                "☼      ☼" +
-                "☼  ◄   ☼" +
-                "☼  ~   ☼" +
-                "☼      ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼  «   ☼\n" +
+                "☼      ☼\n" +
+                "☼  ◄   ☼\n" +
+                "☼  ~   ☼\n" +
+                "☼      ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼  ‹   ☼" +
-                "☼      ☼" +
-                "☼  {   ☼" +
-                "☼      ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼  ‹   ☼\n" +
+                "☼      ☼\n" +
+                "☼  {   ☼\n" +
+                "☼      ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
         tick();
 
-        events.verifyAllEvents("[HERO_DIE]");
+        events().verifyAllEvents("[HERO_DIE]");
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  Ѡ   ☼" +
-                "☼      ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  Ѡ   ☼\n" +
+                "☼      ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().down();
         dice(2, 3);
-        field.newGame(player());
+        field().newGame(player());
         dice(0);  // охотимся за первым игроком
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  ~   ☼" +
-                "☼ ►«   ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  ~   ☼\n" +
+                "☼ ►«   ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     // Чертик проваливается в яму за героем и там его находит
     @Test
     public void shouldRobberFindHeroAtPit() {
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  « ◄ ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  « ◄ ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         hero().act();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  « Я ☼" +
-                "☼###*##☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  « Я ☼\n" +
+                "☼###*##☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  «   ☼" +
-                "☼###⍃##☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  «   ☼\n" +
+                "☼###⍃##☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().right();
         tick();
         tick();
 
-        events.verifyAllEvents("[HERO_DIE, SUICIDE]");
+        events().verifyAllEvents("[HERO_DIE, SUICIDE]");
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼###Ѡ##☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼###Ѡ##☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         dice(2, 3);
-        field.newGame(player());
+        field().newGame(player());
         dice(0);  // охотимся за первым игроком
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼ ►    ☼" +
-                "☼###⍈##☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ ►    ☼\n" +
+                "☼###⍈##☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         for (int c = 5; c < Brick.CRACK_TIMER; c++) { // враг вылазит
             tick();
         }
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼ ► »  ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ ► »  ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
     }
 
     @Test
     public void iLooseScoresWhenDoHarakiri() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ◄ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().act(0);
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ Ѡ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ Ѡ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
-        events.verifyAllEvents("[HERO_DIE, SUICIDE]");
+        events().verifyAllEvents("[HERO_DIE, SUICIDE]");
     }
 
     @Test
     public void iCanJumpThroughBackways() {
-        settings.integer(BACKWAYS_COUNT, 2);
+        settings().integer(BACKWAYS_COUNT, 2);
 
         dice(1, 2,
             3, 3);
-        givenFl("☼☼☼☼☼" +
-                "☼  ⊛☼" +
-                "☼⊛◄ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼  ⊛☼\n" +
+                "☼⊛◄ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  ]☼" +
-                "☼⊛  ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  ]☼\n" +
+                "☼⊛  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  ⊛☼" +
-                "☼⊛ ◄☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  ⊛☼\n" +
+                "☼⊛ ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼  ⊛☼" +
-                "☼⊛ ◄☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  ⊛☼\n" +
+                "☼⊛ ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
     public void backwaysAreRecreatedEveryFewTicks() {
-        settings.integer(BACKWAYS_COUNT, 2)
+        settings().integer(BACKWAYS_COUNT, 2)
                 .integer(BACKWAY_TICKS, 5);
 
-        givenFl("☼☼☼☼☼" +
-                "☼  ⊛☼" +
-                "☼⊛◄ ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼  ⊛☼\n" +
+                "☼⊛◄ ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
-        assertEquals(5, field.getBackwaysTimer());
+        assertEquals(5, field().getBackwaysTimer());
 
         hero().left();
         tick();
 
-        assertEquals(4, field.getBackwaysTimer());
+        assertEquals(4, field().getBackwaysTimer());
 
-        assertE("☼☼☼☼☼" +
-                "☼  ]☼" +
-                "☼⊛  ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
-
-        tick();
-
-        assertEquals(3, field.getBackwaysTimer());
-
-        assertE("☼☼☼☼☼" +
-                "☼  ⊛☼" +
-                "☼⊛ ◄☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼  ]☼\n" +
+                "☼⊛  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertEquals(2, field.getBackwaysTimer());
+        assertEquals(3, field().getBackwaysTimer());
+
+        assertF("☼☼☼☼☼\n" +
+                "☼  ⊛☼\n" +
+                "☼⊛ ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         tick();
 
-        assertEquals(1, field.getBackwaysTimer());
+        assertEquals(2, field().getBackwaysTimer());
 
         tick();
 
-        assertEquals(0, field.getBackwaysTimer());
+        assertEquals(1, field().getBackwaysTimer());
 
-        assertE("☼☼☼☼☼" +
-                "☼  ⊛☼" +
-                "☼⊛ ◄☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        tick();
+
+        assertEquals(0, field().getBackwaysTimer());
+
+        assertF("☼☼☼☼☼\n" +
+                "☼  ⊛☼\n" +
+                "☼⊛ ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         dice(1, 3,  // new backways
             2, 3);
         tick();
 
-        assertEquals(5, field.getBackwaysTimer());
+        assertEquals(5, field().getBackwaysTimer());
 
-        assertE("☼☼☼☼☼" +
-                "☼⊛⊛ ☼" +
-                "☼  ◄☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼⊛⊛ ☼\n" +
+                "☼  ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldResetHeroAndRobber_whenClearBoard() {
         // given
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  « ◄ ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  « ◄ ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  « ◄ ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  « ◄ ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼ «  ◄ ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ «  ◄ ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         dice(1, 2); // new hero coordinates
-        field.clearScore();
+        field().clearScore();
 
         // then
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼► «   ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼► «   ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
@@ -3981,50 +3980,50 @@ public class GameTest extends AbstractGameTest {
         // given
         Brick.CRACK_TIMER = 4;
 
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  ◄ ◄ ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  ◄ ◄ ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  ◄ ) ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  ◄ ) ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         hero(0).act();
         hero(0).right();
         hero(1).left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  R⊐  ☼" +
-                "☼###*##☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  R⊐  ☼\n" +
+                "☼###*##☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  R   ☼" +
-                "☼###ᗉ##☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  R   ☼\n" +
+                "☼###ᗉ##☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
@@ -4033,18 +4032,18 @@ public class GameTest extends AbstractGameTest {
         assertEquals(true, hero(0).isAlive());
         assertEquals(true, hero(1).isAlive());
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  R   ☼" +
-                "☼###ᗉ##☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  R   ☼\n" +
+                "☼###ᗉ##☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        events.verifyAllEvents("" +
+        events().verifyAllEvents("" +
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n");
 
@@ -4053,19 +4052,19 @@ public class GameTest extends AbstractGameTest {
         assertEquals(true, hero(0).isAlive());
         assertEquals(false, hero(1).isAlive());
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  R   ☼" +
-                "☼###Z##☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  R   ☼\n" +
+                "☼###Z##☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         dice(1, 2,
             6, 2);
-        field.clearScore();
+        field().clearScore();
 
         // then
         assertEquals(0, hero(0).scores());
@@ -4073,108 +4072,108 @@ public class GameTest extends AbstractGameTest {
         assertEquals(true, hero(0).isAlive());
         assertEquals(true, hero(1).isAlive());
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼►    (☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼►    (☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldCollectAllClue() {
         // given
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼►$$&@@☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼►$$&@@☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼►$$&@@☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼►$$&@@☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        events.verifyAllEvents("[GET_CLUE_KNIFE(1)]");
+        events().verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼ ►$&@@☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
-
-        hero().right();
-        tick();
-
-        events.verifyAllEvents("[GET_CLUE_KNIFE(2)]");
-
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  ►&@@☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ ►$&@@☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        events.verifyAllEvents("[GET_CLUE_GLOVE(1)]");
+        events().verifyAllEvents("[GET_CLUE_KNIFE(2)]");
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼   ►@@☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
-
-        hero().right();
-        tick();
-
-        events.verifyAllEvents("[GET_CLUE_RING(1)]");
-
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼    ►@☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  ►&@@☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        events.verifyAllEvents("[GET_CLUE_RING(2)]");
+        events().verifyAllEvents("[GET_CLUE_GLOVE(1)]");
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼     ►☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼   ►@@☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
+
+        hero().right();
+        tick();
+
+        events().verifyAllEvents("[GET_CLUE_RING(1)]");
+
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼    ►@☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
+
+        hero().right();
+        tick();
+
+        events().verifyAllEvents("[GET_CLUE_RING(2)]");
+
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼     ►☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
@@ -4184,22 +4183,22 @@ public class GameTest extends AbstractGameTest {
 
         // when
         dice(1, 2);
-        field.clearScore();
+        field().clearScore();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼►$$&@@☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼►$$&@@☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         // добавим еще улик
-        settings.integer(CLUE_COUNT_KNIFE, settings.integer(CLUE_COUNT_KNIFE) + 2)
-                .integer(CLUE_COUNT_RING,    settings.integer(CLUE_COUNT_RING) + 3)
-                .integer(CLUE_COUNT_GLOVE,  settings.integer(CLUE_COUNT_GLOVE) + 1);
+        settings().integer(CLUE_COUNT_KNIFE, settings().integer(CLUE_COUNT_KNIFE) + 2)
+                .integer(CLUE_COUNT_RING,    settings().integer(CLUE_COUNT_RING) + 3)
+                .integer(CLUE_COUNT_GLOVE,  settings().integer(CLUE_COUNT_GLOVE) + 1);
         dice(
             2, 3, // knife
             3, 3, // knife
@@ -4209,211 +4208,211 @@ public class GameTest extends AbstractGameTest {
             6, 4, // ring
             1, 6  // герой
         );
-        field.clearScore();
+        field().clearScore();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼[     ☼" +
-                "☼      ☼" +
-                "☼     @☼" +
-                "☼ $$&@@☼" +
-                "☼ $$&@@☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼[     ☼\n" +
+                "☼      ☼\n" +
+                "☼     @☼\n" +
+                "☼ $$&@@☼\n" +
+                "☼ $$&@@☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         // удалим улики
-        settings.integer(CLUE_COUNT_KNIFE, 1)
+        settings().integer(CLUE_COUNT_KNIFE, 1)
                 .integer(CLUE_COUNT_RING, 1)
                 .integer(CLUE_COUNT_GLOVE, 1);
 
         dice(2, 6);  // герой
-        field.clearScore();
+        field().clearScore();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼ [    ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼ $ &@ ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼ [    ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ $ &@ ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldEndlesslyWalkThroughTheBackways_untilExit() {
         // given
-        settings.integer(BACKWAYS_COUNT, 3);
+        settings().integer(BACKWAYS_COUNT, 3);
 
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼►⊛    ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼►⊛    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼►⊛    ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼►⊛    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   [  ☼" +
-                "☼      ☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼ ⊛    ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   [  ☼\n" +
+                "☼      ☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼ ⊛    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   ⊛  ☼" +
-                "☼   [  ☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼ ⊛    ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼   [  ☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼ ⊛    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼ ►    ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼ ►    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // что интересно, если ты не выйдешь из черный хода то в следующий тик отправишься дальше
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   [  ☼" +
-                "☼      ☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼ ⊛    ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   [  ☼\n" +
+                "☼      ☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼ ⊛    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   ⊛  ☼" +
-                "☼   [  ☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼ ⊛    ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼   [  ☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼ ⊛    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼ ►    ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼ ►    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼ ⊛►   ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼ ⊛►   ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldResetBackways_whenClearBoard() {
         shouldEndlesslyWalkThroughTheBackways_untilExit();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼ ⊛►   ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼ ⊛►   ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         // добавим еще один черный ход
-        settings.integer(BACKWAYS_COUNT, settings.integer(BACKWAYS_COUNT) + 1);
+        settings().integer(BACKWAYS_COUNT, settings().integer(BACKWAYS_COUNT) + 1);
         dice(2, 4, // new backway
             1, 2); // hero
-        field.clearScore();
+        field().clearScore();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼ ⊛ ⊛  ☼" +
-                "☼      ☼" +
-                "☼►⊛    ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼ ⊛ ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼►⊛    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         // оставим два черный хода
-        settings.integer(BACKWAYS_COUNT, 2);
+        settings().integer(BACKWAYS_COUNT, 2);
         dice(1, 2); // hero
-        field.clearScore();
+        field().clearScore();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼   ⊛  ☼" +
-                "☼      ☼" +
-                "☼►     ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼   ⊛  ☼\n" +
+                "☼      ☼\n" +
+                "☼►     ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldResetPotions_whenClearBoard() {
         // given
-        settings.integer(MASK_POTIONS_COUNT, 3);
+        settings().integer(MASK_POTIONS_COUNT, 3);
 
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼►S S S☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼►S S S☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼►S S S☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼►S S S☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         assertEquals(false, hero().under(Potion.PotionType.MASK_POTION));
 
@@ -4432,175 +4431,175 @@ public class GameTest extends AbstractGameTest {
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼     ⊳☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼     ⊳☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         assertEquals(true, hero().under(Potion.PotionType.MASK_POTION));
 
         // when
         // почистим все
         dice(1, 2);  // hero
-        field.clearScore();
+        field().clearScore();
 
         assertEquals(false, hero().under(Potion.PotionType.MASK_POTION));
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼►S S S☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼►S S S☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         // добавим еще
-        settings.integer(MASK_POTIONS_COUNT, settings.integer(MASK_POTIONS_COUNT) + 2);
+        settings().integer(MASK_POTIONS_COUNT, settings().integer(MASK_POTIONS_COUNT) + 2);
         dice(
                 3, 3, // new potion
                 5, 3,
                 1, 6  // hero
         );
-        field.clearScore();
+        field().clearScore();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼[     ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  S S ☼" +
-                "☼ S S S☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼[     ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  S S ☼\n" +
+                "☼ S S S☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         // оставим только 1
-        settings.integer(MASK_POTIONS_COUNT, 1);
+        settings().integer(MASK_POTIONS_COUNT, 1);
         dice(1, 2);  // hero
-        field.clearScore();
+        field().clearScore();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼►S    ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼►S    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldRemoveOldWalls_whenClearBoard() {
         // given
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼     ►☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼     ►☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼     ►☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼     ►☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
-        assertEquals(7 * 4, field.borders().size());
+        assertEquals(7 * 4, field().borders().size());
 
         // when
         dice(1, 2); // new hero
-        field.clearScore();
+        field().clearScore();
 
         // then
-        assertEquals(7 * 4, field.borders().size());
+        assertEquals(7 * 4, field().borders().size());
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼►     ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼►     ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         dice(2, 2); // new hero
-        field.clearScore();
+        field().clearScore();
 
         // then
-        assertEquals(7 * 4, field.borders().size());
+        assertEquals(7 * 4, field().borders().size());
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼ ►    ☼" +  // TODO героя приходится смещать, потому что при очистке его прошлое место занято им самим
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ ►    ☼\n" +  // TODO героя приходится смещать, потому что при очистке его прошлое место занято им самим
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
     public void shouldResetBackwaysTimeout_whenClearBoard() {
         backwaysAreRecreatedEveryFewTicks();
 
-        assertE("☼☼☼☼☼" +
-                "☼⊛⊛ ☼" +
-                "☼  ◄☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼⊛⊛ ☼\n" +
+                "☼  ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
-        assertEquals(5, field.getBackwaysTimer());
+        assertEquals(5, field().getBackwaysTimer());
 
         tick();
         tick();
         tick();
 
-        assertEquals(2, field.getBackwaysTimer());
+        assertEquals(2, field().getBackwaysTimer());
 
         // when
         dice(3, 3, // new backways
             3, 2,
             1, 2); // new hero
-        field.clearScore();
+        field().clearScore();
 
         // then
-        assertEquals(5, field.getBackwaysTimer());
+        assertEquals(5, field().getBackwaysTimer());
     }
 
     @Ignore // TODO please fix me
     @Test
     public void accessGivenBullets() {
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼ ► •••☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ ► •••☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
-        assertEquals(3, field.bullets().all().size());
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼ ► •••☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertEquals(3, field().bullets().all().size());
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ ► •••☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
@@ -4633,7 +4632,7 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "[GET_CLUE_KNIFE(1)]");
     }
 
@@ -4674,7 +4673,7 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "[GET_CLUE_KNIFE(1)]");
 
         assertEquals(2, hero(0).scores());
@@ -4700,7 +4699,7 @@ public class GameTest extends AbstractGameTest {
 
         // when
         dice(1, 2); // new hero position
-        field.clearScore();
+        field().clearScore();
 
         // then
         assertF("☼☼☼☼☼\n" +

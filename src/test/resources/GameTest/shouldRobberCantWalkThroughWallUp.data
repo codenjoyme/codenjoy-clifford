@@ -1,0 +1,39 @@
+
+before()
+
+shouldRobberCantWalkThroughWallUp()
+    settings().integer(ROBBERS_COUNT, 1)
+    givenFl(
+        ☼☼☼☼►☼☼☼☼☼
+        ☼ H ☼
+        ☼ H«☼
+        ☼☼☼☼☼)
+        givenPlayer([4,4])
+            dice(4, 4)
+        dice(0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼☼☼☼☼
+        ☼ H ☼
+        ☼ Q ☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼☼☼☼☼
+        ☼ Q ☼
+        ☼ H ☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼☼☼☼☼
+        ☼ Q ☼
+        ☼ H ☼
+        ☼☼☼☼☼,
+        0)
+
+after()

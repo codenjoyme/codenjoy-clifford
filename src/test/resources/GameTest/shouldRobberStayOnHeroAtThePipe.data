@@ -1,0 +1,56 @@
+
+before()
+
+shouldRobberStayOnHeroAtThePipe()
+    givenFl(
+        ☼☼☼☼☼☼☼☼
+        ☼  «   ☼
+        ☼      ☼
+        ☼  ◄   ☼
+        ☼  ~   ☼
+        ☼      ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼)
+        givenPlayer([3,4])
+            dice(3, 4)
+        dice(0)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼  ‹   ☼
+        ☼      ☼
+        ☼  {   ☼
+        ☼      ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    tick()
+    tick()
+    events().verifyAllEvents([HERO_DIE], [])
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  Ѡ   ☼
+        ☼      ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    dice(2, 3)
+    field().newGame(player(0))
+    dice(0)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  ~   ☼
+        ☼ ►«   ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+
+after()

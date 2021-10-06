@@ -1,0 +1,66 @@
+
+before()
+
+shouldMonsterGetUpFromPit()
+    givenFl(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼« ◄☼
+        ☼###☼
+        ☼☼☼☼☼)
+        givenPlayer([3,2])
+            dice(3, 2)
+        dice(0)
+    hero(0).act()
+    tick()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ ›Я☼
+        ☼# #☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼  Я☼
+        ☼#⍈#☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼  Я☼
+        ☼#⍈#☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ »Я☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼« Я☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+
+after()

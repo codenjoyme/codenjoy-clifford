@@ -26,111 +26,110 @@ import com.codenjoy.dojo.clifford.model.items.door.Door;
 import org.junit.Test;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.GENERATE_KEYS;
-import static org.junit.Assert.assertEquals;
 
-public class KeyDoorGameTest extends AbstractGameTest {
+public class KeyDoorGameTest extends AbstractGameCheckTest {
 
     @Test
     public void accessGivenDoorsAndKeys() {
         // given
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼⍙⍙⍚⍚⍜⍜☼" +
-                "☼ ⍍⌺⌺⌼ ☼" +
-                "☼ ✦✼⍟  ☼" +
-                "☼ ✦ ⍟ ►☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼⍙⍙⍚⍚⍜⍜☼\n" +
+                "☼ ⍍⌺⌺⌼ ☼\n" +
+                "☼ ✦✼⍟  ☼\n" +
+                "☼ ✦ ⍟ ►☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // then door
-        assertEquals(10, field.doors().all().size());
-        assertEquals(6, field.doors().all().stream()
+        assertEquals(10, field().doors().all().size());
+        assertEquals(6L, field().doors().all().stream()
                 .filter(Door::isOpened)
                 .count());
-        assertEquals(4, field.doors().all().stream()
+        assertEquals(4L, field().doors().all().stream()
                 .filter(Door::isClosed)
                 .count());
 
         // then keys
-        assertEquals(5, field.keys().all().size());
-        assertEquals(2, field.keys().all().stream()
+        assertEquals(5, field().keys().all().size());
+        assertEquals(2L, field().keys().all().stream()
                 .filter(key -> key.getKeyType().isGold())
                 .count());
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼⍙⍙⍚⍚⍜⍜☼" +
-                "☼ ⍍⌺⌺⌼ ☼" +
-                "☼ ✦✼⍟  ☼" +
-                "☼ ✦ ⍟ ►☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼⍙⍙⍚⍚⍜⍜☼\n" +
+                "☼ ⍍⌺⌺⌼ ☼\n" +
+                "☼ ✦✼⍟  ☼\n" +
+                "☼ ✦ ⍟ ►☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
     public void pickKeysWithoutGeneration() {
-        settings.bool(GENERATE_KEYS, false);
+        settings().bool(GENERATE_KEYS, false);
 
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼ ►✦✦✼⍟☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ ►✦✦✼⍟☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  ►✦✼⍟☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  ►✦✼⍟☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼   ►✼⍟☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼   ►✼⍟☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=2, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼    ►⍟☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼    ►⍟☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=2, SILVER=1, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼     ►☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼     ►☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=2, SILVER=1, BRONZE=1}", hero().getKeys().toString());
 
         hero().clearScores();
@@ -139,72 +138,72 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
     @Test
     public void pickKeysWithGeneration() {
-        settings.bool(GENERATE_KEYS, true);
+        settings().bool(GENERATE_KEYS, true);
 
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼ ►✦✦✼⍟☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ ►✦✦✼⍟☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         dice(1, 5);
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼✦     ☼" +
-                "☼      ☼" +
-                "☼  ►✦✼⍟☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼✦     ☼\n" +
+                "☼      ☼\n" +
+                "☼  ►✦✼⍟☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         dice(2, 5);
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼✦✦    ☼" +
-                "☼      ☼" +
-                "☼   ►✼⍟☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼✦✦    ☼\n" +
+                "☼      ☼\n" +
+                "☼   ►✼⍟☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=2, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         dice(3, 5);
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼✦✦✼   ☼" +
-                "☼      ☼" +
-                "☼    ►⍟☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼✦✦✼   ☼\n" +
+                "☼      ☼\n" +
+                "☼    ►⍟☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=2, SILVER=1, BRONZE=0}", hero().getKeys().toString());
 
         dice(4, 5);
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼✦✦✼⍟  ☼" +
-                "☼      ☼" +
-                "☼     ►☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼✦✦✼⍟  ☼\n" +
+                "☼      ☼\n" +
+                "☼     ►☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=2, SILVER=1, BRONZE=1}", hero().getKeys().toString());
 
         hero().clearScores();
@@ -213,522 +212,522 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
     @Test
     public void heroCannotGoThroughClosedDoor() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ► ⍍  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ► ⍍  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ►⍍  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ►⍍  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ►⍍  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ►⍍  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
     public void heroCanGoThroughOpenedDoor() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ► ⍙  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ► ⍙  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ►⍙  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ►⍙  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼    ►  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼    ►  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼    ⍙► ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼    ⍙► ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
     public void openDoor_right() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ►✦⍍  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ►✦⍍  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ►⍍  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ►⍍  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().act(2);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ►⍙  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ►⍙  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼    ►  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼    ►  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼    ⍙► ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼    ⍙► ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
     public void openDoor_left() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ⍍✦◄  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ⍍✦◄  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ⍍◄   ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ⍍◄   ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().act(2);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ⍙◄   ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ⍙◄   ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ◄    ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ◄    ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼ ◄⍙    ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼ ◄⍙    ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
     public void heroCannotOpenDoorWithoutKeys() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ►⍍  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ►⍍  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ►⍍  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ►⍍  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().act(1);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ►⍍  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ►⍍  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
     }
 
     @Test
     public void closeDoor_right() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ►✦⍙  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ►✦⍙  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ►⍙  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ►⍙  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼    ►  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼    ►  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼    ⍙► ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼    ⍙► ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().left();
         hero().act(3);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼    ⍍◄ ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼    ⍍◄ ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
     }
 
     @Test
     public void closeDoor_left() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ⍙✦◄  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ⍙✦◄  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ⍙◄   ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ⍙◄   ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ◄    ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ◄    ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼ ◄⍙    ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼ ◄⍙    ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         hero().act(3);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼ ►⍍    ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼ ►⍍    ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
     }
 
     @Test
     public void closeDoorAtHeroPositionHasNoEffect() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ⍙✦◄  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ⍙✦◄  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ⍙◄   ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ⍙◄   ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ◄    ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ◄    ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         hero().act(2);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼  ⍙►   ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼  ⍙►   ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
     }
 
     @Test
     public void heroCannotCloseDoorWithoutKeys() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ►⍙  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ►⍙  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼    ►  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼    ►  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼    ⍙► ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼    ⍙► ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
@@ -736,82 +735,82 @@ public class KeyDoorGameTest extends AbstractGameTest {
         hero().act(2);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼    ◄  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼    ◄  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ◄⍙  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ◄⍙  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
     public void heroShouldReleaseKeysAfterDeath_ifGenerateDisable() {
-        settings.bool(GENERATE_KEYS, false);
+        settings().bool(GENERATE_KEYS, false);
 
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼ ►✦✼⍟ ☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ ►✦✼⍟ ☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  ►✼⍟ ☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  ►✼⍟ ☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼   ►⍟ ☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼   ►⍟ ☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=1, SILVER=1, BRONZE=0}", hero().getKeys().toString());
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼    ► ☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼    ► ☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=1, SILVER=1, BRONZE=1}", hero().getKeys().toString());
 
         dice(1, 5,
@@ -820,16 +819,16 @@ public class KeyDoorGameTest extends AbstractGameTest {
         hero().die();
         tick();
 
-        events.verifyAllEvents("[HERO_DIE]");
+        events().verifyAllEvents("[HERO_DIE]");
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼✦✼⍟   ☼" +
-                "☼      ☼" +
-                "☼    Ѡ ☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼✦✼⍟   ☼\n" +
+                "☼      ☼\n" +
+                "☼    Ѡ ☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=1, SILVER=1, BRONZE=1}", hero().getKeys().toString());
         assertEquals(false, hero().isAlive());
@@ -842,16 +841,16 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
     @Test
     public void heroShouldNotReleaseKeysAfterDeath_itGenerateEnable() {
-        settings.bool(GENERATE_KEYS, true);
+        settings().bool(GENERATE_KEYS, true);
 
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼ ►✦✼⍟ ☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼ ►✦✼⍟ ☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
@@ -859,42 +858,42 @@ public class KeyDoorGameTest extends AbstractGameTest {
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   ✦  ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  ►✼⍟ ☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   ✦  ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  ►✼⍟ ☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
 
         dice(5, 6);
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   ✦✼ ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼   ►⍟ ☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   ✦✼ ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼   ►⍟ ☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=1, SILVER=1, BRONZE=0}", hero().getKeys().toString());
 
         dice(6, 6);
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   ✦✼⍟☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼    ► ☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   ✦✼⍟☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼    ► ☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
         assertEquals("{GOLD=1, SILVER=1, BRONZE=1}", hero().getKeys().toString());
 
         dice(1, 5,
@@ -903,16 +902,16 @@ public class KeyDoorGameTest extends AbstractGameTest {
         hero().die();
         tick();
 
-        events.verifyAllEvents("[HERO_DIE]");
+        events().verifyAllEvents("[HERO_DIE]");
 
-        assertE("☼☼☼☼☼☼☼☼" +
-                "☼   ✦✼⍟☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼    Ѡ ☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   ✦✼⍟☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼    Ѡ ☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         assertEquals("{GOLD=1, SILVER=1, BRONZE=1}", hero().getKeys().toString());
         assertEquals(false, hero().isAlive());

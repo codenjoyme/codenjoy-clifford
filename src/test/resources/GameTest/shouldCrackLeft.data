@@ -1,0 +1,33 @@
+
+before()
+
+shouldCrackLeft()
+    givenFl(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ ◄ ☼
+        ☼###☼
+        ☼☼☼☼☼)
+        givenPlayer([2,2])
+            dice(2, 2)
+        dice(0)
+    hero(0).act()
+    hero(0).left()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ Я ☼
+        ☼*##☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ Я ☼
+        ☼ ##☼
+        ☼☼☼☼☼,
+        0)
+
+after()

@@ -1,0 +1,22 @@
+
+before()
+
+shouldFieldAtStart()
+    givenFl(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ ◄ ☼
+        ☼###☼
+        ☼☼☼☼☼)
+        givenPlayer([2,2])
+            dice(2, 2)
+        dice(0)
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ ◄ ☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+
+after()

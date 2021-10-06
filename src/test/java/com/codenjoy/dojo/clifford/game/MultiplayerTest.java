@@ -30,11 +30,10 @@ import org.junit.Test;
 import static com.codenjoy.dojo.clifford.services.Events.Event.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.round.RoundSettings.Keys.*;
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
-public class MultiplayerTest extends AbstractGameTest {
+public class MultiplayerTest extends AbstractGameCheckTest {
 
     // появляется другие игроки, игра становится мультипользовательской
     @Test
@@ -184,7 +183,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#Ѡ##☼\n" +
                 "☼☼☼☼☼☼\n", 2);
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n" +
                 "listener(2) => [HERO_DIE]\n");
@@ -230,7 +229,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 2);
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [GET_CLUE_KNIFE(1)]\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n");
@@ -238,16 +237,16 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void thatRobbersDoNotHauntMaskPlayers() {
-        settings.integer(ROBBERS_COUNT, 1)
+        settings().integer(ROBBERS_COUNT, 1)
                 .integer(MASK_POTIONS_COUNT, 1);
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼► » ► ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼► » ► ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         robber().disableMock();
         hero(1).pick(PotionType.MASK_POTION);
@@ -267,15 +266,15 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void thatTwoMasksWalkThroughEachOther() {
-        settings.integer(MASK_POTIONS_COUNT, 1);
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼►►    ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        settings().integer(MASK_POTIONS_COUNT, 1);
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼►►    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         hero(0).pick(PotionType.MASK_POTION);
         hero(1).pick(PotionType.MASK_POTION);
@@ -309,15 +308,15 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void thatMaskKillsNonMaskPlayer_killHero() {
-        settings.integer(MASK_POTIONS_COUNT, 1);
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼►►    ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        settings().integer(MASK_POTIONS_COUNT, 1);
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼►►    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         hero().pick(PotionType.MASK_POTION);
 
@@ -343,7 +342,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n");
 
@@ -365,10 +364,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
-        field.remove(player(1)); // он геймовер его уберут
+        field().remove(player(1)); // он геймовер его уберут
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n");
 
@@ -393,15 +392,15 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void thatMaskKillsNonMaskPlayer_killEnemy() {
-        settings.integer(MASK_POTIONS_COUNT, 1);
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼►►    ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        settings().integer(MASK_POTIONS_COUNT, 1);
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼►►    ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         player(0).inTeam(1);
         player(1).inTeam(2);
@@ -430,7 +429,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_ENEMY]\n" +
                 "listener(1) => [HERO_DIE]\n");
 
@@ -452,10 +451,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
-        field.remove(player(1)); // он геймовер его уберут
+        field().remove(player(1)); // он геймовер его уберут
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n");
 
@@ -480,16 +479,16 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void thatMaskFallsAtTheRegularPlayerAndKillsHim() {
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼►     ☼" +
-                "☼►     ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼►     ☼\n" +
+                "☼►     ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
-        settings.integer(MASK_POTIONS_COUNT, 1);
+        settings().integer(MASK_POTIONS_COUNT, 1);
         hero().pick(PotionType.MASK_POTION);
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -513,7 +512,7 @@ public class MultiplayerTest extends AbstractGameTest {
         dice(3, 3); // new potion
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n");
 
@@ -535,10 +534,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
-        field.remove(player(1)); // он геймовер его уберут
+        field().remove(player(1)); // он геймовер его уберут
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n");
 
@@ -563,15 +562,15 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void thatMaskStairsUpTheLadderAtTheRegularPlayerAndKillsHim() {
-        settings.integer(MASK_POTIONS_COUNT, 1);
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼  ►   ☼" +
-                "☼ ►H   ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        settings().integer(MASK_POTIONS_COUNT, 1);
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼  ►   ☼\n" +
+                "☼ ►H   ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         hero(1).pick(PotionType.MASK_POTION);
 
@@ -617,7 +616,7 @@ public class MultiplayerTest extends AbstractGameTest {
         hero(1).up();
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [HERO_DIE]\n" +
                 "listener(1) => [KILL_HERO]\n");
 
@@ -639,10 +638,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
-        field.remove(player(0)); // он геймовер его уберут
+        field().remove(player(0)); // он геймовер его уберут
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n");
 
@@ -668,12 +667,12 @@ public class MultiplayerTest extends AbstractGameTest {
     // можно ли проходить героям друг через дурга? Нет
     @Test
     public void shouldICantGoViaAnotherPlayer_whenAtWay() {
-        givenFl("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼    ☼" +
-                "☼►►  ☼" +
-                "☼####☼" +
-                "☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼    ☼\n" +
+                "☼►►  ☼\n" +
+                "☼####☼\n" +
+                "☼☼☼☼☼☼\n");
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
@@ -705,12 +704,12 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void shouldICantGoViaAnotherPlayer_whenAtLadder() {
-        givenFl("☼☼☼☼☼☼" +
-                "☼ ►  ☼" +
-                "☼ H  ☼" +
-                "☼►H  ☼" +
-                "☼####☼" +
-                "☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼\n" +
+                "☼ ►  ☼\n" +
+                "☼ H  ☼\n" +
+                "☼►H  ☼\n" +
+                "☼####☼\n" +
+                "☼☼☼☼☼☼\n");
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼ (  ☼\n" +
@@ -755,12 +754,12 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void shouldICantGoViaAnotherPlayer_whenAtPipe() {
-        givenFl("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼►~~►☼" +
-                "☼#  #☼" +
-                "☼####☼" +
-                "☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼►~~►☼\n" +
+                "☼#  #☼\n" +
+                "☼####☼\n" +
+                "☼☼☼☼☼☼\n");
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
@@ -813,12 +812,12 @@ public class MultiplayerTest extends AbstractGameTest {
     // могу ли я прострелить под другим героем? Нет
     @Test
     public void shouldICantCrackUnderOtherHero() {
-        givenFl("☼☼☼☼☼☼" +
-                "☼    ☼" +
-                "☼    ☼" +
-                "☼►►  ☼" +
-                "☼####☼" +
-                "☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼\n" +
+                "☼    ☼\n" +
+                "☼    ☼\n" +
+                "☼►►  ☼\n" +
+                "☼####☼\n" +
+                "☼☼☼☼☼☼\n");
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
@@ -843,12 +842,12 @@ public class MultiplayerTest extends AbstractGameTest {
     // если я прыгаю сверху на героя, то я должен стоять у него на голове
     @Test
     public void shouldICanStayAtOtherHeroHead() {
-        givenFl("☼☼☼☼☼☼" +
-                "☼ ►  ☼" +
-                "☼    ☼" +
-                "☼ ►  ☼" +
-                "☼####☼" +
-                "☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼\n" +
+                "☼ ►  ☼\n" +
+                "☼    ☼\n" +
+                "☼ ►  ☼\n" +
+                "☼####☼\n" +
+                "☼☼☼☼☼☼\n");
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼ [  ☼\n" +
@@ -879,12 +878,12 @@ public class MultiplayerTest extends AbstractGameTest {
     // если я прыгаю сверху на героя который на трубе, то я должен стоять у него на голове
     @Test
     public void shouldICantStayAtOtherHeroHeadWhenOnPipe() {
-        givenFl("☼☼☼☼☼☼" +
-                "☼ ►  ☼" +
-                "☼    ☼" +
-                "☼ ►  ☼" +
-                "☼ ~  ☼" +
-                "☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼\n" +
+                "☼ ►  ☼\n" +
+                "☼    ☼\n" +
+                "☼ ►  ☼\n" +
+                "☼ ~  ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         tick();
 
@@ -962,12 +961,12 @@ public class MultiplayerTest extends AbstractGameTest {
     // когда два героя на трубе, они не могут друг в друга войти
     @Test
     public void shouldStopOnPipe() {
-        givenFl("☼☼☼☼☼☼" +
-                "☼ ►► ☼" +
-                "☼~~~~☼" +
-                "☼    ☼" +
-                "☼    ☼" +
-                "☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼\n" +
+                "☼ ►► ☼\n" +
+                "☼~~~~☼\n" +
+                "☼    ☼\n" +
+                "☼    ☼\n" +
+                "☼☼☼☼☼☼\n");
 
         tick();
 
@@ -1080,25 +1079,25 @@ public class MultiplayerTest extends AbstractGameTest {
     //      стороне сервера а могла бы быть в engine.
     @Test
     public void shouldStopGame_whenRoundIsNotStarted() {
-        settings.bool(ROUNDS_ENABLED, true)
+        settings().bool(ROUNDS_ENABLED, true)
                 .integer(ROUNDS_TIME_BEFORE_START, 1)
                 .integer(ROUNDS_PER_MATCH, 1)
                 .integer(ROUNDS_PLAYERS_PER_ROOM, 3);
 
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼      ☼" +
-                "☼► ►   ☼" +
-                "☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼► ►   ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         // юзеров недостаточно, ничего не происходит
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n");
 
@@ -1126,7 +1125,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n");
 
@@ -1153,7 +1152,7 @@ public class MultiplayerTest extends AbstractGameTest {
         // вот а тут уже укомплектована комната - погнали!
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 1]]\n" +
                 "listener(1) => [START_ROUND, [Round 1]]\n" +
                 "listener(2) => [START_ROUND, [Round 1]]\n");
@@ -1221,7 +1220,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void winnerIsTheOneWhoBuriedTheMostPlayers() {
-        settings.bool(ROUNDS_ENABLED, true)
+        settings().bool(ROUNDS_ENABLED, true)
                 .integer(ROUNDS_TIME_BEFORE_START, 1)
                 .integer(ROUNDS_PER_MATCH, 1)
                 .integer(ROUNDS_TIME, 30)
@@ -1229,16 +1228,16 @@ public class MultiplayerTest extends AbstractGameTest {
                 .integer(ROUNDS_PLAYERS_PER_ROOM, 8)
                 .integer(KILL_HERO_SCORE, 1);
 
-        givenFl("☼☼☼☼☼☼☼☼☼☼" +
-                "☼        ☼" +
-                "☼###HH###☼" +
-                "☼☼☼☼HH☼☼☼☼" +
-                "☼   HH   ☼" +
-                "☼###HH###☼" +
-                "☼☼☼☼HH☼☼☼☼" +
-                "☼   HH   ☼" +
-                "☼###HH###☼" +
-                "☼☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
+                "☼        ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼   HH   ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼   HH   ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼☼☼☼☼☼☼\n");
 
         givenPlayer(3, 2); // соревнующиеся ребята
         givenPlayer(6, 2);
@@ -1254,7 +1253,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 1]]\n" +
                 "listener(1) => [START_ROUND, [Round 1]]\n" +
                 "listener(2) => [START_ROUND, [Round 1]]\n" +
@@ -1318,7 +1317,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         assertScores("");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -1334,7 +1333,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=1\n" +
                 "hero(1)=1");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
                 "listener(2) => [HERO_DIE]\n" +
@@ -1401,7 +1400,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=1\n" +
                 "hero(1)=1");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -1417,7 +1416,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=2\n" +
                 "hero(1)=2");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
                 "listener(2) => []\n" +
@@ -1463,7 +1462,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=2\n" +
                 "hero(1)=2");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -1479,7 +1478,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=3\n" +
                 "hero(1)=3");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
                 "listener(2) => []\n" +
@@ -1506,7 +1505,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=3\n" +
                 "hero(1)=3");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -1546,7 +1545,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=3\n" +
                 "hero(1)=3");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [WIN_ROUND]\n" +
                 "listener(1) => [WIN_ROUND]\n" +
                 "listener(2) => []\n" +
@@ -1577,9 +1576,9 @@ public class MultiplayerTest extends AbstractGameTest {
         game(1).newGame();
 
         assertScores("");
-        assertEquals(2, field.players().size());
+        assertEquals(2, field().players().size());
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -1603,9 +1602,9 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
 
         assertScores("");
-        assertEquals(2, field.players().size());
+        assertEquals(2, field().players().size());
        
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 2]]\n" +
                 "listener(1) => [START_ROUND, [Round 2]]\n" +
                 "listener(2) => []\n" +
@@ -1629,7 +1628,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseOneRounds() {
-        settings.bool(ROUNDS_ENABLED, true)
+        settings().bool(ROUNDS_ENABLED, true)
                 .integer(ROUNDS_TIME_BEFORE_START, 1)
                 .integer(ROUNDS_PER_MATCH, 1)
                 .integer(ROUNDS_TIME, 30)
@@ -1637,16 +1636,16 @@ public class MultiplayerTest extends AbstractGameTest {
                 .integer(ROUNDS_PLAYERS_PER_ROOM, 8)
                 .integer(KILL_HERO_SCORE, 1);
 
-        givenFl("☼☼☼☼☼☼☼☼☼☼" +
-                "☼        ☼" +
-                "☼###HH###☼" +
-                "☼☼☼☼HH☼☼☼☼" +
-                "☼   HH   ☼" +
-                "☼###HH###☼" +
-                "☼☼☼☼HH☼☼☼☼" +
-                "☼   HH   ☼" +
-                "☼###HH###☼" +
-                "☼☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
+                "☼        ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼   HH   ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼   HH   ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼☼☼☼☼☼☼\n");
 
         givenPlayer(3, 2); // соревнующиеся ребята
         givenPlayer(6, 2);
@@ -1664,7 +1663,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         assertScores("");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 1]]\n" +
                 "listener(1) => [START_ROUND, [Round 1]]\n" +
                 "listener(2) => [START_ROUND, [Round 1]]\n" +
@@ -1728,7 +1727,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         assertScores("");
        
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -1744,7 +1743,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=1\n" +
                 "hero(1)=1");
        
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
                 "listener(2) => [HERO_DIE]\n" +
@@ -1811,7 +1810,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=1\n" +
                 "hero(1)=1");
       
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -1827,7 +1826,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=2\n" +
                 "hero(1)=2");
      
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
                 "listener(2) => []\n" +
@@ -1872,7 +1871,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=2\n" +
                 "hero(1)=2");
       
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -1888,7 +1887,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=3\n" +
                 "hero(1)=2");
      
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -1915,7 +1914,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=3\n" +
                 "hero(1)=2");
       
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -1948,7 +1947,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=3\n" +
                 "hero(1)=2");
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [WIN_ROUND]\n" +
                 "listener(1) => [[Time is over]]\n" +
                 "listener(2) => []\n" +
@@ -1999,9 +1998,9 @@ public class MultiplayerTest extends AbstractGameTest {
 
 
         assertScores("");
-        assertEquals(8, field.players().size());
+        assertEquals(8, field().players().size());
      
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -2025,9 +2024,9 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
 
         assertScores("");
-        assertEquals(8, field.players().size());
+        assertEquals(8, field().players().size());
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 2]]\n" +
                 "listener(1) => [START_ROUND, [Round 2]]\n" +
                 "listener(2) => [START_ROUND, [Round 2]]\n" +
@@ -2051,7 +2050,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds() {
-        settings.bool(ROUNDS_ENABLED, true)
+        settings().bool(ROUNDS_ENABLED, true)
                 .integer(ROUNDS_TIME_BEFORE_START, 1)
                 .integer(ROUNDS_PER_MATCH, 2)
                 .integer(ROUNDS_TIME, 30)
@@ -2059,16 +2058,16 @@ public class MultiplayerTest extends AbstractGameTest {
                 .integer(ROUNDS_PLAYERS_PER_ROOM, 8)
                 .integer(KILL_HERO_SCORE, 1);
 
-        givenFl("☼☼☼☼☼☼☼☼☼☼" +
-                "☼        ☼" +
-                "☼###HH###☼" +
-                "☼☼☼☼HH☼☼☼☼" +
-                "☼   HH   ☼" +
-                "☼###HH###☼" +
-                "☼☼☼☼HH☼☼☼☼" +
-                "☼   HH   ☼" +
-                "☼###HH###☼" +
-                "☼☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
+                "☼        ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼   HH   ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼   HH   ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼☼☼☼☼☼☼\n");
 
         givenPlayer(3, 2); // соревнующиеся ребята
         givenPlayer(6, 2);
@@ -2086,7 +2085,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         assertScores("");
      
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 1]]\n" +
                 "listener(1) => [START_ROUND, [Round 1]]\n" +
                 "listener(2) => [START_ROUND, [Round 1]]\n" +
@@ -2150,7 +2149,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         assertScores("");
       
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -2166,7 +2165,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=1\n" +
                 "hero(1)=1");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
                 "listener(2) => [HERO_DIE]\n" +
@@ -2233,7 +2232,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=1\n" +
                 "hero(1)=1");
        
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -2249,7 +2248,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=2\n" +
                 "hero(1)=2");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
                 "listener(2) => []\n" +
@@ -2294,7 +2293,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=2\n" +
                 "hero(1)=2");
        
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -2310,7 +2309,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=3\n" +
                 "hero(1)=2");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -2337,7 +2336,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=3\n" +
                 "hero(1)=2");
       
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -2372,7 +2371,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         assertScores("");
       
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [WIN_ROUND]\n" +
                 "listener(1) => [[Time is over]]\n" +
                 "listener(2) => []\n" +
@@ -2397,7 +2396,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         assertScores("");
       
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 2]]\n" +
                 "listener(1) => [START_ROUND, [Round 2]]\n" +
                 "listener(2) => []\n" +
@@ -2422,7 +2421,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         assertScores("");
        
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -2446,22 +2445,22 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void heroKillHeroAndKillEnemy() {
-        settings.bool(ROUNDS_ENABLED, true)
+        settings().bool(ROUNDS_ENABLED, true)
                 .integer(ROUNDS_TIME_BEFORE_START, 1)
                 .integer(ROUNDS_PLAYERS_PER_ROOM, 4)
                 .integer(KILL_HERO_SCORE, 1)
                 .integer(KILL_ENEMY_SCORE, 10);
 
-        givenFl("☼☼☼☼☼☼☼☼☼☼" +
-                "☼        ☼" +
-                "☼###HH###☼" +
-                "☼☼☼☼HH☼☼☼☼" +
-                "☼   HH   ☼" +
-                "☼###HH###☼" +
-                "☼☼☼☼HH☼☼☼☼" +
-                "☼   HH   ☼" +
-                "☼###HH###☼" +
-                "☼☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
+                "☼        ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼   HH   ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼   HH   ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼☼☼☼☼☼☼\n");
 
         givenPlayer(3, 2).inTeam(1);
         givenPlayer(6, 2).inTeam(2);
@@ -2473,7 +2472,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         assertScores("");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 1]]\n" +
                 "listener(1) => [START_ROUND, [Round 1]]\n" +
                 "listener(2) => [START_ROUND, [Round 1]]\n" +
@@ -2533,7 +2532,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         assertScores("");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n" +
                 "listener(2) => []\n" +
@@ -2545,7 +2544,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(0)=1\n" +
                 "hero(1)=10");
         
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_ENEMY]\n" +
                 "listener(2) => [HERO_DIE]\n" +
@@ -2596,8 +2595,8 @@ public class MultiplayerTest extends AbstractGameTest {
         removeAllDied();
         // эмуляция проверки загрузки комнаты, если комната недогружена то не тикаем
         // вообще это делает фреймворк, тут лишь эмулируем
-        if (settings.isRoundsDisabled() ||
-                settings.getPlayersPerRoom() == players.size())
+        if (settings().isRoundsDisabled() ||
+                settings().getPlayersPerRoom() == players.size())
         {
             super.tick();
         }
@@ -2609,7 +2608,7 @@ public class MultiplayerTest extends AbstractGameTest {
     private void removeAllDied() {
         players.forEach(player -> {
             if (!player.isAlive()) {
-                field.remove(player);
+                field().remove(player);
             }
         });
     }

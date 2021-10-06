@@ -1,0 +1,74 @@
+
+before()
+
+pickKeysWithoutGeneration()
+    settings().bool(GENERATE_KEYS, false)
+    givenFl(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼ ►✦✦✼⍟☼
+        ☼######☼
+        ☼      ☼
+        ☼☼☼☼☼☼☼☼)
+        givenPlayer([2,3])
+            dice(2, 3)
+        dice(0)
+    hero(0).getKeys() = {GOLD=0, SILVER=0, BRONZE=0}
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  ►✦✼⍟☼
+        ☼######☼
+        ☼      ☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).getKeys() = {GOLD=1, SILVER=0, BRONZE=0}
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼   ►✼⍟☼
+        ☼######☼
+        ☼      ☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).getKeys() = {GOLD=2, SILVER=0, BRONZE=0}
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼    ►⍟☼
+        ☼######☼
+        ☼      ☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).getKeys() = {GOLD=2, SILVER=1, BRONZE=0}
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼     ►☼
+        ☼######☼
+        ☼      ☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).getKeys() = {GOLD=2, SILVER=1, BRONZE=1}
+    hero(0).clearScores()
+    hero(0).getKeys() = {GOLD=0, SILVER=0, BRONZE=0}
+
+after()

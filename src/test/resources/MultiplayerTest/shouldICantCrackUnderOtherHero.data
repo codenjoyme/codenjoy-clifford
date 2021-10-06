@@ -1,0 +1,38 @@
+
+before()
+
+shouldICantCrackUnderOtherHero()
+    givenFl(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼    ☼
+        ☼►►  ☼
+        ☼####☼
+        ☼☼☼☼☼☼)
+        givenPlayer([1,2])
+            dice(1, 2)
+        givenPlayer([2,2])
+            dice(2, 2)
+        dice(0)
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼    ☼
+        ☼►(  ☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        0)
+    hero(0).act()
+    hero(1).left()
+    hero(1).act()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼    ☼
+        ☼►)  ☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        0)
+
+after()

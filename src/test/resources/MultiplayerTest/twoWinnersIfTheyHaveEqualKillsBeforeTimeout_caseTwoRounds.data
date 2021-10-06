@@ -1,0 +1,183 @@
+
+before()
+
+twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
+    settings().bool(ROUNDS_ENABLED, true)
+    settings().integer(ROUNDS_TIME_BEFORE_START, 1)
+    settings().integer(ROUNDS_PER_MATCH, 2)
+    settings().integer(ROUNDS_TIME, 30)
+    settings().integer(ROUNDS_TIME_FOR_WINNER, 5)
+    settings().integer(ROUNDS_PLAYERS_PER_ROOM, 8)
+    settings().integer(KILL_HERO_SCORE, 1)
+    givenFl(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼        ☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼☼☼☼☼☼☼)
+        dice(0)
+    givenPlayer([3,2])
+        dice(3, 2)
+    givenPlayer([6,2])
+        dice(6, 2)
+    givenPlayer([1,2])
+        dice(1, 2)
+    givenPlayer([8,2])
+        dice(8, 2)
+    givenPlayer([1,5])
+        dice(1, 5)
+    givenPlayer([8,5])
+        dice(8, 5)
+    givenPlayer([1,8])
+        dice(1, 8)
+    givenPlayer([8,8])
+        dice(8, 8)
+    tick()
+    events().verifyAllEvents(
+        listener(0) => [START_ROUND, [Round 1]]
+        listener(1) => [START_ROUND, [Round 1]]
+        listener(2) => [START_ROUND, [Round 1]]
+        listener(3) => [START_ROUND, [Round 1]]
+        listener(4) => [START_ROUND, [Round 1]]
+        listener(5) => [START_ROUND, [Round 1]]
+        listener(6) => [START_ROUND, [Round 1]]
+        listener(7) => [START_ROUND, [Round 1]],
+        [])
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼(      (☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼(  HH  (☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼( ►HH( (☼
+        ☼###HH###☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).left()
+    hero(0).act()
+    hero(1).right()
+    hero(1).act()
+    hero(2).right()
+    hero(3).left()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼(      (☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼(  HH  (☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼ ⊏ЯHH⌊⊐ ☼
+        ☼#*#HH#*#☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).right()
+    hero(1).left()
+    tick()
+    hero(0).up()
+    hero(1).up()
+    tick()
+    hero(0).up()
+    hero(1).up()
+    tick()
+    hero(0).up()
+    hero(1).up()
+    tick()
+    hero(0).left()
+    hero(1).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼(      (☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼( ◄HH( (☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼#ᗆ#HH#ᗉ#☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).left()
+    hero(0).act()
+    hero(1).right()
+    hero(1).act()
+    hero(4).right()
+    hero(5).left()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼(      (☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼ ⊏ЯHH⌊⊐ ☼
+        ☼#*#HH#*#☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼#ᗆ#HH#ᗉ#☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).right()
+    hero(1).left()
+    tick()
+    hero(0).up()
+    hero(1).up()
+    tick()
+    hero(0).up()
+    hero(1).up()
+    tick()
+    hero(0).up()
+    hero(1).up()
+    tick()
+    hero(0).left()
+    hero(1).right()
+    tick()
+    events().verifyAllEvents(
+        listener(0) => []
+        listener(1) => []
+        listener(2) => []
+        listener(3) => []
+        listener(4) => []
+        listener(5) => []
+        listener(6) => []
+        listener(7) => [],
+        [])
+    tick()
+    events().verifyAllEvents(
+        listener(0) => [KILL_HERO]
+        listener(1) => [KILL_HERO]
+        listener(2) => [HERO_DIE]
+        listener(3) => [HERO_DIE]
+        listener(4) => []
+        listener(5) => []
+        listener(6) => []
+        listener(7) => [],
+        [])
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼( ◄  ( (☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼#ᗆ#HH#ᗉ#☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼#Z#HH#Z#☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0).left(hero(0))
+
+hero(0).act()
+
+hero(1).right()
+
+hero(1).act()
+
+hero(6).right()

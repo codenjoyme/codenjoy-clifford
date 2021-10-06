@@ -1,0 +1,57 @@
+
+before()
+
+shouldFallInPitRight()
+    givenFl(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ ◄ ☼
+        ☼###☼
+        ☼☼☼☼☼)
+        givenPlayer([2,2])
+            dice(2, 2)
+        dice(0)
+    hero(0).act()
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ R ☼
+        ☼##*☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ R ☼
+        ☼## ☼
+        ☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ R ☼
+        ☼## ☼
+        ☼☼☼☼☼,
+        0)
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼  [☼
+        ☼## ☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼   ☼
+        ☼##⍄☼
+        ☼☼☼☼☼,
+        0)
+
+after()

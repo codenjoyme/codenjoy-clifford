@@ -27,12 +27,11 @@ import com.codenjoy.dojo.clifford.model.items.robber.RobberJoystick;
 import org.junit.Test;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.ROBBERS_COUNT;
-import static org.junit.Assert.assertEquals;
 
-public class RobberMultiplayerTest extends AbstractGameTest {
+public class RobberMultiplayerTest extends AbstractGameCheckTest {
 
     @Override
-    protected void givenFl(String... maps) {
+    public void givenFl(String... maps) {
         super.givenFl(maps);
 
         robbers.forEach(RobberJoystick::disableMock);
@@ -41,15 +40,15 @@ public class RobberMultiplayerTest extends AbstractGameTest {
     // чертик идет за тобой
     @Test
     public void shouldRobberGoToHero() {
-        settings.integer(ROBBERS_COUNT, 1);
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼     »☼" +
-                "☼H#####☼" +
-                "☼H     ☼" +
-                "☼###H  ☼" +
-                "☼►  H  ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        settings().integer(ROBBERS_COUNT, 1);
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼     »☼\n" +
+                "☼H#####☼\n" +
+                "☼H     ☼\n" +
+                "☼###H  ☼\n" +
+                "☼►  H  ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
@@ -126,7 +125,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
-        events.verifyAllEvents("[HERO_DIE]");
+        events().verifyAllEvents("[HERO_DIE]");
         assertEquals(true, game().isGameOver());
 
         dice(1, 4);
@@ -147,15 +146,15 @@ public class RobberMultiplayerTest extends AbstractGameTest {
     // чертик стоит на месте, если ко мне нет пути
     @Test
     public void shouldRobberStop_whenNoPathToHero() {
-        settings.integer(ROBBERS_COUNT, 1);
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼     ►☼" +
-                "☼     #☼" +
-                "☼      ☼" +
-                "☼###H  ☼" +
-                "☼»  H  ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        settings().integer(ROBBERS_COUNT, 1);
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼     ►☼\n" +
+                "☼     #☼\n" +
+                "☼      ☼\n" +
+                "☼###H  ☼\n" +
+                "☼»  H  ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
@@ -186,15 +185,15 @@ public class RobberMultiplayerTest extends AbstractGameTest {
     // чертик идет за тобой по более короткому маршруту
     @Test
     public void shouldRobberGoToHeroShortestWay() {
-        settings.integer(ROBBERS_COUNT, 1);
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼     »☼" +
-                "☼H####H☼" +
-                "☼H    H☼" +
-                "☼###H##☼" +
-                "☼  ►H  ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        settings().integer(ROBBERS_COUNT, 1);
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼     »☼\n" +
+                "☼H####H☼\n" +
+                "☼H    H☼\n" +
+                "☼###H##☼\n" +
+                "☼  ►H  ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
@@ -211,15 +210,15 @@ public class RobberMultiplayerTest extends AbstractGameTest {
 
     @Test
     public void shouldRobberGoToHeroShortestWay2() {
-        settings.integer(ROBBERS_COUNT, 1);
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼»     ☼" +
-                "☼H####H☼" +
-                "☼H    H☼" +
-                "☼###H##☼" +
-                "☼  ►H  ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        settings().integer(ROBBERS_COUNT, 1);
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼»     ☼\n" +
+                "☼H####H☼\n" +
+                "☼H    H☼\n" +
+                "☼###H##☼\n" +
+                "☼  ►H  ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
@@ -237,15 +236,15 @@ public class RobberMultiplayerTest extends AbstractGameTest {
     // другой чертик чертику не помеха
     @Test
     public void shouldRobberGoToHeroShortestWayGetRoundOther() {
-        settings.integer(ROBBERS_COUNT, 2);
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼»    »☼" +
-                "☼H####H☼" +
-                "☼H    H☼" +
-                "☼###H##☼" +
-                "☼  ►H  ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        settings().integer(ROBBERS_COUNT, 2);
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼»    »☼\n" +
+                "☼H####H☼\n" +
+                "☼H    H☼\n" +
+                "☼###H##☼\n" +
+                "☼  ►H  ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
@@ -262,15 +261,15 @@ public class RobberMultiplayerTest extends AbstractGameTest {
 
     @Test
     public void shouldRobberGoToHeroShortestWayGetRoundOther2() {
-        settings.integer(ROBBERS_COUNT, 2);
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼» »   ☼" +
-                "☼H####H☼" +
-                "☼H    H☼" +
-                "☼###H##☼" +
-                "☼  ►H  ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        settings().integer(ROBBERS_COUNT, 2);
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼» »   ☼\n" +
+                "☼H####H☼\n" +
+                "☼H    H☼\n" +
+                "☼###H##☼\n" +
+                "☼  ►H  ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
@@ -288,15 +287,15 @@ public class RobberMultiplayerTest extends AbstractGameTest {
     // если чертику не достать одного он бежит за другим а не зависает
     @Test
     public void shouldRobberGoToNewHeroIfOneIsHidden() {
-        settings.integer(ROBBERS_COUNT, 1);
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼   ►  ☼" +
-                "☼######☼" +
-                "☼      ☼" +
-                "☼###H##☼" +
-                "☼»  H  ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        settings().integer(ROBBERS_COUNT, 1);
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼   ►  ☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼###H##☼\n" +
+                "☼»  H  ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
         tick();
@@ -342,7 +341,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => [HERO_DIE]\n");
     }
@@ -350,15 +349,15 @@ public class RobberMultiplayerTest extends AbstractGameTest {
     // каждый чертик бежит за своим героем, даже если к нему занятый уже герой ближе
     @Test
     public void shouldEveryRobberRunsAfterHisHero_evenIfThereIsAnotherHeroNearbyWhoIsAlreadyBeingHunted() {
-        settings.integer(ROBBERS_COUNT, 2);
-        givenFl("☼☼☼☼☼☼☼☼" +
-                "☼»  ► »☼" +
-                "☼H####H☼" +
-                "☼H    H☼" +
-                "☼###H##☼" +
-                "☼  ►H  ☼" +
-                "☼######☼" +
-                "☼☼☼☼☼☼☼☼");
+        settings().integer(ROBBERS_COUNT, 2);
+        givenFl("☼☼☼☼☼☼☼☼\n" +
+                "☼»  ► »☼\n" +
+                "☼H####H☼\n" +
+                "☼H    H☼\n" +
+                "☼###H##☼\n" +
+                "☼  ►H  ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         tick();
 
@@ -384,7 +383,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [HERO_DIE]\n" +
                 "listener(1) => []\n");
 
@@ -399,7 +398,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n");
 
@@ -436,7 +435,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => [HERO_DIE]\n");
 
@@ -452,7 +451,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
         // больше не за кем охотитья - воры стоят на месте
         tick();
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => []\n");
 
@@ -542,7 +541,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
         // и после того как нагонят оставшегося, снова зависнут
         tick();
 
-        events.verifyAllEvents("[HERO_DIE]");
+        events().verifyAllEvents("[HERO_DIE]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼    Ѡ ☼\n" +
@@ -555,7 +554,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
 
         tick();
 
-        events.verifyAllEvents("[]");
+        events().verifyAllEvents("[]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼    Ѡ ☼\n" +

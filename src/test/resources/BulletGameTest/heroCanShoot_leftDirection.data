@@ -1,0 +1,23 @@
+
+before()
+
+heroCanShoot_leftDirection()
+    givenFl(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼  ◄☼
+        ☼###☼
+        ☼☼☼☼☼)
+        givenPlayer([3,2])
+            dice(3, 2)
+        dice(0).act(hero(0))
+
+tick()
+
+assertF(
+☼☼☼☼☼
+☼   ☼
+☼  ◄☼
+☼###☼
+☼☼☼☼☼,
+0)

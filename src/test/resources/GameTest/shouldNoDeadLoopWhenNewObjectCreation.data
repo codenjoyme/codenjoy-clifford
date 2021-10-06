@@ -1,0 +1,26 @@
+
+before()
+
+shouldNoDeadLoopWhenNewObjectCreation()
+    givenFl(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ ►$☼
+        ☼###☼
+        ☼☼☼☼☼)
+        givenPlayer([2,2])
+            dice(2, 2)
+        dice(0)
+    dice(3, 3)
+    hero(0).right()
+    tick()
+    events().verifyAllEvents([GET_CLUE_KNIFE(1)], [])
+    assertF(
+        ☼☼☼☼☼
+        ☼  $☼
+        ☼  ►☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+
+after()

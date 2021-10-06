@@ -1,0 +1,51 @@
+
+before()
+
+shouldCantWalkThroughWallLeftRight()
+    givenFl(
+        ☼☼☼☼☼
+        ☼☼☼☼☼
+        ☼☼H☼☼
+        ☼ H◄☼
+        ☼☼☼☼☼)
+        givenPlayer([3,1])
+            dice(3, 1)
+        dice(0)
+    hero(0).left()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼☼☼☼☼
+        ☼☼H☼☼
+        ☼ Y ☼
+        ☼☼☼☼☼,
+        0)
+    hero(0).up()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼☼☼☼☼
+        ☼☼Y☼☼
+        ☼ H ☼
+        ☼☼☼☼☼,
+        0)
+    hero(0).left()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼☼☼☼☼
+        ☼☼Y☼☼
+        ☼ H ☼
+        ☼☼☼☼☼,
+        0)
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼☼☼☼☼
+        ☼☼Y☼☼
+        ☼ H ☼
+        ☼☼☼☼☼,
+        0)
+
+after()

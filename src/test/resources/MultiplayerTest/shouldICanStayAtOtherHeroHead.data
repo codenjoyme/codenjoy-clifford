@@ -1,0 +1,44 @@
+
+before()
+
+shouldICanStayAtOtherHeroHead()
+    givenFl(
+        ☼☼☼☼☼☼
+        ☼ ►  ☼
+        ☼    ☼
+        ☼ ►  ☼
+        ☼####☼
+        ☼☼☼☼☼☼)
+        givenPlayer([2,4])
+            dice(2, 4)
+        givenPlayer([2,2])
+            dice(2, 2)
+        dice(0)
+    assertF(
+        ☼☼☼☼☼☼
+        ☼ [  ☼
+        ☼    ☼
+        ☼ (  ☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼ ►  ☼
+        ☼ (  ☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        0)
+    hero(0).down()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼ ►  ☼
+        ☼ (  ☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        0)
+
+after()

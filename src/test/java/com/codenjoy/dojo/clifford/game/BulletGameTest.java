@@ -28,169 +28,168 @@ import org.junit.Test;
 import static com.codenjoy.dojo.services.Direction.LEFT;
 import static com.codenjoy.dojo.services.Direction.RIGHT;
 import static com.codenjoy.dojo.services.PointImpl.pt;
-import static org.junit.Assert.assertEquals;
 
-public class BulletGameTest extends AbstractGameTest {
+public class BulletGameTest extends AbstractGameCheckTest {
 
     private void assertBulletAt(int x, int y) {
-        assertEquals(true, field.bullets().contains(pt(x, y)));
+        assertEquals(true, field().bullets().contains(pt(x, y)));
     }
 
     private void assertBulletCount(int count) {
-        assertEquals(count, field.bullets().size());
+        assertEquals(count, field().bullets().size());
     }
 
     @Test
     public void heroCanShoot_rightDirection() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼►  ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼►  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         assertBulletCount(0);
 
         hero().act(1);
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼►  ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼►  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
         assertBulletAt(1, 2);
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼► •☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼► •☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
         assertBulletCount(1);
     }
 
     @Test
     public void heroCanShoot_leftDirection() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼  ◄☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼  ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         assertBulletCount(0);
 
         hero().act(1);
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼  ◄☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼  ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
         assertBulletAt(3, 2);
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼• ◄☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼• ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
         assertBulletCount(1);
     }
 
     @Test
     public void bulletIsRemovedOutOfBoard() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "   ◄☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "   ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         assertBulletCount(0);
 
         hero().act(1);
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "   ◄☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "   ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
         assertBulletAt(3, 2);
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                " • ◄☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                " • ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
         assertBulletCount(1);
 
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "   ◄☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "   ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
         assertBulletCount(0);
     }
 
     @Test
     public void bulletInteractWithBrick() {
-        givenFl("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ #  ◄☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ #  ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().act(1);
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ #  ◄☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ #  ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
         assertBulletAt(5, 2);
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ #• ◄☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ #• ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ *  ◄☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ *  ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
         assertBulletCount(0);
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼    ◄☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼    ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         tick();
         tick();
@@ -200,398 +199,398 @@ public class BulletGameTest extends AbstractGameTest {
         tick();
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ 4  ◄☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ 4  ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
     }
 
     @Test
     public void bulletInteractWithBorder() {
-        givenFl("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼   ◄ ☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼   ◄ ☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().act(1);
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼   ◄ ☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼   ◄ ☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
         assertBulletAt(4, 2);
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ • ◄ ☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
-        assertEquals(true, field.bullets().getAt(pt(2, 2)).stream()
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ • ◄ ☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+        assertEquals(true, field().bullets().getAt(pt(2, 2)).stream()
                 .allMatch(bullet -> bullet.getDirection() == LEFT));
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼   ◄ ☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼   ◄ ☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
         assertBulletAt(0, 2);
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ • ◄ ☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
-        assertEquals(true, field.bullets().getAt(pt(2, 2)).stream()
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ • ◄ ☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+        assertEquals(true, field().bullets().getAt(pt(2, 2)).stream()
                 .allMatch(bullet -> bullet.getDirection() == RIGHT));
     }
 
     @Test
     public void bulletCanBounceOnlyOnce() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼     ◄ ☼" +
-                "☼#### ##☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼     ◄ ☼\n" +
+                "☼#### ##☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().act(1);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼     ◄ ☼" +
-                "☼#### ##☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼     ◄ ☼\n" +
+                "☼#### ##☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
         assertBulletAt(6, 2);
 
         hero().left();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   •]  ☼" +
-                "☼#### ##☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   •]  ☼\n" +
+                "☼#### ##☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼ •     ☼" +
-                "☼####◄##☼" +
-                "☼☼☼☼☼☼☼☼☼");
-        assertEquals(true, field.bullets().getAt(pt(2, 2)).stream()
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼ •     ☼\n" +
+                "☼####◄##☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
+        assertEquals(true, field().bullets().getAt(pt(2, 2)).stream()
                 .allMatch(bullet -> bullet.getDirection() == LEFT));
 
         // bounce from border
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼####◄##☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼####◄##☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
         assertBulletAt(0, 2);
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼ •     ☼" +
-                "☼####◄##☼" +
-                "☼☼☼☼☼☼☼☼☼");
-        assertEquals(true, field.bullets().getAt(pt(2, 2)).stream()
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼ •     ☼\n" +
+                "☼####◄##☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
+        assertEquals(true, field().bullets().getAt(pt(2, 2)).stream()
                 .allMatch(bullet -> bullet.getDirection() == RIGHT));
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   •   ☼" +
-                "☼####◄##☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   •   ☼\n" +
+                "☼####◄##☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼     • ☼" +
-                "☼####◄##☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼     • ☼\n" +
+                "☼####◄##☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼####◄##☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼####◄##☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
         assertBulletCount(0);
     }
 
     @Test
     public void bouncedBulletKillOwner() {
-        givenFl("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ ☼ ◄ ☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ ☼ ◄ ☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
         hero().act(1);
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ ☼ ◄ ☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ ☼ ◄ ☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
         assertBulletAt(4, 2);
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ ☼ ◄ ☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ ☼ ◄ ☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
         assertBulletAt(2, 2);
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼     ☼" +
-                "☼ ☼ Ѡ ☼" +
-                "☼#####☼" +
-                "☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ ☼ Ѡ ☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
 
-        events.verifyAllEvents("[HERO_DIE, SUICIDE]");
+        events().verifyAllEvents("[HERO_DIE, SUICIDE]");
     }
 
 
     @Test
     public void heroNotMoveWhenShoot() {
-        givenFl("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼►  ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼►  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
 
         hero().right();
         hero().act(1);
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼►  ☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼►  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
         assertBulletAt(1, 2);
 
         hero().right();
         tick();
 
-        assertE("☼☼☼☼☼" +
-                "☼   ☼" +
-                "☼ ►•☼" +
-                "☼###☼" +
-                "☼☼☼☼☼");
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ►•☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test
     public void heroKillOtherHero() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼►  ►   ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼►  ►   ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼►  (   ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼►  (   ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().act(1);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼►  (   ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼►  (   ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
         assertBulletAt(1, 3);
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼► •(   ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼► •(   ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼►  Z   ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼►  Z   ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertBulletCount(0);
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n");
     }
 
     @Test
     public void heroWithMaskIsImmortal_bulletGoThrough() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼► ► ►  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼► ► ►  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
         hero(1).pick(Potion.PotionType.MASK_POTION);
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼► ⋉ (  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼► ⋉ (  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero(0).act(1);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼► ⋉ (  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼► ⋉ (  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
         assertBulletAt(1, 3);
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼► ⋉ (  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼► ⋉ (  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
         assertBulletAt(3, 3);
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼► ⋉ Z  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼► ⋉ Z  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertBulletCount(0);
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => []\n" +
                 "listener(2) => [HERO_DIE]\n");
@@ -599,165 +598,165 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void heroFallOnBullet() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ►   ☼" +
-                "☼       ☼" +
-                "☼     ◄ ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ►   ☼\n" +
+                "☼       ☼\n" +
+                "☼     ◄ ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ⊏   ☼" +
-                "☼       ☼" +
-                "☼     ◄ ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ⊏   ☼\n" +
+                "☼       ☼\n" +
+                "☼     ◄ ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().act(1);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ⊏   ☼" +
-                "☼     ◄ ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ⊏   ☼\n" +
+                "☼     ◄ ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
         assertBulletAt(6, 3);
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   Z ◄ ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   Z ◄ ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertBulletCount(0);
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n");
     }
 
     @Test
     public void heroFallOnBullet_notTakeClue() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ►   ☼" +
-                "☼       ☼" +
-                "☼   $ ◄ ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ►   ☼\n" +
+                "☼       ☼\n" +
+                "☼   $ ◄ ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ⊏   ☼" +
-                "☼       ☼" +
-                "☼   $ ◄ ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ⊏   ☼\n" +
+                "☼       ☼\n" +
+                "☼   $ ◄ ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero().act(1);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   ⊏   ☼" +
-                "☼   $ ◄ ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   ⊏   ☼\n" +
+                "☼   $ ◄ ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
         assertBulletAt(6, 3);
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼   Z ◄ ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   Z ◄ ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertBulletCount(0);
-        assertEquals(1, field.clueKnife().size());
-        events.verifyAllEvents(
+        assertEquals(1, field().clueKnife().size());
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n");
     }
 
     @Test
     public void twoShootersKillHero() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼► ► ◄  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼► ► ◄  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼( ( ◄  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼( ( ◄  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero(0).act(1);
         hero(1).act(1);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼( ( ◄  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼( ( ◄  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
         assertBulletAt(1, 3);
         assertBulletAt(5, 3);
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼( Z ◄  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼( Z ◄  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertBulletCount(0);
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
                 "listener(2) => [HERO_DIE]\n");
@@ -765,118 +764,118 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void noEventIfOwnerNotAlive() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼ ►   ► ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼ ►   ► ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero(0).act(1);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼ ►   ( ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼ ►   ( ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
         assertBulletAt(2, 3);
 
         hero(0).die();
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼ Ѡ • ( ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼ Ѡ • ( ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [HERO_DIE]\n" +
                 "listener(1) => []\n");
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼ Ѡ   Z ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼ Ѡ   Z ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertBulletCount(0);
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => []\n" +
                 "listener(1) => [HERO_DIE]\n");
     }
 
     @Test
     public void twoShootersKillEachOther() {
-        givenFl("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼►   ◄  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼►   ◄  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         hero(0).act(1);
         hero(1).act(1);
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼(   ◄  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼(   ◄  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
         assertBulletAt(1, 3);
         assertBulletAt(5, 3);
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼( • ◄  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼( • ◄  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         tick();
 
-        assertE("☼☼☼☼☼☼☼☼☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼       ☼" +
-                "☼Z   Ѡ  ☼" +
-                "☼#######☼" +
-                "☼       ☼" +
-                "☼☼☼☼☼☼☼☼☼");
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼Z   Ѡ  ☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
 
         assertBulletCount(0);
-        events.verifyAllEvents(
+        events().verifyAllEvents(
                 "listener(0) => [HERO_DIE]\n" +
                 "listener(1) => [HERO_DIE]\n");
     }

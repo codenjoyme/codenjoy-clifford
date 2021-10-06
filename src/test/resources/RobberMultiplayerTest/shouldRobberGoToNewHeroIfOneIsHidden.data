@@ -1,0 +1,68 @@
+
+before()
+
+shouldRobberGoToNewHeroIfOneIsHidden()
+    settings().integer(ROBBERS_COUNT, 1)
+    givenFl(
+        ☼☼☼☼☼☼☼☼
+        ☼   ►  ☼
+        ☼######☼
+        ☼      ☼
+        ☼###H##☼
+        ☼»  H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼)
+        givenPlayer([4,6])
+            dice(4, 6)
+        dice(0)
+    tick()
+    tick()
+    tick()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼   ►  ☼
+        ☼######☼
+        ☼      ☼
+        ☼###H##☼
+        ☼»  H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    givenPlayer([1,4])
+        dice(1, 4)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼   (  ☼
+        ☼######☼
+        ☼►     ☼
+        ☼###H##☼
+        ☼ » H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼   (  ☼
+        ☼######☼
+        ☼Ѡ     ☼
+        ☼###H##☼
+        ☼   H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    events().verifyAllEvents(
+        listener(0) => []
+        listener(1) => [HERO_DIE],
+        [])
+
+after()

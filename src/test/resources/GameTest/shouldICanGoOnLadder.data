@@ -1,0 +1,33 @@
+
+before()
+
+shouldICanGoOnLadder()
+    givenFl(
+        ☼☼☼☼☼
+        ☼  H☼
+        ☼  H☼
+        ☼ ►H☼
+        ☼☼☼☼☼)
+        givenPlayer([2,1])
+            dice(2, 1)
+        dice(0)
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼  H☼
+        ☼  H☼
+        ☼  Y☼
+        ☼☼☼☼☼,
+        0)
+    hero(0).left()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼  H☼
+        ☼  H☼
+        ☼ ◄H☼
+        ☼☼☼☼☼,
+        0)
+
+after()

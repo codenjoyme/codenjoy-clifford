@@ -1,0 +1,84 @@
+
+before()
+
+shouldCrackUnderCrackedBrick()
+    givenFl(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼ ◄  ☼
+        ☼####☼
+        ☼####☼
+        ☼☼☼☼☼☼)
+        givenPlayer([2,3])
+            dice(2, 3)
+        dice(0)
+    hero(0).act()
+    tick()
+    hero(0).right()
+    tick()
+    hero(0).left()
+    hero(0).act()
+    tick()
+    hero(0).right()
+    tick()
+    hero(0).left()
+    hero(0).act()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼   Я☼
+        ☼  *#☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        0)
+    hero(0).left()
+    tick()
+    tick()
+    hero(0).left()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼    ☼
+        ☼ ⍃ #☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        0)
+    hero(0).right()
+    hero(0).act()
+    tick()
+    hero(0).left()
+    hero(0).act()
+    tick()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼    ☼
+        ☼2Я #☼
+        ☼ # #☼
+        ☼☼☼☼☼☼,
+        0)
+    hero(0).left()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼    ☼
+        ☼]3 #☼
+        ☼ # #☼
+        ☼☼☼☼☼☼,
+        0)
+    hero(0).left()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼    ☼
+        ☼#24#☼
+        ☼⍃# #☼
+        ☼☼☼☼☼☼,
+        0)
+
+after()

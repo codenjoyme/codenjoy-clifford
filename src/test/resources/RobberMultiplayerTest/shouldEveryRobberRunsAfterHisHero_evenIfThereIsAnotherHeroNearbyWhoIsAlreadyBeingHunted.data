@@ -1,0 +1,217 @@
+
+before()
+
+shouldEveryRobberRunsAfterHisHero_evenIfThereIsAnotherHeroNearbyWhoIsAlreadyBeingHunted()
+    settings().integer(ROBBERS_COUNT, 2)
+    givenFl(
+        ☼☼☼☼☼☼☼☼
+        ☼»  ► »☼
+        ☼H####H☼
+        ☼H    H☼
+        ☼###H##☼
+        ☼  ►H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼)
+        givenPlayer([4,6])
+            dice(4, 6)
+        givenPlayer([3,2])
+            dice(3, 2)
+        dice(0)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼ » (  ☼
+        ☼H####Q☼
+        ☼H    H☼
+        ☼###H##☼
+        ☼  ►H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼  »(  ☼
+        ☼H####H☼
+        ☼H    Q☼
+        ☼###H##☼
+        ☼  ►H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    tick()
+    events().verifyAllEvents(
+        listener(0) => [HERO_DIE]
+        listener(1) => [],
+        [])
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼   Z  ☼
+        ☼H####H☼
+        ☼H   «H☼
+        ☼###H##☼
+        ☼  ►H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    tick()
+    events().verifyAllEvents(
+        listener(0) => []
+        listener(1) => [],
+        [])
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼   Z» ☼
+        ☼H####H☼
+        ☼H  « H☼
+        ☼###H##☼
+        ☼  ►H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼   Z »☼
+        ☼H####H☼
+        ☼H    H☼
+        ☼###Q##☼
+        ☼  ►H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼   Z  ☼
+        ☼H####Q☼
+        ☼H    H☼
+        ☼###H##☼
+        ☼  ►Q  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    tick()
+    events().verifyAllEvents(
+        listener(0) => []
+        listener(1) => [HERO_DIE],
+        [])
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼   Z  ☼
+        ☼H####H☼
+        ☼H    Q☼
+        ☼###H##☼
+        ☼  ѠH  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    tick()
+    events().verifyAllEvents(
+        listener(0) => []
+        listener(1) => [],
+        [])
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼   Z  ☼
+        ☼H####H☼
+        ☼H    Q☼
+        ☼###H##☼
+        ☼  ѠH  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼   Z  ☼
+        ☼H####H☼
+        ☼H    Q☼
+        ☼###H##☼
+        ☼  ѠH  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼H####H☼
+        ☼H    Q☼
+        ☼###H##☼
+        ☼  «H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    givenPlayer([1,2])
+        dice(1, 2)
+    givenPlayer([5,6])
+        dice(5, 6)
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼    ► ☼
+        ☼H####H☼
+        ☼H    Q☼
+        ☼###H##☼
+        ☼( «H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        3)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼    ► ☼
+        ☼H####Q☼
+        ☼H    H☼
+        ☼###H##☼
+        ☼(« H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        3)
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼    ► ☼
+        ☼H####Q☼
+        ☼H    H☼
+        ☼###H##☼
+        ☼ « H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        3)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼    ►»☼
+        ☼H####H☼
+        ☼H    H☼
+        ☼###H##☼
+        ☼  »H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        3)
+    tick()
+    events().verifyAllEvents([HERO_DIE], [])
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼    Ѡ ☼
+        ☼H####H☼
+        ☼H    H☼
+        ☼###H##☼
+        ☼  »H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        3)
+    tick()
+    events().verifyAllEvents([], [])
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼    Ѡ ☼
+        ☼H####H☼
+        ☼H    H☼
+        ☼###H##☼
+        ☼  »H  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        3)
+
+after()

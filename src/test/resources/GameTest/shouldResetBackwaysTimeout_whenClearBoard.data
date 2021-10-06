@@ -1,0 +1,19 @@
+
+before()
+
+shouldResetBackwaysTimeout_whenClearBoard()
+    settings().integer(BACKWAYS_COUNT, 2)
+    settings().integer(BACKWAY_TICKS, 5)
+    givenFl(
+        ☼☼☼☼☼
+        ☼  ⊛☼
+        ☼⊛◄ ☼
+        ☼###☼
+        ☼☼☼☼☼)
+        givenPlayer([2,2])
+            dice(2, 2)
+        dice(0).left(hero(0))
+
+tick()
+
+field().clearScore(field())

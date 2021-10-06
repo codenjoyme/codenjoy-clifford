@@ -1,0 +1,106 @@
+
+before()
+
+shouldResetHeroScores_whenClearBoard()
+    givenFl(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  ◄ ◄ ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼)
+        givenPlayer([3,2])
+            dice(3, 2)
+        givenPlayer([5,2])
+            dice(5, 2)
+        dice(0)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  ◄ ) ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).act()
+    hero(0).right()
+    hero(1).left()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  R⊐  ☼
+        ☼###*##☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  R   ☼
+        ☼###ᗉ##☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    tick()
+    hero(0).scores() = 0
+    hero(1).scores() = 0
+    hero(0).isAlive() = true
+    hero(1).isAlive() = true
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  R   ☼
+        ☼###ᗉ##☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    tick()
+    events().verifyAllEvents(
+        listener(0) => [KILL_HERO]
+        listener(1) => [HERO_DIE],
+        [])
+    hero(0).scores() = 20
+    hero(1).scores() = 0
+    hero(0).isAlive() = true
+    hero(1).isAlive() = false
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  R   ☼
+        ☼###Z##☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    dice(1, 2, 6, 2)
+    field().clearScore()
+    hero(0).scores() = 0
+    hero(1).scores() = 0
+    hero(0).isAlive() = true
+    hero(1).isAlive() = true
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼►    (☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+
+after()

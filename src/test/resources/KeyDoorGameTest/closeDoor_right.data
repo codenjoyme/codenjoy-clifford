@@ -1,0 +1,75 @@
+
+before()
+
+closeDoor_right()
+    givenFl(
+        ☼☼☼☼☼☼☼☼☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼  ►✦⍙  ☼
+        ☼#######☼
+        ☼       ☼
+        ☼☼☼☼☼☼☼☼☼)
+        givenPlayer([3,3])
+            dice(3, 3)
+        dice(0)
+    hero(0).getKeys() = {GOLD=0, SILVER=0, BRONZE=0}
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼   ►⍙  ☼
+        ☼#######☼
+        ☼       ☼
+        ☼☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).getKeys() = {GOLD=1, SILVER=0, BRONZE=0}
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼    ►  ☼
+        ☼#######☼
+        ☼       ☼
+        ☼☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼    ⍙► ☼
+        ☼#######☼
+        ☼       ☼
+        ☼☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).left()
+    hero(0).act(3)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼    ⍍◄ ☼
+        ☼#######☼
+        ☼       ☼
+        ☼☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).getKeys() = {GOLD=0, SILVER=0, BRONZE=0}
+
+after()

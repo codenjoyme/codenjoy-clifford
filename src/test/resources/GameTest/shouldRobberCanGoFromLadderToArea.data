@@ -1,0 +1,70 @@
+
+before()
+
+shouldRobberCanGoFromLadderToArea()
+    givenFl(
+        ☼☼☼☼►☼H  ☼
+        ☼H# ☼
+        ☼H« ☼
+        ☼☼☼☼☼)
+        givenPlayer([4,4])
+            dice(4, 4)
+        dice(0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼H  ☼
+        ☼H# ☼
+        ☼Q  ☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼H  ☼
+        ☼Q# ☼
+        ☼H  ☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼Q  ☼
+        ☼H# ☼
+        ☼H  ☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼H» ☼
+        ☼H# ☼
+        ☼H  ☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼H ›☼
+        ☼H# ☼
+        ☼H  ☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼H  ☼
+        ☼H#›☼
+        ☼H  ☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼H  ☼
+        ☼H# ☼
+        ☼H »☼
+        ☼☼☼☼☼,
+        0)
+
+after()

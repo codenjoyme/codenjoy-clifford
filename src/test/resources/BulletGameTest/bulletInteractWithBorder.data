@@ -1,0 +1,26 @@
+
+before()
+
+bulletInteractWithBorder()
+    givenFl(
+        ☼☼☼☼☼☼☼
+        ☼     ☼
+        ☼     ☼
+        ☼     ☼
+        ☼   ◄ ☼
+        ☼#####☼
+        ☼☼☼☼☼☼☼)
+        givenPlayer([4,2])
+            dice(4, 2)
+        dice(0)
+    hero(0).act(1)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼
+        ☼     ☼
+        ☼     ☼
+        ☼     ☼
+        ☼   ◄ ☼
+        ☼#####☼
+        ☼☼☼☼☼☼☼,
+        0)

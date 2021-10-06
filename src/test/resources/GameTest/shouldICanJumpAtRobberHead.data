@@ -1,0 +1,47 @@
+
+before()
+
+shouldICanJumpAtRobberHead()
+    givenFl(
+        ☼☼☼☼☼
+        ☼ ◄ ☼
+        ☼   ☼
+        ☼ » ☼
+        ☼☼☼☼☼)
+        givenPlayer([2,3])
+            dice(2, 3)
+        dice(0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ ◄ ☼
+        ☼ » ☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ ◄ ☼
+        ☼ » ☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ ] ☼
+        ☼  »☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼   ☼
+        ☼ ◄»☼
+        ☼☼☼☼☼,
+        0)
+
+after()

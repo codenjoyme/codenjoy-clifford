@@ -1,0 +1,68 @@
+
+before()
+
+thatMaskKillsNonMaskPlayer_killEnemy()
+    settings().integer(MASK_POTIONS_COUNT, 1)
+    givenFl(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼►►    ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼)
+        givenPlayer([1,2])
+            dice(1, 2)
+        givenPlayer([2,2])
+            dice(2, 2)
+        dice(0)
+    player(0).inTeam(1)
+    player(1).inTeam(2)
+    hero(0).pick(MASK_POTION)
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼⊳❪    ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼⧑►    ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+    hero(0).right()
+    tick()
+    events().verifyAllEvents(
+        listener(0) => [KILL_ENEMY]
+        listener(1) => [HERO_DIE],
+        [])
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼ ⊳    ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼ Ѡ    ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)

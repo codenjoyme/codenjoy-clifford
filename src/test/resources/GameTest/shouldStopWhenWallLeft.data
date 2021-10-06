@@ -1,0 +1,33 @@
+
+before()
+
+shouldStopWhenWallLeft()
+    givenFl(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼ ◄ ☼
+        ☼###☼
+        ☼☼☼☼☼)
+        givenPlayer([2,2])
+            dice(2, 2)
+        dice(0)
+    hero(0).left()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼◄  ☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+    hero(0).left()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼◄  ☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+
+after()

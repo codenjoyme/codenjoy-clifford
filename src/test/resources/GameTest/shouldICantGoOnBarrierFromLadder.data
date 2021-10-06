@@ -1,0 +1,67 @@
+
+before()
+
+shouldICantGoOnBarrierFromLadder()
+    givenFl(
+        ☼☼☼☼☼
+        ☼  H☼
+        ☼  H☼
+        ☼ ►H☼
+        ☼☼☼☼☼)
+        givenPlayer([2,1])
+            dice(2, 1)
+        dice(0)
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼  H☼
+        ☼  H☼
+        ☼  Y☼
+        ☼☼☼☼☼,
+        0)
+    hero(0).up()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼  H☼
+        ☼  Y☼
+        ☼  H☼
+        ☼☼☼☼☼,
+        0)
+    hero(0).up()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼  Y☼
+        ☼  H☼
+        ☼  H☼
+        ☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼
+        ☼  Y☼
+        ☼  H☼
+        ☼  H☼
+        ☼☼☼☼☼,
+        0)
+    hero(0).up()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼  Y☼
+        ☼  H☼
+        ☼  H☼
+        ☼☼☼☼☼,
+        0)
+    hero(0).right()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼  Y☼
+        ☼  H☼
+        ☼  H☼
+        ☼☼☼☼☼,
+        0)
+
+after()

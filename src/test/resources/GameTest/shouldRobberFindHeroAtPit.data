@@ -1,0 +1,88 @@
+
+before()
+
+shouldRobberFindHeroAtPit()
+    givenFl(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  « ◄ ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼)
+        givenPlayer([5,2])
+            dice(5, 2)
+        dice(0)
+    hero(0).act()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  « Я ☼
+        ☼###*##☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).left()
+    tick()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  «   ☼
+        ☼###⍃##☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    tick()
+    tick()
+    events().verifyAllEvents([HERO_DIE, SUICIDE], [])
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼###Ѡ##☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    dice(2, 3)
+    field().newGame(player(0))
+    dice(0)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼ ►    ☼
+        ☼###⍈##☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼ ► »  ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+
+after()
