@@ -3,7 +3,8 @@ before()
 
 shouldRobberPipeWhenFall()
     givenFl(
-        ☼☼☼☼☼☼►☼  »  ☼
+        ☼☼☼☼☼☼►
+        ☼  »  ☼
         ☼# ###☼
         ☼     ☼
         ☼ ~~~ ☼

@@ -3,7 +3,8 @@ before()
 
 shouldRobberCantWalkThroughWallLeftRight()
     givenFl(
-        ☼☼☼☼►☼☼☼☼☼
+        ☼☼☼☼►
+        ☼☼☼☼☼
         ☼☼H☼☼
         ☼ H«☼
         ☼☼☼☼☼)

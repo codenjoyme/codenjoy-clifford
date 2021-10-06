@@ -3,7 +3,8 @@ before()
 
 shouldRobberCantMoveWhenFall()
     givenFl(
-        ☼☼☼☼☼☼►☼  »  ☼
+        ☼☼☼☼☼☼►
+        ☼  »  ☼
         ☼     ☼
         ☼     ☼
         ☼     ☼

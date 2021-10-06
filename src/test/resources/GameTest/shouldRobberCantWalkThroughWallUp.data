@@ -4,7 +4,8 @@ before()
 shouldRobberCantWalkThroughWallUp()
     settings().integer(ROBBERS_COUNT, 1)
     givenFl(
-        ☼☼☼☼►☼☼☼☼☼
+        ☼☼☼☼►
+        ☼☼☼☼☼
         ☼ H ☼
         ☼ H«☼
         ☼☼☼☼☼)

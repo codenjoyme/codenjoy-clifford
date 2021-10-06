@@ -3,7 +3,8 @@ before()
 
 shouldRobberCantJump()
     givenFl(
-        ☼☼☼☼☼►☼    ☼
+        ☼☼☼☼☼►
+        ☼    ☼
         ☼    ☼
         ☼    ☼
         ☼ »  ☼

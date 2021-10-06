@@ -1952,7 +1952,7 @@ public class GameTest extends AbstractGameCheckTest {
     // чертик двигается так же как и обычный игрок - мжет ходить влево и вправо
     @Test
     public void shouldRobberMoveLeft() {
-        givenFl("☼☼☼☼►" +
+        givenFl("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼ « ☼\n" +
                 "☼###☼\n" +
@@ -1961,7 +1961,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().left();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼«  ☼\n" +
                 "☼###☼\n" +
@@ -1970,7 +1970,7 @@ public class GameTest extends AbstractGameCheckTest {
 
     @Test
     public void shouldRobberMoveRight() {
-        givenFl("☼☼☼☼►" +
+        givenFl("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼ « ☼\n" +
                 "☼###☼\n" +
@@ -1979,7 +1979,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼  »☼\n" +
                 "☼###☼\n" +
@@ -1989,7 +1989,7 @@ public class GameTest extends AbstractGameCheckTest {
     // если небыло команды чертик никуда не идет
     @Test
     public void shouldRobberStopWhenNoMoreRightCommand() {
-        givenFl("☼☼☼☼►" +
+        givenFl("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼  «☼\n" +
                 "☼###☼\n" +
@@ -1998,7 +1998,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().left();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼ « ☼\n" +
                 "☼###☼\n" +
@@ -2006,7 +2006,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼ « ☼\n" +
                 "☼###☼\n" +
@@ -2016,7 +2016,7 @@ public class GameTest extends AbstractGameCheckTest {
     // Чертик останавливается возле границы
     @Test
     public void shouldRobberStopWhenWallRight() {
-        givenFl("☼☼☼☼►" +
+        givenFl("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼  »☼\n" +
                 "☼###☼\n" +
@@ -2025,7 +2025,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼  »☼\n" +
                 "☼###☼\n" +
@@ -2034,7 +2034,7 @@ public class GameTest extends AbstractGameCheckTest {
 
     @Test
     public void shouldRobberStopWhenWallLeft() {
-        givenFl("☼☼☼☼►" +
+        givenFl("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼«  ☼\n" +
                 "☼###☼\n" +
@@ -2043,7 +2043,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().left();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼«  ☼\n" +
                 "☼###☼\n" +
@@ -2316,7 +2316,7 @@ public class GameTest extends AbstractGameCheckTest {
     // Чертик может зайти на лестницу и выйти обратно
     @Test
     public void shouldRobberCanGoOnLadder() {
-        givenFl("☼☼☼☼►" +
+        givenFl("☼☼☼☼►\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
                 "☼ «H☼\n" +
@@ -2325,7 +2325,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
                 "☼  Q☼\n" +
@@ -2334,7 +2334,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().left();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
                 "☼ «H☼\n" +
@@ -2344,7 +2344,7 @@ public class GameTest extends AbstractGameCheckTest {
     // Чертик может карабкаться по лестнице вверх
     @Test
     public void shouldRobberCanGoOnLadderUp() {
-        givenFl("☼☼☼☼►" +
+        givenFl("☼☼☼☼►\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
                 "☼ «H☼\n" +
@@ -2353,7 +2353,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
                 "☼  Q☼\n" +
@@ -2362,7 +2362,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().up();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  H☼\n" +
                 "☼  Q☼\n" +
                 "☼  H☼\n" +
@@ -2371,7 +2371,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().up();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  Q☼\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
@@ -2383,7 +2383,7 @@ public class GameTest extends AbstractGameCheckTest {
     public void shouldRobberCantGoOnBarrierFromLadder() {
         shouldRobberCanGoOnLadderUp();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  Q☼\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
@@ -2392,7 +2392,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().up();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  Q☼\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
@@ -2401,7 +2401,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  Q☼\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
@@ -2413,7 +2413,7 @@ public class GameTest extends AbstractGameCheckTest {
     public void shouldRobberCanGoOnLadderDown() {
         shouldRobberCanGoOnLadderUp();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  Q☼\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
@@ -2422,7 +2422,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().down();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  H☼\n" +
                 "☼  Q☼\n" +
                 "☼  H☼\n" +
@@ -2431,7 +2431,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().down();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
                 "☼  Q☼\n" +
@@ -2440,7 +2440,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().down();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
                 "☼  Q☼\n" +
@@ -2452,7 +2452,7 @@ public class GameTest extends AbstractGameCheckTest {
     public void shouldRobberCanFly() {
         shouldRobberCanGoOnLadderUp();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  Q☼\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
@@ -2461,7 +2461,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().left();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼ ‹H☼\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
@@ -2469,7 +2469,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  H☼\n" +
                 "☼ ‹H☼\n" +
                 "☼  H☼\n" +
@@ -2477,7 +2477,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼  H☼\n" +
                 "☼  H☼\n" +
                 "☼ «H☼\n" +
@@ -2487,7 +2487,7 @@ public class GameTest extends AbstractGameCheckTest {
     // Чертик может поднятся по лестнице и зайти на площадку
     @Test
     public void shouldRobberCanGoFromLadderToArea() {
-        givenFl("☼☼☼☼►" +
+        givenFl("☼☼☼☼►\n" +
                 "☼H  ☼\n" +
                 "☼H# ☼\n" +
                 "☼H« ☼\n" +
@@ -2496,7 +2496,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().left();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼H  ☼\n" +
                 "☼H# ☼\n" +
                 "☼Q  ☼\n" +
@@ -2505,7 +2505,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().up();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼H  ☼\n" +
                 "☼Q# ☼\n" +
                 "☼H  ☼\n" +
@@ -2514,7 +2514,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().up();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼Q  ☼\n" +
                 "☼H# ☼\n" +
                 "☼H  ☼\n" +
@@ -2523,7 +2523,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼H» ☼\n" +
                 "☼H# ☼\n" +
                 "☼H  ☼\n" +
@@ -2533,7 +2533,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼H ›☼\n" +
                 "☼H# ☼\n" +
                 "☼H  ☼\n" +
@@ -2541,7 +2541,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼H  ☼\n" +
                 "☼H#›☼\n" +
                 "☼H  ☼\n" +
@@ -2549,7 +2549,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼H  ☼\n" +
                 "☼H# ☼\n" +
                 "☼H »☼\n" +
@@ -2559,7 +2559,7 @@ public class GameTest extends AbstractGameCheckTest {
     // пока чертик падает он не может двигаться влево и справо, даже если там есть площадки
     @Test
     public void shouldRobberCantMoveWhenFall() {
-        givenFl("☼☼☼☼☼☼►" +
+        givenFl("☼☼☼☼☼☼►\n" +
                 "☼  »  ☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -2570,7 +2570,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().left();
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼  ›  ☼\n" +
                 "☼     ☼\n" +
@@ -2581,7 +2581,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼  ›  ☼\n" +
@@ -2592,7 +2592,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().left();
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -2603,7 +2603,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().left();
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -2615,7 +2615,7 @@ public class GameTest extends AbstractGameCheckTest {
     // если чертик с площадки заходит на трубу то он ползет по ней
     @Test
     public void shouldRobberPipe() {
-        givenFl("☼☼☼☼☼☼►" +
+        givenFl("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼»~~~ ☼\n" +
                 "☼#    ☼\n" +
@@ -2626,7 +2626,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼ >~~ ☼\n" +
                 "☼#    ☼\n" +
@@ -2637,7 +2637,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼ ~>~ ☼\n" +
                 "☼#    ☼\n" +
@@ -2648,7 +2648,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼ ~~> ☼\n" +
                 "☼#    ☼\n" +
@@ -2662,7 +2662,7 @@ public class GameTest extends AbstractGameCheckTest {
     public void shouldRobberFallFromPipe() {
         shouldRobberPipe();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼ ~~> ☼\n" +
                 "☼#    ☼\n" +
@@ -2673,7 +2673,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼ ~~~›☼\n" +
                 "☼#    ☼\n" +
@@ -2683,7 +2683,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼ ~~~ ☼\n" +
                 "☼#   ›☼\n" +
@@ -2693,7 +2693,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼ ~~~ ☼\n" +
                 "☼#    ☼\n" +
@@ -2703,7 +2703,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼ ~~~ ☼\n" +
                 "☼#    ☼\n" +
@@ -3101,7 +3101,7 @@ public class GameTest extends AbstractGameCheckTest {
     // если в процессе падения чертик вдург наткнулся на трубу то он повисаю на ней
     @Test
     public void shouldRobberPipeWhenFall() {
-        givenFl("☼☼☼☼☼☼►" +
+        givenFl("☼☼☼☼☼☼►\n" +
                 "☼  »  ☼\n" +
                 "☼# ###☼\n" +
                 "☼     ☼\n" +
@@ -3112,7 +3112,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().left();
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼ ‹   ☼\n" +
                 "☼# ###☼\n" +
                 "☼     ☼\n" +
@@ -3122,7 +3122,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼#‹###☼\n" +
                 "☼     ☼\n" +
@@ -3132,7 +3132,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼# ###☼\n" +
                 "☼ ‹   ☼\n" +
@@ -3142,7 +3142,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼# ###☼\n" +
                 "☼     ☼\n" +
@@ -3152,7 +3152,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼# ###☼\n" +
                 "☼     ☼\n" +
@@ -3164,7 +3164,7 @@ public class GameTest extends AbstractGameCheckTest {
     // чертик может спрыгнуть с трубы
     @Test
     public void shouldRobberCanJumpFromPipe() {
-        givenFl("☼☼☼☼☼☼►" +
+        givenFl("☼☼☼☼☼☼►\n" +
                 "☼  «  ☼\n" +
                 "☼     ☼\n" +
                 "☼ ~~~ ☼\n" +
@@ -3174,7 +3174,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼  ‹  ☼\n" +
                 "☼ ~~~ ☼\n" +
@@ -3184,7 +3184,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼ ~<~ ☼\n" +
@@ -3195,7 +3195,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().down();
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼ ~~~ ☼\n" +
@@ -3205,7 +3205,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼ ~~~ ☼\n" +
@@ -3218,7 +3218,7 @@ public class GameTest extends AbstractGameCheckTest {
     // плюс чертик должен иметь возможность спустится по лестнице
     @Test
     public void shouldRobberCantWalkThroughWallDown() {
-        givenFl("☼☼☼☼►" +
+        givenFl("☼☼☼☼►\n" +
                 "☼ « ☼\n" +
                 "☼ H ☼\n" +
                 "☼☼☼☼☼\n" +
@@ -3227,7 +3227,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().down();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼ Q ☼\n" +
                 "☼☼☼☼☼\n" +
@@ -3236,7 +3236,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().down();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼ Q ☼\n" +
                 "☼☼☼☼☼\n" +
@@ -3246,7 +3246,7 @@ public class GameTest extends AbstractGameCheckTest {
     @Test
     public void shouldRobberCantWalkThroughWallUp() {
         settings().integer(ROBBERS_COUNT, 1);
-        givenFl("☼☼☼☼►" +
+        givenFl("☼☼☼☼►\n" +
                 "☼☼☼☼☼\n" +
                 "☼ H ☼\n" +
                 "☼ H«☼\n" +
@@ -3255,7 +3255,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().left();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼☼☼☼☼\n" +
                 "☼ H ☼\n" +
                 "☼ Q ☼\n" +
@@ -3264,7 +3264,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().up();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼☼☼☼☼\n" +
                 "☼ Q ☼\n" +
                 "☼ H ☼\n" +
@@ -3273,7 +3273,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().up();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼☼☼☼☼\n" +
                 "☼ Q ☼\n" +
                 "☼ H ☼\n" +
@@ -3283,7 +3283,7 @@ public class GameTest extends AbstractGameCheckTest {
     // Чертику нельзя проходить с лестницы через бетон направо или налево
     @Test
     public void shouldRobberCantWalkThroughWallLeftRight() {
-        givenFl("☼☼☼☼►" +
+        givenFl("☼☼☼☼►\n" +
                 "☼☼☼☼☼\n" +
                 "☼☼H☼☼\n" +
                 "☼ H«☼\n" +
@@ -3292,7 +3292,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().left();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼☼☼☼☼\n" +
                 "☼☼H☼☼\n" +
                 "☼ Q ☼\n" +
@@ -3301,7 +3301,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().up();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼☼☼☼☼\n" +
                 "☼☼Q☼☼\n" +
                 "☼ H ☼\n" +
@@ -3310,7 +3310,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().left();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼☼☼☼☼\n" +
                 "☼☼Q☼☼\n" +
                 "☼ H ☼\n" +
@@ -3319,7 +3319,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼☼☼☼☼\n" +
                 "☼☼Q☼☼\n" +
                 "☼ H ☼\n" +
@@ -3329,7 +3329,7 @@ public class GameTest extends AbstractGameCheckTest {
     // чертику нельзя проходить через бетон
     @Test
     public void shouldRobberCantWalkThroughWallLeftRight2() {
-        givenFl("☼☼☼☼►" +
+        givenFl("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼   ☼\n" +
                 "☼☼«☼☼\n" +
@@ -3338,7 +3338,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().left();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼   ☼\n" +
                 "☼☼«☼☼\n" +
@@ -3347,7 +3347,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼►" +
+        assertF("☼☼☼☼►\n" +
                 "☼   ☼\n" +
                 "☼   ☼\n" +
                 "☼☼»☼☼\n" +
@@ -3357,7 +3357,7 @@ public class GameTest extends AbstractGameCheckTest {
     // Чертику нельзя спрыгивать с трубы что сразу над бетоном, протелая сквозь него
     @Test
     public void shouldRobberCantJumpThroughWall() {
-        givenFl("☼☼☼☼☼►" +
+        givenFl("☼☼☼☼☼►\n" +
                 "☼  » ☼\n" +
                 "☼  ~ ☼\n" +
                 "☼☼☼☼☼☼\n" +
@@ -3366,7 +3366,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼►\n" +
                 "☼    ☼\n" +
                 "☼  > ☼\n" +
                 "☼☼☼☼☼☼\n" +
@@ -3376,7 +3376,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().down();
         tick();
 
-        assertF("☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼►\n" +
                 "☼    ☼\n" +
                 "☼  > ☼\n" +
                 "☼☼☼☼☼☼\n" +
@@ -3387,7 +3387,7 @@ public class GameTest extends AbstractGameCheckTest {
     // если чертик спрыгивает с последней секции лестницы
     @Test
     public void shouldRobberJumpFromLadderDown() {
-        givenFl("☼☼☼☼☼►" +
+        givenFl("☼☼☼☼☼►\n" +
                 "☼ »  ☼\n" +
                 "☼ H##☼\n" +
                 "☼#H  ☼\n" +
@@ -3400,7 +3400,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().down();
         tick();
 
-        assertF("☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼►\n" +
                 "☼    ☼\n" +
                 "☼ H##☼\n" +
                 "☼#Q  ☼\n" +
@@ -3409,7 +3409,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼►\n" +
                 "☼    ☼\n" +
                 "☼ H##☼\n" +
                 "☼#Q  ☼\n" +
@@ -3419,7 +3419,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().right();
         tick();
 
-        assertF("☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼►\n" +
                 "☼    ☼\n" +
                 "☼ H##☼\n" +
                 "☼#H› ☼\n" +
@@ -3428,7 +3428,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertF("☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼►\n" +
                 "☼    ☼\n" +
                 "☼ H##☼\n" +
                 "☼#H  ☼\n" +
@@ -3439,7 +3439,7 @@ public class GameTest extends AbstractGameCheckTest {
     // Чертик не может прыгять вверх :)
     @Test
     public void shouldRobberCantJump() {
-        givenFl("☼☼☼☼☼►" +
+        givenFl("☼☼☼☼☼►\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
@@ -3449,7 +3449,7 @@ public class GameTest extends AbstractGameCheckTest {
         robber().up();
         tick();
 
-        assertF("☼☼☼☼☼►" +
+        assertF("☼☼☼☼☼►\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +

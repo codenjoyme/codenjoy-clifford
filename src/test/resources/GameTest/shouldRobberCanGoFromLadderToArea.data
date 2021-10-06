@@ -3,7 +3,8 @@ before()
 
 shouldRobberCanGoFromLadderToArea()
     givenFl(
-        ☼☼☼☼►☼H  ☼
+        ☼☼☼☼►
+        ☼H  ☼
         ☼H# ☼
         ☼H« ☼
         ☼☼☼☼☼)
