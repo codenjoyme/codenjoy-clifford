@@ -49,7 +49,7 @@ public abstract class AbstractGameCheckTest extends AbstractGameTest {
     @Before
     @Override
     public void setup() {
-        callRealAssert = false;
+        callRealAssert = true;
         manager = new WrapperManager();
 
         manager.addCall("before");
