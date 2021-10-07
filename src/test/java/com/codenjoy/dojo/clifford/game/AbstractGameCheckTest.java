@@ -33,7 +33,6 @@ import com.codenjoy.dojo.utils.check.WrapperManager;
 import com.codenjoy.dojo.utils.events.EventsListenersAssert;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.ComparisonFailure;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 
@@ -89,21 +88,6 @@ public abstract class AbstractGameCheckTest extends AbstractGameTest {
         public EventsWrapper(EventsListenersAssert events) {
             super(null, null);    // fake
             this.events = events;
-        }
-
-        @Override
-        public void verifyNoEvents(Integer... indexes) {
-            manager.appendCall(".verifyNoEvents", Arrays.asList(indexes));
-            manager.end();
-            try {
-                events.verifyNoEvents(indexes);
-            } catch (ComparisonFailure failure) {
-                verifyAllEvents(indexes);
-
-                if (callRealAssert) {
-                    throw failure;
-                }
-           }
         }
 
         private String verifyAllEvents(Integer[] indexes) {
