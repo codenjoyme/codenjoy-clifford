@@ -29,34 +29,38 @@ noEventIfOwnerNotAlive()
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,
-        0).die(hero(0))
+        0)
+    field().bullets() = [[2,3,RIGHT]]
+    hero(0).die()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼ Ѡ • ( ☼
+        ☼#######☼
+        ☼       ☼
+        ☼☼☼☼☼☼☼☼☼,
+        0)
+    events().getEvents() = 
+        listener(0) => [HERO_DIE]
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼ Ѡ   Z ☼
+        ☼#######☼
+        ☼       ☼
+        ☼☼☼☼☼☼☼☼☼,
+        0)
+    field().bullets() = []
+    events().getEvents() = 
+        listener(1) => [HERO_DIE]
 
-tick()
-
-assertF(
-☼☼☼☼☼☼☼☼☼
-☼       ☼
-☼       ☼
-☼       ☼
-☼       ☼
-☼ Ѡ • ( ☼
-☼#######☼
-☼       ☼
-☼☼☼☼☼☼☼☼☼,
-0)
-
-events().verifyAllEvents(listener(0) => [HERO_DIE])
-
-tick()
-
-assertF(
-☼☼☼☼☼☼☼☼☼
-☼       ☼
-☼       ☼
-☼       ☼
-☼       ☼
-☼ Ѡ   Z ☼
-☼#######☼
-☼       ☼
-☼☼☼☼☼☼☼☼☼,
-0)
+after()
+    events().getEvents() = 

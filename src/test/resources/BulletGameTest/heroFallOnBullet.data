@@ -41,3 +41,23 @@ heroFallOnBullet()
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,
         0)
+    field().bullets() = [[6,3,LEFT]]
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼   Z ◄ ☼
+        ☼#######☼
+        ☼       ☼
+        ☼☼☼☼☼☼☼☼☼,
+        0)
+    field().bullets() = []
+    events().getEvents() = 
+        listener(0) => [KILL_HERO]
+        listener(1) => [HERO_DIE]
+
+after()
+    events().getEvents() = 

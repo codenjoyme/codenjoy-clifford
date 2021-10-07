@@ -44,3 +44,24 @@ twoShootersKillHero()
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,
         0)
+    field().bullets() = [[5,3,LEFT], [1,3,RIGHT]]
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼( Z ◄  ☼
+        ☼#######☼
+        ☼       ☼
+        ☼☼☼☼☼☼☼☼☼,
+        0)
+    field().bullets() = []
+    events().getEvents() = 
+        listener(0) => [KILL_HERO]
+        listener(1) => [KILL_HERO]
+        listener(2) => [HERO_DIE]
+
+after()
+    events().getEvents() = 

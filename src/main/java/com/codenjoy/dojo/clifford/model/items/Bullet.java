@@ -26,7 +26,6 @@ import com.codenjoy.dojo.clifford.model.Field;
 import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.games.clifford.Element;
-import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.MovingObject;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.State;
@@ -76,5 +75,10 @@ public class Bullet extends MovingObject implements State<Element, Player> {
     @Override
     public Element state(Player player, Object... alsoAtPoint) {
         return Element.BULLET;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("[%s,%s,%s]", x, y, direction);
     }
 }

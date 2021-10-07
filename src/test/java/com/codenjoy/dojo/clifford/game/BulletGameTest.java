@@ -22,21 +22,14 @@ package com.codenjoy.dojo.clifford.game;
  * #L%
  */
 
+import com.codenjoy.dojo.clifford.game.check.AbstractGameCheckTest;
 import com.codenjoy.dojo.clifford.model.items.Potion;
 import org.junit.Test;
 
-import static com.codenjoy.dojo.services.Direction.LEFT;
-import static com.codenjoy.dojo.services.Direction.RIGHT;
-import static com.codenjoy.dojo.services.PointImpl.pt;
-
 public class BulletGameTest extends AbstractGameCheckTest {
 
-    private void assertBulletAt(int x, int y) {
-        assertEquals(true, field().bullets().contains(pt(x, y)));
-    }
-
-    private void assertBulletCount(int count) {
-        assertEquals(count, field().bullets().size());
+    private void assertBullets(String expected) {
+        assertEquals(expected, field().bullets().toString());
     }
 
     @Test
@@ -47,7 +40,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        assertBulletCount(0);
+        assertBullets("[]");
 
         hero().act(1);
         tick();
@@ -57,7 +50,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼►  ☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
-        assertBulletAt(1, 2);
+
+        assertBullets("[[1,2,RIGHT]]");
 
         tick();
 
@@ -66,7 +60,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼► •☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
-        assertBulletCount(1);
+
+        assertBullets("[[3,2,RIGHT]]");
     }
 
     @Test
@@ -77,7 +72,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        assertBulletCount(0);
+        assertBullets("[]");
 
         hero().act(1);
         tick();
@@ -87,7 +82,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼  ◄☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
-        assertBulletAt(3, 2);
+
+        assertBullets("[[3,2,LEFT]]");
 
         tick();
 
@@ -96,7 +92,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼• ◄☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
-        assertBulletCount(1);
+
+        assertBullets("[[1,2,LEFT]]");
     }
 
     @Test
@@ -107,7 +104,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        assertBulletCount(0);
+        assertBullets("[]");
 
         hero().act(1);
         tick();
@@ -117,7 +114,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "   ◄☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
-        assertBulletAt(3, 2);
+
+        assertBullets("[[3,2,LEFT]]");
 
         tick();
 
@@ -126,7 +124,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 " • ◄☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
-        assertBulletCount(1);
+
+        assertBullets("[[1,2,LEFT]]");
 
         tick();
 
@@ -135,7 +134,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "   ◄☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
-        assertBulletCount(0);
+
+        assertBullets("[]");
     }
 
     @Test
@@ -158,7 +158,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼ #  ◄☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
-        assertBulletAt(5, 2);
+
+        assertBullets("[[5,2,LEFT]]");
 
         tick();
 
@@ -179,7 +180,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼ *  ◄☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
-        assertBulletCount(0);
+
+        assertBullets("[]");
 
         tick();
 
@@ -228,7 +230,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼   ◄ ☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
-        assertBulletAt(4, 2);
+
+        assertBullets("[[4,2,LEFT]]");
 
         tick();
 
@@ -239,8 +242,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼ • ◄ ☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
-        assertEquals(true, field().bullets().getAt(pt(2, 2)).stream()
-                .allMatch(bullet -> bullet.getDirection() == LEFT));
+
+        assertBullets("[[2,2,LEFT]]");
 
         tick();
 
@@ -251,7 +254,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼   ◄ ☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
-        assertBulletAt(0, 2);
+
+        assertBullets("[[0,2,RIGHT]]");
 
         tick();
 
@@ -262,8 +266,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼ • ◄ ☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
-        assertEquals(true, field().bullets().getAt(pt(2, 2)).stream()
-                .allMatch(bullet -> bullet.getDirection() == RIGHT));
+
+        assertBullets("[[2,2,RIGHT]]");
     }
 
     @Test
@@ -290,7 +294,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼     ◄ ☼\n" +
                 "☼#### ##☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
-        assertBulletAt(6, 2);
+
+        assertBullets("[[6,2,LEFT]]");
 
         hero().left();
         tick();
@@ -316,8 +321,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼ •     ☼\n" +
                 "☼####◄##☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
-        assertEquals(true, field().bullets().getAt(pt(2, 2)).stream()
-                .allMatch(bullet -> bullet.getDirection() == LEFT));
+
+        assertBullets("[[2,2,LEFT]]");
 
         // bounce from border
         tick();
@@ -331,7 +336,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼####◄##☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
-        assertBulletAt(0, 2);
+
+        assertBullets("[[0,2,RIGHT]]");
 
         tick();
 
@@ -344,8 +350,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼ •     ☼\n" +
                 "☼####◄##☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
-        assertEquals(true, field().bullets().getAt(pt(2, 2)).stream()
-                .allMatch(bullet -> bullet.getDirection() == RIGHT));
+
+        assertBullets("[[2,2,RIGHT]]");
 
         tick();
 
@@ -382,7 +388,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼####◄##☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
-        assertBulletCount(0);
+
+        assertBullets("[]");
     }
 
     @Test
@@ -405,7 +412,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼ ☼ ◄ ☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
-        assertBulletAt(4, 2);
+
+        assertBullets("[[4,2,LEFT]]");
 
         tick();
 
@@ -416,7 +424,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼ ☼ ◄ ☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
-        assertBulletAt(2, 2);
+
+        assertBullets("[[2,2,RIGHT]]");
 
         tick();
 
@@ -428,7 +437,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        events().verifyAllEvents("[HERO_DIE, SUICIDE]");
+        verifyAllEvents("[HERO_DIE, SUICIDE]");
     }
 
 
@@ -449,7 +458,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼►  ☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
-        assertBulletAt(1, 2);
+
+        assertBullets("[[1,2,RIGHT]]");
 
         hero().right();
         tick();
@@ -495,7 +505,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
-        assertBulletAt(1, 3);
+
+        assertBullets("[[1,3,RIGHT]]");
 
         tick();
 
@@ -521,8 +532,9 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertBulletCount(0);
-        events().verifyAllEvents(
+        assertBullets("[]");
+
+        verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n");
     }
@@ -538,6 +550,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
+
         hero(1).pick(Potion.PotionType.MASK_POTION);
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -562,7 +575,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
-        assertBulletAt(1, 3);
+
+        assertBullets("[[1,3,RIGHT]]");
 
         tick();
 
@@ -575,7 +589,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
-        assertBulletAt(3, 3);
+
+        assertBullets("[[3,3,RIGHT]]");
 
         tick();
 
@@ -589,8 +604,9 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertBulletCount(0);
-        events().verifyAllEvents(
+        assertBullets("[]");
+
+        verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(2) => [HERO_DIE]\n");
     }
@@ -629,7 +645,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
-        assertBulletAt(6, 3);
+
+        assertBullets("[[6,3,LEFT]]");
 
         tick();
 
@@ -643,8 +660,9 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertBulletCount(0);
-        events().verifyAllEvents(
+        assertBullets("[]");
+
+        verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n");
     }
@@ -683,7 +701,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
-        assertBulletAt(6, 3);
+
+        assertBullets("[[6,3,LEFT]]");
 
         tick();
 
@@ -697,9 +716,11 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertBulletCount(0);
-        assertEquals(1, field().clueKnife().size());
-        events().verifyAllEvents(
+        assertBullets("[]");
+
+        assertEquals("[[4,3]]", field().clueKnife().toString());
+
+        verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n");
     }
@@ -739,8 +760,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
-        assertBulletAt(1, 3);
-        assertBulletAt(5, 3);
+
+        assertBullets("[[5,3,LEFT], [1,3,RIGHT]]");
 
         tick();
 
@@ -754,8 +775,9 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertBulletCount(0);
-        events().verifyAllEvents(
+        assertBullets("[]");
+
+        verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
                 "listener(2) => [HERO_DIE]\n");
@@ -785,7 +807,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
-        assertBulletAt(2, 3);
+
+        assertBullets("[[2,3,RIGHT]]");
 
         hero(0).die();
         tick();
@@ -800,7 +823,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        events().verifyAllEvents(
+        verifyAllEvents(
                 "listener(0) => [HERO_DIE]\n");
         tick();
 
@@ -814,8 +837,9 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertBulletCount(0);
-        events().verifyAllEvents(
+        assertBullets("[]");
+        
+        verifyAllEvents(
                 "listener(1) => [HERO_DIE]\n");
     }
 
@@ -844,8 +868,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
-        assertBulletAt(1, 3);
-        assertBulletAt(5, 3);
+
+        assertBullets("[[5,3,LEFT], [1,3,RIGHT]]");
 
         tick();
 
@@ -871,8 +895,9 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertBulletCount(0);
-        events().verifyAllEvents(
+        assertBullets("[]");
+        
+        verifyAllEvents(
                 "listener(0) => [HERO_DIE]\n" +
                 "listener(1) => [HERO_DIE]\n");
     }
