@@ -37,7 +37,6 @@ import com.codenjoy.dojo.services.field.AbstractLevel;
 import com.codenjoy.dojo.services.field.PointField;
 
 import java.util.EnumSet;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -98,7 +97,7 @@ public class Level extends AbstractLevel {
     }
 
     public List<Robber> robbers() {
-        return find(new HashMap<>() {{
+        return find(new LinkedHashMap<>() {{
             put(ROBBER_LEFT, pt -> new Robber(pt, Direction.LEFT));
             put(ROBBER_RIGHT, pt -> new Robber(pt, Direction.RIGHT));
         }});
@@ -113,7 +112,7 @@ public class Level extends AbstractLevel {
     }
 
     public List<Door> doors() {
-        return find(new HashMap<>() {{
+        return find(new LinkedHashMap<>() {{
             put(OPENED_DOOR_GOLD, pt -> new Door(pt, OPENED, GOLD));
             put(OPENED_DOOR_SILVER, pt -> new Door(pt, OPENED, SILVER));
             put(OPENED_DOOR_BRONZE, pt -> new Door(pt, OPENED, BRONZE));
@@ -124,7 +123,7 @@ public class Level extends AbstractLevel {
     }
 
     public List<Key> keys() {
-        return find(new HashMap<>() {{
+        return find(new LinkedHashMap<>() {{
             put(KEY_GOLD, pt -> new Key(pt, GOLD));
             put(KEY_SILVER, pt -> new Key(pt, SILVER));
             put(KEY_BRONZE, pt -> new Key(pt, BRONZE));
