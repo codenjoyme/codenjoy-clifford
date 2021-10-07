@@ -22,9 +22,14 @@ package com.codenjoy.dojo.clifford.game;
  * #L%
  */
 
+import com.codenjoy.dojo.clifford.game.check.AbstractGameCheckTest;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
+import com.codenjoy.dojo.clifford.model.items.door.Key;
 import org.junit.Test;
 
+import java.util.List;
+
+import static com.codenjoy.dojo.client.Utils.split;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.GENERATE_KEYS;
 
 public class KeyDoorGameTest extends AbstractGameCheckTest {
@@ -42,19 +47,29 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼☼☼☼☼☼☼☼\n");
 
         // then door
-        assertEquals(10, field().doors().all().size());
-        assertEquals(6L, field().doors().all().stream()
-                .filter(Door::isOpened)
-                .count());
-        assertEquals(4L, field().doors().all().stream()
-                .filter(Door::isClosed)
-                .count());
+        List<Door> doors = field().doors().all();
+        assertEquals(
+                "[[1,5=GOLD:OPENED], \n" +
+                "[2,5=GOLD:OPENED], \n" +
+                "[3,5=SILVER:OPENED], \n" +
+                "[4,5=SILVER:OPENED], \n" +
+                "[5,5=BRONZE:OPENED], \n" +
+                "[6,5=BRONZE:OPENED], \n" +
+                "[2,4=GOLD:CLOSED], \n" +
+                "[3,4=SILVER:CLOSED], \n" +
+                "[4,4=SILVER:CLOSED], \n" +
+                "[5,4=BRONZE:CLOSED]]",
+                split(doors, "], \n["));
 
         // then keys
-        assertEquals(5, field().keys().all().size());
-        assertEquals(2L, field().keys().all().stream()
-                .filter(key -> key.getKeyType().isGold())
-                .count());
+        List<Key> keys = field().keys().all();
+        assertEquals(
+                "[[2,3=GOLD], \n" +
+                "[2,2=GOLD], \n" +
+                "[3,3=SILVER], \n" +
+                "[4,3=BRONZE], \n" +
+                "[4,2=BRONZE]]",
+                split(keys, "], \n["));
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -78,7 +93,8 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         hero().right();
         tick();
@@ -91,7 +107,8 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
         hero().right();
         tick();
@@ -104,7 +121,8 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=2, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=2, SILVER=0, BRONZE=0}");
 
         hero().right();
         tick();
@@ -117,7 +135,8 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=2, SILVER=1, BRONZE=0}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=2, SILVER=1, BRONZE=0}");
 
         hero().right();
         tick();
@@ -130,10 +149,12 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=2, SILVER=1, BRONZE=1}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=2, SILVER=1, BRONZE=1}");
 
         hero().clearScores();
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
     }
 
     @Test
@@ -148,7 +169,8 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         dice(1, 5);
         hero().right();
@@ -162,7 +184,8 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
         dice(2, 5);
         hero().right();
@@ -176,7 +199,8 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=2, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=2, SILVER=0, BRONZE=0}");
 
         dice(3, 5);
         hero().right();
@@ -190,7 +214,8 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=2, SILVER=1, BRONZE=0}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=2, SILVER=1, BRONZE=0}");
 
         dice(4, 5);
         hero().right();
@@ -204,10 +229,12 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=2, SILVER=1, BRONZE=1}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=2, SILVER=1, BRONZE=1}");
 
         hero().clearScores();
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
     }
 
     @Test
@@ -313,7 +340,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         hero().right();
         tick();
@@ -328,7 +355,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
         hero().act(2);
         tick();
@@ -343,7 +370,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         hero().right();
         tick();
@@ -384,7 +411,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         hero().left();
         tick();
@@ -399,7 +426,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
         hero().act(2);
         tick();
@@ -414,7 +441,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         hero().left();
         tick();
@@ -455,7 +482,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         hero().right();
         tick();
@@ -470,7 +497,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         hero().act(1);
         tick();
@@ -485,7 +512,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
     }
 
     @Test
@@ -500,7 +527,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         hero().right();
         tick();
@@ -515,7 +542,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
         hero().right();
         tick();
@@ -557,7 +584,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
     }
 
     @Test
@@ -572,7 +599,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         hero().left();
         tick();
@@ -587,7 +614,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
         hero().left();
         tick();
@@ -629,7 +656,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
     }
 
     @Test
@@ -644,7 +671,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         hero().left();
         tick();
@@ -659,7 +686,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
         hero().left();
         tick();
@@ -688,7 +715,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
     }
 
     @Test
@@ -729,7 +756,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         hero().left();
         hero().act(2);
@@ -772,7 +799,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         hero().right();
         tick();
@@ -785,7 +812,8 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
         hero().right();
         tick();
@@ -798,7 +826,8 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=1, SILVER=1, BRONZE=0}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=0}");
 
         hero().right();
         tick();
@@ -811,7 +840,8 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=1, SILVER=1, BRONZE=1}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=1}");
 
         dice(1, 5,
              2, 5,
@@ -819,7 +849,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
         hero().die();
         tick();
 
-        events().verifyAllEvents("[HERO_DIE]");
+        verifyAllEvents("[HERO_DIE]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -830,13 +860,14 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=1, SILVER=1, BRONZE=1}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=1}");
+
         assertEquals(false, hero().isAlive());
 
         dice(1, 3);
         game().newGame();
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
     }
 
     @Test
@@ -852,7 +883,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         dice(4, 6);
         hero().right();
@@ -866,7 +897,8 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=1, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
         dice(5, 6);
         hero().right();
@@ -880,7 +912,8 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=1, SILVER=1, BRONZE=0}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=0}");
 
         dice(6, 6);
         hero().right();
@@ -894,7 +927,8 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
-        assertEquals("{GOLD=1, SILVER=1, BRONZE=1}", hero().getKeys().toString());
+
+        assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=1}");
 
         dice(1, 5,
              2, 5,
@@ -902,7 +936,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
         hero().die();
         tick();
 
-        events().verifyAllEvents("[HERO_DIE]");
+        verifyAllEvents("[HERO_DIE]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   ✦✼⍟☼\n" +
@@ -913,13 +947,17 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
-        assertEquals("{GOLD=1, SILVER=1, BRONZE=1}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=1}");
         assertEquals(false, hero().isAlive());
 
         dice(1, 3);
         game().newGame();
 
-        assertEquals("{GOLD=0, SILVER=0, BRONZE=0}", hero().getKeys().toString());
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
+    }
+
+    private void assertHeroKeys(String expected) {
+        assertEquals(expected, hero().getKeys().toString());
     }
 
 }

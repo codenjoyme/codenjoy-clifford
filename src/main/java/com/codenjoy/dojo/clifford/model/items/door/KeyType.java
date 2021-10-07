@@ -26,14 +26,14 @@ public enum KeyType {
     GOLD, SILVER, BRONZE;
 
     public boolean isGold() {
-        return name().equals("GOLD");
+        return this == GOLD;
     }
 
     public boolean isSilver() {
-        return name().equals("SILVER");
+        return this == SILVER;
     }
 
     public boolean isBronze() {
-        return name().equals("BRONZE");
+        return this == BRONZE;
     }
 }

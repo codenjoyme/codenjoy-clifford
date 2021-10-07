@@ -50,4 +50,11 @@ public class Key extends PointImpl implements State<Element, Player> {
         }
         throw new IllegalArgumentException("invalid keyType " + keyType);
     }
+
+    @Override
+    public String toString() {
+        return String.format("[%s,%s=%s]",
+                x, y,
+                keyType);
+    }
 }

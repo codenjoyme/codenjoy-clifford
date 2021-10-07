@@ -81,4 +81,12 @@ public class Door extends PointImpl implements State<Element, Player> {
     public enum State {
         OPENED, CLOSED
     }
+
+    @Override
+    public String toString() {
+        return String.format("[%s,%s=%s:%s]",
+                x, y,
+                keyType,
+                state);
+    }
 }
