@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.clifford.game;
+package com.codenjoy.dojo.clifford.game.check;
 
 /*-
  * #%L
@@ -149,7 +149,20 @@ public abstract class AbstractGameCheckTest extends AbstractGameTest {
     public DetectiveClifford field() {
         DetectiveClifford result = manager.objectSpy(super.field(),
                 "newGame",
-                "clearScore");
+                "clearScore",
+        // TODO если убрать эту строчку, то метод не будет игноритьтся как ожидается,
+        //      а все поломается нафиг, например в тесте backwaysAreRecreatedEveryFewTicks
+                "getBackwaysTimer",
+                "bullets",
+                "clueKnife",
+        // TODO а для isFree за счет pending получается такая фигня
+        //      field().isFree(field()) = false
+        //      надо делать pending для конкретных команд [P], а не для всех
+                "[-]isFree",
+                "[-]size",
+                "borders",
+                "doors",
+                "keys");
         manager.caller("field", result);
         manager.pending(true);
         return result;
