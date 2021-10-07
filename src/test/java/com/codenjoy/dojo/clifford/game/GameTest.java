@@ -4043,7 +4043,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        events().verifyAllEvents("" +
+        events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n");
 

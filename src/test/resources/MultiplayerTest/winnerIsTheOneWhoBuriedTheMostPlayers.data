@@ -140,26 +140,13 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     hero(0).left()
     hero(1).right()
     tick()
-    events().verifyAllEvents(
-        listener(0) => []
-        listener(1) => []
-        listener(2) => []
-        listener(3) => []
-        listener(4) => []
-        listener(5) => []
-        listener(6) => []
-        listener(7) => [],
-        [])
+    events().verifyAllEvents(, [])
     tick()
     events().verifyAllEvents(
         listener(0) => [KILL_HERO]
         listener(1) => [KILL_HERO]
         listener(2) => [HERO_DIE]
-        listener(3) => [HERO_DIE]
-        listener(4) => []
-        listener(5) => []
-        listener(6) => []
-        listener(7) => [],
+        listener(3) => [HERO_DIE],
         [])
     assertF(
         ☼☼☼☼☼☼☼☼☼☼

@@ -20,10 +20,7 @@ shouldStopGame_whenRoundIsNotStarted()
         givenPlayer([3,1])
             dice(3, 1)
         dice(0)
-    events().verifyAllEvents(
-        listener(0) => []
-        listener(1) => [],
-        [])
+    events().verifyAllEvents(, [])
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
@@ -46,10 +43,7 @@ shouldStopGame_whenRoundIsNotStarted()
         1)
     hero(0).right()
     hero(1).right()
-    events().verifyAllEvents(
-        listener(0) => []
-        listener(1) => [],
-        [])
+    events().verifyAllEvents(, [])
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼

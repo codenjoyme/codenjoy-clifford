@@ -342,7 +342,6 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
                 "☼☼☼☼☼☼☼☼\n", 1);
 
         events().verifyAllEvents(
-                "listener(0) => []\n" +
                 "listener(1) => [HERO_DIE]\n");
     }
 
@@ -384,8 +383,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         events().verifyAllEvents(
-                "listener(0) => [HERO_DIE]\n" +
-                "listener(1) => []\n");
+                "listener(0) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   Z  ☼\n" +
@@ -398,9 +396,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
 
         tick();
 
-        events().verifyAllEvents(
-                "listener(0) => []\n" +
-                "listener(1) => []\n");
+        events().verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   Z» ☼\n" +
@@ -436,7 +432,6 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         events().verifyAllEvents(
-                "listener(0) => []\n" +
                 "listener(1) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -451,9 +446,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         // больше не за кем охотитья - воры стоят на месте
         tick();
 
-        events().verifyAllEvents(
-                "listener(0) => []\n" +
-                "listener(1) => []\n");
+        events().verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   Z  ☼\n" +
@@ -554,7 +547,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
 
         tick();
 
-        events().verifyAllEvents("[]");
+        events().verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼    Ѡ ☼\n" +

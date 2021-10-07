@@ -45,10 +45,7 @@ assertF(
 ☼☼☼☼☼☼☼☼☼,
 0)
 
-events().verifyAllEvents(
-listener(0) => [HERO_DIE]
-listener(1) => [],
-[])
+events().verifyAllEvents(listener(0) => [HERO_DIE], [])
 
 tick()
 

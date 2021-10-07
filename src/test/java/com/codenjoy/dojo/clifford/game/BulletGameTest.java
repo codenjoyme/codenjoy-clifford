@@ -592,7 +592,6 @@ public class BulletGameTest extends AbstractGameCheckTest {
         assertBulletCount(0);
         events().verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => []\n" +
                 "listener(2) => [HERO_DIE]\n");
     }
 
@@ -802,8 +801,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼☼☼☼☼☼☼☼☼\n");
 
         events().verifyAllEvents(
-                "listener(0) => [HERO_DIE]\n" +
-                "listener(1) => []\n");
+                "listener(0) => [HERO_DIE]\n");
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -818,7 +816,6 @@ public class BulletGameTest extends AbstractGameCheckTest {
 
         assertBulletCount(0);
         events().verifyAllEvents(
-                "listener(0) => []\n" +
                 "listener(1) => [HERO_DIE]\n");
     }
 

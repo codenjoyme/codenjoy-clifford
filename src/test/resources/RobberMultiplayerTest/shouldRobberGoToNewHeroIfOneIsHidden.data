@@ -60,9 +60,6 @@ shouldRobberGoToNewHeroIfOneIsHidden()
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         1)
-    events().verifyAllEvents(
-        listener(0) => []
-        listener(1) => [HERO_DIE],
-        [])
+    events().verifyAllEvents(listener(1) => [HERO_DIE], [])
 
 after()

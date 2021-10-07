@@ -120,12 +120,7 @@ heroKillHeroAndKillEnemy()
     hero(0).left()
     hero(1).right()
     tick()
-    events().verifyAllEvents(
-        listener(0) => []
-        listener(1) => []
-        listener(2) => []
-        listener(3) => [],
-        [])
+    events().verifyAllEvents(, [])
     tick()
     events().verifyAllEvents(
         listener(0) => [KILL_HERO]
