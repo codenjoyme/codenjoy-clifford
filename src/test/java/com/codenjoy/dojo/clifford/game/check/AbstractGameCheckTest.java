@@ -149,6 +149,9 @@ public abstract class AbstractGameCheckTest extends AbstractGameTest {
     public DetectiveClifford field() {
         DetectiveClifford result = manager.objectSpy(super.field(),
                 "newGame",
+                "remove",
+                "[-]players",
+                "countPlayers",
                 "clearScore",
         // TODO если убрать эту строчку, то метод не будет игноритьтся как ожидается,
         //      а все поломается нафиг, например в тесте backwaysAreRecreatedEveryFewTicks

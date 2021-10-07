@@ -40,9 +40,9 @@ thatMaskFallsAtTheRegularPlayerAndKillsHim()
         1)
     dice(3, 3)
     tick()
-    events().verifyAllEvents(
+    events().getEvents() = 
         listener(0) => [KILL_HERO]
-        listener(1) => [HERO_DIE])
+        listener(1) => [HERO_DIE]
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
@@ -63,3 +63,30 @@ thatMaskFallsAtTheRegularPlayerAndKillsHim()
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         1)
+    field().remove(player(1))
+    field().remove()
+    tick()
+    events().getEvents() = 
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  S   ☼
+        ☼⊳     ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  S   ☼
+        ☼Ѡ     ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+
+after()
+    events().getEvents() = 

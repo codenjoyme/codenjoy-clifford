@@ -40,9 +40,9 @@ thatMaskKillsNonMaskPlayer_killHero()
         1)
     hero(0).right()
     tick()
-    events().verifyAllEvents(
+    events().getEvents() = 
         listener(0) => [KILL_HERO]
-        listener(1) => [HERO_DIE])
+        listener(1) => [HERO_DIE]
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
@@ -63,3 +63,30 @@ thatMaskKillsNonMaskPlayer_killHero()
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         1)
+    field().remove(player(1))
+    field().remove()
+    tick()
+    events().getEvents() = 
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼ ⊳    ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼ Ѡ    ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+
+after()
+    events().getEvents() = 

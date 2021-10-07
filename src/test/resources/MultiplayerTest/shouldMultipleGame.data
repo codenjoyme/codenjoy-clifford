@@ -69,9 +69,156 @@ shouldMultipleGame()
         ☼☼☼☼☼☼,
         2)
     hero(0).act()
-    game(1).close().right(hero(0)).left(hero(0))
-hero(0).act()
-hero(2).right().isGameOver(game(1)) = true
-dice(1, 4)
-game(2).newGame().right(hero(0))
-dice(1, 2)
+    game(1).close()
+    field().remove()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼ R  ☼
+        ☼##*#☼
+        ☼)  $☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼☼
+        ☼ ⌊  ☼
+        ☼##*#☼
+        ☼◄  $☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        2)
+    hero(0).right()
+    field().remove()
+    tick()
+    field().remove()
+    tick()
+    field().remove()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼## #☼
+        ☼) ►$☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼## #☼
+        ☼◄ ($☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        2)
+    hero(0).left()
+    hero(0).act()
+    hero(2).right()
+    field().remove()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼## #☼
+        ☼ ⊏Я$☼
+        ☼#*##☼
+        ☼☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼## #☼
+        ☼ [⌋$☼
+        ☼#*##☼
+        ☼☼☼☼☼☼,
+        2)
+    field().remove()
+    tick()
+    field().remove()
+    tick()
+    field().remove()
+    tick()
+    field().remove()
+    tick()
+    field().remove()
+    tick()
+    field().remove()
+    tick()
+    field().remove()
+    tick()
+    field().remove()
+    tick()
+    field().remove()
+    tick()
+    field().remove()
+    tick()
+    field().remove()
+    tick()
+    field().remove()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼####☼
+        ☼  Я$☼
+        ☼#Z##☼
+        ☼☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼☼
+        ☼    ☼
+        ☼####☼
+        ☼  ⌋$☼
+        ☼#Ѡ##☼
+        ☼☼☼☼☼☼,
+        2)
+    events().getEvents() = 
+        listener(0) => [KILL_HERO]
+        listener(1) => [HERO_DIE]
+        listener(2) => [HERO_DIE]
+    game(1).isGameOver() = true
+    dice(1, 4)
+    game(2).newGame()
+    field().remove()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼(   ☼
+        ☼####☼
+        ☼  Я$☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼☼
+        ☼►   ☼
+        ☼####☼
+        ☼  ⌋$☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        2)
+    hero(0).right()
+    dice(1, 2)
+    field().remove()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼
+        ☼(   ☼
+        ☼####☼
+        ☼$  ►☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼☼
+        ☼►   ☼
+        ☼####☼
+        ☼$  (☼
+        ☼####☼
+        ☼☼☼☼☼☼,
+        2)
+    events().getEvents() = 
+        listener(0) => [GET_CLUE_KNIFE(1)]
+
+after()
+    events().getEvents() = 

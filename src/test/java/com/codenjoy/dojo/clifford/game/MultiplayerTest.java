@@ -1513,7 +1513,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         game(1).newGame();
 
         assertScores("");
-        assertEquals(2, field().players().size());
+        assertEquals(2, field().countPlayers());
         
         verifyAllEvents("");
 
@@ -1531,7 +1531,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertScores("");
-        assertEquals(2, field().players().size());
+        assertEquals(2, field().countPlayers());
        
         verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 2]]\n" +
@@ -1870,7 +1870,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
 
         assertScores("");
-        assertEquals(8, field().players().size());
+        assertEquals(8, field().countPlayers());
      
         verifyAllEvents("");
 
@@ -1888,7 +1888,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertScores("");
-        assertEquals(8, field().players().size());
+        assertEquals(8, field().countPlayers());
 
         verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 2]]\n" +

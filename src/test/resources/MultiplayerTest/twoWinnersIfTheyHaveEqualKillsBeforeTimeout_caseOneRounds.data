@@ -38,7 +38,7 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseOneRounds()
     givenPlayer([8,8])
         dice(8, 8)
     tick()
-    events().verifyAllEvents(
+    events().getEvents() = 
         listener(0) => [START_ROUND, [Round 1]]
         listener(1) => [START_ROUND, [Round 1]]
         listener(2) => [START_ROUND, [Round 1]]
@@ -46,7 +46,7 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseOneRounds()
         listener(4) => [START_ROUND, [Round 1]]
         listener(5) => [START_ROUND, [Round 1]]
         listener(6) => [START_ROUND, [Round 1]]
-        listener(7) => [START_ROUND, [Round 1]])
+        listener(7) => [START_ROUND, [Round 1]]
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
         ☼(      (☼
@@ -139,13 +139,13 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseOneRounds()
     hero(0).left()
     hero(1).right()
     tick()
-    events().verifyAllEvents()
+    events().getEvents() = 
     tick()
-    events().verifyAllEvents(
+    events().getEvents() = 
         listener(0) => [KILL_HERO]
         listener(1) => [KILL_HERO]
         listener(2) => [HERO_DIE]
-        listener(3) => [HERO_DIE])
+        listener(3) => [HERO_DIE]
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
         ☼( ◄  ( (☼
@@ -157,30 +157,255 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseOneRounds()
         ☼   HH   ☼
         ☼#Z#HH#Z#☼
         ☼☼☼☼☼☼☼☼☼☼,
-        0).left(hero(0))
+        0)
+    field().remove()
+    field().remove()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼( ◄  ( (☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼#ᗆ#HH#ᗉ#☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).left()
+    hero(0).act()
+    hero(1).right()
+    hero(1).act()
+    hero(6).right()
+    field().remove()
+    field().remove()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼ ⊏Я  ⌊ (☼
+        ☼#*#HH#*#☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼#ᗆ#HH#ᗉ#☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0)
+    field().remove()
+    field().remove()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼  Я  ⌊ (☼
+        ☼#ᗆ#HH# #☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼#ᗆ#HH#ᗉ#☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0)
+    field().remove()
+    field().remove()
+    tick()
+    field().remove()
+    field().remove()
+    tick()
+    events().getEvents() = 
+    field().remove()
+    field().remove()
+    tick()
+    events().getEvents() = 
+        listener(0) => [KILL_HERO]
+        listener(1) => [KILL_HERO]
+        listener(4) => [HERO_DIE]
+        listener(5) => [HERO_DIE]
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼  Я  ⌊ (☼
+        ☼#ᗆ#HH# #☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼#Z#HH#Z#☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0)
+    field().remove()
+    field().remove()
+    field().remove()
+    field().remove()
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼  Я  ⌊ (☼
+        ☼#ᗆ#HH# #☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0)
+    field().remove()
+    field().remove()
+    field().remove()
+    field().remove()
+    tick()
+    field().remove()
+    field().remove()
+    field().remove()
+    field().remove()
+    tick()
+    field().remove()
+    field().remove()
+    field().remove()
+    field().remove()
+    tick()
+    field().remove()
+    field().remove()
+    field().remove()
+    field().remove()
+    tick()
+    field().remove()
+    field().remove()
+    field().remove()
+    field().remove()
+    tick()
+    field().remove()
+    field().remove()
+    field().remove()
+    field().remove()
+    tick()
+    events().getEvents() = 
+    field().remove()
+    field().remove()
+    field().remove()
+    field().remove()
+    tick()
+    events().getEvents() = 
+        listener(0) => [KILL_HERO]
+        listener(6) => [HERO_DIE]
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼  Я  ⌊ (☼
+        ☼#Z#HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0)
+    field().remove()
+    field().remove()
+    field().remove()
+    field().remove()
+    field().remove()
+    tick()
+    events().getEvents() = 
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼  Я  ⌊ (☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0)
+    field().remove()
+    field().remove()
+    field().remove()
+    field().remove()
+    field().remove()
+    tick()
+    field().remove()
+    field().remove()
+    field().remove()
+    field().remove()
+    field().remove()
+    tick()
+    events().getEvents() = 
+        listener(0) => [WIN_ROUND]
+        listener(1) => [[Time is over]]
+        listener(7) => [[Time is over]]
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼  Ѡ  Z Z☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼   HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).isAlive() = false
+    hero(1).isAlive() = false
+    hero(7).isAlive() = false
+    dice(1, 2)
+    game(0).newGame()
+    dice(2, 2)
+    game(1).newGame()
+    dice(3, 2)
+    game(2).newGame()
+    dice(6, 2)
+    game(3).newGame()
+    dice(7, 2)
+    game(4).newGame()
+    dice(8, 2)
+    game(5).newGame()
+    dice(1, 5)
+    game(6).newGame()
+    dice(2, 5)
+    game(7).newGame()
+    field().countPlayers() = 8
+    events().getEvents() = 
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼        ☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼ZZ HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼ѠZZHHZZZ☼
+        ☼###HH###☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0)
+    tick()
+    field().countPlayers() = 8
+    events().getEvents() = 
+        listener(0) => [START_ROUND, [Round 2]]
+        listener(1) => [START_ROUND, [Round 2]]
+        listener(2) => [START_ROUND, [Round 2]]
+        listener(3) => [START_ROUND, [Round 2]]
+        listener(4) => [START_ROUND, [Round 2]]
+        listener(5) => [START_ROUND, [Round 2]]
+        listener(6) => [START_ROUND, [Round 2]]
+        listener(7) => [START_ROUND, [Round 2]]
+    assertF(
+        ☼☼☼☼☼☼☼☼☼☼
+        ☼        ☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼(( HH   ☼
+        ☼###HH###☼
+        ☼☼☼☼HH☼☼☼☼
+        ☼►((HH(((☼
+        ☼###HH###☼
+        ☼☼☼☼☼☼☼☼☼☼,
+        0)
 
-hero(0).act()
-
-hero(1).right()
-
-hero(1).act()
-
-hero(6).right().isAlive(hero(0)) = false
-hero(1).isAlive() = false
-hero(7).isAlive() = false
-dice(1, 2)
-game(0).newGame()
-dice(2, 2)
-game(1).newGame()
-dice(3, 2)
-game(2).newGame()
-dice(6, 2)
-game(3).newGame()
-dice(7, 2)
-game(4).newGame()
-dice(8, 2)
-game(5).newGame()
-dice(1, 5)
-game(6).newGame()
-dice(2, 5)
-game(7).newGame()
+after()
+    events().getEvents() = 

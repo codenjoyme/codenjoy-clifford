@@ -62,9 +62,9 @@ thatMaskStairsUpTheLadderAtTheRegularPlayerAndKillsHim()
         1)
     hero(1).up()
     tick()
-    events().verifyAllEvents(
+    events().getEvents() = 
         listener(0) => [HERO_DIE]
-        listener(1) => [KILL_HERO])
+        listener(1) => [KILL_HERO]
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
@@ -85,3 +85,30 @@ thatMaskStairsUpTheLadderAtTheRegularPlayerAndKillsHim()
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         1)
+    field().remove(player(0))
+    field().remove()
+    tick()
+    events().getEvents() = 
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  Ѡ   ☼
+        ☼  H   ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼☼☼☼
+        ☼      ☼
+        ☼      ☼
+        ☼      ☼
+        ☼  ⊳   ☼
+        ☼  H   ☼
+        ☼######☼
+        ☼☼☼☼☼☼☼☼,
+        1)
+
+after()
+    events().getEvents() = 

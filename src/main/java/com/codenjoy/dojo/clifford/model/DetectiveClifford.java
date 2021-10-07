@@ -606,4 +606,8 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     public Accessor<Bullet> bullets() {
         return field.of(Bullet.class);
     }
+
+    public int countPlayers() {
+        return players.size();
+    }
 }
