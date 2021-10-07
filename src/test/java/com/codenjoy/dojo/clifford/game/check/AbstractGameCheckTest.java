@@ -23,6 +23,7 @@ package com.codenjoy.dojo.clifford.game;
  */
 
 
+import com.codenjoy.dojo.clifford.game.AbstractGameTest;
 import com.codenjoy.dojo.clifford.model.DetectiveClifford;
 import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.Player;
@@ -79,35 +80,11 @@ public abstract class AbstractGameCheckTest extends AbstractGameTest {
         }
     }
 
-    public class EventsWrapper extends EventsListenersAssert {
-
-        private final EventsListenersAssert events;
-
-        public EventsWrapper(EventsListenersAssert events) {
-            super(null, null);    // fake
-            this.events = events;
-        }
-
-        private String verifyAllEvents() {
-            String actual = events.getEvents();
-            manager.appendCall(".verifyAllEvents", actual);
-            manager.end();
-            return actual;
-        }
-
-        @Override
-        public void verifyAllEvents(String expected) {
-            String actual = verifyAllEvents();
-            if (callRealAssert) {
-                assertEquals(expected, actual);
-            }
-        }
-    }
-
     @Override
     public EventsListenersAssert events() {
-        manager.addCall("events");
-        return new EventsWrapper(super.events());
+        EventsListenersAssert result = manager.objectSpy(super.events());
+        manager.caller("events", result);
+        return result;
     }
 
     @Override

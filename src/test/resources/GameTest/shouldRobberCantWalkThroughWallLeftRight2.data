@@ -29,3 +29,4 @@ shouldRobberCantWalkThroughWallLeftRight2()
         0)
 
 after()
+    events().getEvents() = 

@@ -40,3 +40,4 @@ shouldCantWalkThroughWallUp()
         0)
 
 after()
+    events().getEvents() = 

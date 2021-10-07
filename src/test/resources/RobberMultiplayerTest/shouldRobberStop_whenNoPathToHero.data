@@ -42,3 +42,4 @@ shouldRobberStop_whenNoPathToHero()
         0)
 
 after()
+    events().getEvents() = 

@@ -23,6 +23,7 @@ package com.codenjoy.dojo.clifford.game;
  */
 
 
+import com.codenjoy.dojo.clifford.game.check.AbstractGameCheckTest;
 import com.codenjoy.dojo.clifford.model.items.robber.RobberJoystick;
 import org.junit.Test;
 
@@ -125,7 +126,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
-        events().verifyAllEvents("[HERO_DIE]");
+        verifyAllEvents("[HERO_DIE]");
         assertEquals(true, game().isGameOver());
 
         dice(1, 4);
@@ -341,7 +342,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
-        events().verifyAllEvents(
+        verifyAllEvents(
                 "listener(1) => [HERO_DIE]\n");
     }
 
@@ -382,7 +383,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
 
         tick();
 
-        events().verifyAllEvents(
+        verifyAllEvents(
                 "listener(0) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -396,7 +397,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
 
         tick();
 
-        events().verifyAllEvents("");
+        verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   Z» ☼\n" +
@@ -431,7 +432,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
 
         tick();
 
-        events().verifyAllEvents(
+        verifyAllEvents(
                 "listener(1) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -446,7 +447,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         // больше не за кем охотитья - воры стоят на месте
         tick();
 
-        events().verifyAllEvents("");
+        verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   Z  ☼\n" +
@@ -534,7 +535,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         // и после того как нагонят оставшегося, снова зависнут
         tick();
 
-        events().verifyAllEvents("[HERO_DIE]");
+        verifyAllEvents("[HERO_DIE]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼    Ѡ ☼\n" +
@@ -547,7 +548,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
 
         tick();
 
-        events().verifyAllEvents("");
+        verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼    Ѡ ☼\n" +

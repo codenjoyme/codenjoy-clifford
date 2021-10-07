@@ -47,7 +47,7 @@ shouldIGetClueWhenFallenFromPipe()
         ☼ $   ☼
         ☼☼☼☼☼☼☼,
         0)
-    events().verifyAllEvents([GET_CLUE_KNIFE(1)])
+    events().getEvents() = [GET_CLUE_KNIFE(1)]
     dice(2, 5)
     tick()
     assertF(
@@ -59,7 +59,7 @@ shouldIGetClueWhenFallenFromPipe()
         ☼ $   ☼
         ☼☼☼☼☼☼☼,
         0)
-    events().verifyAllEvents([GET_CLUE_KNIFE(2)])
+    events().getEvents() = [GET_CLUE_KNIFE(2)]
     dice(3, 5)
     tick()
     assertF(
@@ -71,7 +71,7 @@ shouldIGetClueWhenFallenFromPipe()
         ☼ $   ☼
         ☼☼☼☼☼☼☼,
         0)
-    events().verifyAllEvents([GET_CLUE_KNIFE(3)])
+    events().getEvents() = [GET_CLUE_KNIFE(3)]
     dice(4, 5)
     tick()
     assertF(
@@ -83,6 +83,7 @@ shouldIGetClueWhenFallenFromPipe()
         ☼ ◄   ☼
         ☼☼☼☼☼☼☼,
         0)
-    events().verifyAllEvents([GET_CLUE_KNIFE(4)])
+    events().getEvents() = [GET_CLUE_KNIFE(4)]
 
 after()
+    events().getEvents() = 

@@ -90,7 +90,7 @@ shouldRobberGoToHero()
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
-    events().verifyAllEvents([HERO_DIE])
+    events().getEvents() = [HERO_DIE]
     dice(1, 4)
     tick()
     assertF(
@@ -105,3 +105,4 @@ shouldRobberGoToHero()
         0)
 
 after()
+    events().getEvents() = 

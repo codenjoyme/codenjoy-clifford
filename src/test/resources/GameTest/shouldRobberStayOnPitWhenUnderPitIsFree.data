@@ -75,3 +75,4 @@ shouldRobberStayOnPitWhenUnderPitIsFree()
         0)
 
 after()
+    events().getEvents() = 

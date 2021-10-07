@@ -85,7 +85,7 @@ public abstract class AbstractGameTest {
 
     @After
     public void after() {
-        events.verifyAllEvents("");
+        verifyAllEvents("");
         SmartAssert.checkResult(getClass());
     }
 
@@ -158,6 +158,10 @@ public abstract class AbstractGameTest {
      */
     public void assertF(String expected, int index) {
         assertEquals(expected, game(index).getBoardAsString());
+    }
+
+    public void verifyAllEvents(String expected) {
+        assertEquals(expected, events().getEvents());
     }
 
     public void assertScores(String expected) {

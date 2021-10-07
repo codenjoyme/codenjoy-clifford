@@ -72,3 +72,4 @@ pickKeysWithoutGeneration()
     hero(0).getKeys() = {GOLD=0, SILVER=0, BRONZE=0}
 
 after()
+    events().getEvents() = 

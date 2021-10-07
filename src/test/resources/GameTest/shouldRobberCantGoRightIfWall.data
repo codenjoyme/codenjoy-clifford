@@ -39,3 +39,4 @@ shouldRobberCantGoRightIfWall()
         0)
 
 after()
+    events().getEvents() = 

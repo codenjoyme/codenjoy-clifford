@@ -69,7 +69,7 @@ shouldIDieIPitFillWithMe2()
         ☼Ѡ##☼
         ☼☼☼☼☼,
         0)
-    events().verifyAllEvents([HERO_DIE, SUICIDE])
+    events().getEvents() = [HERO_DIE, SUICIDE]
     dice(2, 3)
     tick()
     field().newGame(player(0))
@@ -82,3 +82,4 @@ shouldIDieIPitFillWithMe2()
         0)
 
 after()
+    events().getEvents() = 

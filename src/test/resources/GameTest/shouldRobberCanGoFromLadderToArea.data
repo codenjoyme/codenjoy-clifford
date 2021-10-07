@@ -69,3 +69,4 @@ shouldRobberCanGoFromLadderToArea()
         0)
 
 after()
+    events().getEvents() = 

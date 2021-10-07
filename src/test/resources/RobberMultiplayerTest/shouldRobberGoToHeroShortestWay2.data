@@ -28,3 +28,4 @@ shouldRobberGoToHeroShortestWay2()
         0)
 
 after()
+    events().getEvents() = 

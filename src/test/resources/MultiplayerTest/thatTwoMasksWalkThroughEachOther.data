@@ -43,3 +43,4 @@ thatTwoMasksWalkThroughEachOther()
         1)
 
 after()
+    events().getEvents() = 

@@ -123,3 +123,4 @@ shouldСanGoInPitIfNoWall()
         0)
 
 after()
+    events().getEvents() = 

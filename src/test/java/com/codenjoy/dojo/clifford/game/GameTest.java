@@ -23,6 +23,7 @@ package com.codenjoy.dojo.clifford.game;
  */
 
 
+import com.codenjoy.dojo.clifford.game.check.AbstractGameCheckTest;
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.Potion;
 import com.codenjoy.dojo.services.Point;
@@ -547,7 +548,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼Ѡ##☼\n" +
                 "☼☼☼☼☼\n");
 
-        events().verifyAllEvents("[HERO_DIE, SUICIDE]");
+        verifyAllEvents("[HERO_DIE, SUICIDE]");
 
         dice(2, 3);
         tick();         // ну а после смерти он появляется в рендомном месте
@@ -604,7 +605,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼Ѡ##☼\n" +
                 "☼☼☼☼☼\n");
 
-        events().verifyAllEvents("[HERO_DIE, SUICIDE]");
+        verifyAllEvents("[HERO_DIE, SUICIDE]");
 
         dice(2, 3);
         tick();         // ну а после смерти он появляется в рендомном месте
@@ -740,7 +741,7 @@ public class GameTest extends AbstractGameCheckTest {
         dice(2, 3);
         hero().right();
         tick();
-        events().verifyAllEvents("[GET_CLUE_KNIFE(1)]");
+        verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         assertF("☼☼☼☼☼\n" +
                 "☼ $ ☼\n" +
@@ -770,7 +771,7 @@ public class GameTest extends AbstractGameCheckTest {
         dice(3, 3);
         hero().right();
         tick();
-        events().verifyAllEvents("[GET_CLUE_KNIFE(1)]");
+        verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         assertF("☼☼☼☼☼\n" +
                 "☼  $☼\n" +
@@ -1281,7 +1282,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼ $   ☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        events().verifyAllEvents("[GET_CLUE_KNIFE(1)]");
+        verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         dice(2, 5);
         tick();
@@ -1294,7 +1295,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼ $   ☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        events().verifyAllEvents("[GET_CLUE_KNIFE(2)]");
+        verifyAllEvents("[GET_CLUE_KNIFE(2)]");
 
         dice(3, 5);
         tick();
@@ -1307,7 +1308,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼ $   ☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        events().verifyAllEvents("[GET_CLUE_KNIFE(3)]");
+        verifyAllEvents("[GET_CLUE_KNIFE(3)]");
 
         dice(4, 5);
         tick();
@@ -1320,7 +1321,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼ ◄   ☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        events().verifyAllEvents("[GET_CLUE_KNIFE(4)]");
+        verifyAllEvents("[GET_CLUE_KNIFE(4)]");
     }
 
     // если я прострелил дырку и падаю в нее, а под ней ничего нет - то я падаю пока не найду препятствие
@@ -1703,7 +1704,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼☼☼☼☼☼\n");
     }
 
-    @Test
+    @Test // TODO fix me in *.data
     public void shouldBoardIsFree() {
         givenFl("☼☼☼☼☼☼\n" +
                 "☼~◄$H☼\n" +
@@ -1808,7 +1809,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼Ѡ#☼\n" +
                 "☼☼☼☼\n");
 
-        events().verifyAllEvents("[HERO_DIE, SUICIDE]");
+        verifyAllEvents("[HERO_DIE, SUICIDE]");
     }
 
     // я могу прострелить стенки под стенками, если те разрушены
@@ -2204,7 +2205,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        events().verifyAllEvents("[HERO_DIE]");
+        verifyAllEvents("[HERO_DIE]");
 
         dice(1, 3);
         tick();         // ну а после смерти он появляется в рендомном месте причем чертик остается на своем месте
@@ -2236,7 +2237,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        events().verifyAllEvents("[HERO_DIE]");
+        verifyAllEvents("[HERO_DIE]");
 
         dice(0,  // охотимся за первым игроком
             3, 3);
@@ -2268,7 +2269,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        events().verifyAllEvents("[HERO_DIE]");
+        verifyAllEvents("[HERO_DIE]");
 
         dice(3, 3);
         tick();         // ну а после смерти он появляется в рендомном месте причем чертик остается на своем месте
@@ -2299,7 +2300,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        events().verifyAllEvents("[HERO_DIE]");
+        verifyAllEvents("[HERO_DIE]");
 
         dice(0,  // охотимся за первым игроком
             3, 3);
@@ -2853,7 +2854,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼####⍈#☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
-        events().verifyAllEvents("[GET_CLUE_KNIFE(1)]");
+        verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         hero().left();
         tick();
@@ -2871,7 +2872,7 @@ public class GameTest extends AbstractGameCheckTest {
         dice(2, 6);
         tick();
 
-        events().verifyAllEvents("[GET_CLUE_KNIFE(2)]");
+        verifyAllEvents("[GET_CLUE_KNIFE(2)]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼$$    ☼\n" +
@@ -2947,7 +2948,7 @@ public class GameTest extends AbstractGameCheckTest {
         hero().left();
         tick();
 
-        events().verifyAllEvents("[GET_CLUE_KNIFE(1)]");
+        verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼$     ☼\n" +
@@ -2985,7 +2986,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        events().verifyAllEvents("[GET_CLUE_KNIFE(2)]");
+        verifyAllEvents("[GET_CLUE_KNIFE(2)]");
 
         tick();
         tick();
@@ -3694,7 +3695,7 @@ public class GameTest extends AbstractGameCheckTest {
         tick();
         tick();
 
-        events().verifyAllEvents("[HERO_DIE]");
+        verifyAllEvents("[HERO_DIE]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -3762,7 +3763,7 @@ public class GameTest extends AbstractGameCheckTest {
         tick();
         tick();
 
-        events().verifyAllEvents("[HERO_DIE, SUICIDE]");
+        verifyAllEvents("[HERO_DIE, SUICIDE]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -3819,7 +3820,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        events().verifyAllEvents("[HERO_DIE, SUICIDE]");
+        verifyAllEvents("[HERO_DIE, SUICIDE]");
     }
 
     @Test
@@ -4043,7 +4044,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        events().verifyAllEvents(
+        verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [HERO_DIE]\n");
 
@@ -4108,7 +4109,7 @@ public class GameTest extends AbstractGameCheckTest {
         hero().right();
         tick();
 
-        events().verifyAllEvents("[GET_CLUE_KNIFE(1)]");
+        verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -4122,7 +4123,7 @@ public class GameTest extends AbstractGameCheckTest {
         hero().right();
         tick();
 
-        events().verifyAllEvents("[GET_CLUE_KNIFE(2)]");
+        verifyAllEvents("[GET_CLUE_KNIFE(2)]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -4136,7 +4137,7 @@ public class GameTest extends AbstractGameCheckTest {
         hero().right();
         tick();
 
-        events().verifyAllEvents("[GET_CLUE_GLOVE(1)]");
+        verifyAllEvents("[GET_CLUE_GLOVE(1)]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -4150,7 +4151,7 @@ public class GameTest extends AbstractGameCheckTest {
         hero().right();
         tick();
 
-        events().verifyAllEvents("[GET_CLUE_RING(1)]");
+        verifyAllEvents("[GET_CLUE_RING(1)]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -4164,7 +4165,7 @@ public class GameTest extends AbstractGameCheckTest {
         hero().right();
         tick();
 
-        events().verifyAllEvents("[GET_CLUE_RING(2)]");
+        verifyAllEvents("[GET_CLUE_RING(2)]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -4632,7 +4633,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        events().verifyAllEvents(
+        verifyAllEvents(
                 "[GET_CLUE_KNIFE(1)]");
     }
 
@@ -4673,7 +4674,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        events().verifyAllEvents(
+        verifyAllEvents(
                 "[GET_CLUE_KNIFE(1)]");
 
         assertEquals(2, hero(0).scores());

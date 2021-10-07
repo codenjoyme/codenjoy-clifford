@@ -31,3 +31,4 @@ shouldCrackLeft_otherCommandSequence()
         0)
 
 after()
+    events().getEvents() = 

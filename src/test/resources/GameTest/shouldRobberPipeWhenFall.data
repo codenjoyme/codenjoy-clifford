@@ -65,3 +65,4 @@ shouldRobberPipeWhenFall()
         0)
 
 after()
+    events().getEvents() = 

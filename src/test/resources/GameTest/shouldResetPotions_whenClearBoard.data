@@ -89,3 +89,4 @@ shouldResetPotions_whenClearBoard()
         0)
 
 after()
+    events().getEvents() = 

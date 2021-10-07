@@ -14,7 +14,7 @@ shouldClueOnMap_iCanGetIt()
     dice(2, 3)
     hero(0).right()
     tick()
-    events().verifyAllEvents([GET_CLUE_KNIFE(1)])
+    events().getEvents() = [GET_CLUE_KNIFE(1)]
     assertF(
         ☼☼☼☼☼
         ☼ $ ☼
@@ -33,3 +33,4 @@ shouldClueOnMap_iCanGetIt()
         0)
 
 after()
+    events().getEvents() = 

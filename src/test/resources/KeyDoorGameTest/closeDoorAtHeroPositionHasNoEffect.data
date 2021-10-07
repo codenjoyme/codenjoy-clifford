@@ -60,3 +60,4 @@ closeDoorAtHeroPositionHasNoEffect()
     hero(0).getKeys() = {GOLD=1, SILVER=0, BRONZE=0}
 
 after()
+    events().getEvents() = 

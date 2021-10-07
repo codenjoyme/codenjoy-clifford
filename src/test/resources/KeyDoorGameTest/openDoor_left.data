@@ -72,3 +72,4 @@ openDoor_left()
         0)
 
 after()
+    events().getEvents() = 

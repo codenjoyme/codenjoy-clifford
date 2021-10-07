@@ -65,3 +65,4 @@ shouldICantGoViaAnotherPlayer_whenAtPipe()
         0)
 
 after()
+    events().getEvents() = 

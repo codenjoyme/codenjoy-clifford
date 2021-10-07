@@ -44,3 +44,4 @@ shouldICantGoViaAnotherPlayer_whenAtWay()
         0)
 
 after()
+    events().getEvents() = 

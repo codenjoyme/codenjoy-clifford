@@ -69,3 +69,4 @@ shouldICanGoWhenAtMeIsOtherHero()
         0)
 
 after()
+    events().getEvents() = 

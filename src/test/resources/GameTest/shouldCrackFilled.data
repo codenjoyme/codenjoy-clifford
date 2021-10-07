@@ -84,3 +84,4 @@ shouldCrackFilled()
         0)
 
 after()
+    events().getEvents() = 
