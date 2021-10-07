@@ -64,8 +64,7 @@ thatMaskStairsUpTheLadderAtTheRegularPlayerAndKillsHim()
     tick()
     events().verifyAllEvents(
         listener(0) => [HERO_DIE]
-        listener(1) => [KILL_HERO],
-        [])
+        listener(1) => [KILL_HERO])
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼

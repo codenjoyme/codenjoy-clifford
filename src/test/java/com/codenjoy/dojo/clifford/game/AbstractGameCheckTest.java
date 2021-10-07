@@ -36,8 +36,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 
-import java.util.Arrays;
-
 public abstract class AbstractGameCheckTest extends AbstractGameTest {
 
     @Rule
@@ -90,16 +88,16 @@ public abstract class AbstractGameCheckTest extends AbstractGameTest {
             this.events = events;
         }
 
-        private String verifyAllEvents(Integer[] indexes) {
-            String actual = events.getEvents(indexes);
-            manager.appendCall(".verifyAllEvents", actual, Arrays.asList(indexes));
+        private String verifyAllEvents() {
+            String actual = events.getEvents();
+            manager.appendCall(".verifyAllEvents", actual);
             manager.end();
             return actual;
         }
 
         @Override
-        public void verifyAllEvents(String expected, Integer... indexes) {
-            String actual = verifyAllEvents(indexes);
+        public void verifyAllEvents(String expected) {
+            String actual = verifyAllEvents();
             if (callRealAssert) {
                 assertEquals(expected, actual);
             }

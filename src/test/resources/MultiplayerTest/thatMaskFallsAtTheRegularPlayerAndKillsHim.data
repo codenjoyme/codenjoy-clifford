@@ -42,8 +42,7 @@ thatMaskFallsAtTheRegularPlayerAndKillsHim()
     tick()
     events().verifyAllEvents(
         listener(0) => [KILL_HERO]
-        listener(1) => [HERO_DIE],
-        [])
+        listener(1) => [HERO_DIE])
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼

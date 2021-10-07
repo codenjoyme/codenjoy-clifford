@@ -27,7 +27,7 @@ shouldRobberStayOnHeroAtThePipe()
         0)
     tick()
     tick()
-    events().verifyAllEvents([HERO_DIE], [])
+    events().verifyAllEvents([HERO_DIE])
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼

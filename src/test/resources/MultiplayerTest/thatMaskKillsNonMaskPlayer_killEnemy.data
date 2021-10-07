@@ -44,8 +44,7 @@ thatMaskKillsNonMaskPlayer_killEnemy()
     tick()
     events().verifyAllEvents(
         listener(0) => [KILL_ENEMY]
-        listener(1) => [HERO_DIE],
-        [])
+        listener(1) => [HERO_DIE])
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼

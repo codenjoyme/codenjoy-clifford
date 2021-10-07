@@ -70,8 +70,7 @@ shouldResetHeroScores_whenClearBoard()
     tick()
     events().verifyAllEvents(
         listener(0) => [KILL_HERO]
-        listener(1) => [HERO_DIE],
-        [])
+        listener(1) => [HERO_DIE])
     hero(0).scores() = 20
     hero(1).scores() = 0
     hero(0).isAlive() = true

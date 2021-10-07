@@ -19,7 +19,7 @@ shouldHeroDieWhenMeetWithRobber_whenRobberWalk()
         ☼###☼
         ☼☼☼☼☼,
         0)
-    events().verifyAllEvents([HERO_DIE], [])
+    events().verifyAllEvents([HERO_DIE])
     dice(0, 3, 3)
     tick()
     field().newGame(player(0))

@@ -58,7 +58,7 @@ heroShouldReleaseKeysAfterDeath_ifGenerateDisable()
     dice(1, 5, 2, 5, 3, 5)
     hero(0).die()
     tick()
-    events().verifyAllEvents([HERO_DIE], [])
+    events().verifyAllEvents([HERO_DIE])
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼

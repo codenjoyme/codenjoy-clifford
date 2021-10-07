@@ -41,7 +41,7 @@ shouldRobberFindHeroAtPit()
         0)
     tick()
     tick()
-    events().verifyAllEvents([HERO_DIE, SUICIDE], [])
+    events().verifyAllEvents([HERO_DIE, SUICIDE])
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼

@@ -32,7 +32,7 @@ shouldSameLevel_whenClearScoresOnGame_andSeveralLevelsInTheSettings()
         ☼###☼
         ☼☼☼☼☼,
         0)
-    events().verifyAllEvents([GET_CLUE_KNIFE(1)], [])
+    events().verifyAllEvents([GET_CLUE_KNIFE(1)])
     hero(0).scores() = 2
     hero(0).act()
     hero(0).left()

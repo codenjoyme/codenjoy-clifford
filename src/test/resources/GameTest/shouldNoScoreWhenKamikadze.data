@@ -44,6 +44,6 @@ shouldNoScoreWhenKamikadze()
         ☼Ѡ#☼
         ☼☼☼☼,
         0)
-    events().verifyAllEvents([HERO_DIE, SUICIDE], [])
+    events().verifyAllEvents([HERO_DIE, SUICIDE])
 
 after()

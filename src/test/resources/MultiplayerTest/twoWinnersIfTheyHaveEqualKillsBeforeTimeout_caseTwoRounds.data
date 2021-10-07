@@ -46,8 +46,7 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
         listener(4) => [START_ROUND, [Round 1]]
         listener(5) => [START_ROUND, [Round 1]]
         listener(6) => [START_ROUND, [Round 1]]
-        listener(7) => [START_ROUND, [Round 1]],
-        [])
+        listener(7) => [START_ROUND, [Round 1]])
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
         ☼(      (☼
@@ -140,14 +139,13 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
     hero(0).left()
     hero(1).right()
     tick()
-    events().verifyAllEvents(, [])
+    events().verifyAllEvents()
     tick()
     events().verifyAllEvents(
         listener(0) => [KILL_HERO]
         listener(1) => [KILL_HERO]
         listener(2) => [HERO_DIE]
-        listener(3) => [HERO_DIE],
-        [])
+        listener(3) => [HERO_DIE])
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
         ☼( ◄  ( (☼

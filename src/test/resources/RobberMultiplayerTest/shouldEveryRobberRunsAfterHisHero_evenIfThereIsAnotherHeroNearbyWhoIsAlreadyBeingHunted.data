@@ -40,7 +40,7 @@ shouldEveryRobberRunsAfterHisHero_evenIfThereIsAnotherHeroNearbyWhoIsAlreadyBein
         ☼☼☼☼☼☼☼☼,
         1)
     tick()
-    events().verifyAllEvents(listener(0) => [HERO_DIE], [])
+    events().verifyAllEvents(listener(0) => [HERO_DIE])
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼   Z  ☼
@@ -52,7 +52,7 @@ shouldEveryRobberRunsAfterHisHero_evenIfThereIsAnotherHeroNearbyWhoIsAlreadyBein
         ☼☼☼☼☼☼☼☼,
         1)
     tick()
-    events().verifyAllEvents(, [])
+    events().verifyAllEvents()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼   Z» ☼
@@ -86,7 +86,7 @@ shouldEveryRobberRunsAfterHisHero_evenIfThereIsAnotherHeroNearbyWhoIsAlreadyBein
         ☼☼☼☼☼☼☼☼,
         1)
     tick()
-    events().verifyAllEvents(listener(1) => [HERO_DIE], [])
+    events().verifyAllEvents(listener(1) => [HERO_DIE])
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼   Z  ☼
@@ -98,7 +98,7 @@ shouldEveryRobberRunsAfterHisHero_evenIfThereIsAnotherHeroNearbyWhoIsAlreadyBein
         ☼☼☼☼☼☼☼☼,
         1)
     tick()
-    events().verifyAllEvents(, [])
+    events().verifyAllEvents()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼   Z  ☼
@@ -178,7 +178,7 @@ shouldEveryRobberRunsAfterHisHero_evenIfThereIsAnotherHeroNearbyWhoIsAlreadyBein
         ☼☼☼☼☼☼☼☼,
         3)
     tick()
-    events().verifyAllEvents([HERO_DIE], [])
+    events().verifyAllEvents([HERO_DIE])
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼    Ѡ ☼
@@ -190,7 +190,7 @@ shouldEveryRobberRunsAfterHisHero_evenIfThereIsAnotherHeroNearbyWhoIsAlreadyBein
         ☼☼☼☼☼☼☼☼,
         3)
     tick()
-    events().verifyAllEvents(, [])
+    events().verifyAllEvents()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼    Ѡ ☼
