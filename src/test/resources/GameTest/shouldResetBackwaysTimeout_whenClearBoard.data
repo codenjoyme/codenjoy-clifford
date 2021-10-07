@@ -12,8 +12,65 @@ shouldResetBackwaysTimeout_whenClearBoard()
         ☼☼☼☼☼)
         givenPlayer([2,2])
             dice(2, 2)
-        dice(0).left(hero(0))
+        dice(0)
+    field().getBackwaysTimer() = 5
+    hero(0).left()
+    tick()
+    field().getBackwaysTimer() = 4
+    assertF(
+        ☼☼☼☼☼
+        ☼  ]☼
+        ☼⊛  ☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    field().getBackwaysTimer() = 3
+    assertF(
+        ☼☼☼☼☼
+        ☼  ⊛☼
+        ☼⊛ ◄☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    field().getBackwaysTimer() = 2
+    tick()
+    field().getBackwaysTimer() = 1
+    tick()
+    field().getBackwaysTimer() = 0
+    assertF(
+        ☼☼☼☼☼
+        ☼  ⊛☼
+        ☼⊛ ◄☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+    dice(1, 3, 2, 3)
+    tick()
+    field().getBackwaysTimer() = 5
+    assertF(
+        ☼☼☼☼☼
+        ☼⊛⊛ ☼
+        ☼  ◄☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+    assertF(
+        ☼☼☼☼☼
+        ☼⊛⊛ ☼
+        ☼  ◄☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
+    field().getBackwaysTimer() = 5
+    tick()
+    tick()
+    tick()
+    field().getBackwaysTimer() = 2
+    dice(3, 3, 3, 2, 1, 2)
+    field().clearScore()
+    field().getBackwaysTimer() = 5
 
-tick()
-
-field().clearScore(field())
+after()
+    events().getEvents() = 
