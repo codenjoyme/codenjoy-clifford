@@ -187,7 +187,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         if (field.doors().contains(destination)) {
             if (openDoor) {
                 tryToInteractWithDoor(destination, Door::isClosed, Door::open);
-            } else if(closeDoor) {
+            } else if (closeDoor) {
                 tryToInteractWithDoor(destination, Door::isOpened, Door::close);
             }
         }
