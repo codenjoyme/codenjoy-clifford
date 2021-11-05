@@ -16,7 +16,7 @@ shouldICanStayAtOtherHeroHead()
         dice(0)
     assertF(
         ☼☼☼☼☼☼
-        ☼ [  ☼
+        ☼ ]  ☼
         ☼    ☼
         ☼ (  ☼
         ☼####☼

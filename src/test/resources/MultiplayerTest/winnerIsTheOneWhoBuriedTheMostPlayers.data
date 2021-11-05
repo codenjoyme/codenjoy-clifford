@@ -74,7 +74,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         ☼(  HH  (☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼ ⊏ЯHH⌊⊐ ☼
+        ☼ ⊐ЯHH⌊⊐ ☼
         ☼#*#HH#*#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
@@ -102,7 +102,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗆ#HH#ᗉ#☼
+        ☼#ᗉ#HH#ᗉ#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
     hero(0).left()
@@ -117,11 +117,11 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         ☼(      (☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼ ⊏ЯHH⌊⊐ ☼
+        ☼ ⊐ЯHH⌊⊐ ☼
         ☼#*#HH#*#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗆ#HH#ᗉ#☼
+        ☼#ᗉ#HH#ᗉ#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
     hero(0).right()
@@ -152,7 +152,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗆ#HH#ᗉ#☼
+        ☼#ᗉ#HH#ᗉ#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼#Z#HH#Z#☼
@@ -167,7 +167,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗆ#HH#ᗉ#☼
+        ☼#ᗉ#HH#ᗉ#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -184,11 +184,11 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼ ⊏Я  ⌊⊐ ☼
+        ☼ ⊐Я  ⌊⊐ ☼
         ☼#*#HH#*#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗆ#HH#ᗉ#☼
+        ☼#ᗉ#HH#ᗉ#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -200,10 +200,10 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
         ☼  Я  ⌊  ☼
-        ☼#ᗆ#HH#ᗉ#☼
+        ☼#ᗉ#HH#ᗉ#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗆ#HH#ᗉ#☼
+        ☼#ᗉ#HH#ᗉ#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -227,7 +227,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
         ☼  Я  ⌊  ☼
-        ☼#ᗆ#HH#ᗉ#☼
+        ☼#ᗉ#HH#ᗉ#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼#Z#HH#Z#☼
@@ -244,7 +244,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
         ☼  Я  ⌊  ☼
-        ☼#ᗆ#HH#ᗉ#☼
+        ☼#ᗉ#HH#ᗉ#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼

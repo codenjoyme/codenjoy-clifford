@@ -41,7 +41,7 @@ shouldCantGoLeftIfWall()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼  [☼
+        ☼  ]☼
         ☼## ☼
         ☼☼☼☼☼,
         0)
@@ -50,7 +50,7 @@ shouldCantGoLeftIfWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼##⍄☼
+        ☼##⍃☼
         ☼☼☼☼☼,
         0)
     hero(0).left()

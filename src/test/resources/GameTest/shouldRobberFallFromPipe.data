@@ -56,7 +56,7 @@ shouldRobberFallFromPipe()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼ ~~~›☼
+        ☼ ~~~‹☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -67,7 +67,7 @@ shouldRobberFallFromPipe()
         ☼☼☼☼☼☼►
         ☼     ☼
         ☼ ~~~ ☼
-        ☼#   ›☼
+        ☼#   ‹☼
         ☼     ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
@@ -78,7 +78,7 @@ shouldRobberFallFromPipe()
         ☼     ☼
         ☼ ~~~ ☼
         ☼#    ☼
-        ☼    ›☼
+        ☼    ‹☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
         0)

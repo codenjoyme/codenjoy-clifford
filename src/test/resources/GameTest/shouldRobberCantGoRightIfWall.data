@@ -17,7 +17,7 @@ shouldRobberCantGoRightIfWall()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ ›Я☼
+        ☼ ‹Я☼
         ☼# #☼
         ☼☼☼☼☼,
         0)
@@ -26,7 +26,7 @@ shouldRobberCantGoRightIfWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼  Я☼
-        ☼#⍈#☼
+        ☼#⍇#☼
         ☼☼☼☼☼,
         0)
     tick()
@@ -34,7 +34,7 @@ shouldRobberCantGoRightIfWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼  Я☼
-        ☼#⍈#☼
+        ☼#⍇#☼
         ☼☼☼☼☼,
         0)
 

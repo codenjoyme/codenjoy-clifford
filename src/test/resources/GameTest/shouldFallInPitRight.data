@@ -41,7 +41,7 @@ shouldFallInPitRight()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼  [☼
+        ☼  ]☼
         ☼## ☼
         ☼☼☼☼☼,
         0)
@@ -50,7 +50,7 @@ shouldFallInPitRight()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼##⍄☼
+        ☼##⍃☼
         ☼☼☼☼☼,
         0)
 

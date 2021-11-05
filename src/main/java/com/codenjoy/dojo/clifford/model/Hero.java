@@ -352,15 +352,11 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         }
 
         if (isPit()) {
-            return isLeftTurn()
-                    ? HERO_PIT_LEFT
-                    : HERO_PIT_RIGHT;
+            return HERO_PIT;
         }
 
         if (isFall()) {
-            return isLeftTurn()
-                    ? HERO_FALL_LEFT
-                    : HERO_FALL_RIGHT;
+            return HERO_FALL;
         }
 
         return isLeftTurn()

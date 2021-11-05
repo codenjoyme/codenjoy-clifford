@@ -17,7 +17,7 @@ shouldRobberFallInPitLeft()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ ›Я☼
+        ☼ ‹Я☼
         ☼# #☼
         ☼☼☼☼☼,
         0)
@@ -26,7 +26,7 @@ shouldRobberFallInPitLeft()
         ☼☼☼☼☼
         ☼   ☼
         ☼  Я☼
-        ☼#⍈#☼
+        ☼#⍇#☼
         ☼☼☼☼☼,
         0)
 

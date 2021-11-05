@@ -46,7 +46,7 @@ shouldRobberCanGoFromLadderToArea()
     tick()
     assertF(
         ☼☼☼☼►
-        ☼H ›☼
+        ☼H ‹☼
         ☼H# ☼
         ☼H  ☼
         ☼☼☼☼☼,
@@ -55,7 +55,7 @@ shouldRobberCanGoFromLadderToArea()
     assertF(
         ☼☼☼☼►
         ☼H  ☼
-        ☼H#›☼
+        ☼H#‹☼
         ☼H  ☼
         ☼☼☼☼☼,
         0)

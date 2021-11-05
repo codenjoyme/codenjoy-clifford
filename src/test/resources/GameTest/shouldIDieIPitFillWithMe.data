@@ -68,7 +68,7 @@ shouldIDieIPitFillWithMe()
     field().newGame(player(0))
     assertF(
         ☼☼☼☼☼
-        ☼ [ ☼
+        ☼ ] ☼
         ☼   ☼
         ☼###☼
         ☼☼☼☼☼,

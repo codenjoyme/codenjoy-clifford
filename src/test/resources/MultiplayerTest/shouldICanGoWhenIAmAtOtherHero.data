@@ -16,7 +16,7 @@ shouldICanGoWhenIAmAtOtherHero()
         dice(0)
     assertF(
         ☼☼☼☼☼☼
-        ☼ [  ☼
+        ☼ ]  ☼
         ☼    ☼
         ☼ (  ☼
         ☼####☼

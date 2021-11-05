@@ -26,7 +26,7 @@ shouldHeroDieWhenMeetWithRobber2()
     field().newGame(player(0))
     assertF(
         ☼☼☼☼☼
-        ☼  [☼
+        ☼  ]☼
         ☼«  ☼
         ☼###☼
         ☼☼☼☼☼,

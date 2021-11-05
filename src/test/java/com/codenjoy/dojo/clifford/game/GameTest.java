@@ -347,7 +347,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
-                "☼  [☼\n" +
+                "☼  ]☼\n" +
                 "☼## ☼\n" +
                 "☼☼☼☼☼\n");
 
@@ -356,7 +356,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼   ☼\n" +
-                "☼##⍄☼\n" +
+                "☼##⍃☼\n" +
                 "☼☼☼☼☼\n");
     }
 
@@ -385,7 +385,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼   ☼\n" +
-                "☼⍄##☼\n" +
+                "☼⍃##☼\n" +
                 "☼☼☼☼☼\n");
     }
 
@@ -459,7 +459,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼   ☼\n" +
-                "☼ ⍄#☼\n" +
+                "☼ ⍃#☼\n" +
                 "☼☼☼☼☼\n");
 
         hero().right();
@@ -469,7 +469,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼   ☼\n" +
-                "☼4⍄#☼\n" +
+                "☼4⍃#☼\n" +
                 "☼☼☼☼☼\n");
 
         hero().left();
@@ -487,7 +487,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼   ☼\n" +
-                "☼2⍄#☼\n" +
+                "☼2⍃#☼\n" +
                 "☼☼☼☼☼\n");
 
         hero().left();
@@ -505,7 +505,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼   ☼\n" +
-                "☼#⍄#☼\n" +
+                "☼#⍃#☼\n" +
                 "☼☼☼☼☼\n");
 
     }
@@ -555,7 +555,7 @@ public class GameTest extends AbstractGameCheckTest {
         field().newGame(player());
 
         assertF("☼☼☼☼☼\n" +
-                "☼ [ ☼\n" +
+                "☼ ] ☼\n" +
                 "☼   ☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
@@ -612,7 +612,7 @@ public class GameTest extends AbstractGameCheckTest {
         field().newGame(player());
 
         assertF("☼☼☼☼☼\n" +
-                "☼ [ ☼\n" +
+                "☼ ] ☼\n" +
                 "☼   ☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
@@ -1039,7 +1039,7 @@ public class GameTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼\n" +
-                "☼H [☼\n" +
+                "☼H ]☼\n" +
                 "☼H# ☼\n" +
                 "☼H  ☼\n" +
                 "☼☼☼☼☼\n");
@@ -1048,7 +1048,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼\n" +
                 "☼H  ☼\n" +
-                "☼H#[☼\n" +
+                "☼H#]☼\n" +
                 "☼H  ☼\n" +
                 "☼☼☼☼☼\n");
 
@@ -1109,7 +1109,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
-                "☼  [  ☼\n" +
+                "☼  ]  ☼\n" +
                 "☼     ☼\n" +
                 "☼## ##☼\n" +
                 "☼☼☼☼☼☼☼\n");
@@ -1200,7 +1200,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
-                "☼ ~~~[☼\n" +
+                "☼ ~~~]☼\n" +
                 "☼#    ☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -1211,7 +1211,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼ ~~~ ☼\n" +
-                "☼#   [☼\n" +
+                "☼#   ]☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼☼☼☼☼☼☼\n");
@@ -1222,7 +1222,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼     ☼\n" +
                 "☼ ~~~ ☼\n" +
                 "☼#    ☼\n" +
-                "☼    [☼\n" +
+                "☼    ]☼\n" +
                 "☼     ☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
@@ -1936,7 +1936,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ H##☼\n" +
-                "☼#H[ ☼\n" +
+                "☼#H] ☼\n" +
                 "☼    ☼\n" +
                 "☼☼☼☼☼☼\n");
 
@@ -2068,7 +2068,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
-                "☼ ›Я☼\n" +
+                "☼ ‹Я☼\n" +
                 "☼# #☼\n" +
                 "☼☼☼☼☼\n");
 
@@ -2077,7 +2077,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼  Я☼\n" +
-                "☼#⍈#☼\n" +
+                "☼#⍇#☼\n" +
                 "☼☼☼☼☼\n");
     }
 
@@ -2142,7 +2142,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼  Я☼\n" +
-                "☼#⍈#☼\n" +
+                "☼#⍇#☼\n" +
                 "☼☼☼☼☼\n");
     }
 
@@ -2165,7 +2165,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼  Я☼\n" +
-                "☼#⍈#☼\n" +
+                "☼#⍇#☼\n" +
                 "☼☼☼☼☼\n");
 
         tick();
@@ -2212,7 +2212,7 @@ public class GameTest extends AbstractGameCheckTest {
         field().newGame(player());
 
         assertF("☼☼☼☼☼\n" +
-                "☼[  ☼\n" +
+                "☼]  ☼\n" +
                 "☼ « ☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
@@ -2245,7 +2245,7 @@ public class GameTest extends AbstractGameCheckTest {
         field().newGame(player());
 
         assertF("☼☼☼☼☼\n" +
-                "☼  [☼\n" +
+                "☼  ]☼\n" +
                 "☼«  ☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
@@ -2276,7 +2276,7 @@ public class GameTest extends AbstractGameCheckTest {
         field().newGame(player());
 
         assertF("☼☼☼☼☼\n" +
-                "☼  [☼\n" +
+                "☼  ]☼\n" +
                 "☼ « ☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
@@ -2308,7 +2308,7 @@ public class GameTest extends AbstractGameCheckTest {
         field().newGame(player());
 
         assertF("☼☼☼☼☼\n" +
-                "☼  [☼\n" +
+                "☼  ]☼\n" +
                 "☼«  ☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
@@ -2535,7 +2535,7 @@ public class GameTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼►\n" +
-                "☼H ›☼\n" +
+                "☼H ‹☼\n" +
                 "☼H# ☼\n" +
                 "☼H  ☼\n" +
                 "☼☼☼☼☼\n");
@@ -2544,7 +2544,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼►\n" +
                 "☼H  ☼\n" +
-                "☼H#›☼\n" +
+                "☼H#‹☼\n" +
                 "☼H  ☼\n" +
                 "☼☼☼☼☼\n");
 
@@ -2573,7 +2573,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
-                "☼  ›  ☼\n" +
+                "☼  ‹  ☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼## ##☼\n" +
@@ -2585,7 +2585,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
-                "☼  ›  ☼\n" +
+                "☼  ‹  ☼\n" +
                 "☼     ☼\n" +
                 "☼## ##☼\n" +
                 "☼☼☼☼☼☼☼\n");
@@ -2597,7 +2597,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
-                "☼  ›  ☼\n" +
+                "☼  ‹  ☼\n" +
                 "☼## ##☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
@@ -2676,7 +2676,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
-                "☼ ~~~›☼\n" +
+                "☼ ~~~‹☼\n" +
                 "☼#    ☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -2687,7 +2687,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼►\n" +
                 "☼     ☼\n" +
                 "☼ ~~~ ☼\n" +
-                "☼#   ›☼\n" +
+                "☼#   ‹☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼☼☼☼☼☼☼\n");
@@ -2698,7 +2698,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼     ☼\n" +
                 "☼ ~~~ ☼\n" +
                 "☼#    ☼\n" +
-                "☼    ›☼\n" +
+                "☼    ‹☼\n" +
                 "☼     ☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
@@ -2820,7 +2820,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼   ~~ ☼\n" +
                 "☼  $  #☼\n" +
                 "☼  $   ☼\n" +
-                "☼  $ ›Я☼\n" +
+                "☼  $ ‹Я☼\n" +
                 "☼#### #☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
@@ -2833,7 +2833,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼  $  #☼\n" +
                 "☼  $   ☼\n" +
                 "☼  $ $Я☼\n" +
-                "☼####⍈#☼\n" +
+                "☼####⍇#☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
     }
 
@@ -2851,7 +2851,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼  $  #☼\n" +
                 "☼  $   ☼\n" +
                 "☼  $ ◄ ☼\n" +
-                "☼####⍈#☼\n" +
+                "☼####⍇#☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
         verifyAllEvents("[GET_CLUE_KNIFE(1)]");
@@ -2865,7 +2865,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼  $  #☼\n" +
                 "☼  $   ☼\n" +
                 "☼  $◄  ☼\n" +
-                "☼####⍈#☼\n" +
+                "☼####⍇#☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
         hero().left();
@@ -2880,7 +2880,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼  $  #☼\n" +
                 "☼  $   ☼\n" +
                 "☼  ◄   ☼\n" +
-                "☼####⍈#☼\n" +
+                "☼####⍇#☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
     }
 
@@ -2941,7 +2941,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼  $  #☼\n" +
                 "☼  $   ☼\n" +
                 "☼  $ $Я☼\n" +
-                "☼####⍈#☼\n" +
+                "☼####⍇#☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
         dice(1, 6);
@@ -2956,7 +2956,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼  $  #☼\n" +
                 "☼  $   ☼\n" +
                 "☼  $ ◄ ☼\n" +
-                "☼####⍈#☼\n" +
+                "☼####⍇#☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
         hero().left();
@@ -2968,7 +2968,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼  $  #☼\n" +
                 "☼  $   ☼\n" +
                 "☼  $◄  ☼\n" +
-                "☼####⍈#☼\n" +
+                "☼####⍇#☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
         dice(2, 6);
@@ -2981,7 +2981,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼  $  #☼\n" +
                 "☼  $   ☼\n" +
                 "☼  ◄   ☼\n" +
-                "☼####⍈#☼\n" +
+                "☼####⍇#☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
         tick();
@@ -3052,7 +3052,7 @@ public class GameTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
-                "☼ ›Я  ☼\n" +
+                "☼ ‹Я  ☼\n" +
                 "☼# ###☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -3063,7 +3063,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼  Я  ☼\n" +
-                "☼#⍈###☼\n" +
+                "☼#⍇###☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -3082,7 +3082,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼  Я  ☼\n" +
-                "☼#⍈###☼\n" +
+                "☼#⍇###☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -3423,7 +3423,7 @@ public class GameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼►\n" +
                 "☼    ☼\n" +
                 "☼ H##☼\n" +
-                "☼#H› ☼\n" +
+                "☼#H‹ ☼\n" +
                 "☼    ☼\n" +
                 "☼☼☼☼☼☼\n");
 
@@ -3513,7 +3513,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼  $  #☼\n" +
                 "☼  $   ☼\n" +
                 "☼  $ $Я☼\n" +
-                "☼####⍈#☼\n" +
+                "☼####⍇#☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
         for (int c = 3; c < Brick.CRACK_TIMER; c++) { // враг вылазит
@@ -3555,7 +3555,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼  $  #☼\n" +
                 "☼  $   ☼\n" +
                 "☼  $ $Я☼\n" +
-                "☼####⍈#☼\n" +
+                "☼####⍇#☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
     }
 
@@ -3785,7 +3785,7 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼ ►    ☼\n" +
-                "☼###⍈##☼\n" +
+                "☼###⍇##☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
         for (int c = 5; c < Brick.CRACK_TIMER; c++) { // враг вылазит
@@ -4212,7 +4212,7 @@ public class GameTest extends AbstractGameCheckTest {
         field().clearScore();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼[     ☼\n" +
+                "☼]     ☼\n" +
                 "☼      ☼\n" +
                 "☼     @☼\n" +
                 "☼ $$&@@☼\n" +
@@ -4230,7 +4230,7 @@ public class GameTest extends AbstractGameCheckTest {
         field().clearScore();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼ [    ☼\n" +
+                "☼ ]    ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -4268,7 +4268,7 @@ public class GameTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   [  ☼\n" +
+                "☼   ]  ☼\n" +
                 "☼      ☼\n" +
                 "☼   ⊛  ☼\n" +
                 "☼      ☼\n" +
@@ -4280,7 +4280,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   ⊛  ☼\n" +
-                "☼   [  ☼\n" +
+                "☼   ]  ☼\n" +
                 "☼   ⊛  ☼\n" +
                 "☼      ☼\n" +
                 "☼ ⊛    ☼\n" +
@@ -4302,7 +4302,7 @@ public class GameTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   [  ☼\n" +
+                "☼   ]  ☼\n" +
                 "☼      ☼\n" +
                 "☼   ⊛  ☼\n" +
                 "☼      ☼\n" +
@@ -4314,7 +4314,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   ⊛  ☼\n" +
-                "☼   [  ☼\n" +
+                "☼   ]  ☼\n" +
                 "☼   ⊛  ☼\n" +
                 "☼      ☼\n" +
                 "☼ ⊛    ☼\n" +
@@ -4470,7 +4470,7 @@ public class GameTest extends AbstractGameCheckTest {
         field().clearScore();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼[     ☼\n" +
+                "☼]     ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼  S S ☼\n" +

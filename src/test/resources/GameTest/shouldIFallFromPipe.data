@@ -60,7 +60,7 @@ shouldIFallFromPipe()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
-        ☼ ~~~[☼
+        ☼ ~~~]☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -71,7 +71,7 @@ shouldIFallFromPipe()
         ☼☼☼☼☼☼☼
         ☼     ☼
         ☼ ~~~ ☼
-        ☼#   [☼
+        ☼#   ]☼
         ☼     ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
@@ -82,7 +82,7 @@ shouldIFallFromPipe()
         ☼     ☼
         ☼ ~~~ ☼
         ☼#    ☼
-        ☼    [☼
+        ☼    ]☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
         0)

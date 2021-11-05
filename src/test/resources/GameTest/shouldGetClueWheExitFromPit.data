@@ -99,7 +99,7 @@ shouldGetClueWheExitFromPit()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  $ ›Я☼
+        ☼  $ ‹Я☼
         ☼#### #☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -111,7 +111,7 @@ shouldGetClueWheExitFromPit()
         ☼  $  #☼
         ☼  $   ☼
         ☼  $ $Я☼
-        ☼####⍈#☼
+        ☼####⍇#☼
         ☼☼☼☼☼☼☼☼,
         0)
     assertF(
@@ -121,7 +121,7 @@ shouldGetClueWheExitFromPit()
         ☼  $  #☼
         ☼  $   ☼
         ☼  $ $Я☼
-        ☼####⍈#☼
+        ☼####⍇#☼
         ☼☼☼☼☼☼☼☼,
         0)
     tick()
@@ -167,7 +167,7 @@ shouldGetClueWheExitFromPit()
         ☼  $  #☼
         ☼  $   ☼
         ☼  $ $Я☼
-        ☼####⍈#☼
+        ☼####⍇#☼
         ☼☼☼☼☼☼☼☼,
         0)
 

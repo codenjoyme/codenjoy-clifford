@@ -53,14 +53,14 @@ public class Level extends AbstractLevel {
 
     public List<Hero> heroes() {
         EnumSet<Element> left = EnumSet.of(
-                HERO_CRACK_LEFT, HERO_LEFT, HERO_FALL_LEFT, HERO_PIPE_LEFT,
+                HERO_CRACK_LEFT, HERO_LEFT, HERO_PIPE_LEFT,
                 HERO_MASK_CRACK_LEFT,
-                HERO_MASK_LEFT, HERO_MASK_FALL_LEFT, HERO_MASK_PIPE_LEFT);
+                HERO_MASK_LEFT, HERO_MASK_PIPE_LEFT);
 
         EnumSet<Element> right = EnumSet.of(
-                HERO_CRACK_RIGHT, HERO_RIGHT, HERO_FALL_RIGHT, HERO_PIPE_RIGHT,
+                HERO_CRACK_RIGHT, HERO_RIGHT, HERO_FALL, HERO_PIPE_RIGHT,
                 HERO_MASK_CRACK_RIGHT,
-                HERO_MASK_RIGHT, HERO_MASK_FALL_RIGHT, HERO_MASK_PIPE_RIGHT);
+                HERO_MASK_RIGHT, HERO_MASK_FALL, HERO_MASK_PIPE_RIGHT);
 
         return find(new LinkedHashMap<>() {{
             left.forEach(element -> put(element, pt -> new Hero(pt, Direction.LEFT)));

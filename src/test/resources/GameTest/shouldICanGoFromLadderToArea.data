@@ -51,7 +51,7 @@ shouldICanGoFromLadderToArea()
     tick()
     assertF(
         ☼☼☼☼☼
-        ☼H [☼
+        ☼H ]☼
         ☼H# ☼
         ☼H  ☼
         ☼☼☼☼☼,
@@ -60,7 +60,7 @@ shouldICanGoFromLadderToArea()
     assertF(
         ☼☼☼☼☼
         ☼H  ☼
-        ☼H#[☼
+        ☼H#]☼
         ☼H  ☼
         ☼☼☼☼☼,
         0)

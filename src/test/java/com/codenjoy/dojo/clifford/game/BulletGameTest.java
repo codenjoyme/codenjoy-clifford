@@ -626,7 +626,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ⊏   ☼\n" +
+                "☼   ⊐   ☼\n" +
                 "☼       ☼\n" +
                 "☼     ◄ ☼\n" +
                 "☼#######☼\n" +
@@ -640,7 +640,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ⊏   ☼\n" +
+                "☼   ⊐   ☼\n" +
                 "☼     ◄ ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
@@ -682,7 +682,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ⊏   ☼\n" +
+                "☼   ⊐   ☼\n" +
                 "☼       ☼\n" +
                 "☼   $ ◄ ☼\n" +
                 "☼#######☼\n" +
@@ -696,7 +696,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ⊏   ☼\n" +
+                "☼   ⊐   ☼\n" +
                 "☼   $ ◄ ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +

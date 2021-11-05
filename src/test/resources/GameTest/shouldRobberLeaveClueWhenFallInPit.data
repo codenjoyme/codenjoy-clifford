@@ -99,7 +99,7 @@ shouldRobberLeaveClueWhenFallInPit()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  $ ›Я☼
+        ☼  $ ‹Я☼
         ☼#### #☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -111,7 +111,7 @@ shouldRobberLeaveClueWhenFallInPit()
         ☼  $  #☼
         ☼  $   ☼
         ☼  $ $Я☼
-        ☼####⍈#☼
+        ☼####⍇#☼
         ☼☼☼☼☼☼☼☼,
         0)
 

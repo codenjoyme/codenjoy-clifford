@@ -30,7 +30,7 @@ shouldResetBackways_whenClearBoard()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   [  ☼
+        ☼   ]  ☼
         ☼      ☼
         ☼   ⊛  ☼
         ☼      ☼
@@ -42,7 +42,7 @@ shouldResetBackways_whenClearBoard()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼   ⊛  ☼
-        ☼   [  ☼
+        ☼   ]  ☼
         ☼   ⊛  ☼
         ☼      ☼
         ☼ ⊛    ☼
@@ -63,7 +63,7 @@ shouldResetBackways_whenClearBoard()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   [  ☼
+        ☼   ]  ☼
         ☼      ☼
         ☼   ⊛  ☼
         ☼      ☼
@@ -75,7 +75,7 @@ shouldResetBackways_whenClearBoard()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼   ⊛  ☼
-        ☼   [  ☼
+        ☼   ]  ☼
         ☼   ⊛  ☼
         ☼      ☼
         ☼ ⊛    ☼
