@@ -739,7 +739,7 @@ public class AITest extends AbstractGameTest {
                 from,
                 path,
                 field().size(),
-                pt -> board.getAt(pt).getChar());
+                pt -> board.getAt(pt).ch());
 
         assertEquals(expected, actual);
     }

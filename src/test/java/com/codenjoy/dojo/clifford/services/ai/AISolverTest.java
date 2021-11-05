@@ -366,7 +366,7 @@ public class AISolverTest {
         String actual = TestUtils.drawPossibleWays(3,
                 possibleWays,
                 board.size(),
-                pt -> board.getAt(pt).getChar());
+                pt -> board.getAt(pt).ch());
 
         assertEquals(expected, actual);
     }
