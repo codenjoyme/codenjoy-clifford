@@ -88,7 +88,7 @@ shouldIWalkOnRobberInPitAndGetClue()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  $» Я☼
+        ☼  $» ◄☼
         ☼####*#☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -99,7 +99,7 @@ shouldIWalkOnRobberInPitAndGetClue()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  $ ‹Я☼
+        ☼  $ ‹◄☼
         ☼#### #☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -110,7 +110,7 @@ shouldIWalkOnRobberInPitAndGetClue()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  $ $Я☼
+        ☼  $ $◄☼
         ☼####⍇#☼
         ☼☼☼☼☼☼☼☼,
         0)

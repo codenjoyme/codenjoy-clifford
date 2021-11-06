@@ -17,7 +17,7 @@ shouldCantGoRightIfWall()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ Я ☼
+        ☼ ◄ ☼
         ☼*##☼
         ☼☼☼☼☼,
         0)
@@ -25,14 +25,14 @@ shouldCantGoRightIfWall()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ Я ☼
+        ☼ ◄ ☼
         ☼ ##☼
         ☼☼☼☼☼,
         0)
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ Я ☼
+        ☼ ◄ ☼
         ☼ ##☼
         ☼☼☼☼☼,
         0)

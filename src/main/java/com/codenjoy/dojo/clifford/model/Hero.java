@@ -58,7 +58,6 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     private Map<KeyType, Integer> keys;
     private boolean moving;
     private boolean crack;
-    private boolean cracked;
     private boolean jump;
     private boolean openDoor;
     private boolean closeDoor;
@@ -72,7 +71,6 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         super(pt);
         this.direction = direction;
         moving = false;
-        cracked = false;
         crack = false;
         jump = false;
         openDoor = false;
@@ -138,7 +136,6 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     public void left() {
         if (!isActiveAndAlive()) return;
 
-        cracked = false;
         direction = Direction.LEFT;
         moving = true;
     }
@@ -147,7 +144,6 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     public void right() {
         if (!isActiveAndAlive()) return;
 
-        cracked = false;
         direction = Direction.RIGHT;
         moving = true;
     }
@@ -198,7 +194,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
             field.bullets().add(new Bullet(this));
         } else if (crack) {
             Point hole = DOWN.change(destination);
-            cracked = field.tryToCrack(this, hole);
+            field.tryToCrack(this, hole);
         } else if (moving || jump) {
             Point dest;
             if (jump) {
@@ -340,15 +336,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         }
 
         if (pipe != null) {
-            return isLeftTurn()
-                    ? HERO_PIPE_LEFT
-                    : HERO_PIPE_RIGHT;
-        }
-
-        if (cracked) {
-            return isLeftTurn()
-                    ? HERO_CRACK_LEFT
-                    : HERO_CRACK_RIGHT;
+            return HERO_PIPE;
         }
 
         if (isPit()) {

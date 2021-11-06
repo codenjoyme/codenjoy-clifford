@@ -20,7 +20,7 @@ shouldCanMoveWhenAtOtherHero()
         ☼    ☼
         ☼ ]  ☼
         ☼    ☼
-        ☼ Є  ☼
+        ☼ Э  ☼
         ☼☼☼☼☼☼,
         0)
     tick()
@@ -29,7 +29,7 @@ shouldCanMoveWhenAtOtherHero()
         ☼    ☼
         ☼    ☼
         ☼ ►  ☼
-        ☼ Є  ☼
+        ☼ Э  ☼
         ☼☼☼☼☼☼,
         0)
     hero(0).down()
@@ -39,7 +39,7 @@ shouldCanMoveWhenAtOtherHero()
         ☼    ☼
         ☼    ☼
         ☼ ►  ☼
-        ☼ Є  ☼
+        ☼ Э  ☼
         ☼☼☼☼☼☼,
         0)
     hero(1).left()
@@ -58,7 +58,7 @@ shouldCanMoveWhenAtOtherHero()
         ☼    ☼
         ☼    ☼
         ☼    ☼
-        ☼)}  ☼
+        ☼){  ☼
         ☼☼☼☼☼☼,
         0)
     hero(1).right()
@@ -68,7 +68,7 @@ shouldCanMoveWhenAtOtherHero()
         ☼    ☼
         ☼    ☼
         ☼    ☼
-        ☼(}  ☼
+        ☼({  ☼
         ☼☼☼☼☼☼,
         0)
     hero(0).left()

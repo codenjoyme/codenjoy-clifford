@@ -17,7 +17,7 @@ shouldFallInPitRight()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ R ☼
+        ☼ ► ☼
         ☼##*☼
         ☼☼☼☼☼,
         0)
@@ -25,14 +25,14 @@ shouldFallInPitRight()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ R ☼
+        ☼ ► ☼
         ☼## ☼
         ☼☼☼☼☼,
         0)
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ R ☼
+        ☼ ► ☼
         ☼## ☼
         ☼☼☼☼☼,
         0)

@@ -17,7 +17,7 @@ shouldMonsterGetUpFromPit()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ ‹Я☼
+        ☼ ‹◄☼
         ☼# #☼
         ☼☼☼☼☼,
         0)
@@ -25,7 +25,7 @@ shouldMonsterGetUpFromPit()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼  Я☼
+        ☼  ◄☼
         ☼#⍇#☼
         ☼☼☼☼☼,
         0)
@@ -42,7 +42,7 @@ shouldMonsterGetUpFromPit()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼  Я☼
+        ☼  ◄☼
         ☼#⍇#☼
         ☼☼☼☼☼,
         0)
@@ -50,7 +50,7 @@ shouldMonsterGetUpFromPit()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ »Я☼
+        ☼ »◄☼
         ☼###☼
         ☼☼☼☼☼,
         0)
@@ -58,7 +58,7 @@ shouldMonsterGetUpFromPit()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼« Я☼
+        ☼« ◄☼
         ☼###☼
         ☼☼☼☼☼,
         0)

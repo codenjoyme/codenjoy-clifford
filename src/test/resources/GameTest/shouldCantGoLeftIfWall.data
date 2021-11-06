@@ -17,7 +17,7 @@ shouldCantGoLeftIfWall()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ R ☼
+        ☼ ► ☼
         ☼##*☼
         ☼☼☼☼☼,
         0)
@@ -25,14 +25,14 @@ shouldCantGoLeftIfWall()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ R ☼
+        ☼ ► ☼
         ☼## ☼
         ☼☼☼☼☼,
         0)
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ R ☼
+        ☼ ► ☼
         ☼## ☼
         ☼☼☼☼☼,
         0)

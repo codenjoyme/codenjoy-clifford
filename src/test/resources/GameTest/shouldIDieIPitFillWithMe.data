@@ -17,7 +17,7 @@ shouldIDieIPitFillWithMe()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ Я ☼
+        ☼ ◄ ☼
         ☼*##☼
         ☼☼☼☼☼,
         0)
@@ -25,7 +25,7 @@ shouldIDieIPitFillWithMe()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ Я ☼
+        ☼ ◄ ☼
         ☼ ##☼
         ☼☼☼☼☼,
         0)
@@ -41,7 +41,7 @@ shouldIDieIPitFillWithMe()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ Я ☼
+        ☼ ◄ ☼
         ☼2##☼
         ☼☼☼☼☼,
         0)

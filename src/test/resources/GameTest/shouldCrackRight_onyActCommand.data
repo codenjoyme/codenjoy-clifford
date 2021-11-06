@@ -16,7 +16,7 @@ shouldCrackRight_onyActCommand()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ R ☼
+        ☼ ► ☼
         ☼##*☼
         ☼☼☼☼☼,
         0)
@@ -24,7 +24,7 @@ shouldCrackRight_onyActCommand()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ R ☼
+        ☼ ► ☼
         ☼## ☼
         ☼☼☼☼☼,
         0)

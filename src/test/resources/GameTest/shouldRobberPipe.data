@@ -17,7 +17,7 @@ shouldRobberPipe()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼ >~~ ☼
+        ☼ <~~ ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -27,7 +27,7 @@ shouldRobberPipe()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼ ~>~ ☼
+        ☼ ~<~ ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -37,7 +37,7 @@ shouldRobberPipe()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼ ~~> ☼
+        ☼ ~~< ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼

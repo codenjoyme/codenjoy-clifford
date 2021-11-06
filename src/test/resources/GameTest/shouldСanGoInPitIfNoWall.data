@@ -16,7 +16,7 @@ shouldСanGoInPitIfNoWall()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ Я ☼
+        ☼ ◄ ☼
         ☼*##☼
         ☼☼☼☼☼,
         0)
@@ -35,7 +35,7 @@ shouldСanGoInPitIfNoWall()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼  Я☼
+        ☼  ◄☼
         ☼ *#☼
         ☼☼☼☼☼,
         0)

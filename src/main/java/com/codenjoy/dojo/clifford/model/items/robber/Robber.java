@@ -175,9 +175,7 @@ public class Robber extends PointImpl implements Tickable, Fieldable<Field>, Sta
         }
 
         if (field.isPipe(this)) {
-            return isLeftTurn()
-                    ? Element.ROBBER_PIPE_LEFT
-                    : Element.ROBBER_PIPE_RIGHT;
+            return Element.ROBBER_PIPE;
         }
 
         if (isFall()) {

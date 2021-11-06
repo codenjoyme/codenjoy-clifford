@@ -18,7 +18,7 @@ shouldStopOnPipe()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼~}Є~☼
+        ☼~{Э~☼
         ☼    ☼
         ☼    ☼
         ☼☼☼☼☼☼,
@@ -28,7 +28,7 @@ shouldStopOnPipe()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼~}Э~☼
+        ☼~{Э~☼
         ☼    ☼
         ☼    ☼
         ☼☼☼☼☼☼,
@@ -38,7 +38,7 @@ shouldStopOnPipe()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼~}Э~☼
+        ☼~{Э~☼
         ☼    ☼
         ☼    ☼
         ☼☼☼☼☼☼,
@@ -49,7 +49,7 @@ shouldStopOnPipe()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼~}Э~☼
+        ☼~{Э~☼
         ☼    ☼
         ☼    ☼
         ☼☼☼☼☼☼,

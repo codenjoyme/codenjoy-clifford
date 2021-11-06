@@ -74,7 +74,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         ☼(  HH  (☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼ ⊐ЯHH⌊⊐ ☼
+        ☼ ⊐◄HH(⊐ ☼
         ☼#*#HH#*#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
@@ -117,7 +117,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         ☼(      (☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼ ⊐ЯHH⌊⊐ ☼
+        ☼ ⊐◄HH(⊐ ☼
         ☼#*#HH#*#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
@@ -184,7 +184,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼ ⊐Я  ⌊⊐ ☼
+        ☼ ⊐◄  (⊐ ☼
         ☼#*#HH#*#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
@@ -199,7 +199,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  Я  ⌊  ☼
+        ☼  ◄  (  ☼
         ☼#ᗉ#HH#ᗉ#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
@@ -226,7 +226,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         listener(5) => [HERO_DIE]
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  Я  ⌊  ☼
+        ☼  ◄  (  ☼
         ☼#ᗉ#HH#ᗉ#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
@@ -243,7 +243,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  Я  ⌊  ☼
+        ☼  ◄  (  ☼
         ☼#ᗉ#HH#ᗉ#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
@@ -296,7 +296,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         listener(7) => [HERO_DIE]
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  Я  ⌊  ☼
+        ☼  ◄  (  ☼
         ☼#Z#HH#Z#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
@@ -316,7 +316,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     events().getEvents() = 
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  Я  ⌊  ☼
+        ☼  ◄  (  ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
@@ -335,7 +335,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  Я  ⌊  ☼
+        ☼  ◄  (  ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼

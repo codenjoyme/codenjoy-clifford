@@ -218,7 +218,7 @@ public class AISolverTest {
         assertC("☼☼☼☼☼☼☼☼☼☼" +
                 "☼     H  ☼" +
                 "☼     H  ☼" +
-                "☼ ~~~}H  ☼" +
+                "☼ ~~~{H  ☼" +
                 "☼ $   H  ☼" +
                 "☼     H  ☼" +
                 "☼     H  ☼" +

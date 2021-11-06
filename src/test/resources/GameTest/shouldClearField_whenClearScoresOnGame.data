@@ -29,7 +29,7 @@ shouldClearField_whenClearScoresOnGame()
     assertF(
         ☼☼☼☼☼
         ☼$  ☼
-        ☼ Я ☼
+        ☼ ◄ ☼
         ☼*##☼
         ☼☼☼☼☼,
         0)

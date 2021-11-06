@@ -17,7 +17,7 @@ shouldCantCrackPit()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ Я ☼
+        ☼ ◄ ☼
         ☼*##☼
         ☼☼☼☼☼,
         0)
@@ -25,7 +25,7 @@ shouldCantCrackPit()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ Я ☼
+        ☼ ◄ ☼
         ☼ ##☼
         ☼☼☼☼☼,
         0)

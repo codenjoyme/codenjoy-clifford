@@ -29,7 +29,7 @@ shouldHeroCanWalk_whenClearScoresOnGame()
     assertF(
         ☼☼☼☼☼
         ☼$  ☼
-        ☼ Я ☼
+        ☼ ◄ ☼
         ☼*##☼
         ☼☼☼☼☼,
         0)

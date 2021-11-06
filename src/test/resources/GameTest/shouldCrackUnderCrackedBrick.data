@@ -27,7 +27,7 @@ shouldCrackUnderCrackedBrick()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼   Я☼
+        ☼   ◄☼
         ☼  *#☼
         ☼####☼
         ☼☼☼☼☼☼,
@@ -56,7 +56,7 @@ shouldCrackUnderCrackedBrick()
         ☼☼☼☼☼☼
         ☼    ☼
         ☼    ☼
-        ☼2Я #☼
+        ☼2⍃ #☼
         ☼ # #☼
         ☼☼☼☼☼☼,
         0)

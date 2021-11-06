@@ -37,7 +37,7 @@ shouldResetHeroScores_whenClearBoard()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼  R⊐  ☼
+        ☼  ►⊐  ☼
         ☼###*##☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -48,7 +48,7 @@ shouldResetHeroScores_whenClearBoard()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼  R   ☼
+        ☼  ►   ☼
         ☼###ᗉ##☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -63,7 +63,7 @@ shouldResetHeroScores_whenClearBoard()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼  R   ☼
+        ☼  ►   ☼
         ☼###ᗉ##☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -81,7 +81,7 @@ shouldResetHeroScores_whenClearBoard()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼  R   ☼
+        ☼  ►   ☼
         ☼###Z##☼
         ☼☼☼☼☼☼☼☼,
         0)

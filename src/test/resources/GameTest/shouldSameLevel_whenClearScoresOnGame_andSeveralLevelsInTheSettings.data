@@ -40,7 +40,7 @@ shouldSameLevel_whenClearScoresOnGame_andSeveralLevelsInTheSettings()
     assertF(
         ☼☼☼☼☼
         ☼$  ☼
-        ☼ Я ☼
+        ☼ ◄ ☼
         ☼*##☼
         ☼☼☼☼☼,
         0)
