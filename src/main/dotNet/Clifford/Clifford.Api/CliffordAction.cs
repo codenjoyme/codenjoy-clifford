@@ -19,7 +19,8 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-﻿namespace Clifford.Api
+
+namespace Clifford.Api
 {
     public enum CliffordAction
     {
