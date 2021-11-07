@@ -81,7 +81,7 @@ public class AISolver implements Solver<Board> {
 
     public List<Direction> getDirections(Board board) {
         int size = board.size();
-        Point from = board.getMe();
+        Point from = board.getHero();
         if (from == null) {
             return Arrays.asList();
         }
