@@ -244,7 +244,7 @@ Collection<Point> getOtherHeroes();
 Collection<Point> getEnemyHeroes();
 
 // whether my hero is alive
-boolean isMyHeroDead();
+boolean isGameOver();
 
 // whether the given element has given coordinate?
 boolean isAt(Point point, Element element);
