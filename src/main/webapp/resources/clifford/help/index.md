@@ -166,7 +166,7 @@ algorithm must earn points as much as possible. The ultimate goal is
 winning the game.
 
 ## Symbol breakdown
-Please [check it here](clifford-elements.md).
+Please [check it here](elements.md).
 
 ## Commands
 * `UP`, `DOWN`, `LEFT`, `RIGHT` - move your hero in the specified 
