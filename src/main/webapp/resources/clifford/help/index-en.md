@@ -180,14 +180,14 @@ you obtain the readable image of the field.
 ☼###########################H☼
 ☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼</pre>
 
-This is what you see on UI:
-
-![](board.png)
-
 The first character of the line corresponds to a cell located on the
 left-top corner and has the `[0, 29]` coordinate. The following example
 shows the position of the hero (the `►` character) – `[9,7]`. left-bottom
 corner has the `[0, 0]` coordinate.
+
+This is what you see on UI
+
+![](board.png)
 
 ## Symbol breakdown
 
@@ -234,6 +234,9 @@ winning the game.
 
 ## Points
 
+The parameters will change[*](index-md.md#ask) as the game progresses. 
+The default values are shown in the table below:
+
 | Action | Points |
 |--------|--------|
 | Number of potions on the map | 0[*](index-en.md#ask) |
@@ -259,6 +262,8 @@ winning the game.
 
 ## <a id="ask"></a> Ask Sensei
 
+You can always see the settings of the current game 
+[here](/codenjoy-contest/rest/settings/player).
 Please ask Sensei about current game settings. You can find Sensei in
 the chat that the organizers have provided to discuss issues.
 
@@ -328,7 +333,7 @@ level API for working with the board are implemented already.
 
 It's an open source game. To implement your version of it,
 to fix bugs and to add any other logic simply
-[fork it](https://github.com/codenjoyme/codenjoy).
+[fork it](https://github.com/codenjoyme/codenjoy.git).
 All instructions are in Readme.md file, you'll know what to do next once you read it.
 
 If you have any questions reach me in [skype alexander.baglay](skype:alexander.baglay)
