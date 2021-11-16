@@ -28,7 +28,7 @@ import com.codenjoy.dojo.client.Solver;
 import com.codenjoy.dojo.clifford.model.Level;
 import com.codenjoy.dojo.games.clifford.Board;
 import com.codenjoy.dojo.games.clifford.Element;
-import com.codenjoy.dojo.clifford.model.DetectiveClifford;
+import com.codenjoy.dojo.clifford.model.Clifford;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.clifford.services.ai.AISolver;
 import com.codenjoy.dojo.services.AbstractGameType;
@@ -58,7 +58,7 @@ public class GameRunner extends AbstractGameType<GameSettings> {
     @Override
     public GameField createGame(int levelNumber, GameSettings settings) {
         Level level = settings.level(levelNumber, getDice());
-        return new DetectiveClifford(getDice(), level, settings);
+        return new Clifford(getDice(), level, settings);
     }
 
     @Override

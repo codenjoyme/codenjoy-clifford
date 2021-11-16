@@ -24,7 +24,7 @@ package com.codenjoy.dojo.clifford.game.check;
 
 
 import com.codenjoy.dojo.clifford.game.AbstractGameTest;
-import com.codenjoy.dojo.clifford.model.DetectiveClifford;
+import com.codenjoy.dojo.clifford.model.Clifford;
 import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.clifford.services.GameSettings;
@@ -146,8 +146,8 @@ public abstract class AbstractGameCheckTest extends AbstractGameTest {
     }
 
     @Override
-    public DetectiveClifford field() {
-        DetectiveClifford result = manager.objectSpy(super.field(),
+    public Clifford field() {
+        Clifford result = manager.objectSpy(super.field(),
                 "newGame",
                 "remove",
                 "[-]players",

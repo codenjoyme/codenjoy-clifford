@@ -23,7 +23,7 @@ package com.codenjoy.dojo.clifford.game;
  */
 
 import com.codenjoy.dojo.clifford.TestSettings;
-import com.codenjoy.dojo.clifford.model.DetectiveClifford;
+import com.codenjoy.dojo.clifford.model.Clifford;
 import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.Level;
 import com.codenjoy.dojo.clifford.model.Player;
@@ -64,7 +64,7 @@ public abstract class AbstractGameTest {
     private List<Game> games;
     private Dice dice;
     private PrinterFactory<Element, Player> printer;
-    private DetectiveClifford field;
+    private Clifford field;
     private GameSettings settings;
     private EventsListenersAssert events;
     protected List<RobberJoystick> robbers;
@@ -108,7 +108,7 @@ public abstract class AbstractGameTest {
                 .integer(BACKWAYS_COUNT, level.backways().size())
                 .integer(ROBBERS_COUNT, level.robbers().size());
 
-        field = new DetectiveClifford(dice, level, settings);
+        field = new Clifford(dice, level, settings);
 
         level.heroes().forEach(this::givenPlayer);
 
@@ -186,7 +186,7 @@ public abstract class AbstractGameTest {
         return settings;
     }
 
-    public DetectiveClifford field() {
+    public Clifford field() {
         return field;
     }
 

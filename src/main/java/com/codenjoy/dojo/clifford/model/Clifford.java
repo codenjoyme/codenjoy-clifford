@@ -52,7 +52,7 @@ import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.field.Generator.generate;
 import static java.util.stream.Collectors.toList;
 
-public class DetectiveClifford extends RoundField<Player> implements Field {
+public class Clifford extends RoundField<Player> implements Field {
 
     private Level level;
     private PointField field;
@@ -63,11 +63,11 @@ public class DetectiveClifford extends RoundField<Player> implements Field {
     private int backwaysTimer;
     private Multimap<Hero, Hero> killerWithDeads;
 
-    public DetectiveClifford() {
+    public Clifford() {
         // do nothing, for testing only
     }
 
-    public DetectiveClifford(Dice dice, Level level, GameSettings settings) {
+    public Clifford(Dice dice, Level level, GameSettings settings) {
         super(START_ROUND, WIN_ROUND, HERO_DIE, settings);
 
         this.level = level;
