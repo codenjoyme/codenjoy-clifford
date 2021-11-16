@@ -98,22 +98,22 @@ public class GameSettings extends SettingsImpl
         integer(MASK_POTIONS_COUNT, 0);
         integer(MASK_TICKS, 15);
 
-        integer(BACKWAYS_COUNT, 0);
-        integer(BACKWAY_TICKS, 10);
+        integer(BACKWAYS_COUNT, 5);
+        integer(BACKWAY_TICKS, 50);
 
-        integer(ROBBERS_COUNT, 5);
+        integer(ROBBERS_COUNT, 3);
 
         bool(GENERATE_KEYS, false);
 
-        integer(CLUE_COUNT_GLOVE, 40);
+        integer(CLUE_COUNT_GLOVE, 20);
         integer(CLUE_SCORE_GLOVE, 1);
         integer(CLUE_SCORE_GLOVE_INCREMENT, 1);
 
-        integer(CLUE_COUNT_KNIFE, 20);
+        integer(CLUE_COUNT_KNIFE, 10);
         integer(CLUE_SCORE_KNIFE, 2);
         integer(CLUE_SCORE_KNIFE_INCREMENT, 1);
 
-        integer(CLUE_COUNT_RING, 10);
+        integer(CLUE_COUNT_RING, 5);
         integer(CLUE_SCORE_RING, 5);
         integer(CLUE_SCORE_RING_INCREMENT, 1);
 
