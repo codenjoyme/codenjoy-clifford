@@ -20,4 +20,8 @@
  * #L%
  */
 
-var doNothing = true;
+var setup = setup || {};
+
+// TODO есть какая-то ошибка, по которой не всегда грузится спрайт-лестница
+//      потому пока что отключаем
+setup.isDrawOnlyChanges = false;
