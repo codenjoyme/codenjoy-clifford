@@ -49,7 +49,7 @@ shouldIDieIPitFillWithMe2()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼]  ☼
+        ☼U  ☼
         ☼2##☼
         ☼☼☼☼☼,
         0)
@@ -58,7 +58,7 @@ shouldIDieIPitFillWithMe2()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼⍃##☼
+        ☼E##☼
         ☼☼☼☼☼,
         0)
     tick()
@@ -66,7 +66,7 @@ shouldIDieIPitFillWithMe2()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼Ѡ##☼
+        ☼O##☼
         ☼☼☼☼☼,
         0)
     events().getEvents() = [HERO_DIE, SUICIDE]
@@ -75,7 +75,7 @@ shouldIDieIPitFillWithMe2()
     field().newGame(player(0))
     assertF(
         ☼☼☼☼☼
-        ☼ ] ☼
+        ☼ U ☼
         ☼   ☼
         ☼###☼
         ☼☼☼☼☼,

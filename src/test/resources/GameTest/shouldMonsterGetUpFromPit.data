@@ -5,7 +5,7 @@ shouldMonsterGetUpFromPit()
     givenFl(
         ☼☼☼☼☼
         ☼   ☼
-        ☼« ◄☼
+        ☼) ◄☼
         ☼###☼
         ☼☼☼☼☼)
         givenPlayer([3,2])
@@ -17,7 +17,7 @@ shouldMonsterGetUpFromPit()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ ‹◄☼
+        ☼ x◄☼
         ☼# #☼
         ☼☼☼☼☼,
         0)
@@ -26,7 +26,7 @@ shouldMonsterGetUpFromPit()
         ☼☼☼☼☼
         ☼   ☼
         ☼  ◄☼
-        ☼#⍇#☼
+        ☼#y#☼
         ☼☼☼☼☼,
         0)
     tick()
@@ -43,14 +43,14 @@ shouldMonsterGetUpFromPit()
         ☼☼☼☼☼
         ☼   ☼
         ☼  ◄☼
-        ☼#⍇#☼
+        ☼#y#☼
         ☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ »◄☼
+        ☼ (◄☼
         ☼###☼
         ☼☼☼☼☼,
         0)
@@ -58,7 +58,7 @@ shouldMonsterGetUpFromPit()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼« ◄☼
+        ☼) ◄☼
         ☼###☼
         ☼☼☼☼☼,
         0)

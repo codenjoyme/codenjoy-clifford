@@ -5,11 +5,11 @@ shouldEndlesslyWalkThroughTheBackways_untilExit()
     settings().integer(BACKWAYS_COUNT, 3)
     givenFl(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼►⊛    ☼
+        ☼►W    ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼)
         givenPlayer([1,2])
@@ -18,11 +18,11 @@ shouldEndlesslyWalkThroughTheBackways_untilExit()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼►⊛    ☼
+        ☼►W    ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -30,31 +30,31 @@ shouldEndlesslyWalkThroughTheBackways_untilExit()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ]  ☼
+        ☼   U  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼ ⊛    ☼
+        ☼ W    ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
-        ☼   ]  ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
+        ☼   U  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼ ⊛    ☼
+        ☼ W    ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
         ☼ ►    ☼
         ☼######☼
@@ -63,31 +63,31 @@ shouldEndlesslyWalkThroughTheBackways_untilExit()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ]  ☼
+        ☼   U  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼ ⊛    ☼
+        ☼ W    ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
-        ☼   ]  ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
+        ☼   U  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼ ⊛    ☼
+        ☼ W    ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
         ☼ ►    ☼
         ☼######☼
@@ -97,11 +97,11 @@ shouldEndlesslyWalkThroughTheBackways_untilExit()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼ ⊛►   ☼
+        ☼ W►   ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)

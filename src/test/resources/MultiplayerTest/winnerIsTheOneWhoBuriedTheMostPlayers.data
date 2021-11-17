@@ -49,13 +49,13 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         listener(7) => [START_ROUND, [Round 1]]
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼(      (☼
+        ☼»      »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼(  HH  (☼
+        ☼»  HH  »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼( ►HH( (☼
+        ☼» ►HH» »☼
         ☼###HH###☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
@@ -68,13 +68,13 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼(      (☼
+        ☼»      »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼(  HH  (☼
+        ☼»  HH  »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼ ⊐◄HH(⊐ ☼
+        ☼ F◄HH»F ☼
         ☼#*#HH#*#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
@@ -95,14 +95,14 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼(      (☼
+        ☼»      »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼( ◄HH( (☼
+        ☼» ◄HH» »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼#K#HH#K#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
     hero(0).left()
@@ -114,14 +114,14 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼(      (☼
+        ☼»      »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼ ⊐◄HH(⊐ ☼
+        ☼ F◄HH»F ☼
         ☼#*#HH#*#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼#K#HH#K#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
     hero(0).right()
@@ -148,14 +148,14 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         listener(3) => [HERO_DIE]
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼( ◄  ( (☼
+        ☼» ◄  » »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼#K#HH#K#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#Z#HH#Z#☼
+        ☼#C#HH#C#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
     field().remove()
@@ -163,11 +163,11 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼( ◄  ( (☼
+        ☼» ◄  » »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼#K#HH#K#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -184,11 +184,11 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼ ⊐◄  (⊐ ☼
+        ☼ F◄  »F ☼
         ☼#*#HH#*#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼#K#HH#K#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -199,11 +199,11 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  ◄  (  ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼  ◄  »  ☼
+        ☼#K#HH#K#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼#K#HH#K#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -226,11 +226,11 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         listener(5) => [HERO_DIE]
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  ◄  (  ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼  ◄  »  ☼
+        ☼#K#HH#K#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#Z#HH#Z#☼
+        ☼#C#HH#C#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -243,8 +243,8 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  ◄  (  ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼  ◄  »  ☼
+        ☼#K#HH#K#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -296,8 +296,8 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         listener(7) => [HERO_DIE]
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  ◄  (  ☼
-        ☼#Z#HH#Z#☼
+        ☼  ◄  »  ☼
+        ☼#C#HH#C#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -316,7 +316,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     events().getEvents() = 
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  ◄  (  ☼
+        ☼  ◄  »  ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
@@ -335,7 +335,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  ◄  (  ☼
+        ☼  ◄  »  ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
@@ -357,7 +357,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         listener(1) => [WIN_ROUND]
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  Ѡ  Z  ☼
+        ☼  O  C  ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
@@ -383,7 +383,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         ☼   HH   ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼Ѡ  HH  Z☼
+        ☼O  HH  C☼
         ☼###HH###☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
@@ -406,7 +406,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
         ☼   HH   ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼►  HH  (☼
+        ☼►  HH  »☼
         ☼###HH###☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)

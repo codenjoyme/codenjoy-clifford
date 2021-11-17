@@ -17,7 +17,7 @@ shouldIPipeWhenFall()
     tick()
     assertF(
         ☼☼☼☼☼☼☼
-        ☼ ]   ☼
+        ☼ U   ☼
         ☼# ###☼
         ☼     ☼
         ☼ ~~~ ☼
@@ -28,7 +28,7 @@ shouldIPipeWhenFall()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
-        ☼#]###☼
+        ☼#U###☼
         ☼     ☼
         ☼ ~~~ ☼
         ☼     ☼
@@ -39,7 +39,7 @@ shouldIPipeWhenFall()
         ☼☼☼☼☼☼☼
         ☼     ☼
         ☼# ###☼
-        ☼ ]   ☼
+        ☼ U   ☼
         ☼ ~~~ ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
@@ -50,7 +50,7 @@ shouldIPipeWhenFall()
         ☼     ☼
         ☼# ###☼
         ☼     ☼
-        ☼ {~~ ☼
+        ☼ I~~ ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
         0)
@@ -60,7 +60,7 @@ shouldIPipeWhenFall()
         ☼     ☼
         ☼# ###☼
         ☼     ☼
-        ☼ {~~ ☼
+        ☼ I~~ ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
         0)

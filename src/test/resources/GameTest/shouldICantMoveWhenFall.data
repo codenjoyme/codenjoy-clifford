@@ -18,7 +18,7 @@ shouldICantMoveWhenFall()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
-        ☼  ]  ☼
+        ☼  U  ☼
         ☼     ☼
         ☼     ☼
         ☼## ##☼
@@ -30,7 +30,7 @@ shouldICantMoveWhenFall()
         ☼☼☼☼☼☼☼
         ☼     ☼
         ☼     ☼
-        ☼  ]  ☼
+        ☼  U  ☼
         ☼     ☼
         ☼## ##☼
         ☼☼☼☼☼☼☼,
@@ -42,7 +42,7 @@ shouldICantMoveWhenFall()
         ☼     ☼
         ☼     ☼
         ☼     ☼
-        ☼  ]  ☼
+        ☼  U  ☼
         ☼## ##☼
         ☼☼☼☼☼☼☼,
         0)

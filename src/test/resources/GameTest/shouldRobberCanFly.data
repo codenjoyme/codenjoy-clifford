@@ -6,7 +6,7 @@ shouldRobberCanFly()
         ☼☼☼☼►
         ☼  H☼
         ☼  H☼
-        ☼ «H☼
+        ☼ )H☼
         ☼☼☼☼☼)
         givenPlayer([4,4])
             dice(4, 4)
@@ -16,36 +16,28 @@ shouldRobberCanFly()
         ☼☼☼☼►
         ☼  H☼
         ☼  H☼
-        ☼  Q☼
+        ☼  X☼
         ☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼►
         ☼  H☼
-        ☼  Q☼
+        ☼  X☼
         ☼  H☼
         ☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼►
-        ☼  Q☼
+        ☼  X☼
         ☼  H☼
         ☼  H☼
         ☼☼☼☼☼,
         0)
     assertF(
         ☼☼☼☼►
-        ☼  Q☼
-        ☼  H☼
-        ☼  H☼
-        ☼☼☼☼☼,
-        0)
-    tick()
-    assertF(
-        ☼☼☼☼►
-        ☼ ‹H☼
+        ☼  X☼
         ☼  H☼
         ☼  H☼
         ☼☼☼☼☼,
@@ -53,8 +45,16 @@ shouldRobberCanFly()
     tick()
     assertF(
         ☼☼☼☼►
+        ☼ xH☼
         ☼  H☼
-        ☼ ‹H☼
+        ☼  H☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼  H☼
+        ☼ xH☼
         ☼  H☼
         ☼☼☼☼☼,
         0)
@@ -63,7 +63,7 @@ shouldRobberCanFly()
         ☼☼☼☼►
         ☼  H☼
         ☼  H☼
-        ☼ «H☼
+        ☼ )H☼
         ☼☼☼☼☼,
         0)
 

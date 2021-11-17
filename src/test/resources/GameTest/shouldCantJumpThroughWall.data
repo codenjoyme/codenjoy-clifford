@@ -16,7 +16,7 @@ shouldCantJumpThroughWall()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼  { ☼
+        ☼  I ☼
         ☼☼☼☼☼☼
         ☼    ☼
         ☼☼☼☼☼☼,
@@ -26,7 +26,7 @@ shouldCantJumpThroughWall()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼  { ☼
+        ☼  I ☼
         ☼☼☼☼☼☼
         ☼    ☼
         ☼☼☼☼☼☼,

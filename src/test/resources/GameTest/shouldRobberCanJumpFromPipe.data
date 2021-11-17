@@ -4,7 +4,7 @@ before()
 shouldRobberCanJumpFromPipe()
     givenFl(
         ☼☼☼☼☼☼►
-        ☼  «  ☼
+        ☼  )  ☼
         ☼     ☼
         ☼ ~~~ ☼
         ☼     ☼
@@ -17,7 +17,7 @@ shouldRobberCanJumpFromPipe()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼  ‹  ☼
+        ☼  x  ☼
         ☼ ~~~ ☼
         ☼     ☼
         ☼     ☼
@@ -28,7 +28,7 @@ shouldRobberCanJumpFromPipe()
         ☼☼☼☼☼☼►
         ☼     ☼
         ☼     ☼
-        ☼ ~<~ ☼
+        ☼ ~Y~ ☼
         ☼     ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
@@ -39,7 +39,7 @@ shouldRobberCanJumpFromPipe()
         ☼     ☼
         ☼     ☼
         ☼ ~~~ ☼
-        ☼  ‹  ☼
+        ☼  x  ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
         0)
@@ -50,7 +50,7 @@ shouldRobberCanJumpFromPipe()
         ☼     ☼
         ☼ ~~~ ☼
         ☼     ☼
-        ☼  «  ☼
+        ☼  )  ☼
         ☼☼☼☼☼☼☼,
         0)
 

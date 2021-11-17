@@ -4,7 +4,7 @@ before()
 shouldRobberStayOnHeroAtThePipe()
     givenFl(
         ☼☼☼☼☼☼☼☼
-        ☼  «   ☼
+        ☼  )   ☼
         ☼      ☼
         ☼  ◄   ☼
         ☼  ~   ☼
@@ -18,9 +18,9 @@ shouldRobberStayOnHeroAtThePipe()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼  ‹   ☼
+        ☼  x   ☼
         ☼      ☼
-        ☼  {   ☼
+        ☼  I   ☼
         ☼      ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
@@ -33,7 +33,7 @@ shouldRobberStayOnHeroAtThePipe()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼  Ѡ   ☼
+        ☼  O   ☼
         ☼      ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
@@ -48,7 +48,7 @@ shouldRobberStayOnHeroAtThePipe()
         ☼      ☼
         ☼      ☼
         ☼  ~   ☼
-        ☼ ►«   ☼
+        ☼ ►)   ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)

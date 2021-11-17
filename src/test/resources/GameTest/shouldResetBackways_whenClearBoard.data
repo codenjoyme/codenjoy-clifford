@@ -5,11 +5,11 @@ shouldResetBackways_whenClearBoard()
     settings().integer(BACKWAYS_COUNT, 3)
     givenFl(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼►⊛    ☼
+        ☼►W    ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼)
         givenPlayer([1,2])
@@ -18,11 +18,11 @@ shouldResetBackways_whenClearBoard()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼►⊛    ☼
+        ☼►W    ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -30,31 +30,31 @@ shouldResetBackways_whenClearBoard()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ]  ☼
+        ☼   U  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼ ⊛    ☼
+        ☼ W    ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
-        ☼   ]  ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
+        ☼   U  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼ ⊛    ☼
+        ☼ W    ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
         ☼ ►    ☼
         ☼######☼
@@ -63,31 +63,31 @@ shouldResetBackways_whenClearBoard()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ]  ☼
+        ☼   U  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼ ⊛    ☼
+        ☼ W    ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
-        ☼   ]  ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
+        ☼   U  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼ ⊛    ☼
+        ☼ W    ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
         ☼ ►    ☼
         ☼######☼
@@ -97,21 +97,21 @@ shouldResetBackways_whenClearBoard()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼ ⊛►   ☼
+        ☼ W►   ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼ ⊛►   ☼
+        ☼ W►   ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -120,11 +120,11 @@ shouldResetBackways_whenClearBoard()
     field().clearScore()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼ ⊛ ⊛  ☼
+        ☼ W W  ☼
         ☼      ☼
-        ☼►⊛    ☼
+        ☼►W    ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -133,9 +133,9 @@ shouldResetBackways_whenClearBoard()
     field().clearScore()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
-        ☼   ⊛  ☼
+        ☼   W  ☼
         ☼      ☼
         ☼►     ☼
         ☼######☼

@@ -9,7 +9,7 @@ shouldRobberGoToNewHeroIfOneIsHidden()
         ☼######☼
         ☼      ☼
         ☼###H##☼
-        ☼»  H  ☼
+        ☼(  H  ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼)
         givenPlayer([4,6])
@@ -25,7 +25,7 @@ shouldRobberGoToNewHeroIfOneIsHidden()
         ☼######☼
         ☼      ☼
         ☼###H##☼
-        ☼»  H  ☼
+        ☼(  H  ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -34,11 +34,11 @@ shouldRobberGoToNewHeroIfOneIsHidden()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   (  ☼
+        ☼   »  ☼
         ☼######☼
         ☼►     ☼
         ☼###H##☼
-        ☼ » H  ☼
+        ☼ ( H  ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         1)
@@ -52,9 +52,9 @@ shouldRobberGoToNewHeroIfOneIsHidden()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   (  ☼
+        ☼   »  ☼
         ☼######☼
-        ☼Ѡ     ☼
+        ☼O     ☼
         ☼###H##☼
         ☼   H  ☼
         ☼######☼

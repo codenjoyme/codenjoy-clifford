@@ -17,7 +17,7 @@ shouldICanGoOnLadderDown()
         ☼☼☼☼☼
         ☼  H☼
         ☼  H☼
-        ☼  Y☼
+        ☼  A☼
         ☼☼☼☼☼,
         0)
     hero(0).up()
@@ -25,7 +25,7 @@ shouldICanGoOnLadderDown()
     assertF(
         ☼☼☼☼☼
         ☼  H☼
-        ☼  Y☼
+        ☼  A☼
         ☼  H☼
         ☼☼☼☼☼,
         0)
@@ -33,24 +33,15 @@ shouldICanGoOnLadderDown()
     tick()
     assertF(
         ☼☼☼☼☼
-        ☼  Y☼
+        ☼  A☼
         ☼  H☼
         ☼  H☼
         ☼☼☼☼☼,
         0)
     assertF(
         ☼☼☼☼☼
-        ☼  Y☼
+        ☼  A☼
         ☼  H☼
-        ☼  H☼
-        ☼☼☼☼☼,
-        0)
-    hero(0).down()
-    tick()
-    assertF(
-        ☼☼☼☼☼
-        ☼  H☼
-        ☼  Y☼
         ☼  H☼
         ☼☼☼☼☼,
         0)
@@ -59,8 +50,8 @@ shouldICanGoOnLadderDown()
     assertF(
         ☼☼☼☼☼
         ☼  H☼
+        ☼  A☼
         ☼  H☼
-        ☼  Y☼
         ☼☼☼☼☼,
         0)
     hero(0).down()
@@ -69,7 +60,16 @@ shouldICanGoOnLadderDown()
         ☼☼☼☼☼
         ☼  H☼
         ☼  H☼
-        ☼  Y☼
+        ☼  A☼
+        ☼☼☼☼☼,
+        0)
+    hero(0).down()
+    tick()
+    assertF(
+        ☼☼☼☼☼
+        ☼  H☼
+        ☼  H☼
+        ☼  A☼
         ☼☼☼☼☼,
         0)
 

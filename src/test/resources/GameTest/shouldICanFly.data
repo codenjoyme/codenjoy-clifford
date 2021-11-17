@@ -17,7 +17,7 @@ shouldICanFly()
         ☼☼☼☼☼
         ☼  H☼
         ☼  H☼
-        ☼  Y☼
+        ☼  A☼
         ☼☼☼☼☼,
         0)
     hero(0).up()
@@ -25,7 +25,7 @@ shouldICanFly()
     assertF(
         ☼☼☼☼☼
         ☼  H☼
-        ☼  Y☼
+        ☼  A☼
         ☼  H☼
         ☼☼☼☼☼,
         0)
@@ -33,14 +33,14 @@ shouldICanFly()
     tick()
     assertF(
         ☼☼☼☼☼
-        ☼  Y☼
+        ☼  A☼
         ☼  H☼
         ☼  H☼
         ☼☼☼☼☼,
         0)
     assertF(
         ☼☼☼☼☼
-        ☼  Y☼
+        ☼  A☼
         ☼  H☼
         ☼  H☼
         ☼☼☼☼☼,
@@ -49,7 +49,7 @@ shouldICanFly()
     tick()
     assertF(
         ☼☼☼☼☼
-        ☼ ]H☼
+        ☼ UH☼
         ☼  H☼
         ☼  H☼
         ☼☼☼☼☼,
@@ -58,7 +58,7 @@ shouldICanFly()
     assertF(
         ☼☼☼☼☼
         ☼  H☼
-        ☼ ]H☼
+        ☼ UH☼
         ☼  H☼
         ☼☼☼☼☼,
         0)

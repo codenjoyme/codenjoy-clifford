@@ -5,7 +5,7 @@ shouldRobberGoToHero()
     settings().integer(ROBBERS_COUNT, 1)
     givenFl(
         ☼☼☼☼☼☼☼☼
-        ☼     »☼
+        ☼     (☼
         ☼H#####☼
         ☼H     ☼
         ☼###H  ☼
@@ -18,7 +18,7 @@ shouldRobberGoToHero()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼    « ☼
+        ☼    ) ☼
         ☼H#####☼
         ☼H     ☼
         ☼###H  ☼
@@ -32,7 +32,7 @@ shouldRobberGoToHero()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼«     ☼
+        ☼)     ☼
         ☼H#####☼
         ☼H     ☼
         ☼###H  ☼
@@ -46,7 +46,7 @@ shouldRobberGoToHero()
         ☼☼☼☼☼☼☼☼
         ☼      ☼
         ☼H#####☼
-        ☼Q     ☼
+        ☼X     ☼
         ☼###H  ☼
         ☼►  H  ☼
         ☼######☼
@@ -59,7 +59,7 @@ shouldRobberGoToHero()
         ☼☼☼☼☼☼☼☼
         ☼      ☼
         ☼H#####☼
-        ☼H  »  ☼
+        ☼H  (  ☼
         ☼###H  ☼
         ☼►  H  ☼
         ☼######☼
@@ -74,7 +74,7 @@ shouldRobberGoToHero()
         ☼H#####☼
         ☼H     ☼
         ☼###H  ☼
-        ☼► «H  ☼
+        ☼► )H  ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -86,7 +86,7 @@ shouldRobberGoToHero()
         ☼H#####☼
         ☼H     ☼
         ☼###H  ☼
-        ☼Ѡ  H  ☼
+        ☼O  H  ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -99,7 +99,7 @@ shouldRobberGoToHero()
         ☼H#####☼
         ☼H  ►  ☼
         ☼###H  ☼
-        ☼ » H  ☼
+        ☼ ( H  ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)

@@ -8,7 +8,7 @@ heroShouldNotReleaseKeysAfterDeath_itGenerateEnable()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼ ►✦✼⍟ ☼
+        ☼ ►+-! ☼
         ☼######☼
         ☼      ☼
         ☼☼☼☼☼☼☼☼)
@@ -21,10 +21,10 @@ heroShouldNotReleaseKeysAfterDeath_itGenerateEnable()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ✦  ☼
+        ☼   +  ☼
         ☼      ☼
         ☼      ☼
-        ☼  ►✼⍟ ☼
+        ☼  ►-! ☼
         ☼######☼
         ☼      ☼
         ☼☼☼☼☼☼☼☼,
@@ -35,10 +35,10 @@ heroShouldNotReleaseKeysAfterDeath_itGenerateEnable()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ✦✼ ☼
+        ☼   +- ☼
         ☼      ☼
         ☼      ☼
-        ☼   ►⍟ ☼
+        ☼   ►! ☼
         ☼######☼
         ☼      ☼
         ☼☼☼☼☼☼☼☼,
@@ -49,7 +49,7 @@ heroShouldNotReleaseKeysAfterDeath_itGenerateEnable()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ✦✼⍟☼
+        ☼   +-!☼
         ☼      ☼
         ☼      ☼
         ☼    ► ☼
@@ -64,10 +64,10 @@ heroShouldNotReleaseKeysAfterDeath_itGenerateEnable()
     events().getEvents() = [HERO_DIE]
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼   ✦✼⍟☼
+        ☼   +-!☼
         ☼      ☼
         ☼      ☼
-        ☼    Ѡ ☼
+        ☼    O ☼
         ☼######☼
         ☼      ☼
         ☼☼☼☼☼☼☼☼,

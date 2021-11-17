@@ -28,7 +28,7 @@ shouldIFallWhenUnderPitIsFree()
     tick()
     assertF(
         ☼☼☼☼☼☼☼
-        ☼ ]   ☼
+        ☼ U   ☼
         ☼# ###☼
         ☼     ☼
         ☼     ☼
@@ -39,7 +39,7 @@ shouldIFallWhenUnderPitIsFree()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
-        ☼#]###☼
+        ☼#U###☼
         ☼     ☼
         ☼     ☼
         ☼     ☼
@@ -50,7 +50,7 @@ shouldIFallWhenUnderPitIsFree()
         ☼☼☼☼☼☼☼
         ☼     ☼
         ☼# ###☼
-        ☼ ]   ☼
+        ☼ U   ☼
         ☼     ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
@@ -61,7 +61,7 @@ shouldIFallWhenUnderPitIsFree()
         ☼     ☼
         ☼# ###☼
         ☼     ☼
-        ☼ ]   ☼
+        ☼ U   ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
         0)

@@ -17,7 +17,7 @@ shouldICanGoOnLadderUp()
         ☼☼☼☼☼
         ☼  H☼
         ☼  H☼
-        ☼  Y☼
+        ☼  A☼
         ☼☼☼☼☼,
         0)
     hero(0).up()
@@ -25,7 +25,7 @@ shouldICanGoOnLadderUp()
     assertF(
         ☼☼☼☼☼
         ☼  H☼
-        ☼  Y☼
+        ☼  A☼
         ☼  H☼
         ☼☼☼☼☼,
         0)
@@ -33,7 +33,7 @@ shouldICanGoOnLadderUp()
     tick()
     assertF(
         ☼☼☼☼☼
-        ☼  Y☼
+        ☼  A☼
         ☼  H☼
         ☼  H☼
         ☼☼☼☼☼,

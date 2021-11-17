@@ -44,7 +44,7 @@ shouldСanGoInPitIfNoWall()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ ] ☼
+        ☼ U ☼
         ☼  #☼
         ☼☼☼☼☼,
         0)
@@ -54,7 +54,7 @@ shouldСanGoInPitIfNoWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼ ⍃#☼
+        ☼ E#☼
         ☼☼☼☼☼,
         0)
     hero(0).left()
@@ -63,7 +63,7 @@ shouldСanGoInPitIfNoWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼⍃ #☼
+        ☼E #☼
         ☼☼☼☼☼,
         0)
     hero(0).right()
@@ -72,7 +72,7 @@ shouldСanGoInPitIfNoWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼ ⍃#☼
+        ☼ E#☼
         ☼☼☼☼☼,
         0)
     hero(0).right()
@@ -82,7 +82,7 @@ shouldСanGoInPitIfNoWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼4⍃#☼
+        ☼4E#☼
         ☼☼☼☼☼,
         0)
     hero(0).left()
@@ -91,7 +91,7 @@ shouldСanGoInPitIfNoWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼⍃ #☼
+        ☼E #☼
         ☼☼☼☼☼,
         0)
     hero(0).right()
@@ -100,7 +100,7 @@ shouldСanGoInPitIfNoWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼2⍃#☼
+        ☼2E#☼
         ☼☼☼☼☼,
         0)
     hero(0).left()
@@ -109,7 +109,7 @@ shouldСanGoInPitIfNoWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼⍃3#☼
+        ☼E3#☼
         ☼☼☼☼☼,
         0)
     hero(0).right()
@@ -118,7 +118,7 @@ shouldСanGoInPitIfNoWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼#⍃#☼
+        ☼#E#☼
         ☼☼☼☼☼,
         0)
 

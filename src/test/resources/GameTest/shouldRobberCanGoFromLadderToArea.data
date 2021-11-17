@@ -6,7 +6,7 @@ shouldRobberCanGoFromLadderToArea()
         ☼☼☼☼►
         ☼H  ☼
         ☼H# ☼
-        ☼H« ☼
+        ☼H) ☼
         ☼☼☼☼☼)
         givenPlayer([4,4])
             dice(4, 4)
@@ -16,21 +16,21 @@ shouldRobberCanGoFromLadderToArea()
         ☼☼☼☼►
         ☼H  ☼
         ☼H# ☼
-        ☼Q  ☼
+        ☼X  ☼
         ☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼►
         ☼H  ☼
-        ☼Q# ☼
+        ☼X# ☼
         ☼H  ☼
         ☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼►
-        ☼Q  ☼
+        ☼X  ☼
         ☼H# ☼
         ☼H  ☼
         ☼☼☼☼☼,
@@ -38,7 +38,7 @@ shouldRobberCanGoFromLadderToArea()
     tick()
     assertF(
         ☼☼☼☼►
-        ☼H» ☼
+        ☼H( ☼
         ☼H# ☼
         ☼H  ☼
         ☼☼☼☼☼,
@@ -46,7 +46,7 @@ shouldRobberCanGoFromLadderToArea()
     tick()
     assertF(
         ☼☼☼☼►
-        ☼H ‹☼
+        ☼H x☼
         ☼H# ☼
         ☼H  ☼
         ☼☼☼☼☼,
@@ -55,7 +55,7 @@ shouldRobberCanGoFromLadderToArea()
     assertF(
         ☼☼☼☼►
         ☼H  ☼
-        ☼H#‹☼
+        ☼H#x☼
         ☼H  ☼
         ☼☼☼☼☼,
         0)
@@ -64,7 +64,7 @@ shouldRobberCanGoFromLadderToArea()
         ☼☼☼☼►
         ☼H  ☼
         ☼H# ☼
-        ☼H »☼
+        ☼H (☼
         ☼☼☼☼☼,
         0)
 

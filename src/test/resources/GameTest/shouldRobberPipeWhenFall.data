@@ -4,7 +4,7 @@ before()
 shouldRobberPipeWhenFall()
     givenFl(
         ☼☼☼☼☼☼►
-        ☼  »  ☼
+        ☼  (  ☼
         ☼# ###☼
         ☼     ☼
         ☼ ~~~ ☼
@@ -16,7 +16,7 @@ shouldRobberPipeWhenFall()
     tick()
     assertF(
         ☼☼☼☼☼☼►
-        ☼ ‹   ☼
+        ☼ x   ☼
         ☼# ###☼
         ☼     ☼
         ☼ ~~~ ☼
@@ -27,7 +27,7 @@ shouldRobberPipeWhenFall()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼#‹###☼
+        ☼#x###☼
         ☼     ☼
         ☼ ~~~ ☼
         ☼     ☼
@@ -38,7 +38,7 @@ shouldRobberPipeWhenFall()
         ☼☼☼☼☼☼►
         ☼     ☼
         ☼# ###☼
-        ☼ ‹   ☼
+        ☼ x   ☼
         ☼ ~~~ ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
@@ -49,7 +49,7 @@ shouldRobberPipeWhenFall()
         ☼     ☼
         ☼# ###☼
         ☼     ☼
-        ☼ <~~ ☼
+        ☼ Y~~ ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
         0)
@@ -59,7 +59,7 @@ shouldRobberPipeWhenFall()
         ☼     ☼
         ☼# ###☼
         ☼     ☼
-        ☼ <~~ ☼
+        ☼ Y~~ ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
         0)

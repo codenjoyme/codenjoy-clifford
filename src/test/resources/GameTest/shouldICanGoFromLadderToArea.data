@@ -17,7 +17,7 @@ shouldICanGoFromLadderToArea()
         ☼☼☼☼☼
         ☼H  ☼
         ☼H# ☼
-        ☼Y  ☼
+        ☼A  ☼
         ☼☼☼☼☼,
         0)
     hero(0).up()
@@ -25,7 +25,7 @@ shouldICanGoFromLadderToArea()
     assertF(
         ☼☼☼☼☼
         ☼H  ☼
-        ☼Y# ☼
+        ☼A# ☼
         ☼H  ☼
         ☼☼☼☼☼,
         0)
@@ -33,7 +33,7 @@ shouldICanGoFromLadderToArea()
     tick()
     assertF(
         ☼☼☼☼☼
-        ☼Y  ☼
+        ☼A  ☼
         ☼H# ☼
         ☼H  ☼
         ☼☼☼☼☼,
@@ -51,7 +51,7 @@ shouldICanGoFromLadderToArea()
     tick()
     assertF(
         ☼☼☼☼☼
-        ☼H ]☼
+        ☼H U☼
         ☼H# ☼
         ☼H  ☼
         ☼☼☼☼☼,
@@ -60,7 +60,7 @@ shouldICanGoFromLadderToArea()
     assertF(
         ☼☼☼☼☼
         ☼H  ☼
-        ☼H#]☼
+        ☼H#U☼
         ☼H  ☼
         ☼☼☼☼☼,
         0)

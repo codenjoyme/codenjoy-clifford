@@ -18,7 +18,7 @@ shouldIFallFromPipe()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
-        ☼ {~~ ☼
+        ☼ I~~ ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -29,7 +29,7 @@ shouldIFallFromPipe()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
-        ☼ ~{~ ☼
+        ☼ ~I~ ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -40,7 +40,7 @@ shouldIFallFromPipe()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
-        ☼ ~~{ ☼
+        ☼ ~~I ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -49,7 +49,7 @@ shouldIFallFromPipe()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
-        ☼ ~~{ ☼
+        ☼ ~~I ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -60,7 +60,7 @@ shouldIFallFromPipe()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
-        ☼ ~~~]☼
+        ☼ ~~~U☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -71,7 +71,7 @@ shouldIFallFromPipe()
         ☼☼☼☼☼☼☼
         ☼     ☼
         ☼ ~~~ ☼
-        ☼#   ]☼
+        ☼#   U☼
         ☼     ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
@@ -82,7 +82,7 @@ shouldIFallFromPipe()
         ☼     ☼
         ☼ ~~~ ☼
         ☼#    ☼
-        ☼    ]☼
+        ☼    U☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
         0)

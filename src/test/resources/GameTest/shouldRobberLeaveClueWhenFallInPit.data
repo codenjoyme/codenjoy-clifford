@@ -5,7 +5,7 @@ shouldRobberLeaveClueWhenFallInPit()
     givenFl(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼  $~~«☼
+        ☼  $~~)☼
         ☼  $  #☼
         ☼  $   ☼
         ☼  $  ◄☼
@@ -18,7 +18,7 @@ shouldRobberLeaveClueWhenFallInPit()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼  $~< ☼
+        ☼  $~Y ☼
         ☼  $  #☼
         ☼  $   ☼
         ☼  $  ◄☼
@@ -29,7 +29,7 @@ shouldRobberLeaveClueWhenFallInPit()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼  $<~ ☼
+        ☼  $Y~ ☼
         ☼  $  #☼
         ☼  $   ☼
         ☼  $  ◄☼
@@ -40,7 +40,7 @@ shouldRobberLeaveClueWhenFallInPit()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼  ‹~~ ☼
+        ☼  x~~ ☼
         ☼  $  #☼
         ☼  $   ☼
         ☼  $  ◄☼
@@ -52,7 +52,7 @@ shouldRobberLeaveClueWhenFallInPit()
         ☼☼☼☼☼☼☼☼
         ☼      ☼
         ☼   ~~ ☼
-        ☼  ‹  #☼
+        ☼  x  #☼
         ☼  $   ☼
         ☼  $  ◄☼
         ☼######☼
@@ -64,7 +64,7 @@ shouldRobberLeaveClueWhenFallInPit()
         ☼      ☼
         ☼   ~~ ☼
         ☼  $  #☼
-        ☼  ‹   ☼
+        ☼  x   ☼
         ☼  $  ◄☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
@@ -76,7 +76,7 @@ shouldRobberLeaveClueWhenFallInPit()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  «  ◄☼
+        ☼  )  ◄☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -88,7 +88,7 @@ shouldRobberLeaveClueWhenFallInPit()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  $» ◄☼
+        ☼  $( ◄☼
         ☼####*#☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -99,7 +99,7 @@ shouldRobberLeaveClueWhenFallInPit()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  $ ‹◄☼
+        ☼  $ x◄☼
         ☼#### #☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -111,7 +111,7 @@ shouldRobberLeaveClueWhenFallInPit()
         ☼  $  #☼
         ☼  $   ☼
         ☼  $ $◄☼
-        ☼####⍇#☼
+        ☼####y#☼
         ☼☼☼☼☼☼☼☼,
         0)
 

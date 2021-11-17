@@ -6,7 +6,7 @@ shouldICanJumpAtRobberHead()
         ☼☼☼☼☼
         ☼ ◄ ☼
         ☼   ☼
-        ☼ » ☼
+        ☼ ( ☼
         ☼☼☼☼☼)
         givenPlayer([2,3])
             dice(2, 3)
@@ -16,7 +16,7 @@ shouldICanJumpAtRobberHead()
         ☼☼☼☼☼
         ☼   ☼
         ☼ ◄ ☼
-        ☼ » ☼
+        ☼ ( ☼
         ☼☼☼☼☼,
         0)
     tick()
@@ -24,15 +24,15 @@ shouldICanJumpAtRobberHead()
         ☼☼☼☼☼
         ☼   ☼
         ☼ ◄ ☼
-        ☼ » ☼
+        ☼ ( ☼
         ☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ ] ☼
-        ☼  »☼
+        ☼ U ☼
+        ☼  (☼
         ☼☼☼☼☼,
         0)
     tick()
@@ -40,7 +40,7 @@ shouldICanJumpAtRobberHead()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼ ◄»☼
+        ☼ ◄(☼
         ☼☼☼☼☼,
         0)
 

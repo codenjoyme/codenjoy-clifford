@@ -39,10 +39,10 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
         // given
         givenFl("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
-                "☼⍙⍙⍚⍚⍜⍜☼\n" +
-                "☼ ⍍⌺⌺⌼ ☼\n" +
-                "☼ ✦✼⍟  ☼\n" +
-                "☼ ✦ ⍟ ►☼\n" +
+                "☼ggssbb☼\n" +
+                "☼ GSSB ☼\n" +
+                "☼ +-!  ☼\n" +
+                "☼ + ! ►☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
@@ -73,10 +73,10 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
-                "☼⍙⍙⍚⍚⍜⍜☼\n" +
-                "☼ ⍍⌺⌺⌼ ☼\n" +
-                "☼ ✦✼⍟  ☼\n" +
-                "☼ ✦ ⍟ ►☼\n" +
+                "☼ggssbb☼\n" +
+                "☼ GSSB ☼\n" +
+                "☼ +-!  ☼\n" +
+                "☼ + ! ►☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
     }
@@ -89,7 +89,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ ►✦✦✼⍟☼\n" +
+                "☼ ►++-!☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -103,7 +103,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼  ►✦✼⍟☼\n" +
+                "☼  ►+-!☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -117,7 +117,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼   ►✼⍟☼\n" +
+                "☼   ►-!☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -131,7 +131,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼    ►⍟☼\n" +
+                "☼    ►!☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -165,7 +165,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ ►✦✦✼⍟☼\n" +
+                "☼ ►++-!☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -178,9 +178,9 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
-                "☼✦     ☼\n" +
+                "☼+     ☼\n" +
                 "☼      ☼\n" +
-                "☼  ►✦✼⍟☼\n" +
+                "☼  ►+-!☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -193,9 +193,9 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
-                "☼✦✦    ☼\n" +
+                "☼++    ☼\n" +
                 "☼      ☼\n" +
-                "☼   ►✼⍟☼\n" +
+                "☼   ►-!☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -208,9 +208,9 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
-                "☼✦✦✼   ☼\n" +
+                "☼++-   ☼\n" +
                 "☼      ☼\n" +
-                "☼    ►⍟☼\n" +
+                "☼    ►!☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -223,7 +223,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
-                "☼✦✦✼⍟  ☼\n" +
+                "☼++-!  ☼\n" +
                 "☼      ☼\n" +
                 "☼     ►☼\n" +
                 "☼######☼\n" +
@@ -244,7 +244,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼  ► ⍍  ☼\n" +
+                "☼  ► G  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -257,7 +257,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ►⍍  ☼\n" +
+                "☼   ►G  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -270,7 +270,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ►⍍  ☼\n" +
+                "☼   ►G  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -283,7 +283,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼  ► ⍙  ☼\n" +
+                "☼  ► g  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -296,7 +296,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ►⍙  ☼\n" +
+                "☼   ►g  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -322,7 +322,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼    ⍙► ☼\n" +
+                "☼    g► ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -335,7 +335,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼  ►✦⍍  ☼\n" +
+                "☼  ►+G  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -350,7 +350,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ►⍍  ☼\n" +
+                "☼   ►G  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -365,7 +365,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ►⍙  ☼\n" +
+                "☼   ►g  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -393,7 +393,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼    ⍙► ☼\n" +
+                "☼    g► ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -406,7 +406,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼  ⍍✦◄  ☼\n" +
+                "☼  G+◄  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -421,7 +421,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼  ⍍◄   ☼\n" +
+                "☼  G◄   ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -436,7 +436,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼  ⍙◄   ☼\n" +
+                "☼  g◄   ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -464,7 +464,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼ ◄⍙    ☼\n" +
+                "☼ ◄g    ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -477,7 +477,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ►⍍  ☼\n" +
+                "☼   ►G  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -492,7 +492,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ►⍍  ☼\n" +
+                "☼   ►G  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -507,7 +507,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ►⍍  ☼\n" +
+                "☼   ►G  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -522,7 +522,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼  ►✦⍙  ☼\n" +
+                "☼  ►+g  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -537,7 +537,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ►⍙  ☼\n" +
+                "☼   ►g  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -565,7 +565,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼    ⍙► ☼\n" +
+                "☼    g► ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -579,7 +579,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼    ⍍◄ ☼\n" +
+                "☼    G◄ ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -594,7 +594,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼  ⍙✦◄  ☼\n" +
+                "☼  g+◄  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -609,7 +609,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼  ⍙◄   ☼\n" +
+                "☼  g◄   ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -637,7 +637,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼ ◄⍙    ☼\n" +
+                "☼ ◄g    ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -651,7 +651,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼ ►⍍    ☼\n" +
+                "☼ ►G    ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -666,7 +666,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼  ⍙✦◄  ☼\n" +
+                "☼  g+◄  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -681,7 +681,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼  ⍙◄   ☼\n" +
+                "☼  g◄   ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -710,7 +710,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼  ⍙►   ☼\n" +
+                "☼  g►   ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -725,7 +725,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ►⍙  ☼\n" +
+                "☼   ►g  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -751,7 +751,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼    ⍙► ☼\n" +
+                "☼    g► ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -780,7 +780,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ◄⍙  ☼\n" +
+                "☼   ◄g  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -794,7 +794,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ ►✦✼⍟ ☼\n" +
+                "☼ ►+-! ☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -808,7 +808,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼  ►✼⍟ ☼\n" +
+                "☼  ►-! ☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -822,7 +822,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼   ►⍟ ☼\n" +
+                "☼   ►! ☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -853,9 +853,9 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
-                "☼✦✼⍟   ☼\n" +
+                "☼+-!   ☼\n" +
                 "☼      ☼\n" +
-                "☼    Ѡ ☼\n" +
+                "☼    O ☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -878,7 +878,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ ►✦✼⍟ ☼\n" +
+                "☼ ►+-! ☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -890,10 +890,10 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   ✦  ☼\n" +
+                "☼   +  ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼  ►✼⍟ ☼\n" +
+                "☼  ►-! ☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -905,10 +905,10 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   ✦✼ ☼\n" +
+                "☼   +- ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼   ►⍟ ☼\n" +
+                "☼   ►! ☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
@@ -920,7 +920,7 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   ✦✼⍟☼\n" +
+                "☼   +-!☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼    ► ☼\n" +
@@ -939,10 +939,10 @@ public class KeyDoorGameTest extends AbstractGameCheckTest {
         verifyAllEvents("[HERO_DIE]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   ✦✼⍟☼\n" +
+                "☼   +-!☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼    Ѡ ☼\n" +
+                "☼    O ☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");

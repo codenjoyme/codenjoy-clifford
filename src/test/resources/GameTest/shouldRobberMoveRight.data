@@ -5,7 +5,7 @@ shouldRobberMoveRight()
     givenFl(
         ☼☼☼☼►
         ☼   ☼
-        ☼ « ☼
+        ☼ ) ☼
         ☼###☼
         ☼☼☼☼☼)
         givenPlayer([4,4])
@@ -15,7 +15,7 @@ shouldRobberMoveRight()
     assertF(
         ☼☼☼☼►
         ☼   ☼
-        ☼  »☼
+        ☼  (☼
         ☼###☼
         ☼☼☼☼☼,
         0)

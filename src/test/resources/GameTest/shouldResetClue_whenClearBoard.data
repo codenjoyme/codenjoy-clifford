@@ -109,7 +109,7 @@ shouldResetClue_whenClearBoard()
     field().clearScore()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼]     ☼
+        ☼U     ☼
         ☼      ☼
         ☼     @☼
         ☼ $$&@@☼
@@ -124,7 +124,7 @@ shouldResetClue_whenClearBoard()
     field().clearScore()
     assertF(
         ☼☼☼☼☼☼☼☼
-        ☼ ]    ☼
+        ☼ U    ☼
         ☼      ☼
         ☼      ☼
         ☼      ☼

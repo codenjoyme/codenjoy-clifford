@@ -18,7 +18,7 @@ shouldICantGoViaAnotherPlayer_whenAtWay()
         ☼☼☼☼☼☼
         ☼    ☼
         ☼    ☼
-        ☼►(  ☼
+        ☼►»  ☼
         ☼####☼
         ☼☼☼☼☼☼,
         0)
@@ -28,7 +28,7 @@ shouldICantGoViaAnotherPlayer_whenAtWay()
         ☼☼☼☼☼☼
         ☼    ☼
         ☼    ☼
-        ☼►(  ☼
+        ☼►»  ☼
         ☼####☼
         ☼☼☼☼☼☼,
         0)
@@ -38,7 +38,7 @@ shouldICantGoViaAnotherPlayer_whenAtWay()
         ☼☼☼☼☼☼
         ☼    ☼
         ☼    ☼
-        ☼►)  ☼
+        ☼►«  ☼
         ☼####☼
         ☼☼☼☼☼☼,
         0)

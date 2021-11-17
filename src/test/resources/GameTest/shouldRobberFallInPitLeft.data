@@ -5,7 +5,7 @@ shouldRobberFallInPitLeft()
     givenFl(
         ☼☼☼☼☼
         ☼   ☼
-        ☼« ◄☼
+        ☼) ◄☼
         ☼###☼
         ☼☼☼☼☼)
         givenPlayer([3,2])
@@ -17,7 +17,7 @@ shouldRobberFallInPitLeft()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ ‹◄☼
+        ☼ x◄☼
         ☼# #☼
         ☼☼☼☼☼,
         0)
@@ -26,7 +26,7 @@ shouldRobberFallInPitLeft()
         ☼☼☼☼☼
         ☼   ☼
         ☼  ◄☼
-        ☼#⍇#☼
+        ☼#y#☼
         ☼☼☼☼☼,
         0)
 

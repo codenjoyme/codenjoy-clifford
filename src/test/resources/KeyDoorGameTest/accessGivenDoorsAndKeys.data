@@ -5,10 +5,10 @@ accessGivenDoorsAndKeys()
     givenFl(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼⍙⍙⍚⍚⍜⍜☼
-        ☼ ⍍⌺⌺⌼ ☼
-        ☼ ✦✼⍟  ☼
-        ☼ ✦ ⍟ ►☼
+        ☼ggssbb☼
+        ☼ GSSB ☼
+        ☼ +-!  ☼
+        ☼ + ! ►☼
         ☼######☼
         ☼☼☼☼☼☼☼☼)
         givenPlayer([6,2])
@@ -19,10 +19,10 @@ accessGivenDoorsAndKeys()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼⍙⍙⍚⍚⍜⍜☼
-        ☼ ⍍⌺⌺⌼ ☼
-        ☼ ✦✼⍟  ☼
-        ☼ ✦ ⍟ ►☼
+        ☼ggssbb☼
+        ☼ GSSB ☼
+        ☼ +-!  ☼
+        ☼ + ! ►☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)

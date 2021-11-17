@@ -17,7 +17,7 @@ shouldICantGoViaAnotherPlayer_whenAtPipe()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼►~~(☼
+        ☼►~~»☼
         ☼#  #☼
         ☼####☼
         ☼☼☼☼☼☼,
@@ -28,7 +28,7 @@ shouldICantGoViaAnotherPlayer_whenAtPipe()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼ {Э ☼
+        ☼ IJ ☼
         ☼#  #☼
         ☼####☼
         ☼☼☼☼☼☼,
@@ -36,7 +36,7 @@ shouldICantGoViaAnotherPlayer_whenAtPipe()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼ Э{ ☼
+        ☼ JI ☼
         ☼#  #☼
         ☼####☼
         ☼☼☼☼☼☼,
@@ -47,7 +47,7 @@ shouldICantGoViaAnotherPlayer_whenAtPipe()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼ {Э ☼
+        ☼ IJ ☼
         ☼#  #☼
         ☼####☼
         ☼☼☼☼☼☼,
@@ -58,7 +58,7 @@ shouldICantGoViaAnotherPlayer_whenAtPipe()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼ {Э ☼
+        ☼ IJ ☼
         ☼#  #☼
         ☼####☼
         ☼☼☼☼☼☼,

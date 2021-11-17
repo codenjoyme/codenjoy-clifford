@@ -18,7 +18,7 @@ shouldIGetClueWhenFallenFromPipe()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
-        ☼ $~{ ☼
+        ☼ $~I ☼
         ☼ $  #☼
         ☼ $   ☼
         ☼ $   ☼
@@ -29,7 +29,7 @@ shouldIGetClueWhenFallenFromPipe()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
-        ☼ ${~ ☼
+        ☼ $I~ ☼
         ☼ $  #☼
         ☼ $   ☼
         ☼ $   ☼
@@ -41,7 +41,7 @@ shouldIGetClueWhenFallenFromPipe()
     assertF(
         ☼☼☼☼☼☼☼
         ☼$    ☼
-        ☼ ]~~ ☼
+        ☼ U~~ ☼
         ☼ $  #☼
         ☼ $   ☼
         ☼ $   ☼
@@ -54,7 +54,7 @@ shouldIGetClueWhenFallenFromPipe()
         ☼☼☼☼☼☼☼
         ☼$$   ☼
         ☼  ~~ ☼
-        ☼ ]  #☼
+        ☼ U  #☼
         ☼ $   ☼
         ☼ $   ☼
         ☼☼☼☼☼☼☼,
@@ -67,7 +67,7 @@ shouldIGetClueWhenFallenFromPipe()
         ☼$$$  ☼
         ☼  ~~ ☼
         ☼    #☼
-        ☼ ]   ☼
+        ☼ U   ☼
         ☼ $   ☼
         ☼☼☼☼☼☼☼,
         0)

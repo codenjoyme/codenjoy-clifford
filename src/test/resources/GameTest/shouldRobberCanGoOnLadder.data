@@ -6,7 +6,7 @@ shouldRobberCanGoOnLadder()
         ☼☼☼☼►
         ☼  H☼
         ☼  H☼
-        ☼ «H☼
+        ☼ )H☼
         ☼☼☼☼☼)
         givenPlayer([4,4])
             dice(4, 4)
@@ -16,7 +16,7 @@ shouldRobberCanGoOnLadder()
         ☼☼☼☼►
         ☼  H☼
         ☼  H☼
-        ☼  Q☼
+        ☼  X☼
         ☼☼☼☼☼,
         0)
     tick()
@@ -24,7 +24,7 @@ shouldRobberCanGoOnLadder()
         ☼☼☼☼►
         ☼  H☼
         ☼  H☼
-        ☼ «H☼
+        ☼ )H☼
         ☼☼☼☼☼,
         0)
 

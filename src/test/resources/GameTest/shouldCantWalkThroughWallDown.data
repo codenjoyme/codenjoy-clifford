@@ -16,7 +16,7 @@ shouldCantWalkThroughWallDown()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ Y ☼
+        ☼ A ☼
         ☼☼☼☼☼
         ☼☼☼☼☼,
         0)
@@ -25,7 +25,7 @@ shouldCantWalkThroughWallDown()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ Y ☼
+        ☼ A ☼
         ☼☼☼☼☼
         ☼☼☼☼☼,
         0)

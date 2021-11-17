@@ -41,7 +41,7 @@ heroKillHeroAndKillEnemy()
         ☼   HH   ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼( ►HH❪ (☼
+        ☼» ►HHQ »☼
         ☼###HH###☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
@@ -60,7 +60,7 @@ heroKillHeroAndKillEnemy()
         ☼   HH   ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼ ⊐◄HH❪⊐ ☼
+        ☼ F◄HHQF ☼
         ☼#*#HH#*#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
@@ -84,11 +84,11 @@ heroKillHeroAndKillEnemy()
         ☼        ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼  ◄HH❪  ☼
+        ☼  ◄HHQ  ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼#K#HH#K#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
     tick()
@@ -97,11 +97,11 @@ heroKillHeroAndKillEnemy()
         ☼        ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼  ◄HH❪  ☼
+        ☼  ◄HHQ  ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼#K#HH#K#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
     hero(0).right()

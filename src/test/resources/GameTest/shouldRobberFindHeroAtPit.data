@@ -8,7 +8,7 @@ shouldRobberFindHeroAtPit()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼  « ◄ ☼
+        ☼  ) ◄ ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼)
         givenPlayer([5,2])
@@ -22,7 +22,7 @@ shouldRobberFindHeroAtPit()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼  « ◄ ☼
+        ☼  ) ◄ ☼
         ☼###*##☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -35,8 +35,8 @@ shouldRobberFindHeroAtPit()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼  «   ☼
-        ☼###⍃##☼
+        ☼  )   ☼
+        ☼###E##☼
         ☼☼☼☼☼☼☼☼,
         0)
     tick()
@@ -49,7 +49,7 @@ shouldRobberFindHeroAtPit()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼###Ѡ##☼
+        ☼###O##☼
         ☼☼☼☼☼☼☼☼,
         0)
     dice(2, 3)
@@ -63,7 +63,7 @@ shouldRobberFindHeroAtPit()
         ☼      ☼
         ☼      ☼
         ☼ ►    ☼
-        ☼###⍇##☼
+        ☼###y##☼
         ☼☼☼☼☼☼☼☼,
         0)
     tick()
@@ -80,7 +80,7 @@ shouldRobberFindHeroAtPit()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼ ► »  ☼
+        ☼ ► (  ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)

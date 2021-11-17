@@ -8,7 +8,7 @@ pickKeysWithGeneration()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼ ►✦✦✼⍟☼
+        ☼ ►++-!☼
         ☼######☼
         ☼      ☼
         ☼☼☼☼☼☼☼☼)
@@ -22,9 +22,9 @@ pickKeysWithGeneration()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼✦     ☼
+        ☼+     ☼
         ☼      ☼
-        ☼  ►✦✼⍟☼
+        ☼  ►+-!☼
         ☼######☼
         ☼      ☼
         ☼☼☼☼☼☼☼☼,
@@ -36,9 +36,9 @@ pickKeysWithGeneration()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼✦✦    ☼
+        ☼++    ☼
         ☼      ☼
-        ☼   ►✼⍟☼
+        ☼   ►-!☼
         ☼######☼
         ☼      ☼
         ☼☼☼☼☼☼☼☼,
@@ -50,9 +50,9 @@ pickKeysWithGeneration()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼✦✦✼   ☼
+        ☼++-   ☼
         ☼      ☼
-        ☼    ►⍟☼
+        ☼    ►!☼
         ☼######☼
         ☼      ☼
         ☼☼☼☼☼☼☼☼,
@@ -64,7 +64,7 @@ pickKeysWithGeneration()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼✦✦✼⍟  ☼
+        ☼++-!  ☼
         ☼      ☼
         ☼     ►☼
         ☼######☼

@@ -5,7 +5,7 @@ shouldGetClueWheExitFromPit()
     givenFl(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼  $~~«☼
+        ☼  $~~)☼
         ☼  $  #☼
         ☼  $   ☼
         ☼  $  ◄☼
@@ -18,7 +18,7 @@ shouldGetClueWheExitFromPit()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼  $~< ☼
+        ☼  $~Y ☼
         ☼  $  #☼
         ☼  $   ☼
         ☼  $  ◄☼
@@ -29,7 +29,7 @@ shouldGetClueWheExitFromPit()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼  $<~ ☼
+        ☼  $Y~ ☼
         ☼  $  #☼
         ☼  $   ☼
         ☼  $  ◄☼
@@ -40,7 +40,7 @@ shouldGetClueWheExitFromPit()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼  ‹~~ ☼
+        ☼  x~~ ☼
         ☼  $  #☼
         ☼  $   ☼
         ☼  $  ◄☼
@@ -52,7 +52,7 @@ shouldGetClueWheExitFromPit()
         ☼☼☼☼☼☼☼☼
         ☼      ☼
         ☼   ~~ ☼
-        ☼  ‹  #☼
+        ☼  x  #☼
         ☼  $   ☼
         ☼  $  ◄☼
         ☼######☼
@@ -64,7 +64,7 @@ shouldGetClueWheExitFromPit()
         ☼      ☼
         ☼   ~~ ☼
         ☼  $  #☼
-        ☼  ‹   ☼
+        ☼  x   ☼
         ☼  $  ◄☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
@@ -76,7 +76,7 @@ shouldGetClueWheExitFromPit()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  «  ◄☼
+        ☼  )  ◄☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -88,7 +88,7 @@ shouldGetClueWheExitFromPit()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  $» ◄☼
+        ☼  $( ◄☼
         ☼####*#☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -99,7 +99,7 @@ shouldGetClueWheExitFromPit()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  $ ‹◄☼
+        ☼  $ x◄☼
         ☼#### #☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -111,7 +111,7 @@ shouldGetClueWheExitFromPit()
         ☼  $  #☼
         ☼  $   ☼
         ☼  $ $◄☼
-        ☼####⍇#☼
+        ☼####y#☼
         ☼☼☼☼☼☼☼☼,
         0)
     assertF(
@@ -121,7 +121,7 @@ shouldGetClueWheExitFromPit()
         ☼  $  #☼
         ☼  $   ☼
         ☼  $ $◄☼
-        ☼####⍇#☼
+        ☼####y#☼
         ☼☼☼☼☼☼☼☼,
         0)
     tick()
@@ -141,7 +141,7 @@ shouldGetClueWheExitFromPit()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  $ »◄☼
+        ☼  $ (◄☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -154,7 +154,7 @@ shouldGetClueWheExitFromPit()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  $« ◄☼
+        ☼  $) ◄☼
         ☼####*#☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -167,7 +167,7 @@ shouldGetClueWheExitFromPit()
         ☼  $  #☼
         ☼  $   ☼
         ☼  $ $◄☼
-        ☼####⍇#☼
+        ☼####y#☼
         ☼☼☼☼☼☼☼☼,
         0)
 

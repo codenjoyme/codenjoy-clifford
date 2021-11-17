@@ -16,9 +16,9 @@ shouldICanGoWhenAtMeIsOtherHero()
         dice(0)
     assertF(
         ☼☼☼☼☼☼
-        ☼ ]  ☼
+        ☼ U  ☼
         ☼    ☼
-        ☼ (  ☼
+        ☼ »  ☼
         ☼####☼
         ☼☼☼☼☼☼,
         0)
@@ -27,7 +27,7 @@ shouldICanGoWhenAtMeIsOtherHero()
         ☼☼☼☼☼☼
         ☼    ☼
         ☼ ►  ☼
-        ☼ (  ☼
+        ☼ »  ☼
         ☼####☼
         ☼☼☼☼☼☼,
         0)
@@ -36,7 +36,7 @@ shouldICanGoWhenAtMeIsOtherHero()
         ☼☼☼☼☼☼
         ☼    ☼
         ☼ ►  ☼
-        ☼ (  ☼
+        ☼ »  ☼
         ☼####☼
         ☼☼☼☼☼☼,
         0)
@@ -44,7 +44,7 @@ shouldICanGoWhenAtMeIsOtherHero()
         ☼☼☼☼☼☼
         ☼    ☼
         ☼ ►  ☼
-        ☼ (  ☼
+        ☼ »  ☼
         ☼####☼
         ☼☼☼☼☼☼,
         0)
@@ -53,8 +53,8 @@ shouldICanGoWhenAtMeIsOtherHero()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼ ]  ☼
-        ☼  ( ☼
+        ☼ U  ☼
+        ☼  » ☼
         ☼####☼
         ☼☼☼☼☼☼,
         0)
@@ -63,7 +63,7 @@ shouldICanGoWhenAtMeIsOtherHero()
         ☼☼☼☼☼☼
         ☼    ☼
         ☼    ☼
-        ☼ ►( ☼
+        ☼ ►» ☼
         ☼####☼
         ☼☼☼☼☼☼,
         0)

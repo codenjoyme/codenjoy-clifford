@@ -6,8 +6,8 @@ shouldResetBackwaysTimeout_whenClearBoard()
     settings().integer(BACKWAY_TICKS, 5)
     givenFl(
         ☼☼☼☼☼
-        ☼  ⊛☼
-        ☼⊛◄ ☼
+        ☼  W☼
+        ☼W◄ ☼
         ☼###☼
         ☼☼☼☼☼)
         givenPlayer([2,2])
@@ -19,8 +19,8 @@ shouldResetBackwaysTimeout_whenClearBoard()
     field().getBackwaysTimer() = 4
     assertF(
         ☼☼☼☼☼
-        ☼  ]☼
-        ☼⊛  ☼
+        ☼  U☼
+        ☼W  ☼
         ☼###☼
         ☼☼☼☼☼,
         0)
@@ -28,8 +28,8 @@ shouldResetBackwaysTimeout_whenClearBoard()
     field().getBackwaysTimer() = 3
     assertF(
         ☼☼☼☼☼
-        ☼  ⊛☼
-        ☼⊛ ◄☼
+        ☼  W☼
+        ☼W ◄☼
         ☼###☼
         ☼☼☼☼☼,
         0)
@@ -41,8 +41,8 @@ shouldResetBackwaysTimeout_whenClearBoard()
     field().getBackwaysTimer() = 0
     assertF(
         ☼☼☼☼☼
-        ☼  ⊛☼
-        ☼⊛ ◄☼
+        ☼  W☼
+        ☼W ◄☼
         ☼###☼
         ☼☼☼☼☼,
         0)
@@ -51,14 +51,14 @@ shouldResetBackwaysTimeout_whenClearBoard()
     field().getBackwaysTimer() = 5
     assertF(
         ☼☼☼☼☼
-        ☼⊛⊛ ☼
+        ☼WW ☼
         ☼  ◄☼
         ☼###☼
         ☼☼☼☼☼,
         0)
     assertF(
         ☼☼☼☼☼
-        ☼⊛⊛ ☼
+        ☼WW ☼
         ☼  ◄☼
         ☼###☼
         ☼☼☼☼☼,

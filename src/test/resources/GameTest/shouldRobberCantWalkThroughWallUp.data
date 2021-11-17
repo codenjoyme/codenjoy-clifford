@@ -7,7 +7,7 @@ shouldRobberCantWalkThroughWallUp()
         ☼☼☼☼►
         ☼☼☼☼☼
         ☼ H ☼
-        ☼ H«☼
+        ☼ H)☼
         ☼☼☼☼☼)
         givenPlayer([4,4])
             dice(4, 4)
@@ -17,14 +17,14 @@ shouldRobberCantWalkThroughWallUp()
         ☼☼☼☼►
         ☼☼☼☼☼
         ☼ H ☼
-        ☼ Q ☼
+        ☼ X ☼
         ☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼►
         ☼☼☼☼☼
-        ☼ Q ☼
+        ☼ X ☼
         ☼ H ☼
         ☼☼☼☼☼,
         0)
@@ -32,7 +32,7 @@ shouldRobberCantWalkThroughWallUp()
     assertF(
         ☼☼☼☼►
         ☼☼☼☼☼
-        ☼ Q ☼
+        ☼ X ☼
         ☼ H ☼
         ☼☼☼☼☼,
         0)

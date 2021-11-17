@@ -4,7 +4,7 @@ before()
 shouldRobberCantJumpThroughWall()
     givenFl(
         ☼☼☼☼☼►
-        ☼  » ☼
+        ☼  ( ☼
         ☼  ~ ☼
         ☼☼☼☼☼☼
         ☼    ☼
@@ -16,7 +16,7 @@ shouldRobberCantJumpThroughWall()
     assertF(
         ☼☼☼☼☼►
         ☼    ☼
-        ☼  < ☼
+        ☼  Y ☼
         ☼☼☼☼☼☼
         ☼    ☼
         ☼☼☼☼☼☼,
@@ -25,7 +25,7 @@ shouldRobberCantJumpThroughWall()
     assertF(
         ☼☼☼☼☼►
         ☼    ☼
-        ☼  < ☼
+        ☼  Y ☼
         ☼☼☼☼☼☼
         ☼    ☼
         ☼☼☼☼☼☼,

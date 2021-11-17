@@ -5,7 +5,7 @@ shouldRobberPipe()
     givenFl(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼»~~~ ☼
+        ☼(~~~ ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -17,7 +17,7 @@ shouldRobberPipe()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼ <~~ ☼
+        ☼ Y~~ ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -27,7 +27,7 @@ shouldRobberPipe()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼ ~<~ ☼
+        ☼ ~Y~ ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -37,7 +37,7 @@ shouldRobberPipe()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼ ~~< ☼
+        ☼ ~~Y ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼

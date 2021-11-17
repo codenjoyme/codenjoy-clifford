@@ -18,9 +18,9 @@ shouldCanMoveWhenAtOtherHero()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼ ]  ☼
+        ☼ U  ☼
         ☼    ☼
-        ☼ Э  ☼
+        ☼ J  ☼
         ☼☼☼☼☼☼,
         0)
     tick()
@@ -29,7 +29,7 @@ shouldCanMoveWhenAtOtherHero()
         ☼    ☼
         ☼    ☼
         ☼ ►  ☼
-        ☼ Э  ☼
+        ☼ J  ☼
         ☼☼☼☼☼☼,
         0)
     hero(0).down()
@@ -39,7 +39,7 @@ shouldCanMoveWhenAtOtherHero()
         ☼    ☼
         ☼    ☼
         ☼ ►  ☼
-        ☼ Э  ☼
+        ☼ J  ☼
         ☼☼☼☼☼☼,
         0)
     hero(1).left()
@@ -48,8 +48,8 @@ shouldCanMoveWhenAtOtherHero()
         ☼☼☼☼☼☼
         ☼    ☼
         ☼    ☼
-        ☼ ]  ☼
-        ☼)~  ☼
+        ☼ U  ☼
+        ☼«~  ☼
         ☼☼☼☼☼☼,
         0)
     tick()
@@ -58,7 +58,7 @@ shouldCanMoveWhenAtOtherHero()
         ☼    ☼
         ☼    ☼
         ☼    ☼
-        ☼){  ☼
+        ☼«I  ☼
         ☼☼☼☼☼☼,
         0)
     hero(1).right()
@@ -68,7 +68,7 @@ shouldCanMoveWhenAtOtherHero()
         ☼    ☼
         ☼    ☼
         ☼    ☼
-        ☼({  ☼
+        ☼»I  ☼
         ☼☼☼☼☼☼,
         0)
     hero(0).left()
@@ -78,7 +78,7 @@ shouldCanMoveWhenAtOtherHero()
         ☼    ☼
         ☼    ☼
         ☼    ☼
-        ☼({  ☼
+        ☼»I  ☼
         ☼☼☼☼☼☼,
         0)
 

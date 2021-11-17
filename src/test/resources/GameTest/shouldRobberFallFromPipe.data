@@ -5,7 +5,7 @@ shouldRobberFallFromPipe()
     givenFl(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼»~~~ ☼
+        ☼(~~~ ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -17,7 +17,7 @@ shouldRobberFallFromPipe()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼ <~~ ☼
+        ☼ Y~~ ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -27,7 +27,7 @@ shouldRobberFallFromPipe()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼ ~<~ ☼
+        ☼ ~Y~ ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -37,7 +37,7 @@ shouldRobberFallFromPipe()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼ ~~< ☼
+        ☼ ~~Y ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -46,17 +46,7 @@ shouldRobberFallFromPipe()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼ ~~< ☼
-        ☼#    ☼
-        ☼     ☼
-        ☼     ☼
-        ☼☼☼☼☼☼☼,
-        0)
-    tick()
-    assertF(
-        ☼☼☼☼☼☼►
-        ☼     ☼
-        ☼ ~~~‹☼
+        ☼ ~~Y ☼
         ☼#    ☼
         ☼     ☼
         ☼     ☼
@@ -66,8 +56,8 @@ shouldRobberFallFromPipe()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼ ~~~ ☼
-        ☼#   ‹☼
+        ☼ ~~~x☼
+        ☼#    ☼
         ☼     ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
@@ -77,8 +67,18 @@ shouldRobberFallFromPipe()
         ☼☼☼☼☼☼►
         ☼     ☼
         ☼ ~~~ ☼
+        ☼#   x☼
+        ☼     ☼
+        ☼     ☼
+        ☼☼☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼►
+        ☼     ☼
+        ☼ ~~~ ☼
         ☼#    ☼
-        ☼    ‹☼
+        ☼    x☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
         0)
@@ -89,7 +89,7 @@ shouldRobberFallFromPipe()
         ☼ ~~~ ☼
         ☼#    ☼
         ☼     ☼
-        ☼    »☼
+        ☼    (☼
         ☼☼☼☼☼☼☼,
         0)
 

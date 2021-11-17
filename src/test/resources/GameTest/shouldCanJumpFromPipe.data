@@ -17,7 +17,7 @@ shouldCanJumpFromPipe()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
-        ☼  ]  ☼
+        ☼  U  ☼
         ☼ ~~~ ☼
         ☼     ☼
         ☼     ☼
@@ -28,7 +28,7 @@ shouldCanJumpFromPipe()
         ☼☼☼☼☼☼☼
         ☼     ☼
         ☼     ☼
-        ☼ ~{~ ☼
+        ☼ ~I~ ☼
         ☼     ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
@@ -40,7 +40,7 @@ shouldCanJumpFromPipe()
         ☼     ☼
         ☼     ☼
         ☼ ~~~ ☼
-        ☼  ]  ☼
+        ☼  U  ☼
         ☼     ☼
         ☼☼☼☼☼☼☼,
         0)

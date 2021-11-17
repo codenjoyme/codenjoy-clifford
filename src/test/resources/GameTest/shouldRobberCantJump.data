@@ -7,7 +7,7 @@ shouldRobberCantJump()
         ☼    ☼
         ☼    ☼
         ☼    ☼
-        ☼ »  ☼
+        ☼ (  ☼
         ☼☼☼☼☼☼)
         givenPlayer([5,5])
             dice(5, 5)
@@ -18,7 +18,7 @@ shouldRobberCantJump()
         ☼    ☼
         ☼    ☼
         ☼    ☼
-        ☼ »  ☼
+        ☼ (  ☼
         ☼☼☼☼☼☼,
         0)
 

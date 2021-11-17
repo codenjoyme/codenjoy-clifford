@@ -16,7 +16,7 @@ iLooseScoresWhenDoHarakiri()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ Ѡ ☼
+        ☼ O ☼
         ☼###☼
         ☼☼☼☼☼,
         0)

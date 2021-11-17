@@ -8,7 +8,7 @@ heroCanGoThroughOpenedDoor()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼  ► ⍙  ☼
+        ☼  ► g  ☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼)
@@ -23,7 +23,7 @@ heroCanGoThroughOpenedDoor()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼   ►⍙  ☼
+        ☼   ►g  ☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,
@@ -49,7 +49,7 @@ heroCanGoThroughOpenedDoor()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼    ⍙► ☼
+        ☼    g► ☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,

@@ -50,7 +50,7 @@ shouldIDieIPitFillWithMe()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼]  ☼
+        ☼U  ☼
         ☼1##☼
         ☼☼☼☼☼,
         0)
@@ -59,7 +59,7 @@ shouldIDieIPitFillWithMe()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼Ѡ##☼
+        ☼O##☼
         ☼☼☼☼☼,
         0)
     events().getEvents() = [HERO_DIE, SUICIDE]
@@ -68,7 +68,7 @@ shouldIDieIPitFillWithMe()
     field().newGame(player(0))
     assertF(
         ☼☼☼☼☼
-        ☼ ] ☼
+        ☼ U ☼
         ☼   ☼
         ☼###☼
         ☼☼☼☼☼,

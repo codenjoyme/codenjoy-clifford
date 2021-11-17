@@ -10,7 +10,7 @@ thatRobbersDoNotHauntMaskPlayers()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼► » ► ☼
+        ☼► ( ► ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼)
         givenPlayer([1,2])
@@ -27,7 +27,7 @@ thatRobbersDoNotHauntMaskPlayers()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼(«  ⊳ ☼
+        ☼»)  w ☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         1)

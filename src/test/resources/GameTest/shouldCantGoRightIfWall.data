@@ -41,7 +41,7 @@ shouldCantGoRightIfWall()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼]  ☼
+        ☼U  ☼
         ☼ ##☼
         ☼☼☼☼☼,
         0)
@@ -50,7 +50,7 @@ shouldCantGoRightIfWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼⍃##☼
+        ☼E##☼
         ☼☼☼☼☼,
         0)
     hero(0).right()
@@ -59,7 +59,7 @@ shouldCantGoRightIfWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼   ☼
-        ☼⍃##☼
+        ☼E##☼
         ☼☼☼☼☼,
         0)
 

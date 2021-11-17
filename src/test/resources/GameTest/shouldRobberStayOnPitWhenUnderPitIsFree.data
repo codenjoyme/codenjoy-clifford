@@ -4,7 +4,7 @@ before()
 shouldRobberStayOnPitWhenUnderPitIsFree()
     givenFl(
         ☼☼☼☼☼☼☼
-        ☼» ◄  ☼
+        ☼( ◄  ☼
         ☼#####☼
         ☼     ☼
         ☼     ☼
@@ -17,7 +17,7 @@ shouldRobberStayOnPitWhenUnderPitIsFree()
     tick()
     assertF(
         ☼☼☼☼☼☼☼
-        ☼» ◄  ☼
+        ☼( ◄  ☼
         ☼#*###☼
         ☼     ☼
         ☼     ☼
@@ -27,7 +27,7 @@ shouldRobberStayOnPitWhenUnderPitIsFree()
     tick()
     assertF(
         ☼☼☼☼☼☼☼
-        ☼ ‹◄  ☼
+        ☼ x◄  ☼
         ☼# ###☼
         ☼     ☼
         ☼     ☼
@@ -38,7 +38,7 @@ shouldRobberStayOnPitWhenUnderPitIsFree()
     assertF(
         ☼☼☼☼☼☼☼
         ☼  ◄  ☼
-        ☼#⍇###☼
+        ☼#y###☼
         ☼     ☼
         ☼     ☼
         ☼     ☼
@@ -57,7 +57,7 @@ shouldRobberStayOnPitWhenUnderPitIsFree()
     assertF(
         ☼☼☼☼☼☼☼
         ☼  ◄  ☼
-        ☼#⍇###☼
+        ☼#y###☼
         ☼     ☼
         ☼     ☼
         ☼     ☼
@@ -66,7 +66,7 @@ shouldRobberStayOnPitWhenUnderPitIsFree()
     tick()
     assertF(
         ☼☼☼☼☼☼☼
-        ☼ »◄  ☼
+        ☼ (◄  ☼
         ☼#####☼
         ☼     ☼
         ☼     ☼

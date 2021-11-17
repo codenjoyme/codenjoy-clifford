@@ -47,21 +47,21 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼☼☼☼☼☼\n");
 
         assertF("☼☼☼☼☼☼\n" +
-                "☼► ( ☼\n" +
+                "☼► » ☼\n" +
                 "☼####☼\n" +
-                "☼ ( $☼\n" +
+                "☼ » $☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
         assertF("☼☼☼☼☼☼\n" +
-                "☼( ► ☼\n" +
+                "☼» ► ☼\n" +
                 "☼####☼\n" +
-                "☼ ( $☼\n" +
+                "☼ » $☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 1);
 
         assertF("☼☼☼☼☼☼\n" +
-                "☼( ( ☼\n" +
+                "☼» » ☼\n" +
                 "☼####☼\n" +
                 "☼ ► $☼\n" +
                 "☼####☼\n" +
@@ -74,21 +74,21 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼\n" +
-                "☼ ► (☼\n" +
+                "☼ ► »☼\n" +
                 "☼####☼\n" +
-                "☼)  $☼\n" +
+                "☼«  $☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
         assertF("☼☼☼☼☼☼\n" +
-                "☼ ( ►☼\n" +
+                "☼ » ►☼\n" +
                 "☼####☼\n" +
-                "☼)  $☼\n" +
+                "☼«  $☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 1);
 
         assertF("☼☼☼☼☼☼\n" +
-                "☼ ( (☼\n" +
+                "☼ » »☼\n" +
                 "☼####☼\n" +
                 "☼◄  $☼\n" +
                 "☼####☼\n" +
@@ -102,12 +102,12 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼ ►  ☼\n" +
                 "☼##*#☼\n" +
-                "☼)  $☼\n" +
+                "☼«  $☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
         assertF("☼☼☼☼☼☼\n" +
-                "☼ (  ☼\n" +
+                "☼ »  ☼\n" +
                 "☼##*#☼\n" +
                 "☼◄  $☼\n" +
                 "☼####☼\n" +
@@ -115,9 +115,9 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         try {
             assertF("☼☼☼☼☼☼\n" +
-                    "☼ (  ☼\n" +
+                    "☼ »  ☼\n" +
                     "☼##*#☼\n" +
-                    "☼)  $☼\n" +
+                    "☼«  $☼\n" +
                     "☼####☼\n" +
                     "☼☼☼☼☼☼\n", 1);
         } catch (IllegalStateException e) {
@@ -133,14 +133,14 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼## #☼\n" +
-                "☼) ►$☼\n" +
+                "☼« ►$☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼## #☼\n" +
-                "☼◄ ($☼\n" +
+                "☼◄ »$☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 2);
 
@@ -153,14 +153,14 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼## #☼\n" +
-                "☼ ⊐◄$☼\n" +
+                "☼ F◄$☼\n" +
                 "☼#*##☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼## #☼\n" +
-                "☼ ])$☼\n" +
+                "☼ U«$☼\n" +
                 "☼#*##☼\n" +
                 "☼☼☼☼☼☼\n", 2);
 
@@ -174,14 +174,14 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼    ☼\n" +
                 "☼####☼\n" +
                 "☼  ◄$☼\n" +
-                "☼#Z##☼\n" +
+                "☼#C##☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼####☼\n" +
-                "☼  )$☼\n" +
-                "☼#Ѡ##☼\n" +
+                "☼  «$☼\n" +
+                "☼#O##☼\n" +
                 "☼☼☼☼☼☼\n", 2);
 
         verifyAllEvents(
@@ -197,7 +197,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼\n" +
-                "☼(   ☼\n" +
+                "☼»   ☼\n" +
                 "☼####☼\n" +
                 "☼  ◄$☼\n" +
                 "☼####☼\n" +
@@ -206,7 +206,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼►   ☼\n" +
                 "☼####☼\n" +
-                "☼  )$☼\n" +
+                "☼  «$☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 2);
 
@@ -217,7 +217,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼\n" +
-                "☼(   ☼\n" +
+                "☼»   ☼\n" +
                 "☼####☼\n" +
                 "☼$  ►☼\n" +
                 "☼####☼\n" +
@@ -226,7 +226,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼►   ☼\n" +
                 "☼####☼\n" +
-                "☼$  (☼\n" +
+                "☼$  »☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 2);
 
@@ -243,7 +243,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼► » ► ☼\n" +
+                "☼► ( ► ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
@@ -258,7 +258,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼(«  ⊳ ☼\n" +
+                "☼»)  w ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
     }
@@ -287,7 +287,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ ⊳    ☼\n" +
+                "☼ w    ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
 
@@ -296,7 +296,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ ⊳    ☼\n" +
+                "☼ w    ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
@@ -324,7 +324,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼⊳(    ☼\n" +
+                "☼w»    ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
 
@@ -333,7 +333,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼⋉►    ☼\n" +
+                "☼z►    ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
@@ -350,7 +350,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ ⊳    ☼\n" +
+                "☼ w    ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
 
@@ -359,7 +359,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ Ѡ    ☼\n" +
+                "☼ O    ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
@@ -373,7 +373,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ ⊳    ☼\n" +
+                "☼ w    ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
 
@@ -382,7 +382,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ Ѡ    ☼\n" +
+                "☼ O    ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
     }
@@ -409,7 +409,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼⊳❪    ☼\n" +
+                "☼wQ    ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
 
@@ -418,7 +418,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼⧑►    ☼\n" +
+                "☼q►    ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
@@ -435,7 +435,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ ⊳    ☼\n" +
+                "☼ w    ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
 
@@ -444,7 +444,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ Ѡ    ☼\n" +
+                "☼ O    ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
@@ -458,7 +458,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ ⊳    ☼\n" +
+                "☼ w    ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
 
@@ -467,7 +467,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ Ѡ    ☼\n" +
+                "☼ O    ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
     }
@@ -490,8 +490,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼⊅     ☼\n" +
-                "☼(     ☼\n" +
+                "☼u     ☼\n" +
+                "☼»     ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
 
@@ -499,7 +499,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼⋣     ☼\n" +
+                "☼f     ☼\n" +
                 "☼►     ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
@@ -515,8 +515,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼  S   ☼\n" +
-                "☼⊳     ☼\n" +
+                "☼  m   ☼\n" +
+                "☼w     ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
 
@@ -524,8 +524,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼  S   ☼\n" +
-                "☼Ѡ     ☼\n" +
+                "☼  m   ☼\n" +
+                "☼O     ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
@@ -538,8 +538,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼  S   ☼\n" +
-                "☼⊳     ☼\n" +
+                "☼  m   ☼\n" +
+                "☼w     ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
 
@@ -547,8 +547,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼  S   ☼\n" +
-                "☼Ѡ     ☼\n" +
+                "☼  m   ☼\n" +
+                "☼O     ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
     }
@@ -572,7 +572,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼  ►   ☼\n" +
-                "☼ ⋉H   ☼\n" +
+                "☼ zH   ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
 
@@ -580,8 +580,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼  (   ☼\n" +
-                "☼ ⊳H   ☼\n" +
+                "☼  »   ☼\n" +
+                "☼ wH   ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
@@ -593,7 +593,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼  ►   ☼\n" +
-                "☼  ⋕   ☼\n" +
+                "☼  d   ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
 
@@ -601,8 +601,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼  (   ☼\n" +
-                "☼  ⍬   ☼\n" +
+                "☼  »   ☼\n" +
+                "☼  a   ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
@@ -617,7 +617,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼  Ѡ   ☼\n" +
+                "☼  O   ☼\n" +
                 "☼  H   ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
@@ -626,7 +626,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼  ⊳   ☼\n" +
+                "☼  w   ☼\n" +
                 "☼  H   ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
@@ -640,7 +640,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼  Ѡ   ☼\n" +
+                "☼  O   ☼\n" +
                 "☼  H   ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
@@ -649,7 +649,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼  ⊳   ☼\n" +
+                "☼  w   ☼\n" +
                 "☼  H   ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
@@ -668,7 +668,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
-                "☼►(  ☼\n" +
+                "☼►»  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
@@ -678,7 +678,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
-                "☼►(  ☼\n" +
+                "☼►»  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
@@ -688,7 +688,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
-                "☼►)  ☼\n" +
+                "☼►«  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
     }
@@ -703,7 +703,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼☼☼☼☼☼\n");
 
         assertF("☼☼☼☼☼☼\n" +
-                "☼ (  ☼\n" +
+                "☼ »  ☼\n" +
                 "☼ H  ☼\n" +
                 "☼►H  ☼\n" +
                 "☼####☼\n" +
@@ -715,8 +715,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼ U  ☼\n" +
-                "☼ Y  ☼\n" +
+                "☼ D  ☼\n" +
+                "☼ A  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 1);
 
@@ -726,8 +726,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼ U  ☼\n" +
-                "☼ Y  ☼\n" +
+                "☼ D  ☼\n" +
+                "☼ A  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 1);
 
@@ -737,8 +737,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼ U  ☼\n" +
-                "☼ Y  ☼\n" +
+                "☼ D  ☼\n" +
+                "☼ A  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 1);
     }
@@ -754,7 +754,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼►~~(☼\n" +
+                "☼►~~»☼\n" +
                 "☼#  #☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
@@ -765,14 +765,14 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼ {Э ☼\n" +
+                "☼ IJ ☼\n" +
                 "☼#  #☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼ Э{ ☼\n" +
+                "☼ JI ☼\n" +
                 "☼#  #☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 1);
@@ -783,7 +783,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼ {Э ☼\n" +
+                "☼ IJ ☼\n" +
                 "☼#  #☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
@@ -794,7 +794,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼ {Э ☼\n" +
+                "☼ IJ ☼\n" +
                 "☼#  #☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
@@ -813,7 +813,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
-                "☼►(  ☼\n" +
+                "☼►»  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
@@ -825,7 +825,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
-                "☼►)  ☼\n" +
+                "☼►«  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
     }
@@ -841,9 +841,9 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼☼☼☼☼☼\n");
 
         assertF("☼☼☼☼☼☼\n" +
-                "☼ ]  ☼\n" +
+                "☼ U  ☼\n" +
                 "☼    ☼\n" +
-                "☼ (  ☼\n" +
+                "☼ »  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
@@ -852,7 +852,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ ►  ☼\n" +
-                "☼ (  ☼\n" +
+                "☼ »  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
@@ -861,7 +861,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ ►  ☼\n" +
-                "☼ (  ☼\n" +
+                "☼ »  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
     }
@@ -880,9 +880,9 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼ ]  ☼\n" +
+                "☼ U  ☼\n" +
                 "☼    ☼\n" +
-                "☼ Э  ☼\n" +
+                "☼ J  ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
         tick();
@@ -891,7 +891,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼    ☼\n" +
                 "☼    ☼\n" +
                 "☼ ►  ☼\n" +
-                "☼ Э  ☼\n" +
+                "☼ J  ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
         hero().down();
@@ -901,7 +901,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼    ☼\n" +
                 "☼    ☼\n" +
                 "☼ ►  ☼\n" +
-                "☼ Э  ☼\n" +
+                "☼ J  ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
     }
 
@@ -915,8 +915,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
-                "☼ ]  ☼\n" +
-                "☼)~  ☼\n" +
+                "☼ U  ☼\n" +
+                "☼«~  ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
         tick();
@@ -925,7 +925,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼    ☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
-                "☼){  ☼\n" +
+                "☼«I  ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
         hero(1).right();  // нельзя входить в друг в друга :) даже на трубе
@@ -935,7 +935,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼    ☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
-                "☼({  ☼\n" +
+                "☼»I  ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
         hero(0).left();  // нельзя входить в друг в друга :) даже на трубе
@@ -945,7 +945,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼    ☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
-                "☼({  ☼\n" +
+                "☼»I  ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
     }
 
@@ -963,7 +963,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼~{Э~☼\n" +
+                "☼~IJ~☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
@@ -973,7 +973,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼~{Э~☼\n" +
+                "☼~IJ~☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
@@ -983,7 +983,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼~{Э~☼\n" +
+                "☼~IJ~☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
@@ -994,7 +994,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼~{Э~☼\n" +
+                "☼~IJ~☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
@@ -1007,7 +1007,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ ►  ☼\n" +
-                "☼ (  ☼\n" +
+                "☼ »  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
@@ -1016,8 +1016,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼]   ☼\n" +
-                "☼ (  ☼\n" +
+                "☼U   ☼\n" +
+                "☼ »  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
@@ -1026,7 +1026,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
-                "☼◄(  ☼\n" +
+                "☼◄»  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
     }
@@ -1038,7 +1038,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ ►  ☼\n" +
-                "☼ (  ☼\n" +
+                "☼ »  ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
@@ -1047,8 +1047,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
-                "☼ ]  ☼\n" +
-                "☼  ( ☼\n" +
+                "☼ U  ☼\n" +
+                "☼  » ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
@@ -1057,7 +1057,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
-                "☼ ►( ☼\n" +
+                "☼ ►» ☼\n" +
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
     }
@@ -1096,7 +1096,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼Ѡ Z   ☼\n" +
+                "☼O C   ☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -1104,7 +1104,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼Z Ѡ   ☼\n" +
+                "☼C O   ☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
         // when
@@ -1122,7 +1122,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼Ѡ Z   ☼\n" +
+                "☼O C   ☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -1130,7 +1130,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼Z Ѡ   ☼\n" +
+                "☼C O   ☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
         // when
@@ -1150,7 +1150,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼► ( ( ☼\n" +
+                "☼► » » ☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -1158,7 +1158,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼( ► ( ☼\n" +
+                "☼» ► » ☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -1166,7 +1166,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼( ( ► ☼\n" +
+                "☼» » ► ☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 2);
 
         // when
@@ -1183,7 +1183,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ ► ( (☼\n" +
+                "☼ ► » »☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -1192,7 +1192,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ ( ► (☼\n" +
+                "☼ » ► »☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -1201,7 +1201,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼ ( ( ►☼\n" +
+                "☼ » » ►☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 2);
     }
 
@@ -1251,59 +1251,59 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "listener(7) => [START_ROUND, [Round 1]]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼(      (☼\n" +
+                "☼»      »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼(  HH  (☼\n" +
+                "☼»  HH  »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼( ►HH( (☼\n" +
+                "☼» ►HH» »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         crack(2, 3);
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼(      (☼\n" +
+                "☼»      »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼(  HH  (☼\n" +
+                "☼»  HH  »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼ ⊐◄HH(⊐ ☼\n" +
+                "☼ F◄HH»F ☼\n" +
                 "☼#*#HH#*#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         goUp();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼(      (☼\n" +
+                "☼»      »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼( ◄HH( (☼\n" +
+                "☼» ◄HH» »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         crack(4, 5);
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼(      (☼\n" +
+                "☼»      »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼ ⊐◄HH(⊐ ☼\n" +
+                "☼ F◄HH»F ☼\n" +
                 "☼#*#HH#*#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         goUp();
 
         assertScores("");
-        
+
         verifyAllEvents("");
 
         tick();
@@ -1311,7 +1311,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=1\n" +
                 "hero(1)=1");
-        
+
         verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
@@ -1319,24 +1319,24 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "listener(3) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼( ◄  ( (☼\n" +
+                "☼» ◄  » »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#Z#HH#Z#☼\n" +
+                "☼#C#HH#C#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼( ◄  ( (☼\n" +
+                "☼» ◄  » »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -1345,11 +1345,11 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         crack(6, 7);
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼ ⊐◄  (⊐ ☼\n" +
+                "☼ F◄  »F ☼\n" +
                 "☼#*#HH#*#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -1358,11 +1358,11 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  (  ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼  ◄  »  ☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -1374,7 +1374,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=1\n" +
                 "hero(1)=1");
-        
+
         verifyAllEvents("");
 
         tick();
@@ -1382,7 +1382,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=2\n" +
                 "hero(1)=2");
-        
+
         verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
@@ -1391,11 +1391,11 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  (  ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼  ◄  »  ☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#Z#HH#Z#☼\n" +
+                "☼#C#HH#C#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -1404,8 +1404,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  (  ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼  ◄  »  ☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -1424,7 +1424,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=2\n" +
                 "hero(1)=2");
-        
+
         verifyAllEvents("");
 
         tick();
@@ -1432,7 +1432,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=3");
-        
+
         verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
@@ -1440,8 +1440,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "listener(7) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  (  ☼\n" +
-                "☼#Z#HH#Z#☼\n" +
+                "☼  ◄  »  ☼\n" +
+                "☼#C#HH#C#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -1455,11 +1455,11 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=3");
-        
+
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  (  ☼\n" +
+                "☼  ◄  »  ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
@@ -1472,7 +1472,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  (  ☼\n" +
+                "☼  ◄  »  ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
@@ -1487,13 +1487,13 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=3");
-        
+
         verifyAllEvents(
                 "listener(0) => [WIN_ROUND]\n" +
                 "listener(1) => [WIN_ROUND]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  Ѡ  Z  ☼\n" +
+                "☼  O  C  ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
@@ -1514,7 +1514,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertScores("");
         assertEquals(2, field().countPlayers());
-        
+
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
@@ -1524,7 +1524,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼Ѡ  HH  Z☼\n" +
+                "☼O  HH  C☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
@@ -1532,7 +1532,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertScores("");
         assertEquals(2, field().countPlayers());
-       
+
         verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 2]]\n" +
                 "listener(1) => [START_ROUND, [Round 2]]\n");
@@ -1544,7 +1544,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼►  HH  (☼\n" +
+                "☼►  HH  »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
     }
@@ -1585,7 +1585,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertScores("");
-        
+
         verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 1]]\n" +
                 "listener(1) => [START_ROUND, [Round 1]]\n" +
@@ -1597,59 +1597,59 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "listener(7) => [START_ROUND, [Round 1]]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼(      (☼\n" +
+                "☼»      »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼(  HH  (☼\n" +
+                "☼»  HH  »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼( ►HH( (☼\n" +
+                "☼» ►HH» »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         crack(2, 3);
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼(      (☼\n" +
+                "☼»      »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼(  HH  (☼\n" +
+                "☼»  HH  »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼ ⊐◄HH(⊐ ☼\n" +
+                "☼ F◄HH»F ☼\n" +
                 "☼#*#HH#*#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         goUp();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼(      (☼\n" +
+                "☼»      »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼( ◄HH( (☼\n" +
+                "☼» ◄HH» »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         crack(4, 5);
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼(      (☼\n" +
+                "☼»      »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼ ⊐◄HH(⊐ ☼\n" +
+                "☼ F◄HH»F ☼\n" +
                 "☼#*#HH#*#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         goUp();
 
         assertScores("");
-       
+
         verifyAllEvents("");
 
         tick();
@@ -1657,7 +1657,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=1\n" +
                 "hero(1)=1");
-       
+
         verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
@@ -1665,24 +1665,24 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "listener(3) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼( ◄  ( (☼\n" +
+                "☼» ◄  » »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#Z#HH#Z#☼\n" +
+                "☼#C#HH#C#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼( ◄  ( (☼\n" +
+                "☼» ◄  » »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -1691,11 +1691,11 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         crack(6, -1);
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼ ⊐◄  ( (☼\n" +
+                "☼ F◄  » »☼\n" +
                 "☼#*#HH#*#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -1704,11 +1704,11 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  ( (☼\n" +
-                "☼#ᗉ#HH# #☼\n" +
+                "☼  ◄  » »☼\n" +
+                "☼#K#HH# #☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -1720,7 +1720,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=1\n" +
                 "hero(1)=1");
-      
+
         verifyAllEvents("");
 
         tick();
@@ -1728,7 +1728,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=2\n" +
                 "hero(1)=2");
-     
+
         verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
@@ -1736,11 +1736,11 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "listener(5) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  ( (☼\n" +
-                "☼#ᗉ#HH# #☼\n" +
+                "☼  ◄  » »☼\n" +
+                "☼#K#HH# #☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#Z#HH#Z#☼\n" +
+                "☼#C#HH#C#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -1749,8 +1749,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  ( (☼\n" +
-                "☼#ᗉ#HH# #☼\n" +
+                "☼  ◄  » »☼\n" +
+                "☼#K#HH# #☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -1769,7 +1769,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=2\n" +
                 "hero(1)=2");
-      
+
         verifyAllEvents("");
 
         tick();
@@ -1777,14 +1777,14 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=2");
-     
+
         verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(6) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  ( (☼\n" +
-                "☼#Z#HH###☼\n" +
+                "☼  ◄  » »☼\n" +
+                "☼#C#HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -1798,11 +1798,11 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=2");
-      
+
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  ( (☼\n" +
+                "☼  ◄  » »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
@@ -1830,7 +1830,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "listener(7) => [[Time is over]]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  Ѡ  Z Z☼\n" +
+                "☼  O  C C☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
@@ -1871,17 +1871,17 @@ public class MultiplayerTest extends AbstractGameCheckTest {
 
         assertScores("");
         assertEquals(8, field().countPlayers());
-     
+
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼        ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼ZZ HH   ☼\n" +
+                "☼CC HH   ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼ѠZZHHZZZ☼\n" +
+                "☼OCCHHCCC☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
@@ -1904,10 +1904,10 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼        ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼(( HH   ☼\n" +
+                "☼»» HH   ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼►((HH(((☼\n" +
+                "☼►»»HH»»»☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
     }
@@ -1948,7 +1948,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertScores("");
-     
+
         verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 1]]\n" +
                 "listener(1) => [START_ROUND, [Round 1]]\n" +
@@ -1960,59 +1960,59 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "listener(7) => [START_ROUND, [Round 1]]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼(      (☼\n" +
+                "☼»      »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼(  HH  (☼\n" +
+                "☼»  HH  »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼( ►HH( (☼\n" +
+                "☼» ►HH» »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         crack(2, 3);
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼(      (☼\n" +
+                "☼»      »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼(  HH  (☼\n" +
+                "☼»  HH  »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼ ⊐◄HH(⊐ ☼\n" +
+                "☼ F◄HH»F ☼\n" +
                 "☼#*#HH#*#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         goUp();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼(      (☼\n" +
+                "☼»      »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼( ◄HH( (☼\n" +
+                "☼» ◄HH» »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         crack(4, 5);
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼(      (☼\n" +
+                "☼»      »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼ ⊐◄HH(⊐ ☼\n" +
+                "☼ F◄HH»F ☼\n" +
                 "☼#*#HH#*#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         goUp();
 
         assertScores("");
-      
+
         verifyAllEvents("");
 
         tick();
@@ -2020,7 +2020,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=1\n" +
                 "hero(1)=1");
-        
+
         verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
@@ -2028,24 +2028,24 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "listener(3) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼( ◄  ( (☼\n" +
+                "☼» ◄  » »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#Z#HH#Z#☼\n" +
+                "☼#C#HH#C#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼( ◄  ( (☼\n" +
+                "☼» ◄  » »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -2054,11 +2054,11 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         crack(6, -1);
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼ ⊐◄  ( (☼\n" +
+                "☼ F◄  » »☼\n" +
                 "☼#*#HH#*#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -2067,11 +2067,11 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  ( (☼\n" +
-                "☼#ᗉ#HH# #☼\n" +
+                "☼  ◄  » »☼\n" +
+                "☼#K#HH# #☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -2083,7 +2083,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=1\n" +
                 "hero(1)=1");
-       
+
         verifyAllEvents("");
 
         tick();
@@ -2091,7 +2091,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=2\n" +
                 "hero(1)=2");
-        
+
         verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
@@ -2099,11 +2099,11 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "listener(5) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  ( (☼\n" +
-                "☼#ᗉ#HH# #☼\n" +
+                "☼  ◄  » »☼\n" +
+                "☼#K#HH# #☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#Z#HH#Z#☼\n" +
+                "☼#C#HH#C#☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -2112,8 +2112,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  ( (☼\n" +
-                "☼#ᗉ#HH# #☼\n" +
+                "☼  ◄  » »☼\n" +
+                "☼#K#HH# #☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -2132,7 +2132,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=2\n" +
                 "hero(1)=2");
-       
+
         verifyAllEvents("");
 
         tick();
@@ -2140,14 +2140,14 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=2");
-        
+
         verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(6) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  ( (☼\n" +
-                "☼#Z#HH###☼\n" +
+                "☼  ◄  » »☼\n" +
+                "☼#C#HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
@@ -2161,11 +2161,11 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=2");
-      
+
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼  ◄  ( (☼\n" +
+                "☼  ◄  » »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
@@ -2188,7 +2188,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertScores("");
-      
+
         verifyAllEvents(
                 "listener(0) => [WIN_ROUND]\n" +
                 "listener(1) => [[Time is over]]\n" +
@@ -2201,14 +2201,14 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼  ѠHHZ Z☼\n" +
+                "☼  OHHC C☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         tick();
 
         assertScores("");
-      
+
         verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 2]]\n" +
                 "listener(1) => [START_ROUND, [Round 2]]\n" +
@@ -2221,14 +2221,14 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼  ►HH( (☼\n" +
+                "☼  ►HH» »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         tick();
 
         assertScores("");
-       
+
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
@@ -2238,7 +2238,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼  ►HH( (☼\n" +
+                "☼  ►HH» »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
     }
@@ -2271,7 +2271,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertScores("");
-        
+
         verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 1]]\n" +
                 "listener(1) => [START_ROUND, [Round 1]]\n" +
@@ -2285,7 +2285,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼( ►HH❪ (☼\n" +
+                "☼» ►HHQ »☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
@@ -2298,7 +2298,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼ ⊐◄HH❪⊐ ☼\n" +
+                "☼ F◄HHQF ☼\n" +
                 "☼#*#HH#*#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
@@ -2308,11 +2308,11 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼        ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼  ◄HH❪  ☼\n" +
+                "☼  ◄HHQ  ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         tick();
@@ -2321,17 +2321,17 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼        ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼  ◄HH❪  ☼\n" +
+                "☼  ◄HHQ  ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
                 "☼   HH   ☼\n" +
-                "☼#ᗉ#HH#ᗉ#☼\n" +
+                "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         goUp();
 
         assertScores("");
-        
+
         verifyAllEvents("");
 
         tick();
@@ -2339,7 +2339,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         assertScores(
                 "hero(0)=1\n" +
                 "hero(1)=10");
-        
+
         verifyAllEvents(
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_ENEMY]\n" +

@@ -17,7 +17,7 @@ shouldCantWalkThroughWallUp()
         ☼☼☼☼☼
         ☼☼☼☼☼
         ☼ H ☼
-        ☼ Y ☼
+        ☼ A ☼
         ☼☼☼☼☼,
         0)
     hero(0).up()
@@ -25,7 +25,7 @@ shouldCantWalkThroughWallUp()
     assertF(
         ☼☼☼☼☼
         ☼☼☼☼☼
-        ☼ Y ☼
+        ☼ A ☼
         ☼ H ☼
         ☼☼☼☼☼,
         0)
@@ -34,7 +34,7 @@ shouldCantWalkThroughWallUp()
     assertF(
         ☼☼☼☼☼
         ☼☼☼☼☼
-        ☼ Y ☼
+        ☼ A ☼
         ☼ H ☼
         ☼☼☼☼☼,
         0)

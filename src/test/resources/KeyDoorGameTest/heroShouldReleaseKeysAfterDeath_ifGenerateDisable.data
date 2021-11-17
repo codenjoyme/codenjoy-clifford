@@ -8,7 +8,7 @@ heroShouldReleaseKeysAfterDeath_ifGenerateDisable()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼ ►✦✼⍟ ☼
+        ☼ ►+-! ☼
         ☼######☼
         ☼      ☼
         ☼☼☼☼☼☼☼☼)
@@ -23,7 +23,7 @@ heroShouldReleaseKeysAfterDeath_ifGenerateDisable()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼  ►✼⍟ ☼
+        ☼  ►-! ☼
         ☼######☼
         ☼      ☼
         ☼☼☼☼☼☼☼☼,
@@ -36,7 +36,7 @@ heroShouldReleaseKeysAfterDeath_ifGenerateDisable()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼   ►⍟ ☼
+        ☼   ►! ☼
         ☼######☼
         ☼      ☼
         ☼☼☼☼☼☼☼☼,
@@ -62,9 +62,9 @@ heroShouldReleaseKeysAfterDeath_ifGenerateDisable()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼✦✼⍟   ☼
+        ☼+-!   ☼
         ☼      ☼
-        ☼    Ѡ ☼
+        ☼    O ☼
         ☼######☼
         ☼      ☼
         ☼☼☼☼☼☼☼☼,

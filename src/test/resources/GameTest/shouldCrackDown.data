@@ -16,7 +16,7 @@ shouldCrackDown()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼  { ☼
+        ☼  I ☼
         ☼    ☼
         ☼####☼
         ☼☼☼☼☼☼,
@@ -27,7 +27,7 @@ shouldCrackDown()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼  { ☼
+        ☼  I ☼
         ☼    ☼
         ☼####☼
         ☼☼☼☼☼☼,

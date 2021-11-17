@@ -4,9 +4,9 @@ before()
 shouldRobberStayOnOtherAtThePipe()
     givenFl(
         ☼☼☼☼☼☼☼☼
-        ☼  «   ☼
+        ☼  )   ☼
         ☼      ☼
-        ☼  «   ☼
+        ☼  )   ☼
         ☼  ~   ☼
         ☼     ◄☼
         ☼######☼
@@ -18,9 +18,9 @@ shouldRobberStayOnOtherAtThePipe()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼  ‹   ☼
+        ☼  x   ☼
         ☼      ☼
-        ☼  <   ☼
+        ☼  Y   ☼
         ☼     ◄☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
@@ -32,8 +32,8 @@ shouldRobberStayOnOtherAtThePipe()
         ☼☼☼☼☼☼☼☼
         ☼      ☼
         ☼      ☼
-        ☼  «   ☼
-        ☼  <   ☼
+        ☼  )   ☼
+        ☼  Y   ☼
         ☼     ◄☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
@@ -44,7 +44,7 @@ shouldRobberStayOnOtherAtThePipe()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼  <   ☼
+        ☼  Y   ☼
         ☼     ◄☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
@@ -56,8 +56,8 @@ shouldRobberStayOnOtherAtThePipe()
         ☼      ☼
         ☼      ☼
         ☼      ☼
-        ☼  <   ☼
-        ☼ «   ◄☼
+        ☼  Y   ☼
+        ☼ )   ◄☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)

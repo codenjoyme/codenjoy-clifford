@@ -5,7 +5,7 @@ shouldRobberStopWhenWallLeft()
     givenFl(
         ☼☼☼☼►
         ☼   ☼
-        ☼«  ☼
+        ☼)  ☼
         ☼###☼
         ☼☼☼☼☼)
         givenPlayer([4,4])
@@ -15,7 +15,7 @@ shouldRobberStopWhenWallLeft()
     assertF(
         ☼☼☼☼►
         ☼   ☼
-        ☼«  ☼
+        ☼)  ☼
         ☼###☼
         ☼☼☼☼☼,
         0)

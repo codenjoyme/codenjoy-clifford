@@ -5,7 +5,7 @@ shouldIWalkOnRobberInPitAndGetClue()
     givenFl(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼  $~~«☼
+        ☼  $~~)☼
         ☼  $  #☼
         ☼  $   ☼
         ☼  $  ◄☼
@@ -18,7 +18,7 @@ shouldIWalkOnRobberInPitAndGetClue()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼  $~< ☼
+        ☼  $~Y ☼
         ☼  $  #☼
         ☼  $   ☼
         ☼  $  ◄☼
@@ -29,7 +29,7 @@ shouldIWalkOnRobberInPitAndGetClue()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼  $<~ ☼
+        ☼  $Y~ ☼
         ☼  $  #☼
         ☼  $   ☼
         ☼  $  ◄☼
@@ -40,7 +40,7 @@ shouldIWalkOnRobberInPitAndGetClue()
     assertF(
         ☼☼☼☼☼☼☼☼
         ☼      ☼
-        ☼  ‹~~ ☼
+        ☼  x~~ ☼
         ☼  $  #☼
         ☼  $   ☼
         ☼  $  ◄☼
@@ -52,7 +52,7 @@ shouldIWalkOnRobberInPitAndGetClue()
         ☼☼☼☼☼☼☼☼
         ☼      ☼
         ☼   ~~ ☼
-        ☼  ‹  #☼
+        ☼  x  #☼
         ☼  $   ☼
         ☼  $  ◄☼
         ☼######☼
@@ -64,7 +64,7 @@ shouldIWalkOnRobberInPitAndGetClue()
         ☼      ☼
         ☼   ~~ ☼
         ☼  $  #☼
-        ☼  ‹   ☼
+        ☼  x   ☼
         ☼  $  ◄☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
@@ -76,7 +76,7 @@ shouldIWalkOnRobberInPitAndGetClue()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  «  ◄☼
+        ☼  )  ◄☼
         ☼######☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -88,7 +88,7 @@ shouldIWalkOnRobberInPitAndGetClue()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  $» ◄☼
+        ☼  $( ◄☼
         ☼####*#☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -99,7 +99,7 @@ shouldIWalkOnRobberInPitAndGetClue()
         ☼   ~~ ☼
         ☼  $  #☼
         ☼  $   ☼
-        ☼  $ ‹◄☼
+        ☼  $ x◄☼
         ☼#### #☼
         ☼☼☼☼☼☼☼☼,
         0)
@@ -111,7 +111,7 @@ shouldIWalkOnRobberInPitAndGetClue()
         ☼  $  #☼
         ☼  $   ☼
         ☼  $ $◄☼
-        ☼####⍇#☼
+        ☼####y#☼
         ☼☼☼☼☼☼☼☼,
         0)
     hero(0).left()
@@ -124,7 +124,7 @@ shouldIWalkOnRobberInPitAndGetClue()
         ☼  $  #☼
         ☼  $   ☼
         ☼  $ ◄ ☼
-        ☼####⍇#☼
+        ☼####y#☼
         ☼☼☼☼☼☼☼☼,
         0)
     events().getEvents() = [GET_CLUE_KNIFE(1)]
@@ -137,7 +137,7 @@ shouldIWalkOnRobberInPitAndGetClue()
         ☼  $  #☼
         ☼  $   ☼
         ☼  $◄  ☼
-        ☼####⍇#☼
+        ☼####y#☼
         ☼☼☼☼☼☼☼☼,
         0)
     hero(0).left()
@@ -151,7 +151,7 @@ shouldIWalkOnRobberInPitAndGetClue()
         ☼  $  #☼
         ☼  $   ☼
         ☼  ◄   ☼
-        ☼####⍇#☼
+        ☼####y#☼
         ☼☼☼☼☼☼☼☼,
         0)
 

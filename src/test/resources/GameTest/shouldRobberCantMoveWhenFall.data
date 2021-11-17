@@ -4,7 +4,7 @@ before()
 shouldRobberCantMoveWhenFall()
     givenFl(
         ☼☼☼☼☼☼►
-        ☼  »  ☼
+        ☼  (  ☼
         ☼     ☼
         ☼     ☼
         ☼     ☼
@@ -17,7 +17,7 @@ shouldRobberCantMoveWhenFall()
     assertF(
         ☼☼☼☼☼☼►
         ☼     ☼
-        ☼  ‹  ☼
+        ☼  x  ☼
         ☼     ☼
         ☼     ☼
         ☼## ##☼
@@ -28,7 +28,7 @@ shouldRobberCantMoveWhenFall()
         ☼☼☼☼☼☼►
         ☼     ☼
         ☼     ☼
-        ☼  ‹  ☼
+        ☼  x  ☼
         ☼     ☼
         ☼## ##☼
         ☼☼☼☼☼☼☼,
@@ -39,7 +39,7 @@ shouldRobberCantMoveWhenFall()
         ☼     ☼
         ☼     ☼
         ☼     ☼
-        ☼  ‹  ☼
+        ☼  x  ☼
         ☼## ##☼
         ☼☼☼☼☼☼☼,
         0)
@@ -50,7 +50,7 @@ shouldRobberCantMoveWhenFall()
         ☼     ☼
         ☼     ☼
         ☼     ☼
-        ☼##»##☼
+        ☼##(##☼
         ☼☼☼☼☼☼☼,
         0)
 

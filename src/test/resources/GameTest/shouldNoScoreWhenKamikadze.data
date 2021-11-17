@@ -18,7 +18,7 @@ shouldNoScoreWhenKamikadze()
     assertF(
         ☼☼☼☼
         ☼  ☼
-        ☼⍃#☼
+        ☼E#☼
         ☼☼☼☼,
         0)
     tick()
@@ -34,14 +34,14 @@ shouldNoScoreWhenKamikadze()
     assertF(
         ☼☼☼☼
         ☼  ☼
-        ☼Ѡ#☼
+        ☼O#☼
         ☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼
         ☼  ☼
-        ☼Ѡ#☼
+        ☼O#☼
         ☼☼☼☼,
         0)
     events().getEvents() = [HERO_DIE, SUICIDE]

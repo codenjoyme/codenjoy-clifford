@@ -20,7 +20,7 @@ shouldJumpFromLadderDown()
         ☼☼☼☼☼☼
         ☼    ☼
         ☼ H##☼
-        ☼#Y  ☼
+        ☼#A  ☼
         ☼    ☼
         ☼☼☼☼☼☼,
         0)
@@ -29,7 +29,7 @@ shouldJumpFromLadderDown()
         ☼☼☼☼☼☼
         ☼    ☼
         ☼ H##☼
-        ☼#Y  ☼
+        ☼#A  ☼
         ☼    ☼
         ☼☼☼☼☼☼,
         0)
@@ -39,7 +39,7 @@ shouldJumpFromLadderDown()
         ☼☼☼☼☼☼
         ☼    ☼
         ☼ H##☼
-        ☼#H] ☼
+        ☼#HU ☼
         ☼    ☼
         ☼☼☼☼☼☼,
         0)

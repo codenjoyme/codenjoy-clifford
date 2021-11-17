@@ -43,7 +43,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
     public void shouldRobberGoToHero() {
         settings().integer(ROBBERS_COUNT, 1);
         givenFl("☼☼☼☼☼☼☼☼\n" +
-                "☼     »☼\n" +
+                "☼     (☼\n" +
                 "☼H#####☼\n" +
                 "☼H     ☼\n" +
                 "☼###H  ☼\n" +
@@ -54,7 +54,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼    « ☼\n" +
+                "☼    ) ☼\n" +
                 "☼H#####☼\n" +
                 "☼H     ☼\n" +
                 "☼###H  ☼\n" +
@@ -68,7 +68,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼«     ☼\n" +
+                "☼)     ☼\n" +
                 "☼H#####☼\n" +
                 "☼H     ☼\n" +
                 "☼###H  ☼\n" +
@@ -82,7 +82,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼H#####☼\n" +
-                "☼Q     ☼\n" +
+                "☼X     ☼\n" +
                 "☼###H  ☼\n" +
                 "☼►  H  ☼\n" +
                 "☼######☼\n" +
@@ -95,7 +95,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼H#####☼\n" +
-                "☼H  »  ☼\n" +
+                "☼H  (  ☼\n" +
                 "☼###H  ☼\n" +
                 "☼►  H  ☼\n" +
                 "☼######☼\n" +
@@ -110,7 +110,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
                 "☼H#####☼\n" +
                 "☼H     ☼\n" +
                 "☼###H  ☼\n" +
-                "☼► «H  ☼\n" +
+                "☼► )H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
@@ -122,7 +122,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
                 "☼H#####☼\n" +
                 "☼H     ☼\n" +
                 "☼###H  ☼\n" +
-                "☼Ѡ  H  ☼\n" +
+                "☼O  H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
@@ -139,7 +139,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
                 "☼H#####☼\n" +
                 "☼H  ►  ☼\n" +
                 "☼###H  ☼\n" +
-                "☼ » H  ☼\n" +
+                "☼ ( H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
     }
@@ -153,7 +153,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
                 "☼     #☼\n" +
                 "☼      ☼\n" +
                 "☼###H  ☼\n" +
-                "☼»  H  ☼\n" +
+                "☼(  H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
@@ -164,7 +164,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
                 "☼     #☼\n" +
                 "☼      ☼\n" +
                 "☼###H  ☼\n" +
-                "☼»  H  ☼\n" +
+                "☼(  H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
@@ -178,7 +178,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
                 "☼     #☼\n" +
                 "☼      ☼\n" +
                 "☼###H  ☼\n" +
-                "☼»  H  ☼\n" +
+                "☼(  H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
     }
@@ -188,7 +188,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
     public void shouldRobberGoToHeroShortestWay() {
         settings().integer(ROBBERS_COUNT, 1);
         givenFl("☼☼☼☼☼☼☼☼\n" +
-                "☼     »☼\n" +
+                "☼     (☼\n" +
                 "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
@@ -200,7 +200,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
-                "☼H####Q☼\n" +
+                "☼H####X☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
                 "☼  ►H  ☼\n" +
@@ -213,7 +213,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
     public void shouldRobberGoToHeroShortestWay2() {
         settings().integer(ROBBERS_COUNT, 1);
         givenFl("☼☼☼☼☼☼☼☼\n" +
-                "☼»     ☼\n" +
+                "☼(     ☼\n" +
                 "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
@@ -225,7 +225,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
-                "☼Q####H☼\n" +
+                "☼X####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
                 "☼  ►H  ☼\n" +
@@ -239,7 +239,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
     public void shouldRobberGoToHeroShortestWayGetRoundOther() {
         settings().integer(ROBBERS_COUNT, 2);
         givenFl("☼☼☼☼☼☼☼☼\n" +
-                "☼»    »☼\n" +
+                "☼(    (☼\n" +
                 "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
@@ -251,7 +251,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
-                "☼Q####Q☼\n" +
+                "☼X####X☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
                 "☼  ►H  ☼\n" +
@@ -264,7 +264,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
     public void shouldRobberGoToHeroShortestWayGetRoundOther2() {
         settings().integer(ROBBERS_COUNT, 2);
         givenFl("☼☼☼☼☼☼☼☼\n" +
-                "☼» »   ☼\n" +
+                "☼( (   ☼\n" +
                 "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
@@ -275,8 +275,8 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼ «    ☼\n" +
-                "☼Q####H☼\n" +
+                "☼ )    ☼\n" +
+                "☼X####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
                 "☼  ►H  ☼\n" +
@@ -294,7 +294,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼###H##☼\n" +
-                "☼»  H  ☼\n" +
+                "☼(  H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
@@ -308,7 +308,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼###H##☼\n" +
-                "☼»  H  ☼\n" +
+                "☼(  H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
@@ -316,11 +316,11 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   (  ☼\n" +
+                "☼   »  ☼\n" +
                 "☼######☼\n" +
                 "☼►     ☼\n" +
                 "☼###H##☼\n" +
-                "☼ » H  ☼\n" +
+                "☼ ( H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
@@ -334,9 +334,9 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   (  ☼\n" +
+                "☼   »  ☼\n" +
                 "☼######☼\n" +
-                "☼Ѡ     ☼\n" +
+                "☼O     ☼\n" +
                 "☼###H##☼\n" +
                 "☼   H  ☼\n" +
                 "☼######☼\n" +
@@ -351,7 +351,7 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
     public void shouldEveryRobberRunsAfterHisHero_evenIfThereIsAnotherHeroNearbyWhoIsAlreadyBeingHunted() {
         settings().integer(ROBBERS_COUNT, 2);
         givenFl("☼☼☼☼☼☼☼☼\n" +
-                "☼»  ► »☼\n" +
+                "☼(  ► (☼\n" +
                 "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
@@ -362,8 +362,8 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼ » (  ☼\n" +
-                "☼H####Q☼\n" +
+                "☼ ( »  ☼\n" +
+                "☼H####X☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
                 "☼  ►H  ☼\n" +
@@ -373,9 +373,9 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼  »(  ☼\n" +
+                "☼  (»  ☼\n" +
                 "☼H####H☼\n" +
-                "☼H    Q☼\n" +
+                "☼H    X☼\n" +
                 "☼###H##☼\n" +
                 "☼  ►H  ☼\n" +
                 "☼######☼\n" +
@@ -387,9 +387,9 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
                 "listener(0) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   Z  ☼\n" +
+                "☼   C  ☼\n" +
                 "☼H####H☼\n" +
-                "☼H   «H☼\n" +
+                "☼H   )H☼\n" +
                 "☼###H##☼\n" +
                 "☼  ►H  ☼\n" +
                 "☼######☼\n" +
@@ -400,9 +400,9 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   Z» ☼\n" +
+                "☼   C( ☼\n" +
                 "☼H####H☼\n" +
-                "☼H  « H☼\n" +
+                "☼H  ) H☼\n" +
                 "☼###H##☼\n" +
                 "☼  ►H  ☼\n" +
                 "☼######☼\n" +
@@ -411,10 +411,10 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   Z »☼\n" +
+                "☼   C (☼\n" +
                 "☼H####H☼\n" +
                 "☼H    H☼\n" +
-                "☼###Q##☼\n" +
+                "☼###X##☼\n" +
                 "☼  ►H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
@@ -422,11 +422,11 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   Z  ☼\n" +
-                "☼H####Q☼\n" +
+                "☼   C  ☼\n" +
+                "☼H####X☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
-                "☼  ►Q  ☼\n" +
+                "☼  ►X  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
@@ -436,11 +436,11 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
                 "listener(1) => [HERO_DIE]\n");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   Z  ☼\n" +
+                "☼   C  ☼\n" +
                 "☼H####H☼\n" +
-                "☼H    Q☼\n" +
+                "☼H    X☼\n" +
                 "☼###H##☼\n" +
-                "☼  ѠH  ☼\n" +
+                "☼  OH  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
@@ -450,22 +450,22 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   Z  ☼\n" +
+                "☼   C  ☼\n" +
                 "☼H####H☼\n" +
-                "☼H    Q☼\n" +
+                "☼H    X☼\n" +
                 "☼###H##☼\n" +
-                "☼  ѠH  ☼\n" +
+                "☼  OH  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   Z  ☼\n" +
+                "☼   C  ☼\n" +
                 "☼H####H☼\n" +
-                "☼H    Q☼\n" +
+                "☼H    X☼\n" +
                 "☼###H##☼\n" +
-                "☼  ѠH  ☼\n" +
+                "☼  OH  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
@@ -478,9 +478,9 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼H####H☼\n" +
-                "☼H    Q☼\n" +
+                "☼H    X☼\n" +
                 "☼###H##☼\n" +
-                "☼  «H  ☼\n" +
+                "☼  )H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
@@ -492,9 +492,9 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼    ► ☼\n" +
                 "☼H####H☼\n" +
-                "☼H    Q☼\n" +
+                "☼H    X☼\n" +
                 "☼###H##☼\n" +
-                "☼( «H  ☼\n" +
+                "☼» )H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 3);
 
@@ -502,10 +502,10 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼    ► ☼\n" +
-                "☼H####Q☼\n" +
+                "☼H####X☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
-                "☼(« H  ☼\n" +
+                "☼») H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 3);
 
@@ -514,21 +514,21 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼    ► ☼\n" +
-                "☼H####Q☼\n" +
+                "☼H####X☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
-                "☼ « H  ☼\n" +
+                "☼ ) H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 3);
 
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼    ►»☼\n" +
+                "☼    ►(☼\n" +
                 "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
-                "☼  »H  ☼\n" +
+                "☼  (H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 3);
 
@@ -538,11 +538,11 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         verifyAllEvents("[HERO_DIE]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼    Ѡ ☼\n" +
+                "☼    O ☼\n" +
                 "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
-                "☼  »H  ☼\n" +
+                "☼  (H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 3);
 
@@ -551,11 +551,11 @@ public class RobberMultiplayerTest extends AbstractGameCheckTest {
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼    Ѡ ☼\n" +
+                "☼    O ☼\n" +
                 "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
-                "☼  »H  ☼\n" +
+                "☼  (H  ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 3);
     }

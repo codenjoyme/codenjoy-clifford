@@ -5,7 +5,7 @@ shouldRobberCantGoLeftIfWall()
     givenFl(
         ☼☼☼☼☼
         ☼   ☼
-        ☼◄ «☼
+        ☼◄ )☼
         ☼###☼
         ☼☼☼☼☼)
         givenPlayer([1,2])
@@ -17,7 +17,7 @@ shouldRobberCantGoLeftIfWall()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼► «☼
+        ☼► )☼
         ☼#*#☼
         ☼☼☼☼☼,
         0)
@@ -25,7 +25,7 @@ shouldRobberCantGoLeftIfWall()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼►‹ ☼
+        ☼►x ☼
         ☼# #☼
         ☼☼☼☼☼,
         0)
@@ -34,7 +34,7 @@ shouldRobberCantGoLeftIfWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼►  ☼
-        ☼#⍇#☼
+        ☼#y#☼
         ☼☼☼☼☼,
         0)
     tick()
@@ -42,7 +42,7 @@ shouldRobberCantGoLeftIfWall()
         ☼☼☼☼☼
         ☼   ☼
         ☼►  ☼
-        ☼#⍇#☼
+        ☼#y#☼
         ☼☼☼☼☼,
         0)
 

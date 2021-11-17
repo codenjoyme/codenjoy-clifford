@@ -306,7 +306,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   •]  ☼\n" +
+                "☼   •U  ☼\n" +
                 "☼#### ##☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
@@ -433,7 +433,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
-                "☼ ☼ Ѡ ☼\n" +
+                "☼ ☼ O ☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
@@ -488,7 +488,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼►  (   ☼\n" +
+                "☼►  »   ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -501,7 +501,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼►  (   ☼\n" +
+                "☼►  »   ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -515,7 +515,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼► •(   ☼\n" +
+                "☼► •»   ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -527,7 +527,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼►  Z   ☼\n" +
+                "☼►  C   ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -558,7 +558,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼► ⋉ (  ☼\n" +
+                "☼► z »  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -571,7 +571,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼► ⋉ (  ☼\n" +
+                "☼► z »  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -585,7 +585,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼► ⋉ (  ☼\n" +
+                "☼► z »  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -599,7 +599,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼► ⋉ Z  ☼\n" +
+                "☼► z C  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -626,7 +626,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ⊐   ☼\n" +
+                "☼   F   ☼\n" +
                 "☼       ☼\n" +
                 "☼     ◄ ☼\n" +
                 "☼#######☼\n" +
@@ -640,7 +640,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ⊐   ☼\n" +
+                "☼   F   ☼\n" +
                 "☼     ◄ ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
@@ -655,7 +655,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   Z ◄ ☼\n" +
+                "☼   C ◄ ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -682,7 +682,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ⊐   ☼\n" +
+                "☼   F   ☼\n" +
                 "☼       ☼\n" +
                 "☼   $ ◄ ☼\n" +
                 "☼#######☼\n" +
@@ -696,7 +696,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   ⊐   ☼\n" +
+                "☼   F   ☼\n" +
                 "☼   $ ◄ ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
@@ -711,7 +711,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼   Z ◄ ☼\n" +
+                "☼   C ◄ ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -742,7 +742,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼( ( ◄  ☼\n" +
+                "☼» » ◄  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -756,7 +756,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼( ( ◄  ☼\n" +
+                "☼» » ◄  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -770,7 +770,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼( Z ◄  ☼\n" +
+                "☼» C ◄  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -803,7 +803,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼ ►   ( ☼\n" +
+                "☼ ►   » ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -818,7 +818,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼ Ѡ • ( ☼\n" +
+                "☼ O • » ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -832,7 +832,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼ Ѡ   Z ☼\n" +
+                "☼ O   C ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -864,7 +864,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼(   ◄  ☼\n" +
+                "☼»   ◄  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -878,7 +878,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼( • ◄  ☼\n" +
+                "☼» • ◄  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -890,7 +890,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼Z   Ѡ  ☼\n" +
+                "☼C   O  ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");

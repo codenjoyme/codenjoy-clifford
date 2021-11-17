@@ -49,13 +49,13 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
         listener(7) => [START_ROUND, [Round 1]]
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼(      (☼
+        ☼»      »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼(  HH  (☼
+        ☼»  HH  »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼( ►HH( (☼
+        ☼» ►HH» »☼
         ☼###HH###☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
@@ -68,13 +68,13 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼(      (☼
+        ☼»      »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼(  HH  (☼
+        ☼»  HH  »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼ ⊐◄HH(⊐ ☼
+        ☼ F◄HH»F ☼
         ☼#*#HH#*#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
@@ -95,14 +95,14 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼(      (☼
+        ☼»      »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼( ◄HH( (☼
+        ☼» ◄HH» »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼#K#HH#K#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
     hero(0).left()
@@ -114,14 +114,14 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼(      (☼
+        ☼»      »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼ ⊐◄HH(⊐ ☼
+        ☼ F◄HH»F ☼
         ☼#*#HH#*#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼#K#HH#K#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
     hero(0).right()
@@ -148,14 +148,14 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
         listener(3) => [HERO_DIE]
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼( ◄  ( (☼
+        ☼» ◄  » »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼#K#HH#K#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#Z#HH#Z#☼
+        ☼#C#HH#C#☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
     field().remove()
@@ -163,11 +163,11 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼( ◄  ( (☼
+        ☼» ◄  » »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼#K#HH#K#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -183,11 +183,11 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼ ⊐◄  ( (☼
+        ☼ F◄  » »☼
         ☼#*#HH#*#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼#K#HH#K#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -198,11 +198,11 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  ◄  ( (☼
-        ☼#ᗉ#HH# #☼
+        ☼  ◄  » »☼
+        ☼#K#HH# #☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#ᗉ#HH#ᗉ#☼
+        ☼#K#HH#K#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -225,11 +225,11 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
         listener(5) => [HERO_DIE]
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  ◄  ( (☼
-        ☼#ᗉ#HH# #☼
+        ☼  ◄  » »☼
+        ☼#K#HH# #☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
-        ☼#Z#HH#Z#☼
+        ☼#C#HH#C#☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -242,8 +242,8 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  ◄  ( (☼
-        ☼#ᗉ#HH# #☼
+        ☼  ◄  » »☼
+        ☼#K#HH# #☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -293,8 +293,8 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
         listener(6) => [HERO_DIE]
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  ◄  ( (☼
-        ☼#Z#HH###☼
+        ☼  ◄  » »☼
+        ☼#C#HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
         ☼###HH###☼
@@ -312,7 +312,7 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
     events().getEvents() = 
     assertF(
         ☼☼☼☼☼☼☼☼☼☼
-        ☼  ◄  ( (☼
+        ☼  ◄  » »☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
         ☼   HH   ☼
@@ -347,7 +347,7 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
         ☼   HH   ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼  ѠHHZ Z☼
+        ☼  OHHC C☼
         ☼###HH###☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
@@ -369,7 +369,7 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
         ☼   HH   ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼  ►HH( (☼
+        ☼  ►HH» »☼
         ☼###HH###☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)
@@ -388,7 +388,7 @@ twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds()
         ☼   HH   ☼
         ☼###HH###☼
         ☼☼☼☼HH☼☼☼☼
-        ☼  ►HH( (☼
+        ☼  ►HH» »☼
         ☼###HH###☼
         ☼☼☼☼☼☼☼☼☼☼,
         0)

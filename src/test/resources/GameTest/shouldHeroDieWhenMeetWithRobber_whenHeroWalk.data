@@ -5,7 +5,7 @@ shouldHeroDieWhenMeetWithRobber_whenHeroWalk()
     givenFl(
         ☼☼☼☼☼
         ☼   ☼
-        ☼◄« ☼
+        ☼◄) ☼
         ☼###☼
         ☼☼☼☼☼)
         givenPlayer([1,2])
@@ -16,7 +16,7 @@ shouldHeroDieWhenMeetWithRobber_whenHeroWalk()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ Ѡ ☼
+        ☼ O ☼
         ☼###☼
         ☼☼☼☼☼,
         0)
@@ -26,8 +26,8 @@ shouldHeroDieWhenMeetWithRobber_whenHeroWalk()
     field().newGame(player(0))
     assertF(
         ☼☼☼☼☼
-        ☼  ]☼
-        ☼ « ☼
+        ☼  U☼
+        ☼ ) ☼
         ☼###☼
         ☼☼☼☼☼,
         0)

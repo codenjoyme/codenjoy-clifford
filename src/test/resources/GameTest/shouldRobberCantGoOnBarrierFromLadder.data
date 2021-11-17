@@ -6,7 +6,7 @@ shouldRobberCantGoOnBarrierFromLadder()
         ☼☼☼☼►
         ☼  H☼
         ☼  H☼
-        ☼ «H☼
+        ☼ )H☼
         ☼☼☼☼☼)
         givenPlayer([4,4])
             dice(4, 4)
@@ -16,36 +16,28 @@ shouldRobberCantGoOnBarrierFromLadder()
         ☼☼☼☼►
         ☼  H☼
         ☼  H☼
-        ☼  Q☼
+        ☼  X☼
         ☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼►
         ☼  H☼
-        ☼  Q☼
+        ☼  X☼
         ☼  H☼
         ☼☼☼☼☼,
         0)
     tick()
     assertF(
         ☼☼☼☼►
-        ☼  Q☼
+        ☼  X☼
         ☼  H☼
         ☼  H☼
         ☼☼☼☼☼,
         0)
     assertF(
         ☼☼☼☼►
-        ☼  Q☼
-        ☼  H☼
-        ☼  H☼
-        ☼☼☼☼☼,
-        0)
-    tick()
-    assertF(
-        ☼☼☼☼►
-        ☼  Q☼
+        ☼  X☼
         ☼  H☼
         ☼  H☼
         ☼☼☼☼☼,
@@ -53,7 +45,15 @@ shouldRobberCantGoOnBarrierFromLadder()
     tick()
     assertF(
         ☼☼☼☼►
-        ☼  Q☼
+        ☼  X☼
+        ☼  H☼
+        ☼  H☼
+        ☼☼☼☼☼,
+        0)
+    tick()
+    assertF(
+        ☼☼☼☼►
+        ☼  X☼
         ☼  H☼
         ☼  H☼
         ☼☼☼☼☼,

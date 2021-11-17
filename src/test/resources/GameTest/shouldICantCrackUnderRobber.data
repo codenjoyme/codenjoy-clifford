@@ -5,7 +5,7 @@ shouldICantCrackUnderRobber()
     givenFl(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ ►»☼
+        ☼ ►(☼
         ☼###☼
         ☼☼☼☼☼)
         givenPlayer([2,2])
@@ -16,7 +16,7 @@ shouldICantCrackUnderRobber()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ ►»☼
+        ☼ ►(☼
         ☼###☼
         ☼☼☼☼☼,
         0)

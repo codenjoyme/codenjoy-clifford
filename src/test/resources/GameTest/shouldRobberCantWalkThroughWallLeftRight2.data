@@ -6,7 +6,7 @@ shouldRobberCantWalkThroughWallLeftRight2()
         ☼☼☼☼►
         ☼   ☼
         ☼   ☼
-        ☼☼«☼☼
+        ☼☼)☼☼
         ☼☼☼☼☼)
         givenPlayer([4,4])
             dice(4, 4)
@@ -16,7 +16,7 @@ shouldRobberCantWalkThroughWallLeftRight2()
         ☼☼☼☼►
         ☼   ☼
         ☼   ☼
-        ☼☼«☼☼
+        ☼☼)☼☼
         ☼☼☼☼☼,
         0)
     tick()
@@ -24,7 +24,7 @@ shouldRobberCantWalkThroughWallLeftRight2()
         ☼☼☼☼►
         ☼   ☼
         ☼   ☼
-        ☼☼»☼☼
+        ☼☼(☼☼
         ☼☼☼☼☼,
         0)
 

@@ -16,7 +16,7 @@ shouldICantGoViaAnotherPlayer_whenAtLadder()
         dice(0)
     assertF(
         ☼☼☼☼☼☼
-        ☼ (  ☼
+        ☼ »  ☼
         ☼ H  ☼
         ☼►H  ☼
         ☼####☼
@@ -28,8 +28,8 @@ shouldICantGoViaAnotherPlayer_whenAtLadder()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼ U  ☼
-        ☼ Y  ☼
+        ☼ D  ☼
+        ☼ A  ☼
         ☼####☼
         ☼☼☼☼☼☼,
         1)
@@ -39,8 +39,8 @@ shouldICantGoViaAnotherPlayer_whenAtLadder()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼ U  ☼
-        ☼ Y  ☼
+        ☼ D  ☼
+        ☼ A  ☼
         ☼####☼
         ☼☼☼☼☼☼,
         1)
@@ -50,8 +50,8 @@ shouldICantGoViaAnotherPlayer_whenAtLadder()
     assertF(
         ☼☼☼☼☼☼
         ☼    ☼
-        ☼ U  ☼
-        ☼ Y  ☼
+        ☼ D  ☼
+        ☼ A  ☼
         ☼####☼
         ☼☼☼☼☼☼,
         1)
