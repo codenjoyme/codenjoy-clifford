@@ -248,8 +248,10 @@ public class Clifford extends RoundField<Player> implements Field {
         }
 
         for (Brick brick : bricks().getAt(bullet)) {
-            brick.crack(bullet.getOwner());
-            bullet.remove();
+            if (brick.isNotTransparentForBullet()) {
+                brick.crack(bullet.getOwner());
+                bullet.remove();
+            }
         }
 
         if (borders().contains(bullet)) {
