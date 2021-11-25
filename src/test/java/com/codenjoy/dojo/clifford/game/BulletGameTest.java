@@ -209,6 +209,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
+        // when hero shoots through a restoring brick
         hero().act(1);
         tick();
 
@@ -234,6 +235,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
 
         tick();
 
+        // then bullet must go through pit brick
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -244,6 +246,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
 
         assertBullets("[[1,2,LEFT]]");
 
+        // when wall has been restored
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
@@ -258,6 +261,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
 
         tick();
 
+        // then bullet must affect the brick
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -267,6 +271,39 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼☼☼☼☼☼☼\n");
 
         assertBullets("[]");
+
+        // when brick destroyed
+        tick();
+
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼    ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        hero().act(1);
+        tick();
+        tick();
+
+        // then bullet must not affect the empty field
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼  • ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+        tick();
+        //
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼•   ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
     }
 
     @Test
