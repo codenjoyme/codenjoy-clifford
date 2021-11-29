@@ -68,7 +68,8 @@ public class Brick extends PointImpl implements Tickable, State<Element, Player>
     public Element state(Player player, Object... alsoAtPoint) {
         if (crack == 1) {
             return Element.CRACK_PIT;
-        } else if (crack > 1) {
+        }
+        if (crack > 1) {
             switch (Brick.CRACK_TIMER - crack) {
                 case 1 : return Element.PIT_FILL_1;
                 case 2 : return Element.PIT_FILL_2;
@@ -76,9 +77,8 @@ public class Brick extends PointImpl implements Tickable, State<Element, Player>
                 case 4 : return Element.PIT_FILL_4;
                 default: return Element.NONE;
             }
-        } else {
-            return Element.BRICK;
         }
+        return Element.BRICK;
     }
 
     public Hero getCrackedBy() {
