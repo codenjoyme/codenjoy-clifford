@@ -86,12 +86,6 @@ public class Brick extends PointImpl implements Tickable, State<Element, Player>
     }
 
     public boolean isNotTransparentForBullet() {
-        switch (this.state(null)) {
-            case BRICK:
-            case CRACK_PIT:
-                return true;
-            default:
-                return false;
-        }
+        return crack <= 0;
     }
 }

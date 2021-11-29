@@ -139,6 +139,66 @@ public class BulletGameTest extends AbstractGameCheckTest {
     }
 
     @Test
+    public void bulletInteractWithBrick_Case2() {
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ #  ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        hero().act(1);
+        tick();
+
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ #  ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+        assertBullets("[[5,2,LEFT]]");
+
+        hero().act(1);
+        tick();
+
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ #• ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[3,2,LEFT], [5,2,LEFT]]");
+
+        hero().act(1);
+        tick();
+
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ *• ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[3,2,LEFT], [5,2,LEFT]]");
+        tick();
+
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼• • ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[1,2,LEFT], [3,2,LEFT]]");
+    }
+
+    @Test
     public void bulletInteractWithBrick() {
         givenFl("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
