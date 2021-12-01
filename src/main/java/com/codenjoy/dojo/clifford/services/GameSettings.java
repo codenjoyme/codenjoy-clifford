@@ -71,7 +71,8 @@ public class GameSettings extends SettingsImpl
         KILL_HERO_SCORE("[Score] Kill hero score"),
         KILL_ENEMY_SCORE("[Score] Kill enemy score"),
         HERO_DIE_PENALTY("[Score] Hero die penalty"),
-        SUICIDE_PENALTY("[Score] Suicide penalty");
+        SUICIDE_PENALTY("[Score] Suicide penalty"),
+        ROUND_WIN("[Score] Round win");
 
         private String key;
 
@@ -117,6 +118,7 @@ public class GameSettings extends SettingsImpl
         integer(CLUE_SCORE_RING, 5);
         integer(CLUE_SCORE_RING_INCREMENT, 1);
 
+        integer(ROUND_WIN, 20);
         integer(KILL_HERO_SCORE, 20);
         integer(KILL_ENEMY_SCORE, 50);
         integer(HERO_DIE_PENALTY, 1);
