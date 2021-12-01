@@ -1213,7 +1213,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 .integer(ROUNDS_TIME, 30)
                 .integer(ROUNDS_TIME_FOR_WINNER, 5)
                 .integer(ROUNDS_PLAYERS_PER_ROOM, 8)
-                .integer(KILL_HERO_SCORE, 1);
+                .integer(KILL_HERO_SCORE, 1)
+                .integer(ROUND_WIN, 50);
 
         givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼        ☼\n" +
@@ -1485,8 +1486,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertScores(
-                "hero(0)=3\n" +
-                "hero(1)=3");
+                "hero(0)=53\n" +
+                "hero(1)=53");
 
         verifyAllEvents(
                 "listener(0) => [WIN_ROUND]\n" +
@@ -1557,7 +1558,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 .integer(ROUNDS_TIME, 30)
                 .integer(ROUNDS_TIME_FOR_WINNER, 5)
                 .integer(ROUNDS_PLAYERS_PER_ROOM, 8)
-                .integer(KILL_HERO_SCORE, 1);
+                .integer(KILL_HERO_SCORE, 1)
+                .integer(ROUND_WIN, 50);
 
         givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼        ☼\n" +
@@ -1821,7 +1823,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
         tick();
 
         assertScores(
-                "hero(0)=3\n" +
+                "hero(0)=53\n" +
                 "hero(1)=2");
 
         verifyAllEvents(
@@ -1920,7 +1922,8 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 .integer(ROUNDS_TIME, 30)
                 .integer(ROUNDS_TIME_FOR_WINNER, 5)
                 .integer(ROUNDS_PLAYERS_PER_ROOM, 8)
-                .integer(KILL_HERO_SCORE, 1);
+                .integer(KILL_HERO_SCORE, 1)
+                .integer(ROUND_WIN, 50);
 
         givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼        ☼\n" +

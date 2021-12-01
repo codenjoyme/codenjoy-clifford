@@ -9,6 +9,7 @@ winnerIsTheOneWhoBuriedTheMostPlayers()
     settings().integer(ROUNDS_TIME_FOR_WINNER, 5)
     settings().integer(ROUNDS_PLAYERS_PER_ROOM, 8)
     settings().integer(KILL_HERO_SCORE, 1)
+    settings().integer(ROUND_WIN, 50)
     givenFl(
         ☼☼☼☼☼☼☼☼☼☼
         ☼        ☼
