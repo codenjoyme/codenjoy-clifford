@@ -26,10 +26,9 @@ package com.codenjoy.dojo.clifford.model.items;
 import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.games.clifford.Element;
-import com.codenjoy.dojo.services.Point;
-import com.codenjoy.dojo.services.PointImpl;
-import com.codenjoy.dojo.services.State;
-import com.codenjoy.dojo.services.Tickable;
+import com.codenjoy.dojo.services.*;
+
+import static com.codenjoy.dojo.services.StateUtils.filterOne;
 
 public class Brick extends PointImpl implements Tickable, State<Element, Player> {
 
@@ -75,10 +74,15 @@ public class Brick extends PointImpl implements Tickable, State<Element, Player>
                 case 2 : return Element.PIT_FILL_2;
                 case 3 : return Element.PIT_FILL_3;
                 case 4 : return Element.PIT_FILL_4;
-                default: return Element.NONE;
+                default: return getNoneOrBullet(alsoAtPoint);
             }
         }
         return Element.BRICK;
+    }
+
+    private Element getNoneOrBullet(Object[] alsoAtPoint) {
+        final Bullet bullet = filterOne(alsoAtPoint, Bullet.class);
+        return bullet == null ? Element.NONE : Element.BULLET;
     }
 
     public Hero getCrackedBy() {

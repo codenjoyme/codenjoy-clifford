@@ -139,6 +139,90 @@ public class BulletGameTest extends AbstractGameCheckTest {
     }
 
     @Test
+    public void bulletInteractWithBrick_Case3() {
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼### ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        // when hero shot several times through the line of bricks
+        hero().act(1);
+        tick();
+
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼### ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+        assertBullets("[[5,2,LEFT]]");
+
+        hero().act(1);
+        tick();
+
+        // then bricks are destroyed one by one
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼##* ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+        assertBullets("[[5,2,LEFT]]");
+
+        hero().act(1);
+        tick();
+
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼##• ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+        assertBullets("[[3,2,LEFT], [5,2,LEFT]]");
+
+        hero().act(1);
+        tick();
+
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼#*• ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+        assertBullets("[[3,2,LEFT], [5,2,LEFT]]");
+
+        hero().act(1);
+        tick();
+
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼* • ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+        assertBullets("[[3,2,LEFT], [5,2,LEFT]]");
+
+        tick();
+
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼• • ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+        assertBullets("[[1,2,LEFT], [3,2,LEFT]]");
+    }
+
+    @Test
     public void bulletInteractWithBrick_Case2() {
         givenFl("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
