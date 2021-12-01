@@ -93,6 +93,10 @@ public class Scores implements PlayerScores {
             return - settings.integer(SUICIDE_PENALTY);
         }
 
+        if (type.equals(WIN_ROUND)) {
+            return settings.integer(ROUND_WIN);
+        }
+
         return 0;
     }
 
