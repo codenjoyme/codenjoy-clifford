@@ -293,16 +293,20 @@ public class Clifford extends RoundField<Player> implements Field {
 
             if (bullets().contains(hero)) {
                 bullets().getAt(hero).forEach(this::affect);
-                continue;
+                if (!hero.isActiveAndAlive()) {
+                    continue;
+                }
             }
 
             if (clueKnife().contains(hero)) {
                 clueKnife().removeAt(hero);
                 hero.pickClue(GET_CLUE_KNIFE);
-            } else if (clueGlove().contains(hero)) {
+            }
+            if (clueGlove().contains(hero)) {
                 clueGlove().removeAt(hero);
                 hero.pickClue(GET_CLUE_GLOVE);
-            } else if (clueRing().contains(hero)) {
+            }
+            if (clueRing().contains(hero)) {
                 clueRing().removeAt(hero);
                 hero.pickClue(GET_CLUE_RING);
             }
