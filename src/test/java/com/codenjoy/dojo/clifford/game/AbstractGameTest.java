@@ -245,4 +245,8 @@ public abstract class AbstractGameTest {
                 .map(RobberJoystick::new)
                 .collect(Collectors.toList());
     }
+
+    protected void assertBullets(String expected) {
+        assertEquals(expected, field().bullets().toString());
+    }
 }
