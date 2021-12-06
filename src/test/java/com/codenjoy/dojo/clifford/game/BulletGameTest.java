@@ -28,10 +28,6 @@ import org.junit.Test;
 
 public class BulletGameTest extends AbstractGameCheckTest {
 
-    private void assertBullets(String expected) {
-        assertEquals(expected, field().bullets().toString());
-    }
-
     @Test
     public void heroCanShoot_rightDirection() {
         givenFl("☼☼☼☼☼\n" +
