@@ -24,11 +24,11 @@ bulletCanBounceOnlyOnce()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼     ◄ ☼
+        ☼    •◄ ☼
         ☼#### ##☼
         ☼☼☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[6,2,LEFT]]
+    field().bullets() = [[5,2,LEFT]]
     hero(0).left()
     tick()
     assertF(
@@ -38,7 +38,7 @@ bulletCanBounceOnlyOnce()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼   •U  ☼
+        ☼  • U  ☼
         ☼#### ##☼
         ☼☼☼☼☼☼☼☼☼,
         0)
@@ -50,11 +50,11 @@ bulletCanBounceOnlyOnce()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼ •     ☼
+        ☼•      ☼
         ☼####◄##☼
         ☼☼☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[2,2,LEFT]]
+    field().bullets() = [[1,2,LEFT]]
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼
@@ -63,11 +63,11 @@ bulletCanBounceOnlyOnce()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼       ☼
+        ☼•      ☼
         ☼####◄##☼
         ☼☼☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[0,2,RIGHT]]
+    field().bullets() = [[1,2,RIGHT]]
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼
@@ -76,11 +76,11 @@ bulletCanBounceOnlyOnce()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼ •     ☼
+        ☼  •    ☼
         ☼####◄##☼
         ☼☼☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[2,2,RIGHT]]
+    field().bullets() = [[3,2,RIGHT]]
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼
@@ -89,7 +89,7 @@ bulletCanBounceOnlyOnce()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼   •   ☼
+        ☼    •  ☼
         ☼####◄##☼
         ☼☼☼☼☼☼☼☼☼,
         0)
@@ -101,7 +101,7 @@ bulletCanBounceOnlyOnce()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼     • ☼
+        ☼      •☼
         ☼####◄##☼
         ☼☼☼☼☼☼☼☼☼,
         0)

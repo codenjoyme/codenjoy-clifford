@@ -1,19 +1,19 @@
 
 before()
 
-heroFallOnBullet()
+heroFallOnBullet_shouldDie()
     givenFl(
         ☼☼☼☼☼☼☼☼☼
         ☼       ☼
         ☼       ☼
         ☼   ►   ☼
         ☼       ☼
-        ☼     ◄ ☼
+        ☼      ◄☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼)
-        givenPlayer([6,3])
-            dice(6, 3)
+        givenPlayer([7,3])
+            dice(7, 3)
         givenPlayer([4,5])
             dice(4, 5)
         dice(0)
@@ -23,7 +23,7 @@ heroFallOnBullet()
         ☼       ☼
         ☼   F   ☼
         ☼       ☼
-        ☼     ◄ ☼
+        ☼      ◄☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,
@@ -36,7 +36,7 @@ heroFallOnBullet()
         ☼       ☼
         ☼       ☼
         ☼   F   ☼
-        ☼     ◄ ☼
+        ☼     •◄☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,
@@ -49,7 +49,7 @@ heroFallOnBullet()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼   C ◄ ☼
+        ☼   C  ◄☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,

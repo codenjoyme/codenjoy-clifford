@@ -20,44 +20,44 @@ bulletInteractWithBorder()
         ☼     ☼
         ☼     ☼
         ☼     ☼
-        ☼   ◄ ☼
+        ☼  •◄ ☼
         ☼#####☼
         ☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[4,2,LEFT]]
+    field().bullets() = [[3,2,LEFT]]
     tick()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
         ☼     ☼
         ☼     ☼
-        ☼ • ◄ ☼
+        ☼•  ◄ ☼
         ☼#####☼
         ☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[2,2,LEFT]]
+    field().bullets() = [[1,2,LEFT]]
     tick()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
         ☼     ☼
         ☼     ☼
-        ☼   ◄ ☼
+        ☼•  ◄ ☼
         ☼#####☼
         ☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[0,2,RIGHT]]
+    field().bullets() = [[1,2,RIGHT]]
     tick()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
         ☼     ☼
         ☼     ☼
-        ☼ • ◄ ☼
+        ☼  •◄ ☼
         ☼#####☼
         ☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[2,2,RIGHT]]
+    field().bullets() = [[3,2,RIGHT]]
 
 after()
     events().getEvents() = 

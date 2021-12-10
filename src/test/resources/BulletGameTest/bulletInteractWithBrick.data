@@ -13,8 +13,6 @@ bulletInteractWithBrick()
         givenPlayer([5,2])
             dice(5, 2)
         dice(0)
-    hero(0).act(1)
-    tick()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
@@ -24,17 +22,18 @@ bulletInteractWithBrick()
         ☼#####☼
         ☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[5,2,LEFT]]
+    hero(0).act(1)
     tick()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
         ☼     ☼
         ☼     ☼
-        ☼ #• ◄☼
+        ☼ # •◄☼
         ☼#####☼
         ☼☼☼☼☼☼☼,
         0)
+    field().bullets() = [[4,2,LEFT]]
     tick()
     assertF(
         ☼☼☼☼☼☼☼
@@ -79,18 +78,18 @@ bulletInteractWithBrick()
         ☼     ☼
         ☼     ☼
         ☼     ☼
-        ☼ 3  ◄☼
+        ☼ 3 •◄☼
         ☼#####☼
         ☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[5,2,LEFT]]
+    field().bullets() = [[4,2,LEFT]]
     tick()
     assertF(
         ☼☼☼☼☼☼☼
         ☼     ☼
         ☼     ☼
         ☼     ☼
-        ☼ 2• ◄☼
+        ☼ 2  ◄☼
         ☼#####☼
         ☼☼☼☼☼☼☼,
         0)
@@ -100,22 +99,11 @@ bulletInteractWithBrick()
         ☼     ☼
         ☼     ☼
         ☼     ☼
-        ☼•1  ◄☼
+        ☼ 1  ◄☼
         ☼#####☼
         ☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[1,2,LEFT]]
-    tick()
-    assertF(
-        ☼☼☼☼☼☼☼
-        ☼     ☼
-        ☼     ☼
-        ☼     ☼
-        ☼•#  ◄☼
-        ☼#####☼
-        ☼☼☼☼☼☼☼,
-        0)
-    field().bullets() = [[1,2,RIGHT]]
+    field().bullets() = [[0,2,RIGHT]]
     tick()
     assertF(
         ☼☼☼☼☼☼☼
@@ -123,6 +111,17 @@ bulletInteractWithBrick()
         ☼     ☼
         ☼     ☼
         ☼ *  ◄☼
+        ☼#####☼
+        ☼☼☼☼☼☼☼,
+        0)
+    field().bullets() = []
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼
+        ☼     ☼
+        ☼     ☼
+        ☼     ☼
+        ☼    ◄☼
         ☼#####☼
         ☼☼☼☼☼☼☼,
         0)
@@ -145,17 +144,7 @@ bulletInteractWithBrick()
         ☼     ☼
         ☼     ☼
         ☼     ☼
-        ☼  • ◄☼
-        ☼#####☼
-        ☼☼☼☼☼☼☼,
-        0)
-    tick()
-    assertF(
-        ☼☼☼☼☼☼☼
-        ☼     ☼
-        ☼     ☼
-        ☼     ☼
-        ☼•   ◄☼
+        ☼ •  ◄☼
         ☼#####☼
         ☼☼☼☼☼☼☼,
         0)

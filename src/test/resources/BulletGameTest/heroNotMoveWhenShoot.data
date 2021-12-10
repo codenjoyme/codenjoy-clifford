@@ -17,20 +17,21 @@ heroNotMoveWhenShoot()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼►  ☼
+        ☼►• ☼
         ☼###☼
         ☼☼☼☼☼,
         0)
-    field().bullets() = [[1,2,RIGHT]]
+    field().bullets() = [[2,2,RIGHT]]
     hero(0).right()
     tick()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼ ►•☼
+        ☼ ► ☼
         ☼###☼
         ☼☼☼☼☼,
         0)
+    field().bullets() = [[4,2,LEFT]]
 
 after()
     events().getEvents() = 

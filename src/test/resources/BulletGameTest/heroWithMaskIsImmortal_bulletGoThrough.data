@@ -39,12 +39,12 @@ heroWithMaskIsImmortal_bulletGoThrough()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼► z »  ☼
+        ☼►•z »  ☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[1,3,RIGHT]]
+    field().bullets() = [[2,3,RIGHT]]
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼
@@ -52,12 +52,12 @@ heroWithMaskIsImmortal_bulletGoThrough()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼► z »  ☼
+        ☼► z•»  ☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[3,3,RIGHT]]
+    field().bullets() = [[4,3,RIGHT]]
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼

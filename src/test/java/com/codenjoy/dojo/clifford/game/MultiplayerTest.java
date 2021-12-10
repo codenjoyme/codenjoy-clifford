@@ -952,12 +952,12 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼w$&@• «☼\n" +
+                "☼w$&@ •«☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        assertBullets("[[1,3,LEFT], [3,3,LEFT], [5,3,LEFT], [7,3,LEFT]]");
+        assertBullets("[[0,3,RIGHT], [2,3,LEFT], [4,3,LEFT], [6,3,LEFT]]");
 
         hero(0).right();
         hero(1).left();
@@ -970,7 +970,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼•w&@• «☼\n" +
+                "☼ w&@ •«☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -987,7 +987,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼• w@• «☼\n" +
+                "☼ •w@ •«☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -1005,7 +1005,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼• •w• «☼\n" +
+                "☼ • w •«☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -1022,7 +1022,7 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼• • w C☼\n" +
+                "☼ • •w•C☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
