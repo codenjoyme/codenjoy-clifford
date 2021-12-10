@@ -93,6 +93,68 @@ public class BulletGameTest extends AbstractGameCheckTest {
     }
 
     @Test
+    public void heroShoot_upDirection() {
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼  ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼  ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        // when hero shoot up
+        hero().act(1);
+        hero().up();
+        tick();
+
+        // then bullet should fly left(hero direction),
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ •◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+        assertBullets("[[2,2,LEFT]]");
+    }
+
+    @Test
+    public void heroShootAndMoveRight_shouldSurvive() {
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼►  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        assertBullets("[]");
+
+        hero().act(1);
+        tick();
+
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼►• ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        assertBullets("[[2,2,RIGHT]]");
+
+        hero().right();
+        tick();
+
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ► ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        assertBullets("[[4,2,LEFT]]");
+        verifyAllEvents("");
+    }
+
+    @Test
     public void bulletIsRemovedOutOfBoard() {
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
@@ -940,6 +1002,61 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "listener(1) => [HERO_DIE]\n");
     }
 
+    // todo Продумать, должен ли выживать.
+    @Test
+    public void heroFallOnBullet_shouldSurvive() {
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼    ►  ☼\n" +
+                "☼       ☼\n" +
+                "☼      ◄☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
+
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼    F  ☼\n" +
+                "☼       ☼\n" +
+                "☼      ◄☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
+
+        hero().act(1);
+        tick();
+
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼    F  ☼\n" +
+                "☼     •◄☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[6,3,LEFT]]");
+
+        tick();
+
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼   •» ◄☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[4,3,LEFT]]");
+
+        verifyAllEvents("");
+    }
+
     @Test
     public void twoShootersKillHero() {
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
@@ -996,6 +1113,105 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "listener(0) => [KILL_HERO]\n" +
                 "listener(1) => [KILL_HERO]\n" +
                 "listener(2) => [HERO_DIE]\n");
+    }
+
+    @Test
+    public void bulletInteractWithBrick_Case1() {
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ #◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ #◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        // when hero shoot next to brick
+        hero().act(1);
+        tick();
+
+        // then brick should be cracked. Bullet should be deleted
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ *◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+        assertBullets("[]");
+
+        tick();
+
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼  ◄☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+    }
+
+    @Test
+    public void bulletInteractWithBorder_Case1() {
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "◄   ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "◄   ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        // when hero shoot
+        hero().act(1);
+        tick();
+
+        // then bullet should left the field
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "◄   ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+        assertBullets("[]");
+    }
+
+    @Test
+    public void bulletInteractWithWall_Case1() {
+        // given
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼◄  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼◄  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+
+        // when hero shoot
+        hero().act(1);
+        tick();
+
+        // then bullet should bounced
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼◄  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
+        assertBullets("[[0,2,RIGHT]]");
+
+        tick();
+
+        // then kill hero
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼O  ☼\n" +
+                "☼###☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     @Test

@@ -1,0 +1,61 @@
+
+before()
+
+heroFallOnBullet_shouldSurvive()
+    givenFl(
+        ☼☼☼☼☼☼☼☼☼
+        ☼       ☼
+        ☼       ☼
+        ☼    ►  ☼
+        ☼       ☼
+        ☼      ◄☼
+        ☼#######☼
+        ☼       ☼
+        ☼☼☼☼☼☼☼☼☼)
+        givenPlayer([7,3])
+            dice(7, 3)
+        givenPlayer([5,5])
+            dice(5, 5)
+        dice(0)
+    assertF(
+        ☼☼☼☼☼☼☼☼☼
+        ☼       ☼
+        ☼       ☼
+        ☼    F  ☼
+        ☼       ☼
+        ☼      ◄☼
+        ☼#######☼
+        ☼       ☼
+        ☼☼☼☼☼☼☼☼☼,
+        0)
+    hero(0).act(1)
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼    F  ☼
+        ☼     •◄☼
+        ☼#######☼
+        ☼       ☼
+        ☼☼☼☼☼☼☼☼☼,
+        0)
+    field().bullets() = [[6,3,LEFT]]
+    tick()
+    assertF(
+        ☼☼☼☼☼☼☼☼☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼       ☼
+        ☼   •» ◄☼
+        ☼#######☼
+        ☼       ☼
+        ☼☼☼☼☼☼☼☼☼,
+        0)
+    field().bullets() = [[4,3,LEFT]]
+    events().getEvents() = 
+
+after()
+    events().getEvents() = 
