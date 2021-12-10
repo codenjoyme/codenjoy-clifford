@@ -191,7 +191,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         if (isFall()) {
             move(DOWN);
         } else if (shoot) {
-            field.bullets().add(new Bullet(this));
+            shoot();
         } else if (crack) {
             Point hole = DOWN.change(destination);
             field.tryToCrack(this, hole);
@@ -216,6 +216,12 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         closeDoor = false;
         shoot = false;
         dissolvePotions();
+    }
+
+    private void shoot() {
+        final Bullet bullet = new Bullet(this);
+        field.bullets().add(bullet);
+        bullet.doFirstMoveAffect();
     }
 
     private void tryToInteractWithDoor(Point destination,
