@@ -31,8 +31,8 @@ import com.codenjoy.dojo.services.State;
 
 public class Ladder extends PointImpl implements State<Element, Player> {
 
-    public Ladder(Point point) {
-        super(point);
+    public Ladder(Point pt) {
+        super(pt);
     }
 
     @Override

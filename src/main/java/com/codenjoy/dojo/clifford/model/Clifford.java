@@ -208,7 +208,7 @@ public class Clifford extends RoundField<Player> implements Field {
         for (Key prototype : keys) {
             generate(keys(), 1,
                     player -> freeRandom((Player) player),
-                    pt -> new Key(pt, prototype.getKeyType()));
+                    pt -> new Key(pt, prototype.getType()));
         }
     }
 
@@ -313,7 +313,7 @@ public class Clifford extends RoundField<Player> implements Field {
 
             if (keys().contains(hero)) {
                 List<Key> keys = keys().getAt(hero);
-                keys.forEach(key -> hero.pick(key.getKeyType()));
+                keys.forEach(key -> hero.pick(key.getType()));
                 keys().removeAt(hero);
                 if (settings.bool(GENERATE_KEYS)) {
                     generateKeys(keys);

@@ -223,10 +223,10 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         field.doors().getAt(destination).stream()
                 .filter(validState)
                 .forEach(door -> {
-                    Integer availableKeys = keys.getOrDefault(door.getKeyType(), 0);
+                    Integer availableKeys = keys.getOrDefault(door.type(), 0);
                     if (availableKeys > 0) {
                         action.accept(door);
-                        keys.put(door.getKeyType(), availableKeys - 1);
+                        keys.put(door.type(), availableKeys - 1);
                     }
                 });
     }

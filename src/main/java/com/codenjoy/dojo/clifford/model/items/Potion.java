@@ -30,11 +30,8 @@ import com.codenjoy.dojo.services.State;
 
 public class Potion extends PointImpl implements State<Element, Player> {
 
-    private PotionType potionType;
-
-    public Potion(Point pt, PotionType potionType) {
+    public Potion(Point pt, PotionType type) {
         super(pt);
-        this.potionType = potionType;
     }
 
     @Override

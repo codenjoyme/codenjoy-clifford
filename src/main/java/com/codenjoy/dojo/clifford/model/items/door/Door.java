@@ -31,12 +31,12 @@ import com.codenjoy.dojo.services.State;
 public class Door extends PointImpl implements State<Element, Player> {
 
     private State state;
-    private KeyType keyType;
+    private KeyType type;
 
-    public Door(Point point, State state, KeyType keyType) {
-        super(point);
+    public Door(Point pt, State state, KeyType type) {
+        super(pt);
         this.state = state;
-        this.keyType = keyType;
+        this.type = type;
     }
 
     public boolean isOpened() {
@@ -55,13 +55,13 @@ public class Door extends PointImpl implements State<Element, Player> {
         state = State.CLOSED;
     }
 
-    public KeyType getKeyType() {
-        return keyType;
+    public KeyType type() {
+        return type;
     }
 
     @Override
     public Element state(Player player, Object... alsoAtPoint) {
-        switch (keyType) {
+        switch (type) {
             case GOLD:
                 return isOpened()
                         ? Element.OPENED_DOOR_GOLD
@@ -75,7 +75,7 @@ public class Door extends PointImpl implements State<Element, Player> {
                         ? Element.OPENED_DOOR_BRONZE
                         : Element.CLOSED_DOOR_BRONZE;
         }
-        throw new IllegalArgumentException("invalid keyType " + keyType);
+        throw new IllegalArgumentException("invalid keyType " + type);
     }
 
     public enum State {
@@ -86,7 +86,7 @@ public class Door extends PointImpl implements State<Element, Player> {
     public String toString() {
         return String.format("[%s,%s=%s:%s]",
                 x, y,
-                keyType,
+                type,
                 state);
     }
 }
