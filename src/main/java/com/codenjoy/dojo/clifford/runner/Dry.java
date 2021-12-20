@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.clifford;
+package com.codenjoy.dojo.clifford.runner;
 
 /*-
  * #%L
@@ -27,7 +27,7 @@ import com.codenjoy.dojo.client.local.LocalGameRunner;
 import com.codenjoy.dojo.games.clifford.Board;
 import com.codenjoy.dojo.clifford.services.GameRunner;
 
-public class DryRunGame {
+public class Dry {
 
     public static void main(String[] args) {
         new LocalGameRunner()
