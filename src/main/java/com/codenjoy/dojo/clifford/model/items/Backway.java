@@ -30,8 +30,8 @@ import com.codenjoy.dojo.services.State;
 
 public class Backway extends PointImpl implements State<Element, Player> {
 
-    public Backway(Point point) {
-        super(point);
+    public Backway(Point pt) {
+        super(pt);
     }
 
     @Override

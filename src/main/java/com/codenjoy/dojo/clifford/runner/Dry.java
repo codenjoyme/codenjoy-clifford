@@ -1,8 +1,10 @@
+package com.codenjoy.dojo.clifford.runner;
+
 /*-
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 Codenjoy
+ * Copyright (C) 2018 - 2019 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -19,29 +21,20 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-using System;
-using System.Threading;
 
-namespace Demo
-{
-    class Program
-    {
-        // you can get this URL after registration on the server with your email
-        static string ServerUrl = "http://codenjoy.com:80/codenjoy-contest/board/player/3edq63tw0bq4w4iem7nb?code=12345678901234567890";
+import com.codenjoy.dojo.client.KeyboardSolver;
+import com.codenjoy.dojo.client.local.LocalGameRunner;
+import com.codenjoy.dojo.games.clifford.Board;
+import com.codenjoy.dojo.clifford.services.GameRunner;
 
-        static void Main(string[] args)
-        {
-            // creating custom AI client
-            var bot = new MyCustomCliffordAI(ServerUrl);
-            
-            // starting thread with playing game
-            (new Thread(bot.Play)).Start();
-            
-            // waiting for any key
-            Console.ReadKey();
+public class Dry {
 
-            // on any key - asking AI client to stop.
-            bot.InitiateExit();
-        }
+    public static void main(String[] args) {
+        new LocalGameRunner()
+                .with(new GameRunner())
+                .add(new KeyboardSolver(),
+                        // new AISolver(new RandomDice()),
+                        new Board())
+                .run();
     }
 }

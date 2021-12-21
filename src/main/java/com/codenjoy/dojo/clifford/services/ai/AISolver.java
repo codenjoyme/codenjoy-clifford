@@ -46,15 +46,15 @@ public class AISolver implements Solver<Board> {
         return new DeikstraFindWay.Possible() {
             @Override
             public boolean possible(Point from, Direction where) {
-                if (where == Direction.UP && !board.isLadder(from)) return false;
+                if (where == Direction.UP && !board.isLadderAt(from)) return false;
 
                 Point under = Direction.DOWN.change(from);
                 if (where != Direction.DOWN
                         && !under.isOutOf(board.size())
-                        && !board.isWall(under)
-                        && !board.isLadder(under)
-                        && !board.isLadder(from)
-                        && !board.isPipe(from)) return false;
+                        && !board.isWallAt(under)
+                        && !board.isLadderAt(under)
+                        && !board.isLadderAt(from)
+                        && !board.isPipeAt(from)) return false;
 
                 return true;
             }
@@ -62,7 +62,7 @@ public class AISolver implements Solver<Board> {
             @Override
             public boolean possible(Point pt) {
                 if (pt.isOutOf(board.size())) return false;
-                if (board.isWall(pt)) return false;
+                if (board.isWallAt(pt)) return false;
                 if (board.isRobberAt(pt)) return false;
                 if (board.isOtherHeroAt(pt)) return false;
                 if (board.isEnemyHeroAt(pt)) return false;

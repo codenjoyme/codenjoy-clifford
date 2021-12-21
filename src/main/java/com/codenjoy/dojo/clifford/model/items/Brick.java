@@ -34,13 +34,12 @@ public class Brick extends PointImpl implements Tickable, State<Element, Player>
 
     // TODO move to settings
     public static int CRACK_TIMER = 13;
-    public static final Brick NULL = new Brick(pt(-1, -1));
     private int crack;
 
     private Hero crackedBy;
 
-    public Brick(Point xy) {
-        super(xy);
+    public Brick(Point pt) {
+        super(pt);
         crack = 0;
     }
 
