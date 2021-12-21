@@ -155,7 +155,7 @@ public abstract class AbstractGameCheckTest extends AbstractGameTest {
                 "clearScore",
         // TODO если убрать эту строчку, то метод не будет игноритьтся как ожидается,
         //      а все поломается нафиг, например в тесте backwaysAreRecreatedEveryFewTicks
-                "getBackwaysTimer",
+                "getBackWaysTimer",
                 "bullets",
                 "clueKnife",
         // TODO а для isFree за счет pending получается такая фигня

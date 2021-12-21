@@ -105,8 +105,8 @@ public class Level extends AbstractLevel {
         return find(pt -> new Potion(pt, PotionType.MASK_POTION), MASK_POTION);
     }
 
-    public List<Backway> backways() {
-        return find(Backway::new, BACKWAY);
+    public List<BackWay> backways() {
+        return find(BackWay::new, BACKWAY);
     }
 
     public List<Door> doors() {

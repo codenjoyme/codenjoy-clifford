@@ -82,7 +82,7 @@ public class Clifford extends RoundField<Player> implements Field {
     private void generateAll() {
         generatePotions();
         generateClue();
-        generateBackways();
+        generateBackWays();
         generateRobbers();
     }
 
@@ -190,10 +190,10 @@ public class Clifford extends RoundField<Player> implements Field {
                 });
     }
 
-    private void generateBackways() {
+    private void generateBackWays() {
         generate(backways(), settings, BACKWAYS_COUNT,
                 player -> freeRandom((Player) player),
-                Backway::new);
+                BackWay::new);
     }
 
     private void releaseKeys(Map<KeyType, Integer> keys) {
@@ -224,7 +224,7 @@ public class Clifford extends RoundField<Player> implements Field {
                 Ladder.class,
                 Potion.class,
                 Pipe.class,
-                Backway.class,
+                BackWay.class,
                 Door.class,
                 Key.class,
                 Bullet.class);
@@ -338,10 +338,10 @@ public class Clifford extends RoundField<Player> implements Field {
     }
 
     private void transport(PointImpl point) {
-        List<Backway> backways = backways().all();
+        List<BackWay> backways = backways().all();
         for (int i = 0; i < backways.size(); i++) {
             if (backways.get(i).equals(point)) {
-                Backway backwayToMove = backways.get(i < backways.size() - 1 ? i + 1 : 0);
+                BackWay backwayToMove = backways.get(i < backways.size() - 1 ? i + 1 : 0);
                 point.move(backwayToMove.getX(), backwayToMove.getY());
                 return;
             }
@@ -375,7 +375,7 @@ public class Clifford extends RoundField<Player> implements Field {
         if (backWaysTimer == 0) {
             resetBackWaysTimer();
             backways().clear();
-            generateBackways();
+            generateBackWays();
         } else {
             backWaysTimer--;
         }
@@ -546,8 +546,8 @@ public class Clifford extends RoundField<Player> implements Field {
         return settings;
     }
 
-    public Accessor<Backway> backways() {
-        return field.of(Backway.class);
+    public Accessor<BackWay> backways() {
+        return field.of(BackWay.class);
     }
 
     public Accessor<ClueKnife> clueKnife() {

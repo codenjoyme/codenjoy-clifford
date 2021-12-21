@@ -28,9 +28,9 @@ import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.PointImpl;
 import com.codenjoy.dojo.services.State;
 
-public class Backway extends PointImpl implements State<Element, Player> {
+public class BackWay extends PointImpl implements State<Element, Player> {
 
-    public Backway(Point pt) {
+    public BackWay(Point pt) {
         super(pt);
     }
 

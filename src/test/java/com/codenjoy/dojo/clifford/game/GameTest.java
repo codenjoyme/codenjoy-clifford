@@ -3824,7 +3824,7 @@ public class GameTest extends AbstractGameCheckTest {
     }
 
     @Test
-    public void iCanJumpThroughBackways() {
+    public void iCanJumpThroughBackWays() {
         settings().integer(BACKWAYS_COUNT, 2);
 
         dice(1, 2,
@@ -4240,7 +4240,7 @@ public class GameTest extends AbstractGameCheckTest {
     }
 
     @Test
-    public void shouldEndlesslyWalkThroughTheBackways_untilExit() {
+    public void shouldEndlesslyWalkThroughTheBackWays_untilExit() {
         // given
         settings().integer(BACKWAYS_COUNT, 3);
 
@@ -4346,8 +4346,8 @@ public class GameTest extends AbstractGameCheckTest {
     }
 
     @Test
-    public void shouldResetBackways_whenClearBoard() {
-        shouldEndlesslyWalkThroughTheBackways_untilExit();
+    public void shouldResetBackWays_whenClearBoard() {
+        shouldEndlesslyWalkThroughTheBackWays_untilExit();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   W  ☼\n" +
@@ -4553,7 +4553,7 @@ public class GameTest extends AbstractGameCheckTest {
     }
 
     @Test
-    public void shouldResetBackwaysTimeout_whenClearBoard() {
+    public void shouldResetBackWaysTimeout_whenClearBoard() {
         backwaysAreRecreatedEveryFewTicks();
 
         assertF("☼☼☼☼☼\n" +

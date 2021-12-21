@@ -1,7 +1,7 @@
 
 before()
 
-shouldEndlesslyWalkThroughTheBackways_untilExit()
+shouldEndlesslyWalkThroughTheBackWays_untilExit()
     settings().integer(BACKWAYS_COUNT, 3)
     givenFl(
         ☼☼☼☼☼☼☼☼

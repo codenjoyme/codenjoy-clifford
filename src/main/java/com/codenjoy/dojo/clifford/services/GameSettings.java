@@ -49,8 +49,8 @@ public class GameSettings extends SettingsImpl
         MASK_POTIONS_COUNT("[Game] Mask potions count"),
         MASK_TICKS("[Game] Mask ticks"),
 
-        BACKWAYS_COUNT("[Game] Backways count"),
-        BACKWAY_TICKS("[Game] Backway ticks"),
+        BACKWAYS_COUNT("[Game] Back ways count"),
+        BACKWAY_TICKS("[Game] Back way ticks"),
 
         ROBBERS_COUNT("[Game] Robbers count"),
 

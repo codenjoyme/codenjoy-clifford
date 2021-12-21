@@ -1,7 +1,7 @@
 
 before()
 
-shouldResetBackways_whenClearBoard()
+shouldResetBackWays_whenClearBoard()
     settings().integer(BACKWAYS_COUNT, 3)
     givenFl(
         ☼☼☼☼☼☼☼☼
