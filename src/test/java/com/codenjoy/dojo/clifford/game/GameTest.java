@@ -3872,12 +3872,12 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        assertEquals(5, field().getBackwaysTimer());
+        assertEquals(5, field().getBackWaysTimer());
 
         hero().left();
         tick();
 
-        assertEquals(4, field().getBackwaysTimer());
+        assertEquals(4, field().getBackWaysTimer());
 
         assertF("☼☼☼☼☼\n" +
                 "☼  U☼\n" +
@@ -3887,7 +3887,7 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertEquals(3, field().getBackwaysTimer());
+        assertEquals(3, field().getBackWaysTimer());
 
         assertF("☼☼☼☼☼\n" +
                 "☼  W☼\n" +
@@ -3897,15 +3897,15 @@ public class GameTest extends AbstractGameCheckTest {
 
         tick();
 
-        assertEquals(2, field().getBackwaysTimer());
+        assertEquals(2, field().getBackWaysTimer());
 
         tick();
 
-        assertEquals(1, field().getBackwaysTimer());
+        assertEquals(1, field().getBackWaysTimer());
 
         tick();
 
-        assertEquals(0, field().getBackwaysTimer());
+        assertEquals(0, field().getBackWaysTimer());
 
         assertF("☼☼☼☼☼\n" +
                 "☼  W☼\n" +
@@ -3917,7 +3917,7 @@ public class GameTest extends AbstractGameCheckTest {
             2, 3);
         tick();
 
-        assertEquals(5, field().getBackwaysTimer());
+        assertEquals(5, field().getBackWaysTimer());
 
         assertF("☼☼☼☼☼\n" +
                 "☼WW ☼\n" +
@@ -4562,13 +4562,13 @@ public class GameTest extends AbstractGameCheckTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        assertEquals(5, field().getBackwaysTimer());
+        assertEquals(5, field().getBackWaysTimer());
 
         tick();
         tick();
         tick();
 
-        assertEquals(2, field().getBackwaysTimer());
+        assertEquals(2, field().getBackWaysTimer());
 
         // when
         dice(3, 3, // new backways
@@ -4577,7 +4577,7 @@ public class GameTest extends AbstractGameCheckTest {
         field().clearScore();
 
         // then
-        assertEquals(5, field().getBackwaysTimer());
+        assertEquals(5, field().getBackWaysTimer());
     }
 
     @Ignore // TODO please fix me
