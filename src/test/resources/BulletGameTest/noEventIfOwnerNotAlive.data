@@ -25,12 +25,12 @@ noEventIfOwnerNotAlive()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼ ►   » ☼
+        ☼ ►•  » ☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[2,3,RIGHT]]
+    field().bullets() = [[3,3,RIGHT]]
     hero(0).die()
     tick()
     assertF(
@@ -39,7 +39,7 @@ noEventIfOwnerNotAlive()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼ O • » ☼
+        ☼ O  •» ☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,

@@ -35,6 +35,7 @@ public class Bullet extends MovingObject implements State<Element, Player> {
     private Hero owner;
     private Field field;
     private boolean bounced;
+    private boolean newBullet = true;
 
     public Bullet(Hero owner) {
         super(owner.getX(), owner.getY(), owner.getDirection());
@@ -42,6 +43,13 @@ public class Bullet extends MovingObject implements State<Element, Player> {
         speed = 2;
         this.owner = owner;
         this.field = owner.field();
+    }
+
+    public void doFirstMoveAffect() {
+        if (newBullet) {
+            moving(direction.change(this));
+            newBullet = false;
+        }
     }
 
     public Hero getOwner() {
