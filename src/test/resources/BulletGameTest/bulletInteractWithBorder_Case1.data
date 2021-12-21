@@ -1,37 +1,33 @@
 
 before()
 
-heroNotMoveWhenShoot()
+bulletInteractWithBorder_Case1()
     givenFl(
         ☼☼☼☼☼
         ☼   ☼
-        ☼►  ☼
+        ◄   ☼
         ☼###☼
         ☼☼☼☼☼)
-        givenPlayer([1,2])
-            dice(1, 2)
+        givenPlayer([0,2])
+            dice(0, 2)
         dice(0)
-    hero(0).right()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ◄   ☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
     hero(0).act(1)
     tick()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼►• ☼
+        ◄   ☼
         ☼###☼
         ☼☼☼☼☼,
         0)
-    field().bullets() = [[2,2,RIGHT]]
-    hero(0).right()
-    tick()
-    assertF(
-        ☼☼☼☼☼
-        ☼   ☼
-        ☼ ► ☼
-        ☼###☼
-        ☼☼☼☼☼,
-        0)
-    field().bullets() = [[4,2,LEFT]]
+    field().bullets() = []
 
 after()
     events().getEvents() = 

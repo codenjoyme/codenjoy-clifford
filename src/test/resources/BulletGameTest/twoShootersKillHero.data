@@ -39,12 +39,12 @@ twoShootersKillHero()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼» » ◄  ☼
+        ☼»•»•◄  ☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,
         0)
-    field().bullets() = [[5,3,LEFT], [1,3,RIGHT]]
+    field().bullets() = [[4,3,LEFT], [2,3,RIGHT]]
     tick()
     assertF(
         ☼☼☼☼☼☼☼☼☼

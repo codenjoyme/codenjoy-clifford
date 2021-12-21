@@ -1,37 +1,34 @@
 
 before()
 
-heroNotMoveWhenShoot()
+heroShoot_upDirection()
     givenFl(
         ☼☼☼☼☼
         ☼   ☼
-        ☼►  ☼
+        ☼  ◄☼
         ☼###☼
         ☼☼☼☼☼)
-        givenPlayer([1,2])
-            dice(1, 2)
+        givenPlayer([3,2])
+            dice(3, 2)
         dice(0)
-    hero(0).right()
+    assertF(
+        ☼☼☼☼☼
+        ☼   ☼
+        ☼  ◄☼
+        ☼###☼
+        ☼☼☼☼☼,
+        0)
     hero(0).act(1)
+    hero(0).up()
     tick()
     assertF(
         ☼☼☼☼☼
         ☼   ☼
-        ☼►• ☼
+        ☼ •◄☼
         ☼###☼
         ☼☼☼☼☼,
         0)
-    field().bullets() = [[2,2,RIGHT]]
-    hero(0).right()
-    tick()
-    assertF(
-        ☼☼☼☼☼
-        ☼   ☼
-        ☼ ► ☼
-        ☼###☼
-        ☼☼☼☼☼,
-        0)
-    field().bullets() = [[4,2,LEFT]]
+    field().bullets() = [[2,2,LEFT]]
 
 after()
     events().getEvents() = 
