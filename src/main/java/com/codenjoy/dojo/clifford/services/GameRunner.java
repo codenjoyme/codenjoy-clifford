@@ -63,6 +63,7 @@ public class GameRunner extends AbstractGameType<GameSettings> {
 
     @Override
     public Parameter<Integer> getBoardSize(GameSettings settings) {
+        // TODO точно так норм, левел вернется рендомный, а что если они будут разного размера?
         return v(settings.level(LevelProgress.levelsStartsFrom1, getDice()).size());
     }
 

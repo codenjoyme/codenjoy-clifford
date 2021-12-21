@@ -93,7 +93,6 @@ public class Clifford extends RoundField<Player> implements Field {
 
         this.killerWithDeads = ArrayListMultimap.create();
         resetBackWaysTimer();
-        robbers().forEach(robber -> robber.init(this));
         generateAll();
 
         super.clearScore();
