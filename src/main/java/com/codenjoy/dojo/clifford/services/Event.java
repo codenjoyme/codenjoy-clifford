@@ -22,12 +22,14 @@ package com.codenjoy.dojo.clifford.services;
  * #L%
  */
 
-public class Events {
+import com.codenjoy.dojo.services.event.EventObject;
 
-    private Event type;
+public class Event implements EventObject<Event.Type, Integer> {
+
+    private Type type;
     private int amount;
 
-    public enum Event {
+    public enum Type {
         START_ROUND,      // раунд стартовал
         WIN_ROUND,        // герой победил в раунде
 
@@ -44,12 +46,12 @@ public class Events {
     }
 
     public static Object wrap(Object input) {
-        return (input instanceof Events.Event)
-                ? new Events((Events.Event) input)
+        return (input instanceof Type)
+                ? new com.codenjoy.dojo.clifford.services.Event((Type) input)
                 : input;
     }
 
-    public Events with(int amount) {
+    public com.codenjoy.dojo.clifford.services.Event with(int amount) {
         this.amount = amount;
         return this;
     }
@@ -59,20 +61,22 @@ public class Events {
         return type + ((amount != 0)?("(" + amount + ")"):"");
     }
 
-    public Events(Event type) {
+    public Event(Type type) {
         this.type = type;
     }
 
-    public Events(Event type, int amount) {
+    public Event(Type type, int amount) {
         this.type = type;
         this.amount = amount;
     }
 
-    public int amount() {
+    @Override
+    public Integer value() {
         return amount;
     }
 
-    public Event type() {
+    @Override
+    public Type type() {
         return type;
     }
 }

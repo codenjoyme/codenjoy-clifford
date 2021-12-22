@@ -27,7 +27,7 @@ import com.codenjoy.dojo.services.PlayerScores;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.codenjoy.dojo.clifford.services.Events.Event.*;
+import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static org.junit.Assert.assertEquals;
 
@@ -37,38 +37,38 @@ public class ScoresTest {
     private GameSettings settings;
 
     public void heroDie() {
-        scores.event(new Events(HERO_DIE));
+        scores.event(new Event(HERO_DIE));
     }
 
     public void killHero() {
-        scores.event(new Events(KILL_HERO));
+        scores.event(new Event(KILL_HERO));
     }
 
     public void killEnemy() {
-        scores.event(new Events(KILL_ENEMY));
+        scores.event(new Event(KILL_ENEMY));
     }
 
     public void suicide() {
-        scores.event(new Events(SUICIDE));
+        scores.event(new Event(SUICIDE));
     }
 
     public void clueKnife(int amount) {
-        scores.event(new Events(GET_CLUE_KNIFE).with(amount));
+        scores.event(new Event(GET_CLUE_KNIFE).with(amount));
     }
 
     public void clueRing(int amount) {
-        scores.event(new Events(GET_CLUE_RING).with(amount));
+        scores.event(new Event(GET_CLUE_RING).with(amount));
     }
 
     public void clueGlove(int amount) {
-        scores.event(new Events(GET_CLUE_GLOVE).with(amount));
+        scores.event(new Event(GET_CLUE_GLOVE).with(amount));
     }
 
     @Before
     public void setup() {
         settings = new GameSettings()
-                .integer(SUICIDE_PENALTY, 13)
-                .integer(HERO_DIE_PENALTY, 30)
+                .integer(SUICIDE_PENALTY, -13)
+                .integer(HERO_DIE_PENALTY, -30)
 
                 .integer(KILL_HERO_SCORE, 20)
                 .integer(KILL_ENEMY_SCORE, 50)
@@ -122,7 +122,7 @@ public class ScoresTest {
         expected += 2 * settings.integer(CLUE_SCORE_GLOVE);
         expected += settings.integer(CLUE_SCORE_GLOVE_INCREMENT);
 
-        expected += -settings.integer(HERO_DIE_PENALTY);
+        expected += settings.integer(HERO_DIE_PENALTY);
         assertEquals(expected, scores.getScore());
     }
 
@@ -254,7 +254,7 @@ public class ScoresTest {
         // then
         int expected = 3 * settings.integer(CLUE_SCORE_KNIFE);
         expected += (1 + 2) * settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
-        expected += - settings.integer(HERO_DIE_PENALTY);
+        expected += settings.integer(HERO_DIE_PENALTY);
         assertEquals(expected, scores.getScore());
 
         // when
@@ -304,7 +304,7 @@ public class ScoresTest {
 
         int expected = 3 * settings.integer(CLUE_SCORE_KNIFE);
         expected += (1 + 2) * settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
-        expected += -settings.integer(SUICIDE_PENALTY);
+        expected += settings.integer(SUICIDE_PENALTY);
         assertEquals(expected, scores.getScore());
 
         // then
@@ -330,7 +330,7 @@ public class ScoresTest {
 
         int expected = 3 * settings.integer(CLUE_SCORE_KNIFE);
         expected += (1 + 2) * settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
-        expected += -settings.integer(HERO_DIE_PENALTY);
+        expected += settings.integer(HERO_DIE_PENALTY);
         assertEquals(expected, scores.getScore());
 
         // then

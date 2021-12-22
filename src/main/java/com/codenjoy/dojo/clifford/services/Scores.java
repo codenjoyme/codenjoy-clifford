@@ -23,85 +23,55 @@ package com.codenjoy.dojo.clifford.services;
  */
 
 
-import com.codenjoy.dojo.services.PlayerScores;
+import com.codenjoy.dojo.services.event.AbstractScores;
+import com.codenjoy.dojo.services.settings.SettingsReader;
 
-import static com.codenjoy.dojo.clifford.services.Events.Event.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
+
+import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 
-public class Scores implements PlayerScores {
-
-    private volatile int score;
-    private GameSettings settings;
-
-    public Scores(int startScore, GameSettings settings) {
-        this.score = startScore;
-        this.settings = settings;
+public class Scores extends AbstractScores<Integer> {
+    
+    public Scores(int score, SettingsReader settings) {
+        super(score, settings);
     }
 
     @Override
-    public int clear() {
-        return score = 0;
+    protected Map<Object, Function<Integer, Integer>> eventToScore() {
+        return map(settings);
     }
 
-    @Override
-    public Integer getScore() {
-        return score;
-    }
+    public static Map<Object, Function<Integer, Integer>> map(SettingsReader settings) {
+        return new HashMap<>(){{
+            put(Event.Type.GET_CLUE_KNIFE,
+                    value -> settings.integer(CLUE_SCORE_KNIFE)
+                            + value * settings.integer(CLUE_SCORE_KNIFE_INCREMENT));
 
-    @Override
-    public void event(Object event) {
-        score += scoreFor(settings, event);
-        score = Math.max(0, score);
-    }
+            put(Event.Type.GET_CLUE_GLOVE,
+                    value -> settings.integer(CLUE_SCORE_GLOVE)
+                            + value * settings.integer(CLUE_SCORE_GLOVE_INCREMENT));
 
-    public static int scoreFor(GameSettings settings, Object input) {
-        if (!(input instanceof Events)) {
-            return 0;
-        }
+            put(Event.Type.GET_CLUE_RING,
+                    value -> settings.integer(CLUE_SCORE_RING)
+                            + value * settings.integer(CLUE_SCORE_RING_INCREMENT));
 
-        Events event = (Events) input;
-        Events.Event type = event.type();
+            put(Event.Type.KILL_HERO,
+                    value -> settings.integer(KILL_HERO_SCORE));
 
-        if (type.equals(GET_CLUE_KNIFE)) {
-            return settings.integer(CLUE_SCORE_KNIFE)
-                    + event.amount() * settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
-        }
+            put(Event.Type.KILL_ENEMY,
+                    value -> settings.integer(KILL_ENEMY_SCORE));
 
-        if (type.equals(GET_CLUE_GLOVE)) {
-            return settings.integer(CLUE_SCORE_GLOVE)
-                    + event.amount() * settings.integer(CLUE_SCORE_GLOVE_INCREMENT);
-        }
+            put(Event.Type.HERO_DIE,
+                    value -> settings.integer(HERO_DIE_PENALTY));
 
-        if (type.equals(GET_CLUE_RING)) {
-            return settings.integer(CLUE_SCORE_RING)
-                    + event.amount() * settings.integer(CLUE_SCORE_RING_INCREMENT);
-        }
+            put(Event.Type.SUICIDE,
+                    value -> settings.integer(SUICIDE_PENALTY));
 
-        if (type.equals(KILL_HERO)) {
-            return settings.integer(KILL_HERO_SCORE);
-        }
-
-        if (type.equals(KILL_ENEMY)) {
-            return settings.integer(KILL_ENEMY_SCORE);
-        }
-
-        if (type.equals(HERO_DIE)) {
-            return - settings.integer(HERO_DIE_PENALTY);
-        }
-
-        if (type.equals(SUICIDE)) {
-            return - settings.integer(SUICIDE_PENALTY);
-        }
-
-        if (type.equals(WIN_ROUND)) {
-            return settings.integer(ROUND_WIN);
-        }
-
-        return 0;
-    }
-
-    @Override
-    public void update(Object score) {
-        this.score = Integer.parseInt(score.toString());
+            put(Event.Type.WIN_ROUND,
+                    value -> settings.integer(ROUND_WIN));
+        }};
     }
 }

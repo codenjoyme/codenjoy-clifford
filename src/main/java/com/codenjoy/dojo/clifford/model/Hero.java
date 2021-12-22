@@ -29,7 +29,7 @@ import com.codenjoy.dojo.clifford.model.items.Pipe;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.KeyType;
-import com.codenjoy.dojo.clifford.services.Events;
+import com.codenjoy.dojo.clifford.services.Event;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.Point;
@@ -371,11 +371,11 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
                 .anyMatch(h -> player.getTeamId() != h.getPlayer().getTeamId());
     }
 
-    public void pickClue(Events.Event clue) {
-        getPlayer().event(new Events(clue).with(increaseClue(clue)));
+    public void pickClue(Event.Type clue) {
+        getPlayer().event(new Event(clue).with(increaseClue(clue)));
     }
 
-    private int increaseClue(Events.Event clue) {
+    private int increaseClue(Event.Type clue) {
         switch (clue) {
             case GET_CLUE_KNIFE :
                 return ++knives;

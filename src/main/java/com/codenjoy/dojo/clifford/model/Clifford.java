@@ -47,7 +47,7 @@ import com.google.common.collect.Multimap;
 import java.util.*;
 
 import static com.codenjoy.dojo.clifford.model.items.Potion.PotionType.MASK_POTION;
-import static com.codenjoy.dojo.clifford.services.Events.Event.*;
+import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.field.Generator.generate;
 import static java.util.stream.Collectors.toList;

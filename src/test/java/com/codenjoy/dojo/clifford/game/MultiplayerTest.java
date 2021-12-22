@@ -29,7 +29,7 @@ import com.codenjoy.dojo.clifford.model.items.Potion;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import org.junit.Test;
 
-import static com.codenjoy.dojo.clifford.services.Events.Event.*;
+import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.round.RoundSettings.Keys.*;
 import static org.mockito.Mockito.never;

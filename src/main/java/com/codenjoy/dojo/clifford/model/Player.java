@@ -23,7 +23,7 @@ package com.codenjoy.dojo.clifford.model;
  */
 
 
-import com.codenjoy.dojo.clifford.services.Events;
+import com.codenjoy.dojo.clifford.services.Event;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.clifford.services.Scores;
 import com.codenjoy.dojo.services.Direction;
@@ -52,8 +52,8 @@ public class Player extends RoundGamePlayer<Hero, Field> {
 
     @Override
     public void event(Object event) {
-        event = Events.wrap(event);
-        hero.addScore(Scores.scoreFor(settings(), event));
+        event = Event.wrap(event);
+        hero.addScore(Scores.scoreFor(Scores.map(settings), event));
         super.event(event);
     }
 

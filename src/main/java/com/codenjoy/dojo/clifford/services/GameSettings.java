@@ -121,8 +121,8 @@ public class GameSettings extends SettingsImpl
         integer(ROUND_WIN, 20);
         integer(KILL_HERO_SCORE, 20);
         integer(KILL_ENEMY_SCORE, 50);
-        integer(HERO_DIE_PENALTY, 1);
-        integer(SUICIDE_PENALTY, 10);
+        integer(HERO_DIE_PENALTY, -1);
+        integer(SUICIDE_PENALTY, -10);
 
         Levels.setup(this);
     }

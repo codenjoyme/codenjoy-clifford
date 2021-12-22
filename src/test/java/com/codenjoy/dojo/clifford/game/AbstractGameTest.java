@@ -29,7 +29,7 @@ import com.codenjoy.dojo.clifford.model.Level;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.robber.RobberJoystick;
-import com.codenjoy.dojo.clifford.services.Events;
+import com.codenjoy.dojo.clifford.services.Event;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Dice;
@@ -78,7 +78,7 @@ public abstract class AbstractGameTest {
         printer = new PrinterFactoryImpl<>();
         settings = new TestSettings();
         setupSettings();
-        events = new EventsListenersAssert(() -> listeners, Events.class);
+        events = new EventsListenersAssert(() -> listeners, Event.class);
         robbers = new LinkedList<>();
         Brick.CRACK_TIMER = 13;
     }
