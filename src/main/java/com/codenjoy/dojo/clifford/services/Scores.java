@@ -24,12 +24,15 @@ package com.codenjoy.dojo.clifford.services;
 
 
 import com.codenjoy.dojo.services.event.ScoresMap;
+import com.codenjoy.dojo.services.settings.SettingsReader;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 
 public class Scores extends ScoresMap<Integer> {
     
-    public Scores(GameSettings settings) {
+    public Scores(SettingsReader settings) {
+        super(settings);
+
         put(Event.Type.GET_CLUE_KNIFE,
                 value -> settings.integer(CLUE_SCORE_KNIFE)
                         + value * settings.integer(CLUE_SCORE_KNIFE_INCREMENT));

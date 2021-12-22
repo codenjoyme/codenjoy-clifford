@@ -25,6 +25,7 @@ package com.codenjoy.dojo.clifford.services;
 
 import com.codenjoy.dojo.clifford.model.Level;
 import com.codenjoy.dojo.services.Dice;
+import com.codenjoy.dojo.services.event.ScoresImpl;
 import com.codenjoy.dojo.services.incativity.InactivitySettings;
 import com.codenjoy.dojo.services.level.LevelsSettings;
 import com.codenjoy.dojo.services.round.RoundSettings;
@@ -72,6 +73,7 @@ public class GameSettings extends SettingsImpl
         KILL_ENEMY_SCORE("[Score] Kill enemy score"),
         HERO_DIE_PENALTY("[Score] Hero die penalty"),
         SUICIDE_PENALTY("[Score] Suicide penalty"),
+        SCORE_COUNTING_TYPE(ScoresImpl.SCORE_COUNTING_TYPE),
         ROUND_WIN("[Score] Round win");
 
         private String key;
@@ -95,6 +97,7 @@ public class GameSettings extends SettingsImpl
         initInactivity();
         initRound();
         initSemifinal();
+        initScore(ScoresImpl.CUMULATIVELY);
 
         integer(MASK_POTIONS_COUNT, 0);
         integer(MASK_TICKS, 15);
