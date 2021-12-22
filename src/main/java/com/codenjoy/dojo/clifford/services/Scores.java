@@ -23,55 +23,38 @@ package com.codenjoy.dojo.clifford.services;
  */
 
 
-import com.codenjoy.dojo.services.event.AbstractScores;
-import com.codenjoy.dojo.services.settings.SettingsReader;
+import com.codenjoy.dojo.services.event.ScoresMap;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
-
-import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 
-public class Scores extends AbstractScores<Integer> {
+public class Scores extends ScoresMap<Integer> {
     
-    public Scores(int score, SettingsReader settings) {
-        super(score, settings);
-    }
+    public Scores(GameSettings settings) {
+        put(Event.Type.GET_CLUE_KNIFE,
+                value -> settings.integer(CLUE_SCORE_KNIFE)
+                        + value * settings.integer(CLUE_SCORE_KNIFE_INCREMENT));
 
-    @Override
-    protected Map<Object, Function<Integer, Integer>> eventToScore() {
-        return map(settings);
-    }
+        put(Event.Type.GET_CLUE_GLOVE,
+                value -> settings.integer(CLUE_SCORE_GLOVE)
+                        + value * settings.integer(CLUE_SCORE_GLOVE_INCREMENT));
 
-    public static Map<Object, Function<Integer, Integer>> map(SettingsReader settings) {
-        return new HashMap<>(){{
-            put(Event.Type.GET_CLUE_KNIFE,
-                    value -> settings.integer(CLUE_SCORE_KNIFE)
-                            + value * settings.integer(CLUE_SCORE_KNIFE_INCREMENT));
+        put(Event.Type.GET_CLUE_RING,
+                value -> settings.integer(CLUE_SCORE_RING)
+                        + value * settings.integer(CLUE_SCORE_RING_INCREMENT));
 
-            put(Event.Type.GET_CLUE_GLOVE,
-                    value -> settings.integer(CLUE_SCORE_GLOVE)
-                            + value * settings.integer(CLUE_SCORE_GLOVE_INCREMENT));
+        put(Event.Type.KILL_HERO,
+                value -> settings.integer(KILL_HERO_SCORE));
 
-            put(Event.Type.GET_CLUE_RING,
-                    value -> settings.integer(CLUE_SCORE_RING)
-                            + value * settings.integer(CLUE_SCORE_RING_INCREMENT));
+        put(Event.Type.KILL_ENEMY,
+                value -> settings.integer(KILL_ENEMY_SCORE));
 
-            put(Event.Type.KILL_HERO,
-                    value -> settings.integer(KILL_HERO_SCORE));
+        put(Event.Type.HERO_DIE,
+                value -> settings.integer(HERO_DIE_PENALTY));
 
-            put(Event.Type.KILL_ENEMY,
-                    value -> settings.integer(KILL_ENEMY_SCORE));
+        put(Event.Type.SUICIDE,
+                value -> settings.integer(SUICIDE_PENALTY));
 
-            put(Event.Type.HERO_DIE,
-                    value -> settings.integer(HERO_DIE_PENALTY));
-
-            put(Event.Type.SUICIDE,
-                    value -> settings.integer(SUICIDE_PENALTY));
-
-            put(Event.Type.WIN_ROUND,
-                    value -> settings.integer(ROUND_WIN));
-        }};
+        put(Event.Type.WIN_ROUND,
+                value -> settings.integer(ROUND_WIN));
     }
 }

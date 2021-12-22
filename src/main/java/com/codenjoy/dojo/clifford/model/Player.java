@@ -29,6 +29,7 @@ import com.codenjoy.dojo.clifford.services.Scores;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.EventListener;
 import com.codenjoy.dojo.services.Point;
+import com.codenjoy.dojo.services.event.ScoresImpl;
 import com.codenjoy.dojo.services.round.RoundGamePlayer;
 
 public class Player extends RoundGamePlayer<Hero, Field> {
@@ -53,7 +54,7 @@ public class Player extends RoundGamePlayer<Hero, Field> {
     @Override
     public void event(Object event) {
         event = Event.wrap(event);
-        hero.addScore(Scores.scoreFor(Scores.map(settings), event));
+        hero.addScore(ScoresImpl.scoreFor(new Scores(settings), event));
         super.event(event);
     }
 
