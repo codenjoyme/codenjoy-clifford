@@ -356,6 +356,10 @@ public class ScoresTest {
         settings.initScore(SERIES_MAX_VALUE);
         givenScores(140);
 
+        // then
+        assertEquals(140, scores.getScore());
+        assertEquals((Integer)0, ((ScoresImpl)scores).getSeries());
+
         // when
         clueKnife(0);
         clueRing(0);
@@ -371,7 +375,7 @@ public class ScoresTest {
         heroDie();
 
         // then
-        assertEquals(1245, scores.getScore());
+        assertEquals(1105, scores.getScore());
         assertEquals((Integer)0, ((ScoresImpl)scores).getSeries());
 
         // when
@@ -387,7 +391,7 @@ public class ScoresTest {
         clueKnife(4);
 
         // then
-        assertEquals(1245, scores.getScore());
+        assertEquals(1105, scores.getScore());
         assertEquals((Integer)1105, ((ScoresImpl)scores).getSeries());
 
         // when
@@ -404,6 +408,5 @@ public class ScoresTest {
         // then
         assertEquals(0, scores.getScore());
         assertEquals((Integer)0, ((ScoresImpl)scores).getSeries());
-
     }
 }
