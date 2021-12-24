@@ -31,6 +31,8 @@ import org.junit.Test;
 
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
+import static com.codenjoy.dojo.services.event.ScoresImpl.Mode.CUMULATIVELY;
+import static com.codenjoy.dojo.services.event.ScoresImpl.Mode.SERIES_MAX_VALUE;
 import static org.junit.Assert.assertEquals;
 
 public class ScoresTest {
@@ -69,6 +71,8 @@ public class ScoresTest {
     @Before
     public void setup() {
         settings = new TestGameSettings()
+                .initScore(CUMULATIVELY)
+
                 .integer(SUICIDE_PENALTY, -13)
                 .integer(HERO_DIE_PENALTY, -30)
 
@@ -344,5 +348,62 @@ public class ScoresTest {
 
         expected += settings.integer(CLUE_SCORE_KNIFE);
         assertEquals(expected, scores.getScore());
+    }
+
+    @Test
+    public void shouldCollectScores_seriesMaxScoresMode() {
+        // given
+        settings.initScore(SERIES_MAX_VALUE);
+        givenScores(140);
+
+        // when
+        clueKnife(0);
+        clueRing(0);
+        clueRing(1);
+        clueRing(2);
+        clueGlove(0);
+        clueGlove(1);
+        clueKnife(1);
+        clueKnife(2);
+        clueKnife(3);
+        clueKnife(4);
+
+        heroDie();
+
+        // then
+        assertEquals(1245, scores.getScore());
+        assertEquals((Integer)0, ((ScoresImpl)scores).getSeries());
+
+        // when
+        clueKnife(0);
+        clueRing(0);
+        clueRing(1);
+        clueRing(2);
+        clueGlove(0);
+        clueGlove(1);
+        clueKnife(1);
+        clueKnife(2);
+        clueKnife(3);
+        clueKnife(4);
+
+        // then
+        assertEquals(1245, scores.getScore());
+        assertEquals((Integer)1105, ((ScoresImpl)scores).getSeries());
+
+        // when
+        clueKnife(5);
+        clueKnife(6);
+
+        // then
+        assertEquals(1255, scores.getScore());
+        assertEquals((Integer)1255, ((ScoresImpl)scores).getSeries());
+
+        // when
+        scores.clear();
+
+        // then
+        assertEquals(0, scores.getScore());
+        assertEquals((Integer)0, ((ScoresImpl)scores).getSeries());
+
     }
 }

@@ -23,10 +23,12 @@ package com.codenjoy.dojo.clifford.services;
  */
 
 
+import com.codenjoy.dojo.services.event.ScoresImpl;
 import com.codenjoy.dojo.services.event.ScoresMap;
 import com.codenjoy.dojo.services.settings.SettingsReader;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
+import static com.codenjoy.dojo.services.event.ScoresImpl.Mode.SERIES_MAX_VALUE;
 
 public class Scores extends ScoresMap<Integer> {
     
@@ -52,12 +54,20 @@ public class Scores extends ScoresMap<Integer> {
                 value -> settings.integer(KILL_ENEMY_SCORE));
 
         put(Event.Type.HERO_DIE,
-                value -> settings.integer(HERO_DIE_PENALTY));
+                value -> heroDie(settings));
 
         put(Event.Type.SUICIDE,
                 value -> settings.integer(SUICIDE_PENALTY));
 
         put(Event.Type.WIN_ROUND,
                 value -> settings.integer(ROUND_WIN));
+    }
+
+    private Integer heroDie(SettingsReader settings) {
+        if (ScoresImpl.modeValue(settings) == SERIES_MAX_VALUE) {
+            return null; // что значит, что мы собрались обнулить серию
+        } else {
+            return settings.integer(HERO_DIE_PENALTY);
+        }
     }
 }
