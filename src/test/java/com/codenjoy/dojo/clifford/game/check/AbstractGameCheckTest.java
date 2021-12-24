@@ -174,6 +174,7 @@ public abstract class AbstractGameCheckTest extends AbstractGameTest {
     @Override
     public GameSettings settings() {
         GameSettings result = manager.objectSpy(super.settings(),
+                "[-R]SettingsReader:initScore",
                 "[-R]SettingsReader:integer",
                 "[-R]SettingsReader:string",
                 "[-R]SettingsReader:bool");
