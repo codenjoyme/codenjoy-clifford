@@ -27,9 +27,9 @@ import com.codenjoy.dojo.clifford.services.GameSettings;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.round.RoundSettings.Keys.ROUNDS_ENABLED;
 
-public class TestSettings extends GameSettings {
+public class TestGameSettings extends GameSettings {
 
-    public TestSettings() {
+    public TestGameSettings() {
         bool(ROUNDS_ENABLED, false);
 
         integer(HERO_DIE_PENALTY, -0);

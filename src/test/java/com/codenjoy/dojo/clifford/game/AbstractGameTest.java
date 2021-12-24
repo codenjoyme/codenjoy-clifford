@@ -22,7 +22,7 @@ package com.codenjoy.dojo.clifford.game;
  * #L%
  */
 
-import com.codenjoy.dojo.clifford.TestSettings;
+import com.codenjoy.dojo.clifford.TestGameSettings;
 import com.codenjoy.dojo.clifford.model.Clifford;
 import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.Level;
@@ -76,7 +76,7 @@ public abstract class AbstractGameTest {
         games = new LinkedList<>();
         dice = mock(Dice.class);
         printer = new PrinterFactoryImpl<>();
-        settings = new TestSettings();
+        settings = new TestGameSettings();
         setupSettings();
         events = new EventsListenersAssert(() -> listeners, Event.class);
         robbers = new LinkedList<>();
