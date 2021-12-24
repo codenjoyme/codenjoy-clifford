@@ -23,6 +23,7 @@ package com.codenjoy.dojo.clifford.services;
  */
 
 
+import com.codenjoy.dojo.clifford.TestGameSettings;
 import com.codenjoy.dojo.services.PlayerScores;
 import com.codenjoy.dojo.services.event.ScoresImpl;
 import org.junit.Before;
@@ -67,7 +68,7 @@ public class ScoresTest {
 
     @Before
     public void setup() {
-        settings = new GameSettings()
+        settings = new TestGameSettings()
                 .integer(SUICIDE_PENALTY, -13)
                 .integer(HERO_DIE_PENALTY, -30)
 
@@ -83,13 +84,17 @@ public class ScoresTest {
                 .integer(CLUE_SCORE_RING, 200)
                 .integer(CLUE_SCORE_RING_INCREMENT, 100);
 
-        scores = new ScoresImpl<>(0, new Scores(settings));
+        givenScores(0);
+    }
+
+    private void givenScores(int score) {
+        scores = new ScoresImpl<>(score, new Scores(settings));
     }
 
     @Test
     public void shouldCollectScores() {
         // given
-        scores = new ScoresImpl<>(140, new Scores(settings));
+        givenScores(140);
 
         // when
         killHero();
@@ -130,7 +135,7 @@ public class ScoresTest {
     @Test
     public void shouldIncreaseForNextClue_stepByStep_knife() {
         // given
-        scores = new ScoresImpl<>(0, new Scores(settings));
+        givenScores(0);
 
         // when then
         clueKnife(0);
@@ -159,7 +164,7 @@ public class ScoresTest {
     @Test
     public void shouldIncreaseForNextClue_stepByStep_glove() {
         // given
-        scores = new ScoresImpl<>(0, new Scores(settings));
+        givenScores(0);
 
         // when then
         clueGlove(0);
@@ -188,7 +193,7 @@ public class ScoresTest {
     @Test
     public void shouldIncreaseForNextClue_stepByStep_ring() {
         // given
-        scores = new ScoresImpl<>(0, new Scores(settings));
+        givenScores(0);
 
         // when then
         clueRing(0);
@@ -243,7 +248,7 @@ public class ScoresTest {
     @Test
     public void shouldCleanIncreasedIfGameOver() {
         // given
-        scores = new ScoresImpl<>(0, new Scores(settings));
+        givenScores(0);
 
         clueKnife(0);
         clueKnife(1);
@@ -271,7 +276,7 @@ public class ScoresTest {
     @Test
     public void shouldCleanIncreasedIfClean() {
         // given
-        scores = new ScoresImpl<>(0, new Scores(settings));
+        givenScores(0);
 
         clueKnife(0);
         clueKnife(1);
@@ -294,7 +299,7 @@ public class ScoresTest {
     @Test
     public void shouldCleanIncreasedIfSuicide() {
         // given
-        scores = new ScoresImpl<>(0, new Scores(settings));
+        givenScores(0);
 
         clueKnife(0);
         clueKnife(1);
@@ -320,7 +325,7 @@ public class ScoresTest {
     @Test
     public void shouldCleanIncreasedIfHeroDie() {
         // given
-        scores = new ScoresImpl<>(0, new Scores(settings));
+        givenScores(0);
 
         clueKnife(0);
         clueKnife(1);
