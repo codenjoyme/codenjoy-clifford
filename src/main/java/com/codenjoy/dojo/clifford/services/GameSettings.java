@@ -37,6 +37,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
+import static com.codenjoy.dojo.services.event.ScoresImpl.Mode.CUMULATIVELY;
 
 public class GameSettings extends SettingsImpl
         implements SettingsReader<GameSettings>,
@@ -73,7 +74,7 @@ public class GameSettings extends SettingsImpl
         KILL_ENEMY_SCORE("[Score] Kill enemy score"),
         HERO_DIE_PENALTY("[Score] Hero die penalty"),
         SUICIDE_PENALTY("[Score] Suicide penalty"),
-        SCORE_COUNTING_TYPE(ScoresImpl.SCORE_COUNTING_TYPE),
+        SCORE_COUNTING_TYPE(ScoresImpl.SCORE_COUNTING_TYPE.key()),
         ROUND_WIN("[Score] Round win");
 
         private String key;
@@ -97,7 +98,7 @@ public class GameSettings extends SettingsImpl
         initInactivity();
         initRound();
         initSemifinal();
-        initScore(ScoresImpl.CUMULATIVELY);
+        initScore(CUMULATIVELY);
 
         integer(MASK_POTIONS_COUNT, 0);
         integer(MASK_TICKS, 15);
