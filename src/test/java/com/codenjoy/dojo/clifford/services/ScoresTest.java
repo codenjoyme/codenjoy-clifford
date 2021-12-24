@@ -87,8 +87,6 @@ public class ScoresTest {
 
                 .integer(CLUE_SCORE_RING, 200)
                 .integer(CLUE_SCORE_RING_INCREMENT, 100);
-
-        givenScores(0);
     }
 
     private void givenScores(int score) {
@@ -225,14 +223,21 @@ public class ScoresTest {
 
     @Test
     public void shouldStillZeroAfterDead() {
+        // given
+        givenScores(0);
+
+        // when
         heroDie();
 
+        // then
         assertEquals(0, scores.getScore());
     }
 
     @Test
     public void shouldClearScore() {
         // given
+        givenScores(0);
+
         clueKnife(0);
         clueRing(0);
         clueRing(1);
