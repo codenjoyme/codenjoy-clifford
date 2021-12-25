@@ -27,7 +27,7 @@ import com.codenjoy.dojo.services.event.EventObject;
 public class Event implements EventObject<Event.Type, Integer> {
 
     private Type type;
-    private int amount;
+    private int value;
 
     public enum Type {
         START_ROUND,      // раунд стартовал
@@ -47,32 +47,32 @@ public class Event implements EventObject<Event.Type, Integer> {
 
     public static Object wrap(Object input) {
         return (input instanceof Type)
-                ? new com.codenjoy.dojo.clifford.services.Event((Type) input)
+                ? new Event((Type) input)
                 : input;
     }
 
-    public com.codenjoy.dojo.clifford.services.Event with(int amount) {
-        this.amount = amount;
+    public Event with(int amount) {
+        this.value = amount;
         return this;
     }
 
     @Override
     public String toString() {
-        return type + ((amount != 0)?("(" + amount + ")"):"");
+        return type + ((value != 0)?("(" + value + ")"):"");
     }
 
     public Event(Type type) {
         this.type = type;
     }
 
-    public Event(Type type, int amount) {
+    public Event(Type type, int value) {
         this.type = type;
-        this.amount = amount;
+        this.value = value;
     }
 
     @Override
     public Integer value() {
-        return amount;
+        return value;
     }
 
     @Override
