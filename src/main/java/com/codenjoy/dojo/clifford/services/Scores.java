@@ -28,7 +28,7 @@ import com.codenjoy.dojo.services.event.ScoresMap;
 import com.codenjoy.dojo.services.settings.SettingsReader;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
-import static com.codenjoy.dojo.services.event.ScoresImpl.Mode.SERIES_MAX_VALUE;
+import static com.codenjoy.dojo.services.event.Mode.SERIES_MAX_VALUE;
 
 public class Scores extends ScoresMap<Integer> {
     

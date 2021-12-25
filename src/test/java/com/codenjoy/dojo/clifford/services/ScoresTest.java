@@ -25,14 +25,15 @@ package com.codenjoy.dojo.clifford.services;
 
 import com.codenjoy.dojo.clifford.TestGameSettings;
 import com.codenjoy.dojo.services.PlayerScores;
+import com.codenjoy.dojo.services.event.Calculator;
 import com.codenjoy.dojo.services.event.ScoresImpl;
 import org.junit.Before;
 import org.junit.Test;
 
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
-import static com.codenjoy.dojo.services.event.ScoresImpl.Mode.CUMULATIVELY;
-import static com.codenjoy.dojo.services.event.ScoresImpl.Mode.SERIES_MAX_VALUE;
+import static com.codenjoy.dojo.services.event.Mode.CUMULATIVELY;
+import static com.codenjoy.dojo.services.event.Mode.SERIES_MAX_VALUE;
 import static org.junit.Assert.assertEquals;
 
 public class ScoresTest {
@@ -90,7 +91,7 @@ public class ScoresTest {
     }
 
     private void givenScores(int score) {
-        scores = new ScoresImpl<>(score, new Scores(settings));
+        scores = new ScoresImpl<>(score, new Calculator<>(new Scores(settings)));
     }
 
     @Test

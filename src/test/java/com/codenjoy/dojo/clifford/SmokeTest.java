@@ -56,7 +56,7 @@ public class SmokeTest {
 
     @Test
     public void testSoft() {
-        // about 7 sec
+        // about 1.6 sec
         int ticks = 1000;
         int players = 2;
 
@@ -104,7 +104,7 @@ public class SmokeTest {
 
     @Test
     public void testHard() {
-        // about 21 sec
+        // about 11 sec
         int ticks = 100;
         int players = 10;
         int robbers = 5;

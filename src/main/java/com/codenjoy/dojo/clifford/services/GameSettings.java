@@ -25,6 +25,7 @@ package com.codenjoy.dojo.clifford.services;
 
 import com.codenjoy.dojo.clifford.model.Level;
 import com.codenjoy.dojo.services.Dice;
+import com.codenjoy.dojo.services.event.Calculator;
 import com.codenjoy.dojo.services.event.ScoresImpl;
 import com.codenjoy.dojo.services.incativity.InactivitySettings;
 import com.codenjoy.dojo.services.level.LevelsSettings;
@@ -37,7 +38,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
-import static com.codenjoy.dojo.services.event.ScoresImpl.Mode.CUMULATIVELY;
+import static com.codenjoy.dojo.services.event.Mode.CUMULATIVELY;
 
 public class GameSettings extends SettingsImpl
         implements SettingsReader<GameSettings>,
@@ -133,5 +134,9 @@ public class GameSettings extends SettingsImpl
 
     public Level level(int level, Dice dice) {
         return new Level(getRandomLevelMap(level, dice));
+    }
+
+    public Calculator<Integer> calculator() {
+        return new Calculator<>(new Scores(this));
     }
 }
