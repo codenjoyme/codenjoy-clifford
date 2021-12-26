@@ -23,8 +23,6 @@ package com.codenjoy.dojo.clifford.services;
  */
 
 
-import com.codenjoy.dojo.clifford.model.Level;
-import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.event.Calculator;
 import com.codenjoy.dojo.services.event.ScoresImpl;
 import com.codenjoy.dojo.services.settings.AllSettings;
@@ -117,10 +115,6 @@ public class GameSettings extends SettingsImpl implements AllSettings<GameSettin
         integer(SUICIDE_PENALTY, -10);
 
         Levels.setup(this);
-    }
-
-    public Level level(int level, Dice dice) {
-        return new Level(getRandomLevelMap(level, dice));
     }
 
     public Calculator<Integer> calculator() {

@@ -99,7 +99,7 @@ public abstract class AbstractGameTest {
     protected void givenFl(String... maps) {
         int levelNumber = LevelProgress.levelsStartsFrom1;
         settings.setLevelMaps(levelNumber, maps);
-        Level level = settings.level(levelNumber, dice);
+        Level level = settings.level(levelNumber, dice, Level::new);
 
         settings.integer(CLUE_COUNT_KNIFE, level.clueKnife().size())
                 .integer(CLUE_COUNT_GLOVE, level.clueGlove().size())
