@@ -68,6 +68,7 @@ public abstract class AbstractGameTest {
     private GameSettings settings;
     private EventsListenersAssert events;
     protected List<RobberJoystick> robbers;
+    private Level level;
 
     @Before
     public void setup() {
@@ -99,19 +100,26 @@ public abstract class AbstractGameTest {
     protected void givenFl(String... maps) {
         int levelNumber = LevelProgress.levelsStartsFrom1;
         settings.setLevelMaps(levelNumber, maps);
-        Level level = settings.level(levelNumber, dice, Level::new);
+        level = settings.level(levelNumber, dice, Level::new);
 
+        beforeCreateField();
+
+        field = new Clifford(dice, level, settings);
+        level.heroes().forEach(this::givenPlayer);
+
+        afterCreateField();
+    }
+
+    private void beforeCreateField() {
         settings.integer(CLUE_COUNT_KNIFE, level.clueKnife().size())
                 .integer(CLUE_COUNT_GLOVE, level.clueGlove().size())
                 .integer(CLUE_COUNT_RING, level.clueRing().size())
                 .integer(MASK_POTIONS_COUNT, level.potions().size())
                 .integer(BACKWAYS_COUNT, level.backways().size())
                 .integer(ROBBERS_COUNT, level.robbers().size());
+    }
 
-        field = new Clifford(dice, level, settings);
-
-        level.heroes().forEach(this::givenPlayer);
-
+    private void afterCreateField() {
         reloadAllRobbers();
         dice(0); // всегда дальше выбираем нулевой индекс
     }
