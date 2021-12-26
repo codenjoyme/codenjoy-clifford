@@ -50,8 +50,8 @@ public class GameSettingsTest {
                         "KILL_ENEMY_SCORE, \n" +
                         "HERO_DIE_PENALTY, \n" +
                         "SUICIDE_PENALTY, \n" +
-                        "SCORE_COUNTING_TYPE, \n" +
-                        "ROUND_WIN]",
+                        "ROUND_WIN, \n" +
+                        "SCORE_COUNTING_TYPE]",
                 Utils.split(new GameSettings().allKeys(), ", \n"));
     }
 }

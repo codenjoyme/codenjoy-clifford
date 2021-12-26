@@ -29,6 +29,7 @@ import com.codenjoy.dojo.services.event.Calculator;
 import com.codenjoy.dojo.services.event.ScoresImpl;
 import com.codenjoy.dojo.services.incativity.InactivitySettings;
 import com.codenjoy.dojo.services.level.LevelsSettings;
+import com.codenjoy.dojo.services.multiplayer.MultiplayerSettings;
 import com.codenjoy.dojo.services.round.RoundSettings;
 import com.codenjoy.dojo.services.semifinal.SemifinalSettings;
 import com.codenjoy.dojo.services.settings.SettingsImpl;
@@ -45,7 +46,8 @@ public class GameSettings extends SettingsImpl
                    InactivitySettings<GameSettings>,
                    RoundSettings<GameSettings>,
                    LevelsSettings<GameSettings>,
-                   SemifinalSettings<GameSettings> {
+                   SemifinalSettings<GameSettings>,
+                   MultiplayerSettings<GameSettings> {
 
     public enum Keys implements Key {
 
@@ -75,8 +77,8 @@ public class GameSettings extends SettingsImpl
         KILL_ENEMY_SCORE("[Score] Kill enemy score"),
         HERO_DIE_PENALTY("[Score] Hero die penalty"),
         SUICIDE_PENALTY("[Score] Suicide penalty"),
-        SCORE_COUNTING_TYPE(ScoresImpl.SCORE_COUNTING_TYPE.key()),
-        ROUND_WIN("[Score] Round win");
+        ROUND_WIN("[Score] Round win"),
+        SCORE_COUNTING_TYPE(ScoresImpl.SCORE_COUNTING_TYPE.key());
 
         private String key;
 
@@ -100,6 +102,7 @@ public class GameSettings extends SettingsImpl
         initRound();
         initSemifinal();
         initScore(CUMULATIVELY);
+        initMultiplayer();
 
         integer(MASK_POTIONS_COUNT, 0);
         integer(MASK_TICKS, 15);
