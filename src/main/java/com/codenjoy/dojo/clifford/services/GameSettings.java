@@ -27,27 +27,15 @@ import com.codenjoy.dojo.clifford.model.Level;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.event.Calculator;
 import com.codenjoy.dojo.services.event.ScoresImpl;
-import com.codenjoy.dojo.services.incativity.InactivitySettings;
-import com.codenjoy.dojo.services.level.LevelsSettings;
-import com.codenjoy.dojo.services.multiplayer.MultiplayerSettings;
-import com.codenjoy.dojo.services.round.RoundSettings;
-import com.codenjoy.dojo.services.semifinal.SemifinalSettings;
+import com.codenjoy.dojo.services.settings.AllSettings;
 import com.codenjoy.dojo.services.settings.SettingsImpl;
-import com.codenjoy.dojo.services.settings.SettingsReader;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
-import static com.codenjoy.dojo.services.event.Mode.CUMULATIVELY;
 
-public class GameSettings extends SettingsImpl
-        implements SettingsReader<GameSettings>,
-                   InactivitySettings<GameSettings>,
-                   RoundSettings<GameSettings>,
-                   LevelsSettings<GameSettings>,
-                   SemifinalSettings<GameSettings>,
-                   MultiplayerSettings<GameSettings> {
+public class GameSettings extends SettingsImpl implements AllSettings<GameSettings> {
 
     public enum Keys implements Key {
 
@@ -98,11 +86,7 @@ public class GameSettings extends SettingsImpl
     }
 
     public GameSettings() {
-        initInactivity();
-        initRound();
-        initSemifinal();
-        initScore(CUMULATIVELY);
-        initMultiplayer();
+        initAll();
 
         integer(MASK_POTIONS_COUNT, 0);
         integer(MASK_TICKS, 15);
