@@ -54,20 +54,12 @@ public class Scores extends ScoresMap<Integer> {
                 value -> settings.integer(KILL_ENEMY_SCORE));
 
         put(Event.Type.HERO_DIE,
-                value -> heroDie(settings));
+                value -> heroDie(HERO_DIE_PENALTY));
 
         put(Event.Type.SUICIDE,
                 value -> settings.integer(SUICIDE_PENALTY));
 
         put(Event.Type.WIN_ROUND,
                 value -> settings.integer(ROUND_WIN));
-    }
-
-    private Integer heroDie(SettingsReader settings) {
-        if (ScoresImpl.modeValue(settings) == SERIES_MAX_VALUE) {
-            return null; // что значит, что мы собрались обнулить серию
-        } else {
-            return settings.integer(HERO_DIE_PENALTY);
-        }
     }
 }
