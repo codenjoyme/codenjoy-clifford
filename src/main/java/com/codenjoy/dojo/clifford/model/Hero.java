@@ -166,6 +166,11 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         }
     }
 
+    @Override
+    public void die() {
+        die(Event.Type.HERO_DIE);
+    }
+
     public Direction getDirection() {
         return direction;
     }

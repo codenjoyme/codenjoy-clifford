@@ -68,7 +68,7 @@ public class Clifford extends RoundField<Player> implements Field {
     }
 
     public Clifford(Dice dice, Level level, GameSettings settings) {
-        super(START_ROUND, WIN_ROUND, HERO_DIE, settings);
+        super(START_ROUND, WIN_ROUND, settings);
 
         this.level = level;
         this.dice = dice;
@@ -129,11 +129,11 @@ public class Clifford extends RoundField<Player> implements Field {
     }
 
     @Override
-    public void oneMoreDead(Player player) {
+    public void oneMoreDead(Player player, Object loseEvent) {
         if (!settings.bool(GENERATE_KEYS)) {
             releaseKeys(player.getHero().getKeys());
         }
-        super.oneMoreDead(player);
+        super.oneMoreDead(player, loseEvent);
     }
 
     private void rewardMurderers() {
