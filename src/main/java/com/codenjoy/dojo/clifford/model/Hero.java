@@ -255,11 +255,6 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     }
 
     @Override
-    public boolean isAlive() {
-        return super.isAlive();
-    }
-
-    @Override
     public int scores() {
         return score;
     }
