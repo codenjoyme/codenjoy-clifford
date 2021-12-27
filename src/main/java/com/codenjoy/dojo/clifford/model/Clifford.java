@@ -211,7 +211,7 @@ public class Clifford extends RoundField<Player> implements Field {
         }
     }
 
-    public BoardReader<?> reader() {
+    public BoardReader<Player> reader() {
         return field.reader(
                 Hero.class,
                 Robber.class,
