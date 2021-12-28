@@ -22,7 +22,6 @@ package com.codenjoy.dojo.clifford.game;
  * #L%
  */
 
-import com.codenjoy.dojo.clifford.game.check.AbstractGameCheckTest;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
 import org.junit.Test;
@@ -32,7 +31,7 @@ import java.util.List;
 import static com.codenjoy.dojo.client.Utils.split;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.GENERATE_KEYS;
 
-public class KeyDoorGameTest extends AbstractGameCheckTest {
+public class KeyDoorGameTest extends AbstractGameTest {
 
     @Test
     public void accessGivenDoorsAndKeys() {

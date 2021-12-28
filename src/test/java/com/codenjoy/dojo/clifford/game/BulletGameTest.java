@@ -22,11 +22,10 @@ package com.codenjoy.dojo.clifford.game;
  * #L%
  */
 
-import com.codenjoy.dojo.clifford.game.check.AbstractGameCheckTest;
 import com.codenjoy.dojo.clifford.model.items.Potion;
 import org.junit.Test;
 
-public class BulletGameTest extends AbstractGameCheckTest {
+public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void heroCanShoot_rightDirection() {
@@ -197,7 +196,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
     }
 
     @Test
-    public void bulletInteractWithBrick_Case3() {
+    public void bulletInteractWithBrick_сase3() {
         givenFl("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -281,7 +280,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
     }
 
     @Test
-    public void bulletInteractWithBrick_Case2() {
+    public void bulletInteractWithBrick_сase2() {
         givenFl("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -1116,7 +1115,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
     }
 
     @Test
-    public void bulletInteractWithBrick_Case1() {
+    public void bulletInteractWithBrick_сase1() {
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼ #◄☼\n" +
@@ -1151,7 +1150,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
     }
 
     @Test
-    public void bulletInteractWithBorder_Case1() {
+    public void bulletInteractWithBorder_сase1() {
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "◄   ☼\n" +
@@ -1178,7 +1177,7 @@ public class BulletGameTest extends AbstractGameCheckTest {
     }
 
     @Test
-    public void bulletInteractWithWall_Case1() {
+    public void bulletInteractWithWall_сase1() {
         // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
@@ -1212,6 +1211,8 @@ public class BulletGameTest extends AbstractGameCheckTest {
                 "☼O  ☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
+        
+        verifyAllEvents("[HERO_DIE, SUICIDE]");
     }
 
     @Test

@@ -23,7 +23,6 @@ package com.codenjoy.dojo.clifford.game;
  */
 
 
-import com.codenjoy.dojo.clifford.game.check.AbstractGameCheckTest;
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.Potion;
 import com.codenjoy.dojo.services.Point;
@@ -33,7 +32,7 @@ import org.junit.Test;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.PointImpl.pt;
 
-public class GameTest extends AbstractGameCheckTest {
+public class GameTest extends AbstractGameTest {
 
     // есть карта со мной
     @Test

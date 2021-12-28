@@ -23,7 +23,6 @@ package com.codenjoy.dojo.clifford.game;
  */
 
 
-import com.codenjoy.dojo.clifford.game.check.AbstractGameCheckTest;
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.Potion;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
@@ -35,7 +34,7 @@ import static com.codenjoy.dojo.services.round.RoundSettings.Keys.*;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
-public class MultiplayerTest extends AbstractGameCheckTest {
+public class MultiplayerTest extends AbstractGameTest {
 
     // появляется другие игроки, игра становится мультипользовательской
     @Test

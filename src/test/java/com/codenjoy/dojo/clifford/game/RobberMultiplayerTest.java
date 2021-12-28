@@ -23,13 +23,12 @@ package com.codenjoy.dojo.clifford.game;
  */
 
 
-import com.codenjoy.dojo.clifford.game.check.AbstractGameCheckTest;
 import com.codenjoy.dojo.clifford.model.items.robber.RobberJoystick;
 import org.junit.Test;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.ROBBERS_COUNT;
 
-public class RobberMultiplayerTest extends AbstractGameCheckTest {
+public class RobberMultiplayerTest extends AbstractGameTest {
 
     @Override
     public void givenFl(String... maps) {
