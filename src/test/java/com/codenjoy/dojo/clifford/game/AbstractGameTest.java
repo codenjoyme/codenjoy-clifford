@@ -87,7 +87,7 @@ public abstract class AbstractGameTest {
     @After
     public void after() {
         verifyAllEvents("");
-        SmartAssert.checkResult(getClass());
+        SmartAssert.checkResult();
     }
 
     protected void dice(int... ints) {
