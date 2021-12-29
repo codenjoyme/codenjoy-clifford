@@ -29,7 +29,7 @@ import com.codenjoy.dojo.clifford.model.items.Pipe;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.KeyType;
-import com.codenjoy.dojo.clifford.services.Events;
+import com.codenjoy.dojo.clifford.services.Event;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.Point;
@@ -166,6 +166,11 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         }
     }
 
+    @Override
+    public void die() {
+        die(Event.Type.HERO_DIE);
+    }
+
     public Direction getDirection() {
         return direction;
     }
@@ -191,7 +196,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         if (isFall()) {
             move(DOWN);
         } else if (shoot) {
-            field.bullets().add(new Bullet(this));
+            shoot();
         } else if (crack) {
             Point hole = DOWN.change(destination);
             field.tryToCrack(this, hole);
@@ -218,15 +223,21 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         dissolvePotions();
     }
 
+    private void shoot() {
+        final Bullet bullet = new Bullet(this);
+        field.bullets().add(bullet);
+        bullet.doFirstMoveAffect();
+    }
+
     private void tryToInteractWithDoor(Point destination,
                                        Predicate<Door> validState, Consumer<Door> action) {
         field.doors().getAt(destination).stream()
                 .filter(validState)
                 .forEach(door -> {
-                    Integer availableKeys = keys.getOrDefault(door.getKeyType(), 0);
+                    Integer availableKeys = keys.getOrDefault(door.type(), 0);
                     if (availableKeys > 0) {
                         action.accept(door);
-                        keys.put(door.getKeyType(), availableKeys - 1);
+                        keys.put(door.type(), availableKeys - 1);
                     }
                 });
     }
@@ -246,11 +257,6 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
             potionTicks = 0;
             potion = null;
         }
-    }
-
-    @Override
-    public boolean isAlive() {
-        return super.isAlive();
     }
 
     @Override
@@ -365,11 +371,11 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
                 .anyMatch(h -> player.getTeamId() != h.getPlayer().getTeamId());
     }
 
-    public void pickClue(Events.Event clue) {
-        getPlayer().event(new Events(clue).with(increaseClue(clue)));
+    public void pickClue(Event.Type clue) {
+        getPlayer().event(new Event(clue).with(increaseClue(clue)));
     }
 
-    private int increaseClue(Events.Event clue) {
+    private int increaseClue(Event.Type clue) {
         switch (clue) {
             case GET_CLUE_KNIFE :
                 return ++knives;

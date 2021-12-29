@@ -30,31 +30,31 @@ import com.codenjoy.dojo.services.State;
 
 public class Key extends PointImpl implements State<Element, Player> {
 
-    private KeyType keyType;
+    private KeyType type;
 
-    public Key(Point point, KeyType keyType) {
-        super(point);
-        this.keyType = keyType;
+    public Key(Point pt, KeyType type) {
+        super(pt);
+        this.type = type;
     }
 
-    public KeyType getKeyType() {
-        return keyType;
+    public KeyType getType() {
+        return type;
     }
 
     @Override
     public Element state(Player player, Object... alsoAtPoint) {
-        switch (keyType) {
+        switch (type) {
             case GOLD: return Element.KEY_GOLD;
             case SILVER: return Element.KEY_SILVER;
             case BRONZE: return Element.KEY_BRONZE;
         }
-        throw new IllegalArgumentException("invalid keyType " + keyType);
+        throw new IllegalArgumentException("invalid keyType " + type);
     }
 
     @Override
     public String toString() {
         return String.format("[%s,%s=%s]",
                 x, y,
-                keyType);
+                type);
     }
 }

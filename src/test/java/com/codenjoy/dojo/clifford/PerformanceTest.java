@@ -61,7 +61,7 @@ public class PerformanceTest {
         GameRunner runner = new GameRunner(){
             @Override
             public GameSettings getSettings() {
-                return super.getSettings()
+                return new GameSettings()
                     .bool(ROUNDS_ENABLED, false)
                     .integer(ROBBERS_COUNT, robbers);
             }

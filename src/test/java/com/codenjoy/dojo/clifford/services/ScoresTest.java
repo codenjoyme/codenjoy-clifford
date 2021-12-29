@@ -23,12 +23,17 @@ package com.codenjoy.dojo.clifford.services;
  */
 
 
+import com.codenjoy.dojo.clifford.TestGameSettings;
 import com.codenjoy.dojo.services.PlayerScores;
+import com.codenjoy.dojo.services.event.Calculator;
+import com.codenjoy.dojo.services.event.ScoresImpl;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.codenjoy.dojo.clifford.services.Events.Event.*;
+import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
+import static com.codenjoy.dojo.services.event.Mode.CUMULATIVELY;
+import static com.codenjoy.dojo.services.event.Mode.SERIES_MAX_VALUE;
 import static org.junit.Assert.assertEquals;
 
 public class ScoresTest {
@@ -37,38 +42,40 @@ public class ScoresTest {
     private GameSettings settings;
 
     public void heroDie() {
-        scores.event(new Events(HERO_DIE));
+        scores.event(new Event(HERO_DIE));
     }
 
     public void killHero() {
-        scores.event(new Events(KILL_HERO));
+        scores.event(new Event(KILL_HERO));
     }
 
     public void killEnemy() {
-        scores.event(new Events(KILL_ENEMY));
+        scores.event(new Event(KILL_ENEMY));
     }
 
     public void suicide() {
-        scores.event(new Events(SUICIDE));
+        scores.event(new Event(SUICIDE));
     }
 
     public void clueKnife(int amount) {
-        scores.event(new Events(GET_CLUE_KNIFE).with(amount));
+        scores.event(new Event(GET_CLUE_KNIFE).with(amount));
     }
 
     public void clueRing(int amount) {
-        scores.event(new Events(GET_CLUE_RING).with(amount));
+        scores.event(new Event(GET_CLUE_RING).with(amount));
     }
 
     public void clueGlove(int amount) {
-        scores.event(new Events(GET_CLUE_GLOVE).with(amount));
+        scores.event(new Event(GET_CLUE_GLOVE).with(amount));
     }
 
     @Before
     public void setup() {
-        settings = new GameSettings()
-                .integer(SUICIDE_PENALTY, 13)
-                .integer(HERO_DIE_PENALTY, 30)
+        settings = new TestGameSettings()
+                .initScore(CUMULATIVELY)
+
+                .integer(SUICIDE_PENALTY, -13)
+                .integer(HERO_DIE_PENALTY, -30)
 
                 .integer(KILL_HERO_SCORE, 20)
                 .integer(KILL_ENEMY_SCORE, 50)
@@ -81,14 +88,16 @@ public class ScoresTest {
 
                 .integer(CLUE_SCORE_RING, 200)
                 .integer(CLUE_SCORE_RING_INCREMENT, 100);
+    }
 
-        scores = new Scores(0, settings);
+    private void givenScores(int score) {
+        scores = new ScoresImpl<>(score, new Calculator<>(new Scores(settings)));
     }
 
     @Test
     public void shouldCollectScores() {
         // given
-        scores = new Scores(140, settings);
+        givenScores(140);
 
         // when
         killHero();
@@ -122,14 +131,14 @@ public class ScoresTest {
         expected += 2 * settings.integer(CLUE_SCORE_GLOVE);
         expected += settings.integer(CLUE_SCORE_GLOVE_INCREMENT);
 
-        expected += -settings.integer(HERO_DIE_PENALTY);
+        expected += settings.integer(HERO_DIE_PENALTY);
         assertEquals(expected, scores.getScore());
     }
 
     @Test
     public void shouldIncreaseForNextClue_stepByStep_knife() {
         // given
-        scores = new Scores(0, settings);
+        givenScores(0);
 
         // when then
         clueKnife(0);
@@ -158,7 +167,7 @@ public class ScoresTest {
     @Test
     public void shouldIncreaseForNextClue_stepByStep_glove() {
         // given
-        scores = new Scores(0, settings);
+        givenScores(0);
 
         // when then
         clueGlove(0);
@@ -187,7 +196,7 @@ public class ScoresTest {
     @Test
     public void shouldIncreaseForNextClue_stepByStep_ring() {
         // given
-        scores = new Scores(0, settings);
+        givenScores(0);
 
         // when then
         clueRing(0);
@@ -215,14 +224,21 @@ public class ScoresTest {
 
     @Test
     public void shouldStillZeroAfterDead() {
+        // given
+        givenScores(0);
+
+        // when
         heroDie();
 
+        // then
         assertEquals(0, scores.getScore());
     }
 
     @Test
     public void shouldClearScore() {
         // given
+        givenScores(0);
+
         clueKnife(0);
         clueRing(0);
         clueRing(1);
@@ -242,7 +258,7 @@ public class ScoresTest {
     @Test
     public void shouldCleanIncreasedIfGameOver() {
         // given
-        scores = new Scores(0, settings);
+        givenScores(0);
 
         clueKnife(0);
         clueKnife(1);
@@ -254,7 +270,7 @@ public class ScoresTest {
         // then
         int expected = 3 * settings.integer(CLUE_SCORE_KNIFE);
         expected += (1 + 2) * settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
-        expected += - settings.integer(HERO_DIE_PENALTY);
+        expected += settings.integer(HERO_DIE_PENALTY);
         assertEquals(expected, scores.getScore());
 
         // when
@@ -270,7 +286,7 @@ public class ScoresTest {
     @Test
     public void shouldCleanIncreasedIfClean() {
         // given
-        scores = new Scores(0, settings);
+        givenScores(0);
 
         clueKnife(0);
         clueKnife(1);
@@ -293,7 +309,7 @@ public class ScoresTest {
     @Test
     public void shouldCleanIncreasedIfSuicide() {
         // given
-        scores = new Scores(0, settings);
+        givenScores(0);
 
         clueKnife(0);
         clueKnife(1);
@@ -304,7 +320,7 @@ public class ScoresTest {
 
         int expected = 3 * settings.integer(CLUE_SCORE_KNIFE);
         expected += (1 + 2) * settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
-        expected += -settings.integer(SUICIDE_PENALTY);
+        expected += settings.integer(SUICIDE_PENALTY);
         assertEquals(expected, scores.getScore());
 
         // then
@@ -319,7 +335,7 @@ public class ScoresTest {
     @Test
     public void shouldCleanIncreasedIfHeroDie() {
         // given
-        scores = new Scores(0, settings);
+        givenScores(0);
 
         clueKnife(0);
         clueKnife(1);
@@ -330,7 +346,7 @@ public class ScoresTest {
 
         int expected = 3 * settings.integer(CLUE_SCORE_KNIFE);
         expected += (1 + 2) * settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
-        expected += -settings.integer(HERO_DIE_PENALTY);
+        expected += settings.integer(HERO_DIE_PENALTY);
         assertEquals(expected, scores.getScore());
 
         // then
@@ -338,5 +354,65 @@ public class ScoresTest {
 
         expected += settings.integer(CLUE_SCORE_KNIFE);
         assertEquals(expected, scores.getScore());
+    }
+
+    @Test
+    public void shouldCollectScores_seriesMaxScoresMode() {
+        // given
+        settings.initScore(SERIES_MAX_VALUE);
+        givenScores(140);
+
+        // then
+        assertEquals(140, scores.getScore());
+        assertEquals((Integer)0, ((ScoresImpl)scores).getSeries());
+
+        // when
+        clueKnife(0);
+        clueRing(0);
+        clueRing(1);
+        clueRing(2);
+        clueGlove(0);
+        clueGlove(1);
+        clueKnife(1);
+        clueKnife(2);
+        clueKnife(3);
+        clueKnife(4);
+
+        heroDie();
+
+        // then
+        assertEquals(1105, scores.getScore());
+        assertEquals((Integer)0, ((ScoresImpl)scores).getSeries());
+
+        // when
+        clueKnife(0);
+        clueRing(0);
+        clueRing(1);
+        clueRing(2);
+        clueGlove(0);
+        clueGlove(1);
+        clueKnife(1);
+        clueKnife(2);
+        clueKnife(3);
+        clueKnife(4);
+
+        // then
+        assertEquals(1105, scores.getScore());
+        assertEquals((Integer)1105, ((ScoresImpl)scores).getSeries());
+
+        // when
+        clueKnife(5);
+        clueKnife(6);
+
+        // then
+        assertEquals(1255, scores.getScore());
+        assertEquals((Integer)1255, ((ScoresImpl)scores).getSeries());
+
+        // when
+        scores.clear();
+
+        // then
+        assertEquals(0, scores.getScore());
+        assertEquals((Integer)0, ((ScoresImpl)scores).getSeries());
     }
 }

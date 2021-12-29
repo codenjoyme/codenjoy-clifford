@@ -47,7 +47,7 @@ import com.google.common.collect.Multimap;
 import java.util.*;
 
 import static com.codenjoy.dojo.clifford.model.items.Potion.PotionType.MASK_POTION;
-import static com.codenjoy.dojo.clifford.services.Events.Event.*;
+import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.field.Generator.generate;
 import static java.util.stream.Collectors.toList;
@@ -60,7 +60,7 @@ public class Clifford extends RoundField<Player> implements Field {
     private Dice dice;
     private GameSettings settings;
 
-    private int backwaysTimer;
+    private int backWaysTimer;
     private Multimap<Hero, Hero> killerWithDeads;
 
     public Clifford() {
@@ -68,7 +68,7 @@ public class Clifford extends RoundField<Player> implements Field {
     }
 
     public Clifford(Dice dice, Level level, GameSettings settings) {
-        super(START_ROUND, WIN_ROUND, HERO_DIE, settings);
+        super(START_ROUND, WIN_ROUND, settings);
 
         this.level = level;
         this.dice = dice;
@@ -82,7 +82,7 @@ public class Clifford extends RoundField<Player> implements Field {
     private void generateAll() {
         generatePotions();
         generateClue();
-        generateBackways();
+        generateBackWays();
         generateRobbers();
     }
 
@@ -92,8 +92,7 @@ public class Clifford extends RoundField<Player> implements Field {
         field.init(this);
 
         this.killerWithDeads = ArrayListMultimap.create();
-        resetBackwaysTimer();
-        robbers().forEach(robber -> robber.init(this));
+        resetBackWaysTimer();
         generateAll();
 
         super.clearScore();
@@ -115,7 +114,7 @@ public class Clifford extends RoundField<Player> implements Field {
         heroesGo();
         robbersGo();
         bricksGo();
-        backwaysGo();
+        backWaysGo();
 
         rewardMurderers();
         generateAll();
@@ -130,11 +129,11 @@ public class Clifford extends RoundField<Player> implements Field {
     }
 
     @Override
-    public void oneMoreDead(Player player) {
+    public void oneMoreDead(Player player, Object loseEvent) {
         if (!settings.bool(GENERATE_KEYS)) {
             releaseKeys(player.getHero().getKeys());
         }
-        super.oneMoreDead(player);
+        super.oneMoreDead(player, loseEvent);
     }
 
     private void rewardMurderers() {
@@ -190,10 +189,10 @@ public class Clifford extends RoundField<Player> implements Field {
                 });
     }
 
-    private void generateBackways() {
+    private void generateBackWays() {
         generate(backways(), settings, BACKWAYS_COUNT,
                 player -> freeRandom((Player) player),
-                Backway::new);
+                BackWay::new);
     }
 
     private void releaseKeys(Map<KeyType, Integer> keys) {
@@ -208,11 +207,11 @@ public class Clifford extends RoundField<Player> implements Field {
         for (Key prototype : keys) {
             generate(keys(), 1,
                     player -> freeRandom((Player) player),
-                    pt -> new Key(pt, prototype.getKeyType()));
+                    pt -> new Key(pt, prototype.getType()));
         }
     }
 
-    public BoardReader<?> reader() {
+    public BoardReader<Player> reader() {
         return field.reader(
                 Hero.class,
                 Robber.class,
@@ -224,7 +223,7 @@ public class Clifford extends RoundField<Player> implements Field {
                 Ladder.class,
                 Potion.class,
                 Pipe.class,
-                Backway.class,
+                BackWay.class,
                 Door.class,
                 Key.class,
                 Bullet.class);
@@ -313,7 +312,7 @@ public class Clifford extends RoundField<Player> implements Field {
 
             if (keys().contains(hero)) {
                 List<Key> keys = keys().getAt(hero);
-                keys.forEach(key -> hero.pick(key.getKeyType()));
+                keys.forEach(key -> hero.pick(key.getType()));
                 keys().removeAt(hero);
                 if (settings.bool(GENERATE_KEYS)) {
                     generateKeys(keys);
@@ -338,10 +337,10 @@ public class Clifford extends RoundField<Player> implements Field {
     }
 
     private void transport(PointImpl point) {
-        List<Backway> backways = backways().all();
+        List<BackWay> backways = backways().all();
         for (int i = 0; i < backways.size(); i++) {
             if (backways.get(i).equals(point)) {
-                Backway backwayToMove = backways.get(i < backways.size() - 1 ? i + 1 : 0);
+                BackWay backwayToMove = backways.get(i < backways.size() - 1 ? i + 1 : 0);
                 point.move(backwayToMove.getX(), backwayToMove.getY());
                 return;
             }
@@ -371,18 +370,18 @@ public class Clifford extends RoundField<Player> implements Field {
     }
 
     // TODO сделать чтобы каждый черный ход сам тикал свое время
-    private void backwaysGo() {
-        if (backwaysTimer == 0) {
-            resetBackwaysTimer();
+    private void backWaysGo() {
+        if (backWaysTimer == 0) {
+            resetBackWaysTimer();
             backways().clear();
-            generateBackways();
+            generateBackWays();
         } else {
-            backwaysTimer--;
+            backWaysTimer--;
         }
     }
 
-    private void resetBackwaysTimer() {
-        backwaysTimer = Math.max(1, settings.integer(BACKWAY_TICKS));
+    private void resetBackWaysTimer() {
+        backWaysTimer = Math.max(1, settings.integer(BACKWAY_TICKS));
     }
 
     @Override
@@ -412,7 +411,7 @@ public class Clifford extends RoundField<Player> implements Field {
                 || clueGlove().contains(over)
                 || clueRing().contains(over)
                 || isFullBrick(over)
-                || activeHeroes().contains(over)
+                || isHero(over)
                 || robbers().contains(over)) {
             return false;
         }
@@ -441,7 +440,7 @@ public class Clifford extends RoundField<Player> implements Field {
 
     @Override
     public Optional<Point> freeRandom(Player player) {
-        return BoardUtils.freeRandom(size(), dice, pt -> isFree(pt));
+        return BoardUtils.freeRandom(size(), dice, this::isFree);
     }
 
     @Override
@@ -546,8 +545,8 @@ public class Clifford extends RoundField<Player> implements Field {
         return settings;
     }
 
-    public Accessor<Backway> backways() {
-        return field.of(Backway.class);
+    public Accessor<BackWay> backways() {
+        return field.of(BackWay.class);
     }
 
     public Accessor<ClueKnife> clueKnife() {
@@ -595,8 +594,8 @@ public class Clifford extends RoundField<Player> implements Field {
         return field.of(Pipe.class);
     }
 
-    public int getBackwaysTimer() {
-        return backwaysTimer;
+    public int getBackWaysTimer() {
+        return backWaysTimer;
     }
 
     @Override

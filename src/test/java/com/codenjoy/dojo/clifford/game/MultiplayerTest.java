@@ -25,10 +25,11 @@ package com.codenjoy.dojo.clifford.game;
 
 import com.codenjoy.dojo.clifford.game.check.AbstractGameCheckTest;
 import com.codenjoy.dojo.clifford.model.items.Brick;
+import com.codenjoy.dojo.clifford.model.items.Potion;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import org.junit.Test;
 
-import static com.codenjoy.dojo.clifford.services.Events.Event.*;
+import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.round.RoundSettings.Keys.*;
 import static org.mockito.Mockito.never;
@@ -903,6 +904,130 @@ public class MultiplayerTest extends AbstractGameCheckTest {
                 "☼ ►  ☼\n" +
                 "☼ J  ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
+    }
+
+    @Test
+    public void heroWithMaskShouldGetClues_bulletGoThrough() {
+
+        // given
+        givenFl("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼►$&@  ►☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
+
+        hero(0).pick(Potion.PotionType.MASK_POTION);
+
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼w$&@  »☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
+
+        // given Hero(1)  continuously generates bullets
+        // when hero(0) with MASK_POTION trying to get clues through under the flying bullets
+        hero(1).left();
+        hero(1).act(1);
+        tick();
+        hero(1).left();
+        hero(1).act(1);
+        tick();
+        hero(1).left();
+        hero(1).act(1);
+        tick();
+        hero(1).left();
+        hero(1).act(1);
+        tick();
+
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼w$&@ •«☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[0,3,RIGHT], [2,3,LEFT], [4,3,LEFT], [6,3,LEFT]]");
+
+        hero(0).right();
+        hero(1).left();
+        hero(1).act(1);
+        tick();
+
+        // then should get CLUE_KNIFE
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼ w&@ •«☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
+        verifyAllEvents("listener(0) => [GET_CLUE_KNIFE(1)]\n");
+
+        hero(0).right();
+        hero(1).left();
+        hero(1).act(1);
+        tick();
+
+        // then should get CLUE_GLOVE
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼ •w@ •«☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
+
+        verifyAllEvents("listener(0) => [GET_CLUE_GLOVE(1)]\n");
+
+        hero(0).right();
+        hero(1).left();
+        hero(1).act(1);
+        tick();
+
+        // then should get CLUE_RING
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼ • w •«☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
+
+        verifyAllEvents("listener(0) => [GET_CLUE_RING(1)]\n");
+
+        hero(0).right();
+        hero(1).left();
+        hero(1).act(1);
+        tick();
+
+        assertF("☼☼☼☼☼☼☼☼☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼       ☼\n" +
+                "☼ • •w•C☼\n" +
+                "☼#######☼\n" +
+                "☼       ☼\n" +
+                "☼☼☼☼☼☼☼☼☼\n");
+
+        verifyAllEvents("listener(1) => [HERO_DIE, SUICIDE]\n");
     }
 
     @Test

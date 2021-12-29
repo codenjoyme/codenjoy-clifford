@@ -25,15 +25,16 @@ package com.codenjoy.dojo.clifford.services;
 
 import com.codenjoy.dojo.client.ClientBoard;
 import com.codenjoy.dojo.client.Solver;
-import com.codenjoy.dojo.clifford.model.Level;
-import com.codenjoy.dojo.games.clifford.Board;
-import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.clifford.model.Clifford;
+import com.codenjoy.dojo.clifford.model.Level;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.clifford.services.ai.AISolver;
+import com.codenjoy.dojo.games.clifford.Board;
+import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.AbstractGameType;
 import com.codenjoy.dojo.services.EventListener;
 import com.codenjoy.dojo.services.PlayerScores;
+import com.codenjoy.dojo.services.event.ScoresImpl;
 import com.codenjoy.dojo.services.multiplayer.GameField;
 import com.codenjoy.dojo.services.multiplayer.GamePlayer;
 import com.codenjoy.dojo.services.multiplayer.LevelProgress;
@@ -52,18 +53,19 @@ public class GameRunner extends AbstractGameType<GameSettings> {
 
     @Override
     public PlayerScores getPlayerScores(Object score, GameSettings settings) {
-        return new Scores(Integer.parseInt(score.toString()), settings);
+        return new ScoresImpl<>(Integer.parseInt(score.toString()), settings.calculator());
     }
 
     @Override
     public GameField createGame(int levelNumber, GameSettings settings) {
-        Level level = settings.level(levelNumber, getDice());
+        Level level = settings.level(levelNumber, getDice(), Level::new);
         return new Clifford(getDice(), level, settings);
     }
 
     @Override
     public Parameter<Integer> getBoardSize(GameSettings settings) {
-        return v(settings.level(LevelProgress.levelsStartsFrom1, getDice()).size());
+        // TODO точно так норм, левел вернется рендомный, а что если они будут разного размера?
+        return v(settings.level(LevelProgress.levelsStartsFrom1, getDice(), Level::new).size());
     }
 
     @Override
@@ -88,7 +90,7 @@ public class GameRunner extends AbstractGameType<GameSettings> {
 
     @Override
     public MultiplayerType getMultiplayerType(GameSettings settings) {
-        return settings.getRoundsMultiplayerType();
+        return settings.multiplayerType(settings.getLevelsCount());
     }
 
     @Override

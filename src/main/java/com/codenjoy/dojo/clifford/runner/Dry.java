@@ -1,8 +1,10 @@
+package com.codenjoy.dojo.clifford.runner;
+
 /*-
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 Codenjoy
+ * Copyright (C) 2018 - 2019 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -20,17 +22,19 @@
  * #L%
  */
 
-namespace Clifford.Api
-{
-    public enum CliffordAction
-    {
-        GoLeft,
-        GoRight,
-        GoUp,
-        GoDown,
-        FrillLeft,
-        CrackRight,
-        CrackLeft,
-        DoNothing
+import com.codenjoy.dojo.client.KeyboardSolver;
+import com.codenjoy.dojo.client.local.LocalGameRunner;
+import com.codenjoy.dojo.games.clifford.Board;
+import com.codenjoy.dojo.clifford.services.GameRunner;
+
+public class Dry {
+
+    public static void main(String[] args) {
+        new LocalGameRunner()
+                .with(new GameRunner())
+                .add(new KeyboardSolver(),
+                        // new AISolver(new RandomDice()),
+                        new Board())
+                .run();
     }
 }

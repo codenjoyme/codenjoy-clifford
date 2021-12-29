@@ -1,7 +1,7 @@
 
 before()
 
-heroNotMoveWhenShoot()
+heroShootAndMoveRight_shouldSurvive()
     givenFl(
         ☼☼☼☼☼
         ☼   ☼
@@ -11,7 +11,7 @@ heroNotMoveWhenShoot()
         givenPlayer([1,2])
             dice(1, 2)
         dice(0)
-    hero(0).right()
+    field().bullets() = []
     hero(0).act(1)
     tick()
     assertF(
@@ -32,6 +32,7 @@ heroNotMoveWhenShoot()
         ☼☼☼☼☼,
         0)
     field().bullets() = [[4,2,LEFT]]
+    events().getEvents() = 
 
 after()
     events().getEvents() = 

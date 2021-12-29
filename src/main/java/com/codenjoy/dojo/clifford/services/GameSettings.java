@@ -23,34 +23,25 @@ package com.codenjoy.dojo.clifford.services;
  */
 
 
-import com.codenjoy.dojo.clifford.model.Level;
-import com.codenjoy.dojo.services.Dice;
-import com.codenjoy.dojo.services.incativity.InactivitySettings;
-import com.codenjoy.dojo.services.level.LevelsSettings;
-import com.codenjoy.dojo.services.round.RoundSettings;
-import com.codenjoy.dojo.services.semifinal.SemifinalSettings;
+import com.codenjoy.dojo.services.event.Calculator;
+import com.codenjoy.dojo.services.event.ScoresImpl;
+import com.codenjoy.dojo.services.settings.AllSettings;
 import com.codenjoy.dojo.services.settings.SettingsImpl;
-import com.codenjoy.dojo.services.settings.SettingsReader;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 
-public class GameSettings extends SettingsImpl
-        implements SettingsReader<GameSettings>,
-                   InactivitySettings<GameSettings>,
-                   RoundSettings<GameSettings>,
-                   LevelsSettings<GameSettings>,
-                   SemifinalSettings<GameSettings> {
+public class GameSettings extends SettingsImpl implements AllSettings<GameSettings> {
 
     public enum Keys implements Key {
 
         MASK_POTIONS_COUNT("[Game] Mask potions count"),
         MASK_TICKS("[Game] Mask ticks"),
 
-        BACKWAYS_COUNT("[Game] Backways count"),
-        BACKWAY_TICKS("[Game] Backway ticks"),
+        BACKWAYS_COUNT("[Game] Back ways count"),
+        BACKWAY_TICKS("[Game] Back way ticks"),
 
         ROBBERS_COUNT("[Game] Robbers count"),
 
@@ -74,7 +65,8 @@ public class GameSettings extends SettingsImpl
         KILL_ENEMY_SCORE("[Score] Kill enemy score"),
         HERO_DIE_PENALTY("[Score] Hero die penalty"),
         SUICIDE_PENALTY("[Score] Suicide penalty"),
-        ROUND_WIN("[Score] Round win");
+        ROUND_WIN("[Score] Round win"),
+        SCORE_COUNTING_TYPE(ScoresImpl.SCORE_COUNTING_TYPE.key());
 
         private String key;
 
@@ -94,9 +86,7 @@ public class GameSettings extends SettingsImpl
     }
 
     public GameSettings() {
-        initInactivity();
-        initRound();
-        initSemifinal();
+        initAll();
 
         integer(MASK_POTIONS_COUNT, 0);
         integer(MASK_TICKS, 15);
@@ -125,13 +115,13 @@ public class GameSettings extends SettingsImpl
         integer(ROUND_WIN, 20);
         integer(KILL_HERO_SCORE, 20);
         integer(KILL_ENEMY_SCORE, 50);
-        integer(HERO_DIE_PENALTY, 1);
-        integer(SUICIDE_PENALTY, 10);
+        integer(HERO_DIE_PENALTY, -1);
+        integer(SUICIDE_PENALTY, -10);
 
         Levels.setup(this);
     }
 
-    public Level level(int level, Dice dice) {
-        return new Level(getRandomLevelMap(level, dice));
+    public Calculator<Integer> calculator() {
+        return new Calculator<>(new Scores(this));
     }
 }

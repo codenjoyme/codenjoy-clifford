@@ -34,50 +34,43 @@ public class Brick extends PointImpl implements Tickable, State<Element, Player>
 
     // TODO move to settings
     public static int CRACK_TIMER = 13;
-    public static final Brick NULL = new Brick(pt(-1, -1));
     private int crack;
 
     private Hero crackedBy;
 
-    public Brick(Point xy) {
-        super(xy);
-        crack = -1;
+    public Brick(Point pt) {
+        super(pt);
+        crack = 0;
     }
 
     public void crack(Hero hero) {
         this.crackedBy = hero;
-        crack = 0;
+        crack = CRACK_TIMER;
     }
 
     @Override
     public void tick() {
-        if (crack == -1) {
+        if (crack == 0) {
             crackedBy = null;
         }
-
-        if (crack != -1) {
-            crack++;
-            if (crack == CRACK_TIMER) {
-                crack = -1;
-            }
+        if (crack > 0) {
+            crack--;
         }
     }
 
     @Override
     public Element state(Player player, Object... alsoAtPoint) {
-        if (crack == 1) {
+        if (crack == CRACK_TIMER - 1) {
             return Element.CRACK_PIT;
         }
-        if (crack > 1) {
-            switch (Brick.CRACK_TIMER - crack) {
+            switch (crack) {
+                case 0 : return Element.BRICK;
                 case 1 : return Element.PIT_FILL_1;
                 case 2 : return Element.PIT_FILL_2;
                 case 3 : return Element.PIT_FILL_3;
                 case 4 : return Element.PIT_FILL_4;
                 default: return getNoneOrBullet(alsoAtPoint);
-            }
         }
-        return Element.BRICK;
     }
 
     private Element getNoneOrBullet(Object[] alsoAtPoint) {
@@ -90,6 +83,6 @@ public class Brick extends PointImpl implements Tickable, State<Element, Player>
     }
 
     public boolean isNotTransparentForBullet() {
-        return crack <= 0;
+        return crack <= 1;
     }
 }

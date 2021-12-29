@@ -22,14 +22,14 @@ package com.codenjoy.dojo.clifford.game;
  * #L%
  */
 
-import com.codenjoy.dojo.clifford.TestSettings;
+import com.codenjoy.dojo.clifford.TestGameSettings;
 import com.codenjoy.dojo.clifford.model.Clifford;
 import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.Level;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.robber.RobberJoystick;
-import com.codenjoy.dojo.clifford.services.Events;
+import com.codenjoy.dojo.clifford.services.Event;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Dice;
@@ -68,6 +68,7 @@ public abstract class AbstractGameTest {
     private GameSettings settings;
     private EventsListenersAssert events;
     protected List<RobberJoystick> robbers;
+    private Level level;
 
     @Before
     public void setup() {
@@ -76,9 +77,9 @@ public abstract class AbstractGameTest {
         games = new LinkedList<>();
         dice = mock(Dice.class);
         printer = new PrinterFactoryImpl<>();
-        settings = new TestSettings();
+        settings = new TestGameSettings();
         setupSettings();
-        events = new EventsListenersAssert(() -> listeners, Events.class);
+        events = new EventsListenersAssert(() -> listeners, Event.class);
         robbers = new LinkedList<>();
         Brick.CRACK_TIMER = 13;
     }
@@ -99,19 +100,26 @@ public abstract class AbstractGameTest {
     protected void givenFl(String... maps) {
         int levelNumber = LevelProgress.levelsStartsFrom1;
         settings.setLevelMaps(levelNumber, maps);
-        Level level = settings.level(levelNumber, dice);
+        level = settings.level(levelNumber, dice, Level::new);
 
+        beforeCreateField();
+
+        field = new Clifford(dice, level, settings);
+        level.heroes().forEach(this::givenPlayer);
+
+        afterCreateField();
+    }
+
+    private void beforeCreateField() {
         settings.integer(CLUE_COUNT_KNIFE, level.clueKnife().size())
                 .integer(CLUE_COUNT_GLOVE, level.clueGlove().size())
                 .integer(CLUE_COUNT_RING, level.clueRing().size())
                 .integer(MASK_POTIONS_COUNT, level.potions().size())
                 .integer(BACKWAYS_COUNT, level.backways().size())
                 .integer(ROBBERS_COUNT, level.robbers().size());
+    }
 
-        field = new Clifford(dice, level, settings);
-
-        level.heroes().forEach(this::givenPlayer);
-
+    private void afterCreateField() {
         reloadAllRobbers();
         dice(0); // всегда дальше выбираем нулевой индекс
     }

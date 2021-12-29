@@ -1,29 +1,29 @@
 
 before()
 
-heroFallOnBullet()
+heroFallOnBullet_shouldSurvive()
     givenFl(
         ☼☼☼☼☼☼☼☼☼
         ☼       ☼
         ☼       ☼
-        ☼   ►   ☼
+        ☼    ►  ☼
         ☼       ☼
-        ☼     ◄ ☼
+        ☼      ◄☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼)
-        givenPlayer([6,3])
-            dice(6, 3)
-        givenPlayer([4,5])
-            dice(4, 5)
+        givenPlayer([7,3])
+            dice(7, 3)
+        givenPlayer([5,5])
+            dice(5, 5)
         dice(0)
     assertF(
         ☼☼☼☼☼☼☼☼☼
         ☼       ☼
         ☼       ☼
-        ☼   F   ☼
+        ☼    F  ☼
         ☼       ☼
-        ☼     ◄ ☼
+        ☼      ◄☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,
@@ -35,8 +35,8 @@ heroFallOnBullet()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼   F   ☼
-        ☼     ◄ ☼
+        ☼    F  ☼
+        ☼     •◄☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,
@@ -49,15 +49,13 @@ heroFallOnBullet()
         ☼       ☼
         ☼       ☼
         ☼       ☼
-        ☼   C ◄ ☼
+        ☼   •» ◄☼
         ☼#######☼
         ☼       ☼
         ☼☼☼☼☼☼☼☼☼,
         0)
-    field().bullets() = []
+    field().bullets() = [[4,3,LEFT]]
     events().getEvents() = 
-        listener(0) => [KILL_HERO]
-        listener(1) => [HERO_DIE]
 
 after()
     events().getEvents() = 

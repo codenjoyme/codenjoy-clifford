@@ -31,8 +31,8 @@ import com.codenjoy.dojo.services.State;
 
 public class Pipe extends PointImpl implements State<Element, Player> {
 
-    public Pipe(Point point) {
-        super(point);
+    public Pipe(Point pt) {
+        super(pt);
     }
 
     @Override

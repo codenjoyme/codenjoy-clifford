@@ -1,7 +1,7 @@
 
 before()
 
-iCanJumpThroughBackways()
+iCanJumpThroughBackWays()
     settings().integer(BACKWAYS_COUNT, 2)
     dice(1, 2, 3, 3)
     givenFl(

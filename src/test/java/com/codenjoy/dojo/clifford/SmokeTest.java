@@ -38,7 +38,6 @@ import org.junit.Test;
 import java.util.function.Supplier;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
-import static com.codenjoy.dojo.services.round.RoundSettings.Keys.ROUNDS_ENABLED;
 
 public class SmokeTest {
 
@@ -56,7 +55,7 @@ public class SmokeTest {
 
     @Test
     public void testSoft() {
-        // about 7 sec
+        // about 2.4 sec
         int ticks = 1000;
         int players = 2;
 
@@ -71,8 +70,7 @@ public class SmokeTest {
 
                     @Override
                     public GameSettings getSettings() {
-                        return super.getSettings()
-                                .bool(ROUNDS_ENABLED, false)
+                        return new TestGameSettings()
                                 .setLevelMaps(LevelProgress.levelsStartsFrom1,
                                         "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼\n" +
                                         "☼~~~~~~~~H   ~~~☼\n" +
@@ -92,6 +90,7 @@ public class SmokeTest {
                                         "☼   H    H     H☼\n" +
                                         "☼###############☼\n" +
                                         "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼\n")
+                                .integer(BACKWAYS_COUNT, 5)
                                 .integer(MASK_POTIONS_COUNT, 1)
                                 .integer(CLUE_COUNT_GLOVE, 5)
                                 .integer(CLUE_COUNT_RING, 6)
@@ -104,7 +103,7 @@ public class SmokeTest {
 
     @Test
     public void testHard() {
-        // about 21 sec
+        // about 11 sec
         int ticks = 100;
         int players = 10;
         int robbers = 5;
@@ -122,8 +121,7 @@ public class SmokeTest {
 
                     @Override
                     public GameSettings getSettings() {
-                        return super.getSettings()
-                                .bool(ROUNDS_ENABLED, false)
+                        return new TestGameSettings()
                                 .setLevelMaps(LevelProgress.levelsStartsFrom1,
                                         Levels.BIG_LEVEL.replaceAll("[◄«]", " "))
                                 .integer(ROBBERS_COUNT, robbers);
