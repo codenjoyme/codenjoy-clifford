@@ -1210,7 +1210,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         // when
         // юзеров недостаточно, ничего не происходит
-        tick();
+        tryTick();
 
         verifyAllEvents("");
 
@@ -1236,7 +1236,7 @@ public class MultiplayerTest extends AbstractGameTest {
         hero(0).right();
         hero(1).right();
 
-        tick();
+        tryTick();
 
         verifyAllEvents("");
 
@@ -1261,7 +1261,7 @@ public class MultiplayerTest extends AbstractGameTest {
         givenPlayer(5, 1);
 
         // вот а тут уже укомплектована комната - погнали!
-        tick();
+        tryTick();
 
         verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 1]]\n" +
@@ -1299,7 +1299,7 @@ public class MultiplayerTest extends AbstractGameTest {
         hero(1).right();
         hero(2).right();
 
-        tick();
+        tryTick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -1327,6 +1327,16 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼      ☼\n" +
                 "☼ » » ►☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 2);
+    }
+
+    private void tryTick() {
+        // эмуляция проверки загрузки комнаты, если комната недогружена то не тикаем
+        // вообще это делает фреймворк, тут лишь эмулируем
+        if (settings().getPlayersPerRoom() != players.size()) {
+            return;
+        }
+
+        tick();
     }
 
     @Test
@@ -1410,7 +1420,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#C#HH#C#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
-        tick();
+        tickAndRemoveDied();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼» ◄  » »☼\n" +
@@ -1482,7 +1492,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
-        tick();
+        tickAndRemoveDied();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  »  ☼\n" +
@@ -1531,7 +1541,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
-        tick();
+        tickAndRemoveDied();
 
         assertScores(
                 "hero(0)=3\n" +
@@ -1711,7 +1721,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#C#HH#C#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
-        tick();
+        tickAndRemoveDied();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼» ◄  » »☼\n" +
@@ -1782,7 +1792,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
-        tick();
+        tickAndRemoveDied();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
@@ -1829,7 +1839,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
-        tick();
+        tickAndRemoveDied();
 
         assertScores(
                 "hero(0)=3\n" +
@@ -2028,7 +2038,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#C#HH#C#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
-        tick();
+        tickAndRemoveDied();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼» ◄  » »☼\n" +
@@ -2099,7 +2109,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
-        tick();
+        tickAndRemoveDied();
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
@@ -2146,7 +2156,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
-        tick();
+        tickAndRemoveDied();
 
         assertScores(
                 "hero(0)=3\n" +
@@ -2430,21 +2440,11 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
     }
 
-    @Override
-    public void tick() {
+    private void tickAndRemoveDied() {
+        tick();
         removeAllDied();
-        // эмуляция проверки загрузки комнаты, если комната недогружена то не тикаем
-        // вообще это делает фреймворк, тут лишь эмулируем
-        if (settings().isRoundsDisabled() ||
-                settings().getPlayersPerRoom() == players.size())
-        {
-            super.tick();
-        }
     }
 
-    // TODO тут дублирование с mollymage, может продумать единую архитектуру
-    //      тестов работающую и для rounds и реализовать во всех играх начиная
-    //      с mollymage, clifford, snakebattle и battlecity
     private void removeAllDied() {
         players.forEach(player -> {
             if (!player.isAlive()) {
