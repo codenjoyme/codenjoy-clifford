@@ -36,6 +36,7 @@ import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.State;
 import com.codenjoy.dojo.services.StateUtils;
 import com.codenjoy.dojo.services.joystick.Act;
+import com.codenjoy.dojo.services.joystick.RoundsDirectionJoystick;
 import com.codenjoy.dojo.services.round.RoundPlayerHero;
 
 import java.util.Collections;
@@ -48,11 +49,13 @@ import java.util.function.Predicate;
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_TICKS;
 import static com.codenjoy.dojo.games.clifford.Element.*;
-import static com.codenjoy.dojo.services.Direction.*;
+import static com.codenjoy.dojo.services.Direction.DOWN;
+import static com.codenjoy.dojo.services.Direction.LEFT;
 import static com.codenjoy.dojo.services.StateUtils.filter;
 import static com.codenjoy.dojo.services.StateUtils.filterOne;
 
-public class Hero extends RoundPlayerHero<Field> implements State<Element, Player> {
+public class Hero extends RoundPlayerHero<Field>
+        implements RoundsDirectionJoystick, State<Element, Player> {
 
     private static final int ACT_SUICIDE = 0;
     private static final int ACT_SHOOT = 1;
@@ -114,40 +117,33 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     }
 
     @Override
-    public void down() {
-        if (!isActiveAndAlive()) return;
+    public void change(Direction direction) {
+        switch (direction) {
+            case DOWN:
+                if (field.isLadder(this) || field.isLadder(underHero())) {
+                    direction(direction);
+                    break;
+                }
+                if (field.isPipe(this)) {
+                    jump = true;
+                }
+                break;
 
-        if (field.isLadder(this) || field.isLadder(underHero())) {
-            direction = DOWN;
-            moving = true;
-        } else if (field.isPipe(this)) {
-            jump = true;
+            case UP:
+                if (field.isLadder(this)) {
+                    direction(direction);
+                }
+                break;
+
+            case LEFT:
+            case RIGHT:
+                direction(direction);
+                break;
         }
     }
 
-    @Override
-    public void up() {
-        if (!isActiveAndAlive()) return;
-
-        if (field.isLadder(this)) {
-            direction = UP;
-            moving = true;
-        }
-    }
-
-    @Override
-    public void left() {
-        if (!isActiveAndAlive()) return;
-
-        direction = LEFT;
-        moving = true;
-    }
-
-    @Override
-    public void right() {
-        if (!isActiveAndAlive()) return;
-
-        direction = RIGHT;
+    private void direction(Direction direction) {
+        this.direction = direction;
         moving = true;
     }
 
