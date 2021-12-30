@@ -148,29 +148,29 @@ public class Hero extends RoundPlayerHero<Field>
     }
 
     @Override
-    public void act(Act is) {
-        if (is.act()) {
+    public void act(Act act) {
+        if (act.is()) {
             crack = true;
             return;
         }
 
-        if (is.act(ACT_SUICIDE)) {
+        if (act.is(ACT_SUICIDE)) {
             die();
             field.suicide(this);
             return;
         }
 
-        if (is.act(ACT_SHOOT)) {
+        if (act.is(ACT_SHOOT)) {
             shoot = true;
             return;
         }
 
-        if (is.act(ACT_OPEN_DOOR)) {
+        if (act.is(ACT_OPEN_DOOR)) {
             openDoor = true;
             return;
         }
 
-        if (is.act(ACT_CLOSE_DOOR)) {
+        if (act.is(ACT_CLOSE_DOOR)) {
             closeDoor = true;
             return;
         }
