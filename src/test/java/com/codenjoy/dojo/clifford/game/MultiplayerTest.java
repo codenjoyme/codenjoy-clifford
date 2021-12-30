@@ -1340,51 +1340,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 .integer(KILL_HERO_SCORE, 1)
                 .integer(ROUND_WIN, 50);
 
-        givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼        ☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼   HH   ☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼   HH   ☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼☼☼☼☼☼☼\n");
-
-        givenPlayer(3, 2); // соревнующиеся ребята
-        givenPlayer(6, 2);
-
-        givenPlayer(1, 2); // 1 этаж
-        givenPlayer(8, 2);
-
-        givenPlayer(1, 5); // 2 этаж
-        givenPlayer(8, 5);
-
-        givenPlayer(1, 8); // 3 этаж
-        givenPlayer(8, 8);
-
-        tick();
-
-        verifyAllEvents(
-                "listener(0) => [START_ROUND, [Round 1]]\n" +
-                "listener(1) => [START_ROUND, [Round 1]]\n" +
-                "listener(2) => [START_ROUND, [Round 1]]\n" +
-                "listener(3) => [START_ROUND, [Round 1]]\n" +
-                "listener(4) => [START_ROUND, [Round 1]]\n" +
-                "listener(5) => [START_ROUND, [Round 1]]\n" +
-                "listener(6) => [START_ROUND, [Round 1]]\n" +
-                "listener(7) => [START_ROUND, [Round 1]]\n");
-
-        assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼»      »☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼»  HH  »☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼» ►HH» »☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼☼☼☼☼☼☼\n", 0);
+        givenEightPlayers();
 
         crack(2, 3);
 
@@ -1685,53 +1641,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 .integer(KILL_HERO_SCORE, 1)
                 .integer(ROUND_WIN, 50);
 
-        givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼        ☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼   HH   ☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼   HH   ☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼☼☼☼☼☼☼\n");
-
-        givenPlayer(3, 2); // соревнующиеся ребята
-        givenPlayer(6, 2);
-
-        givenPlayer(1, 2); // 1 этаж
-        givenPlayer(8, 2);
-
-        givenPlayer(1, 5); // 2 этаж
-        givenPlayer(8, 5);
-
-        givenPlayer(1, 8); // 3 этаж
-        givenPlayer(8, 8);
-
-        tick();
-
-        assertScores("");
-
-        verifyAllEvents(
-                "listener(0) => [START_ROUND, [Round 1]]\n" +
-                "listener(1) => [START_ROUND, [Round 1]]\n" +
-                "listener(2) => [START_ROUND, [Round 1]]\n" +
-                "listener(3) => [START_ROUND, [Round 1]]\n" +
-                "listener(4) => [START_ROUND, [Round 1]]\n" +
-                "listener(5) => [START_ROUND, [Round 1]]\n" +
-                "listener(6) => [START_ROUND, [Round 1]]\n" +
-                "listener(7) => [START_ROUND, [Round 1]]\n");
-
-        assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼»      »☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼»  HH  »☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼» ►HH» »☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼☼☼☼☼☼☼\n", 0);
+        givenEightPlayers();
 
         crack(2, 3);
 
@@ -1994,7 +1904,6 @@ public class MultiplayerTest extends AbstractGameTest {
         dice(2, 5);
         game(7).newGame();
 
-
         assertScores("");
         assertEquals(8, field().countPlayers());
 
@@ -2049,53 +1958,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 .integer(KILL_HERO_SCORE, 1)
                 .integer(ROUND_WIN, 50);
 
-        givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼        ☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼   HH   ☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼   HH   ☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼☼☼☼☼☼☼\n");
-
-        givenPlayer(3, 2); // соревнующиеся ребята
-        givenPlayer(6, 2);
-
-        givenPlayer(1, 2); // 1 этаж
-        givenPlayer(8, 2);
-
-        givenPlayer(1, 5); // 2 этаж
-        givenPlayer(8, 5);
-
-        givenPlayer(1, 8); // 3 этаж
-        givenPlayer(8, 8);
-
-        tick();
-
-        assertScores("");
-
-        verifyAllEvents(
-                "listener(0) => [START_ROUND, [Round 1]]\n" +
-                "listener(1) => [START_ROUND, [Round 1]]\n" +
-                "listener(2) => [START_ROUND, [Round 1]]\n" +
-                "listener(3) => [START_ROUND, [Round 1]]\n" +
-                "listener(4) => [START_ROUND, [Round 1]]\n" +
-                "listener(5) => [START_ROUND, [Round 1]]\n" +
-                "listener(6) => [START_ROUND, [Round 1]]\n" +
-                "listener(7) => [START_ROUND, [Round 1]]\n");
-
-        assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼»      »☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼»  HH  »☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼» ►HH» »☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼☼☼☼☼☼☼\n", 0);
+        givenEightPlayers();
 
         crack(2, 3);
 
@@ -2378,43 +2241,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 .integer(KILL_HERO_SCORE, 1)
                 .integer(KILL_ENEMY_SCORE, 10);
 
-        givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼        ☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼   HH   ☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼   HH   ☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼☼☼☼☼☼☼\n");
-
-        givenPlayer(3, 2).inTeam(1);
-        givenPlayer(6, 2).inTeam(2);
-
-        givenPlayer(1, 2).inTeam(1);
-        givenPlayer(8, 2).inTeam(1);
-
-        tick();
-
-        assertScores("");
-
-        verifyAllEvents(
-                "listener(0) => [START_ROUND, [Round 1]]\n" +
-                "listener(1) => [START_ROUND, [Round 1]]\n" +
-                "listener(2) => [START_ROUND, [Round 1]]\n" +
-                "listener(3) => [START_ROUND, [Round 1]]\n");
-
-        assertF("☼☼☼☼☼☼☼☼☼☼\n" +
-                "☼        ☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼   HH   ☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼HH☼☼☼☼\n" +
-                "☼» ►HHQ »☼\n" +
-                "☼###HH###☼\n" +
-                "☼☼☼☼☼☼☼☼☼☼\n", 0);
+        givenFourPlayers();
 
         crack(2, 3);
 
@@ -2472,6 +2299,96 @@ public class MultiplayerTest extends AbstractGameTest {
                 "listener(1) => [KILL_ENEMY]\n" +
                 "listener(2) => [HERO_DIE]\n" +
                 "listener(3) => [HERO_DIE]\n");
+    }
+
+    private void givenFourPlayers() {
+        givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
+                "☼        ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼   HH   ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼   HH   ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼☼☼☼☼☼☼\n");
+
+        givenPlayer(3, 2).inTeam(1);
+        givenPlayer(6, 2).inTeam(2);
+
+        givenPlayer(1, 2).inTeam(1);
+        givenPlayer(8, 2).inTeam(1);
+
+        tick();
+
+        assertScores("");
+
+        verifyAllEvents(
+                "listener(0) => [START_ROUND, [Round 1]]\n" +
+                "listener(1) => [START_ROUND, [Round 1]]\n" +
+                "listener(2) => [START_ROUND, [Round 1]]\n" +
+                "listener(3) => [START_ROUND, [Round 1]]\n");
+
+        assertF("☼☼☼☼☼☼☼☼☼☼\n" +
+                "☼        ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼   HH   ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼» ►HHQ »☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼☼☼☼☼☼☼\n", 0);
+    }
+
+    private void givenEightPlayers() {
+        givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
+                "☼        ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼   HH   ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼   HH   ☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼☼☼☼☼☼☼\n");
+
+        givenPlayer(3, 2); // соревнующиеся ребята
+        givenPlayer(6, 2);
+
+        givenPlayer(1, 2); // 1 этаж
+        givenPlayer(8, 2);
+
+        givenPlayer(1, 5); // 2 этаж
+        givenPlayer(8, 5);
+
+        givenPlayer(1, 8); // 3 этаж
+        givenPlayer(8, 8);
+
+        tick();
+
+        assertScores("");
+
+        verifyAllEvents(
+                "listener(0) => [START_ROUND, [Round 1]]\n" +
+                        "listener(1) => [START_ROUND, [Round 1]]\n" +
+                        "listener(2) => [START_ROUND, [Round 1]]\n" +
+                        "listener(3) => [START_ROUND, [Round 1]]\n" +
+                        "listener(4) => [START_ROUND, [Round 1]]\n" +
+                        "listener(5) => [START_ROUND, [Round 1]]\n" +
+                        "listener(6) => [START_ROUND, [Round 1]]\n" +
+                        "listener(7) => [START_ROUND, [Round 1]]\n");
+
+        assertF("☼☼☼☼☼☼☼☼☼☼\n" +
+                "☼»      »☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼»  HH  »☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼HH☼☼☼☼\n" +
+                "☼» ►HH» »☼\n" +
+                "☼###HH###☼\n" +
+                "☼☼☼☼☼☼☼☼☼☼\n", 0);
     }
 
     private void goUp() {
