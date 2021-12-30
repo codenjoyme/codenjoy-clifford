@@ -723,7 +723,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        verifyAllEvents("[HERO_DIE, SUICIDE]");
+        verifyAllEvents("[HERO_DIED, SUICIDE]");
     }
 
 
@@ -811,8 +811,8 @@ public class BulletGameTest extends AbstractGameTest {
         assertBullets("[]");
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [HERO_DIED]\n");
     }
 
     @Test
@@ -883,8 +883,8 @@ public class BulletGameTest extends AbstractGameTest {
         assertBullets("[]");
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(2) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(2) => [HERO_DIED]\n");
     }
 
     @Test
@@ -939,8 +939,8 @@ public class BulletGameTest extends AbstractGameTest {
         assertBullets("[]");
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [HERO_DIED]\n");
     }
 
     @Test
@@ -997,8 +997,8 @@ public class BulletGameTest extends AbstractGameTest {
         assertEquals("[[4,3]]", field().clueKnife().toString());
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [HERO_DIED]\n");
     }
 
     // todo Продумать, должен ли выживать.
@@ -1109,9 +1109,9 @@ public class BulletGameTest extends AbstractGameTest {
         assertBullets("[]");
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [KILL_HERO]\n" +
-                "listener(2) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [KILL_OTHER_HERO]\n" +
+                "listener(2) => [HERO_DIED]\n");
     }
 
     @Test
@@ -1212,7 +1212,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
         
-        verifyAllEvents("[HERO_DIE, SUICIDE]");
+        verifyAllEvents("[HERO_DIED, SUICIDE]");
     }
 
     @Test
@@ -1256,7 +1256,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼☼\n");
 
         verifyAllEvents(
-                "listener(0) => [HERO_DIE]\n");
+                "listener(0) => [HERO_DIED]\n");
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -1272,7 +1272,7 @@ public class BulletGameTest extends AbstractGameTest {
         assertBullets("[]");
         
         verifyAllEvents(
-                "listener(1) => [HERO_DIE]\n");
+                "listener(1) => [HERO_DIED]\n");
     }
 
     @Test
@@ -1342,7 +1342,7 @@ public class BulletGameTest extends AbstractGameTest {
         assertBullets("[]");
         
         verifyAllEvents(
-                "listener(0) => [HERO_DIE]\n" +
-                "listener(1) => [HERO_DIE]\n");
+                "listener(0) => [HERO_DIED]\n" +
+                "listener(1) => [HERO_DIED]\n");
     }
 }

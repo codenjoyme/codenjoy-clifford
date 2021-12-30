@@ -42,15 +42,15 @@ public class ScoresTest {
     private GameSettings settings;
 
     public void heroDie() {
-        scores.event(new Event(HERO_DIE));
+        scores.event(new Event(HERO_DIED));
     }
 
     public void killHero() {
-        scores.event(new Event(KILL_HERO));
+        scores.event(new Event(KILL_OTHER_HERO));
     }
 
     public void killEnemy() {
-        scores.event(new Event(KILL_ENEMY));
+        scores.event(new Event(KILL_ENEMY_HERO));
     }
 
     public void suicide() {
@@ -75,10 +75,10 @@ public class ScoresTest {
                 .initScore(CUMULATIVELY)
 
                 .integer(SUICIDE_PENALTY, -13)
-                .integer(HERO_DIE_PENALTY, -30)
+                .integer(HERO_DIED_PENALTY, -30)
 
-                .integer(KILL_HERO_SCORE, 20)
-                .integer(KILL_ENEMY_SCORE, 50)
+                .integer(KILL_OTHER_HERO_SCORE, 20)
+                .integer(KILL_ENEMY_HERO_SCORE, 50)
 
                 .integer(CLUE_SCORE_GLOVE, 2)
                 .integer(CLUE_SCORE_GLOVE_INCREMENT, 1)
@@ -119,8 +119,8 @@ public class ScoresTest {
 
         // then
         int expected = 140;
-        expected += 2 * settings.integer(KILL_HERO_SCORE);
-        expected += settings.integer(KILL_ENEMY_SCORE);
+        expected += 2 * settings.integer(KILL_OTHER_HERO_SCORE);
+        expected += settings.integer(KILL_ENEMY_HERO_SCORE);
 
         expected += 5 * settings.integer(CLUE_SCORE_KNIFE);
         expected += (1 + 2 + 3 + 4) * settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
@@ -131,7 +131,7 @@ public class ScoresTest {
         expected += 2 * settings.integer(CLUE_SCORE_GLOVE);
         expected += settings.integer(CLUE_SCORE_GLOVE_INCREMENT);
 
-        expected += settings.integer(HERO_DIE_PENALTY);
+        expected += settings.integer(HERO_DIED_PENALTY);
         assertEquals(expected, scores.getScore());
     }
 
@@ -270,7 +270,7 @@ public class ScoresTest {
         // then
         int expected = 3 * settings.integer(CLUE_SCORE_KNIFE);
         expected += (1 + 2) * settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
-        expected += settings.integer(HERO_DIE_PENALTY);
+        expected += settings.integer(HERO_DIED_PENALTY);
         assertEquals(expected, scores.getScore());
 
         // when
@@ -346,7 +346,7 @@ public class ScoresTest {
 
         int expected = 3 * settings.integer(CLUE_SCORE_KNIFE);
         expected += (1 + 2) * settings.integer(CLUE_SCORE_KNIFE_INCREMENT);
-        expected += settings.integer(HERO_DIE_PENALTY);
+        expected += settings.integer(HERO_DIED_PENALTY);
         assertEquals(expected, scores.getScore());
 
         // then

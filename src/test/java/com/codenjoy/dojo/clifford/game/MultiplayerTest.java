@@ -28,11 +28,8 @@ import com.codenjoy.dojo.clifford.model.items.Potion;
 import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import org.junit.Test;
 
-import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.round.RoundSettings.Keys.*;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
 
 public class MultiplayerTest extends AbstractGameTest {
 
@@ -185,9 +182,9 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼\n", 2);
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [HERO_DIE]\n" +
-                "listener(2) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [HERO_DIED]\n" +
+                "listener(2) => [HERO_DIED]\n");
 
         assertEquals(true, game(1).isGameOver());
 
@@ -300,9 +297,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
-        verify(listener(0), never()).event(KILL_HERO);
-        verify(listener(0), never()).event(KILL_ENEMY);
-        verify(listener(1), never()).event(HERO_DIE);
+        verifyAllEvents("");
     }
 
     @Test
@@ -342,8 +337,8 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [HERO_DIED]\n");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -427,8 +422,8 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
 
         verifyAllEvents(
-                "listener(0) => [KILL_ENEMY]\n" +
-                "listener(1) => [HERO_DIE]\n");
+                "listener(0) => [KILL_ENEMY_HERO]\n" +
+                "listener(1) => [HERO_DIED]\n");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -508,8 +503,8 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [HERO_DIED]\n");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -610,8 +605,8 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
 
         verifyAllEvents(
-                "listener(0) => [HERO_DIE]\n" +
-                "listener(1) => [KILL_HERO]\n");
+                "listener(0) => [HERO_DIED]\n" +
+                "listener(1) => [KILL_OTHER_HERO]\n");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -1026,7 +1021,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        verifyAllEvents("listener(1) => [HERO_DIE, SUICIDE]\n");
+        verifyAllEvents("listener(1) => [HERO_DIED, SUICIDE]\n");
     }
 
     @Test
@@ -1347,7 +1342,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 .integer(ROUNDS_TIME, 30)
                 .integer(ROUNDS_TIME_FOR_WINNER, 5)
                 .integer(ROUNDS_PLAYERS_PER_ROOM, 8)
-                .integer(KILL_HERO_SCORE, 1)
+                .integer(KILL_ENEMY_HERO_SCORE, 1)
                 .integer(ROUND_WIN, 50);
 
         givenEightPlayers();
@@ -1404,10 +1399,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(1)=1");
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [KILL_HERO]\n" +
-                "listener(2) => [HERO_DIE]\n" +
-                "listener(3) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [KILL_OTHER_HERO]\n" +
+                "listener(2) => [HERO_DIED]\n" +
+                "listener(3) => [HERO_DIED]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼» ◄  » »☼\n" +
@@ -1475,10 +1470,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(1)=2");
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [KILL_HERO]\n" +
-                "listener(4) => [HERO_DIE]\n" +
-                "listener(5) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [KILL_OTHER_HERO]\n" +
+                "listener(4) => [HERO_DIED]\n" +
+                "listener(5) => [HERO_DIED]\n");
 
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
@@ -1525,10 +1520,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(1)=3");
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [KILL_HERO]\n" +
-                "listener(6) => [HERO_DIE]\n" +
-                "listener(7) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [KILL_OTHER_HERO]\n" +
+                "listener(6) => [HERO_DIED]\n" +
+                "listener(7) => [HERO_DIED]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  »  ☼\n" +
@@ -1648,7 +1643,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 .integer(ROUNDS_TIME, 30)
                 .integer(ROUNDS_TIME_FOR_WINNER, 5)
                 .integer(ROUNDS_PLAYERS_PER_ROOM, 8)
-                .integer(KILL_HERO_SCORE, 1)
+                .integer(KILL_OTHER_HERO_SCORE, 1)
                 .integer(ROUND_WIN, 50);
 
         givenEightPlayers();
@@ -1705,10 +1700,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(1)=1");
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [KILL_HERO]\n" +
-                "listener(2) => [HERO_DIE]\n" +
-                "listener(3) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [KILL_OTHER_HERO]\n" +
+                "listener(2) => [HERO_DIED]\n" +
+                "listener(3) => [HERO_DIED]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼» ◄  » »☼\n" +
@@ -1776,10 +1771,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(1)=2");
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [KILL_HERO]\n" +
-                "listener(4) => [HERO_DIE]\n" +
-                "listener(5) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [KILL_OTHER_HERO]\n" +
+                "listener(4) => [HERO_DIED]\n" +
+                "listener(5) => [HERO_DIED]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
@@ -1825,8 +1820,8 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(1)=2");
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(6) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(6) => [HERO_DIED]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
@@ -1965,7 +1960,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 .integer(ROUNDS_TIME, 30)
                 .integer(ROUNDS_TIME_FOR_WINNER, 5)
                 .integer(ROUNDS_PLAYERS_PER_ROOM, 8)
-                .integer(KILL_HERO_SCORE, 1)
+                .integer(KILL_OTHER_HERO_SCORE, 1)
                 .integer(ROUND_WIN, 50);
 
         givenEightPlayers();
@@ -2022,10 +2017,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(1)=1");
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [KILL_HERO]\n" +
-                "listener(2) => [HERO_DIE]\n" +
-                "listener(3) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [KILL_OTHER_HERO]\n" +
+                "listener(2) => [HERO_DIED]\n" +
+                "listener(3) => [HERO_DIED]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼» ◄  » »☼\n" +
@@ -2093,10 +2088,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(1)=2");
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [KILL_HERO]\n" +
-                "listener(4) => [HERO_DIE]\n" +
-                "listener(5) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [KILL_OTHER_HERO]\n" +
+                "listener(4) => [HERO_DIED]\n" +
+                "listener(5) => [HERO_DIED]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
@@ -2142,8 +2137,8 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(1)=2");
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(6) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(6) => [HERO_DIED]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
@@ -2248,8 +2243,8 @@ public class MultiplayerTest extends AbstractGameTest {
         settings().bool(ROUNDS_ENABLED, true)
                 .integer(ROUNDS_TIME_BEFORE_START, 1)
                 .integer(ROUNDS_PLAYERS_PER_ROOM, 4)
-                .integer(KILL_HERO_SCORE, 1)
-                .integer(KILL_ENEMY_SCORE, 10);
+                .integer(KILL_OTHER_HERO_SCORE, 1)
+                .integer(KILL_ENEMY_HERO_SCORE, 10);
 
         givenFourPlayers();
 
@@ -2305,10 +2300,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "hero(1)=10");
 
         verifyAllEvents(
-                "listener(0) => [KILL_HERO]\n" +
-                "listener(1) => [KILL_ENEMY]\n" +
-                "listener(2) => [HERO_DIE]\n" +
-                "listener(3) => [HERO_DIE]\n");
+                "listener(0) => [KILL_OTHER_HERO]\n" +
+                "listener(1) => [KILL_ENEMY_HERO]\n" +
+                "listener(2) => [HERO_DIED]\n" +
+                "listener(3) => [HERO_DIED]\n");
     }
 
     private void givenFourPlayers() {

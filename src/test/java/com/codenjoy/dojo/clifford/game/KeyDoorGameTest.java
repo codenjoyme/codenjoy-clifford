@@ -848,7 +848,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         hero().die();
         tick();
 
-        verifyAllEvents("[HERO_DIE]");
+        verifyAllEvents("[HERO_DIED]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
@@ -935,7 +935,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         hero().die();
         tick();
 
-        verifyAllEvents("[HERO_DIE]");
+        verifyAllEvents("[HERO_DIED]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   +-!☼\n" +

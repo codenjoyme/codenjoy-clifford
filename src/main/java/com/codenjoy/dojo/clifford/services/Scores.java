@@ -23,12 +23,10 @@ package com.codenjoy.dojo.clifford.services;
  */
 
 
-import com.codenjoy.dojo.services.event.ScoresImpl;
 import com.codenjoy.dojo.services.event.ScoresMap;
 import com.codenjoy.dojo.services.settings.SettingsReader;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
-import static com.codenjoy.dojo.services.event.Mode.SERIES_MAX_VALUE;
 
 public class Scores extends ScoresMap<Integer> {
     
@@ -47,14 +45,14 @@ public class Scores extends ScoresMap<Integer> {
                 value -> settings.integer(CLUE_SCORE_RING)
                         + value * settings.integer(CLUE_SCORE_RING_INCREMENT));
 
-        put(Event.Type.KILL_HERO,
-                value -> settings.integer(KILL_HERO_SCORE));
+        put(Event.Type.KILL_OTHER_HERO,
+                value -> settings.integer(KILL_OTHER_HERO_SCORE));
 
-        put(Event.Type.KILL_ENEMY,
-                value -> settings.integer(KILL_ENEMY_SCORE));
+        put(Event.Type.KILL_ENEMY_HERO,
+                value -> settings.integer(KILL_ENEMY_HERO_SCORE));
 
-        put(Event.Type.HERO_DIE,
-                value -> heroDie(HERO_DIE_PENALTY));
+        put(Event.Type.HERO_DIED,
+                value -> heroDie(HERO_DIED_PENALTY));
 
         put(Event.Type.SUICIDE,
                 value -> settings.integer(SUICIDE_PENALTY));

@@ -37,9 +37,9 @@ public class TestGameSettings extends GameSettings {
         initScore(CUMULATIVELY);
         bool(ROUNDS_ENABLED, false);
 
-        integer(HERO_DIE_PENALTY, -0);
-        integer(KILL_HERO_SCORE, 20);
-        integer(KILL_ENEMY_SCORE, 50);
+        integer(HERO_DIED_PENALTY, -0);
+        integer(KILL_OTHER_HERO_SCORE, 20);
+        integer(KILL_ENEMY_HERO_SCORE, 50);
 
         integer(SUICIDE_PENALTY, -0);
         integer(MASK_TICKS, 15);

@@ -44,8 +44,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-import static com.codenjoy.dojo.clifford.services.Event.Type.KILL_ENEMY;
-import static com.codenjoy.dojo.clifford.services.Event.Type.KILL_HERO;
+import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_TICKS;
 import static com.codenjoy.dojo.games.clifford.Element.*;
 import static com.codenjoy.dojo.services.Direction.DOWN;
@@ -166,7 +165,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
 
     @Override
     public void die() {
-        die(Event.Type.HERO_DIE);
+        die(HERO_DIED);
     }
 
     public Direction getDirection() {
@@ -391,9 +390,9 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
 
     public void fireKillHero(Hero prey) {
         if (getTeamId() == prey.getTeamId()) {
-            event(KILL_HERO);
+            event(KILL_OTHER_HERO);
         } else {
-            event(KILL_ENEMY);
+            event(KILL_ENEMY_HERO);
         }
     }
 }

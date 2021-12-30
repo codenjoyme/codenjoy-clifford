@@ -46,9 +46,9 @@ public class GameSettingsTest {
                         "CLUE_COUNT_RING, \n" +
                         "CLUE_SCORE_RING, \n" +
                         "CLUE_SCORE_RING_INCREMENT, \n" +
-                        "KILL_HERO_SCORE, \n" +
-                        "KILL_ENEMY_SCORE, \n" +
-                        "HERO_DIE_PENALTY, \n" +
+                        "KILL_OTHER_HERO_SCORE, \n" +
+                        "KILL_ENEMY_HERO_SCORE, \n" +
+                        "HERO_DIED_PENALTY, \n" +
                         "SUICIDE_PENALTY, \n" +
                         "ROUND_WIN, \n" +
                         "SCORE_COUNTING_TYPE]",
