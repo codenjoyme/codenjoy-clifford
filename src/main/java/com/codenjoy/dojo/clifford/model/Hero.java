@@ -44,6 +44,8 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
+import static com.codenjoy.dojo.clifford.services.Event.Type.KILL_ENEMY;
+import static com.codenjoy.dojo.clifford.services.Event.Type.KILL_HERO;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_TICKS;
 import static com.codenjoy.dojo.games.clifford.Element.*;
 import static com.codenjoy.dojo.services.Direction.DOWN;
@@ -97,10 +99,6 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
 
     public Map<KeyType, Integer> getKeys() {
         return Collections.unmodifiableMap(keys);
-    }
-
-    public int getTeamId() {
-        return getPlayer().getTeamId();
     }
 
     @Override
@@ -387,4 +385,15 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         return 0;
     }
 
+    public int getTeamId() {
+        return getPlayer().getTeamId();
+    }
+
+    public void fireKillHero(Hero prey) {
+        if (getTeamId() == prey.getTeamId()) {
+            event(KILL_HERO);
+        } else {
+            event(KILL_ENEMY);
+        }
+    }
 }

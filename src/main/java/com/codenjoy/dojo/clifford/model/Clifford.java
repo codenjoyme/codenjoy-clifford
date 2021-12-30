@@ -41,7 +41,7 @@ import com.codenjoy.dojo.services.field.PointField;
 import com.codenjoy.dojo.services.multiplayer.GamePlayer;
 import com.codenjoy.dojo.services.printer.BoardReader;
 import com.codenjoy.dojo.services.round.RoundField;
-import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 
 import java.util.*;
@@ -61,7 +61,7 @@ public class Clifford extends RoundField<Player> implements Field {
     private GameSettings settings;
 
     private int backWaysTimer;
-    private Multimap<Hero, Hero> killerWithDeads;
+    private Multimap<Hero, Hero> deathMatch;
 
     public Clifford() {
         // do nothing, for testing only
@@ -91,7 +91,7 @@ public class Clifford extends RoundField<Player> implements Field {
         level.saveTo(field);
         field.init(this);
 
-        this.killerWithDeads = ArrayListMultimap.create();
+        deathMatch = LinkedHashMultimap.create();
         resetBackWaysTimer();
         generateAll();
 
@@ -137,21 +137,17 @@ public class Clifford extends RoundField<Player> implements Field {
     }
 
     private void rewardMurderers() {
-        killerWithDeads.asMap().forEach((killer, deads) -> {
-            for (Hero dead : deads) {
-                if (killer == dead) {
-                    killer.event(SUICIDE);
+        deathMatch.asMap().forEach((hunter, preys) -> {
+            for (Hero prey : preys) {
+                if (hunter == prey) {
+                    hunter.event(SUICIDE);
                 }
-                if (!killer.isAlive()) continue;
+                if (!hunter.isAlive()) continue;
 
-                if (killer.getTeamId() == dead.getTeamId()) {
-                    killer.event(KILL_HERO);
-                } else {
-                    killer.event(KILL_ENEMY);
-                }
+                hunter.fireKillHero(prey);
             }
         });
-        killerWithDeads.clear();
+        deathMatch.clear();
     }
 
     private void generateClue() {
@@ -237,13 +233,13 @@ public class Clifford extends RoundField<Player> implements Field {
 
     @Override
     public void affect(Bullet bullet) {
-        for (Hero hero : heroes().getAt(bullet)) {
-            if (hero.under(MASK_POTION)) continue;
-            if (hero == bullet.getOwner() && !bullet.isBounced()) continue;
+        for (Hero prey : heroes().getAt(bullet)) {
+            if (prey.under(MASK_POTION)) continue;
+            if (prey == bullet.getOwner() && !bullet.isBounced()) continue;
 
-            hero.die();
+            prey.die();
             bullet.remove();
-            killerWithDeads.put(bullet.getOwner(), hero);
+            deathMatch.put(bullet.getOwner(), prey);
         }
 
         for (Brick brick : bricks().getAt(bullet)) {
@@ -268,10 +264,10 @@ public class Clifford extends RoundField<Player> implements Field {
         players.stream()
                 .map(GamePlayer::getHero)
                 .filter(hero -> !hero.isAlive())
-                .forEach(dead -> bricks().getAt(dead).stream()
+                .forEach(prey -> bricks().getAt(prey).stream()
                         .map(Brick::getCrackedBy)
                         .filter(Objects::nonNull)
-                        .forEach(killer -> killerWithDeads.put(killer, dead)));
+                        .forEach(hunter -> deathMatch.put(hunter, prey)));
     }
 
     private Optional<Brick> getBrick(Point pt) {
@@ -333,15 +329,15 @@ public class Clifford extends RoundField<Player> implements Field {
                 .forEach(maskHero -> heroes().getAt(maskHero).stream()
                         .filter(hero -> hero != maskHero)
                         .filter(hero -> !hero.under(MASK_POTION))
-                        .forEach(hero -> killerWithDeads.put(maskHero, hero)));
+                        .forEach(prey -> deathMatch.put(maskHero, prey)));
     }
 
     private void transport(PointImpl point) {
         List<BackWay> backways = backways().all();
-        for (int i = 0; i < backways.size(); i++) {
-            if (backways.get(i).equals(point)) {
-                BackWay backwayToMove = backways.get(i < backways.size() - 1 ? i + 1 : 0);
-                point.move(backwayToMove.getX(), backwayToMove.getY());
+        for (int index = 0; index < backways.size(); index++) {
+            if (backways.get(index).equals(point)) {
+                BackWay back = backways.get(index < backways.size() - 1 ? index + 1 : 0);
+                point.move(back.getX(), back.getY());
                 return;
             }
         }
