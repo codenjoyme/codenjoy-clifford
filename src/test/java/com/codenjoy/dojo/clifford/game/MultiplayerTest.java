@@ -1342,7 +1342,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 .integer(ROUNDS_TIME, 30)
                 .integer(ROUNDS_TIME_FOR_WINNER, 5)
                 .integer(ROUNDS_PLAYERS_PER_ROOM, 8)
-                .integer(KILL_ENEMY_HERO_SCORE, 1)
+                .integer(KILL_OTHER_HERO_SCORE, 1)
                 .integer(ROUND_WIN, 50);
 
         givenEightPlayers();
