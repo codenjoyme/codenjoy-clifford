@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.clifford.game;
+package com.codenjoy.dojo.clifford.model;
 
 /*-
  * #%L

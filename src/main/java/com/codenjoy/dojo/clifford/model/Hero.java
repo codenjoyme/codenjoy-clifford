@@ -180,51 +180,51 @@ public class Hero extends RoundPlayerHero<Field>
         }
     }
 
-    public void crack() {
+    void crack() {
         act();
     }
 
-    public void crack(Direction direction) {
+    void crack(Direction direction) {
         switch (direction) {
             case LEFT: crack(); left(); break;
             case RIGHT: crack(); right(); break;
         }
     }
 
-    public void shoot() {
+    void shoot() {
         act(ACT_SHOOT);
     }
 
-    public void shoot(Direction direction) {
+    void shoot(Direction direction) {
         switch (direction) {
             case LEFT: shoot(); left(); break;
             case RIGHT: shoot(); right(); break;
         }
     }
 
-    public void openDoor() {
+    void openDoor() {
         act(ACT_OPEN_DOOR);
     }
 
-    public void openDoor(Direction direction) {
+    void openDoor(Direction direction) {
         switch (direction) {
             case LEFT: openDoor(); left(); break;
             case RIGHT: openDoor(); right(); break;
         }
     }
 
-    public void closeDoor() {
+    void closeDoor() {
         act(ACT_CLOSE_DOOR);
     }
 
-    public void closeDoor(Direction direction) {
+    void closeDoor(Direction direction) {
         switch (direction) {
             case LEFT: closeDoor(); left(); break;
             case RIGHT: closeDoor(); right(); break;
         }
     }
 
-    public void suicide() {
+    void suicide() {
         act(ACT_SUICIDE);
     }
 

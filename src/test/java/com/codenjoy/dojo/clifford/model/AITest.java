@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.clifford.game;
+package com.codenjoy.dojo.clifford.model;
 
 /*-
  * #%L
@@ -23,7 +23,6 @@ package com.codenjoy.dojo.clifford.game;
  */
 
 
-import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.items.robber.AI;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
 import com.codenjoy.dojo.clifford.model.items.robber.RobberJoystick;

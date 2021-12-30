@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.clifford.game;
+package com.codenjoy.dojo.clifford.model;
 
 /*-
  * #%L
@@ -23,10 +23,6 @@ package com.codenjoy.dojo.clifford.game;
  */
 
 import com.codenjoy.dojo.clifford.TestGameSettings;
-import com.codenjoy.dojo.clifford.model.Clifford;
-import com.codenjoy.dojo.clifford.model.Hero;
-import com.codenjoy.dojo.clifford.model.Level;
-import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.robber.RobberJoystick;
 import com.codenjoy.dojo.clifford.services.Event;
