@@ -48,7 +48,7 @@ import java.util.function.Predicate;
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_TICKS;
 import static com.codenjoy.dojo.games.clifford.Element.*;
-import static com.codenjoy.dojo.services.Direction.DOWN;
+import static com.codenjoy.dojo.services.Direction.*;
 import static com.codenjoy.dojo.services.StateUtils.filter;
 import static com.codenjoy.dojo.services.StateUtils.filterOne;
 
@@ -130,7 +130,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         if (!isActiveAndAlive()) return;
 
         if (field.isLadder(this)) {
-            direction = Direction.UP;
+            direction = UP;
             moving = true;
         }
     }
@@ -139,7 +139,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     public void left() {
         if (!isActiveAndAlive()) return;
 
-        direction = Direction.LEFT;
+        direction = LEFT;
         moving = true;
     }
 
@@ -147,7 +147,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     public void right() {
         if (!isActiveAndAlive()) return;
 
-        direction = Direction.RIGHT;
+        direction = RIGHT;
         moving = true;
     }
 
@@ -429,7 +429,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     }
 
     private boolean isLeftTurn() {
-        return direction.equals(Direction.LEFT);
+        return direction.equals(LEFT);
     }
 
     private boolean anyHeroFromAnotherTeam(Player player, List<Hero> heroes) {
