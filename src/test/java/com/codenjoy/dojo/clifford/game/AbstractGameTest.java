@@ -40,6 +40,7 @@ import com.codenjoy.dojo.services.multiplayer.LevelProgress;
 import com.codenjoy.dojo.services.multiplayer.Single;
 import com.codenjoy.dojo.services.printer.PrinterFactory;
 import com.codenjoy.dojo.services.printer.PrinterFactoryImpl;
+import com.codenjoy.dojo.utils.TestUtils;
 import com.codenjoy.dojo.utils.events.EventsListenersAssert;
 import com.codenjoy.dojo.utils.smart.SmartAssert;
 import org.junit.After;
@@ -52,7 +53,6 @@ import java.util.stream.Collectors;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.PointImpl.pt;
-import static java.util.stream.Collectors.joining;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -174,12 +174,7 @@ public abstract class AbstractGameTest {
 
     public void assertScores(String expected) {
         assertEquals(expected,
-                players.stream()
-                        .filter(player -> player.getHero().scores() > 0)
-                        .map(player -> String.format("hero(%s)=%s",
-                                        players.indexOf(player),
-                                        player.getHero().scores()))
-                        .collect(joining("\n")));
+                TestUtils.collectHeroesData(players, "scores", true));
     }
 
     public void assertEquals(String message, Object expected, Object actual) {
