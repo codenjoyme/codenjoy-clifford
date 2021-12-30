@@ -25,6 +25,8 @@ package com.codenjoy.dojo.clifford.game;
 import com.codenjoy.dojo.clifford.model.items.Potion;
 import org.junit.Test;
 
+import static com.codenjoy.dojo.services.Direction.RIGHT;
+
 public class BulletGameTest extends AbstractGameTest {
 
     @Test
@@ -37,7 +39,7 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[]");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -69,7 +71,7 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[]");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -105,8 +107,8 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        // when hero shoot up
-        hero().act(1);
+        // when
+        hero().shoot();
         hero().up();
         tick();
 
@@ -129,7 +131,7 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[]");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -163,7 +165,7 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[]");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -206,7 +208,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼\n");
 
         // when hero shot several times through the line of bricks
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
@@ -218,7 +220,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼\n");
         assertBullets("[[4,2,LEFT]]");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         // then bricks are destroyed one by one
@@ -231,7 +233,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼\n");
         assertBullets("[[4,2,LEFT]]");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
@@ -243,7 +245,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼\n");
         assertBullets("[[4,2,LEFT]]");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
@@ -255,7 +257,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼\n");
         assertBullets("[[2,2,LEFT], [4,2,LEFT]]");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
@@ -289,7 +291,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
@@ -301,7 +303,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼\n");
         assertBullets("[[4,2,LEFT]]");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
@@ -314,7 +316,7 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[4,2,LEFT]]");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
@@ -357,7 +359,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
@@ -409,7 +411,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼\n");
 
         // when hero shoots through a restoring brick
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
@@ -482,7 +484,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        hero().act(1);
+        hero().shoot();
         tick();
         tick();
 
@@ -506,7 +508,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
@@ -568,7 +570,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#### ##☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -688,7 +690,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
@@ -735,8 +737,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().right();
-        hero().act(1);
+        hero().shoot(RIGHT);
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -781,7 +782,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -839,7 +840,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        hero(0).act(1);
+        hero(0).shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -909,7 +910,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -965,7 +966,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -1024,7 +1025,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        hero().act(1);
+        hero().shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -1078,8 +1079,8 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        hero(0).act(1);
-        hero(1).act(1);
+        hero(0).shoot();
+        hero(1).shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -1129,7 +1130,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼☼☼☼☼\n");
 
         // when hero shoot next to brick
-        hero().act(1);
+        hero().shoot();
         tick();
 
         // then brick should be cracked. Bullet should be deleted
@@ -1164,7 +1165,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼☼☼☼☼\n");
 
         // when hero shoot
-        hero().act(1);
+        hero().shoot();
         tick();
 
         // then bullet should left the field
@@ -1192,7 +1193,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼☼☼☼☼\n");
 
         // when hero shoot
-        hero().act(1);
+        hero().shoot();
         tick();
 
         // then bullet should bounced
@@ -1227,7 +1228,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        hero(0).act(1);
+        hero(0).shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -1287,8 +1288,8 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        hero(0).act(1);
-        hero(1).act(1);
+        hero(0).shoot();
+        hero(1).shoot();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +

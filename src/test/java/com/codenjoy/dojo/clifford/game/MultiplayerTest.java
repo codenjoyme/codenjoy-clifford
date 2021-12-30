@@ -29,6 +29,8 @@ import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import org.junit.Test;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
+import static com.codenjoy.dojo.services.Direction.LEFT;
+import static com.codenjoy.dojo.services.Direction.RIGHT;
 import static com.codenjoy.dojo.services.round.RoundSettings.Keys.*;
 
 public class MultiplayerTest extends AbstractGameTest {
@@ -91,7 +93,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 2);
 
-        hero(0).act();
+        hero(0).crack();
         game(1).close();
 
         tick();
@@ -141,8 +143,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 2);
 
-        hero(0).left();
-        hero(0).act();
+        hero(0).crack(LEFT);
         hero(2).right();
 
         tick();
@@ -812,9 +813,8 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
-        hero(0).act();
-        hero(1).left();
-        hero(1).act();
+        hero(0).crack();
+        hero(1).crack(LEFT);
         tick();
 
         assertF("☼☼☼☼☼☼\n" +
@@ -928,17 +928,16 @@ public class MultiplayerTest extends AbstractGameTest {
 
         // given Hero(1)  continuously generates bullets
         // when hero(0) with MASK_POTION trying to get clues through under the flying bullets
-        hero(1).left();
-        hero(1).act(1);
+        hero(1).shoot(LEFT);
         tick();
-        hero(1).left();
-        hero(1).act(1);
+
+        hero(1).shoot(LEFT);
         tick();
-        hero(1).left();
-        hero(1).act(1);
+
+        hero(1).shoot(LEFT);
         tick();
-        hero(1).left();
-        hero(1).act(1);
+
+        hero(1).shoot(LEFT);
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -954,8 +953,7 @@ public class MultiplayerTest extends AbstractGameTest {
         assertBullets("[[0,3,RIGHT], [2,3,LEFT], [4,3,LEFT], [6,3,LEFT]]");
 
         hero(0).right();
-        hero(1).left();
-        hero(1).act(1);
+        hero(1).shoot(LEFT);
         tick();
 
         // then should get CLUE_KNIFE
@@ -971,8 +969,7 @@ public class MultiplayerTest extends AbstractGameTest {
         verifyAllEvents("listener(0) => [GET_CLUE_KNIFE(1)]\n");
 
         hero(0).right();
-        hero(1).left();
-        hero(1).act(1);
+        hero(1).shoot(LEFT);
         tick();
 
         // then should get CLUE_GLOVE
@@ -989,8 +986,7 @@ public class MultiplayerTest extends AbstractGameTest {
         verifyAllEvents("listener(0) => [GET_CLUE_GLOVE(1)]\n");
 
         hero(0).right();
-        hero(1).left();
-        hero(1).act(1);
+        hero(1).shoot(LEFT);
         tick();
 
         // then should get CLUE_RING
@@ -1007,8 +1003,7 @@ public class MultiplayerTest extends AbstractGameTest {
         verifyAllEvents("listener(0) => [GET_CLUE_RING(1)]\n");
 
         hero(0).right();
-        hero(1).left();
-        hero(1).act(1);
+        hero(1).shoot(LEFT);
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -2376,13 +2371,13 @@ public class MultiplayerTest extends AbstractGameTest {
 
         verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 1]]\n" +
-                        "listener(1) => [START_ROUND, [Round 1]]\n" +
-                        "listener(2) => [START_ROUND, [Round 1]]\n" +
-                        "listener(3) => [START_ROUND, [Round 1]]\n" +
-                        "listener(4) => [START_ROUND, [Round 1]]\n" +
-                        "listener(5) => [START_ROUND, [Round 1]]\n" +
-                        "listener(6) => [START_ROUND, [Round 1]]\n" +
-                        "listener(7) => [START_ROUND, [Round 1]]\n");
+                "listener(1) => [START_ROUND, [Round 1]]\n" +
+                "listener(2) => [START_ROUND, [Round 1]]\n" +
+                "listener(3) => [START_ROUND, [Round 1]]\n" +
+                "listener(4) => [START_ROUND, [Round 1]]\n" +
+                "listener(5) => [START_ROUND, [Round 1]]\n" +
+                "listener(6) => [START_ROUND, [Round 1]]\n" +
+                "listener(7) => [START_ROUND, [Round 1]]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼»      »☼\n" +
@@ -2421,10 +2416,8 @@ public class MultiplayerTest extends AbstractGameTest {
 
     private void crack(int leftPrey, int rightPrey) {
         // простреливают ямки
-        hero(0).left();
-        hero(0).act();
-        hero(1).right();
-        hero(1).act();
+        hero(0).crack(LEFT);
+        hero(1).crack(RIGHT);
         // падают в ямки
         if (leftPrey != -1) {
             hero(leftPrey).right();

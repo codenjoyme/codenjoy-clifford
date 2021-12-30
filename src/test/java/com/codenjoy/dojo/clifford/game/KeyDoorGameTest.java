@@ -30,6 +30,8 @@ import java.util.List;
 
 import static com.codenjoy.dojo.client.Utils.split;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.GENERATE_KEYS;
+import static com.codenjoy.dojo.services.Direction.LEFT;
+import static com.codenjoy.dojo.services.Direction.RIGHT;
 
 public class KeyDoorGameTest extends AbstractGameTest {
 
@@ -356,7 +358,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
-        hero().act(2);
+        hero().openDoor();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -427,7 +429,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
-        hero().act(2);
+        hero().openDoor();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -498,7 +500,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
-        hero().act(1);
+        hero().openDoor();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -569,8 +571,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        hero().left();
-        hero().act(3);
+        hero().closeDoor(LEFT);
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -641,8 +642,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        hero().right();
-        hero().act(3);
+        hero().closeDoor(RIGHT);
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -700,8 +700,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        hero().right();
-        hero().act(2);
+        hero().openDoor(RIGHT);
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -757,8 +756,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
-        hero().left();
-        hero().act(2);
+        hero().openDoor(LEFT);
         tick();
 
         assertF("☼☼☼☼☼☼☼☼☼\n" +

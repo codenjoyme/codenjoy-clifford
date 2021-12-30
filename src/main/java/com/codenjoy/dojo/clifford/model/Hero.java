@@ -53,6 +53,11 @@ import static com.codenjoy.dojo.services.StateUtils.filterOne;
 
 public class Hero extends RoundPlayerHero<Field> implements State<Element, Player> {
 
+    private static final int ACT_SUICIDE = 0;
+    private static final int ACT_SHOOT = 1;
+    private static final int ACT_OPEN_DOOR = 2;
+    private static final int ACT_CLOSE_DOOR = 3;
+
     protected Direction direction;
     private PotionType potion;
     private int potionTicks;
@@ -151,16 +156,64 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
 
         if (p.length == 0) {
             crack = true;
-        } else if (p[0] == 0) {
+        } else if (p[0] == ACT_SUICIDE) {
             die();
             field.suicide(this);
-        } else if (p[0] == 1) {
+        } else if (p[0] == ACT_SHOOT) {
             shoot = true;
-        } else if (p[0] == 2) {
+        } else if (p[0] == ACT_OPEN_DOOR) {
             openDoor = true;
-        } else if (p[0] == 3) {
+        } else if (p[0] == ACT_CLOSE_DOOR) {
             closeDoor = true;
         }
+    }
+
+    public void crack() {
+        act();
+    }
+
+    public void crack(Direction direction) {
+        switch (direction) {
+            case LEFT: crack(); left(); break;
+            case RIGHT: crack(); right(); break;
+        }
+    }
+
+    public void shoot() {
+        act(ACT_SHOOT);
+    }
+
+    public void shoot(Direction direction) {
+        switch (direction) {
+            case LEFT: shoot(); left(); break;
+            case RIGHT: shoot(); right(); break;
+        }
+    }
+
+    public void openDoor() {
+        act(ACT_OPEN_DOOR);
+    }
+
+    public void openDoor(Direction direction) {
+        switch (direction) {
+            case LEFT: openDoor(); left(); break;
+            case RIGHT: openDoor(); right(); break;
+        }
+    }
+
+    public void closeDoor() {
+        act(ACT_CLOSE_DOOR);
+    }
+
+    public void closeDoor(Direction direction) {
+        switch (direction) {
+            case LEFT: closeDoor(); left(); break;
+            case RIGHT: closeDoor(); right(); break;
+        }
+    }
+
+    public void suicide() {
+        act(ACT_SUICIDE);
     }
 
     @Override
@@ -193,7 +246,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         if (isFall()) {
             move(DOWN);
         } else if (shoot) {
-            shoot();
+            shootBullet();
         } else if (crack) {
             Point hole = DOWN.change(destination);
             field.tryToCrack(this, hole);
@@ -220,8 +273,8 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         dissolvePotions();
     }
 
-    private void shoot() {
-        final Bullet bullet = new Bullet(this);
+    private void shootBullet() {
+        Bullet bullet = new Bullet(this);
         field.bullets().add(bullet);
         bullet.doFirstMoveAffect();
     }

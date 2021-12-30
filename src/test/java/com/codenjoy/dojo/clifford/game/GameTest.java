@@ -30,6 +30,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
+import static com.codenjoy.dojo.services.Direction.LEFT;
+import static com.codenjoy.dojo.services.Direction.RIGHT;
 import static com.codenjoy.dojo.services.PointImpl.pt;
 
 public class GameTest extends AbstractGameTest {
@@ -59,8 +61,7 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().act();
-        hero().left();
+        hero().crack(LEFT);
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -144,8 +145,7 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().act();
-        hero().right();
+        hero().crack(RIGHT);
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -397,7 +397,7 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -415,8 +415,7 @@ public class GameTest extends AbstractGameTest {
                 "☼ ##☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().left();
-        hero().act();
+        hero().crack(LEFT);
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -625,6 +624,7 @@ public class GameTest extends AbstractGameTest {
 
         hero().right();
         tick();
+
         hero().left();
         tick();
 
@@ -634,8 +634,7 @@ public class GameTest extends AbstractGameTest {
                 "☼ ##☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().left();
-        hero().act();
+        hero().crack(LEFT);
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -654,9 +653,8 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-//        hero().act();
         hero().left();
-        hero().act();
+        hero().crack();
 
         tick();
 
@@ -673,6 +671,25 @@ public class GameTest extends AbstractGameTest {
                 "☼ ◄ ☼\n" +
                 "☼ ##☼\n" +
                 "☼☼☼☼☼\n");
+
+        hero().crack();
+        hero().right();
+
+        tick();
+
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ► ☼\n" +
+                "☼ #*☼\n" +
+                "☼☼☼☼☼\n");
+
+        tick();
+
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ► ☼\n" +
+                "☼ # ☼\n" +
+                "☼☼☼☼☼\n");
     }
 
     // если я повернут в какую-то сторону и просто нажимаю прострелить то будет с той стороны дырка
@@ -684,7 +701,7 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -710,7 +727,7 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -959,7 +976,7 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -978,7 +995,7 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -1070,7 +1087,7 @@ public class GameTest extends AbstractGameTest {
                 "☼☼☼☼☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -1334,7 +1351,7 @@ public class GameTest extends AbstractGameTest {
                 "☼     ☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
@@ -1471,7 +1488,7 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -1742,7 +1759,7 @@ public class GameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼\n");
 
         hero().down();
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼☼\n" +
@@ -1762,7 +1779,7 @@ public class GameTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼☼\n" +
@@ -1781,8 +1798,9 @@ public class GameTest extends AbstractGameTest {
                 "☼##☼\n" +
                 "☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
+
         hero().left();
         tick();
         tick();
@@ -1821,21 +1839,19 @@ public class GameTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
 
         hero().right();
         tick();
 
-        hero().left();
-        hero().act();
+        hero().crack(LEFT);
         tick();
 
         hero().right();
         tick();
 
-        hero().left();
-        hero().act();
+        hero().crack(LEFT);
         tick();
 
         assertF("☼☼☼☼☼☼\n" +
@@ -1859,12 +1875,10 @@ public class GameTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n");
 
-        hero().right();
-        hero().act();
+        hero().crack(RIGHT);
         tick();
 
-        hero().left();
-        hero().act();
+        hero().crack(LEFT);
         tick();
 
         tick();
@@ -2059,7 +2073,7 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
 
         robber().right();
@@ -2088,8 +2102,7 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().right();
-        hero().act();
+        hero().crack(RIGHT);
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -2799,7 +2812,7 @@ public class GameTest extends AbstractGameTest {
         shouldRobberGetClueWhenFallenFromPipe();
 
         robber().right();
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -2892,8 +2905,7 @@ public class GameTest extends AbstractGameTest {
         }
 
         robber().left();
-        hero().right();
-        hero().act();
+        hero().crack(RIGHT);
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -3015,7 +3027,7 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -3036,7 +3048,7 @@ public class GameTest extends AbstractGameTest {
                 "☼     ☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼☼☼\n" +
@@ -3532,7 +3544,7 @@ public class GameTest extends AbstractGameTest {
         robber().left();
         tick();
 
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -3733,7 +3745,7 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
-        hero().act();
+        hero().crack();
         tick();
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -3810,7 +3822,7 @@ public class GameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        hero().act(0);
+        hero().suicide();
         tick();
 
         assertF("☼☼☼☼☼\n" +
@@ -4000,8 +4012,7 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
-        hero(0).act();
-        hero(0).right();
+        hero(0).crack(RIGHT);
         hero(1).left();
         tick();
 
@@ -4678,8 +4689,8 @@ public class GameTest extends AbstractGameTest {
 
         assertEquals(2, hero(0).scores());
 
-        hero().act();
-        hero().left();
+
+        hero().crack(LEFT);
         tick();
 
         assertF("☼☼☼☼☼\n" +
