@@ -35,6 +35,7 @@ import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.State;
 import com.codenjoy.dojo.services.StateUtils;
+import com.codenjoy.dojo.services.joystick.Act;
 import com.codenjoy.dojo.services.round.RoundPlayerHero;
 
 import java.util.Collections;
@@ -154,17 +155,32 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     public void act(int... p) {
         if (!isActiveAndAlive()) return;
 
-        if (p.length == 0) {
+        Act is = new Act(p);
+
+        if (is.act()) {
             crack = true;
-        } else if (p[0] == ACT_SUICIDE) {
+            return;
+        }
+
+        if (is.act(ACT_SUICIDE)) {
             die();
             field.suicide(this);
-        } else if (p[0] == ACT_SHOOT) {
+            return;
+        }
+
+        if (is.act(ACT_SHOOT)) {
             shoot = true;
-        } else if (p[0] == ACT_OPEN_DOOR) {
+            return;
+        }
+
+        if (is.act(ACT_OPEN_DOOR)) {
             openDoor = true;
-        } else if (p[0] == ACT_CLOSE_DOOR) {
+            return;
+        }
+
+        if (is.act(ACT_CLOSE_DOOR)) {
             closeDoor = true;
+            return;
         }
     }
 
