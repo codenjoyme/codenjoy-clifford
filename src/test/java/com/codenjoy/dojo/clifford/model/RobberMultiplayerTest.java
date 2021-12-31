@@ -27,6 +27,7 @@ import com.codenjoy.dojo.clifford.model.items.robber.RobberJoystick;
 import org.junit.Test;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.ROBBERS_COUNT;
+import static com.codenjoy.dojo.services.PointImpl.pt;
 
 public class RobberMultiplayerTest extends AbstractGameTest {
 
@@ -354,7 +355,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼\n");
 
         // when
-        givenPlayer(1, 4);
+        givenPlayer(pt(1, 4));
         tick();
 
         // then
@@ -554,8 +555,8 @@ public class RobberMultiplayerTest extends AbstractGameTest {
         // when
         // но стоит двоим ребятам появиться на поле
         // как вдруг воры начнут охотиться каждый за своим
-        givenPlayer(1, 2);
-        givenPlayer(5, 6);
+        givenPlayer(pt(1, 2));
+        givenPlayer(pt(5, 6));
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +

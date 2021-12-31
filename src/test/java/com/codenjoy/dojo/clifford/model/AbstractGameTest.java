@@ -29,26 +29,27 @@ import com.codenjoy.dojo.clifford.services.Event;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Dice;
-import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.EventListener;
 import com.codenjoy.dojo.services.Game;
+import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.multiplayer.LevelProgress;
-import com.codenjoy.dojo.services.multiplayer.Single;
 import com.codenjoy.dojo.services.printer.PrinterFactory;
 import com.codenjoy.dojo.services.printer.PrinterFactoryImpl;
-import com.codenjoy.dojo.utils.TestUtils;
 import com.codenjoy.dojo.utils.events.EventsListenersAssert;
 import com.codenjoy.dojo.utils.smart.SmartAssert;
+import com.codenjoy.dojo.whatsnext.WhatsNextUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.mockito.stubbing.OngoingStubbing;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
-import static com.codenjoy.dojo.services.PointImpl.pt;
+import static com.codenjoy.dojo.utils.TestUtils.asArray;
+import static com.codenjoy.dojo.utils.TestUtils.collectHeroesData;
+import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.toList;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -87,23 +88,32 @@ public abstract class AbstractGameTest {
     }
 
     protected void dice(int... ints) {
+        if (ints.length == 0) return;
         OngoingStubbing<Integer> when = when(dice.next(anyInt()));
         for (int i : ints) {
             when = when.thenReturn(i);
         }
     }
 
-    protected void givenFl(String... maps) {
+    public void givenFl(String... maps) {
         int levelNumber = LevelProgress.levelsStartsFrom1;
         settings.setLevelMaps(levelNumber, maps);
         level = settings.level(levelNumber, dice, Level::new);
 
         beforeCreateField();
 
-        field = new Clifford(dice, level, settings);
-        level.heroes().forEach(this::givenPlayer);
+        field = new Clifford(dice, null, settings);
+        field.load(level.map(), this::givenPlayer);
+
+        setupHeroesDice();
+
+        games = WhatsNextUtils.newGameForAll(players, printer, field);
 
         afterCreateField();
+    }
+
+    private void setupHeroesDice() {
+        dice(asArray(level.heroes()));
     }
 
     private void beforeCreateField() {
@@ -117,28 +127,28 @@ public abstract class AbstractGameTest {
 
     private void afterCreateField() {
         reloadAllRobbers();
+        level.heroes().forEach(hero ->
+                field.heroes().getAt(hero).get(0)
+                        .setDirection(hero.getDirection()));
         dice(0); // всегда дальше выбираем нулевой индекс
     }
 
-    protected void givenPlayer(Hero hero) {
+    protected Player givenPlayer() {
         EventListener listener = mock(EventListener.class);
         listeners.add(listener);
 
         Player player = new Player(listener, settings);
         players.add(player);
-
-        Single game = new Single(player, printer);
-        games.add(game);
-
-        dice(hero.getX(), hero.getY());
-        game.on(field);
-        game.newGame();
-
-        player.getHero().setDirection(hero.getDirection());
+        return player;
     }
 
-    public Player givenPlayer(int x, int y) {
-        givenPlayer(new Hero(pt(x, y), Direction.RIGHT));
+    public Player givenPlayer(Point pt) {
+        Player player = givenPlayer();
+
+        dice(asArray(asList(pt)));
+        Game game = WhatsNextUtils.newGame(player, printer, field);
+        games.add(game);
+
         return players.get(players.size() - 1);
     }
 
@@ -170,7 +180,7 @@ public abstract class AbstractGameTest {
 
     public void assertScores(String expected) {
         assertEquals(expected,
-                TestUtils.collectHeroesData(players, "scores", true));
+                collectHeroesData(players, "scores", true));
     }
 
     public void assertEquals(String message, Object expected, Object actual) {
@@ -242,7 +252,7 @@ public abstract class AbstractGameTest {
     protected void reloadAllRobbers() {
         robbers = field.robbers().stream()
                 .map(RobberJoystick::new)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     protected void assertBullets(String expected) {

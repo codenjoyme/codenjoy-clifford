@@ -31,6 +31,7 @@ import org.junit.Test;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.Direction.LEFT;
 import static com.codenjoy.dojo.services.Direction.RIGHT;
+import static com.codenjoy.dojo.services.PointImpl.pt;
 import static com.codenjoy.dojo.services.round.RoundSettings.Keys.*;
 
 public class MultiplayerTest extends AbstractGameTest {
@@ -1379,7 +1380,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼\n", 1);
 
         // when
-        givenPlayer(5, 1);
+        givenPlayer(pt(5, 1));
 
         // вот а тут уже укомплектована комната - погнали!
         tryTick();
@@ -2573,11 +2574,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n");
 
-        givenPlayer(3, 2).inTeam(1);
-        givenPlayer(6, 2).inTeam(2);
+        givenPlayer(pt(3, 2)).inTeam(1);
+        givenPlayer(pt(6, 2)).inTeam(2);
 
-        givenPlayer(1, 2).inTeam(1);
-        givenPlayer(8, 2).inTeam(1);
+        givenPlayer(pt(1, 2)).inTeam(1);
+        givenPlayer(pt(8, 2)).inTeam(1);
 
         // when
         tick();
@@ -2616,17 +2617,17 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n");
 
-        givenPlayer(3, 2); // соревнующиеся ребята
-        givenPlayer(6, 2);
+        givenPlayer(pt(3, 2)); // соревнующиеся ребята
+        givenPlayer(pt(6, 2));
 
-        givenPlayer(1, 2); // 1 этаж
-        givenPlayer(8, 2);
+        givenPlayer(pt(1, 2)); // 1 этаж
+        givenPlayer(pt(8, 2));
 
-        givenPlayer(1, 5); // 2 этаж
-        givenPlayer(8, 5);
+        givenPlayer(pt(1, 5)); // 2 этаж
+        givenPlayer(pt(8, 5));
 
-        givenPlayer(1, 8); // 3 этаж
-        givenPlayer(8, 8);
+        givenPlayer(pt(1, 8)); // 3 этаж
+        givenPlayer(pt(8, 8));
 
         // when
         tick();

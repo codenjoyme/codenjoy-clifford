@@ -41,10 +41,12 @@ import com.codenjoy.dojo.services.field.PointField;
 import com.codenjoy.dojo.services.multiplayer.GamePlayer;
 import com.codenjoy.dojo.services.printer.BoardReader;
 import com.codenjoy.dojo.services.round.RoundField;
+import com.codenjoy.dojo.whatsnext.WhatsNextUtils;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 
 import java.util.*;
+import java.util.function.Supplier;
 
 import static com.codenjoy.dojo.clifford.model.items.Potion.PotionType.MASK_POTION;
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
@@ -88,6 +90,8 @@ public class Clifford extends RoundField<Player> implements Field {
 
     @Override
     public void clearScore() {
+        if (level == null) return;
+
         level.saveTo(field);
         field.init(this);
 
@@ -205,24 +209,6 @@ public class Clifford extends RoundField<Player> implements Field {
                     player -> freeRandom((Player) player),
                     pt -> new Key(pt, prototype.getType()));
         }
-    }
-
-    public BoardReader<Player> reader() {
-        return field.reader(
-                Hero.class,
-                Robber.class,
-                ClueKnife.class,
-                ClueGlove.class,
-                ClueRing.class,
-                Border.class,
-                Brick.class,
-                Ladder.class,
-                Potion.class,
-                Pipe.class,
-                BackWay.class,
-                Door.class,
-                Key.class,
-                Bullet.class);
     }
 
     private void bulletsGo() {
@@ -539,6 +525,31 @@ public class Clifford extends RoundField<Player> implements Field {
     @Override
     public GameSettings settings() {
         return settings;
+    }
+
+    @Override
+    public BoardReader<Player> reader() {
+        return field.reader(
+                Hero.class,
+                Robber.class,
+                ClueKnife.class,
+                ClueGlove.class,
+                ClueRing.class,
+                Border.class,
+                Brick.class,
+                Ladder.class,
+                Potion.class,
+                Pipe.class,
+                BackWay.class,
+                Door.class,
+                Key.class,
+                Bullet.class);
+    }
+
+    @Override
+    public List<Player> load(String board, Supplier<Player> player) {
+        level = new Level(board);
+        return WhatsNextUtils.load(this, level.heroes(), player);
     }
 
     public Accessor<BackWay> backways() {
