@@ -35,9 +35,10 @@ import static com.codenjoy.dojo.services.round.RoundSettings.Keys.*;
 
 public class MultiplayerTest extends AbstractGameTest {
 
-    // появляется другие игроки, игра становится мультипользовательской
+    // появляется другие игроки, игра становится многопользовательской
     @Test
     public void shouldMultipleGame() { // TODO разделить тест на части
+        // given
         givenFl("☼☼☼☼☼☼\n" +
                 "☼► ► ☼\n" +
                 "☼####☼\n" +
@@ -66,12 +67,14 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 2);
 
+        // when
         hero(0).right();
         hero(1).right();
         hero(2).left();
 
         tick();
 
+        // then        
         assertF("☼☼☼☼☼☼\n" +
                 "☼ ► »☼\n" +
                 "☼####☼\n" +
@@ -93,11 +96,13 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 2);
 
+        // when
         hero(0).crack();
         game(1).close();
 
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼ ►  ☼\n" +
                 "☼##*#☼\n" +
@@ -123,12 +128,14 @@ public class MultiplayerTest extends AbstractGameTest {
             assertEquals("No board for this player", e.getMessage());
         }
 
+        // when
         hero(0).right();
 
         tick();
         tick();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼## #☼\n" +
@@ -143,11 +150,13 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 2);
 
+        // when
         hero(0).crack(LEFT);
         hero(2).right();
 
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼## #☼\n" +
@@ -162,12 +171,14 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#*##☼\n" +
                 "☼☼☼☼☼☼\n", 2);
 
-        for (int c = 2; c < Brick.CRACK_TIMER; c++) {
+        // when
+        for (int count = 2; count < Brick.CRACK_TIMER; count++) {
             tick();
         }
 
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼####☼\n" +
@@ -189,11 +200,13 @@ public class MultiplayerTest extends AbstractGameTest {
 
         assertEquals(true, game(1).isGameOver());
 
+        // when
         dice(1, 4);
         game(2).newGame();
 
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼»   ☼\n" +
                 "☼####☼\n" +
@@ -208,12 +221,14 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 2);
 
+        // when
         hero(0).right();
 
         dice(1, 2);
 
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼»   ☼\n" +
                 "☼####☼\n" +
@@ -234,8 +249,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void thatRobbersDoNotHauntMaskPlayers() {
+        // given
         settings().integer(ROBBERS_COUNT, 1)
                 .integer(MASK_POTIONS_COUNT, 1);
+        
         givenFl("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -248,9 +265,12 @@ public class MultiplayerTest extends AbstractGameTest {
         robber().disableMock();
         hero(1).pick(PotionType.MASK_POTION);
 
-        dice(0); // охотимся за первым игроком // TODO потестить когда поохотимся за вторым
+        // when
+        // охотимся за первым игроком // TODO потестить когда поохотимся за вторым
+        dice(0);
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -263,7 +283,9 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void thatTwoMasksWalkThroughEachOther() {
+        // given
         settings().integer(MASK_POTIONS_COUNT, 1);
+        
         givenFl("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -273,6 +295,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero(0).pick(PotionType.MASK_POTION);
         hero(1).pick(PotionType.MASK_POTION);
 
@@ -280,6 +303,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -303,7 +327,9 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void thatMaskKillsNonMaskPlayer_killHero() {
+        // given
         settings().integer(MASK_POTIONS_COUNT, 1);
+
         givenFl("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -313,8 +339,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().pick(PotionType.MASK_POTION);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -333,10 +361,12 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
+        // when
         hero().right();
 
         tick();
 
+        // then
         verifyAllEvents(
                 "listener(0) => [KILL_OTHER_HERO]\n" +
                 "listener(1) => [HERO_DIED]\n");
@@ -359,9 +389,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
+        // when
         field().remove(player(1)); // он геймовер его уберут
         tick();
 
+        // then
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -385,7 +417,9 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void thatMaskKillsNonMaskPlayer_killEnemy() {
+        // given
         settings().integer(MASK_POTIONS_COUNT, 1);
+
         givenFl("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -398,8 +432,10 @@ public class MultiplayerTest extends AbstractGameTest {
         player(0).inTeam(1);
         player(1).inTeam(2);
 
+        // when
         hero().pick(PotionType.MASK_POTION);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -418,10 +454,12 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
+        // when
         hero().right();
 
         tick();
 
+        // then
         verifyAllEvents(
                 "listener(0) => [KILL_ENEMY_HERO]\n" +
                 "listener(1) => [HERO_DIED]\n");
@@ -444,9 +482,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
+        // when
         field().remove(player(1)); // он геймовер его уберут
         tick();
 
+        // then
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -470,6 +510,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void thatMaskFallsAtTheRegularPlayerAndKillsHim() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -500,9 +541,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
+        // when
         dice(3, 3); // new potion
         tick();
 
+        // then
         verifyAllEvents(
                 "listener(0) => [KILL_OTHER_HERO]\n" +
                 "listener(1) => [HERO_DIED]\n");
@@ -525,9 +568,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
+        // when
         field().remove(player(1)); // он геймовер его уберут
         tick();
 
+        // then
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -551,7 +596,9 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void thatMaskStairsUpTheLadderAtTheRegularPlayerAndKillsHim() {
+        // given
         settings().integer(MASK_POTIONS_COUNT, 1);
+
         givenFl("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -561,8 +608,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero(1).pick(PotionType.MASK_POTION);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -581,9 +630,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
+        // when
         hero(1).right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -602,9 +653,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
+        // when
         hero(1).up();
         tick();
 
+        // then
         verifyAllEvents(
                 "listener(0) => [HERO_DIED]\n" +
                 "listener(1) => [KILL_OTHER_HERO]\n");
@@ -627,9 +680,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
 
+        // when
         field().remove(player(0)); // он геймовер его уберут
         tick();
 
+        // then
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -654,6 +709,7 @@ public class MultiplayerTest extends AbstractGameTest {
     // можно ли проходить героям друг через дурга? Нет
     @Test
     public void shouldICantGoViaAnotherPlayer_whenAtWay() {
+        // given
         givenFl("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
@@ -668,9 +724,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         hero(0).right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
@@ -678,9 +736,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         hero(1).left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
@@ -691,6 +751,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void shouldICantGoViaAnotherPlayer_whenAtLadder() {
+        // given
         givenFl("☼☼☼☼☼☼\n" +
                 "☼ ►  ☼\n" +
                 "☼ H  ☼\n" +
@@ -705,10 +766,12 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 1);
 
+        // when
         hero(0).down();
         hero(1).right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ D  ☼\n" +
@@ -716,10 +779,12 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 1);
 
+        // when
         hero(0).down();
         hero(1).up();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ D  ☼\n" +
@@ -727,10 +792,12 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 1);
 
+        // when
         hero(0).down();
         hero(1).up();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ D  ☼\n" +
@@ -741,6 +808,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void shouldICantGoViaAnotherPlayer_whenAtPipe() {
+        // given
         givenFl("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼►~~►☼\n" +
@@ -755,10 +823,12 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         hero(0).right();
         hero(1).left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ IJ ☼\n" +
@@ -773,10 +843,12 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 1);
 
+        // when
         hero(0).right();
         hero(1).left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ IJ ☼\n" +
@@ -784,10 +856,12 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         hero(0).right();
         hero(1).left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ IJ ☼\n" +
@@ -799,6 +873,7 @@ public class MultiplayerTest extends AbstractGameTest {
     // могу ли я прострелить под другим героем? Нет
     @Test
     public void shouldICantCrackUnderOtherHero() {
+        // given
         givenFl("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
@@ -813,10 +888,12 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         hero(0).crack();
         hero(1).crack(LEFT);
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
@@ -828,6 +905,7 @@ public class MultiplayerTest extends AbstractGameTest {
     // если я прыгаю сверху на героя, то я должен стоять у него на голове
     @Test
     public void shouldICanStayAtOtherHeroHead() {
+        // given
         givenFl("☼☼☼☼☼☼\n" +
                 "☼ ►  ☼\n" +
                 "☼    ☼\n" +
@@ -842,8 +920,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ ►  ☼\n" +
@@ -851,8 +931,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         hero().down();  //и даже если я сильно захочу я не смогу впрыгнуть в него
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ ►  ☼\n" +
@@ -864,6 +946,7 @@ public class MultiplayerTest extends AbstractGameTest {
     // если я прыгаю сверху на героя который на трубе, то я должен стоять у него на голове
     @Test
     public void shouldICantStayAtOtherHeroHeadWhenOnPipe() {
+        // given
         givenFl("☼☼☼☼☼☼\n" +
                 "☼ ►  ☼\n" +
                 "☼    ☼\n" +
@@ -871,8 +954,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼ ~  ☼\n" +
                 "☼☼☼☼☼☼\n");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ U  ☼\n" +
@@ -880,8 +965,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼ J  ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
@@ -889,9 +976,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼ J  ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         hero().down();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
@@ -902,7 +991,6 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void heroWithMaskShouldGetClues_bulletGoThrough() {
-
         // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
@@ -914,8 +1002,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero(0).pick(Potion.PotionType.MASK_POTION);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -926,8 +1016,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
-        // given Hero(1)  continuously generates bullets
-        // when hero(0) with MASK_POTION trying to get clues through under the flying bullets
+
+        // when
+        // Hero(1)  continuously generates bullets
+        // hero(0) with MASK_POTION trying to get clues through under the flying bullets
         hero(1).shoot(LEFT);
         tick();
 
@@ -940,6 +1032,7 @@ public class MultiplayerTest extends AbstractGameTest {
         hero(1).shoot(LEFT);
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -952,11 +1045,12 @@ public class MultiplayerTest extends AbstractGameTest {
 
         assertBullets("[[0,3,RIGHT], [2,3,LEFT], [4,3,LEFT], [6,3,LEFT]]");
 
+        // when
         hero(0).right();
         hero(1).shoot(LEFT);
         tick();
 
-        // then should get CLUE_KNIFE
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -966,13 +1060,15 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
+
         verifyAllEvents("listener(0) => [GET_CLUE_KNIFE(1)]\n");
 
+        // when
         hero(0).right();
         hero(1).shoot(LEFT);
         tick();
 
-        // then should get CLUE_GLOVE
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -985,11 +1081,12 @@ public class MultiplayerTest extends AbstractGameTest {
 
         verifyAllEvents("listener(0) => [GET_CLUE_GLOVE(1)]\n");
 
+        // when
         hero(0).right();
         hero(1).shoot(LEFT);
         tick();
 
-        // then should get CLUE_RING
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1002,10 +1099,12 @@ public class MultiplayerTest extends AbstractGameTest {
 
         verifyAllEvents("listener(0) => [GET_CLUE_RING(1)]\n");
 
+        // when
         hero(0).right();
         hero(1).shoot(LEFT);
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1021,11 +1120,14 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void shouldCanMoveWhenAtOtherHero() {
+        // given
         shouldICantStayAtOtherHeroHeadWhenOnPipe();
 
+        // when
         hero(1).left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
@@ -1033,8 +1135,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼«~  ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
@@ -1042,9 +1146,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼«I  ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         hero(1).right();  // нельзя входить в друг в друга :) даже на трубе
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
@@ -1052,9 +1158,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼»I  ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         hero(0).left();  // нельзя входить в друг в друга :) даже на трубе
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
@@ -1066,6 +1174,7 @@ public class MultiplayerTest extends AbstractGameTest {
     // когда два героя на трубе, они не могут друг в друга войти
     @Test
     public void shouldStopOnPipe() {
+        // given
         givenFl("☼☼☼☼☼☼\n" +
                 "☼ ►► ☼\n" +
                 "☼~~~~☼\n" +
@@ -1073,8 +1182,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼    ☼\n" +
                 "☼☼☼☼☼☼\n");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼~IJ~☼\n" +
@@ -1082,9 +1193,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼    ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         hero(1).left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼~IJ~☼\n" +
@@ -1092,9 +1205,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼    ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         hero(0).right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼~IJ~☼\n" +
@@ -1102,10 +1217,12 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼    ☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         hero(0).right();
         hero(1).left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼~IJ~☼\n" +
@@ -1116,6 +1233,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void shouldICanGoWhenIAmAtOtherHero() {
+        // given
         shouldICanStayAtOtherHeroHead();
 
         assertF("☼☼☼☼☼☼\n" +
@@ -1125,9 +1243,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         hero().left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼U   ☼\n" +
@@ -1135,8 +1255,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
@@ -1147,6 +1269,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void shouldICanGoWhenAtMeIsOtherHero() {
+        // given
         shouldICanStayAtOtherHeroHead();
 
         assertF("☼☼☼☼☼☼\n" +
@@ -1156,9 +1279,11 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         hero(1).right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼ U  ☼\n" +
@@ -1166,8 +1291,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼####☼\n" +
                 "☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼\n" +
                 "☼    ☼\n" +
                 "☼    ☼\n" +
@@ -1184,6 +1311,7 @@ public class MultiplayerTest extends AbstractGameTest {
     //      стороне сервера а могла бы быть в engine.
     @Test
     public void shouldStopGame_whenRoundIsNotStarted() {
+        // given
         settings().bool(ROUNDS_ENABLED, true)
                 .integer(ROUNDS_TIME_BEFORE_START, 1)
                 .integer(ROUNDS_PER_MATCH, 1)
@@ -1202,6 +1330,7 @@ public class MultiplayerTest extends AbstractGameTest {
         // юзеров недостаточно, ничего не происходит
         tryTick();
 
+        // then
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -1228,6 +1357,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tryTick();
 
+        // then
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -1238,6 +1368,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼      ☼\n" +
                 "☼O C   ☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
+
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -1253,6 +1384,7 @@ public class MultiplayerTest extends AbstractGameTest {
         // вот а тут уже укомплектована комната - погнали!
         tryTick();
 
+        // then
         verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 1]]\n" +
                 "listener(1) => [START_ROUND, [Round 1]]\n" +
@@ -1266,6 +1398,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼      ☼\n" +
                 "☼► » » ☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 0);
+
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -1274,6 +1407,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼      ☼\n" +
                 "☼» ► » ☼\n" +
                 "☼☼☼☼☼☼☼☼\n", 1);
+
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -1291,6 +1425,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         tryTick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -1331,6 +1466,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void winnerIsTheOneWhoBuriedTheMostPlayers() {
+        // given
         settings().bool(ROUNDS_ENABLED, true)
                 .integer(ROUNDS_TIME_BEFORE_START, 1)
                 .integer(ROUNDS_PER_MATCH, 1)
@@ -1342,8 +1478,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         givenEightPlayers();
 
+        // when
         crack(2, 3);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼»      »☼\n" +
                 "☼###HH###☼\n" +
@@ -1355,8 +1493,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#*#HH#*#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         goUp();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼»      »☼\n" +
                 "☼###HH###☼\n" +
@@ -1368,8 +1508,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         crack(4, 5);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼»      »☼\n" +
                 "☼###HH###☼\n" +
@@ -1381,14 +1523,18 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         goUp();
 
+        // then
         assertScores("");
 
         verifyAllEvents("");
 
+        // when
         tick();
 
+        // then
         assertScores(
                 "hero(0)=1\n" +
                 "hero(1)=1");
@@ -1410,8 +1556,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#C#HH#C#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tickAndRemoveDied();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼» ◄  » »☼\n" +
                 "☼###HH###☼\n" +
@@ -1423,8 +1571,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         crack(6, 7);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼ F◄  »F ☼\n" +
                 "☼#*#HH#*#☼\n" +
@@ -1436,8 +1586,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  »  ☼\n" +
                 "☼#K#HH#K#☼\n" +
@@ -1449,17 +1601,21 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
         tick();
 
+        // then
         assertScores(
                 "hero(0)=1\n" +
                 "hero(1)=1");
 
         verifyAllEvents("");
 
+        // when
         tick();
 
+        // then
         assertScores(
                 "hero(0)=2\n" +
                 "hero(1)=2");
@@ -1482,8 +1638,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tickAndRemoveDied();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  »  ☼\n" +
                 "☼#K#HH#K#☼\n" +
@@ -1495,6 +1653,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
         tick();
         tick();
@@ -1502,14 +1661,17 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
         tick();
 
+        // then
         assertScores(
                 "hero(0)=2\n" +
                 "hero(1)=2");
 
         verifyAllEvents("");
 
+        // when
         tick();
 
+        // then
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=3");
@@ -1531,8 +1693,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tickAndRemoveDied();
 
+        // then
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=3");
@@ -1550,8 +1714,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  »  ☼\n" +
                 "☼###HH###☼\n" +
@@ -1563,8 +1729,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertScores(
                 "hero(0)=53\n" +
                 "hero(1)=53");
@@ -1587,12 +1755,14 @@ public class MultiplayerTest extends AbstractGameTest {
         assertEquals(false, hero(0).isAlive());
         assertEquals(false, hero(1).isAlive());
 
+        // when
         dice(1, 2);
         game(0).newGame();
 
         dice(8, 2);
         game(1).newGame();
 
+        // then
         assertScores("");
         assertEquals(2, field().countPlayers());
 
@@ -1609,8 +1779,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertScores("");
         assertEquals(2, field().countPlayers());
 
@@ -1632,6 +1804,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseOneRounds() {
+        // given
         settings().bool(ROUNDS_ENABLED, true)
                 .integer(ROUNDS_TIME_BEFORE_START, 1)
                 .integer(ROUNDS_PER_MATCH, 1)
@@ -1643,8 +1816,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         givenEightPlayers();
 
+        // when
         crack(2, 3);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼»      »☼\n" +
                 "☼###HH###☼\n" +
@@ -1656,8 +1831,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#*#HH#*#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         goUp();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼»      »☼\n" +
                 "☼###HH###☼\n" +
@@ -1669,8 +1846,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         crack(4, 5);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼»      »☼\n" +
                 "☼###HH###☼\n" +
@@ -1682,14 +1861,18 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         goUp();
 
+        // then
         assertScores("");
 
         verifyAllEvents("");
 
+        // when
         tick();
 
+        // then
         assertScores(
                 "hero(0)=1\n" +
                 "hero(1)=1");
@@ -1711,8 +1894,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#C#HH#C#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tickAndRemoveDied();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼» ◄  » »☼\n" +
                 "☼###HH###☼\n" +
@@ -1724,8 +1909,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         crack(6, -1);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼ F◄  » »☼\n" +
                 "☼#*#HH#*#☼\n" +
@@ -1737,8 +1924,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
                 "☼#K#HH# #☼\n" +
@@ -1750,17 +1939,21 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
         tick();
 
+        // then
         assertScores(
                 "hero(0)=1\n" +
                 "hero(1)=1");
 
         verifyAllEvents("");
 
+        // when
         tick();
 
+        // then
         assertScores(
                 "hero(0)=2\n" +
                 "hero(1)=2");
@@ -1782,8 +1975,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tickAndRemoveDied();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
                 "☼#K#HH# #☼\n" +
@@ -1795,6 +1990,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
         tick();
         tick();
@@ -1802,14 +1998,17 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
         tick();
 
+        // then
         assertScores(
                 "hero(0)=2\n" +
                 "hero(1)=2");
 
         verifyAllEvents("");
 
+        // when
         tick();
 
+        // then
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=2");
@@ -1829,8 +2028,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tickAndRemoveDied();
 
+        // then
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=2");
@@ -1848,14 +2049,18 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=2");
 
+        // when
         tick();
 
+        // then
         assertScores(
                 "hero(0)=53\n" +
                 "hero(1)=2");
@@ -1880,6 +2085,7 @@ public class MultiplayerTest extends AbstractGameTest {
         assertEquals(false, hero(1).isAlive());
         assertEquals(false, hero(7).isAlive());
 
+        // when
         dice(1, 2);
         game(0).newGame();
 
@@ -1904,6 +2110,7 @@ public class MultiplayerTest extends AbstractGameTest {
         dice(2, 5);
         game(7).newGame();
 
+        // then
         assertScores("");
         assertEquals(8, field().countPlayers());
 
@@ -1920,8 +2127,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertScores("");
         assertEquals(8, field().countPlayers());
 
@@ -1949,6 +2158,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void twoWinnersIfTheyHaveEqualKillsBeforeTimeout_caseTwoRounds() {
+        // given
         settings().bool(ROUNDS_ENABLED, true)
                 .integer(ROUNDS_TIME_BEFORE_START, 1)
                 .integer(ROUNDS_PER_MATCH, 2)
@@ -1960,8 +2170,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         givenEightPlayers();
 
+        // when
         crack(2, 3);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼»      »☼\n" +
                 "☼###HH###☼\n" +
@@ -1973,8 +2185,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#*#HH#*#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         goUp();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼»      »☼\n" +
                 "☼###HH###☼\n" +
@@ -1986,8 +2200,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         crack(4, 5);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼»      »☼\n" +
                 "☼###HH###☼\n" +
@@ -1999,14 +2215,18 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         goUp();
 
+        // then
         assertScores("");
 
         verifyAllEvents("");
 
+        // when
         tick();
 
+        // then
         assertScores(
                 "hero(0)=1\n" +
                 "hero(1)=1");
@@ -2028,8 +2248,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#C#HH#C#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tickAndRemoveDied();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼» ◄  » »☼\n" +
                 "☼###HH###☼\n" +
@@ -2041,8 +2263,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         crack(6, -1);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼ F◄  » »☼\n" +
                 "☼#*#HH#*#☼\n" +
@@ -2054,8 +2278,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
                 "☼#K#HH# #☼\n" +
@@ -2067,17 +2293,21 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
         tick();
 
+        // then
         assertScores(
                 "hero(0)=1\n" +
                 "hero(1)=1");
 
         verifyAllEvents("");
 
+        // when
         tick();
 
+        // then
         assertScores(
                 "hero(0)=2\n" +
                 "hero(1)=2");
@@ -2099,8 +2329,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tickAndRemoveDied();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
                 "☼#K#HH# #☼\n" +
@@ -2112,6 +2344,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
         tick();
         tick();
@@ -2119,14 +2352,17 @@ public class MultiplayerTest extends AbstractGameTest {
         tick();
         tick();
 
+        // then
         assertScores(
                 "hero(0)=2\n" +
                 "hero(1)=2");
 
         verifyAllEvents("");
 
+        // when
         tick();
 
+        // then
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=2");
@@ -2146,14 +2382,18 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tickAndRemoveDied();
 
+        // then
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=2");
 
+        // when
         verifyAllEvents("");
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
                 "☼###HH###☼\n" +
@@ -2165,8 +2405,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertScores(
                 "hero(0)=3\n" +
                 "hero(1)=2");
@@ -2175,8 +2417,10 @@ public class MultiplayerTest extends AbstractGameTest {
             6, 2,
             8, 2);
 
+        // when
         tick();
 
+        // then
         assertScores("");
 
         verifyAllEvents(
@@ -2195,8 +2439,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertScores("");
 
         verifyAllEvents(
@@ -2215,8 +2461,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertScores("");
 
         verifyAllEvents("");
@@ -2235,6 +2483,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
     @Test
     public void heroKillHeroAndKillEnemy() {
+        // given
         settings().bool(ROUNDS_ENABLED, true)
                 .integer(ROUNDS_TIME_BEFORE_START, 1)
                 .integer(ROUNDS_PLAYERS_PER_ROOM, 4)
@@ -2243,8 +2492,10 @@ public class MultiplayerTest extends AbstractGameTest {
 
         givenFourPlayers();
 
+        // when
         crack(2, 3);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼        ☼\n" +
                 "☼###HH###☼\n" +
@@ -2256,8 +2507,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#*#HH#*#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         goUp();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼        ☼\n" +
                 "☼###HH###☼\n" +
@@ -2269,8 +2522,10 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼        ☼\n" +
                 "☼###HH###☼\n" +
@@ -2282,14 +2537,18 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼#K#HH#K#☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
+        // when
         goUp();
 
+        // then
         assertScores("");
 
         verifyAllEvents("");
 
+        // when
         tick();
 
+        // then
         assertScores(
                 "hero(0)=1\n" +
                 "hero(1)=10");
@@ -2302,6 +2561,7 @@ public class MultiplayerTest extends AbstractGameTest {
     }
 
     private void givenFourPlayers() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼        ☼\n" +
                 "☼###HH###☼\n" +
@@ -2319,8 +2579,10 @@ public class MultiplayerTest extends AbstractGameTest {
         givenPlayer(1, 2).inTeam(1);
         givenPlayer(8, 2).inTeam(1);
 
+        // when
         tick();
 
+        // then
         assertScores("");
 
         verifyAllEvents(
@@ -2342,6 +2604,7 @@ public class MultiplayerTest extends AbstractGameTest {
     }
 
     private void givenEightPlayers() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼        ☼\n" +
                 "☼###HH###☼\n" +
@@ -2365,8 +2628,10 @@ public class MultiplayerTest extends AbstractGameTest {
         givenPlayer(1, 8); // 3 этаж
         givenPlayer(8, 8);
 
+        // when
         tick();
 
+        // then
         assertScores("");
 
         verifyAllEvents(
@@ -2392,6 +2657,7 @@ public class MultiplayerTest extends AbstractGameTest {
     }
 
     private void goUp() {
+        // when
         // идут на следующий этаж
         hero(0).right();
         hero(1).left();
@@ -2415,6 +2681,7 @@ public class MultiplayerTest extends AbstractGameTest {
     }
 
     private void crack(int leftPrey, int rightPrey) {
+        // when
         // простреливают ямки
         hero(0).crack(LEFT);
         hero(1).crack(RIGHT);
@@ -2429,6 +2696,7 @@ public class MultiplayerTest extends AbstractGameTest {
     }
 
     private void tickAndRemoveDied() {
+        // when
         tick();
         removeAllDied();
     }

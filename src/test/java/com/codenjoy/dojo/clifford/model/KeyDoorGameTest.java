@@ -47,8 +47,10 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
-        // then door
+        // when
         List<Door> doors = field().doors().all();
+        
+        // then 
         assertEquals(
                 "[[1,5=GOLD:OPENED], \n" +
                 "[2,5=GOLD:OPENED], \n" +
@@ -62,8 +64,10 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "[5,4=BRONZE:CLOSED]]",
                 split(doors, "], \n["));
 
-        // then keys
+        // when
         List<Key> keys = field().keys().all();
+        
+        // then 
         assertEquals(
                 "[[2,3=GOLD], \n" +
                 "[2,2=GOLD], \n" +
@@ -84,6 +88,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
     @Test
     public void pickKeysWithoutGeneration() {
+        // given
         settings().bool(GENERATE_KEYS, false);
 
         givenFl("☼☼☼☼☼☼☼☼\n" +
@@ -97,9 +102,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -111,9 +118,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -125,9 +134,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=2, SILVER=0, BRONZE=0}");
 
+        // when
         hero().right();
         tick();
-
+        
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -139,9 +150,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=2, SILVER=1, BRONZE=0}");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -153,13 +166,16 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=2, SILVER=1, BRONZE=1}");
 
+        // when
         hero().clearScores();
 
+        // then
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
     }
 
     @Test
     public void pickKeysWithGeneration() {
+        // given
         settings().bool(GENERATE_KEYS, true);
 
         givenFl("☼☼☼☼☼☼☼☼\n" +
@@ -173,10 +189,12 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
+        // when
         dice(1, 5);
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼+     ☼\n" +
@@ -188,10 +206,12 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
+        // when
         dice(2, 5);
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼++    ☼\n" +
@@ -203,10 +223,12 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=2, SILVER=0, BRONZE=0}");
 
+        // when
         dice(3, 5);
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼++-   ☼\n" +
@@ -218,10 +240,12 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=2, SILVER=1, BRONZE=0}");
 
+        // when
         dice(4, 5);
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼++-!  ☼\n" +
@@ -233,13 +257,16 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=2, SILVER=1, BRONZE=1}");
 
+        // when
         hero().clearScores();
 
+        // then
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
     }
 
     @Test
     public void heroCannotGoThroughClosedDoor() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -250,9 +277,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -263,9 +292,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -279,6 +310,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
     @Test
     public void heroCanGoThroughOpenedDoor() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -289,9 +321,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -302,9 +336,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -315,9 +351,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -331,6 +369,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
     @Test
     public void openDoor_right() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -343,9 +382,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -358,9 +399,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
+        // when
         hero().openDoor();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -373,9 +416,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -386,9 +431,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -402,6 +449,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
     @Test
     public void openDoor_left() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -414,9 +462,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
+        // when
         hero().left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -429,9 +479,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
+        // when
         hero().openDoor();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -444,9 +496,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
+        // when
         hero().left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -457,9 +511,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -473,6 +529,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
     @Test
     public void heroCannotOpenDoorWithoutKeys() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -485,9 +542,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -500,9 +559,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
+        // when
         hero().openDoor();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -518,6 +579,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
     @Test
     public void closeDoor_right() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -530,9 +592,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -545,9 +609,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -558,9 +624,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -571,9 +639,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().closeDoor(LEFT);
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -589,6 +659,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
     @Test
     public void closeDoor_left() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -601,9 +672,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
+        // when
         hero().left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -616,9 +689,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
+        // when
         hero().left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -629,9 +704,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -642,9 +719,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().closeDoor(RIGHT);
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -660,6 +739,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
     @Test
     public void closeDoorAtHeroPositionHasNoEffect() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -672,9 +752,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
+        // when
         hero().left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -687,9 +769,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
+        // when
         hero().left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -700,9 +784,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().openDoor(RIGHT);
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -718,6 +804,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
     @Test
     public void heroCannotCloseDoorWithoutKeys() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -728,9 +815,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -741,9 +830,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -756,9 +847,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
+        // when
         hero().openDoor(LEFT);
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -769,9 +862,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -785,6 +880,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
     @Test
     public void heroShouldReleaseKeysAfterDeath_ifGenerateDisable() {
+        // given
         settings().bool(GENERATE_KEYS, false);
 
         givenFl("☼☼☼☼☼☼☼☼\n" +
@@ -798,9 +894,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -812,9 +910,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -826,9 +926,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=0}");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -840,6 +942,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=1}");
 
+        // when
         dice(1, 5,
              2, 5,
              3, 5);
@@ -848,6 +951,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         verifyAllEvents("[HERO_DIED]");
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼+-!   ☼\n" +
@@ -861,14 +965,17 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertEquals(false, hero().isAlive());
 
+        // when
         dice(1, 3);
         game().newGame();
 
+        // then
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
     }
 
     @Test
     public void heroShouldNotReleaseKeysAfterDeath_itGenerateEnable() {
+        // given
         settings().bool(GENERATE_KEYS, true);
 
         givenFl("☼☼☼☼☼☼☼☼\n" +
@@ -882,10 +989,12 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
+        // when
         dice(4, 6);
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   +  ☼\n" +
                 "☼      ☼\n" +
@@ -897,10 +1006,12 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
+        // when
         dice(5, 6);
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   +- ☼\n" +
                 "☼      ☼\n" +
@@ -912,10 +1023,12 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=0}");
 
+        // when
         dice(6, 6);
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   +-!☼\n" +
                 "☼      ☼\n" +
@@ -927,6 +1040,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=1}");
 
+        // when
         dice(1, 5,
              2, 5,
              3, 5);
@@ -935,6 +1049,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         verifyAllEvents("[HERO_DIED]");
 
+        // then
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   +-!☼\n" +
                 "☼      ☼\n" +
@@ -947,9 +1062,11 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=1}");
         assertEquals(false, hero().isAlive());
 
+        // when
         dice(1, 3);
         game().newGame();
 
+        // then
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
     }
 

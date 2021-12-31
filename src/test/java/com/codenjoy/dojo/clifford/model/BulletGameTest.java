@@ -31,6 +31,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void heroCanShoot_rightDirection() {
+        // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼►  ☼\n" +
@@ -39,9 +40,11 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[]");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼►• ☼\n" +
@@ -50,8 +53,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[2,2,RIGHT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼►  ☼\n" +
@@ -63,6 +68,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void heroCanShoot_leftDirection() {
+        // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼  ◄☼\n" +
@@ -71,9 +77,11 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[]");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼ •◄☼\n" +
@@ -82,8 +90,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[2,2,LEFT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼  ◄☼\n" +
@@ -95,6 +105,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void heroShoot_upDirection() {
+        // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼  ◄☼\n" +
@@ -112,17 +123,20 @@ public class BulletGameTest extends AbstractGameTest {
         hero().up();
         tick();
 
-        // then bullet should fly left(hero direction),
+        // then
+        // bullet should fly left(hero direction),
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼ •◄☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
+
         assertBullets("[[2,2,LEFT]]");
     }
 
     @Test
     public void heroShootAndMoveRight_shouldSurvive() {
+        // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼►  ☼\n" +
@@ -131,9 +145,11 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[]");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼►• ☼\n" +
@@ -142,9 +158,11 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[2,2,RIGHT]]");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼ ► ☼\n" +
@@ -152,11 +170,13 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼☼☼☼☼\n");
 
         assertBullets("[[4,2,LEFT]]");
+
         verifyAllEvents("");
     }
 
     @Test
     public void bulletIsRemovedOutOfBoard() {
+        // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "   ◄☼\n" +
@@ -165,9 +185,11 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[]");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "  •◄☼\n" +
@@ -176,8 +198,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[2,2,LEFT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "•  ◄☼\n" +
@@ -186,8 +210,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[0,2,LEFT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "   ◄☼\n" +
@@ -199,6 +225,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void bulletInteractWithBrick_сase3() {
+        // given
         givenFl("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -207,10 +234,12 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        // when hero shot several times through the line of bricks
+        // when
+        // hero shot several times through the line of bricks
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -218,12 +247,15 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼###•◄☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
+
         assertBullets("[[4,2,LEFT]]");
 
+        // when
         hero().shoot();
         tick();
 
-        // then bricks are destroyed one by one
+        // then
+        // bricks are destroyed one by one
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -231,11 +263,14 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼##*•◄☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
+
         assertBullets("[[4,2,LEFT]]");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -243,11 +278,14 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#* •◄☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
+
         assertBullets("[[4,2,LEFT]]");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -255,11 +293,14 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#• •◄☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
+
         assertBullets("[[2,2,LEFT], [4,2,LEFT]]");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -267,10 +308,13 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼*• •◄☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
+
         assertBullets("[[2,2,LEFT], [4,2,LEFT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -278,11 +322,13 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼ •  ◄☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
+
         assertBullets("[[0,2,RIGHT], [2,2,LEFT]]");
     }
 
     @Test
     public void bulletInteractWithBrick_сase2() {
+        // given
         givenFl("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -291,9 +337,11 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -301,11 +349,14 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼ # •◄☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
+
         assertBullets("[[4,2,LEFT]]");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -316,9 +367,11 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[4,2,LEFT]]");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -328,8 +381,11 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼\n");
 
         assertBullets("[[2,2,LEFT], [4,2,LEFT]]");
+
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -343,6 +399,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void bulletInteractWithBrick() {
+        // given
         givenFl("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -359,9 +416,11 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -372,8 +431,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[4,2,LEFT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -384,8 +445,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -394,6 +457,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
+        // when
         tick();
         tick();
         tick();
@@ -402,6 +466,7 @@ public class BulletGameTest extends AbstractGameTest {
         tick();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -410,10 +475,12 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        // when hero shoots through a restoring brick
+        // when
+        // hero shoots through a restoring brick
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -424,8 +491,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[4,2,LEFT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -434,9 +503,11 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
+        // when
         tick();
 
-        // then bullet must go through pit brick
+        // then
+        // bullet must go through pit brick
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -447,9 +518,11 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[0,2,RIGHT]]");
 
-        // when wall has been restored
+        // when
+        // wall has been restored
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -460,9 +533,11 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[]");
 
+        // when
         tick();
 
-        // then bullet must affect the brick
+        // then
+        // bullet must affect the brick
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -473,9 +548,11 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[]");
 
-        // when brick destroyed
+        // when
+        // brick destroyed
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -484,11 +561,13 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
+        // when
         hero().shoot();
         tick();
         tick();
 
-        // then bullet must not affect the empty field
+        // then
+        // bullet must not affect the empty field
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -500,6 +579,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void bulletInteractWithBorder() {
+        // given
         givenFl("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -508,9 +588,11 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -521,8 +603,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[3,2,LEFT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -533,8 +617,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[1,2,LEFT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -545,8 +631,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[1,2,RIGHT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -560,6 +648,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void bulletCanBounceOnlyOnce() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -570,9 +659,11 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#### ##☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -585,9 +676,11 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[5,2,LEFT]]");
 
+        // when
         hero().left();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -598,8 +691,10 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#### ##☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -612,9 +707,11 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[1,2,LEFT]]");
 
+        // when
         // bounce from border
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -627,8 +724,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[1,2,RIGHT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -641,8 +740,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[3,2,RIGHT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -653,8 +754,10 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼####◄##☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -665,8 +768,10 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼####◄##☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -682,6 +787,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void bouncedBulletKillOwner() {
+        // given
         givenFl("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -690,9 +796,11 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -703,8 +811,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[3,2,LEFT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -715,8 +825,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[3,2,RIGHT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -731,15 +843,18 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void heroNotMoveWhenShoot() {
+        // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼►  ☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
+        // when
         hero().shoot(RIGHT);
         tick();
 
+        // then
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼►• ☼\n" +
@@ -748,9 +863,11 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[2,2,RIGHT]]");
 
+        // when
         hero().right();
         tick();
 
+        // then
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼ ► ☼\n" +
@@ -762,6 +879,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void heroKillOtherHero() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -782,9 +900,11 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -797,8 +917,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[2,3,RIGHT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -818,6 +940,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void heroWithMaskIsImmortal_bulletGoThrough() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -828,8 +951,10 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero(1).pick(Potion.PotionType.MASK_POTION);
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -840,9 +965,11 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero(0).shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -855,8 +982,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[2,3,RIGHT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -869,8 +998,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[4,3,RIGHT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -890,6 +1021,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void heroFallOnBullet_shouldDie() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -910,9 +1042,11 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -925,8 +1059,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[6,3,LEFT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -946,6 +1082,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void heroFallOnBullet_notTakeClue() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -966,9 +1103,11 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -981,8 +1120,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[6,3,LEFT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1005,6 +1146,7 @@ public class BulletGameTest extends AbstractGameTest {
     // todo Продумать, должен ли выживать.
     @Test
     public void heroFallOnBullet_shouldSurvive() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1025,9 +1167,11 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero().shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1040,8 +1184,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[6,3,LEFT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1059,6 +1205,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void twoShootersKillHero() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1079,10 +1226,12 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero(0).shoot();
         hero(1).shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1095,8 +1244,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[4,3,LEFT], [2,3,RIGHT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1117,6 +1268,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void bulletInteractWithBrick_сase1() {
+        // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼ #◄☼\n" +
@@ -1129,20 +1281,25 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        // when hero shoot next to brick
+        // when
+        // hero shoot next to brick
         hero().shoot();
         tick();
 
-        // then brick should be cracked. Bullet should be deleted
+        // then
+        // brick should be cracked. Bullet should be deleted
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼ *◄☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
+
         assertBullets("[]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼  ◄☼\n" +
@@ -1152,6 +1309,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void bulletInteractWithBorder_сase1() {
+        // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "◄   ☼\n" +
@@ -1164,16 +1322,18 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        // when hero shoot
+        // when
         hero().shoot();
         tick();
 
-        // then bullet should left the field
+        // then
+        // bullet should left the field
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "◄   ☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
+
         assertBullets("[]");
     }
 
@@ -1192,21 +1352,25 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
-        // when hero shoot
+        // when
         hero().shoot();
         tick();
 
-        // then bullet should bounced
+        // then
+        // bullet should bounced
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼◄  ☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
+
         assertBullets("[[0,2,RIGHT]]");
 
+        // when
         tick();
 
-        // then kill hero
+        // then
+        // kill hero
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
                 "☼O  ☼\n" +
@@ -1218,6 +1382,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void noEventIfOwnerNotAlive() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1228,9 +1393,11 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero(0).shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1243,9 +1410,11 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[3,3,RIGHT]]");
 
+        // when
         hero(0).die();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1258,8 +1427,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         verifyAllEvents(
                 "listener(0) => [HERO_DIED]\n");
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1278,6 +1449,7 @@ public class BulletGameTest extends AbstractGameTest {
 
     @Test
     public void twoShootersKillEachOther() {
+        // given
         givenFl("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1288,10 +1460,12 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         hero(0).shoot();
         hero(1).shoot();
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1304,8 +1478,10 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[[6,3,LEFT], [2,3,RIGHT]]");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1316,8 +1492,10 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
@@ -1328,8 +1506,10 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
 
+        // when
         tick();
 
+        // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
