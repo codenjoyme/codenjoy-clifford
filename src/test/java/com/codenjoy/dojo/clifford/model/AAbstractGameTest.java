@@ -22,7 +22,6 @@ package com.codenjoy.dojo.clifford.model;
  * #L%
  */
 
-import com.codenjoy.dojo.clifford.services.Event;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.EventListener;
@@ -84,10 +83,6 @@ public abstract class AAbstractGameTest
         events = new EventsListenersAssert(() -> listeners, eventClass());
     }
 
-    protected Class<Event> eventClass() {
-        return Event.class;
-    }
-
     @After
     public void after() {
         verifyAllEvents("");
@@ -118,6 +113,8 @@ public abstract class AAbstractGameTest
 
         afterCreateField();
     }
+
+    protected abstract Class<?> eventClass();
 
     protected abstract TriFunction<Dice, L, S, F> createField();
 

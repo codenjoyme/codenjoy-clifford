@@ -25,6 +25,7 @@ package com.codenjoy.dojo.clifford.model;
 import com.codenjoy.dojo.clifford.TestGameSettings;
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.robber.RobberJoystick;
+import com.codenjoy.dojo.clifford.services.Event;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.EventListener;
@@ -94,6 +95,11 @@ public abstract class AbstractGameTest extends AAbstractGameTest<Player, Cliffor
     @Override
     protected TriFunction<Dice, Level, GameSettings, Clifford> createField() {
         return Clifford::new;
+    }
+
+    @Override
+    protected Class<?> eventClass() {
+        return Event.class;
     }
 
     public RobberJoystick robber() {
