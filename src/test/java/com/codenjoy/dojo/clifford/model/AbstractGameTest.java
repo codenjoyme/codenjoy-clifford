@@ -43,7 +43,8 @@ import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.utils.TestUtils.asArray;
 import static java.util.stream.Collectors.toList;
 
-public abstract class AbstractGameTest extends AbstractBaseGameTest<Player, Clifford, GameSettings, Level, Hero> {
+public abstract class AbstractGameTest
+        extends AbstractBaseGameTest<Player, Clifford, GameSettings, Level, Hero> {
 
     protected List<RobberJoystick> robbers;
 
@@ -108,6 +109,8 @@ public abstract class AbstractGameTest extends AbstractBaseGameTest<Player, Clif
     protected Class<?> eventClass() {
         return Event.class;
     }
+
+    // other methods
 
     public RobberJoystick robber() {
         return robbers.get(0);
