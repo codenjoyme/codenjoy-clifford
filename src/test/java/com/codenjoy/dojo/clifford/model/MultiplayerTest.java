@@ -1458,7 +1458,7 @@ public class MultiplayerTest extends AbstractGameTest {
     private void tryTick() {
         // эмуляция проверки загрузки комнаты, если комната недогружена то не тикаем
         // вообще это делает фреймворк, тут лишь эмулируем
-        if (settings().getPlayersPerRoom() != players.size()) {
+        if (settings().getPlayersPerRoom() != players().size()) {
             return;
         }
 
@@ -2700,13 +2700,5 @@ public class MultiplayerTest extends AbstractGameTest {
         // when
         tick();
         removeAllDied();
-    }
-
-    private void removeAllDied() {
-        players.forEach(player -> {
-            if (!player.isAlive()) {
-                field().remove(player);
-            }
-        });
     }
 }
