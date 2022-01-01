@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford.model;
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 - 2021 Codenjoy
+ * Copyright (C) 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -30,6 +30,8 @@ import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.EventListener;
 import com.codenjoy.dojo.services.multiplayer.TriFunction;
+import com.codenjoy.dojo.utils.gametest.AbstractBaseGameTest;
+import org.junit.After;
 import org.junit.Before;
 
 import java.util.LinkedList;
@@ -41,7 +43,7 @@ import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.utils.TestUtils.asArray;
 import static java.util.stream.Collectors.toList;
 
-public abstract class AbstractGameTest extends AAbstractGameTest<Player, Clifford, GameSettings, Level, Hero> {
+public abstract class AbstractGameTest extends AbstractBaseGameTest<Player, Clifford, GameSettings, Level, Hero> {
 
     protected List<RobberJoystick> robbers;
 
@@ -51,6 +53,11 @@ public abstract class AbstractGameTest extends AAbstractGameTest<Player, Cliffor
 
         robbers = new LinkedList<>();
         Brick.CRACK_TIMER = 13;
+    }
+
+    @After
+    public void after() {
+        super.after();
     }
 
     @Override
