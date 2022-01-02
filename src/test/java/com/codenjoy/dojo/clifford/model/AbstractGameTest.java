@@ -40,7 +40,6 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
-import static com.codenjoy.dojo.utils.TestUtils.asArray;
 import static java.util.stream.Collectors.toList;
 
 public abstract class AbstractGameTest
@@ -62,11 +61,6 @@ public abstract class AbstractGameTest
     }
 
     @Override
-    protected void setupHeroesDice() {
-        dice(asArray(level().heroes()));
-    }
-
-    @Override
     protected void beforeCreateField() {
         settings().integer(CLUE_COUNT_KNIFE, level().clueKnife().size())
                 .integer(CLUE_COUNT_GLOVE, level().clueGlove().size())
@@ -79,10 +73,6 @@ public abstract class AbstractGameTest
     @Override
     protected void afterCreateField() {
         reloadAllRobbers();
-        level().heroes().forEach(hero ->
-                field().heroes().getAt(hero).get(0)
-                        .setDirection(hero.getDirection()));
-        dice(0); // всегда дальше выбираем нулевой индекс
     }
 
     @Override

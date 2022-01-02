@@ -46,7 +46,7 @@ import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 
 import java.util.*;
-import java.util.function.Supplier;
+import java.util.function.Function;
 
 import static com.codenjoy.dojo.clifford.model.items.Potion.PotionType.MASK_POTION;
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
@@ -54,7 +54,7 @@ import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.field.Generator.generate;
 import static java.util.stream.Collectors.toList;
 
-public class Clifford extends RoundField<Player> implements Field {
+public class Clifford extends RoundField<Player, Hero> implements Field {
 
     private Level level;
     private PointField field;
@@ -547,7 +547,7 @@ public class Clifford extends RoundField<Player> implements Field {
     }
 
     @Override
-    public List<Player> load(String board, Supplier<Player> player) {
+    public List<Player> load(String board, Function<Hero, Player> player) {
         level = new Level(board);
         return WhatsNextUtils.load(this, level.heroes(), player);
     }
