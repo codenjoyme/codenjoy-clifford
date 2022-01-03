@@ -282,7 +282,7 @@ public class Hero extends RoundPlayerHero<Field>
     }
 
     private void shootBullet() {
-        Bullet bullet = new Bullet(this);
+        Bullet bullet = new Bullet(this, this);
         field.bullets().add(bullet);
         bullet.doFirstMoveAffect();
     }

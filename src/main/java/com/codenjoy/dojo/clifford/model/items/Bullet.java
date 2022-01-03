@@ -37,8 +37,8 @@ public class Bullet extends MovingObject implements State<Element, Player> {
     private boolean bounced;
     private boolean newBullet = true;
 
-    public Bullet(Hero owner) {
-        super(owner.getX(), owner.getY(), owner.getDirection());
+    public Bullet(Point pt, Hero owner) {
+        super(pt, owner.getDirection());
         moving = true;
         speed = 2;
         this.owner = owner;
