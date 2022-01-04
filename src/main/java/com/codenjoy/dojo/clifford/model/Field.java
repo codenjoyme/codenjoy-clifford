@@ -37,9 +37,19 @@ import java.util.List;
 
 public interface Field extends RoundGameField<Player, Hero> {
 
-    boolean isBarrier(Point pt);
-
     boolean tryToCrack(Hero hero, Point pt);
+
+    void leaveClue(Point pt, Class<? extends Point> clazz);
+
+    boolean under(Point pt, PotionType potion);
+
+    int size();
+
+    void suicide(Hero hero);
+
+    void affect(Bullet bullet);
+
+    boolean isBarrier(Point pt);
 
     boolean isPit(Point pt);
 
@@ -57,19 +67,11 @@ public interface Field extends RoundGameField<Player, Hero> {
 
     boolean isHunter(Point pt);
 
-    void leaveClue(Point pt, Class<? extends Point> clazz);
-
-    boolean under(Point pt, PotionType potion);
-
-    int size();
-
     boolean isBorder(Point pt);
 
     List<Hero> activeHeroes();
 
     Accessor<Hero> heroes();
-
-    void suicide(Hero hero);
 
     Accessor<Brick> bricks();
 
@@ -82,6 +84,4 @@ public interface Field extends RoundGameField<Player, Hero> {
     Accessor<Key> keys();
 
     Accessor<Bullet> bullets();
-
-    void affect(Bullet bullet);
 }
