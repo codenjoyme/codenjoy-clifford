@@ -238,9 +238,7 @@ public class Hero extends RoundPlayerHero<Field>
     }
 
     @Override
-    public void tick() {
-        if (!isActiveAndAlive()) return;
-
+    public void tickHero() {
         Point destination = direction.change(this);
 
         if (field.doors().contains(destination)) {
