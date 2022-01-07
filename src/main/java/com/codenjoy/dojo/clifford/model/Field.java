@@ -29,6 +29,7 @@ import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
+import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.field.Accessor;
 import com.codenjoy.dojo.services.round.RoundGameField;
@@ -68,6 +69,8 @@ public interface Field extends RoundGameField<Player, Hero> {
     boolean isHunter(Point pt);
 
     boolean isBorder(Point pt);
+
+    GameSettings settings();
 
     List<Hero> activeHeroes();
 
