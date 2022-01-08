@@ -33,14 +33,14 @@ import com.codenjoy.dojo.clifford.services.Event;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.Point;
-import com.codenjoy.dojo.services.printer.state.State;
 import com.codenjoy.dojo.services.joystick.Act;
 import com.codenjoy.dojo.services.joystick.RoundsDirectionActJoystick;
+import com.codenjoy.dojo.services.printer.state.HeroState;
+import com.codenjoy.dojo.services.printer.state.State;
 import com.codenjoy.dojo.services.round.RoundPlayerHero;
 
 import java.util.Collections;
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -50,11 +50,11 @@ import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_TICKS;
 import static com.codenjoy.dojo.games.clifford.Element.*;
 import static com.codenjoy.dojo.services.Direction.DOWN;
 import static com.codenjoy.dojo.services.Direction.LEFT;
-import static com.codenjoy.dojo.services.printer.state.StateUtils.filter;
 import static com.codenjoy.dojo.services.printer.state.StateUtils.filterOne;
 
 public class Hero extends RoundPlayerHero<Field>
-        implements RoundsDirectionActJoystick, State<Element, Player> {
+        implements RoundsDirectionActJoystick, State<Element, Player>,
+                   HeroState<Element, Hero, Player> {
 
     private static final int ACT_SUICIDE = 0;
     private static final int ACT_SHOOT = 1;
@@ -367,39 +367,11 @@ public class Hero extends RoundPlayerHero<Field>
 
     @Override
     public Element state(Player player, Object... alsoAtPoint) {
-        boolean myHero = StateUtils.containsMyHero(player, this, alsoAtPoint, player.getHero());
-        Hero hero = myHero ? player.getHero() : this;
-
-        Element state = hero.beforeState(alsoAtPoint);
-
-        if (!myHero) {
-            List<Hero> heroes = filter(alsoAtPoint, Hero.class);
-
-            state = hero.middleState(state, heroes, alsoAtPoint);
-
-            if (state == null) {
-                return null;
-            }
-
-            state = player.allFromMyTeam(heroes)
-                    ? state.otherHero()
-                    : state.enemyHero();
-        }
-
-        return hero.afterState(state);
+        return HeroState.super.state(player, alsoAtPoint);
     }
 
-    private Element afterState(Element state) {
-        return isMask()
-                ? state.mask()
-                : state;
-    }
-
-    private Element middleState(Element state, List<Hero> heroes, Object[] alsoAtPoint) {
-        return state;
-    }
-
-    private Element beforeState(Object[] alsoAtPoint) {
+    @Override
+    public Element beforeState(Object[] alsoAtPoint) {
         if (!isActiveAndAlive()) {
             return HERO_DIE;
         }
@@ -425,6 +397,13 @@ public class Hero extends RoundPlayerHero<Field>
         return isLeftTurn()
                 ? HERO_LEFT
                 : HERO_RIGHT;
+    }
+
+    @Override
+    public Element afterState(Element state) {
+        return isMask()
+                ? state.mask()
+                : state;
     }
 
     private boolean isPit() {
