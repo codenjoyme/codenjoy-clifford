@@ -368,35 +368,49 @@ public class Hero extends RoundPlayerHero<Field>
 
     @Override
     public Element state(Player player, Object... alsoAtPoint) {
-        if (StateUtils.itsMe(player, this, alsoAtPoint, player.getHero())) {
-            Hero hero = player.getHero();
-            Element state = hero.state(alsoAtPoint);
-            return hero.isMask()
-                    ? state.mask()
-                    : state;
-        } else {
-            Element state = state(alsoAtPoint);
-            state = anyHeroFromAnotherTeam(player, filter(alsoAtPoint, Hero.class))
-                    ? state.enemyHero()
-                    : state.otherHero();
-            return isMask()
-                    ? state.mask()
-                    : state;
+        boolean myHero = StateUtils.containsMyHero(player, this, alsoAtPoint, player.getHero());
+        Hero hero = myHero ? player.getHero() : this;
+
+        Element state = hero.beforeState(alsoAtPoint);
+
+        if (!myHero) {
+            List<Hero> heroes = filter(alsoAtPoint, Hero.class);
+
+            state = hero.middleState(state, heroes, alsoAtPoint);
+
+            if (state == null) {
+                return null;
+            }
+
+            state = player.allFromMyTeam(heroes)
+                    ? state.otherHero()
+                    : state.enemyHero();
         }
+
+        return hero.afterState(state);
     }
 
-    private Element state(Object[] alsoAtPoint) {
-        Ladder ladder = filterOne(alsoAtPoint, Ladder.class);
-        Pipe pipe = filterOne(alsoAtPoint, Pipe.class);
+    private Element afterState(Element state) {
+        return isMask()
+                ? state.mask()
+                : state;
+    }
 
-        if (!isAlive() || !isActive()) {
+    private Element middleState(Element state, List<Hero> heroes, Object[] alsoAtPoint) {
+        return state;
+    }
+
+    private Element beforeState(Object[] alsoAtPoint) {
+        if (!isActiveAndAlive()) {
             return HERO_DIE;
         }
 
+        Ladder ladder = filterOne(alsoAtPoint, Ladder.class);
         if (ladder != null) {
             return HERO_LADDER;
         }
 
+        Pipe pipe = filterOne(alsoAtPoint, Pipe.class);
         if (pipe != null) {
             return HERO_PIPE;
         }
@@ -422,11 +436,6 @@ public class Hero extends RoundPlayerHero<Field>
         return direction.equals(LEFT);
     }
 
-    private boolean anyHeroFromAnotherTeam(Player player, List<Hero> heroes) {
-        return heroes.stream()
-                .anyMatch(h -> player.getTeamId() != h.getPlayer().getTeamId());
-    }
-
     public void pickClue(Event.Type clue) {
         getPlayer().event(new Event(clue).with(increaseClue(clue)));
     }
@@ -443,12 +452,8 @@ public class Hero extends RoundPlayerHero<Field>
         return 0;
     }
 
-    public int getTeamId() {
-        return getPlayer().getTeamId();
-    }
-
     public void fireKillHero(Hero prey) {
-        if (getTeamId() == prey.getTeamId()) {
+        if (isMyTeam(prey)) {
             event(KILL_OTHER_HERO);
         } else {
             event(KILL_ENEMY_HERO);
