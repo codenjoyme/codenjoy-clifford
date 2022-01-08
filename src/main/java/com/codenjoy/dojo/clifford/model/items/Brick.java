@@ -27,8 +27,9 @@ import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.*;
+import com.codenjoy.dojo.services.printer.state.State;
 
-import static com.codenjoy.dojo.services.StateUtils.filterOne;
+import static com.codenjoy.dojo.services.printer.state.StateUtils.filterOne;
 
 public class Brick extends PointImpl implements Tickable, State<Element, Player> {
 

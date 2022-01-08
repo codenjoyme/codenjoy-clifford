@@ -29,6 +29,7 @@ import com.codenjoy.dojo.services.field.Fieldable;
 import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.services.*;
+import com.codenjoy.dojo.services.printer.state.State;
 
 import java.util.Arrays;
 import java.util.List;

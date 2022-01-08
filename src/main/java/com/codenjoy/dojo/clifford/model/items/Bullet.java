@@ -28,7 +28,7 @@ import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.MovingObject;
 import com.codenjoy.dojo.services.Point;
-import com.codenjoy.dojo.services.State;
+import com.codenjoy.dojo.services.printer.state.State;
 
 public class Bullet extends MovingObject implements State<Element, Player> {
 

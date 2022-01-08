@@ -27,7 +27,7 @@ import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.PointImpl;
-import com.codenjoy.dojo.services.State;
+import com.codenjoy.dojo.services.printer.state.State;
 
 public class ClueKnife extends PointImpl implements State<Element, Player> {
 
