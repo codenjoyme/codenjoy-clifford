@@ -24,8 +24,7 @@ package com.codenjoy.dojo.clifford.model;
 
 
 import com.codenjoy.dojo.clifford.model.items.Brick;
-import com.codenjoy.dojo.clifford.model.items.Potion;
-import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
+import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import org.junit.Test;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
@@ -1004,7 +1003,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼☼\n");
 
         // when
-        hero(0).pick(Potion.PotionType.MASK_POTION);
+        hero(0).pick(PotionType.MASK_POTION);
 
         // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +

@@ -24,11 +24,12 @@ package com.codenjoy.dojo.clifford.model;
 
 
 import com.codenjoy.dojo.clifford.model.items.Brick;
-import com.codenjoy.dojo.clifford.model.items.Potion;
+import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.services.Point;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import static com.codenjoy.dojo.clifford.model.items.potion.PotionType.MASK_POTION;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.Direction.LEFT;
 import static com.codenjoy.dojo.services.Direction.RIGHT;
@@ -5183,7 +5184,7 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
-        assertEquals(false, hero().under(Potion.PotionType.MASK_POTION));
+        assertEquals(false, hero().under(MASK_POTION));
 
         // when
         hero().right();
@@ -5211,7 +5212,7 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
-        assertEquals(true, hero().under(Potion.PotionType.MASK_POTION));
+        assertEquals(true, hero().under(MASK_POTION));
 
         // when
         // почистим все
@@ -5219,7 +5220,7 @@ public class GameTest extends AbstractGameTest {
         field().clearScore();
 
         // then
-        assertEquals(false, hero().under(Potion.PotionType.MASK_POTION));
+        assertEquals(false, hero().under(MASK_POTION));
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +

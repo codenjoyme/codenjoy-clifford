@@ -75,8 +75,9 @@ public class Brick extends PointImpl implements Tickable, State<Element, Player>
     }
 
     private Element getNoneOrBullet(Object[] alsoAtPoint) {
-        final Bullet bullet = filterOne(alsoAtPoint, Bullet.class);
-        return bullet == null ? Element.NONE : Element.BULLET;
+        return filterOne(alsoAtPoint, Bullet.class) == null
+                ? Element.NONE
+                : Element.BULLET;
     }
 
     public Hero getCrackedBy() {

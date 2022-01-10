@@ -24,17 +24,21 @@ package com.codenjoy.dojo.clifford.model;
 
 
 import com.codenjoy.dojo.clifford.model.items.*;
-import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueGlove;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
 import com.codenjoy.dojo.clifford.model.items.door.KeyType;
+import com.codenjoy.dojo.clifford.model.items.potion.Potion;
+import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.games.clifford.Element;
-import com.codenjoy.dojo.services.*;
+import com.codenjoy.dojo.services.BoardUtils;
+import com.codenjoy.dojo.services.Dice;
+import com.codenjoy.dojo.services.Point;
+import com.codenjoy.dojo.services.PointImpl;
 import com.codenjoy.dojo.services.annotations.PerformanceOptimized;
 import com.codenjoy.dojo.services.field.Accessor;
 import com.codenjoy.dojo.services.field.PointField;
@@ -48,9 +52,10 @@ import com.google.common.collect.Multimap;
 import java.util.*;
 import java.util.function.Function;
 
-import static com.codenjoy.dojo.clifford.model.items.Potion.PotionType.MASK_POTION;
+import static com.codenjoy.dojo.clifford.model.items.potion.PotionType.MASK_POTION;
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
+import static com.codenjoy.dojo.services.Direction.*;
 import static com.codenjoy.dojo.services.field.Generator.generate;
 import static java.util.stream.Collectors.toList;
 
@@ -175,7 +180,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
         generate(potions(),
                 settings, MASK_POTIONS_COUNT,
                 player -> freeRandom((Player) player),
-                pt -> new Potion(pt, PotionType.MASK_POTION));
+                pt -> new Potion(pt, MASK_POTION));
     }
 
     private void generateRobbers() {
@@ -183,7 +188,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 settings, ROBBERS_COUNT,
                 player -> freeRandom((Player) player),
                 pt -> {
-                    Robber robber = new Robber(pt, Direction.LEFT);
+                    Robber robber = new Robber(pt, LEFT);
                     robber.init(this);
                     return robber;
                 });
@@ -303,7 +308,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
             if (potions().contains(hero)) {
                 potions().removeAt(hero);
-                hero.pick(PotionType.MASK_POTION);
+                hero.pick(MASK_POTION);
             }
 
             if (backways().contains(hero)) {
@@ -312,10 +317,10 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
         }
         heroes().stream()
                 .filter(hero -> hero.under(MASK_POTION))
-                .forEach(maskHero -> heroes().getAt(maskHero).stream()
-                        .filter(hero -> hero != maskHero)
+                .forEach(mask -> heroes().getAt(mask).stream()
+                        .filter(hero -> hero != mask)
                         .filter(hero -> !hero.under(MASK_POTION))
-                        .forEach(prey -> deathMatch.put(maskHero, prey)));
+                        .forEach(prey -> deathMatch.put(mask, prey)));
     }
 
     private void transport(PointImpl point) {
@@ -372,7 +377,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 || pt.getY() < 0 || pt.getY() > size() - 1
                 || isFullBrick(pt)
                 || isBorder(pt)
-                || (isHero(pt) && !under(pt, PotionType.MASK_POTION))
+                || (isHero(pt) && !under(pt, MASK_POTION))
                 || doors().getAt(pt).stream().anyMatch(Door::isClosed);
     }
 
@@ -387,7 +392,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
             return false;
         }
 
-        Point over = Direction.UP.change(pt);
+        Point over = UP.change(pt);
         if (isLadder(over)
                 || clueKnife().contains(over)
                 || clueGlove().contains(over)
@@ -405,7 +410,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
     @Override
     public boolean isPit(Point pt) {
-        Point under = Direction.DOWN.change(pt);
+        Point under = DOWN.change(pt);
 
         return !(isFullBrick(under)
                 || isLadder(under)
@@ -475,7 +480,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     @PerformanceOptimized
     private boolean isAnyHeroMaskAt(Point pt) {
         for (Hero hero : heroes().getAt(pt)) {
-            if (hero.under(PotionType.MASK_POTION)) {
+            if (hero.under(MASK_POTION)) {
                 if (hero.equals(pt)) {
                     return true;
                 }

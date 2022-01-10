@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.clifford.model.items;
+package com.codenjoy.dojo.clifford.model.items.potion;
 
 /*-
  * #%L
@@ -37,9 +37,5 @@ public class Potion extends PointImpl implements State<Element, Player> {
     @Override
     public Element state(Player player, Object... alsoAtPoint) {
         return Element.MASK_POTION;
-    }
-
-    public enum PotionType {
-        MASK_POTION
     }
 }

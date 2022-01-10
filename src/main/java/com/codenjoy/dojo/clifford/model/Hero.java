@@ -26,7 +26,7 @@ package com.codenjoy.dojo.clifford.model;
 import com.codenjoy.dojo.clifford.model.items.Bullet;
 import com.codenjoy.dojo.clifford.model.items.Ladder;
 import com.codenjoy.dojo.clifford.model.items.Pipe;
-import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
+import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.KeyType;
 import com.codenjoy.dojo.clifford.services.Event;
@@ -45,9 +45,9 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
+import static com.codenjoy.dojo.clifford.model.items.potion.PotionType.MASK_POTION;
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_TICKS;
-import static com.codenjoy.dojo.games.clifford.Element.*;
 import static com.codenjoy.dojo.services.Direction.DOWN;
 import static com.codenjoy.dojo.services.Direction.LEFT;
 import static com.codenjoy.dojo.services.printer.state.StateUtils.filterOne;
@@ -298,12 +298,12 @@ public class Hero extends RoundPlayerHero<Field>
     }
 
     private boolean isMask() {
-        return under(PotionType.MASK_POTION);
+        return under(MASK_POTION);
     }
 
     private boolean isRegularPlayerAt(Point pt) {
         return field.isHero(pt)
-                && !field.under(pt, PotionType.MASK_POTION);
+                && !field.under(pt, MASK_POTION);
     }
 
     private void dissolvePotions() {
@@ -320,7 +320,7 @@ public class Hero extends RoundPlayerHero<Field>
     }
 
     public boolean isVisible() {
-        return !under(PotionType.MASK_POTION);
+        return !under(MASK_POTION);
     }
 
     public boolean under(PotionType potion) {
@@ -373,30 +373,30 @@ public class Hero extends RoundPlayerHero<Field>
     @Override
     public Element beforeState(Object[] alsoAtPoint) {
         if (!isActiveAndAlive()) {
-            return HERO_DIE;
+            return Element.HERO_DIE;
         }
 
         Ladder ladder = filterOne(alsoAtPoint, Ladder.class);
         if (ladder != null) {
-            return HERO_LADDER;
+            return Element.HERO_LADDER;
         }
 
         Pipe pipe = filterOne(alsoAtPoint, Pipe.class);
         if (pipe != null) {
-            return HERO_PIPE;
+            return Element.HERO_PIPE;
         }
 
         if (isPit()) {
-            return HERO_PIT;
+            return Element.HERO_PIT;
         }
 
         if (isFall()) {
-            return HERO_FALL;
+            return Element.HERO_FALL;
         }
 
         return isLeftTurn()
-                ? HERO_LEFT
-                : HERO_RIGHT;
+                ? Element.HERO_LEFT
+                : Element.HERO_RIGHT;
     }
 
     @Override

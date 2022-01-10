@@ -22,7 +22,7 @@ package com.codenjoy.dojo.clifford.model;
  * #L%
  */
 
-import com.codenjoy.dojo.clifford.model.items.Potion;
+import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import org.junit.Test;
 
 import static com.codenjoy.dojo.services.Direction.RIGHT;
@@ -952,7 +952,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼☼\n");
 
         // when
-        hero(1).pick(Potion.PotionType.MASK_POTION);
+        hero(1).pick(PotionType.MASK_POTION);
 
         // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
