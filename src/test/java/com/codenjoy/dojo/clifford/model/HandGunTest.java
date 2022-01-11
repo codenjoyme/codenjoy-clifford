@@ -22,34 +22,21 @@ package com.codenjoy.dojo.clifford.model;
  * #L%
  */
 
-import com.codenjoy.dojo.clifford.TestGameSettings;
-import com.codenjoy.dojo.clifford.services.GameSettings;
-import org.junit.Before;
 import org.junit.Test;
 
-import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.HANDGUN_CLIP_SIZE;
-import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.HANDGUN_TICKS_PER_SHOOT;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class HandGunTest {
     private static final int UNLIM_CLIP_SIZE = -1;
-    GameSettings settings;
     HandGun gun;
-
-    @Before
-    public void setUp() {
-        settings = new TestGameSettings();
-    }
 
     private void tick() {
         gun.tick();
     }
 
     private void gun(int ticksPerShoot, int clipSize) {
-        settings.integer(HANDGUN_TICKS_PER_SHOOT, ticksPerShoot);
-        settings.integer(HANDGUN_CLIP_SIZE, clipSize);
-        gun = new HandGun(settings);
+        gun = new HandGun(ticksPerShoot, clipSize);
     }
 
     @Test
