@@ -55,7 +55,6 @@ public class Player extends RoundGamePlayer<Hero, Field> {
 
     @Override
     public void event(Object event) {
-        event = Event.wrap(event);
         hero.addScore(calculator.score(event));
         super.event(event);
     }
