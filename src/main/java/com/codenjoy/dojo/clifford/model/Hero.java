@@ -53,7 +53,8 @@ import static com.codenjoy.dojo.services.Direction.LEFT;
 import static com.codenjoy.dojo.services.printer.state.StateUtils.filterOne;
 
 public class Hero extends RoundPlayerHero<Field>
-        implements RoundsDirectionActJoystick, State<Element, Player>,
+        implements RoundsDirectionActJoystick,
+                   State<Element, Player>,
                    HeroState<Element, Hero, Player> {
 
     private static final int ACT_SUICIDE = 0;
