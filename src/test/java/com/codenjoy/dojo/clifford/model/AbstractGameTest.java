@@ -39,6 +39,8 @@ import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+import static com.codenjoy.dojo.clifford.model.HandGun.UNLIM_CLIP_SIZE;
+import static com.codenjoy.dojo.clifford.model.HandGun.SHOOT_WITHOUT_RECHARGE;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static java.util.stream.Collectors.toList;
 
@@ -67,7 +69,9 @@ public abstract class AbstractGameTest
                 .integer(CLUE_COUNT_RING, level().clueRing().size())
                 .integer(MASK_POTIONS_COUNT, level().potions().size())
                 .integer(BACKWAYS_COUNT, level().backways().size())
-                .integer(ROBBERS_COUNT, level().robbers().size());
+                .integer(ROBBERS_COUNT, level().robbers().size())
+                .integer(HANDGUN_CLIP_SIZE, UNLIM_CLIP_SIZE)
+                .integer(HANDGUN_TICKS_PER_SHOOT, SHOOT_WITHOUT_RECHARGE);
     }
 
     @Override

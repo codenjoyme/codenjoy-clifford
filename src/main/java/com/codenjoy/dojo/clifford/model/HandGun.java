@@ -24,9 +24,10 @@ package com.codenjoy.dojo.clifford.model;
 
 
 import com.codenjoy.dojo.services.Tickable;
-import com.codenjoy.dojo.services.settings.SettingsReader;
 
 public class HandGun implements Tickable {
+    public static final int UNLIM_CLIP_SIZE = -1;
+    public static final int SHOOT_WITHOUT_RECHARGE = 0;
 
     private boolean canFire;
     private int ticks;
@@ -35,6 +36,11 @@ public class HandGun implements Tickable {
 
     private int ticksPerShoot;
     private int clipSize;
+
+    public HandGun() {
+        ticksPerShoot = SHOOT_WITHOUT_RECHARGE;
+        clipSize = UNLIM_CLIP_SIZE;
+    }
 
     public HandGun(int ticksPerShoot, int clipSize) {
         this.ticksPerShoot = ticksPerShoot;

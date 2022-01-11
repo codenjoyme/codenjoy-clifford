@@ -284,6 +284,9 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 }
             }
 
+            //TODO нужно добавить новый Element CLIP в игру для возможности поднимать дополнительные
+            //     патроны с поля.
+
             if (clueKnife().contains(hero)) {
                 clueKnife().removeAt(hero);
                 hero.pickClue(GET_CLUE_KNIFE);

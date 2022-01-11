@@ -24,11 +24,12 @@ package com.codenjoy.dojo.clifford.model;
 
 import org.junit.Test;
 
+import static com.codenjoy.dojo.clifford.model.HandGun.UNLIM_CLIP_SIZE;
+import static com.codenjoy.dojo.clifford.model.HandGun.SHOOT_WITHOUT_RECHARGE;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class HandGunTest {
-    private static final int UNLIM_CLIP_SIZE = -1;
     HandGun gun;
 
     private void tick() {
@@ -42,7 +43,7 @@ public class HandGunTest {
     @Test
     public void shouldIncreaseAmmo() {
         // given
-        gun(0, 2);
+        gun(SHOOT_WITHOUT_RECHARGE, 2);
 
         // when spent all ammo
         assertTrue(gun.tryToFire());
@@ -137,7 +138,7 @@ public class HandGunTest {
     @Test
     public void shouldShootWithoutDelay_unlimitedAmmo() {
         // given
-        gun(0, UNLIM_CLIP_SIZE);
+        gun(SHOOT_WITHOUT_RECHARGE, UNLIM_CLIP_SIZE);
 
         // when gun shoot without breaks and recharging
         for (int i = 0; i < 100; i++) {
@@ -151,7 +152,7 @@ public class HandGunTest {
     public void shouldShootWithoutDelay_limitedAmmo() {
         // given
         int ammoLimit = 10;
-        gun(0, ammoLimit);
+        gun(SHOOT_WITHOUT_RECHARGE, ammoLimit);
 
         // when gun gun ammo off
         for (int i = 0; i < ammoLimit; i++) {

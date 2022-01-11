@@ -47,7 +47,7 @@ import java.util.function.Predicate;
 
 import static com.codenjoy.dojo.clifford.model.items.potion.PotionType.MASK_POTION;
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
-import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_TICKS;
+import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.Direction.DOWN;
 import static com.codenjoy.dojo.services.Direction.LEFT;
 import static com.codenjoy.dojo.services.printer.state.StateUtils.filterOne;
@@ -75,6 +75,7 @@ public class Hero extends RoundPlayerHero<Field>
     private int rings;
     private int gloves;
     private int knives;
+    private HandGun gun;
 
     public Hero(Point pt, Direction direction) {
         super(pt);
@@ -84,6 +85,7 @@ public class Hero extends RoundPlayerHero<Field>
         jump = false;
         openDoor = false;
         closeDoor = false;
+        gun = new HandGun();
         clearScores();
     }
 
@@ -111,8 +113,13 @@ public class Hero extends RoundPlayerHero<Field>
     @Override
     public void init(Field field) {
         super.init(field);
-
+        initGun();
         field.heroes().add(this);
+    }
+
+    private void initGun() {
+        gun = new HandGun(settings().integer(HANDGUN_TICKS_PER_SHOOT),
+                settings().integer(HANDGUN_CLIP_SIZE));
     }
 
     @Override
@@ -275,13 +282,16 @@ public class Hero extends RoundPlayerHero<Field>
         openDoor = false;
         closeDoor = false;
         shoot = false;
+        gun.tick();
         dissolvePotions();
     }
 
     private void shootBullet() {
-        Bullet bullet = new Bullet(this, this);
-        field.bullets().add(bullet);
-        bullet.doFirstMoveAffect();
+        if (gun.tryToFire()) {
+            Bullet bullet = new Bullet(this, this);
+            field.bullets().add(bullet);
+            bullet.doFirstMoveAffect();
+        }
     }
 
     private void tryToInteractWithDoor(Point destination,
