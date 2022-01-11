@@ -22,7 +22,7 @@ package com.codenjoy.dojo.clifford.model;
  * #L%
  */
 
-import com.codenjoy.dojo.clifford.TestSettings;
+import com.codenjoy.dojo.clifford.TestGameSettings;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +39,7 @@ public class HandGunTest {
 
     @Before
     public void setUp() {
-        settings = new TestSettings();
+        settings = new TestGameSettings();
     }
 
     private void tick() {
