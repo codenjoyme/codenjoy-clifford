@@ -23,8 +23,8 @@ package com.codenjoy.dojo.clifford.model;
  */
 
 
-import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.services.Tickable;
+import com.codenjoy.dojo.services.settings.SettingsReader;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.HANDGUN_CLIP_SIZE;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.HANDGUN_TICKS_PER_SHOOT;
@@ -34,10 +34,10 @@ public class HandGun implements Tickable {
     private boolean canFire;
     private int ticks;
     private int shootDelay;
-    private GameSettings settings;
+    private SettingsReader<?> settings;
     private int clip;
 
-    public HandGun(GameSettings settings) {
+    public HandGun(SettingsReader<?> settings) {
         this.settings = settings;
         reset();
     }
