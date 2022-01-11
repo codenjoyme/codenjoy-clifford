@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.clifford.model.items.clue;
+package com.codenjoy.dojo.clifford.services;
 
 /*-
  * #%L
@@ -22,21 +22,18 @@ package com.codenjoy.dojo.clifford.model.items.clue;
  * #L%
  */
 
+import org.junit.Test;
 
-import com.codenjoy.dojo.games.clifford.Element;
-import com.codenjoy.dojo.clifford.model.Player;
-import com.codenjoy.dojo.services.Point;
-import com.codenjoy.dojo.services.PointImpl;
-import com.codenjoy.dojo.services.printer.state.State;
+import static com.codenjoy.dojo.utils.TestUtils.assertSprites;
 
-public class ClueKnife extends PointImpl implements State<Element, Player> {
+public class SpritesTest {
 
-    public ClueKnife(Point point) {
-        super(point);
-    }
+    @Test
+    public void shouldAllSpritesExists() {
+        // given
+        GameRunner runner = new GameRunner();
 
-    @Override
-    public Element state(Player player, Object... alsoAtPoint) {
-        return Element.CLUE_KNIFE;
+        // when then
+        assertSprites(runner.name(), runner.getPlots());
     }
 }

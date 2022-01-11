@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford;
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 - 2019 Codenjoy
+ * Copyright (C) 2012 - 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -37,9 +37,9 @@ public class TestGameSettings extends GameSettings {
         initScore(CUMULATIVELY);
         bool(ROUNDS_ENABLED, false);
 
-        integer(HERO_DIE_PENALTY, -0);
-        integer(KILL_HERO_SCORE, 20);
-        integer(KILL_ENEMY_SCORE, 50);
+        integer(HERO_DIED_PENALTY, -0);
+        integer(KILL_OTHER_HERO_SCORE, 20);
+        integer(KILL_ENEMY_HERO_SCORE, 50);
 
         integer(SUICIDE_PENALTY, -0);
         integer(MASK_TICKS, 15);

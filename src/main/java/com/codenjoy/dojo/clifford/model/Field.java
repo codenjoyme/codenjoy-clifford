@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford.model;
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 Codenjoy
+ * Copyright (C) 2012 - 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -25,21 +25,32 @@ package com.codenjoy.dojo.clifford.model;
 
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.Bullet;
-import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
+import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
+import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.field.Accessor;
 import com.codenjoy.dojo.services.round.RoundGameField;
 
 import java.util.List;
 
-public interface Field extends RoundGameField<Player> {
-
-    boolean isBarrier(Point pt);
+public interface Field extends RoundGameField<Player, Hero> {
 
     boolean tryToCrack(Hero hero, Point pt);
+
+    void leaveClue(Point pt, Class<? extends Point> clazz);
+
+    boolean under(Point pt, PotionType potion);
+
+    int size();
+
+    void suicide(Hero hero);
+
+    void affect(Bullet bullet);
+
+    boolean isBarrier(Point pt);
 
     boolean isPit(Point pt);
 
@@ -57,19 +68,13 @@ public interface Field extends RoundGameField<Player> {
 
     boolean isHunter(Point pt);
 
-    void leaveClue(Point pt, Class<? extends Point> clazz);
-
-    boolean under(Point pt, PotionType potion);
-
-    int size();
-
     boolean isBorder(Point pt);
+
+    GameSettings settings();
 
     List<Hero> activeHeroes();
 
     Accessor<Hero> heroes();
-
-    void suicide(Hero hero);
 
     Accessor<Brick> bricks();
 
@@ -82,6 +87,4 @@ public interface Field extends RoundGameField<Player> {
     Accessor<Key> keys();
 
     Accessor<Bullet> bullets();
-
-    void affect(Bullet bullet);
 }

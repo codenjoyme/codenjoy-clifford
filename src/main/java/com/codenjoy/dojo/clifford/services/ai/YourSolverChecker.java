@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford.services.ai;
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 Codenjoy
+ * Copyright (C) 2012 - 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -28,7 +28,7 @@ import com.codenjoy.dojo.client.WebSocketRunner;
 import com.codenjoy.dojo.games.clifford.Board;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.Direction;
-import com.codenjoy.dojo.services.RandomDice;
+import com.codenjoy.dojo.services.dice.RandomDice;
 
 import java.util.Calendar;
 import java.util.Date;

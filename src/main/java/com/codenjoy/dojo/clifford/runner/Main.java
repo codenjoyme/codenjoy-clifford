@@ -22,19 +22,29 @@ package com.codenjoy.dojo.clifford.runner;
  * #L%
  */
 
-import com.codenjoy.dojo.client.KeyboardSolver;
-import com.codenjoy.dojo.client.local.LocalGameRunner;
-import com.codenjoy.dojo.games.clifford.Board;
+import com.codenjoy.dojo.client.local.ws.LocalWSMain;
 import com.codenjoy.dojo.clifford.services.GameRunner;
+import com.codenjoy.dojo.clifford.services.GameSettings;
+import com.codenjoy.dojo.services.Dice;
+import com.codenjoy.dojo.services.settings.SettingsReader;
 
-public class Dry {
+public class Main {
 
     public static void main(String[] args) {
-        new LocalGameRunner()
-                .with(new GameRunner())
-                .add(new KeyboardSolver(),
-                        // new AISolver(new RandomDice()),
-                        new Board())
-                .run();
+        new LocalWSMain().run(
+                args,
+                GameSettings::new,
+                (Dice dice, SettingsReader settings) -> new GameRunner() {
+                    @Override
+                    public Dice getDice() {
+                        return dice;
+                    }
+
+                    @Override
+                    public GameSettings getSettings() {
+                        return (GameSettings) settings;
+                    }
+                }
+        );
     }
 }

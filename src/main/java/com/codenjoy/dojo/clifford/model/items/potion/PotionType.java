@@ -1,4 +1,4 @@
-package com.codenjoy.dojo.clifford.model.items.clue;
+package com.codenjoy.dojo.clifford.model.items.potion;
 
 /*-
  * #%L
@@ -22,21 +22,6 @@ package com.codenjoy.dojo.clifford.model.items.clue;
  * #L%
  */
 
-
-import com.codenjoy.dojo.games.clifford.Element;
-import com.codenjoy.dojo.clifford.model.Player;
-import com.codenjoy.dojo.services.Point;
-import com.codenjoy.dojo.services.PointImpl;
-import com.codenjoy.dojo.services.printer.state.State;
-
-public class ClueKnife extends PointImpl implements State<Element, Player> {
-
-    public ClueKnife(Point point) {
-        super(point);
-    }
-
-    @Override
-    public Element state(Player player, Object... alsoAtPoint) {
-        return Element.CLUE_KNIFE;
-    }
+public enum PotionType {
+    MASK_POTION
 }

@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford.model.items.robber;
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 Codenjoy
+ * Copyright (C) 2012 - 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -29,11 +29,13 @@ import com.codenjoy.dojo.services.field.Fieldable;
 import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.services.*;
+import com.codenjoy.dojo.services.printer.state.State;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static com.codenjoy.dojo.services.Direction.*;
 import static java.util.stream.Collectors.toList;
 
 public class Robber extends PointImpl implements Tickable, Fieldable<Field>, State<Element, Player> {
@@ -65,7 +67,7 @@ public class Robber extends PointImpl implements Tickable, Fieldable<Field>, Sta
     }
 
     private Point under(Point pt) {
-        return Direction.DOWN.change(pt);
+        return DOWN.change(pt);
     }
 
     @Override
@@ -84,7 +86,7 @@ public class Robber extends PointImpl implements Tickable, Fieldable<Field>, Sta
         if (field.isBrick(this)) {
             // если ямка заросла, выбираемся
             if (field.isFullBrick(this)) {
-                move(Direction.UP.change(this));
+                move(UP.change(this));
             }
             return;
         }
@@ -106,9 +108,9 @@ public class Robber extends PointImpl implements Tickable, Fieldable<Field>, Sta
         Point reached = ai.getReached();
         prey = findHero(heroes, reached);
 
-        if (direction == Direction.UP && !field.isLadder(this)) return;
+        if (direction == UP && !field.isLadder(this)) return;
 
-        if (direction != Direction.DOWN) {
+        if (direction != DOWN) {
             this.direction = direction;
         }
         Point pt = direction.change(this);
@@ -188,7 +190,7 @@ public class Robber extends PointImpl implements Tickable, Fieldable<Field>, Sta
     }
 
     public boolean isLeftTurn() {
-        return direction.equals(Direction.LEFT);
+        return direction.equals(LEFT);
     }
 
     public void getClue(Class<? extends Point> clazz) {

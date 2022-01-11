@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford.services;
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 - 2021 Codenjoy
+ * Copyright (C) 2012 - 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -46,9 +46,9 @@ public class GameSettingsTest {
                         "CLUE_COUNT_RING, \n" +
                         "CLUE_SCORE_RING, \n" +
                         "CLUE_SCORE_RING_INCREMENT, \n" +
-                        "KILL_HERO_SCORE, \n" +
-                        "KILL_ENEMY_SCORE, \n" +
-                        "HERO_DIE_PENALTY, \n" +
+                        "KILL_OTHER_HERO_SCORE, \n" +
+                        "KILL_ENEMY_HERO_SCORE, \n" +
+                        "HERO_DIED_PENALTY, \n" +
                         "SUICIDE_PENALTY, \n" +
                         "ROUND_WIN, \n" +
                         "SCORE_COUNTING_TYPE]",

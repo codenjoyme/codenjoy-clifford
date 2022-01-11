@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford.model.items;
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 Codenjoy
+ * Copyright (C) 2012 - 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -27,8 +27,9 @@ import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.*;
+import com.codenjoy.dojo.services.printer.state.State;
 
-import static com.codenjoy.dojo.services.StateUtils.filterOne;
+import static com.codenjoy.dojo.services.printer.state.StateUtils.filterOne;
 
 public class Brick extends PointImpl implements Tickable, State<Element, Player> {
 
@@ -74,8 +75,9 @@ public class Brick extends PointImpl implements Tickable, State<Element, Player>
     }
 
     private Element getNoneOrBullet(Object[] alsoAtPoint) {
-        final Bullet bullet = filterOne(alsoAtPoint, Bullet.class);
-        return bullet == null ? Element.NONE : Element.BULLET;
+        return filterOne(alsoAtPoint, Bullet.class) == null
+                ? Element.NONE
+                : Element.BULLET;
     }
 
     public Hero getCrackedBy() {

@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford.model.items;
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 Codenjoy
+ * Copyright (C) 2012 - 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -27,7 +27,7 @@ import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.clifford.model.Player;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.PointImpl;
-import com.codenjoy.dojo.services.State;
+import com.codenjoy.dojo.services.printer.state.State;
 
 public class Border extends PointImpl implements State<Element, Player> {
 

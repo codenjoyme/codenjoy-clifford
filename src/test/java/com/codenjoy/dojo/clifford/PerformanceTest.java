@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford;
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 - 2021 Codenjoy
+ * Copyright (C) 2012 - 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -28,7 +28,7 @@ import com.codenjoy.dojo.profile.Profiler;
 import com.codenjoy.dojo.services.EventListener;
 import com.codenjoy.dojo.services.Game;
 import com.codenjoy.dojo.services.Joystick;
-import com.codenjoy.dojo.services.RandomDice;
+import com.codenjoy.dojo.services.dice.RandomDice;
 import com.codenjoy.dojo.services.printer.PrinterFactory;
 import com.codenjoy.dojo.services.printer.PrinterFactoryImpl;
 import com.codenjoy.dojo.utils.TestUtils;
@@ -48,7 +48,7 @@ public class PerformanceTest {
     @Test
     public void test() {
 
-        // about 9 sec
+        // about 8.5 sec
         int robbers = 4;
         int players = 100;
         int ticks = 100;

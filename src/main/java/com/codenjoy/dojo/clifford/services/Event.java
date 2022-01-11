@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford.services;
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 Codenjoy
+ * Copyright (C) 2012 - 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -30,19 +30,20 @@ public class Event implements EventObject<Event.Type, Integer> {
     private int value;
 
     public enum Type {
+
         START_ROUND,      // раунд стартовал
         WIN_ROUND,        // герой победил в раунде
 
         // TODO: implement KILL_ROBBER (for this time robber cannot be killed);
-        KILL_HERO,         // герой замуровал в стенке другого героя
-        KILL_ENEMY,        // герой замуровал в стенке другого вражеского героя
-        HERO_DIE,          // героя убили
+        KILL_OTHER_HERO,  // герой замуровал в стенке другого героя
+        KILL_ENEMY_HERO,  // герой замуровал в стенке другого вражеского героя
+        HERO_DIED,        // героя убили
 
-        GET_CLUE_KNIFE,  // подобрано улику
+        GET_CLUE_KNIFE,   // подобрано улику
         GET_CLUE_GLOVE,
         GET_CLUE_RING,
 
-        SUICIDE;          // герой заблудился и решил суициднуться
+        SUICIDE,          // герой заблудился и решил суициднуться
     }
 
     public static Object wrap(Object input) {

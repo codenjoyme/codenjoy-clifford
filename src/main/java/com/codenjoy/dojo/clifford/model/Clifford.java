@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford.model;
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 Codenjoy
+ * Copyright (C) 2012 - 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -24,35 +24,42 @@ package com.codenjoy.dojo.clifford.model;
 
 
 import com.codenjoy.dojo.clifford.model.items.*;
-import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueGlove;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
 import com.codenjoy.dojo.clifford.model.items.door.KeyType;
+import com.codenjoy.dojo.clifford.model.items.potion.Potion;
+import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.games.clifford.Element;
-import com.codenjoy.dojo.services.*;
+import com.codenjoy.dojo.services.BoardUtils;
+import com.codenjoy.dojo.services.Dice;
+import com.codenjoy.dojo.services.Point;
+import com.codenjoy.dojo.services.PointImpl;
 import com.codenjoy.dojo.services.annotations.PerformanceOptimized;
 import com.codenjoy.dojo.services.field.Accessor;
 import com.codenjoy.dojo.services.field.PointField;
 import com.codenjoy.dojo.services.multiplayer.GamePlayer;
 import com.codenjoy.dojo.services.printer.BoardReader;
 import com.codenjoy.dojo.services.round.RoundField;
-import com.google.common.collect.ArrayListMultimap;
+import com.codenjoy.dojo.utils.whatsnext.WhatsNextUtils;
+import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 
 import java.util.*;
+import java.util.function.Function;
 
-import static com.codenjoy.dojo.clifford.model.items.Potion.PotionType.MASK_POTION;
+import static com.codenjoy.dojo.clifford.model.items.potion.PotionType.MASK_POTION;
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
+import static com.codenjoy.dojo.services.Direction.*;
 import static com.codenjoy.dojo.services.field.Generator.generate;
 import static java.util.stream.Collectors.toList;
 
-public class Clifford extends RoundField<Player> implements Field {
+public class Clifford extends RoundField<Player, Hero> implements Field {
 
     private Level level;
     private PointField field;
@@ -61,7 +68,7 @@ public class Clifford extends RoundField<Player> implements Field {
     private GameSettings settings;
 
     private int backWaysTimer;
-    private Multimap<Hero, Hero> killerWithDeads;
+    private Multimap<Hero, Hero> deathMatch;
 
     public Clifford() {
         // do nothing, for testing only
@@ -88,10 +95,12 @@ public class Clifford extends RoundField<Player> implements Field {
 
     @Override
     public void clearScore() {
+        if (level == null) return;
+
         level.saveTo(field);
         field.init(this);
 
-        this.killerWithDeads = ArrayListMultimap.create();
+        deathMatch = LinkedHashMultimap.create();
         resetBackWaysTimer();
         generateAll();
 
@@ -137,21 +146,17 @@ public class Clifford extends RoundField<Player> implements Field {
     }
 
     private void rewardMurderers() {
-        killerWithDeads.asMap().forEach((killer, deads) -> {
-            for (Hero dead : deads) {
-                if (killer == dead) {
-                    killer.event(SUICIDE);
+        deathMatch.asMap().forEach((hunter, preys) -> {
+            for (Hero prey : preys) {
+                if (hunter == prey) {
+                    hunter.event(SUICIDE);
                 }
-                if (!killer.isAlive()) continue;
+                if (!hunter.isAlive()) continue;
 
-                if (killer.getTeamId() == dead.getTeamId()) {
-                    killer.event(KILL_HERO);
-                } else {
-                    killer.event(KILL_ENEMY);
-                }
+                hunter.fireKillHero(prey);
             }
         });
-        killerWithDeads.clear();
+        deathMatch.clear();
     }
 
     private void generateClue() {
@@ -175,7 +180,7 @@ public class Clifford extends RoundField<Player> implements Field {
         generate(potions(),
                 settings, MASK_POTIONS_COUNT,
                 player -> freeRandom((Player) player),
-                pt -> new Potion(pt, PotionType.MASK_POTION));
+                pt -> new Potion(pt, MASK_POTION));
     }
 
     private void generateRobbers() {
@@ -183,7 +188,7 @@ public class Clifford extends RoundField<Player> implements Field {
                 settings, ROBBERS_COUNT,
                 player -> freeRandom((Player) player),
                 pt -> {
-                    Robber robber = new Robber(pt, Direction.LEFT);
+                    Robber robber = new Robber(pt, LEFT);
                     robber.init(this);
                     return robber;
                 });
@@ -211,24 +216,6 @@ public class Clifford extends RoundField<Player> implements Field {
         }
     }
 
-    public BoardReader<Player> reader() {
-        return field.reader(
-                Hero.class,
-                Robber.class,
-                ClueKnife.class,
-                ClueGlove.class,
-                ClueRing.class,
-                Border.class,
-                Brick.class,
-                Ladder.class,
-                Potion.class,
-                Pipe.class,
-                BackWay.class,
-                Door.class,
-                Key.class,
-                Bullet.class);
-    }
-
     private void bulletsGo() {
         for (Bullet bullet : bullets().copy()) {
             bullet.move();
@@ -237,13 +224,13 @@ public class Clifford extends RoundField<Player> implements Field {
 
     @Override
     public void affect(Bullet bullet) {
-        for (Hero hero : heroes().getAt(bullet)) {
-            if (hero.under(MASK_POTION)) continue;
-            if (hero == bullet.getOwner() && !bullet.isBounced()) continue;
+        for (Hero prey : heroes().getAt(bullet)) {
+            if (prey.under(MASK_POTION)) continue;
+            if (prey == bullet.getOwner() && !bullet.isBounced()) continue;
 
-            hero.die();
+            prey.die();
             bullet.remove();
-            killerWithDeads.put(bullet.getOwner(), hero);
+            deathMatch.put(bullet.getOwner(), prey);
         }
 
         for (Brick brick : bricks().getAt(bullet)) {
@@ -268,10 +255,10 @@ public class Clifford extends RoundField<Player> implements Field {
         players.stream()
                 .map(GamePlayer::getHero)
                 .filter(hero -> !hero.isAlive())
-                .forEach(dead -> bricks().getAt(dead).stream()
+                .forEach(prey -> bricks().getAt(prey).stream()
                         .map(Brick::getCrackedBy)
                         .filter(Objects::nonNull)
-                        .forEach(killer -> killerWithDeads.put(killer, dead)));
+                        .forEach(hunter -> deathMatch.put(hunter, prey)));
     }
 
     private Optional<Brick> getBrick(Point pt) {
@@ -321,7 +308,7 @@ public class Clifford extends RoundField<Player> implements Field {
 
             if (potions().contains(hero)) {
                 potions().removeAt(hero);
-                hero.pick(PotionType.MASK_POTION);
+                hero.pick(MASK_POTION);
             }
 
             if (backways().contains(hero)) {
@@ -330,18 +317,18 @@ public class Clifford extends RoundField<Player> implements Field {
         }
         heroes().stream()
                 .filter(hero -> hero.under(MASK_POTION))
-                .forEach(maskHero -> heroes().getAt(maskHero).stream()
-                        .filter(hero -> hero != maskHero)
+                .forEach(mask -> heroes().getAt(mask).stream()
+                        .filter(hero -> hero != mask)
                         .filter(hero -> !hero.under(MASK_POTION))
-                        .forEach(hero -> killerWithDeads.put(maskHero, hero)));
+                        .forEach(prey -> deathMatch.put(mask, prey)));
     }
 
     private void transport(PointImpl point) {
         List<BackWay> backways = backways().all();
-        for (int i = 0; i < backways.size(); i++) {
-            if (backways.get(i).equals(point)) {
-                BackWay backwayToMove = backways.get(i < backways.size() - 1 ? i + 1 : 0);
-                point.move(backwayToMove.getX(), backwayToMove.getY());
+        for (int index = 0; index < backways.size(); index++) {
+            if (backways.get(index).equals(point)) {
+                BackWay back = backways.get(index < backways.size() - 1 ? index + 1 : 0);
+                point.move(back.getX(), back.getY());
                 return;
             }
         }
@@ -390,7 +377,7 @@ public class Clifford extends RoundField<Player> implements Field {
                 || pt.getY() < 0 || pt.getY() > size() - 1
                 || isFullBrick(pt)
                 || isBorder(pt)
-                || (isHero(pt) && !under(pt, PotionType.MASK_POTION))
+                || (isHero(pt) && !under(pt, MASK_POTION))
                 || doors().getAt(pt).stream().anyMatch(Door::isClosed);
     }
 
@@ -405,7 +392,7 @@ public class Clifford extends RoundField<Player> implements Field {
             return false;
         }
 
-        Point over = Direction.UP.change(pt);
+        Point over = UP.change(pt);
         if (isLadder(over)
                 || clueKnife().contains(over)
                 || clueGlove().contains(over)
@@ -423,7 +410,7 @@ public class Clifford extends RoundField<Player> implements Field {
 
     @Override
     public boolean isPit(Point pt) {
-        Point under = Direction.DOWN.change(pt);
+        Point under = DOWN.change(pt);
 
         return !(isFullBrick(under)
                 || isLadder(under)
@@ -493,7 +480,7 @@ public class Clifford extends RoundField<Player> implements Field {
     @PerformanceOptimized
     private boolean isAnyHeroMaskAt(Point pt) {
         for (Hero hero : heroes().getAt(pt)) {
-            if (hero.under(PotionType.MASK_POTION)) {
+            if (hero.under(MASK_POTION)) {
                 if (hero.equals(pt)) {
                     return true;
                 }
@@ -543,6 +530,31 @@ public class Clifford extends RoundField<Player> implements Field {
     @Override
     public GameSettings settings() {
         return settings;
+    }
+
+    @Override
+    public BoardReader<Player> reader() {
+        return field.reader(
+                Hero.class,
+                Robber.class,
+                ClueKnife.class,
+                ClueGlove.class,
+                ClueRing.class,
+                Border.class,
+                Brick.class,
+                Ladder.class,
+                Potion.class,
+                Pipe.class,
+                BackWay.class,
+                Door.class,
+                Key.class,
+                Bullet.class);
+    }
+
+    @Override
+    public List<Player> load(String board, Function<Hero, Player> player) {
+        level = new Level(board);
+        return WhatsNextUtils.load(this, level.heroes(), player);
     }
 
     public Accessor<BackWay> backways() {

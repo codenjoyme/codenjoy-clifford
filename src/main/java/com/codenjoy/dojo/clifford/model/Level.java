@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford.model;
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 Codenjoy
+ * Copyright (C) 2012 - 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -24,7 +24,8 @@ package com.codenjoy.dojo.clifford.model;
 
 
 import com.codenjoy.dojo.clifford.model.items.*;
-import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
+import com.codenjoy.dojo.clifford.model.items.potion.Potion;
+import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueGlove;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
@@ -44,6 +45,8 @@ import static com.codenjoy.dojo.clifford.model.items.door.Door.State.CLOSED;
 import static com.codenjoy.dojo.clifford.model.items.door.Door.State.OPENED;
 import static com.codenjoy.dojo.clifford.model.items.door.KeyType.*;
 import static com.codenjoy.dojo.games.clifford.Element.*;
+import static com.codenjoy.dojo.services.Direction.LEFT;
+import static com.codenjoy.dojo.services.Direction.RIGHT;
 
 public class Level extends AbstractLevel {
 
@@ -61,8 +64,8 @@ public class Level extends AbstractLevel {
                 HERO_RIGHT, HERO_MASK_RIGHT);
 
         return find(new LinkedHashMap<>() {{
-            left.forEach(element -> put(element, pt -> new Hero(pt, Direction.LEFT)));
-            right.forEach(element -> put(element, pt -> new Hero(pt, Direction.RIGHT)));
+            left.forEach(element -> put(element, pt -> new Hero(pt, LEFT)));
+            right.forEach(element -> put(element, pt -> new Hero(pt, RIGHT)));
         }});
     }
 
@@ -96,8 +99,8 @@ public class Level extends AbstractLevel {
 
     public List<Robber> robbers() {
         return find(new LinkedHashMap<>() {{
-            put(ROBBER_LEFT, pt -> new Robber(pt, Direction.LEFT));
-            put(ROBBER_RIGHT, pt -> new Robber(pt, Direction.RIGHT));
+            put(ROBBER_LEFT, pt -> new Robber(pt, LEFT));
+            put(ROBBER_RIGHT, pt -> new Robber(pt, RIGHT));
         }});
     }
 

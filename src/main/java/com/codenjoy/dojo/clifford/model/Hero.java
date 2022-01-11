@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford.model;
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 Codenjoy
+ * Copyright (C) 2012 - 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -26,31 +26,40 @@ package com.codenjoy.dojo.clifford.model;
 import com.codenjoy.dojo.clifford.model.items.Bullet;
 import com.codenjoy.dojo.clifford.model.items.Ladder;
 import com.codenjoy.dojo.clifford.model.items.Pipe;
-import com.codenjoy.dojo.clifford.model.items.Potion.PotionType;
+import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.KeyType;
 import com.codenjoy.dojo.clifford.services.Event;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.Point;
-import com.codenjoy.dojo.services.State;
-import com.codenjoy.dojo.services.StateUtils;
+import com.codenjoy.dojo.services.joystick.Act;
+import com.codenjoy.dojo.services.joystick.RoundsDirectionActJoystick;
+import com.codenjoy.dojo.services.printer.state.HeroState;
+import com.codenjoy.dojo.services.printer.state.State;
 import com.codenjoy.dojo.services.round.RoundPlayerHero;
 
 import java.util.Collections;
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
+import static com.codenjoy.dojo.clifford.model.items.potion.PotionType.MASK_POTION;
+import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_TICKS;
-import static com.codenjoy.dojo.games.clifford.Element.*;
 import static com.codenjoy.dojo.services.Direction.DOWN;
-import static com.codenjoy.dojo.services.StateUtils.filter;
-import static com.codenjoy.dojo.services.StateUtils.filterOne;
+import static com.codenjoy.dojo.services.Direction.LEFT;
+import static com.codenjoy.dojo.services.printer.state.StateUtils.filterOne;
 
-public class Hero extends RoundPlayerHero<Field> implements State<Element, Player> {
+public class Hero extends RoundPlayerHero<Field>
+        implements RoundsDirectionActJoystick, State<Element, Player>,
+                   HeroState<Element, Hero, Player> {
+
+    private static final int ACT_SUICIDE = 0;
+    private static final int ACT_SHOOT = 1;
+    private static final int ACT_OPEN_DOOR = 2;
+    private static final int ACT_CLOSE_DOOR = 3;
 
     protected Direction direction;
     private PotionType potion;
@@ -99,10 +108,6 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         return Collections.unmodifiableMap(keys);
     }
 
-    public int getTeamId() {
-        return getPlayer().getTeamId();
-    }
-
     @Override
     public void init(Field field) {
         super.init(field);
@@ -111,64 +116,116 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     }
 
     @Override
-    public void down() {
-        if (!isActiveAndAlive()) return;
+    public void change(Direction direction) {
+        switch (direction) {
+            case DOWN:
+                if (field.isLadder(this) || field.isLadder(underHero())) {
+                    direction(direction);
+                    break;
+                }
+                if (field.isPipe(this)) {
+                    jump = true;
+                }
+                break;
 
-        if (field.isLadder(this) || field.isLadder(underHero())) {
-            direction = DOWN;
-            moving = true;
-        } else if (field.isPipe(this)) {
-            jump = true;
+            case UP:
+                if (field.isLadder(this)) {
+                    direction(direction);
+                }
+                break;
+
+            case LEFT:
+            case RIGHT:
+                direction(direction);
+                break;
         }
     }
 
-    @Override
-    public void up() {
-        if (!isActiveAndAlive()) return;
-
-        if (field.isLadder(this)) {
-            direction = Direction.UP;
-            moving = true;
-        }
-    }
-
-    @Override
-    public void left() {
-        if (!isActiveAndAlive()) return;
-
-        direction = Direction.LEFT;
+    private void direction(Direction direction) {
+        this.direction = direction;
         moving = true;
     }
 
     @Override
-    public void right() {
-        if (!isActiveAndAlive()) return;
-
-        direction = Direction.RIGHT;
-        moving = true;
-    }
-
-    @Override
-    public void act(int... p) {
-        if (!isActiveAndAlive()) return;
-
-        if (p.length == 0) {
+    public void act(Act act) {
+        if (act.is()) {
             crack = true;
-        } else if (p[0] == 0) {
+            return;
+        }
+
+        if (act.is(ACT_SUICIDE)) {
             die();
             field.suicide(this);
-        } else if (p[0] == 1) {
-            shoot = true;
-        } else if (p[0] == 2) {
-            openDoor = true;
-        } else if (p[0] == 3) {
-            closeDoor = true;
+            return;
         }
+
+        if (act.is(ACT_SHOOT)) {
+            shoot = true;
+            return;
+        }
+
+        if (act.is(ACT_OPEN_DOOR)) {
+            openDoor = true;
+            return;
+        }
+
+        if (act.is(ACT_CLOSE_DOOR)) {
+            closeDoor = true;
+            return;
+        }
+    }
+
+    void crack() {
+        act();
+    }
+
+    void crack(Direction direction) {
+        switch (direction) {
+            case LEFT: crack(); left(); break;
+            case RIGHT: crack(); right(); break;
+        }
+    }
+
+    void shoot() {
+        act(ACT_SHOOT);
+    }
+
+    void shoot(Direction direction) {
+        switch (direction) {
+            case LEFT: shoot(); left(); break;
+            case RIGHT: shoot(); right(); break;
+        }
+    }
+
+    void openDoor() {
+        act(ACT_OPEN_DOOR);
+    }
+
+    void openDoor(Direction direction) {
+        switch (direction) {
+            case LEFT: openDoor(); left(); break;
+            case RIGHT: openDoor(); right(); break;
+        }
+    }
+
+    void closeDoor() {
+        act(ACT_CLOSE_DOOR);
+    }
+
+    void closeDoor(Direction direction) {
+        switch (direction) {
+            case LEFT: closeDoor(); left(); break;
+            case RIGHT: closeDoor(); right(); break;
+        }
+    }
+
+    void suicide() {
+        act(ACT_SUICIDE);
     }
 
     @Override
     public void die() {
-        die(Event.Type.HERO_DIE);
+        die(HERO_DIED);
     }
 
     public Direction getDirection() {
@@ -180,9 +237,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     }
 
     @Override
-    public void tick() {
-        if (!isActiveAndAlive()) return;
-
+    public void tickHero() {
         Point destination = direction.change(this);
 
         if (field.doors().contains(destination)) {
@@ -196,7 +251,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         if (isFall()) {
             move(DOWN);
         } else if (shoot) {
-            shoot();
+            shootBullet();
         } else if (crack) {
             Point hole = DOWN.change(destination);
             field.tryToCrack(this, hole);
@@ -223,8 +278,8 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         dissolvePotions();
     }
 
-    private void shoot() {
-        final Bullet bullet = new Bullet(this);
+    private void shootBullet() {
+        Bullet bullet = new Bullet(this, this);
         field.bullets().add(bullet);
         bullet.doFirstMoveAffect();
     }
@@ -243,12 +298,12 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     }
 
     private boolean isMask() {
-        return under(PotionType.MASK_POTION);
+        return under(MASK_POTION);
     }
 
     private boolean isRegularPlayerAt(Point pt) {
         return field.isHero(pt)
-                && !field.under(pt, PotionType.MASK_POTION);
+                && !field.under(pt, MASK_POTION);
     }
 
     private void dissolvePotions() {
@@ -265,7 +320,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     }
 
     public boolean isVisible() {
-        return !under(PotionType.MASK_POTION);
+        return !under(MASK_POTION);
     }
 
     public boolean under(PotionType potion) {
@@ -312,50 +367,43 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
 
     @Override
     public Element state(Player player, Object... alsoAtPoint) {
-        if (StateUtils.itsMe(player, this, alsoAtPoint, player.getHero())) {
-            Hero hero = player.getHero();
-            Element state = hero.state(alsoAtPoint);
-            return hero.isMask()
-                    ? state.mask()
-                    : state;
-        } else {
-            Element state = state(alsoAtPoint);
-            state = anyHeroFromAnotherTeam(player, filter(alsoAtPoint, Hero.class))
-                    ? state.enemyHero()
-                    : state.otherHero();
-            return isMask()
-                    ? state.mask()
-                    : state;
-        }
+        return HeroState.super.state(player, alsoAtPoint);
     }
 
-    private Element state(Object[] alsoAtPoint) {
+    @Override
+    public Element beforeState(Object[] alsoAtPoint) {
+        if (!isActiveAndAlive()) {
+            return Element.HERO_DIE;
+        }
+
         Ladder ladder = filterOne(alsoAtPoint, Ladder.class);
-        Pipe pipe = filterOne(alsoAtPoint, Pipe.class);
-
-        if (!isAlive() || !isActive()) {
-            return HERO_DIE;
-        }
-
         if (ladder != null) {
-            return HERO_LADDER;
+            return Element.HERO_LADDER;
         }
 
+        Pipe pipe = filterOne(alsoAtPoint, Pipe.class);
         if (pipe != null) {
-            return HERO_PIPE;
+            return Element.HERO_PIPE;
         }
 
         if (isPit()) {
-            return HERO_PIT;
+            return Element.HERO_PIT;
         }
 
         if (isFall()) {
-            return HERO_FALL;
+            return Element.HERO_FALL;
         }
 
         return isLeftTurn()
-                ? HERO_LEFT
-                : HERO_RIGHT;
+                ? Element.HERO_LEFT
+                : Element.HERO_RIGHT;
+    }
+
+    @Override
+    public Element afterState(Element state) {
+        return isMask()
+                ? state.mask()
+                : state;
     }
 
     private boolean isPit() {
@@ -363,12 +411,7 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
     }
 
     private boolean isLeftTurn() {
-        return direction.equals(Direction.LEFT);
-    }
-
-    private boolean anyHeroFromAnotherTeam(Player player, List<Hero> heroes) {
-        return heroes.stream()
-                .anyMatch(h -> player.getTeamId() != h.getPlayer().getTeamId());
+        return direction.equals(LEFT);
     }
 
     public void pickClue(Event.Type clue) {
@@ -387,4 +430,11 @@ public class Hero extends RoundPlayerHero<Field> implements State<Element, Playe
         return 0;
     }
 
+    public void fireKillHero(Hero prey) {
+        if (isMyTeam(prey)) {
+            event(KILL_OTHER_HERO);
+        } else {
+            event(KILL_ENEMY_HERO);
+        }
+    }
 }

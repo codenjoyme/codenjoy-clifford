@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford;
  * #%L
  * Codenjoy - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2018 Codenjoy
+ * Copyright (C) 2012 - 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -55,7 +55,7 @@ public class SmokeTest {
 
     @Test
     public void testSoft() {
-        // about 2.4 sec
+        // about 3 sec
         int ticks = 1000;
         int players = 2;
 
@@ -103,7 +103,7 @@ public class SmokeTest {
 
     @Test
     public void testHard() {
-        // about 11 sec
+        // about 10 sec
         int ticks = 100;
         int players = 10;
         int robbers = 5;

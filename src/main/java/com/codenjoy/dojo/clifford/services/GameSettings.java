@@ -4,7 +4,7 @@ package com.codenjoy.dojo.clifford.services;
  * #%L
  * expansion - it's a dojo-like platform from developers to developers.
  * %%
- * Copyright (C) 2016 - 2020 Codenjoy
+ * Copyright (C) 2012 - 2022 Codenjoy
  * %%
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as
@@ -61,9 +61,9 @@ public class GameSettings extends SettingsImpl implements AllSettings<GameSettin
         HANDGUN_TICKS_PER_SHOOT("[Game] Gun recharge"),
         HANDGUN_CLIP_SIZE("[Game] Count of bullet by default('-1' for unlimited) "),
 
-        KILL_HERO_SCORE("[Score] Kill hero score"),
-        KILL_ENEMY_SCORE("[Score] Kill enemy score"),
-        HERO_DIE_PENALTY("[Score] Hero die penalty"),
+        KILL_OTHER_HERO_SCORE("[Score] Kill hero score"),
+        KILL_ENEMY_HERO_SCORE("[Score] Kill enemy score"),
+        HERO_DIED_PENALTY("[Score] Hero die penalty"),
         SUICIDE_PENALTY("[Score] Suicide penalty"),
         ROUND_WIN("[Score] Round win"),
         SCORE_COUNTING_TYPE(ScoresImpl.SCORE_COUNTING_TYPE.key());
@@ -113,9 +113,9 @@ public class GameSettings extends SettingsImpl implements AllSettings<GameSettin
         integer(HANDGUN_TICKS_PER_SHOOT, 0);
 
         integer(ROUND_WIN, 20);
-        integer(KILL_HERO_SCORE, 20);
-        integer(KILL_ENEMY_SCORE, 50);
-        integer(HERO_DIE_PENALTY, -1);
+        integer(KILL_OTHER_HERO_SCORE, 20);
+        integer(KILL_ENEMY_HERO_SCORE, 50);
+        integer(HERO_DIED_PENALTY, -1);
         integer(SUICIDE_PENALTY, -10);
 
         Levels.setup(this);
