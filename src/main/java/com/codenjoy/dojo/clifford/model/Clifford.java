@@ -70,10 +70,6 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     private int backWaysTimer;
     private Multimap<Hero, Hero> deathMatch;
 
-    public Clifford() {
-        // do nothing, for testing only
-    }
-
     public Clifford(Dice dice, Level level, GameSettings settings) {
         super(START_ROUND, WIN_ROUND, settings);
 
