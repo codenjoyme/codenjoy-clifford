@@ -22,8 +22,10 @@ package com.codenjoy.dojo.clifford;
  * #L%
  */
 
+import com.codenjoy.dojo.client.local.DiceGenerator;
 import com.codenjoy.dojo.clifford.services.GameRunner;
 import com.codenjoy.dojo.clifford.services.GameSettings;
+import com.codenjoy.dojo.services.Dice;
 import org.junit.Test;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.ROBBERS_COUNT;
@@ -44,7 +46,14 @@ public class PerformanceTest {
         int expectedTick = 20000;
         int expectedPrint = 3000;
 
+        Dice dice = new DiceGenerator().getDice(2000);
         GameRunner runner = new GameRunner(){
+
+            @Override
+            public Dice getDice() {
+                return dice;
+            }
+
             @Override
             public GameSettings getSettings() {
                 return new GameSettings()
