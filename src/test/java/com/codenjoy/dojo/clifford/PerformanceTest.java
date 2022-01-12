@@ -40,9 +40,9 @@ public class PerformanceTest {
         int players = 100;
         int ticks = 100;
 
-        int expectedPrint = 3000;
-        int expectedTick = 20000;
         int expectedCreation = 1300;
+        int expectedTick = 20000;
+        int expectedPrint = 3000;
 
         GameRunner runner = new GameRunner(){
             @Override
@@ -56,7 +56,7 @@ public class PerformanceTest {
         boolean printBoard = false;
         assertPerformance(runner,
                 players, ticks,
-                expectedPrint, expectedTick, expectedCreation,
+                expectedCreation, expectedTick, expectedPrint,
                 printBoard);
     }
 
