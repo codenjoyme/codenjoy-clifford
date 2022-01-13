@@ -55,6 +55,8 @@ public abstract class AbstractGameTest
 
         robbers = new LinkedList<>();
         Brick.CRACK_TIMER = 13;
+        settings().integer(HANDGUN_CLIP_SIZE, UNLIM_CLIP_SIZE)
+                .integer(HANDGUN_TICKS_PER_SHOOT, SHOOT_WITHOUT_RECHARGE);
     }
 
     @After
@@ -69,9 +71,7 @@ public abstract class AbstractGameTest
                 .integer(CLUE_COUNT_RING, level().clueRing().size())
                 .integer(MASK_POTIONS_COUNT, level().potions().size())
                 .integer(BACKWAYS_COUNT, level().backways().size())
-                .integer(ROBBERS_COUNT, level().robbers().size())
-                .integer(HANDGUN_CLIP_SIZE, UNLIM_CLIP_SIZE)
-                .integer(HANDGUN_TICKS_PER_SHOOT, SHOOT_WITHOUT_RECHARGE);
+                .integer(ROBBERS_COUNT, level().robbers().size());
     }
 
     @Override
