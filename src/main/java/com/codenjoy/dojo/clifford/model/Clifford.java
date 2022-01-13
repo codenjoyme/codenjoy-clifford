@@ -156,31 +156,31 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     }
 
     private void generateClue() {
-        generate(clueKnife(),
+        generate(clueKnife(), size(),
                 settings, CLUE_COUNT_KNIFE,
                 player -> freeRandom((Player) player),
                 ClueKnife::new);
 
-        generate(clueGlove(),
+        generate(clueGlove(), size(),
                 settings, CLUE_COUNT_GLOVE,
                 player -> freeRandom((Player) player),
                 ClueGlove::new);
 
-        generate(clueRing(),
+        generate(clueRing(), size(),
                 settings, CLUE_COUNT_RING,
                 player -> freeRandom((Player) player),
                 ClueRing::new);
     }
 
     private void generatePotions() {
-        generate(potions(),
+        generate(potions(), size(),
                 settings, MASK_POTIONS_COUNT,
                 player -> freeRandom((Player) player),
                 pt -> new Potion(pt, MASK_POTION));
     }
 
     private void generateRobbers() {
-        generate(robbers(),
+        generate(robbers(), size(),
                 settings, ROBBERS_COUNT,
                 player -> freeRandom((Player) player),
                 pt -> {
@@ -191,14 +191,15 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     }
 
     private void generateBackWays() {
-        generate(backways(), settings, BACKWAYS_COUNT,
+        generate(backways(), size(),
+                settings, BACKWAYS_COUNT,
                 player -> freeRandom((Player) player),
                 BackWay::new);
     }
 
     private void releaseKeys(Map<KeyType, Integer> keys) {
         for (Map.Entry<KeyType, Integer> entry : keys.entrySet()) {
-            generate(keys(), entry.getValue(),
+            generate(keys(), size(), entry.getValue(),
                     player -> freeRandom((Player) player),
                     pt -> new Key(pt, entry.getKey()));
         }
@@ -206,7 +207,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
     private void generateKeys(List<Key> keys) {
         for (Key prototype : keys) {
-            generate(keys(), 1,
+            generate(keys(), size(), 1,
                     player -> freeRandom((Player) player),
                     pt -> new Key(pt, prototype.getType()));
         }
