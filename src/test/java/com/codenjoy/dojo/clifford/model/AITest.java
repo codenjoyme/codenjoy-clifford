@@ -747,7 +747,7 @@ public class AITest extends AbstractGameTest {
     public void performanceTest() {
         AI.POSSIBLE_IS_CONSTANT = true;
 
-        // about 7s
+        // about 5.5 sec
         givenFl(Levels.BIG_LEVEL);
 
         assertQ(" ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼\n" +

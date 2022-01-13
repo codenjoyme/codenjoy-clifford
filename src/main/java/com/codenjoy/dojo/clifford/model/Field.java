@@ -25,9 +25,9 @@ package com.codenjoy.dojo.clifford.model;
 
 import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.Bullet;
-import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
+import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.services.Point;
@@ -71,8 +71,6 @@ public interface Field extends RoundGameField<Player, Hero> {
     boolean isBorder(Point pt);
 
     GameSettings settings();
-
-    List<Hero> activeHeroes();
 
     Accessor<Hero> heroes();
 

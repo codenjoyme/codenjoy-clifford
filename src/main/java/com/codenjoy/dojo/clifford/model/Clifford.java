@@ -126,11 +126,13 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     }
 
     private void diedFromHunter() {
-        activeHeroes().forEach(Hero::checkDiedFromHunter);
+        aliveActiveHeroes()
+                .forEach(Hero::checkDiedFromHunter);
     }
 
     private void diedFromWall() {
-        activeHeroes().forEach(Hero::checkDiedFromWall);
+        aliveActiveHeroes()
+                .forEach(Hero::checkDiedFromWall);
     }
 
     @Override
@@ -444,7 +446,8 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
     @Override
     public boolean isHero(Point pt) {
-        return activeHeroes().contains(pt);
+        return aliveActiveHeroes()
+                .contains(pt);
     }
 
     // TODO test
@@ -452,11 +455,10 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     //      можно ли простреливать под ним - да
     //      является ли место с ним дыркой - да
     //      является ли место с ним препятствием - нет
+    //      потом заинлайнить этот метод
     @Override
-    public List<Hero> activeHeroes() {
-        return aliveActive().stream()
-                .map(Player::getHero)
-                .collect(toList());
+    public List<Hero> aliveActiveHeroes() {
+        return super.aliveActiveHeroes();
     }
 
     @Override
@@ -586,7 +588,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
     @Override
     public List<Hero> visibleHeroes() {
-        return activeHeroes().stream()   // TODO test что воры не гонятся за точками спауна
+        return aliveActiveHeroes().stream()   // TODO test что воры не гонятся за точками спауна
                 .filter(Hero::isVisible)
                 .collect(toList());
     }
