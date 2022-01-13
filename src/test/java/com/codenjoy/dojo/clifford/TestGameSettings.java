@@ -24,6 +24,8 @@ package com.codenjoy.dojo.clifford;
 
 import com.codenjoy.dojo.clifford.services.GameSettings;
 
+import static com.codenjoy.dojo.clifford.model.HandGun.SHOOT_WITHOUT_RECHARGE;
+import static com.codenjoy.dojo.clifford.model.HandGun.UNLIM_CLIP_SIZE;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.event.Mode.CUMULATIVELY;
 import static com.codenjoy.dojo.services.round.RoundSettings.Keys.ROUNDS_ENABLED;
@@ -55,5 +57,8 @@ public class TestGameSettings extends GameSettings {
         integer(CLUE_SCORE_RING, 10);
 
         integer(ROBBERS_COUNT, 0);
+
+        integer(HANDGUN_CLIP_SIZE, UNLIM_CLIP_SIZE);
+        integer(HANDGUN_TICKS_PER_SHOOT, SHOOT_WITHOUT_RECHARGE);
     }
 }

@@ -39,8 +39,6 @@ import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import static com.codenjoy.dojo.clifford.model.HandGun.UNLIM_CLIP_SIZE;
-import static com.codenjoy.dojo.clifford.model.HandGun.SHOOT_WITHOUT_RECHARGE;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static java.util.stream.Collectors.toList;
 
@@ -55,8 +53,6 @@ public abstract class AbstractGameTest
 
         robbers = new LinkedList<>();
         Brick.CRACK_TIMER = 13;
-        settings().integer(HANDGUN_CLIP_SIZE, UNLIM_CLIP_SIZE)
-                .integer(HANDGUN_TICKS_PER_SHOOT, SHOOT_WITHOUT_RECHARGE);
     }
 
     @After
