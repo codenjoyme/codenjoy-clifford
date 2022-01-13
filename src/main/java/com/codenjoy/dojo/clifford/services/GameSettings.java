@@ -59,7 +59,8 @@ public class GameSettings extends SettingsImpl implements AllSettings<GameSettin
         CLUE_SCORE_RING("[Score] Ring clue score"),
         CLUE_SCORE_RING_INCREMENT("[Score] Ring clue score increment"),
         HANDGUN_TICKS_PER_SHOOT("[Game] Gun recharge"),
-        HANDGUN_CLIP_SIZE("[Game] Count of bullet by default('-1' for unlimited) "),
+        HANDGUN_CLIP_SIZE("[Game] Count of bullet by default"),
+        HANDGUN_UNLIM_AMMO("[Game] unlimited ammo  "),
 
         KILL_OTHER_HERO_SCORE("[Score] Kill hero score"),
         KILL_ENEMY_HERO_SCORE("[Score] Kill enemy score"),
@@ -109,8 +110,9 @@ public class GameSettings extends SettingsImpl implements AllSettings<GameSettin
         integer(CLUE_COUNT_RING, 5);
         integer(CLUE_SCORE_RING, 5);
         integer(CLUE_SCORE_RING_INCREMENT, 1);
-        integer(HANDGUN_CLIP_SIZE, -1);
+        integer(HANDGUN_CLIP_SIZE, 12);
         integer(HANDGUN_TICKS_PER_SHOOT, 0);
+        bool(HANDGUN_UNLIM_AMMO, true);
 
         integer(ROUND_WIN, 20);
         integer(KILL_OTHER_HERO_SCORE, 20);

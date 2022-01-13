@@ -120,7 +120,8 @@ public class Hero extends RoundPlayerHero<Field>
 
     private void initGun() {
         gun = new HandGun(settings().integer(HANDGUN_TICKS_PER_SHOOT),
-                settings().integer(HANDGUN_CLIP_SIZE));
+                settings().integer(HANDGUN_CLIP_SIZE),
+                settings().bool(HANDGUN_UNLIM_AMMO));
     }
 
     @Override

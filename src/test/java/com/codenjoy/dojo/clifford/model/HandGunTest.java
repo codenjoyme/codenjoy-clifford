@@ -24,8 +24,8 @@ package com.codenjoy.dojo.clifford.model;
 
 import org.junit.Test;
 
-import static com.codenjoy.dojo.clifford.model.HandGun.UNLIM_CLIP_SIZE;
-import static com.codenjoy.dojo.clifford.model.HandGun.SHOOT_WITHOUT_RECHARGE;
+import static com.codenjoy.dojo.clifford.model.HandGun.DEFAULT_CLIP_SIZE;
+import static com.codenjoy.dojo.clifford.model.HandGun.SHOOT_WITHOUT_RECHARGE_DELAY;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -36,14 +36,14 @@ public class HandGunTest {
         gun.tick();
     }
 
-    private void gun(int ticksPerShoot, int clipSize) {
-        gun = new HandGun(ticksPerShoot, clipSize);
+    private void gun(int ticksPerShoot, int clipSize, boolean unlimitedAmmo) {
+        gun = new HandGun(ticksPerShoot, clipSize, unlimitedAmmo);
     }
 
     @Test
     public void shouldIncreaseAmmo() {
         // given
-        gun(SHOOT_WITHOUT_RECHARGE, 2);
+        gun(SHOOT_WITHOUT_RECHARGE_DELAY, 2, false);
 
         // when spent all ammo
         assertTrue(gun.tryToFire());
@@ -68,7 +68,7 @@ public class HandGunTest {
     @Test
     public void shouldShootWithRecharge_limitedAmmo() {
         // given
-        gun(1, 2);
+        gun(1, 2, false);
 
         // gun should shoot two times with recharge
         assertTrue(gun.tryToFire());
@@ -96,7 +96,7 @@ public class HandGunTest {
     @Test
     public void shouldShootWithRecharge_unlimitedAmmo_case1() {
         // given
-        gun(1, UNLIM_CLIP_SIZE);
+        gun(1, DEFAULT_CLIP_SIZE, true);
 
         // when gun shoot for the first time
         assertTrue(gun.tryToFire());
@@ -116,7 +116,7 @@ public class HandGunTest {
     public void shouldShootWithRecharge_unlimitedAmmo_case2() {
         // given
         int ticksPerShoot = 3;
-        gun(ticksPerShoot, UNLIM_CLIP_SIZE);
+        gun(ticksPerShoot, DEFAULT_CLIP_SIZE, true);
 
         // when gun shoot one time and recharging
         assertTrue(gun.tryToFire());
@@ -138,7 +138,7 @@ public class HandGunTest {
     @Test
     public void shouldShootWithoutDelay_unlimitedAmmo() {
         // given
-        gun(SHOOT_WITHOUT_RECHARGE, UNLIM_CLIP_SIZE);
+        gun(SHOOT_WITHOUT_RECHARGE_DELAY, DEFAULT_CLIP_SIZE, true);
 
         // when gun shoot without breaks and recharging
         for (int i = 0; i < 100; i++) {
@@ -152,7 +152,7 @@ public class HandGunTest {
     public void shouldShootWithoutDelay_limitedAmmo() {
         // given
         int ammoLimit = 10;
-        gun(SHOOT_WITHOUT_RECHARGE, ammoLimit);
+        gun(SHOOT_WITHOUT_RECHARGE_DELAY, ammoLimit, false);
 
         // when gun gun ammo off
         for (int i = 0; i < ammoLimit; i++) {

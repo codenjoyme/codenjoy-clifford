@@ -26,25 +26,28 @@ package com.codenjoy.dojo.clifford.model;
 import com.codenjoy.dojo.services.Tickable;
 
 public class HandGun implements Tickable {
-    public static final int UNLIM_CLIP_SIZE = -1;
-    public static final int SHOOT_WITHOUT_RECHARGE = 0;
+    public static final int DEFAULT_CLIP_SIZE = 12;
+    public static final int SHOOT_WITHOUT_RECHARGE_DELAY = 0;
 
     private boolean canFire;
     private int ticks;
     private int shootDelay;
-    private int clip;
+    private int ammoInClip;
 
     private int ticksPerShoot;
     private int clipSize;
+    private boolean unlimitedAmmo;
 
     public HandGun() {
-        ticksPerShoot = SHOOT_WITHOUT_RECHARGE;
-        clipSize = UNLIM_CLIP_SIZE;
+        ticksPerShoot = SHOOT_WITHOUT_RECHARGE_DELAY;
+        clipSize = DEFAULT_CLIP_SIZE;
+        unlimitedAmmo = true;
     }
 
-    public HandGun(int ticksPerShoot, int clipSize) {
+    public HandGun(int ticksPerShoot, int clipSize, boolean unlimitedAmmo) {
         this.ticksPerShoot = ticksPerShoot;
         this.clipSize = clipSize;
+        this.unlimitedAmmo = unlimitedAmmo;
         reset();
     }
 
@@ -58,7 +61,7 @@ public class HandGun implements Tickable {
 
     private void reset() {
         rechargeReset();
-        clip = getClipSize();
+        ammoInClip = getClipSize();
     }
 
     private void rechargeReset() {
@@ -84,7 +87,7 @@ public class HandGun implements Tickable {
     }
 
     public void addAmmo(int ammo) {
-        clip = Math.max(0, clip + ammo);
+        ammoInClip = Math.max(0, ammoInClip + ammo);
     }
 
     private void shoot() {
@@ -93,15 +96,15 @@ public class HandGun implements Tickable {
     }
 
     private void reduceBulletsCount() {
-        if (!isUnlimitedBullets()) clip = Math.max(0, --clip);
+        if (!isUnlimitedBullets()) ammoInClip = Math.max(0, --ammoInClip);
     }
 
     private boolean isEnoughBulletForShoot() {
         if (isUnlimitedBullets()) return true;
-        return clip > 0;
+        return ammoInClip > 0;
     }
 
     private boolean isUnlimitedBullets() {
-        return clip == -1;
+        return unlimitedAmmo;
     }
 }
