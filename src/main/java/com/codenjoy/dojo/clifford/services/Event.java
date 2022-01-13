@@ -46,12 +46,6 @@ public class Event implements EventObject<Event.Type, Integer> {
         SUICIDE,          // герой заблудился и решил суициднуться
     }
 
-    public static Object wrap(Object input) {
-        return (input instanceof Type)
-                ? new Event((Type) input)
-                : input;
-    }
-
     public Event with(int amount) {
         this.value = amount;
         return this;
