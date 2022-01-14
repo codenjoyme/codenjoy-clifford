@@ -109,11 +109,6 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     }
 
     @Override
-    protected void cleanStuff() {
-        // do nothing
-    }
-
-    @Override
     protected void tickField() {
         bulletsGo();
         heroesGo();
