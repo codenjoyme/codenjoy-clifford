@@ -383,7 +383,13 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 || isFullBrick(pt)
                 || isBorder(pt)
                 || isRegularHero(pt)
-                || doors().getAt(pt).stream().anyMatch(Door::isClosed);
+                || isClosedDoors(pt);
+    }
+
+    private boolean isClosedDoors(Point pt) {
+        Door door = doors().getFirstAt(pt);
+        return door != null
+                && door.isClosed();
     }
 
     @Override
