@@ -83,10 +83,11 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     }
 
     private void generateAll() {
-        generatePotions();
-        generateClue();
-        generateBackWays();
-        generateRobbers();
+        List<Point> free = freeForObjects();
+        generatePotions(free);
+        generateClue(free);
+        generateBackWays(free);
+        generateRobbers(free);
     }
 
     @Override
@@ -152,34 +153,34 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
         deathMatch.clear();
     }
 
-    private void generateClue() {
+    private void generateClue(List<Point> free) {
         generate2(clueKnife(), dice,
                 settings, CLUE_COUNT_KNIFE,
-                this::freeForObjects,
+                () -> free,
                 ClueKnife::new);
 
         generate2(clueGlove(), dice,
                 settings, CLUE_COUNT_GLOVE,
-                this::freeForObjects,
+                () -> free,
                 ClueGlove::new);
 
         generate2(clueRing(), dice,
                 settings, CLUE_COUNT_RING,
-                this::freeForObjects,
+                () -> free,
                 ClueRing::new);
     }
 
-    private void generatePotions() {
+    private void generatePotions(List<Point> free) {
         generate2(potions(), dice,
                 settings, MASK_POTIONS_COUNT,
-                this::freeForObjects,
+                () -> free,
                 pt -> new Potion(pt, MASK_POTION));
     }
 
-    private void generateRobbers() {
+    private void generateRobbers(List<Point> free) {
         generate2(robbers(), dice,
                 settings, ROBBERS_COUNT,
-                this::freeForObjects,
+                () -> free,
                 pt -> {
                     Robber robber = new Robber(pt, LEFT);
                     robber.init(this);
@@ -187,10 +188,10 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 });
     }
 
-    private void generateBackWays() {
+    private void generateBackWays(List<Point> free) {
         generate2(backways(), dice,
                 settings, BACKWAYS_COUNT,
-                this::freeForObjects,
+                () -> free,
                 BackWay::new);
     }
 
@@ -357,7 +358,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
         if (backWaysTimer == 0) {
             resetBackWaysTimer();
             backways().clear();
-            generateBackWays();
+            generateBackWays(freeForObjects());
         } else {
             backWaysTimer--;
         }
