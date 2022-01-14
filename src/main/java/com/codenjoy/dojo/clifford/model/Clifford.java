@@ -462,8 +462,9 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
     @Override
     public boolean isHero(Point pt) {
-        for (Hero hero : aliveActiveHeroes().collect(toList())) {
-            if (hero.itsMe(pt)) {
+        for (Player player : players) {
+            Hero hero = player.getHero();
+            if (hero.isActiveAndAlive() && hero.itsMe(pt)) {
                 return true;
             }
         }
