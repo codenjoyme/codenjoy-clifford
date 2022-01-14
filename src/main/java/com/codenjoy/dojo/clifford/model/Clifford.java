@@ -463,7 +463,9 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     @Override
     public boolean isHero(Point pt) {
         return aliveActiveHeroes()
-                .anyMatch(hero -> hero.itsMe(pt));
+                .filter(hero -> hero.itsMe(pt))
+                .findFirst()
+                .isPresent();
     }
 
     // TODO test
