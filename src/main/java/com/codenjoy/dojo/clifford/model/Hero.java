@@ -26,9 +26,9 @@ package com.codenjoy.dojo.clifford.model;
 import com.codenjoy.dojo.clifford.model.items.Bullet;
 import com.codenjoy.dojo.clifford.model.items.Ladder;
 import com.codenjoy.dojo.clifford.model.items.Pipe;
-import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.KeyType;
+import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.services.Event;
 import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Direction;
@@ -80,7 +80,7 @@ public class Hero extends RoundPlayerHero<Field>
     public Hero(Point pt, Direction direction) {
         super(pt);
         this.direction = direction;
-        moving = false;
+        moving = false; // TODO а разве это не должно быть в clearScore?
         crack = false;
         jump = false;
         openDoor = false;
@@ -265,8 +265,7 @@ public class Hero extends RoundPlayerHero<Field>
             }
 
             boolean noPhysicalBarrier = !field.isBarrier(dest);
-            boolean victim = isRegularPlayerAt(dest) && isMask();
-            if (noPhysicalBarrier || victim) {
+            if (noPhysicalBarrier || isMaskHuntsFor(dest)) {
                 move(dest);
             }
         }
@@ -300,11 +299,6 @@ public class Hero extends RoundPlayerHero<Field>
 
     private boolean isMask() {
         return under(MASK_POTION);
-    }
-
-    private boolean isRegularPlayerAt(Point pt) {
-        return field.isHero(pt)
-                && !field.under(pt, MASK_POTION);
     }
 
     private void dissolvePotions() {
@@ -359,7 +353,12 @@ public class Hero extends RoundPlayerHero<Field>
 
     public boolean isFall() {
         return (field.isPit(this) && !field.isPipe(this) && !field.isLadder(this))
-                || (isMask() && isRegularPlayerAt(underHero()));
+                || isMaskHuntsFor(underHero());
+    }
+
+    private boolean isMaskHuntsFor(Point pt) {
+        return isMask()
+                && field.isRegularHero(pt);
     }
 
     private Point underHero() {

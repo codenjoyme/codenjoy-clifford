@@ -30,7 +30,6 @@ import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
 import com.codenjoy.dojo.clifford.model.items.potion.Potion;
-import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.games.clifford.Element;
@@ -53,6 +52,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 import static com.codenjoy.dojo.clifford.model.items.door.KeyType.*;
 import static com.codenjoy.dojo.clifford.model.items.potion.PotionType.MASK_POTION;
@@ -383,7 +383,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 || pt.getY() < 0 || pt.getY() > size() - 1
                 || isFullBrick(pt)
                 || isBorder(pt)
-                || (isHero(pt) && !under(pt, MASK_POTION))
+                || isRegularHero(pt)
                 || doors().getAt(pt).stream().anyMatch(Door::isClosed);
     }
 
@@ -462,9 +462,21 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
     @Override
     public boolean isHero(Point pt) {
+        return isHero(pt, hero -> true);
+    }
+
+    @Override
+    public boolean isRegularHero(Point pt) {
+        return isHero(pt, hero -> !hero.under(MASK_POTION));
+    }
+
+    private boolean isHero(Point pt, Predicate<Hero> filter) {
         for (Player player : players) {
             Hero hero = player.getHero();
-            if (hero.isActiveAndAlive() && hero.itsMe(pt)) {
+            if (hero.isActiveAndAlive()
+                    && hero.itsMe(pt)
+                    && filter.test(hero))
+            {
                 return true;
             }
         }
@@ -514,13 +526,6 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
         } else if (type == ClueRing.class) {
             clueRing().add(new ClueRing(pt));
         }
-    }
-
-    @Override
-    public boolean under(Point pt, PotionType potion) {
-        return heroes().stream()
-                .filter(hero -> hero.equals(pt))
-                .anyMatch(hero -> hero.under(potion));
     }
 
     @Override

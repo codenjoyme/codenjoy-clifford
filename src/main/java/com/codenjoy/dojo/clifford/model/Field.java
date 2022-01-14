@@ -27,7 +27,6 @@ import com.codenjoy.dojo.clifford.model.items.Brick;
 import com.codenjoy.dojo.clifford.model.items.Bullet;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
-import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.services.Point;
@@ -41,8 +40,6 @@ public interface Field extends RoundGameField<Player, Hero> {
     boolean tryToCrack(Hero hero, Point pt);
 
     void leaveClue(Point pt, Class<? extends Point> clazz);
-
-    boolean under(Point pt, PotionType potion);
 
     int size();
 
@@ -63,6 +60,8 @@ public interface Field extends RoundGameField<Player, Hero> {
     boolean isFullBrick(Point pt);
 
     boolean isHero(Point pt);
+
+    boolean isRegularHero(Point pt);
 
     boolean isBrick(Point pt);
 
