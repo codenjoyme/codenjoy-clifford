@@ -46,10 +46,7 @@ import com.codenjoy.dojo.utils.whatsnext.WhatsNextUtils;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -59,7 +56,6 @@ import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.Direction.*;
 import static com.codenjoy.dojo.services.field.Generator.generate2;
-import static java.util.stream.Collectors.toList;
 
 public class Clifford extends RoundField<Player, Hero> implements Field {
 
@@ -495,6 +491,12 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     }
 
     @Override
+    public List<Hero> visibleHeroes() {
+        // TODO test что воры не гонятся за точками спауна
+        return heroes(Hero::isVisible);
+    }
+
+    @Override
     public boolean isRegularHero(Point pt) {
         return isHero(pt, hero -> !hero.under(MASK_POTION));
     }
@@ -510,6 +512,17 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
             }
         }
         return false;
+    }
+
+    private List<Hero> heroes(Predicate<Hero> filter) {
+        List<Hero> result = new ArrayList<>(players.size());
+        for (Player player : players) {
+            Hero hero = player.getHero();
+            if (hero.isActiveAndAlive() && filter.test(hero)) {
+                result.add(hero);
+            }
+        }
+        return result;
     }
 
     // TODO test
@@ -636,13 +649,6 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     @Override
     public Accessor<Brick> bricks() {
         return field.of(Brick.class);
-    }
-
-    @Override
-    public List<Hero> visibleHeroes() {
-        return aliveActiveHeroes()   // TODO test что воры не гонятся за точками спауна
-                .filter(Hero::isVisible)
-                .collect(toList());
     }
 
     public Accessor<Ladder> ladder() {

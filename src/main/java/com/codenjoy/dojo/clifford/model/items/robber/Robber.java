@@ -23,20 +23,22 @@ package com.codenjoy.dojo.clifford.model.items.robber;
  */
 
 
-import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.clifford.model.Field;
-import com.codenjoy.dojo.services.field.Fieldable;
 import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.clifford.model.Player;
-import com.codenjoy.dojo.services.*;
+import com.codenjoy.dojo.games.clifford.Element;
+import com.codenjoy.dojo.services.Direction;
+import com.codenjoy.dojo.services.Point;
+import com.codenjoy.dojo.services.PointImpl;
+import com.codenjoy.dojo.services.Tickable;
+import com.codenjoy.dojo.services.field.Fieldable;
 import com.codenjoy.dojo.services.printer.state.State;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 
 import static com.codenjoy.dojo.services.Direction.*;
-import static java.util.stream.Collectors.toList;
 
 public class Robber extends PointImpl implements Tickable, Fieldable<Field>, State<Element, Player> {
 
@@ -131,14 +133,17 @@ public class Robber extends PointImpl implements Tickable, Fieldable<Field>, Sta
         }
 
         // ищем за кем охотиться
-        List<Robber> robbers = field.robbers().all();
+        List<Hero> preys = new LinkedList<>();
+        for (Robber robber : field.robbers()) {
+            if (robber.prey() != null) {
+                preys.add(robber.prey());
+            }
+        }
+
         // выбираем только тех, за кем еще никто не охотится
-        List<Hero> free = all.stream()
-                .filter(prey -> robbers.stream()
-                        .map(Robber::prey)
-                        .filter(Objects::nonNull)
-                        .noneMatch(prey::equals))
-                .collect(toList());
+        List<Hero> free = new LinkedList<>(all);
+        free.removeAll(preys);
+
         // если все заняты, будем бежать за ближайшим
         if (free.isEmpty()) {
             return all;
