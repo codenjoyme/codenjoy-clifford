@@ -317,7 +317,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 hero.pick(MASK_POTION);
             }
 
-            if (backways().contains(hero)) {
+            if (isBackway(hero)) {
                 transport(hero);
             }
         }
@@ -356,10 +356,15 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 robber.getClue(ClueRing.class);
             }
 
-            if (backways().contains(robber)) {
+            if (isBackway(robber)) {
                 transport(robber);
             }
         }
+    }
+
+    @Override
+    public boolean isBackway(Point pt) {
+        return backways().contains(pt);
     }
 
     @Override
