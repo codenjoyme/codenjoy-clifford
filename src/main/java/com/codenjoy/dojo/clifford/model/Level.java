@@ -24,16 +24,15 @@ package com.codenjoy.dojo.clifford.model;
 
 
 import com.codenjoy.dojo.clifford.model.items.*;
-import com.codenjoy.dojo.clifford.model.items.potion.Potion;
-import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueGlove;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
+import com.codenjoy.dojo.clifford.model.items.potion.Potion;
+import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
 import com.codenjoy.dojo.games.clifford.Element;
-import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.field.AbstractLevel;
 import com.codenjoy.dojo.services.field.PointField;
 
@@ -123,12 +122,16 @@ public class Level extends AbstractLevel {
         }});
     }
 
-    public List<Key> keys() {
-        return find(new LinkedHashMap<>() {{
-            put(KEY_GOLD, pt -> new Key(pt, GOLD));
-            put(KEY_SILVER, pt -> new Key(pt, SILVER));
-            put(KEY_BRONZE, pt -> new Key(pt, BRONZE));
-        }});
+    public List<Key> goldenKeys() {
+        return find(pt -> new Key(pt, GOLD), KEY_GOLD);
+    }
+
+    public List<Key> silverKeys() {
+        return find(pt -> new Key(pt, SILVER), KEY_SILVER);
+    }
+
+    public List<Key> bronzeKeys() {
+        return find(pt -> new Key(pt, BRONZE), KEY_BRONZE);
     }
 
     @Override
@@ -144,6 +147,8 @@ public class Level extends AbstractLevel {
         field.addAll(clueRing());
         field.addAll(robbers());
         field.addAll(doors());
-        field.addAll(keys());
+        field.addAll(goldenKeys());
+        field.addAll(silverKeys());
+        field.addAll(bronzeKeys());
     }
 }

@@ -28,6 +28,8 @@ import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.PointImpl;
 import com.codenjoy.dojo.services.printer.state.State;
 
+import static com.codenjoy.dojo.clifford.model.items.door.KeyType.*;
+
 public class Key extends PointImpl implements State<Element, Player> {
 
     private KeyType type;
@@ -56,5 +58,17 @@ public class Key extends PointImpl implements State<Element, Player> {
         return String.format("[%s,%s=%s]",
                 x, y,
                 type);
+    }
+
+    public boolean golden() {
+        return type == GOLD;
+    }
+
+    public boolean silver() {
+        return type == SILVER;
+    }
+
+    public boolean bronze() {
+        return type == BRONZE;
     }
 }

@@ -29,7 +29,6 @@ import com.codenjoy.dojo.clifford.model.items.clue.ClueKnife;
 import com.codenjoy.dojo.clifford.model.items.clue.ClueRing;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
 import com.codenjoy.dojo.clifford.model.items.door.Key;
-import com.codenjoy.dojo.clifford.model.items.door.KeyType;
 import com.codenjoy.dojo.clifford.model.items.potion.Potion;
 import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
@@ -49,9 +48,13 @@ import com.codenjoy.dojo.utils.whatsnext.WhatsNextUtils;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Function;
 
+import static com.codenjoy.dojo.clifford.model.items.door.KeyType.*;
 import static com.codenjoy.dojo.clifford.model.items.potion.PotionType.MASK_POTION;
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
@@ -70,6 +73,10 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     private int backWaysTimer;
     private Multimap<Hero, Hero> deathMatch;
 
+    private int goldenKeys;
+    private int silverKeys;
+    private int bronzeKeys;
+
     public Clifford(Dice dice, Level level, GameSettings settings) {
         super(START_ROUND, WIN_ROUND, settings);
 
@@ -84,10 +91,14 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
     private void generateAll() {
         List<Point> free = freeForObjects();
+
         generatePotions(free);
         generateClue(free);
         generateBackWays(free);
         generateRobbers(free);
+        if (settings.bool(GENERATE_KEYS)) {
+            generateKeys(free);
+        }
     }
 
     @Override
@@ -97,6 +108,9 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
         level.saveTo(field);
         field.init(this);
 
+        goldenKeys = level.goldenKeys().size();
+        silverKeys = level.silverKeys().size();
+        bronzeKeys = level.bronzeKeys().size();
         deathMatch = LinkedHashMultimap.create();
         resetBackWaysTimer();
         generateAll();
@@ -134,7 +148,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     @Override
     public void oneMoreDead(Player player, Object loseEvent) {
         if (!settings.bool(GENERATE_KEYS)) {
-            releaseKeys(player.getHero().getKeys());
+            generateKeys(freeForObjects());
         }
         super.oneMoreDead(player, loseEvent);
     }
@@ -195,22 +209,21 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 BackWay::new);
     }
 
-    private void releaseKeys(Map<KeyType, Integer> keys) {
-        for (Map.Entry<KeyType, Integer> entry : keys.entrySet()) {
-            generate2(keys(), dice,
-                    entry.getValue(),
-                    this::freeForObjects,
-                    pt -> new Key(pt, entry.getKey()));
-        }
-    }
+    private void generateKeys(List<Point> free) {
+        generate2(keys(), dice,
+                goldenKeys - keys().filter(Key::golden).size(),
+                () -> free,
+                pt -> new Key(pt, GOLD));
 
-    private void generateKeys(List<Key> keys) {
-        for (Key prototype : keys) {
-            generate2(keys(), dice,
-                    1,
-                    this::freeForObjects,
-                    pt -> new Key(pt, prototype.getType()));
-        }
+        generate2(keys(), dice,
+                silverKeys - keys().filter(Key::silver).size() ,
+                () -> free,
+                pt -> new Key(pt, SILVER));
+
+        generate2(keys(), dice,
+                bronzeKeys - keys().filter(Key::bronze).size(),
+                () -> free,
+                pt -> new Key(pt, BRONZE));
     }
 
     private void bulletsGo() {
@@ -295,12 +308,9 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
             }
 
             if (keys().contains(hero)) {
-                List<Key> keys = keys().getAt(hero);
-                keys.forEach(key -> hero.pick(key.getType()));
+                Key key = keys().getFirstAt(hero);
+                hero.pick(key.getType());
                 keys().removeAt(hero);
-                if (settings.bool(GENERATE_KEYS)) {
-                    generateKeys(keys);
-                }
             }
 
             if (potions().contains(hero)) {
