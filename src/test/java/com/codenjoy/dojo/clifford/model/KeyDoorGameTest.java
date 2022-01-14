@@ -190,7 +190,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         // when
-        dice(1, 5);
+        dice(3); // free cell index for new key
         hero().right();
         tick();
 
@@ -207,7 +207,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
         // when
-        dice(2, 5);
+        dice(7); // free cell index for new key
         hero().right();
         tick();
 
@@ -224,7 +224,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=2, SILVER=0, BRONZE=0}");
 
         // when
-        dice(3, 5);
+        dice(11); // free cell index for new key
         hero().right();
         tick();
 
@@ -241,7 +241,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=2, SILVER=1, BRONZE=0}");
 
         // when
-        dice(4, 5);
+        dice(15); // free cell index for new key
         hero().right();
         tick();
 
@@ -943,9 +943,9 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=1}");
 
         // when
-        dice(1, 5,
-             2, 5,
-             3, 5);
+        dice(3, // free cell index for new key
+             7,
+             11);
         hero().die();
         tick();
 
@@ -990,7 +990,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         // when
-        dice(4, 6);
+        dice(17); // free cell index for new key
         hero().right();
         tick();
 
@@ -1007,7 +1007,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
         // when
-        dice(5, 6);
+        dice(21); // free cell index for new key
         hero().right();
         tick();
 
@@ -1024,7 +1024,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=0}");
 
         // when
-        dice(6, 6);
+        dice(26); // free cell index for new key
         hero().right();
         tick();
 
@@ -1041,9 +1041,8 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=1}");
 
         // when
-        dice(1, 5,
-             2, 5,
-             3, 5);
+        // тут не будет генерации, но если будет мы заметим
+        dice(0); // free cell index for new key
         hero().die();
         tick();
 
@@ -1068,10 +1067,18 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         // then
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
+
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   +-!☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼►     ☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     private void assertHeroKeys(String expected) {
         assertEquals(expected, hero().getKeys().toString());
     }
-
 }

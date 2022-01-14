@@ -36,15 +36,14 @@ public class PerformanceTest {
 
     @Test
     public void test() {
-
         // about 7.7 sec
         int robbers = 4;
         int players = 100;
         int ticks = 100;
 
-        int expectedCreation = 1300;
-        int expectedTick = 20000;
-        int expectedPrint = 3000;
+        int expectedCreation = 2000;
+        int expectedTick = 1500;
+        int expectedPrint = 9500;
 
         Dice dice = new DiceGenerator().getDice(2000);
         GameRunner runner = new GameRunner(){

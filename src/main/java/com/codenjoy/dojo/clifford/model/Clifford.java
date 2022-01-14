@@ -56,7 +56,7 @@ import static com.codenjoy.dojo.clifford.model.items.potion.PotionType.MASK_POTI
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.Direction.*;
-import static com.codenjoy.dojo.services.field.Generator.generate;
+import static com.codenjoy.dojo.services.field.Generator.generate2;
 import static java.util.stream.Collectors.toList;
 
 public class Clifford extends RoundField<Player, Hero> implements Field {
@@ -153,33 +153,33 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     }
 
     private void generateClue() {
-        generate(clueKnife(), size(),
+        generate2(clueKnife(), dice,
                 settings, CLUE_COUNT_KNIFE,
-                player -> freeRandom((Player) player),
+                this::freeForObjects,
                 ClueKnife::new);
 
-        generate(clueGlove(), size(),
+        generate2(clueGlove(), dice,
                 settings, CLUE_COUNT_GLOVE,
-                player -> freeRandom((Player) player),
+                this::freeForObjects,
                 ClueGlove::new);
 
-        generate(clueRing(), size(),
+        generate2(clueRing(), dice,
                 settings, CLUE_COUNT_RING,
-                player -> freeRandom((Player) player),
+                this::freeForObjects,
                 ClueRing::new);
     }
 
     private void generatePotions() {
-        generate(potions(), size(),
+        generate2(potions(), dice,
                 settings, MASK_POTIONS_COUNT,
-                player -> freeRandom((Player) player),
+                this::freeForObjects,
                 pt -> new Potion(pt, MASK_POTION));
     }
 
     private void generateRobbers() {
-        generate(robbers(), size(),
+        generate2(robbers(), dice,
                 settings, ROBBERS_COUNT,
-                player -> freeRandom((Player) player),
+                this::freeForObjects,
                 pt -> {
                     Robber robber = new Robber(pt, LEFT);
                     robber.init(this);
@@ -188,24 +188,26 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     }
 
     private void generateBackWays() {
-        generate(backways(), size(),
+        generate2(backways(), dice,
                 settings, BACKWAYS_COUNT,
-                player -> freeRandom((Player) player),
+                this::freeForObjects,
                 BackWay::new);
     }
 
     private void releaseKeys(Map<KeyType, Integer> keys) {
         for (Map.Entry<KeyType, Integer> entry : keys.entrySet()) {
-            generate(keys(), size(), entry.getValue(),
-                    player -> freeRandom((Player) player),
+            generate2(keys(), dice,
+                    entry.getValue(),
+                    this::freeForObjects,
                     pt -> new Key(pt, entry.getKey()));
         }
     }
 
     private void generateKeys(List<Key> keys) {
         for (Key prototype : keys) {
-            generate(keys(), size(), 1,
-                    player -> freeRandom((Player) player),
+            generate2(keys(), dice,
+                    1,
+                    this::freeForObjects,
                     pt -> new Key(pt, prototype.getType()));
         }
     }
@@ -422,6 +424,15 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     @Override
     public Optional<Point> freeRandom(Player player) {
         return Generator.freeRandom(size(), dice, this::isFree);
+    }
+
+    @PerformanceOptimized
+    public List<Point> freeForObjects() {
+        return field.pointsMatch(this::freeForObject);
+    }
+
+    private boolean freeForObject(List<Point> objects) {
+        return (objects == null || objects.isEmpty());
     }
 
     @Override
