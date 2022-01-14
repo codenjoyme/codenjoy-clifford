@@ -358,7 +358,6 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
         if (backWaysTimer == 0) {
             resetBackWaysTimer();
             backways().clear();
-            generateBackWays(freeForObjects());
         } else {
             backWaysTimer--;
         }
