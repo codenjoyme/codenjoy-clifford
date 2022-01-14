@@ -409,13 +409,18 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 || clueRing().contains(over)
                 || isFullBrick(over)
                 || isHero(over)
-                || robbers().contains(over)) {
+                || isRobber(over)) {
             return false;
         }
 
         getBrick(pt).ifPresent(brick -> brick.crack(byHero));
 
         return true;
+    }
+
+    @Override
+    public boolean isRobber(Point pt) {
+        return robbers().contains(pt);
     }
 
     @Override
@@ -426,7 +431,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 || isLadder(under)
                 || isBorder(under)
                 || isHero(under)
-                || robbers().contains(under));
+                || isRobber(under));
     }
 
     @Override
@@ -507,7 +512,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
     @Override
     public boolean isHunter(Point pt) {
-        return robbers().contains(pt)
+        return isRobber(pt)
                 || isAnyHeroMaskAt(pt);
     }
 

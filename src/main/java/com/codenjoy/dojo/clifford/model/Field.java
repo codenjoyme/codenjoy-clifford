@@ -49,6 +49,8 @@ public interface Field extends RoundGameField<Player, Hero> {
 
     boolean isBarrier(Point pt);
 
+    boolean isRobber(Point pt);
+
     boolean isPit(Point pt);
 
     boolean isLadder(Point pt);
