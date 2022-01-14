@@ -32,7 +32,6 @@ import com.codenjoy.dojo.clifford.model.items.door.Key;
 import com.codenjoy.dojo.clifford.model.items.potion.Potion;
 import com.codenjoy.dojo.clifford.model.items.robber.Robber;
 import com.codenjoy.dojo.clifford.services.GameSettings;
-import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.PointImpl;
@@ -432,8 +431,9 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
     @Override
     public boolean isFullBrick(Point pt) {
-        return bricks().getAt(pt).stream()
-                .anyMatch(brick -> brick.state(null) == Element.BRICK);
+        Brick brick = bricks().getFirstAt(pt);
+        return brick != null
+                && brick.isFull();
     }
 
     @Override
