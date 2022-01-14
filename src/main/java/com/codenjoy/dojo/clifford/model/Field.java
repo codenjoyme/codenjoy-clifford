@@ -47,6 +47,10 @@ public interface Field extends RoundGameField<Player, Hero> {
 
     void affect(Bullet bullet);
 
+    boolean isClueRing(Point pt);
+
+    boolean isClueGlove(Point pt);
+
     boolean isBarrier(Point pt);
 
     boolean isRobber(Point pt);

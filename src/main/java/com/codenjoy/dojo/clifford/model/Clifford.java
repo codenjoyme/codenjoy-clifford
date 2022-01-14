@@ -293,15 +293,15 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 }
             }
 
-            if (clueKnife().contains(hero)) {
+            if (isClueKnife(hero)) {
                 clueKnife().removeAt(hero);
                 hero.pickClue(GET_CLUE_KNIFE);
             }
-            if (clueGlove().contains(hero)) {
+            if (isClueGlove(hero)) {
                 clueGlove().removeAt(hero);
                 hero.pickClue(GET_CLUE_GLOVE);
             }
-            if (clueRing().contains(hero)) {
+            if (isClueRing(hero)) {
                 clueRing().removeAt(hero);
                 hero.pickClue(GET_CLUE_RING);
             }
@@ -345,13 +345,13 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
             robber.tick();
             diedFromHunter();
 
-            if (clueKnife().contains(robber) && !robber.withClue()) {
+            if (isClueKnife(robber) && !robber.withClue()) {
                 clueKnife().removeAt(robber);
                 robber.getClue(ClueKnife.class);
-            } else if (clueGlove().contains(robber) && !robber.withClue()) {
+            } else if (isClueGlove(robber) && !robber.withClue()) {
                 clueGlove().removeAt(robber);
                 robber.getClue(ClueGlove.class);
-            } else if (clueRing().contains(robber) && !robber.withClue()) {
+            } else if (isClueRing(robber) && !robber.withClue()) {
                 clueRing().removeAt(robber);
                 robber.getClue(ClueRing.class);
             }
@@ -360,6 +360,16 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 transport(robber);
             }
         }
+    }
+
+    @Override
+    public boolean isClueRing(Point pt) {
+        return clueRing().contains(pt);
+    }
+
+    @Override
+    public boolean isClueGlove(Point pt) {
+        return clueGlove().contains(pt);
     }
 
     // TODO сделать чтобы каждый черный ход сам тикал свое время
@@ -404,9 +414,9 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
         Point over = UP.change(pt);
         if (isLadder(over)
-                || clueKnife().contains(over)
-                || clueGlove().contains(over)
-                || clueRing().contains(over)
+                || isClueKnife(over)
+                || isClueGlove(over)
+                || isClueRing(over)
                 || isFullBrick(over)
                 || isHero(over)
                 || isRobber(over)) {
@@ -416,6 +426,10 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
         getBrick(pt).ifPresent(brick -> brick.crack(byHero));
 
         return true;
+    }
+
+    private boolean isClueKnife(Point over) {
+        return clueKnife().contains(over);
     }
 
     @Override
