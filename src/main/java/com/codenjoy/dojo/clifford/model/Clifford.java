@@ -379,8 +379,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
     @Override
     public boolean isBarrier(Point pt) {
-        return pt.getX() > size() - 1 || pt.getX() < 0
-                || pt.getY() < 0 || pt.getY() > size() - 1
+        return pt.isOutOf(size())
                 || isFullBrick(pt)
                 || isBorder(pt)
                 || isRegularHero(pt)
@@ -502,7 +501,8 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
     @Override
     public boolean isHunter(Point pt) {
-        return robbers().contains(pt) || isAnyHeroMaskAt(pt);
+        return robbers().contains(pt)
+                || isAnyHeroMaskAt(pt);
     }
 
     @PerformanceOptimized

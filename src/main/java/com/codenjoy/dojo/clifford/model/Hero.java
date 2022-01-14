@@ -407,7 +407,8 @@ public class Hero extends RoundPlayerHero<Field>
     }
 
     private boolean isPit() {
-        return field.isBrick(this) && field.isBarrier(underHero());
+        return field.isBrick(this)
+                && field.isBarrier(underHero());
     }
 
     private boolean isLeftTurn() {
