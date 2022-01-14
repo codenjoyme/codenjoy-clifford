@@ -48,10 +48,7 @@ import com.codenjoy.dojo.utils.whatsnext.WhatsNextUtils;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 
 import static com.codenjoy.dojo.clifford.model.items.door.KeyType.*;
@@ -462,10 +459,13 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
     @Override
     public boolean isHero(Point pt) {
-        return aliveActiveHeroes()
-                .filter(hero -> hero.itsMe(pt))
-                .findFirst()
-                .isPresent();
+        Iterator<Hero> iterator = aliveActiveHeroes().iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().itsMe(pt)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // TODO test
