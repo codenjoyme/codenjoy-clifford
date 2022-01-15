@@ -25,7 +25,6 @@ package com.codenjoy.dojo.clifford.services.ai;
 
 import com.codenjoy.dojo.client.Solver;
 import com.codenjoy.dojo.games.clifford.Board;
-import com.codenjoy.dojo.games.clifford.Element;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.Point;
@@ -50,17 +49,15 @@ public class AISolver implements Solver<Board> {
         return new DeikstraFindWay.Possible() {
             @Override
             public boolean possible(Point from, Direction where) {
-                Element fromEl = board.getAt(from);
-                if (where == UP && !fromEl.isLadder()) return false;
+                if (where == UP && !board.isLadderAt(from)) return false;
 
                 Point under = DOWN.change(from);
-                Element underEl = board.getAt(under);
                 if (where != DOWN
                         && !under.isOutOf(board.size())
-                        && !underEl.isWall()
-                        && !underEl.isLadder()
-                        && !fromEl.isLadder()
-                        && !fromEl.isPipe()) return false;
+                        && !board.isWallAt(under)
+                        && !board.isLadderAt(under)
+                        && !board.isLadderAt(from)
+                        && !board.isPipeAt(from)) return false;
 
                 return true;
             }
@@ -68,11 +65,10 @@ public class AISolver implements Solver<Board> {
             @Override
             public boolean possible(Point pt) {
                 if (pt.isOutOf(board.size())) return false;
-                Element el = board.getAt(pt);
-                if (el.isWall()) return false;
-                if (el.isRobber()) return false;
-                if (el.isOtherHero()) return false;
-                if (el.isEnemyHero()) return false;
+                if (board.isWallAt(pt)) return false;
+                if (board.isRobberAt(pt)) return false;
+                if (board.isOtherHeroAt(pt)) return false;
+                if (board.isEnemyHeroAt(pt)) return false;
                 return true;
             }
         };
