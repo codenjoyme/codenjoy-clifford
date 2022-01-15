@@ -25,25 +25,28 @@ package com.codenjoy.dojo.clifford;
 import com.codenjoy.dojo.client.local.DiceGenerator;
 import com.codenjoy.dojo.clifford.services.GameRunner;
 import com.codenjoy.dojo.clifford.services.GameSettings;
+import com.codenjoy.dojo.clifford.services.Levels;
 import com.codenjoy.dojo.services.Dice;
+import com.codenjoy.dojo.services.multiplayer.LevelProgress;
 import org.junit.Test;
 
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.ROBBERS_COUNT;
 import static com.codenjoy.dojo.services.round.RoundSettings.Keys.ROUNDS_ENABLED;
 import static com.codenjoy.dojo.utils.TestUtils.assertPerformance;
+import static org.junit.Assert.assertEquals;
 
 public class PerformanceTest {
 
     @Test
     public void test() {
-        // about 5.8 sec
-        int robbers = 4;
-        int players = 100;
+        // about 9.5 sec
+        int robbers = 10;
+        int players = 20;
         int ticks = 100;
 
-        int expectedCreation = 2000;
-        int expectedTick = 1500;
-        int expectedPrint = 9500;
+        int expectedCreation = 1400;
+        int expectedPrint = 7300;
+        int expectedTick = 500;
 
         Dice dice = new DiceGenerator().getDice(2000);
         GameRunner runner = new GameRunner(){
@@ -56,16 +59,77 @@ public class PerformanceTest {
             @Override
             public GameSettings getSettings() {
                 return new GameSettings()
+                    .setLevelMaps(LevelProgress.levelsStartsFrom1, Levels.BIG_LEVEL)
                     .bool(ROUNDS_ENABLED, false)
                     .integer(ROBBERS_COUNT, robbers);
             }
         };
 
         boolean printBoard = false;
-        assertPerformance(runner,
+        String board = assertPerformance(runner,
                 players, ticks,
                 expectedCreation, expectedTick, expectedPrint,
                 printBoard);
-    }
 
+        assertEquals(
+                "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼\n" +
+                "☼                             ~~~~~~~~~           ~~~~~~~☼\n" +
+                "☼##D########################H#H       H##########H       ☼\n" +
+                "☼  H  »                 & $ H######H  H          H#☼☼☼☼☼#☼\n" +
+                "☼H☼☼#☼☼H    H#########H     H#     H#####H#####H##  ~~~~~☼\n" +
+                "☼H     H    H &       H#####H#     H ~   H     H  ~~     ☼\n" +
+                "☼H#☼#☼#H    H         H  ~~~ #####H#     H     H    ~~   ☼\n" +
+                "☼H  ~  H~J~~H~~~~~~«  H           H   H######H##   @  ~~ ☼\n" +
+                "☼H     H    H     H###☼☼☼☼☼☼H☼    H~~~H      H          #☼\n" +
+                "☼H     H    H#####H         H     H      H#########H     ☼\n" +
+                "☼☼###☼##☼##☼H    &    H###H##    H##     H#       ##     ☼\n" +
+                "☼☼###☼~~~~  H         H   H######H######### H###H #####H#☼\n" +
+                "☼☼ @ ☼      H   ~~~~~~H   H      H »        H# #H      H ☼\n" +
+                "☼########H###☼☼☼☼     H  ############   ###### ##########☼\n" +
+                "☼        H        »   H                                  ☼\n" +
+                "☼H##########################H########~~~####H############☼\n" +
+                "☼H                 ~~~  &   H             $ H            ☼\n" +
+                "☼#######H#######    @       H###~~~~      ############H  ☼\n" +
+                "☼&      H~~~~~Y~J~~ «  )    H                         H  ☼\n" +
+                "☼       H    ##H   #######H##########~~~~~~~H######## H  ☼\n" +
+                "☼       H    ##H    W     H    $            H         H  ☼\n" +
+                "☼##H#####    ########H#######~~~~  ~~~#########~~~~~  H  ☼\n" +
+                "☼  H      »          H                            ~~~~H  ☼\n" +
+                "☼#########H##########H        #☼☼☼☼☼☼#   ☼☼☼☼☼☼☼      H  ☼\n" +
+                "☼       $ H        & H & &    ~     $~                H  ☼\n" +
+                "☼☼☼@      H~~~~~~~~~~H         ######   ###########   H  ☼\n" +
+                "☼    H######         #######H           ~~~~~~~~~~~~~~H  ☼\n" +
+                "☼H☼  H W          &      W  H  H####H     (        »  H  ☼\n" +
+                "☼H☼☼#☼☼☼☼☼☼☼☼☼☼☼☼###☼☼☼☼☼☼☼☼H☼☼☼☼☼☼☼☼#☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼#☼\n" +
+                "☼H            ~~H~~~~☼☼☼☼☼☼☼H☼☼☼☼☼☼☼    @  H   ~~~~~~~~~H☼\n" +
+                "☼H~~~~  ######  H &       H☼H☼H        ####H $☼         H☼\n" +
+                "☼H      &       ##H#######H☼H☼H######H     ###☼☼☼☼☼☼☼☼ ~H☼\n" +
+                "☼H#########       H    ~~~H☼H☼H~~~   H~~~~~ ##   &    ~ H☼\n" +
+                "☼H        ###H####H##H     ☼H☼       H     ###☼☼☼☼☼☼ ~  D☼\n" +
+                "☼H   &       H      #######☼H☼#####  H#####   ~~~~~~~ ~ H☼\n" +
+                "☼~~~~~~~~~~~~H  U    H~~~~~☼X☼~~~~~  H             ~ ~  H☼\n" +
+                "☼   $ H              H     ☼H☼     ##########H          H☼\n" +
+                "☼ ### #############H H#####☼H☼               H ######## H☼\n" +
+                "☼H           &     H       ☼H☼#######      » H      &   H☼\n" +
+                "☼H#####         H##H####           F    ###H#########   H☼\n" +
+                "☼H      H######### H   ############      $ H            H☼\n" +
+                "☼H##    H          H~~~~~~                 H #######H## H☼\n" +
+                "☼~~~~#####H#   ~~~~H         ########HF    H        D   H☼\n" +
+                "☼         H   W    H      ~~~~~~~~   H     H        H   H☼\n" +
+                "☼   ########H    ######H##        ##############    H   H☼\n" +
+                "☼           H          H        ~~~~~           ##H#####H☼\n" +
+                "☼H    ###########H     H#####H         H##H       H     H☼\n" +
+                "☼H###(           H   x H    $###########  ##H###  H     H☼\n" +
+                "☼H  ######  ##H###### (D       $            H & ##H###  H☼\n" +
+                "☼H            H ~~~~~##H###H     #########H##           H☼\n" +
+                "☼    H########H#  F    H   ######         H     W       H☼\n" +
+                "☼ ###H    »   H         ~~~~~H      ##H###H####H###     H☼\n" +
+                "☼    H########H#########     H        H      & D        H☼\n" +
+                "☼H   H           &   &       H        H        X        H☼\n" +
+                "☼H  ####H######         #####H########H##      H#####   H☼\n" +
+                "☼H      H )    H#######X                       H &      H☼\n" +
+                "☼##############H       H#################################☼\n" +
+                "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼\n",
+                board);
+    }
 }

@@ -55,7 +55,7 @@ import static com.codenjoy.dojo.clifford.model.items.potion.PotionType.MASK_POTI
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 import static com.codenjoy.dojo.services.Direction.*;
-import static com.codenjoy.dojo.services.field.Generator.generate2;
+import static com.codenjoy.dojo.services.field.Generator.generate;
 
 public class Clifford extends RoundField<Player, Hero> implements Field {
 
@@ -85,14 +85,12 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     }
 
     private void generateAll() {
-        List<Point> free = freeForObjects();
-
-        generatePotions(free);
-        generateClue(free);
-        generateBackWays(free);
-        generateRobbers(free);
+        generatePotions();
+        generateClue();
+        generateBackWays();
+        generateRobbers();
         if (settings.bool(GENERATE_KEYS)) {
-            generateKeys(free);
+            generateKeys();
         }
     }
 
@@ -143,7 +141,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     @Override
     public void oneMoreDead(Player player, Object loseEvent) {
         if (!settings.bool(GENERATE_KEYS)) {
-            generateKeys(freeForObjects());
+            generateKeys();
         }
         super.oneMoreDead(player, loseEvent);
     }
@@ -162,34 +160,34 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
         deathMatch.clear();
     }
 
-    private void generateClue(List<Point> free) {
-        generate2(clueKnife(), dice,
+    private void generateClue() {
+        generate(clueKnife(), size(),
                 settings, CLUE_COUNT_KNIFE,
-                () -> free,
+                player -> freeRandom((Player) player),
                 ClueKnife::new);
 
-        generate2(clueGlove(), dice,
+        generate(clueGlove(), size(),
                 settings, CLUE_COUNT_GLOVE,
-                () -> free,
+                player -> freeRandom((Player) player),
                 ClueGlove::new);
 
-        generate2(clueRing(), dice,
+        generate(clueRing(), size(),
                 settings, CLUE_COUNT_RING,
-                () -> free,
+                player -> freeRandom((Player) player),
                 ClueRing::new);
     }
 
-    private void generatePotions(List<Point> free) {
-        generate2(potions(), dice,
+    private void generatePotions() {
+        generate(potions(), size(),
                 settings, MASK_POTIONS_COUNT,
-                () -> free,
+                player -> freeRandom((Player) player),
                 pt -> new Potion(pt, MASK_POTION));
     }
 
-    private void generateRobbers(List<Point> free) {
-        generate2(robbers(), dice,
+    private void generateRobbers() {
+        generate(robbers(), size(),
                 settings, ROBBERS_COUNT,
-                () -> free,
+                player -> freeRandom((Player) player),
                 pt -> {
                     Robber robber = new Robber(pt, LEFT);
                     robber.init(this);
@@ -197,27 +195,27 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 });
     }
 
-    private void generateBackWays(List<Point> free) {
-        generate2(backways(), dice,
+    private void generateBackWays() {
+        generate(backways(), size(),
                 settings, BACKWAYS_COUNT,
-                () -> free,
+                player -> freeRandom((Player) player),
                 BackWay::new);
     }
 
-    private void generateKeys(List<Point> free) {
-        generate2(keys(), dice,
+    private void generateKeys() {
+        generate(keys(), size(),
                 goldenKeys - keys().filter(Key::golden).size(),
-                () -> free,
+                player -> freeRandom((Player) player),
                 pt -> new Key(pt, GOLD));
 
-        generate2(keys(), dice,
+        generate(keys(), size(),
                 silverKeys - keys().filter(Key::silver).size() ,
-                () -> free,
+                player -> freeRandom((Player) player),
                 pt -> new Key(pt, SILVER));
 
-        generate2(keys(), dice,
+        generate(keys(), size(),
                 bronzeKeys - keys().filter(Key::bronze).size(),
-                () -> free,
+                player -> freeRandom((Player) player),
                 pt -> new Key(pt, BRONZE));
     }
 
@@ -459,15 +457,6 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     @Override
     public Optional<Point> freeRandom(Player player) {
         return Generator.freeRandom(size(), dice, this::isFree);
-    }
-
-    @PerformanceOptimized
-    public List<Point> freeForObjects() {
-        return field.pointsMatch(this::freeForObject);
-    }
-
-    private boolean freeForObject(List<Point> objects) {
-        return (objects == null || objects.isEmpty());
     }
 
     @Override

@@ -900,7 +900,7 @@ public class GameTest extends AbstractGameTest {
                 "☼☼☼☼☼\n");
 
         // when
-        dice(3); // free cell index for new gold
+        dice(2, 3); // gold
         hero().right();
         
         tick();
@@ -937,9 +937,9 @@ public class GameTest extends AbstractGameTest {
                 "☼☼☼☼☼\n");
 
         // when
-        // индекс пустой ячейки, в которой будет генериться новый объект
+        // координата пустой ячейки, в которой будет генериться новый объект
         // после того как его подберут
-        dice(4);
+        dice(3, 3);
         hero().right();
         tick();
         
@@ -1530,7 +1530,7 @@ public class GameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼\n");
 
         // when
-        dice(4); // free cell index for new clue
+        dice(1, 5); // clue
         hero().left();
         tick();
 
@@ -1546,7 +1546,7 @@ public class GameTest extends AbstractGameTest {
         verifyAllEvents("[GET_CLUE_KNIFE(1)]");
 
         // when
-        dice(5); // free cell index for new clue
+        dice(2, 5); // clue
         tick();
 
         // then
@@ -1561,7 +1561,7 @@ public class GameTest extends AbstractGameTest {
         verifyAllEvents("[GET_CLUE_KNIFE(2)]");
 
         // when
-        dice(9); // free cell index for new clue
+        dice(3, 5); // clue
         tick();
 
         // then
@@ -1576,7 +1576,7 @@ public class GameTest extends AbstractGameTest {
         verifyAllEvents("[GET_CLUE_KNIFE(3)]");
 
         // when
-        dice(13); // free cell index for new clue
+        dice(4, 5); // clue
         tick();
 
         // then
@@ -3381,7 +3381,7 @@ public class GameTest extends AbstractGameTest {
         // when
         // герой может пройти по нему сверху и забрать улику
         hero().left();
-        dice(4); // free cell index for new gold
+        dice(1, 6); // gold
         tick();
 
         // then
@@ -3412,7 +3412,7 @@ public class GameTest extends AbstractGameTest {
 
         // when
         hero().left();
-        dice(8); // free cell index for new gold
+        dice(2, 6); // gold
         tick();
 
         verifyAllEvents("[GET_CLUE_KNIFE(2)]");
@@ -3498,7 +3498,7 @@ public class GameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼\n");
 
         // when
-        dice(4); // free cell index for new gold
+        dice(1, 6); // gold
         hero().left();
         tick();
 
@@ -3529,7 +3529,7 @@ public class GameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼\n");
 
         // when
-        dice(8); // free cell index for new gold
+        dice(2, 6); // gold
         hero().left();
         tick();
 
@@ -4632,8 +4632,8 @@ public class GameTest extends AbstractGameTest {
                 "☼☼☼☼☼\n");
 
         // when
-        dice(1, // free cell index for new backway
-             2);
+        dice(1, 3, // backway
+            2, 3); // backway
         tick();
 
         // then
@@ -4686,7 +4686,7 @@ public class GameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼\n");
 
         // when
-        dice(1, 2); // new hero coordinates
+        dice(1, 2); // hero
         field().clearScore();
 
         // then
@@ -4829,11 +4829,8 @@ public class GameTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
-        // индекс первой пустой ячейки, в которой будет генериться новый объект
-        // после того как его подберут
-        dice(0);
-
         // when
+        dice(-1); // ничего нового не генерим
         tick();
 
         // then
@@ -4858,7 +4855,7 @@ public class GameTest extends AbstractGameTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼$►$&@@☼\n" +
+                "☼ ►$&@@☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
@@ -4873,8 +4870,8 @@ public class GameTest extends AbstractGameTest {
                 "☼      ☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼$     ☼\n" +
-                "☼$ ►&@@☼\n" +
+                "☼      ☼\n" +
+                "☼  ►&@@☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
@@ -4888,9 +4885,9 @@ public class GameTest extends AbstractGameTest {
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
-                "☼&     ☼\n" +
-                "☼$     ☼\n" +
-                "☼$  ►@@☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼   ►@@☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
@@ -4903,10 +4900,10 @@ public class GameTest extends AbstractGameTest {
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
-                "☼@     ☼\n" +
-                "☼&     ☼\n" +
-                "☼$     ☼\n" +
-                "☼$   ►@☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼    ►@☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
@@ -4918,11 +4915,11 @@ public class GameTest extends AbstractGameTest {
         verifyAllEvents("[GET_CLUE_RING(2)]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼@     ☼\n" +
-                "☼@     ☼\n" +
-                "☼&     ☼\n" +
-                "☼$     ☼\n" +
-                "☼$    ►☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼     ►☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
     }
@@ -4951,18 +4948,13 @@ public class GameTest extends AbstractGameTest {
         settings().integer(CLUE_COUNT_KNIFE, settings().integer(CLUE_COUNT_KNIFE) + 2)
                 .integer(CLUE_COUNT_RING,    settings().integer(CLUE_COUNT_RING) + 3)
                 .integer(CLUE_COUNT_GLOVE,  settings().integer(CLUE_COUNT_GLOVE) + 1);
-
-        // нумерация ведется снизу вверх, слева направо по свободным ячейкам
-        // так как после каждой генерации подсчет ведется снова, то от индекса отнимаем
-        dice(
-            5-0,  // free cell index for new knife
-            9-1,  // -- knife
-            13-2, // -- glove
-            17-3, // -- ring
-            21-4, // -- ring
-            22-5, // -- ring
-            1, 6  // hero coordinates
-        );
+        dice(2, 3, // knife
+            3, 3,  // knife
+            4, 3,  // glove
+            5, 3,  // ring
+            6, 3,  // ring
+            6, 4,  // ring
+            1, 6); // hero
         field().clearScore();
 
         // then
@@ -5134,8 +5126,8 @@ public class GameTest extends AbstractGameTest {
         // when
         // добавим еще один черный ход
         settings().integer(BACKWAYS_COUNT, settings().integer(BACKWAYS_COUNT) + 1);
-        dice(6, // free cell index for new backway
-            1, 2); // hero coordinates
+        dice(2, 4, // backway
+            1, 2); // hero
         field().clearScore();
 
         // then
@@ -5244,10 +5236,9 @@ public class GameTest extends AbstractGameTest {
         // when
         // добавим еще
         settings().integer(MASK_POTIONS_COUNT, settings().integer(MASK_POTIONS_COUNT) + 2);
-        dice(10, // free cell index for new potion
-             18,
-             1, 6);  // hero coordinate
-
+        dice(3, 3, // potion
+            5, 3,  // potion
+            1, 6); // hero
         field().clearScore();
 
         // then
@@ -5305,7 +5296,7 @@ public class GameTest extends AbstractGameTest {
         assertEquals(7 * 4, field().borders().size());
 
         // when
-        dice(1, 2); // new hero
+        dice(1, 2); // hero
         field().clearScore();
 
         // then
@@ -5321,7 +5312,7 @@ public class GameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼\n");
 
         // when
-        dice(2, 2); // new hero
+        dice(2, 2); // hero
         field().clearScore();
 
         // then
@@ -5359,9 +5350,9 @@ public class GameTest extends AbstractGameTest {
         assertEquals(2, field().getBackWaysTimer());
 
         // when
-        dice(3, 3, // new back ways
-            3, 2,
-            1, 2); // new hero
+        dice(3, 3, // backway
+            3, 2,  // backway
+            1, 2); // hero
         field().clearScore();
 
         // then
@@ -5496,7 +5487,7 @@ public class GameTest extends AbstractGameTest {
                 "☼☼☼☼☼\n");
 
         // when
-        dice(1, 2); // new hero position
+        dice(1, 2); // hero
         field().clearScore();
 
         // then

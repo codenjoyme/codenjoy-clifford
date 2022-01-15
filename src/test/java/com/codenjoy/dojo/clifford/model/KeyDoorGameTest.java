@@ -190,7 +190,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         // when
-        dice(3); // free cell index for new key
+        dice(1, 5); // key
         hero().right();
         tick();
 
@@ -207,7 +207,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
         // when
-        dice(7); // free cell index for new key
+        dice(2, 5); // key
         hero().right();
         tick();
 
@@ -224,7 +224,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=2, SILVER=0, BRONZE=0}");
 
         // when
-        dice(11); // free cell index for new key
+        dice(3, 5); // key
         hero().right();
         tick();
 
@@ -241,7 +241,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=2, SILVER=1, BRONZE=0}");
 
         // when
-        dice(15); // free cell index for new key
+        dice(4, 5); // key
         hero().right();
         tick();
 
@@ -943,9 +943,9 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=1}");
 
         // when
-        dice(3, // free cell index for new key
-             7,
-             11);
+        dice(1, 5,  // key
+             2, 5,  // key
+             3, 5); // key
         hero().die();
         tick();
 
@@ -990,7 +990,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
 
         // when
-        dice(17); // free cell index for new key
+        dice(4, 6); // key
         hero().right();
         tick();
 
@@ -1007,7 +1007,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=1, SILVER=0, BRONZE=0}");
 
         // when
-        dice(21); // free cell index for new key
+        dice(5, 6); // key
         hero().right();
         tick();
 
@@ -1024,7 +1024,7 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=0}");
 
         // when
-        dice(26); // free cell index for new key
+        dice(6, 6); // key
         hero().right();
         tick();
 
@@ -1042,7 +1042,9 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         // when
         // тут не будет генерации, но если будет мы заметим
-        dice(0); // free cell index for new key
+        dice(1, 5,  // key
+             2, 5,  // key
+             3, 5); // key
         hero().die();
         tick();
 

@@ -224,7 +224,7 @@ public class MultiplayerTest extends AbstractGameTest {
         // when
         hero(0).right();
 
-        dice(0); // free cell index for new gold
+        dice(1, 2);
 
         tick();
 
@@ -542,7 +542,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼\n", 1);
 
         // when
-        dice(10); // free cell index for new potion
+        dice(3, 3); // new potion
         tick();
 
         // then
@@ -1048,7 +1048,6 @@ public class MultiplayerTest extends AbstractGameTest {
         // when
         hero(0).right();
         hero(1).shoot(LEFT);
-        dice(-1); // не генерим ничего нового на поле
         tick();
 
         // then

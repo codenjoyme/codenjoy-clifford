@@ -103,7 +103,7 @@ public class SmokeTest {
 
     @Test
     public void testHard() {
-        // about 3.4 sec
+        // about 2.3 sec
         int ticks = 100;
         int players = 10;
         int robbers = 5;
