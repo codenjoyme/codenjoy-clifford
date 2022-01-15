@@ -34,6 +34,10 @@ import com.codenjoy.dojo.services.algs.DeikstraFindWay;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.codenjoy.dojo.games.clifford.Element.clues;
+import static com.codenjoy.dojo.services.Direction.DOWN;
+import static com.codenjoy.dojo.services.Direction.UP;
+
 public class AISolver implements Solver<Board> {
 
     private DeikstraFindWay way;
@@ -46,15 +50,17 @@ public class AISolver implements Solver<Board> {
         return new DeikstraFindWay.Possible() {
             @Override
             public boolean possible(Point from, Direction where) {
-                if (where == Direction.UP && !board.isLadderAt(from)) return false;
+                Element fromEl = board.getAt(from);
+                if (where == UP && !fromEl.isLadder()) return false;
 
-                Point under = Direction.DOWN.change(from);
-                if (where != Direction.DOWN
+                Point under = DOWN.change(from);
+                Element underEl = board.getAt(under);
+                if (where != DOWN
                         && !under.isOutOf(board.size())
-                        && !board.isWallAt(under)
-                        && !board.isLadderAt(under)
-                        && !board.isLadderAt(from)
-                        && !board.isPipeAt(from)) return false;
+                        && !underEl.isWall()
+                        && !underEl.isLadder()
+                        && !fromEl.isLadder()
+                        && !fromEl.isPipe()) return false;
 
                 return true;
             }
@@ -62,10 +68,11 @@ public class AISolver implements Solver<Board> {
             @Override
             public boolean possible(Point pt) {
                 if (pt.isOutOf(board.size())) return false;
-                if (board.isWallAt(pt)) return false;
-                if (board.isRobberAt(pt)) return false;
-                if (board.isOtherHeroAt(pt)) return false;
-                if (board.isEnemyHeroAt(pt)) return false;
+                Element el = board.getAt(pt);
+                if (el.isWall()) return false;
+                if (el.isRobber()) return false;
+                if (el.isOtherHero()) return false;
+                if (el.isEnemyHero()) return false;
                 return true;
             }
         };
@@ -85,10 +92,7 @@ public class AISolver implements Solver<Board> {
         if (from == null) {
             return Arrays.asList();
         }
-        List<Point> to = board.get(
-                Element.CLUE_KNIFE,
-                Element.CLUE_GLOVE,
-                Element.CLUE_RING);
+        List<Point> to = board.get(clues);
         DeikstraFindWay.Possible map = possible(board);
         return way.getShortestWay(size, from, to, map);
     }
