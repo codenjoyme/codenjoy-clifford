@@ -55,7 +55,7 @@ public class SmokeTest {
 
     @Test
     public void testSoft() {
-        // about 0.7 sec
+        // about 1.4 sec
         int ticks = 1000;
         int players = 2;
 
@@ -72,24 +72,28 @@ public class SmokeTest {
                     public GameSettings getSettings() {
                         return new TestGameSettings()
                                 .setLevelMaps(LevelProgress.levelsStartsFrom1,
-                                        "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼\n" +
-                                        "☼~~~~~~~~H   ~~~☼\n" +
-                                        "☼        H###   ☼\n" +
-                                        "☼   ~~~~~H    ##☼\n" +
-                                        "☼H##     H##    ☼\n" +
-                                        "☼H       H~~~~~ ☼\n" +
-                                        "☼H       H      ☼\n" +
-                                        "☼H#####  H      ☼\n" +
-                                        "☼H         #####☼\n" +
-                                        "☼H  ~~~»        ☼\n" +
-                                        "☼H##   ######H H☼\n" +
-                                        "☼H~~~        H H☼\n" +
-                                        "☼H             H☼\n" +
-                                        "☼H   ~~~~~~~~~ H☼\n" +
-                                        "☼###H    H     H☼\n" +
-                                        "☼   H    H     H☼\n" +
-                                        "☼###############☼\n" +
-                                        "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼\n")
+                                        "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼\n" +
+                                        "☼#~~~~~~~~H   ~~~#☼\n" +
+                                        "☼#        H###   #☼\n" +
+                                        "☼#   ~~~~~H    ###☼\n" +
+                                        "☼#H##     H##    #☼\n" +
+                                        "☼#H       H~~~~~ #☼\n" +
+                                        "☼#H       H      #☼\n" +
+                                        "☼#H#####  H      #☼\n" +
+                                        "☼#H         ######☼\n" +
+                                        "☼#H  ~~~»        #☼\n" +
+                                        "☼#H##   ######H H#☼\n" +
+                                        "☼#H~~~        H H#☼\n" +
+                                        "☼#H             H#☼\n" +
+                                        "☼#H   ~~~~~~~~~ H#☼\n" +
+                                        "☼####H    H     H#☼\n" +
+                                        "☼#   H    H     H#☼\n" +
+                                        "☼#   H    H     H#☼\n" +
+                                        "☼#################☼\n" +
+                                        "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼\n")
+                                .integer(HANDGUN_CLIP_SIZE, 20)
+                                .integer(HANDGUN_TICKS_PER_SHOOT, 2)
+                                .bool(HANDGUN_UNLIMITED_AMMO, false)
                                 .integer(BACKWAYS_COUNT, 5)
                                 .integer(MASK_POTIONS_COUNT, 1)
                                 .integer(CLUE_COUNT_GLOVE, 5)
@@ -103,7 +107,7 @@ public class SmokeTest {
 
     @Test
     public void testHard() {
-        // about 1.4 sec
+        // about 4.4 sec
         int ticks = 100;
         int players = 10;
         int robbers = 5;
@@ -124,6 +128,10 @@ public class SmokeTest {
                         return new TestGameSettings()
                                 .setLevelMaps(LevelProgress.levelsStartsFrom1,
                                         Levels.BIG_LEVEL.replaceAll("[◄«]", " "))
+                                .integer(MASK_POTIONS_COUNT, 1)
+                                .integer(CLUE_COUNT_GLOVE, 50)
+                                .integer(CLUE_COUNT_RING, 60)
+                                .integer(CLUE_COUNT_KNIFE, 70)
                                 .integer(ROBBERS_COUNT, robbers);
                     }
                 },

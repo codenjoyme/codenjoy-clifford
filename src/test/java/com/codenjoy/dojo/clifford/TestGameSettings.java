@@ -47,7 +47,7 @@ public class TestGameSettings extends GameSettings {
         integer(BACKWAY_TICKS, 10);
         integer(BACKWAYS_COUNT, 0);
 
-        integer(CLUE_COUNT_KNIFE, -1);
+        integer(CLUE_COUNT_KNIFE, 0);
         integer(CLUE_COUNT_GLOVE, 0);
         integer(CLUE_COUNT_RING, 0);
         integer(CLUE_SCORE_KNIFE, 1);

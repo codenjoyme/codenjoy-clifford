@@ -24,6 +24,7 @@ package com.codenjoy.dojo.clifford.services.ai;
 
 
 import com.codenjoy.dojo.client.Solver;
+import com.codenjoy.dojo.clifford.model.Hero;
 import com.codenjoy.dojo.games.clifford.Board;
 import com.codenjoy.dojo.services.Dice;
 import com.codenjoy.dojo.services.Direction;
@@ -33,15 +34,17 @@ import com.codenjoy.dojo.services.algs.DeikstraFindWay;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.codenjoy.dojo.games.clifford.Element.BRICK;
 import static com.codenjoy.dojo.games.clifford.Element.clues;
-import static com.codenjoy.dojo.services.Direction.DOWN;
-import static com.codenjoy.dojo.services.Direction.UP;
+import static com.codenjoy.dojo.services.Direction.*;
 
 public class AISolver implements Solver<Board> {
 
     private DeikstraFindWay way;
+    private Dice dice;
 
     public AISolver(Dice dice) {
+        this.dice = dice;
         this.way = new DeikstraFindWay();
     }
 
@@ -77,9 +80,34 @@ public class AISolver implements Solver<Board> {
     @Override
     public String get(Board board) {
         if (board.isGameOver()) return "";
+        Point hero = board.getHero();
+
+        // пробуем найти кратчайший путь до улик
         List<Direction> result = getDirections(board);
         if (result.isEmpty()) return "";
-        return result.get(0).toString();
+        Direction direction = result.get(0);
+
+        // 25% вероятность, что мы просверлим дырку в поле
+        if (dice.next(4) == 1) {
+            // если наше движение влево или вправо
+            if (direction == LEFT || direction == RIGHT) {
+                return direction.ACT(false, Hero.ACT_SHOOT); // shoot
+            }
+        }
+
+        // 25% вероятность, что мы выстрелим
+        if (dice.next(4) == 1) {
+            // если под нами кирпичная стена, то попутно сверлим за собой
+            Point under = DOWN.change(hero);
+            if (board.getAt(under) == BRICK) {
+                if (direction == LEFT || direction == RIGHT) {
+                    return direction.inverted().ACT(false); // crack
+                }
+            }
+        }
+
+        // иначе идем за уликой
+        return direction.toString();
     }
 
     public List<Direction> getDirections(Board board) {
