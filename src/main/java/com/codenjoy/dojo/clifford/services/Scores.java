@@ -58,6 +58,6 @@ public class Scores extends ScoresMap<Integer> {
                 value -> settings.integer(SUICIDE_PENALTY));
 
         put(Event.Type.WIN_ROUND,
-                value -> settings.integer(ROUND_WIN));
+                value -> settings.integer(ROUND_WIN_SCORE));
     }
 }

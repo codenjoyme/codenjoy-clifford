@@ -85,6 +85,8 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     }
 
     private void generateAll() {
+        //TODO нужно добавить новый Element CLIP в игру
+        //     для возможности поднимать дополнительные
         generatePotions();
         generateClue();
         generateBackWays();

@@ -25,6 +25,7 @@ package com.codenjoy.dojo.clifford.model;
 import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import org.junit.Test;
 
+import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.HANDGUN_TICKS_PER_SHOOT;
 import static com.codenjoy.dojo.services.Direction.RIGHT;
 
 public class BulletGameTest extends AbstractGameTest {
@@ -840,6 +841,153 @@ public class BulletGameTest extends AbstractGameTest {
         verifyAllEvents("[HERO_DIED, SUICIDE]");
     }
 
+    @Test
+    public void gunRechargeTest_Case1() {
+        // given
+        settings().integer(HANDGUN_TICKS_PER_SHOOT,1);
+
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼#   ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        // when
+        hero().shoot();
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼#  •◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[4,2,LEFT]]");
+
+        // when
+        hero().shoot();
+        tick();
+
+        // then new bullet shouldn't be created. Recharge 1 tick
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼#•  ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[2,2,LEFT]]");
+
+        // when
+        hero().shoot();
+        tick();
+
+        // then new bullet should be created. Recharge end
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼*  •◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[4,2,LEFT]]");
+
+        // when
+        hero().shoot();
+        tick();
+
+        // then new bullet shouldn't be created. Recharge 1 tick
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼ •  ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[2,2,LEFT]]");
+    }
+
+    @Test
+    public void gunRechargeTest_Case2() {
+        // given
+        settings().integer(HANDGUN_TICKS_PER_SHOOT,2);
+
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼#   ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        // when
+        hero().shoot();
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼#  •◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[4,2,LEFT]]");
+
+        // when
+        hero().shoot();
+        tick();
+
+        // then new bullet shouldn't be created. Recharge 2 tick
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼#•  ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[2,2,LEFT]]");
+
+        // when
+        hero().shoot();
+        tick();
+
+        // then new bullet shouldn't be created. Recharge 2 tick
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼*   ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        assertBullets("[]");
+
+        // when
+        hero().shoot();
+        tick();
+
+        // then new bullet shouldn't be created. Recharge end
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼   •◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[4,2,LEFT]]");
+    }
 
     @Test
     public void heroNotMoveWhenShoot() {

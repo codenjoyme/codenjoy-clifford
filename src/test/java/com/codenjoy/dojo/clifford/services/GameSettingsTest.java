@@ -46,11 +46,14 @@ public class GameSettingsTest {
                         "CLUE_COUNT_RING, \n" +
                         "CLUE_SCORE_RING, \n" +
                         "CLUE_SCORE_RING_INCREMENT, \n" +
+                        "HANDGUN_TICKS_PER_SHOOT, \n" +
+                        "HANDGUN_CLIP_SIZE, \n" +
+                        "HANDGUN_UNLIMITED_AMMO, \n" +
+                        "ROUND_WIN_SCORE, \n" +
                         "KILL_OTHER_HERO_SCORE, \n" +
                         "KILL_ENEMY_HERO_SCORE, \n" +
                         "HERO_DIED_PENALTY, \n" +
                         "SUICIDE_PENALTY, \n" +
-                        "ROUND_WIN, \n" +
                         "SCORE_COUNTING_TYPE]",
                 Utils.split(new GameSettings().allKeys(), ", \n"));
     }

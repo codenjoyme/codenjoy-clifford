@@ -55,5 +55,9 @@ public class TestGameSettings extends GameSettings {
         integer(CLUE_SCORE_RING, 10);
 
         integer(ROBBERS_COUNT, 0);
+
+        integer(HANDGUN_CLIP_SIZE, 12);
+        integer(HANDGUN_TICKS_PER_SHOOT, 0);
+        bool(HANDGUN_UNLIMITED_AMMO, true);
     }
 }

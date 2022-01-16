@@ -24,6 +24,7 @@ package com.codenjoy.dojo.clifford.model;
 
 
 import com.codenjoy.dojo.clifford.model.items.Bullet;
+import com.codenjoy.dojo.clifford.model.items.HandGun;
 import com.codenjoy.dojo.clifford.model.items.Ladder;
 import com.codenjoy.dojo.clifford.model.items.Pipe;
 import com.codenjoy.dojo.clifford.model.items.door.Door;
@@ -57,10 +58,10 @@ public class Hero extends RoundPlayerHero<Field>
                    State<Element, Player>,
                    HeroState<Element, Hero, Player> {
 
-    private static final int ACT_SUICIDE = 0;
-    private static final int ACT_SHOOT = 1;
-    private static final int ACT_OPEN_DOOR = 2;
-    private static final int ACT_CLOSE_DOOR = 3;
+    public static final int ACT_SUICIDE = 0;
+    public static final int ACT_SHOOT = 1;
+    public static final int ACT_OPEN_DOOR = 2;
+    public static final int ACT_CLOSE_DOOR = 3;
 
     protected Direction direction;
     private PotionType potion;
@@ -76,6 +77,7 @@ public class Hero extends RoundPlayerHero<Field>
     private int rings;
     private int gloves;
     private int knives;
+    private HandGun gun;
 
     public Hero(Point pt, Direction direction) {
         super(pt);
@@ -112,8 +114,12 @@ public class Hero extends RoundPlayerHero<Field>
     @Override
     public void init(Field field) {
         super.init(field);
-
+        initGun();
         field.heroes().add(this);
+    }
+
+    private void initGun() {
+        gun = new HandGun(settings());
     }
 
     @Override
@@ -275,10 +281,13 @@ public class Hero extends RoundPlayerHero<Field>
         openDoor = false;
         closeDoor = false;
         shoot = false;
+        gun.tick();
         dissolvePotions();
     }
 
     private void shootBullet() {
+        if (!gun.canFire()) return;
+
         Bullet bullet = new Bullet(this, this);
         field.bullets().add(bullet);
         bullet.doFirstMoveAffect();
