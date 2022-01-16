@@ -5500,8 +5500,249 @@ public class GameTest extends AbstractGameTest {
         assertEquals(0, hero(0).scores());
     }
 
-    // прострелить находясь на трубе нельзя, в оригинале только находясь на краю трубы
+    // я не провалюсь через пол, если там дырка (ошибка сенсея)
+    @Test
+    public void shouldStop_whenBoardIsNotSquare() {
+        // given when
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼☼☼☼☼\n"); // ошибка, лишняя линия
 
-    // карта намного больше, чем квардартик вьюшка, и я подходя к границе просто передвигаю вьюшку
-    // повляется многопользовательский режим игры в формате "стенка на стенку"
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ U ☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n");
+    }
+
+    // я не провалюсь через пол, если там дырка (ошибка сенсея)
+    @Test
+    public void shouldStop_whenBoardHasNoBorder_caseDown() {
+        // given when
+        givenFl("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ ◄ ☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n");
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼ U ☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n");
+
+        // when
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼ U ☼\n" +
+                "☼   ☼\n");
+
+        // when
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼ U ☼\n");
+
+        // when
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼ U ☼\n");
+
+        // when
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼   ☼\n" +
+                "☼ U ☼\n");
+    }
+
+    // я не могу двигаться вправо за пределы поля,
+    // если карта нарисована без границы (ошибка сенсея)
+    @Test
+    public void shouldStop_whenBoardHasNoBorder_caseRight() {
+        // given when
+        givenFl("☼☼☼☼☼\n" +
+                "☼    \n" +
+                "☼    \n" +
+                "☼  ◄ \n" +
+                "☼☼☼☼☼\n");
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼    \n" +
+                "☼    \n" +
+                "☼  ◄ \n" +
+                "☼☼☼☼☼\n");
+
+        // when
+        hero().right();
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼    \n" +
+                "☼    \n" +
+                "☼   ►\n" +
+                "☼☼☼☼☼\n");
+
+        // when
+        hero().right();
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼    \n" +
+                "☼    \n" +
+                "☼   ►\n" +
+                "☼☼☼☼☼\n");
+
+        // when
+        hero().right();
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼    \n" +
+                "☼    \n" +
+                "☼   ►\n" +
+                "☼☼☼☼☼\n");
+    }
+
+    // я не могу двигаться влево за пределы поля,
+    // если карта нарисована без границы (ошибка сенсея)
+    @Test
+    public void shouldStop_whenBoardHasNoBorder_caseLeft() {
+        // given when
+        givenFl("☼☼☼☼☼\n" +
+                "    ☼\n" +
+                "    ☼\n" +
+                " ◄  ☼\n" +
+                "☼☼☼☼☼\n");
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "    ☼\n" +
+                "    ☼\n" +
+                " ◄  ☼\n" +
+                "☼☼☼☼☼\n");
+
+        // when
+        hero().left();
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "    ☼\n" +
+                "    ☼\n" +
+                "◄   ☼\n" +
+                "☼☼☼☼☼\n");
+
+        // when
+        hero().left();
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "    ☼\n" +
+                "    ☼\n" +
+                "◄   ☼\n" +
+                "☼☼☼☼☼\n");
+
+        // when
+        hero().left();
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "    ☼\n" +
+                "    ☼\n" +
+                "◄   ☼\n" +
+                "☼☼☼☼☼\n");
+    }
+
+    // я не могу двигаться вверх за пределы поля,
+    // если карта нарисована без границы (ошибка сенсея)
+    @Test
+    public void shouldStop_whenBoardHasNoBorder_caseUp() {
+        // given when
+        givenFl("☼ H ☼\n" +
+                "☼ H ☼\n" +
+                "☼ H ☼\n" +
+                "☼◄H ☼\n" +
+                "☼☼☼☼☼\n");
+
+        // then
+        assertF("☼ H ☼\n" +
+                "☼ H ☼\n" +
+                "☼ H ☼\n" +
+                "☼◄H ☼\n" +
+                "☼☼☼☼☼\n");
+
+        // when
+        hero().right();
+        tick();
+
+        hero().up();
+        tick();
+
+        hero().up();
+        tick();
+
+        hero().up();
+        tick();
+
+        // then
+        assertF("☼ A ☼\n" +
+                "☼ H ☼\n" +
+                "☼ H ☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n");
+
+        // when
+        hero().up();
+        tick();
+
+        // then
+        assertF("☼ A ☼\n" +
+                "☼ H ☼\n" +
+                "☼ H ☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n");
+
+        // when
+        hero().up();
+        tick();
+
+        // then
+        assertF("☼ A ☼\n" +
+                "☼ H ☼\n" +
+                "☼ H ☼\n" +
+                "☼ H ☼\n" +
+                "☼☼☼☼☼\n");
+    }
+
+    // TODO прострелить находясь на трубе нельзя, в оригинале только находясь на краю трубы
+    // TODO карта намного больше, чем квардартик вьюшка, и я подходя к границе просто передвигаю вьюшку
+    // TODO повляется многопользовательский режим игры в формате "стенка на стенку"
 }
