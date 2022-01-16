@@ -47,13 +47,18 @@ public class Bullet extends MovingObject implements State<Element, Player> {
 
     public void doFirstMoveAffect() {
         if (newBullet) {
-            moving(direction.change(this));
+            tryMove();
             newBullet = false;
         }
     }
 
     public Hero getOwner() {
         return owner;
+    }
+
+    @Override
+    public Field field() {
+        return field;
     }
 
     public boolean isBounced() {
@@ -66,15 +71,12 @@ public class Bullet extends MovingObject implements State<Element, Player> {
     }
 
     @Override
-    protected void moving(Point pt) {
-        if (pt.isOutOf(field.size())) {
-            remove();
-        } else {
-            move(pt);
-            field.affect(this);
-        }
+    public void moving(Point pt) {
+        move(pt);
+        field.affect(this);
     }
 
+    @Override
     public void remove() {
         moving = false;
         field.bullets().removeExact(this);

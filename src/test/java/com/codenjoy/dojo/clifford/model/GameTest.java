@@ -233,7 +233,7 @@ public class GameTest extends AbstractGameTest {
 
     // если не было команды я никуда не иду
     @Test
-    public void shouldStopWhenNoMoreRightCommand() {
+    public void shouldStopHero_whenNoMoreRightCommand() {
         // given
         shouldMoveRight();
 
@@ -250,7 +250,7 @@ public class GameTest extends AbstractGameTest {
 
     // я останавливаюсь возле границы
     @Test
-    public void shouldStopWhenWallRight() {
+    public void shouldStopHero_whenWallRight() {
         // given
         shouldMoveRight();
 
@@ -267,7 +267,7 @@ public class GameTest extends AbstractGameTest {
     }
 
     @Test
-    public void shouldStopWhenWallLeft() {
+    public void shouldStopHero_whenWallLeft() {
         // given
         shouldMoveLeft();
 
@@ -5502,7 +5502,7 @@ public class GameTest extends AbstractGameTest {
 
     // я не провалюсь через пол, если там дырка (ошибка сенсея)
     @Test
-    public void shouldStop_whenBoardIsNotSquare() {
+    public void shouldStopHero_whenBoardIsNotSquare() {
         // given when
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
@@ -5521,7 +5521,7 @@ public class GameTest extends AbstractGameTest {
 
     // я не провалюсь через пол, если там дырка (ошибка сенсея)
     @Test
-    public void shouldStop_whenBoardHasNoBorder_caseDown() {
+    public void shouldStopHero_whenBoardHasNoBorder_caseDown() {
         // given when
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
@@ -5580,7 +5580,7 @@ public class GameTest extends AbstractGameTest {
     // я не могу двигаться вправо за пределы поля,
     // если карта нарисована без границы (ошибка сенсея)
     @Test
-    public void shouldStop_whenBoardHasNoBorder_caseRight() {
+    public void shouldStopHero_whenBoardHasNoBorder_caseRight() {
         // given when
         givenFl("☼☼☼☼☼\n" +
                 "☼    \n" +
@@ -5632,7 +5632,7 @@ public class GameTest extends AbstractGameTest {
     // я не могу двигаться влево за пределы поля,
     // если карта нарисована без границы (ошибка сенсея)
     @Test
-    public void shouldStop_whenBoardHasNoBorder_caseLeft() {
+    public void shouldStopHero_whenBoardHasNoBorder_caseLeft() {
         // given when
         givenFl("☼☼☼☼☼\n" +
                 "    ☼\n" +
@@ -5684,7 +5684,7 @@ public class GameTest extends AbstractGameTest {
     // я не могу двигаться вверх за пределы поля,
     // если карта нарисована без границы (ошибка сенсея)
     @Test
-    public void shouldStop_whenBoardHasNoBorder_caseUp() {
+    public void shouldStopHero_whenBoardHasNoBorder_caseUp() {
         // given when
         givenFl("☼ H ☼\n" +
                 "☼ H ☼\n" +
@@ -5740,6 +5740,130 @@ public class GameTest extends AbstractGameTest {
                 "☼ H ☼\n" +
                 "☼ H ☼\n" +
                 "☼☼☼☼☼\n");
+    }
+
+    // снаряд не может двигаться вправо за пределы поля,
+    // если карта нарисована без границы (ошибка сенсея)
+    @Test
+    public void shouldStopBullet_whenBoardHasNoBorder_caseRight() {
+        // given when
+        givenFl("☼☼☼☼☼\n" +
+                "☼    \n" +
+                "☼    \n" +
+                "☼◄   \n" +
+                "☼☼☼☼☼\n");
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼    \n" +
+                "☼    \n" +
+                "☼◄   \n" +
+                "☼☼☼☼☼\n");
+
+        // when
+        hero().shoot(RIGHT);
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼    \n" +
+                "☼    \n" +
+                "☼►•  \n" +
+                "☼☼☼☼☼\n");
+
+        assertBullets("[[2,1,RIGHT]]");
+
+        // when
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼    \n" +
+                "☼    \n" +
+                "☼►  •\n" +
+                "☼☼☼☼☼\n");
+
+        assertBullets("[[4,1,RIGHT]]");
+
+        // when
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼    \n" +
+                "☼    \n" +
+                "☼►   \n" +
+                "☼☼☼☼☼\n");
+
+        assertBullets("[]");
+
+        // when
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "☼    \n" +
+                "☼    \n" +
+                "☼►   \n" +
+                "☼☼☼☼☼\n");
+
+        assertBullets("[]");
+    }
+
+    // снаряд не может двигаться влево за пределы поля,
+    // если карта нарисована без границы (ошибка сенсея)
+    @Test
+    public void shouldStopBullet_whenBoardHasNoBorder_caseLeft() {
+        // given when
+        givenFl("☼☼☼☼☼\n" +
+                "    ☼\n" +
+                "    ☼\n" +
+                "  ◄ ☼\n" +
+                "☼☼☼☼☼\n");
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "    ☼\n" +
+                "    ☼\n" +
+                "  ◄ ☼\n" +
+                "☼☼☼☼☼\n");
+
+        // when
+        hero().shoot(LEFT);
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "    ☼\n" +
+                "    ☼\n" +
+                " •◄ ☼\n" +
+                "☼☼☼☼☼\n");
+
+        assertBullets("[[1,1,LEFT]]");
+
+        // when
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "    ☼\n" +
+                "    ☼\n" +
+                "  ◄ ☼\n" +
+                "☼☼☼☼☼\n");
+
+        assertBullets("[]");
+
+        // when
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼\n" +
+                "    ☼\n" +
+                "    ☼\n" +
+                "  ◄ ☼\n" +
+                "☼☼☼☼☼\n");
+
+        assertBullets("[]");
     }
 
     // TODO прострелить находясь на трубе нельзя, в оригинале только находясь на краю трубы
