@@ -49,6 +49,7 @@ public class GameSettingsTest {
                         "HANDGUN_TICKS_PER_SHOOT, \n" +
                         "HANDGUN_CLIP_SIZE, \n" +
                         "HANDGUN_UNLIMITED_AMMO, \n" +
+                        "AMMO_CLIP_COUNT, \n" +
                         "ROUND_WIN_SCORE, \n" +
                         "KILL_OTHER_HERO_SCORE, \n" +
                         "KILL_ENEMY_HERO_SCORE, \n" +
