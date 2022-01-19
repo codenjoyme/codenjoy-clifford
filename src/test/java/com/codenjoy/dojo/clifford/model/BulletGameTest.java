@@ -226,7 +226,7 @@ public class BulletGameTest extends AbstractGameTest {
     }
 
     @Test
-    public void bulletInteractWithBrick_сase3() {
+    public void bulletInteractWithBrick_case3() {
         // given
         givenFl("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
@@ -329,7 +329,7 @@ public class BulletGameTest extends AbstractGameTest {
     }
 
     @Test
-    public void bulletInteractWithBrick_сase2() {
+    public void bulletInteractWithBrick_case2() {
         // given
         givenFl("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
@@ -1416,7 +1416,7 @@ public class BulletGameTest extends AbstractGameTest {
     }
 
     @Test
-    public void bulletInteractWithBrick_сase1() {
+    public void bulletInteractWithBrick_case1() {
         // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
@@ -1457,7 +1457,7 @@ public class BulletGameTest extends AbstractGameTest {
     }
 
     @Test
-    public void bulletInteractWithBorder_сase1() {
+    public void bulletInteractWithBorder_case1() {
         // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
@@ -1487,7 +1487,7 @@ public class BulletGameTest extends AbstractGameTest {
     }
 
     @Test
-    public void bulletInteractWithWall_сase1() {
+    public void bulletInteractWithWall_case1() {
         // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
