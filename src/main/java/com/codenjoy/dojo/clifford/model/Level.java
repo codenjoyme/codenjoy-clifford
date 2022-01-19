@@ -80,6 +80,10 @@ public class Level extends AbstractLevel {
         return find(ClueKnife::new, CLUE_KNIFE);
     }
 
+    public List<AmmoClip> ammoClip() {
+        return find(AmmoClip::new, AMMO_CLIP);
+    }
+
     public List<ClueGlove> clueGlove() {
         return find(ClueGlove::new, CLUE_GLOVE);
     }
@@ -150,5 +154,6 @@ public class Level extends AbstractLevel {
         field.addAll(goldenKeys());
         field.addAll(silverKeys());
         field.addAll(bronzeKeys());
+        field.addAll(ammoClip());
     }
 }
