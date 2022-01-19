@@ -1679,8 +1679,8 @@ public class BulletGameTest extends AbstractGameTest {
     @Test
     public void shouldPickUpAdditionalAmmo() {
         // given
-        settings().integer(HANDGUN_CLIP_SIZE, 1);
-        settings().bool(HANDGUN_UNLIMITED_AMMO, false);
+        settings().integer(HANDGUN_CLIP_SIZE, 1)
+                .bool(HANDGUN_UNLIMITED_AMMO, false);
 
         givenFl("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
@@ -1698,15 +1698,15 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-//                "☼► ⁂   ☼\n" +
-
-        // when hero shoot two times
+        // when
+        // hero shoot two times
         hero().shoot();
         tick();
         hero().shoot();
         tick();
 
-        // then only one bullet should be available
+        // then
+        // only one bullet should be available
         assertF("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
@@ -1730,7 +1730,8 @@ public class BulletGameTest extends AbstractGameTest {
 
         assertBullets("[]");
 
-        // when hero pick up ammo_clip
+        // when
+        // hero pick up ammo_clip
         hero().left();
         tick();
         hero().left();
@@ -1746,7 +1747,8 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
-        // then he should can shoot again
+        // then
+        // he should can shoot again
         hero().shoot(LEFT);
         tick();
 
