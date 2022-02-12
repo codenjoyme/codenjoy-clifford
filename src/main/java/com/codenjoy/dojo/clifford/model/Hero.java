@@ -32,6 +32,7 @@ import com.codenjoy.dojo.clifford.model.items.door.KeyType;
 import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import com.codenjoy.dojo.clifford.services.Event;
 import com.codenjoy.dojo.games.clifford.Element;
+import com.codenjoy.dojo.games.clifford.ElementUtils;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.Point;
 import com.codenjoy.dojo.services.joystick.Act;
@@ -49,6 +50,7 @@ import java.util.function.Predicate;
 import static com.codenjoy.dojo.clifford.model.items.potion.PotionType.MASK_POTION;
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_TICKS;
+import static com.codenjoy.dojo.games.clifford.ElementUtils.TEAM_ELEMENT;
 import static com.codenjoy.dojo.services.Direction.DOWN;
 import static com.codenjoy.dojo.services.Direction.LEFT;
 import static com.codenjoy.dojo.services.printer.state.StateUtils.filterOne;
@@ -376,7 +378,7 @@ public class Hero extends RoundPlayerHero<Field>
 
     @Override
     public Element state(Player player, Object... alsoAtPoint) {
-        return HeroState.super.state(player, alsoAtPoint);
+        return HeroState.super.state(player, TEAM_ELEMENT, alsoAtPoint);
     }
 
     @Override
@@ -411,7 +413,7 @@ public class Hero extends RoundPlayerHero<Field>
     @Override
     public Element afterState(Element state) {
         return isMask()
-                ? state.mask()
+                ? ElementUtils.mask(state)
                 : state;
     }
 

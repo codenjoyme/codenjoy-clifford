@@ -35,7 +35,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.codenjoy.dojo.games.clifford.Element.BRICK;
-import static com.codenjoy.dojo.games.clifford.Element.clues;
+import static com.codenjoy.dojo.games.clifford.ElementUtils.clues;
 import static com.codenjoy.dojo.services.Direction.*;
 
 public class AISolver implements Solver<Board> {
