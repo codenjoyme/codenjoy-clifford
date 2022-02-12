@@ -24,8 +24,8 @@ package com.codenjoy.dojo.clifford.services;
 
 
 import com.codenjoy.dojo.services.event.Calculator;
-import com.codenjoy.dojo.services.event.ScoresImpl;
 import com.codenjoy.dojo.services.settings.AllSettings;
+import com.codenjoy.dojo.services.settings.PropertiesKey;
 import com.codenjoy.dojo.services.settings.SettingsImpl;
 
 import java.util.Arrays;
@@ -35,45 +35,37 @@ import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 
 public class GameSettings extends SettingsImpl implements AllSettings<GameSettings> {
 
-    public enum Keys implements Key {
+    public enum Keys implements PropertiesKey {
 
-        MASK_POTIONS_COUNT("[Game] Mask potions count"),
-        MASK_TICKS("[Game] Mask ticks"),
-
-        BACKWAYS_COUNT("[Game] Back ways count"),
-        BACKWAY_TICKS("[Game] Back way ticks"),
-
-        ROBBERS_COUNT("[Game] Robbers count"),
-
-        GENERATE_KEYS("[Game] Generate picked keys"),
-
-        CLUE_COUNT_GLOVE("[Game] Glove clue count"),
-        CLUE_SCORE_GLOVE("[Score] Glove clue score"),
-        CLUE_SCORE_GLOVE_INCREMENT("[Score] Glove clue score increment"),
-
-        CLUE_COUNT_KNIFE("[Game] Knife clue count"),
-        CLUE_SCORE_KNIFE("[Score] Knife clue score"),
-        CLUE_SCORE_KNIFE_INCREMENT("[Score] Knife clue score increment"),
-
-        CLUE_COUNT_RING("[Game] Ring clue count"),
-        CLUE_SCORE_RING("[Score] Ring clue score"),
-        CLUE_SCORE_RING_INCREMENT("[Score] Ring clue score increment"),
-
-        HANDGUN_TICKS_PER_SHOOT("[Game] Gun recharge"),
-        HANDGUN_CLIP_SIZE("[Game] Count of bullet by default"),
-        HANDGUN_UNLIMITED_AMMO("[Game] unlimited ammo  "),
-
-        ROUND_WIN_SCORE("[Score] Round win"),
-        KILL_OTHER_HERO_SCORE("[Score] Kill hero score"),
-        KILL_ENEMY_HERO_SCORE("[Score] Kill enemy score"),
-        HERO_DIED_PENALTY("[Score] Hero die penalty"),
-        SUICIDE_PENALTY("[Score] Suicide penalty"),
-        SCORE_COUNTING_TYPE(ScoresImpl.SCORE_COUNTING_TYPE.key());
+        MASK_POTIONS_COUNT,
+        MASK_TICKS,
+        BACKWAYS_COUNT,
+        BACKWAY_TICKS,
+        ROBBERS_COUNT,
+        GENERATE_KEYS,
+        CLUE_COUNT_GLOVE,
+        CLUE_SCORE_GLOVE,
+        CLUE_SCORE_GLOVE_INCREMENT,
+        CLUE_COUNT_KNIFE,
+        CLUE_SCORE_KNIFE,
+        CLUE_SCORE_KNIFE_INCREMENT,
+        CLUE_COUNT_RING,
+        CLUE_SCORE_RING,
+        CLUE_SCORE_RING_INCREMENT,
+        HANDGUN_TICKS_PER_SHOOT,
+        HANDGUN_CLIP_SIZE,
+        HANDGUN_UNLIMITED_AMMO,
+        ROUND_WIN_SCORE,
+        KILL_OTHER_HERO_SCORE,
+        KILL_ENEMY_HERO_SCORE,
+        HERO_DIED_PENALTY,
+        SUICIDE_PENALTY,
+        SCORE_COUNTING_TYPE;
 
         private String key;
 
-        Keys(String key) {
-            this.key = key;
+        Keys() {
+            this.key = key(GameRunner.GAME_NAME);
         }
 
         @Override

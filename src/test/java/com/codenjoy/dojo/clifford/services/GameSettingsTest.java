@@ -22,7 +22,7 @@ package com.codenjoy.dojo.clifford.services;
  * #L%
  */
 
-import com.codenjoy.dojo.client.Utils;
+import com.codenjoy.dojo.utils.TestUtils;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -31,30 +31,30 @@ public class GameSettingsTest {
 
     @Test
     public void shouldGetAllKeys() {
-        assertEquals("[MASK_POTIONS_COUNT, \n" +
-                        "MASK_TICKS, \n" +
-                        "BACKWAYS_COUNT, \n" +
-                        "BACKWAY_TICKS, \n" +
-                        "ROBBERS_COUNT, \n" +
-                        "GENERATE_KEYS, \n" +
-                        "CLUE_COUNT_GLOVE, \n" +
-                        "CLUE_SCORE_GLOVE, \n" +
-                        "CLUE_SCORE_GLOVE_INCREMENT, \n" +
-                        "CLUE_COUNT_KNIFE, \n" +
-                        "CLUE_SCORE_KNIFE, \n" +
-                        "CLUE_SCORE_KNIFE_INCREMENT, \n" +
-                        "CLUE_COUNT_RING, \n" +
-                        "CLUE_SCORE_RING, \n" +
-                        "CLUE_SCORE_RING_INCREMENT, \n" +
-                        "HANDGUN_TICKS_PER_SHOOT, \n" +
-                        "HANDGUN_CLIP_SIZE, \n" +
-                        "HANDGUN_UNLIMITED_AMMO, \n" +
-                        "ROUND_WIN_SCORE, \n" +
-                        "KILL_OTHER_HERO_SCORE, \n" +
-                        "KILL_ENEMY_HERO_SCORE, \n" +
-                        "HERO_DIED_PENALTY, \n" +
-                        "SUICIDE_PENALTY, \n" +
-                        "SCORE_COUNTING_TYPE]",
-                Utils.split(new GameSettings().allKeys(), ", \n"));
+        assertEquals("MASK_POTIONS_COUNT         =[Game] Mask potions count\n" +
+                        "MASK_TICKS                 =[Game] Mask ticks\n" +
+                        "BACKWAYS_COUNT             =[Game] Back ways count\n" +
+                        "BACKWAY_TICKS              =[Game] Back way ticks\n" +
+                        "ROBBERS_COUNT              =[Game] Robbers count\n" +
+                        "GENERATE_KEYS              =[Game] Generate picked keys\n" +
+                        "CLUE_COUNT_GLOVE           =[Game] Glove clue count\n" +
+                        "CLUE_SCORE_GLOVE           =[Score] Glove clue score\n" +
+                        "CLUE_SCORE_GLOVE_INCREMENT =[Score] Glove clue score increment\n" +
+                        "CLUE_COUNT_KNIFE           =[Game] Knife clue count\n" +
+                        "CLUE_SCORE_KNIFE           =[Score] Knife clue score\n" +
+                        "CLUE_SCORE_KNIFE_INCREMENT =[Score] Knife clue score increment\n" +
+                        "CLUE_COUNT_RING            =[Game] Ring clue count\n" +
+                        "CLUE_SCORE_RING            =[Score] Ring clue score\n" +
+                        "CLUE_SCORE_RING_INCREMENT  =[Score] Ring clue score increment\n" +
+                        "HANDGUN_TICKS_PER_SHOOT    =[Game] Gun recharge\n" +
+                        "HANDGUN_CLIP_SIZE          =[Game] Count of bullet by default\n" +
+                        "HANDGUN_UNLIMITED_AMMO     =[Game] unlimited ammo\n" +
+                        "ROUND_WIN_SCORE            =[Score] Round win\n" +
+                        "KILL_OTHER_HERO_SCORE      =[Score] Kill hero score\n" +
+                        "KILL_ENEMY_HERO_SCORE      =[Score] Kill enemy score\n" +
+                        "HERO_DIED_PENALTY          =[Score] Hero die penalty\n" +
+                        "SUICIDE_PENALTY            =[Score] Suicide penalty\n" +
+                        "SCORE_COUNTING_TYPE        =[Score] Counting score mode",
+                TestUtils.toString(new GameSettings().allKeys()));
     }
 }
