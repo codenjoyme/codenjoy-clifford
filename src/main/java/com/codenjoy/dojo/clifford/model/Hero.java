@@ -49,6 +49,7 @@ import java.util.function.Predicate;
 
 import static com.codenjoy.dojo.clifford.model.items.potion.PotionType.MASK_POTION;
 import static com.codenjoy.dojo.clifford.services.Event.Type.*;
+import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.HANDGUN_CLIP_SIZE;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.MASK_TICKS;
 import static com.codenjoy.dojo.games.clifford.ElementUtils.TEAM_ELEMENT;
 import static com.codenjoy.dojo.services.Direction.DOWN;
@@ -448,5 +449,9 @@ public class Hero extends RoundPlayerHero<Field>
         } else {
             event(KILL_ENEMY_HERO);
         }
+    }
+
+    public void pickAmmo() {
+        gun.addAmmo(settings().integer(HANDGUN_CLIP_SIZE));
     }
 }

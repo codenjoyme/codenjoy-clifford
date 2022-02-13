@@ -85,8 +85,6 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
     }
 
     private void generateAll() {
-        //TODO нужно добавить новый Element CLIP в игру
-        //     для возможности поднимать дополнительные
         generatePotions();
         generateClue();
         generateBackWays();
@@ -94,6 +92,7 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
         if (settings.bool(GENERATE_KEYS)) {
             generateKeys();
         }
+        generateAmmoClips();
     }
 
     @Override
@@ -184,6 +183,13 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 settings, MASK_POTIONS_COUNT,
                 player -> freeRandom((Player) player),
                 pt -> new Potion(pt, MASK_POTION));
+    }
+
+    private void generateAmmoClips() {
+        generate(ammoClips(), size(),
+                settings, AMMO_CLIP_COUNT,
+                player -> freeRandom((Player) player),
+                AmmoClip::new);
     }
 
     private void generateRobbers() {
@@ -287,6 +293,11 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 if (!hero.isActiveAndAlive()) {
                     continue;
                 }
+            }
+
+            if (isAmmoClip(hero)) {
+                ammoClips().removeAt(hero);
+                hero.pickAmmo();
             }
 
             if (isClueKnife(hero)) {
@@ -431,6 +442,10 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
     private boolean isClueKnife(Point over) {
         return clueKnife().contains(over);
+    }
+
+    private boolean isAmmoClip(Point over) {
+        return ammoClips().contains(over);
     }
 
     @Override
@@ -603,7 +618,8 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
                 BackWay.class,
                 Door.class,
                 Key.class,
-                Bullet.class);
+                Bullet.class,
+                AmmoClip.class);
     }
 
     @Override
@@ -648,6 +664,10 @@ public class Clifford extends RoundField<Player, Hero> implements Field {
 
     public Accessor<Potion> potions() {
         return field.of(Potion.class);
+    }
+
+    public Accessor<AmmoClip> ammoClips() {
+        return field.of(AmmoClip.class);
     }
 
     public Accessor<Pipe> pipe() {

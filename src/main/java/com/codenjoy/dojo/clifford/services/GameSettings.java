@@ -56,6 +56,7 @@ public class GameSettings extends SettingsImpl implements AllSettings<GameSettin
         HANDGUN_TICKS_PER_SHOOT,
         HANDGUN_CLIP_SIZE,
         HANDGUN_UNLIMITED_AMMO,
+        AMMO_CLIP_COUNT,
         ROUND_WIN_SCORE,
         KILL_OTHER_HERO_SCORE,
         KILL_ENEMY_HERO_SCORE,
@@ -108,6 +109,7 @@ public class GameSettings extends SettingsImpl implements AllSettings<GameSettin
         integer(HANDGUN_CLIP_SIZE, 12);
         integer(HANDGUN_TICKS_PER_SHOOT, 0);
         bool(HANDGUN_UNLIMITED_AMMO, true);
+        integer(AMMO_CLIP_COUNT, 0);
 
         integer(ROUND_WIN_SCORE, 20);
         integer(KILL_OTHER_HERO_SCORE, 20);

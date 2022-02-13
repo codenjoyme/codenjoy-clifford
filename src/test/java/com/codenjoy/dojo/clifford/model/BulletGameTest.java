@@ -25,7 +25,8 @@ package com.codenjoy.dojo.clifford.model;
 import com.codenjoy.dojo.clifford.model.items.potion.PotionType;
 import org.junit.Test;
 
-import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.HANDGUN_TICKS_PER_SHOOT;
+import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
+import static com.codenjoy.dojo.services.Direction.LEFT;
 import static com.codenjoy.dojo.services.Direction.RIGHT;
 
 public class BulletGameTest extends AbstractGameTest {
@@ -225,7 +226,7 @@ public class BulletGameTest extends AbstractGameTest {
     }
 
     @Test
-    public void bulletInteractWithBrick_сase3() {
+    public void bulletInteractWithBrick_case3() {
         // given
         givenFl("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
@@ -328,7 +329,7 @@ public class BulletGameTest extends AbstractGameTest {
     }
 
     @Test
-    public void bulletInteractWithBrick_сase2() {
+    public void bulletInteractWithBrick_case2() {
         // given
         givenFl("☼☼☼☼☼☼☼\n" +
                 "☼     ☼\n" +
@@ -1415,7 +1416,7 @@ public class BulletGameTest extends AbstractGameTest {
     }
 
     @Test
-    public void bulletInteractWithBrick_сase1() {
+    public void bulletInteractWithBrick_case1() {
         // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
@@ -1456,7 +1457,7 @@ public class BulletGameTest extends AbstractGameTest {
     }
 
     @Test
-    public void bulletInteractWithBorder_сase1() {
+    public void bulletInteractWithBorder_case1() {
         // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
@@ -1486,7 +1487,7 @@ public class BulletGameTest extends AbstractGameTest {
     }
 
     @Test
-    public void bulletInteractWithWall_сase1() {
+    public void bulletInteractWithWall_case1() {
         // given
         givenFl("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
@@ -1673,5 +1674,93 @@ public class BulletGameTest extends AbstractGameTest {
         verifyAllEvents(
                 "listener(0) => [HERO_DIED]\n" +
                 "listener(1) => [HERO_DIED]\n");
+    }
+
+    @Test
+    public void shouldPickUpAdditionalAmmo() {
+        // given
+        settings().integer(HANDGUN_CLIP_SIZE, 1)
+                .bool(HANDGUN_UNLIMITED_AMMO, false);
+
+        givenFl("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼# Ѧ ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼");
+
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼# Ѧ ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        // when
+        // hero shoot two times
+        hero().shoot();
+        tick();
+        hero().shoot();
+        tick();
+
+        // then
+        // only one bullet should be available
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼#•Ѧ ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[2,2,LEFT]]");
+
+        hero().shoot();
+        tick();
+
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼* Ѧ ◄☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        assertBullets("[]");
+
+        // when
+        // hero pick up ammo_clip
+        hero().left();
+        tick();
+        hero().left();
+        tick();
+        hero().right();
+        tick();
+
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼   ► ☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        // then
+        // he should can shoot again
+        hero().shoot(LEFT);
+        tick();
+
+        assertF("☼☼☼☼☼☼☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼     ☼\n" +
+                "☼  •◄ ☼\n" +
+                "☼#####☼\n" +
+                "☼☼☼☼☼☼☼\n");
+
+        assertBullets("[[3,2,LEFT]]");
+
     }
 }

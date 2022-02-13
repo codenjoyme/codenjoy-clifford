@@ -67,7 +67,8 @@ public abstract class AbstractGameTest
                 .integer(CLUE_COUNT_RING, level().clueRing().size())
                 .integer(MASK_POTIONS_COUNT, level().potions().size())
                 .integer(BACKWAYS_COUNT, level().backways().size())
-                .integer(ROBBERS_COUNT, level().robbers().size());
+                .integer(ROBBERS_COUNT, level().robbers().size())
+                .integer(AMMO_CLIP_COUNT, level().ammoClip().size());
     }
 
     @Override
