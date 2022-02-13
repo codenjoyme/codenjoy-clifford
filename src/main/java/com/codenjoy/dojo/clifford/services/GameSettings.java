@@ -31,6 +31,7 @@ import com.codenjoy.dojo.services.settings.SettingsImpl;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.codenjoy.dojo.clifford.services.GameRunner.GAME_NAME;
 import static com.codenjoy.dojo.clifford.services.GameSettings.Keys.*;
 
 public class GameSettings extends SettingsImpl implements AllSettings<GameSettings> {
@@ -65,7 +66,7 @@ public class GameSettings extends SettingsImpl implements AllSettings<GameSettin
         private String key;
 
         Keys() {
-            this.key = key(GameRunner.GAME_NAME);
+            this.key = key(GAME_NAME);
         }
 
         @Override
