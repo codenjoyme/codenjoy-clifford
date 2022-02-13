@@ -49,6 +49,7 @@ public class GameSettingsTest {
                     "HANDGUN_TICKS_PER_SHOOT    =[Game] Gun recharge\n" +
                     "HANDGUN_CLIP_SIZE          =[Game] Count of bullet by default\n" +
                     "HANDGUN_UNLIMITED_AMMO     =[Game] unlimited ammo\n" +
+                    "AMMO_CLIP_COUNT            =[Game] Ammo clip count\n" +
                     "ROUND_WIN_SCORE            =[Score] Round win\n" +
                     "KILL_OTHER_HERO_SCORE      =[Score] Kill hero score\n" +
                     "KILL_ENEMY_HERO_SCORE      =[Score] Kill enemy score\n" +

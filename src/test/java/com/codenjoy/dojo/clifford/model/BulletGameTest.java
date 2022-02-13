@@ -1686,7 +1686,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
-                "☼# Ѧ ◄☼\n" +
+                "☼# M ◄☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼");
 
@@ -1694,7 +1694,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
-                "☼# Ѧ ◄☼\n" +
+                "☼# M ◄☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
@@ -1711,7 +1711,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
-                "☼#•Ѧ ◄☼\n" +
+                "☼#•M ◄☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
@@ -1724,7 +1724,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼     ☼\n" +
                 "☼     ☼\n" +
                 "☼     ☼\n" +
-                "☼* Ѧ ◄☼\n" +
+                "☼* M ◄☼\n" +
                 "☼#####☼\n" +
                 "☼☼☼☼☼☼☼\n");
 
