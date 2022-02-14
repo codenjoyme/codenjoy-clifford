@@ -48,12 +48,6 @@ public class AITest extends AbstractGameTest {
     private final AI ai = new AI();
 
     @Override
-    public void setup() {
-        super.setup();
-        AI.POSSIBLE_IS_CONSTANT = true;
-    }
-
-    @Override
     protected void reloadAllRobbers() {
         robbers = field().robbers().stream()
                 .map(robber -> new RobberJoystick(robber, ai))
@@ -745,9 +739,7 @@ public class AITest extends AbstractGameTest {
 
     @Test
     public void performanceTest() {
-        AI.POSSIBLE_IS_CONSTANT = true;
-
-        // about 5.5 sec
+        // about 4.6 sec
         givenFl(Levels.BIG_LEVEL);
 
         assertQ(" ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼\n" +
