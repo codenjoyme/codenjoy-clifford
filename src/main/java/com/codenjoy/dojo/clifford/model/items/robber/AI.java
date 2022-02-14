@@ -32,10 +32,9 @@ import java.util.List;
 import java.util.Map;
 
 import static com.codenjoy.dojo.services.Direction.DOWN;
+import static com.codenjoy.dojo.services.algs.DeikstraFindWay.POSSIBLE_IS_CONSTANT;
 
 public class AI implements RobberAI {
-
-    public static boolean POSSIBLE_IS_CONSTANT = true;
 
     private DeikstraFindWay way = new DeikstraFindWay(POSSIBLE_IS_CONSTANT);
 
