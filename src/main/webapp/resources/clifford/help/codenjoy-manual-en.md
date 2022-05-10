@@ -140,7 +140,7 @@ logic of the bot.
 
 ## Message format
 
-After connection, the client will regularly (every second) receive
+After connection, the client will regularly (every second) receive 
 a line of characters with the encoded state of the field. The format:
 
 `^board=(.*)$`
@@ -351,13 +351,6 @@ The default values are shown in the table below:
 
 ## Cases
 
-## <a id=""ask""></a> Ask Sensei
-
-You can always see the settings of the current game
-[here](/codenjoy-contest/rest/settings/player).
-Please ask Sensei about current game settings. You can find Sensei in
-the chat that the organizers have provided to discuss issues.
-
 ## Hints
 
 The first task is to run a client’s WebSocket which will connect to
@@ -372,6 +365,13 @@ If you are not sure what to do try to implement the following algorithms:
 * Try to hide from bullets.
 * Avoid robbers and other heroes.
 * Try to shoot another heroes.
+
+## <a id=""ask""></a> Ask Sensei
+
+You can always see the settings of the current game
+[here](/codenjoy-contest/rest/settings/player).
+Please ask Sensei about current game settings. You can find Sensei in
+the chat that the organizers have provided to discuss issues.
 
 ## Clients and API
 
