@@ -45,5 +45,3 @@ shows the position of the hero (the `►` character) – `[9,7]`. left-bottom
 corner has the `[0, 0]` coordinate.
 
 This is what you see on UI:
-
-![](board.png)
