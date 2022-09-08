@@ -61,7 +61,7 @@ a hero is lost - it is beneficial to collect evidence and
 not lose a hero. Points are added up. The player with the most 
 points wins (before the agreed time).
 
-However, this is not all, and closer to the final[*](#ask) 
+However, this is not all, and closer to the final[(?)](#ask) 
 in the game there are a few more mechanics in store.
 
 In particular, back doors may appear on the map. Jumping into 
@@ -71,7 +71,7 @@ in advance where you will be on the map). The back doors stay
 in their original places for several game ticks, then they 
 change their position at random.
 
-Also, closer to the end[*](#ask), special potions will 
+Also, closer to the end[(?)](#ask), special potions will 
 begin to appear on the map ... The player, having picked up 
 such a potion (standing on the same cell with it), becomes 
 disguised for several game ticks. From that moment on, he is 
