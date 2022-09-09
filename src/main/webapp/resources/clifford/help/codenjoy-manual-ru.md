@@ -122,9 +122,9 @@ API для парсинга борды - уже реализовано для т
 
 `https://[server]/codenjoy-contest/board/player/[user]?code=[code]`
 
-Тут `[server]` - домен или ip-адрес игрового сервера, `[user]` - id игрока, a `[code]` -
-твой security token. Убедись что код хранится в тайне, иначе любой участник
-сможет играть от твоего имени.
+Тут `[server]` - домен или ip-адрес игрового сервера, `[user]` - id игрока, 
+a `[code]` - твой security token. Убедись что код хранится в тайне, 
+иначе любой участник сможет играть от твоего имени.
 
 В коде твоего клиента тебе нужно найти похожую строчку и заменить её твоим URL -
 тем самым, ты задаёшь логин/пароль для доступа к серверу.
@@ -188,87 +188,87 @@ C помощью этого regexp можно выкусить строку до
 
 Как это поле выглядит в реале:
 
-![](board.png)
+<img src="/codenjoy-contest/resources/clifford/help/board.png" style="height:auto;" />
 
 <meta charset="UTF-8">
 
 ## Symbol breakdown
 | Sprite | Code | Description |
 | -------- | -------- | -------- |
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/none.png" style="width:40px;" /> | `NONE(' ')` | Empty space - where the hero can move. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/brick.png" style="width:40px;" /> | `BRICK('#')` | A wall where you can shoot a hole. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/pit_fill_1.png" style="width:40px;" /> | `PIT_FILL_1('1')` | The wall is restored over time. When the process begins, we see a timer. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/pit_fill_2.png" style="width:40px;" /> | `PIT_FILL_2('2')` | The wall is restored over time. When the process begins, we see a timer. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/pit_fill_3.png" style="width:40px;" /> | `PIT_FILL_3('3')` | The wall is restored over time. When the process begins, we see a timer. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/pit_fill_4.png" style="width:40px;" /> | `PIT_FILL_4('4')` | The wall is restored over time. When the process begins, we see a timer. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/stone.png" style="width:40px;" /> | `STONE('☼')` | Indestructible wall - It cannot be destroyed with a shot. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/crack_pit.png" style="width:40px;" /> | `CRACK_PIT('*')` | At the moment of the shot, we see the wall like this. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/clue_knife.png" style="width:40px;" /> | `CLUE_KNIFE('$')` | Clue knife. Collect a series of clues to get the maximum points. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/clue_glove.png" style="width:40px;" /> | `CLUE_GLOVE('&')` | Clue glove. Collect a series of clues to get the maximum points. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/clue_ring.png" style="width:40px;" /> | `CLUE_RING('@')` | Clue ring. Collect a series of clues to get the maximum points. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/hero_die.png" style="width:40px;" /> | `HERO_DIE('O')` | Your hero is dead. In the next tick, it will disappear and appear in a new location. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/hero_ladder.png" style="width:40px;" /> | `HERO_LADDER('A')` | Your hero is climbing the ladder. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/hero_left.png" style="width:40px;" /> | `HERO_LEFT('◄')` | Your hero runs to the left. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/hero_right.png" style="width:40px;" /> | `HERO_RIGHT('►')` | Your hero runs to the right. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/hero_fall.png" style="width:40px;" /> | `HERO_FALL('U')` | Your hero is falling. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/hero_pipe.png" style="width:40px;" /> | `HERO_PIPE('I')` | Your hero is crawling along the pipe. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/hero_pit.png" style="width:40px;" /> | `HERO_PIT('E')` | Your hero in the pit. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/hero_mask_die.png" style="width:40px;" /> | `HERO_MASK_DIE('o')` | Your shadow-hero is dead. In the next tick, it will disappear and appear in a new location. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/hero_mask_ladder.png" style="width:40px;" /> | `HERO_MASK_LADDER('a')` | Your shadow-hero is climbing the ladder. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/hero_mask_left.png" style="width:40px;" /> | `HERO_MASK_LEFT('h')` | Your shadow-hero runs to the left. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/hero_mask_right.png" style="width:40px;" /> | `HERO_MASK_RIGHT('w')` | Your shadow-hero runs to the right. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/hero_mask_fall.png" style="width:40px;" /> | `HERO_MASK_FALL('u')` | Your shadow-hero is falling. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/hero_mask_pipe.png" style="width:40px;" /> | `HERO_MASK_PIPE('i')` | Your shadow-hero is crawling along the pipe. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/hero_mask_pit.png" style="width:40px;" /> | `HERO_MASK_PIT('e')` | Your shadow-hero in the pit. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/other_hero_die.png" style="width:40px;" /> | `OTHER_HERO_DIE('C')` | Other hero is dead. In the next tick, it will disappear and appear in a new location. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/other_hero_ladder.png" style="width:40px;" /> | `OTHER_HERO_LADDER('D')` | Other hero is climbing the ladder. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/other_hero_left.png" style="width:40px;" /> | `OTHER_HERO_LEFT('«')` | Other hero runs to the left. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/other_hero_right.png" style="width:40px;" /> | `OTHER_HERO_RIGHT('»')` | Other hero runs to the right. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/other_hero_fall.png" style="width:40px;" /> | `OTHER_HERO_FALL('F')` | Other hero is falling. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/other_hero_pipe.png" style="width:40px;" /> | `OTHER_HERO_PIPE('J')` | Other hero is crawling along the pipe. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/other_hero_pit.png" style="width:40px;" /> | `OTHER_HERO_PIT('K')` | Other hero in the pit. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/other_hero_mask_die.png" style="width:40px;" /> | `OTHER_HERO_MASK_DIE('c')` | Other shadow-hero is dead. In the next tick, it will disappear and appear in a new location. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/other_hero_mask_ladder.png" style="width:40px;" /> | `OTHER_HERO_MASK_LADDER('d')` | Other shadow-hero is climbing the ladder. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/other_hero_mask_left.png" style="width:40px;" /> | `OTHER_HERO_MASK_LEFT('Z')` | Other shadow-hero runs to the left. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/other_hero_mask_right.png" style="width:40px;" /> | `OTHER_HERO_MASK_RIGHT('z')` | Other shadow-hero runs to the right. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/other_hero_mask_fall.png" style="width:40px;" /> | `OTHER_HERO_MASK_FALL('f')` | Other shadow-hero is falling. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/other_hero_mask_pipe.png" style="width:40px;" /> | `OTHER_HERO_MASK_PIPE('j')` | Other shadow-hero is crawling along the pipe. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/other_hero_mask_pit.png" style="width:40px;" /> | `OTHER_HERO_MASK_PIT('k')` | Other shadow-hero in the pit. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/enemy_hero_die.png" style="width:40px;" /> | `ENEMY_HERO_DIE('L')` | Enemy hero is dead. In the next tick, it will disappear and appear in a new location. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/enemy_hero_ladder.png" style="width:40px;" /> | `ENEMY_HERO_LADDER('N')` | Enemy hero is climbing the ladder. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/enemy_hero_left.png" style="width:40px;" /> | `ENEMY_HERO_LEFT('P')` | Enemy hero runs to the left. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/enemy_hero_right.png" style="width:40px;" /> | `ENEMY_HERO_RIGHT('Q')` | Enemy hero runs to the right. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/enemy_hero_fall.png" style="width:40px;" /> | `ENEMY_HERO_FALL('R')` | Enemy hero is falling. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/enemy_hero_pipe.png" style="width:40px;" /> | `ENEMY_HERO_PIPE('T')` | Enemy hero is crawling along the pipe. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/enemy_hero_pit.png" style="width:40px;" /> | `ENEMY_HERO_PIT('V')` | Enemy hero in the pit. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/enemy_hero_mask_die.png" style="width:40px;" /> | `ENEMY_HERO_MASK_DIE('l')` | Enemy shadow-hero is dead. In the next tick, it will disappear and appear in a new location. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/enemy_hero_mask_ladder.png" style="width:40px;" /> | `ENEMY_HERO_MASK_LADDER('n')` | Enemy shadow-hero is climbing the ladder. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/enemy_hero_mask_left.png" style="width:40px;" /> | `ENEMY_HERO_MASK_LEFT('p')` | Enemy shadow-hero runs to the left. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/enemy_hero_mask_right.png" style="width:40px;" /> | `ENEMY_HERO_MASK_RIGHT('q')` | Enemy shadow-hero runs to the right. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/enemy_hero_mask_fall.png" style="width:40px;" /> | `ENEMY_HERO_MASK_FALL('r')` | Enemy shadow-hero is falling. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/enemy_hero_mask_pipe.png" style="width:40px;" /> | `ENEMY_HERO_MASK_PIPE('t')` | Enemy shadow-hero is crawling along the pipe. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/enemy_hero_mask_pit.png" style="width:40px;" /> | `ENEMY_HERO_MASK_PIT('v')` | Enemy shadow-hero in the pit. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/robber_ladder.png" style="width:40px;" /> | `ROBBER_LADDER('X')` | Robber is climbing the ladder. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/robber_left.png" style="width:40px;" /> | `ROBBER_LEFT(')')` | Robber runs to the left. Robber picks up the nearest prey and hunts for it until it overtakes it. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/robber_right.png" style="width:40px;" /> | `ROBBER_RIGHT('(')` | Robber runs to the right. Robber picks up the nearest prey and hunts for it until it overtakes it. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/robber_fall.png" style="width:40px;" /> | `ROBBER_FALL('x')` | Robber is falling. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/robber_pipe.png" style="width:40px;" /> | `ROBBER_PIPE('Y')` | Robber is crawling along the pipe. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/robber_pit.png" style="width:40px;" /> | `ROBBER_PIT('y')` | Robber in the pit. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/opened_door_gold.png" style="width:40px;" /> | `OPENED_DOOR_GOLD('g')` | Opened golden gates. Can only be locked with a golden key. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/opened_door_silver.png" style="width:40px;" /> | `OPENED_DOOR_SILVER('s')` | Opened silver gates. Can only be locked with a silver key. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/opened_door_bronze.png" style="width:40px;" /> | `OPENED_DOOR_BRONZE('b')` | Opened bronze gates. Can only be locked with a bronze key. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/closed_door_gold.png" style="width:40px;" /> | `CLOSED_DOOR_GOLD('G')` | Closed golden gates. Can only be opened with a golden key. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/closed_door_silver.png" style="width:40px;" /> | `CLOSED_DOOR_SILVER('S')` | Closed silver gates. Can only be opened with a silver key. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/closed_door_bronze.png" style="width:40px;" /> | `CLOSED_DOOR_BRONZE('B')` | Closed bronze gates. Can only be opened with a bronze key. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/key_gold.png" style="width:40px;" /> | `KEY_GOLD('+')` | Golden key. Helps open/close golden gates. The key can only be used once. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/key_silver.png" style="width:40px;" /> | `KEY_SILVER('-')` | Silver key. Helps open/close silver gates. The key can only be used once. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/key_bronze.png" style="width:40px;" /> | `KEY_BRONZE('!')` | Bronze key. Helps open/close bronze gates. The key can only be used once. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/bullet.png" style="width:40px;" /> | `BULLET('•')` | Bullet. After the shot by the hero, the bullet flies until it meets an obstacle. The bullet kills the hero. It ricochets from the indestructible wall (no more than 1 time). The bullet destroys the destructible wall. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/ladder.png" style="width:40px;" /> | `LADDER('H')` | Ladder - the hero can move along the level along it. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/pipe.png" style="width:40px;" /> | `PIPE('~')` | Pipe - the hero can also move along the level along it, but only horizontally. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/backway.png" style="width:40px;" /> | `BACKWAY('W')` | Back door - allows the hero to secretly move to another random place on the map. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/mask_potion.png" style="width:40px;" /> | `MASK_POTION('m')` | Disguise potion - endow the hero with additional abilities. The hero goes into shadow mode. | 
-|<img src="https://github.com/codenjoyme/codenjoy-clifford/raw/master/src/main/webapp/resources/clifford/sprite/ammo_clip.png" style="width:40px;" /> | `AMMO_CLIP('M')` | Ammo clip - additional ammo for hero's gun. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/none.png" style="height:auto;" /> | `NONE(' ')` | Пустое место – по которому может двигаться детектив. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/brick.png" style="height:auto;" /> | `BRICK('#')` | Стена в которой можно прострелить дырочку. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/pit_fill_1.png" style="height:auto;" /> | `PIT_FILL_1('1')` | Стена со временем зарастает. Когда процесс начинается - мы видим таймер. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/pit_fill_2.png" style="height:auto;" /> | `PIT_FILL_2('2')` | Стена со временем зарастает. Когда процесс начинается - мы видим таймер. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/pit_fill_3.png" style="height:auto;" /> | `PIT_FILL_3('3')` | Стена со временем зарастает. Когда процесс начинается - мы видим таймер. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/pit_fill_4.png" style="height:auto;" /> | `PIT_FILL_4('4')` | Стена со временем зарастает. Когда процесс начинается - мы видим таймер. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/stone.png" style="height:auto;" /> | `STONE('☼')` | Неразрушаемая стена - в ней ничего прострелить не получится. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/crack_pit.png" style="height:auto;" /> | `CRACK_PIT('*')` | В момент выстрела мы видим стену именно так. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/clue_knife.png" style="height:auto;" /> | `CLUE_KNIFE('$')` | Улика нож. Собирай серии улик, чтобы получить максимум очков. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/clue_glove.png" style="height:auto;" /> | `CLUE_GLOVE('&')` | Улика перчатка. Собирай серии улик, чтобы получить максимум очков. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/clue_ring.png" style="height:auto;" /> | `CLUE_RING('@')` | Улика кольцо. Собирай серии улик, чтобы получить максимум очков. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/hero_die.png" style="height:auto;" /> | `HERO_DIE('O')` | Твой детектив переживает процесс умирания. В следующем тике он пропадет и появится в новом месте на поле. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/hero_ladder.png" style="height:auto;" /> | `HERO_LADDER('A')` | Твой детектив карабкается по лестнице. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/hero_left.png" style="height:auto;" /> | `HERO_LEFT('◄')` | Твой детектив бежит влево. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/hero_right.png" style="height:auto;" /> | `HERO_RIGHT('►')` | Твой детектив бежит вправо. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/hero_fall.png" style="height:auto;" /> | `HERO_FALL('U')` | Твой детектив падает вниз. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/hero_pipe.png" style="height:auto;" /> | `HERO_PIPE('I')` | Твой детектив ползёт по трубе. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/hero_pit.png" style="height:auto;" /> | `HERO_PIT('E')` | Твой детектив находится в яме. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/hero_mask_die.png" style="height:auto;" /> | `HERO_MASK_DIE('o')` | Твой замаскированный детектив переживает процесс умирания. В следующем тике он пропадет и появится в новом месте на поле. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/hero_mask_ladder.png" style="height:auto;" /> | `HERO_MASK_LADDER('a')` | Твой замаскированный детектив карабкается по лестнице. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/hero_mask_left.png" style="height:auto;" /> | `HERO_MASK_LEFT('h')` | Твой замаскированный детектив бежит влево. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/hero_mask_right.png" style="height:auto;" /> | `HERO_MASK_RIGHT('w')` | Твой замаскированный детектив бежит вправо. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/hero_mask_fall.png" style="height:auto;" /> | `HERO_MASK_FALL('u')` | Твой замаскированный детектив падает вниз. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/hero_mask_pipe.png" style="height:auto;" /> | `HERO_MASK_PIPE('i')` | Твой замаскированный детектив ползёт по трубе. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/hero_mask_pit.png" style="height:auto;" /> | `HERO_MASK_PIT('e')` | Твой замаскированный детектив находится в яме. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/other_hero_die.png" style="height:auto;" /> | `OTHER_HERO_DIE('C')` | Другой детектив переживает процесс умирания. В следующем тике он пропадет и появится в новом месте на поле. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/other_hero_ladder.png" style="height:auto;" /> | `OTHER_HERO_LADDER('D')` | Другой детектив карабкается по лестнице. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/other_hero_left.png" style="height:auto;" /> | `OTHER_HERO_LEFT('«')` | Другой детектив бежит влево. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/other_hero_right.png" style="height:auto;" /> | `OTHER_HERO_RIGHT('»')` | Другой детектив бежит вправо. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/other_hero_fall.png" style="height:auto;" /> | `OTHER_HERO_FALL('F')` | Другой детектив падает вниз. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/other_hero_pipe.png" style="height:auto;" /> | `OTHER_HERO_PIPE('J')` | Другой детектив ползёт по трубе. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/other_hero_pit.png" style="height:auto;" /> | `OTHER_HERO_PIT('K')` | Другой детектив находится в яме. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/other_hero_mask_die.png" style="height:auto;" /> | `OTHER_HERO_MASK_DIE('c')` | Другой замаскированный детектив переживает процесс умирания. В следующем тике он пропадет и появится в новом месте на поле. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/other_hero_mask_ladder.png" style="height:auto;" /> | `OTHER_HERO_MASK_LADDER('d')` | Другой замаскированный детектив карабкается по лестнице. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/other_hero_mask_left.png" style="height:auto;" /> | `OTHER_HERO_MASK_LEFT('Z')` | Другой замаскированный детектив бежит влево. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/other_hero_mask_right.png" style="height:auto;" /> | `OTHER_HERO_MASK_RIGHT('z')` | Другой замаскированный детектив бежит вправо. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/other_hero_mask_fall.png" style="height:auto;" /> | `OTHER_HERO_MASK_FALL('f')` | Другой замаскированный детектив падает вниз. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/other_hero_mask_pipe.png" style="height:auto;" /> | `OTHER_HERO_MASK_PIPE('j')` | Другой замаскированный детектив ползёт по трубе. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/other_hero_mask_pit.png" style="height:auto;" /> | `OTHER_HERO_MASK_PIT('k')` | Другой замаскированный детектив находится в яме. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/enemy_hero_die.png" style="height:auto;" /> | `ENEMY_HERO_DIE('L')` | Вражеский детектив переживает процесс умирания. В следующем тике он пропадет и появится в новом месте на поле. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/enemy_hero_ladder.png" style="height:auto;" /> | `ENEMY_HERO_LADDER('N')` | Вражеский детектив карабкается по лестнице. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/enemy_hero_left.png" style="height:auto;" /> | `ENEMY_HERO_LEFT('P')` | Вражеский детектив бежит влево. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/enemy_hero_right.png" style="height:auto;" /> | `ENEMY_HERO_RIGHT('Q')` | Вражеский детектив бежит вправо. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/enemy_hero_fall.png" style="height:auto;" /> | `ENEMY_HERO_FALL('R')` | Вражеский детектив падает вниз. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/enemy_hero_pipe.png" style="height:auto;" /> | `ENEMY_HERO_PIPE('T')` | Вражеский детектив ползёт по трубе. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/enemy_hero_pit.png" style="height:auto;" /> | `ENEMY_HERO_PIT('V')` | Вражеский детектив находится в яме. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/enemy_hero_mask_die.png" style="height:auto;" /> | `ENEMY_HERO_MASK_DIE('l')` | Вражеский замаскированный детектив переживает процесс умирания. В следующем тике он пропадет и появится в новом месте на поле. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/enemy_hero_mask_ladder.png" style="height:auto;" /> | `ENEMY_HERO_MASK_LADDER('n')` | Вражеский замаскированный детектив карабкается по лестнице. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/enemy_hero_mask_left.png" style="height:auto;" /> | `ENEMY_HERO_MASK_LEFT('p')` | Вражеский замаскированный детектив бежит влево. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/enemy_hero_mask_right.png" style="height:auto;" /> | `ENEMY_HERO_MASK_RIGHT('q')` | Вражеский замаскированный детектив бежит вправо. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/enemy_hero_mask_fall.png" style="height:auto;" /> | `ENEMY_HERO_MASK_FALL('r')` | Вражеский замаскированный детектив падает вниз. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/enemy_hero_mask_pipe.png" style="height:auto;" /> | `ENEMY_HERO_MASK_PIPE('t')` | Вражеский замаскированный детектив ползёт по трубе. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/enemy_hero_mask_pit.png" style="height:auto;" /> | `ENEMY_HERO_MASK_PIT('v')` | Вражеский замаскированный детектив находится в яме. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/robber_ladder.png" style="height:auto;" /> | `ROBBER_LADDER('X')` | Вор карабкается по лестнице. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/robber_left.png" style="height:auto;" /> | `ROBBER_LEFT(')')` | Вор бежит влево. Вор выбирает ближайшую добычу и охотится за ней, пока не настигнет. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/robber_right.png" style="height:auto;" /> | `ROBBER_RIGHT('(')` | Вор бежит вправо. Вор выбирает ближайшую добычу и охотится за ней, пока не настигнет. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/robber_fall.png" style="height:auto;" /> | `ROBBER_FALL('x')` | Вор падает вниз. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/robber_pipe.png" style="height:auto;" /> | `ROBBER_PIPE('Y')` | Вор ползёт по трубе. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/robber_pit.png" style="height:auto;" /> | `ROBBER_PIT('y')` | Вор находится в яме. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/opened_door_gold.png" style="height:auto;" /> | `OPENED_DOOR_GOLD('g')` | Открытые золотые ворота. Запирается только на золотой ключ. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/opened_door_silver.png" style="height:auto;" /> | `OPENED_DOOR_SILVER('s')` | Открытые серебряные ворота. Запирается только на серебряный ключ. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/opened_door_bronze.png" style="height:auto;" /> | `OPENED_DOOR_BRONZE('b')` | Открытые бронзовые ворота. Запирается только на бронзовый ключ. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/closed_door_gold.png" style="height:auto;" /> | `CLOSED_DOOR_GOLD('G')` | Закрытые золотые ворота. Отпираются только золотым ключом. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/closed_door_silver.png" style="height:auto;" /> | `CLOSED_DOOR_SILVER('S')` | Закрытые серебряные ворота. Отпираются только серебряным ключом. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/closed_door_bronze.png" style="height:auto;" /> | `CLOSED_DOOR_BRONZE('B')` | Закрытые бронзовые ворота. Отпираются только бронзовым ключом. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/key_gold.png" style="height:auto;" /> | `KEY_GOLD('+')` | Золотой ключ. Помогает отпереть/запереть золотые ворота. Ключ может быть использован только единожды. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/key_silver.png" style="height:auto;" /> | `KEY_SILVER('-')` | Серебряный ключ. Помогает отпереть/запереть серебряные ворота. Ключ может быть использован только единожды. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/key_bronze.png" style="height:auto;" /> | `KEY_BRONZE('!')` | Бронзовый ключ. Помогает отпереть/запереть бронзовые ворота. Ключ может быть использован только единожды. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/bullet.png" style="height:auto;" /> | `BULLET('•')` | Пуля. После выстрела героем пуля летит до тех пор, пока не встретит препятствие. Пуля убивает героя. Рикошетит от нерушимой стены (не более 1 раза). Пуля разрушает разрушаемую стену. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/ladder.png" style="height:auto;" /> | `LADDER('H')` | Лестница - по ней можно перемещаться по уровню вертикально. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/pipe.png" style="height:auto;" /> | `PIPE('~')` | Труба - по ней так же можно перемещаться по уровню, но только горизонтально. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/backway.png" style="height:auto;" /> | `BACKWAY('W')` | Черный ход - позволяет скрыто перемещаться в иное место на карте. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/mask_potion.png" style="height:auto;" /> | `MASK_POTION('m')` | Маскировочное зелье - наделяют детектива дополнительными способностями. Герой временно обретает маскировку. | 
+|<img src="/codenjoy-contest/resources/clifford/sprite/ammo_clip.png" style="height:auto;" /> | `AMMO_CLIP('M')` | Патроны - дополнительные патроны для оружия героя. | 
 
 
 ## Как играть?
@@ -320,7 +320,7 @@ C помощью этого regexp можно выкусить строку до
 
 | Событие | Название | Очки |
 |--------|--------|--------|
-| Количество маскировочный зелий на карте | MASK_POTIONS_COUNT | 0[(?)](#ask) |
+| Количество маскировочных зелий на карте | MASK_POTIONS_COUNT | 0[(?)](#ask) |
 | Время действия маскировочного зелья (тиков) | MASK_TICKS | 15[(?)](#ask) |
 | Количество черных ходов на карте | BACKWAYS_COUNT | 5[(?)](#ask) |
 | Количество тиков до изменения положения черных ходов | BACKWAY_TICKS | 50[(?)](#ask) |
@@ -338,11 +338,13 @@ C помощью этого regexp можно выкусить строку до
 | Количество патронов | HANDGUN_CLIP_SIZE | 12[(?)](#ask) |
 | Количество тиков на перезарядку | HANDGUN_TICKS_PER_SHOOT | 0[(?)](#ask) |
 | Режим неограниченного заряда патронов | HANDGUN_UNLIMITED_AMMO | true[(?)](#ask) |
+| Количество модификаторов неограниченного заряда на карте | AMMO_CLIP_COUNT | 0[(?)](#ask) |
 | Очки за победу в раунде | ROUND_WIN_SCORE | 20[(?)](#ask) |
 | Очки за убийство другого игрока (под маскировкой или при закапывании) | KILL_OTHER_HERO_SCORE | 20[(?)](#ask) |
 | Очки за убийство вражеского игрока (под маскировкой или при закапывании) | KILL_ENEMY_HERO_SCORE | 50[(?)](#ask) |
 | Пенальти за смерть | HERO_DIED_PENALTY | -1[(?)](#ask) |
 | Пенальти за суицид | SUICIDE_PENALTY | -10[(?)](#ask) |
+| Режим подсчета очков | SCORE_COUNTING_TYPE | 0 (0 - Простой инкремент очков, 1 - Максимальное количество очков в комнате, 2 - Максимальное количество очков в серии между смертями героя)[(?)](#ask) |
 
 ## Кейзы
 
@@ -360,6 +362,8 @@ C помощью этого regexp можно выкусить строку до
 * Попробуй спрятаться от пуль.
 * Попробуй избежать грабителей и других героев.
 * Попробуй стрелять в других героев.
+
+## FAQ
 
 ## <a id="ask"></a> Спроси Сенсея
 
@@ -422,8 +426,6 @@ C помощью этого regexp можно выкусить строку до
   Позиции всех стен.
 * и так далее...
 
-## FAQ
-
 ## Как провести такой же ивент самостоятельно?
 
 Перед тобой opensource проект. Для реализации своей новой игры, модификации этой игры,
@@ -431,7 +433,7 @@ C помощью этого regexp можно выкусить строку до
 [форкни проект](https://github.com/codenjoyme/codenjoy.git).
 Все инструкции ты найдешь в Readme.md файлах - они подскажут, что делать дальше.
 
-Если у тебя есть вопросы - прошу, задавай их мне 
+Если у тебя есть вопросы - прошу, задавай их мне
 в [скайпе alexander.baglay](skype:alexander.baglay)
 или по почте [apofig@gmail.com](mailto:apofig@gmail.com).
 
