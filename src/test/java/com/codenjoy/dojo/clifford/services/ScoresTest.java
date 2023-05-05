@@ -155,7 +155,7 @@ public class ScoresTest extends AbstractScoresTest {
                 "GET_CLUE_KNIFE,0 > +20 = 20\n" +
                 "GET_CLUE_KNIFE,1 > +30 = 50\n" +
                 "GET_CLUE_KNIFE,2 > +40 = 90\n" +
-                "<CLEAN> > -90 = 0\n" +
+                "(CLEAN) > -90 = 0\n" +
                 "GET_CLUE_KNIFE,0 > +20 = 20\n" +
                 "GET_CLUE_KNIFE,1 > +30 = 50");
     }
