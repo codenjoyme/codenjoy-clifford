@@ -93,6 +93,11 @@ public class ScoresTest extends AbstractScoresTest {
 
     @Test
     public void shouldIncreaseForNextClue_stepByStep_knife() {
+        // given
+        settings.integer(CLUE_SCORE_KNIFE, 20)
+                .integer(CLUE_SCORE_KNIFE_INCREMENT, 10);
+
+        // when then
         assertEvents("0:\n" +
                 "GET_CLUE_KNIFE,0 > +20 = 20\n" +
                 "GET_CLUE_KNIFE,1 > +30 = 50\n" +
@@ -102,6 +107,11 @@ public class ScoresTest extends AbstractScoresTest {
 
     @Test
     public void shouldIncreaseForNextClue_stepByStep_glove() {
+        // given
+        settings.integer(CLUE_SCORE_GLOVE, 2)
+                .integer(CLUE_SCORE_GLOVE_INCREMENT, 1);
+
+        // when then
         assertEvents("0:\n" +
                 "GET_CLUE_GLOVE,0 > +2 = 2\n" +
                 "GET_CLUE_GLOVE,1 > +3 = 5\n" +
@@ -111,6 +121,11 @@ public class ScoresTest extends AbstractScoresTest {
 
     @Test
     public void shouldIncreaseForNextClue_stepByStep_ring() {
+        // given
+        settings.integer(CLUE_SCORE_RING, 200)
+                .integer(CLUE_SCORE_RING_INCREMENT, 100);
+
+        // when then
         assertEvents("0:\n" +
                 "GET_CLUE_RING,0 > +200 = 200\n" +
                 "GET_CLUE_RING,1 > +300 = 500\n" +
@@ -120,6 +135,10 @@ public class ScoresTest extends AbstractScoresTest {
 
     @Test
     public void shouldStillZeroAfterDead() {
+        // given
+        settings.integer(HERO_DIED_PENALTY, -30);
+
+        // when then
         assertEvents("0:\n" +
                 "HERO_DIED > +0 = 0");
     }
@@ -136,7 +155,11 @@ public class ScoresTest extends AbstractScoresTest {
         assertEquals(0, scores.getScore().intValue());
     }
     @Test
-    public void shouldCleanIncreased_whenGameOver() {
+    public void shouldCleanIncreased_whenHeroDied() {
+        // given
+        settings.integer(HERO_DIED_PENALTY, -30);
+
+        // when then
         assertEvents("0:\n" +
                 "GET_CLUE_KNIFE,0 > +20 = 20\n" +
                 "GET_CLUE_KNIFE,1 > +30 = 50\n" +
@@ -159,6 +182,10 @@ public class ScoresTest extends AbstractScoresTest {
 
     @Test
     public void shouldCleanIncreased_whenSuicide() {
+        // given
+        settings.integer(SUICIDE_PENALTY, -13);
+
+        // when then
         assertEvents("0:\n" +
                 "GET_CLUE_KNIFE,0 > +20 = 20\n" +
                 "GET_CLUE_KNIFE,1 > +30 = 50\n" +
@@ -166,17 +193,6 @@ public class ScoresTest extends AbstractScoresTest {
                 "SUICIDE > -13 = 77\n" +
                 "GET_CLUE_KNIFE,0 > +20 = 97\n" +
                 "GET_CLUE_KNIFE,1 > +30 = 127");
-    }
-
-    @Test
-    public void shouldCleanIncreased_whenHeroDied() {
-        assertEvents("0:\n" +
-                "GET_CLUE_KNIFE,0 > +20 = 20\n" +
-                "GET_CLUE_KNIFE,1 > +30 = 50\n" +
-                "GET_CLUE_KNIFE,2 > +40 = 90\n" +
-                "HERO_DIED > -30 = 60\n" +
-                "GET_CLUE_KNIFE,0 > +20 = 80\n" +
-                "GET_CLUE_KNIFE,1 > +30 = 110");
     }
 
     @Test
