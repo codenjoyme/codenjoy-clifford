@@ -46,16 +46,6 @@ public class Event implements EventObject<Event.Type, Integer> {
         SUICIDE,          // герой заблудился и решил суициднуться
     }
 
-    public Event with(int amount) {
-        this.value = amount;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        return type + ((value != 0)?("(" + value + ")"):"");
-    }
-
     public Event(Type type) {
         this.type = type;
     }
@@ -73,5 +63,10 @@ public class Event implements EventObject<Event.Type, Integer> {
     @Override
     public Type type() {
         return type;
+    }
+
+    @Override
+    public String toString() {
+        return _toString();
     }
 }

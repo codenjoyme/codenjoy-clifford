@@ -428,7 +428,7 @@ public class Hero extends RoundPlayerHero<Field>
     }
 
     public void pickClue(Event.Type clue) {
-        getPlayer().event(new Event(clue).with(increaseClue(clue)));
+        getPlayer().event(new Event(clue, increaseClue(clue)));
     }
 
     private int increaseClue(Event.Type clue) {
