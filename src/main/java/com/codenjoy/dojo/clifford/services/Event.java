@@ -22,15 +22,11 @@ package com.codenjoy.dojo.clifford.services;
  * #L%
  */
 
-import com.codenjoy.dojo.services.event.EventObject;
+import com.codenjoy.dojo.services.event.SingleValueEvent;
 
-public class Event implements EventObject<Event.Type, Integer> {
-
-    private Type type;
-    private int value;
+public class Event extends SingleValueEvent<Event.Type, Integer> {
 
     public enum Type {
-
         START_ROUND,      // раунд стартовал
         WIN_ROUND,        // герой победил в раунде
 
@@ -43,30 +39,14 @@ public class Event implements EventObject<Event.Type, Integer> {
         GET_CLUE_GLOVE,
         GET_CLUE_RING,
 
-        SUICIDE,          // герой заблудился и решил суициднуться
+        SUICIDE,          // герой заблудился и решил закончить игру
     }
 
     public Event(Type type) {
-        this.type = type;
+        super(type);
     }
 
     public Event(Type type, int value) {
-        this.type = type;
-        this.value = value;
-    }
-
-    @Override
-    public Integer value() {
-        return value;
-    }
-
-    @Override
-    public Type type() {
-        return type;
-    }
-
-    @Override
-    public String toString() {
-        return _toString();
+        super(type, value);
     }
 }
