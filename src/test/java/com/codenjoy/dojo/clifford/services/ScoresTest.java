@@ -144,7 +144,7 @@ public class ScoresTest extends AbstractScoresTest {
     }
 
     @Test
-    public void shouldClearScore() {
+    public void shouldCleanScore() {
         // given
         shouldCollectScores();
 
