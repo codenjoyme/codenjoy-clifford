@@ -58,7 +58,7 @@ public class ScoresTest extends AbstractScoresTest {
     }
 
     @Override
-    protected Class<? extends ScoresMap<?>> scores() {
+    protected Class<? extends ScoresMap> scores() {
         return Scores.class;
     }
 
