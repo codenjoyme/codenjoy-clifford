@@ -134,7 +134,7 @@ public class ScoresTest extends AbstractScoresTest {
     }
 
     @Test
-    public void shouldStillZeroAfterDead() {
+    public void shouldNotBeLessThanZero() {
         // given
         settings.integer(HERO_DIED_PENALTY, -30);
 
