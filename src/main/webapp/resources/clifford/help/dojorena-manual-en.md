@@ -185,7 +185,7 @@ corner has the `[0, 0]` coordinate.
 
 This is what you see on UI:
 
-<img src="/codenjoy-contest/resources/clifford/help/board.png" style="height:auto;" />
+<img src="/codenjoy-contest/resources/clifford/img/board/large.png" style="height:auto;" />
 
 <meta charset="UTF-8">
 
