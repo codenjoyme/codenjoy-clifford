@@ -23,7 +23,6 @@ package com.codenjoy.dojo.clifford.model;
  */
 
 
-import com.codenjoy.dojo.clifford.services.Event;
 import com.codenjoy.dojo.clifford.services.GameSettings;
 import com.codenjoy.dojo.services.Direction;
 import com.codenjoy.dojo.services.EventListener;
@@ -48,9 +47,7 @@ public class Player extends RoundGamePlayer<Hero, Field> {
 
     @Override
     public Hero createHero(Point pt) {
-        Hero hero = new Hero(pt, Direction.RIGHT);
-        hero.setPlayer(this);
-        return hero;
+        return new Hero(pt, Direction.RIGHT);
     }
 
     @Override
