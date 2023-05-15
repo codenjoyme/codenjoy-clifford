@@ -53,6 +53,7 @@ public class Level extends AbstractLevel {
         super(map);
     }
 
+    @Override
     public List<Hero> heroes() {
         EnumSet<Element> left = EnumSet.of(
                 HERO_LEFT, HERO_MASK_LEFT,
