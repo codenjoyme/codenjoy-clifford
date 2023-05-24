@@ -1561,7 +1561,8 @@ public class BulletGameTest extends AbstractGameTest {
 
         // when
         hero(0).die();
-        tick();
+        dice(1, 3); // new hero position
+        tick(); // new game
 
         // then
         assertF("☼☼☼☼☼☼☼☼☼\n" +
@@ -1569,7 +1570,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼ O  •» ☼\n" +
+                "☼►   •» ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");
@@ -1585,7 +1586,7 @@ public class BulletGameTest extends AbstractGameTest {
                 "☼       ☼\n" +
                 "☼       ☼\n" +
                 "☼       ☼\n" +
-                "☼ O   C ☼\n" +
+                "☼►    C ☼\n" +
                 "☼#######☼\n" +
                 "☼       ☼\n" +
                 "☼☼☼☼☼☼☼☼☼\n");

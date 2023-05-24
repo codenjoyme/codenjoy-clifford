@@ -202,9 +202,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         // when
         dice(1, 4);
-        game(2).newGame();
-
-        tick();
+        tick(); // new game
 
         // then
         assertF("☼☼☼☼☼☼\n" +
@@ -1572,7 +1570,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         // when
-        crack(6, 7);
+        crack(2, 3);
 
         // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
@@ -1756,11 +1754,9 @@ public class MultiplayerTest extends AbstractGameTest {
         assertEquals(false, hero(1).isAlive());
 
         // when
-        dice(1, 2);
-        game(0).newGame();
-
-        dice(8, 2);
-        game(1).newGame();
+        dice(1, 2, // hero 5
+            8, 2); // hero 6
+        tick(); // new game
 
         // then
         assertScores("");
@@ -1895,7 +1891,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         // when
-        tickAndRemoveDied();
+        tickAndRemoveDied(); // remove 2 heroes
 
         // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
@@ -1910,7 +1906,8 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         // when
-        crack(6, -1);
+        crack(4, -1); // index was 6 before remove 2 heroes
+
 
         // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
@@ -1961,8 +1958,8 @@ public class MultiplayerTest extends AbstractGameTest {
         verifyAllEvents(
                 "listener(0) => [KILL_OTHER_HERO]\n" +
                 "listener(1) => [KILL_OTHER_HERO]\n" +
-                "listener(4) => [HERO_DIED]\n" +
-                "listener(5) => [HERO_DIED]\n");
+                "listener(2) => [HERO_DIED]\n" + // index was 4 before remove 2 heroes
+                "listener(3) => [HERO_DIED]\n"); // index was 5 before remove 2 heroes
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
@@ -1976,7 +1973,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         // when
-        tickAndRemoveDied();
+        tickAndRemoveDied();  // remove 2 heroes
 
         // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
@@ -2015,7 +2012,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         verifyAllEvents(
                 "listener(0) => [KILL_OTHER_HERO]\n" +
-                "listener(6) => [HERO_DIED]\n");
+                "listener(2) => [HERO_DIED]\n"); // index was 6 before remove 4 heroes
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
@@ -2029,7 +2026,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         // when
-        tickAndRemoveDied();
+        tickAndRemoveDied(); // remove 1 hero
 
         // then
         assertScores(
@@ -2068,7 +2065,7 @@ public class MultiplayerTest extends AbstractGameTest {
         verifyAllEvents(
                 "listener(0) => [WIN_ROUND]\n" +
                 "listener(1) => [[Time is over]]\n" +
-                "listener(7) => [[Time is over]]\n");
+                "listener(2) => [[Time is over]]\n"); // index was 7 before remove 5 heroes
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  O  C C☼\n" +
@@ -2083,36 +2080,17 @@ public class MultiplayerTest extends AbstractGameTest {
 
         assertEquals(false, hero(0).isAlive());
         assertEquals(false, hero(1).isAlive());
-        assertEquals(false, hero(7).isAlive());
+        assertEquals(false, hero(2).isAlive()); // index was 7 before remove 5 heroes
 
         // when
-        dice(1, 2);
-        game(0).newGame();
-
-        dice(2, 2);
-        game(1).newGame();
-
-        dice(3, 2);
-        game(2).newGame();
-
-        dice(6, 2);
-        game(3).newGame();
-
-        dice(7, 2);
-        game(4).newGame();
-
-        dice(8, 2);
-        game(5).newGame();
-
-        dice(1, 5);
-        game(6).newGame();
-
-        dice(2, 5);
-        game(7).newGame();
+        dice(1, 2,  // hero0
+             2, 2,  // hero1
+             3, 2); // hero2
+        tick(); // new game
 
         // then
         assertScores("");
-        assertEquals(8, field().countPlayers());
+        assertEquals(3, field().countPlayers());
 
         verifyAllEvents("");
 
@@ -2120,29 +2098,26 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼        ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼CC HH   ☼\n" +
+                "☼   HH   ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼HH☼☼☼☼\n" +
-                "☼OCCHHCCC☼\n" +
+                "☼OCCHH   ☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         // when
-        tick();
+        // пришли новые герои
+        manualHero = true;
+        givenPlayer(pt(6, 2)); // hero3
+        givenPlayer(pt(7, 2)); // hero4
+        givenPlayer(pt(8, 2)); // hero5
+        givenPlayer(pt(1, 5)); // hero6
+        givenPlayer(pt(2, 5)); // hero7 // TODO почему-то добавление этого героя удаляет того, что уже создан в 3,2
+        afterCreateField();
 
         // then
         assertScores("");
         assertEquals(8, field().countPlayers());
-
-        verifyAllEvents(
-                "listener(0) => [START_ROUND, [Round 2]]\n" +
-                "listener(1) => [START_ROUND, [Round 2]]\n" +
-                "listener(2) => [START_ROUND, [Round 2]]\n" +
-                "listener(3) => [START_ROUND, [Round 2]]\n" +
-                "listener(4) => [START_ROUND, [Round 2]]\n" +
-                "listener(5) => [START_ROUND, [Round 2]]\n" +
-                "listener(6) => [START_ROUND, [Round 2]]\n" +
-                "listener(7) => [START_ROUND, [Round 2]]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼        ☼\n" +
@@ -2154,6 +2129,16 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼►»»HH»»»☼\n" +
                 "☼###HH###☼\n" +
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
+
+        verifyAllEvents(
+                "listener(0) => [START_ROUND, [Round 2]]\n" +
+                "listener(1) => [START_ROUND, [Round 2]]\n" +
+                "listener(2) => [START_ROUND, [Round 2]]\n" +
+                "listener(3) => [START_ROUND, [Round 2]]\n" +
+                "listener(4) => [START_ROUND, [Round 2]]\n" +
+                "listener(5) => [START_ROUND, [Round 2]]\n" +
+                "listener(6) => [START_ROUND, [Round 2]]\n" +
+                "listener(7) => [START_ROUND, [Round 2]]\n");
     }
 
     @Test
@@ -2249,7 +2234,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         // when
-        tickAndRemoveDied();
+        tickAndRemoveDied(); // remove 2 heroes
 
         // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
@@ -2264,7 +2249,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         // when
-        crack(6, -1);
+        crack(4, -1); // index was 6 before remove 2 heroes
 
         // then
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
@@ -2315,8 +2300,8 @@ public class MultiplayerTest extends AbstractGameTest {
         verifyAllEvents(
                 "listener(0) => [KILL_OTHER_HERO]\n" +
                 "listener(1) => [KILL_OTHER_HERO]\n" +
-                "listener(4) => [HERO_DIED]\n" +
-                "listener(5) => [HERO_DIED]\n");
+                "listener(2) => [HERO_DIED]\n" +  // index was 4 before remove 2 heroes
+                "listener(3) => [HERO_DIED]\n");  // index was 5 before remove 2 heroes
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
@@ -2369,7 +2354,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
         verifyAllEvents(
                 "listener(0) => [KILL_OTHER_HERO]\n" +
-                "listener(6) => [HERO_DIED]\n");
+                "listener(2) => [HERO_DIED]\n");
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼  ◄  » »☼\n" +
@@ -2383,7 +2368,7 @@ public class MultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼☼☼\n", 0);
 
         // when
-        tickAndRemoveDied();
+        tickAndRemoveDied(); // remove 1 hero
 
         // then
         assertScores(
@@ -2426,7 +2411,7 @@ public class MultiplayerTest extends AbstractGameTest {
         verifyAllEvents(
                 "listener(0) => [WIN_ROUND]\n" +
                 "listener(1) => [[Time is over]]\n" +
-                "listener(7) => [[Time is over]]\n");
+                "listener(2) => [[Time is over]]\n"); // index was 7 before remove 3 heroes
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼        ☼\n" +
@@ -2448,7 +2433,7 @@ public class MultiplayerTest extends AbstractGameTest {
         verifyAllEvents(
                 "listener(0) => [START_ROUND, [Round 2]]\n" +
                 "listener(1) => [START_ROUND, [Round 2]]\n" +
-                "listener(7) => [START_ROUND, [Round 2]]\n");
+                "listener(2) => [START_ROUND, [Round 2]]\n"); // index was 7 before remove 3 heroes
 
         assertF("☼☼☼☼☼☼☼☼☼☼\n" +
                 "☼        ☼\n" +
@@ -2697,7 +2682,7 @@ public class MultiplayerTest extends AbstractGameTest {
 
     private void tickAndRemoveDied() {
         // when
-        tick();
         removeAllDied();
+        tick();
     }
 }

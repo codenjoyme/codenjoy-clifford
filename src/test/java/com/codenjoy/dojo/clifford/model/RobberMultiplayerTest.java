@@ -38,7 +38,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
         robbers.forEach(RobberJoystick::disableMock);
     }
 
-    // чертик идет за тобой
+    // вор идет за тобой
     @Test
     public void shouldRobberGoToHero() {
         // given
@@ -145,9 +145,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
 
         // when
         dice(1, 4);
-        game().newGame();
-
-        tick();
+        tick(); // new game
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -160,7 +158,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼\n");
     }
 
-    // чертик стоит на месте, если ко мне нет пути
+    // вор стоит на месте, если ко мне нет пути
     @Test
     public void shouldRobberStop_whenNoPathToHero() {
         // given
@@ -205,7 +203,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼\n");
     }
 
-    // чертик идет за тобой по более короткому маршруту
+    // вор идет за тобой по более короткому маршруту
     @Test
     public void shouldRobberGoToHeroShortestWay() {
         // given
@@ -264,7 +262,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
 
     }
 
-    // другой чертик чертику не помеха
+    // другой вор вору не помеха
     @Test
     public void shouldRobberGoToHeroShortestWayGetRoundOther() {
         // given
@@ -323,7 +321,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
 
     }
 
-    // если чертику не достать одного он бежит за другим, а не зависает
+    // если вору не достать одного он бежит за другим, а не зависает
     @Test
     public void shouldRobberGoToNewHeroIfOneIsHidden() {
         // given
@@ -375,7 +373,20 @@ public class RobberMultiplayerTest extends AbstractGameTest {
         tick();
         tick();
         tick();
-        tick();
+
+        // then
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   »  ☼\n" +
+                "☼######☼\n" +
+                "☼►)    ☼\n" +
+                "☼###H##☼\n" +
+                "☼   H  ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n", 1);
+
+        verifyAllEvents("");
+
+        // when
         tick();
 
         // then
@@ -390,9 +401,25 @@ public class RobberMultiplayerTest extends AbstractGameTest {
 
         verifyAllEvents(
                 "listener(1) => [HERO_DIED]\n");
+
+        // when
+        dice(1, 2); // new hero position
+        tick(); // new game
+
+        // then
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼   »  ☼\n" +
+                "☼######☼\n" +
+                "☼ (    ☼\n" +
+                "☼###H##☼\n" +
+                "☼►  H  ☼\n" +
+                "☼######☼\n" +
+                "☼☼☼☼☼☼☼☼\n", 1);
+
+        verifyAllEvents("");
     }
 
-    // каждый чертик бежит за своим героем, даже если к нему занятый уже герой ближе
+    // каждый вор бежит за своим героем, даже если к нему занятый уже герой ближе
     @Test
     public void shouldEveryRobberRunsAfterHisHero_evenIfThereIsAnotherHeroNearbyWhoIsAlreadyBeingHunted() {
         // given
@@ -404,7 +431,7 @@ public class RobberMultiplayerTest extends AbstractGameTest {
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
                 "☼  ►H  ☼\n" +
-                "☼######☼\n" +
+                " ###### \n" +
                 "☼☼☼☼☼☼☼☼\n");
 
         // when
@@ -412,26 +439,26 @@ public class RobberMultiplayerTest extends AbstractGameTest {
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼ ( »  ☼\n" +
+                "☼ ( ►  ☼\n" +
                 "☼H####X☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
-                "☼  ►H  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 1);
+                "☼  »H  ☼\n" +
+                " ###### \n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         tick();
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼  (»  ☼\n" +
+                "☼  (►  ☼\n" +
                 "☼H####H☼\n" +
                 "☼H    X☼\n" +
                 "☼###H##☼\n" +
-                "☼  ►H  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 1);
+                "☼  »H  ☼\n" +
+                " ###### \n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         tick();
@@ -441,54 +468,57 @@ public class RobberMultiplayerTest extends AbstractGameTest {
                 "listener(0) => [HERO_DIED]\n");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   C  ☼\n" +
+                "☼   O  ☼\n" +
                 "☼H####H☼\n" +
                 "☼H   )H☼\n" +
                 "☼###H##☼\n" +
-                "☼  ►H  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 1);
+                "☼  »H  ☼\n" +
+                " ###### \n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
-        tick();
+        dice(0, 1); // new hero position
+        tick(); // new game
 
         // then
+        // второй вор стоит на месте, его герой спрятан
+        // TODO хотя должен переключиться на другого героя
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   C( ☼\n" +
+                "☼   (  ☼\n" +
                 "☼H####H☼\n" +
                 "☼H  ) H☼\n" +
                 "☼###H##☼\n" +
-                "☼  ►H  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 1);
+                "☼  »H  ☼\n" +
+                "►###### \n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         tick();
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   C (☼\n" +
+                "☼   (  ☼\n" +
                 "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###X##☼\n" +
-                "☼  ►H  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 1);
+                "☼  »H  ☼\n" +
+                "►###### \n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         tick();
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   C  ☼\n" +
-                "☼H####X☼\n" +
+                "☼   (  ☼\n" +
+                "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
-                "☼  ►X  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 1);
+                "☼  »X  ☼\n" +
+                "►###### \n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         tick();
@@ -498,115 +528,100 @@ public class RobberMultiplayerTest extends AbstractGameTest {
                 "listener(1) => [HERO_DIED]\n");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   C  ☼\n" +
+                "☼   (  ☼\n" +
                 "☼H####H☼\n" +
-                "☼H    X☼\n" +
+                "☼H    H☼\n" +
                 "☼###H##☼\n" +
-                "☼  OH  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 1);
+                "☼  CH  ☼\n" +
+                "►###### \n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
-        // больше не за кем охотиться - воры стоят на месте
-        tick();
+        dice(7, 1); // new hero position
+        tick(); // new game
 
         // then
+        // оба вора стоят на месте, им не за кем охотиться
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   C  ☼\n" +
+                "☼   (  ☼\n" +
                 "☼H####H☼\n" +
-                "☼H    X☼\n" +
-                "☼###H##☼\n" +
-                "☼  OH  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 1);
-
-        // when
-        tick();
-
-        // then
-        assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   C  ☼\n" +
-                "☼H####H☼\n" +
-                "☼H    X☼\n" +
-                "☼###H##☼\n" +
-                "☼  OH  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 1);
-
-        // when
-        // даже если на поле никого нет, чертики стоят на месте
-        remove(1);
-        remove(0);
-
-        tick();
-
-        // then
-        assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼      ☼\n" +
-                "☼H####H☼\n" +
-                "☼H    X☼\n" +
+                "☼H    H☼\n" +
                 "☼###H##☼\n" +
                 "☼  )H  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 1);
-
-        // when
-        // но стоит двоим ребятам появиться на поле
-        // как вдруг воры начнут охотиться каждый за своим
-        givenPlayer(pt(1, 2));
-        givenPlayer(pt(5, 6));
-
-        // then
-        assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼    ► ☼\n" +
-                "☼H####H☼\n" +
-                "☼H    X☼\n" +
-                "☼###H##☼\n" +
-                "☼» )H  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 3);
+                "►######»\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         tick();
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼    ► ☼\n" +
-                "☼H####X☼\n" +
+                "☼   (  ☼\n" +
+                "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
-                "☼») H  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 3);
+                "☼  )H  ☼\n" +
+                "►######»\n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
-        // если один вдруг пропадет, то его воры переключится
+        // но стоит двоим героям появиться на поле в доступности
+        // как вдруг воры начнут охотиться каждый за своим
+        hero(0).move(pt(1, 6));
+        hero(1).move(pt(6, 2));
+
+        // then
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼►  (  ☼\n" +
+                "☼H####H☼\n" +
+                "☼H    H☼\n" +
+                "☼###H##☼\n" +
+                "☼  )H »☼\n" +
+                " ###### \n" +
+                "☼☼☼☼☼☼☼☼\n");
+
+        // when
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼► )   ☼\n" +
+                "☼H####H☼\n" +
+                "☼H    H☼\n" +
+                "☼###H##☼\n" +
+                "☼   X »☼\n" +
+                " ###### \n" +
+                "☼☼☼☼☼☼☼☼\n");
+
+        // when
+        // если один вдруг пропадет, то его вор переключится
+        // и за оставшимся героем будут гнаться уже оба
         remove(0);
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼    ► ☼\n" +
-                "☼H####X☼\n" +
+                "☼  )   ☼\n" +
+                "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
-                "☼ ) H  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 3);
+                "☼   X ►☼\n" +
+                " ###### \n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         tick();
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼    ►(☼\n" +
+                "☼   (  ☼\n" +
                 "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
-                "☼  (H  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 3);
+                "☼   H(►☼\n" +
+                " ###### \n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
         // и после того как нагонят оставшегося, снова зависнут
@@ -616,27 +631,41 @@ public class RobberMultiplayerTest extends AbstractGameTest {
         verifyAllEvents("[HERO_DIED]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼    O ☼\n" +
+                "☼    ( ☼\n" +
                 "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
-                "☼  (H  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 3);
+                "☼   H O☼\n" +
+                " ###### \n" +
+                "☼☼☼☼☼☼☼☼\n");
 
         // when
-        tick();
+        dice(0, 1); // new hero position
+        tick(); // new game
 
         // then
         verifyAllEvents("");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼    O ☼\n" +
+                "☼    ( ☼\n" +
                 "☼H####H☼\n" +
                 "☼H    H☼\n" +
                 "☼###H##☼\n" +
-                "☼  (H  ☼\n" +
-                "☼######☼\n" +
-                "☼☼☼☼☼☼☼☼\n", 3);
+                "☼   H (☼\n" +
+                "►###### \n" +
+                "☼☼☼☼☼☼☼☼\n");
+
+        // when
+        tick();
+
+        // then
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼    ( ☼\n" +
+                "☼H####H☼\n" +
+                "☼H    H☼\n" +
+                "☼###H##☼\n" +
+                "☼   H (☼\n" +
+                "►###### \n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 }

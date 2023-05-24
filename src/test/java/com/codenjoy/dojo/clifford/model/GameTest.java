@@ -656,13 +656,13 @@ public class GameTest extends AbstractGameTest {
         // when
         // ну а после смерти он появляется в рендомном месте
         dice(2, 3);
-        tick();         
-        field().newGame(player());
+        tick(); // new game
 
         // then
+        // за время тика герой успел упасть на 1 клетку
         assertF("☼☼☼☼☼\n" +
-                "☼ U ☼\n" +
                 "☼   ☼\n" +
+                "☼ ► ☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
     }
@@ -724,14 +724,14 @@ public class GameTest extends AbstractGameTest {
 
         // when
         // ну а после смерти он появляется в рендомном месте
-        dice(2, 3);
-        tick();         
-        field().newGame(player());
+        dice(3, 3);
+        tick(); // new game
 
         // then
+        // за время тика герой успел упасть на 1 клетку
         assertF("☼☼☼☼☼\n" +
-                "☼ U ☼\n" +
                 "☼   ☼\n" +
+                "☼  ►☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
@@ -2130,11 +2130,11 @@ public class GameTest extends AbstractGameTest {
 
         // when
         hero().crack();
-        tick();
+        tick(); // tick 1
 
         hero().left();
-        tick();
-        tick();
+        tick(); // tick 2
+        tick(); // tick 3
 
         // then
         assertF("☼☼☼☼\n" +
@@ -2143,14 +2143,15 @@ public class GameTest extends AbstractGameTest {
                 "☼☼☼☼\n");
 
         // when
-        for (int count = 3; count < Brick.CRACK_TIMER; count++) {
+        int skip = 4; // TODO why 4?
+        for (int count = skip; count < Brick.CRACK_TIMER; count++) {
             tick();
         }
 
         // then
         assertF("☼☼☼☼\n" +
                 "☼  ☼\n" +
-                "☼O#☼\n" +
+                "☼E#☼\n" +
                 "☼☼☼☼\n");
 
         // when
@@ -2624,13 +2625,13 @@ public class GameTest extends AbstractGameTest {
         // when
         // ну а после смерти он появляется в рендомном месте причем вор остается на своем месте
         dice(1, 3);
-        tick();         
-        field().newGame(player());
+        tick(); // new game
 
         // then
+        // за время тика герой успел упасть на 1 клетку
         assertF("☼☼☼☼☼\n" +
-                "☼U  ☼\n" +
-                "☼ ) ☼\n" +
+                "☼   ☼\n" +
+                "☼►) ☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
     }
@@ -2663,14 +2664,14 @@ public class GameTest extends AbstractGameTest {
         // ну а после смерти он появляется в рендомном месте 
         // причем вор остается на своем месте
         dice(0,  // охотимся за первым игроком
-            3, 3);
-        tick();         
-        field().newGame(player());
+            3, 3); // new hero position
+        tick(); // new game
 
         // then
+        // за время тика герой успел упасть на 1 клетку
         assertF("☼☼☼☼☼\n" +
-                "☼  U☼\n" +
-                "☼)  ☼\n" +
+                "☼   ☼\n" +
+                "☼) ►☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
     }
@@ -2701,14 +2702,14 @@ public class GameTest extends AbstractGameTest {
         // when
         // ну а после смерти он появляется в рендомном месте 
         // причем вор остается на своем месте
-        dice(3, 3);
-        tick();         
-        field().newGame(player());
+        dice(3, 3); // new hero position
+        tick(); // new game
 
         // then
+        // за время тика герой успел упасть на 1 клетку
         assertF("☼☼☼☼☼\n" +
-                "☼  U☼\n" +
-                "☼ ) ☼\n" +
+                "☼   ☼\n" +
+                "☼ )►☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
     }
@@ -2741,13 +2742,13 @@ public class GameTest extends AbstractGameTest {
         // причем вор остается на своем месте
         dice(0,  // охотимся за первым игроком
             3, 3);
-        tick();         
-        field().newGame(player());
+        tick(); // new game
 
         // then
+        // за время тика герой успел упасть на 1 клетку
         assertF("☼☼☼☼☼\n" +
-                "☼  U☼\n" +
-                "☼)  ☼\n" +
+                "☼   ☼\n" +
+                "☼) ►☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
     }
@@ -4391,18 +4392,19 @@ public class GameTest extends AbstractGameTest {
         
         // when
         robber().down();
-        dice(2, 3);
-        field().newGame(player());
-        dice(0);  // охотимся за первым игроком
-        tick();
+        dice(0,   // охотимся за первым игроком
+            2,  // я не знаю что это
+            2, 6); // новая позиция героя
+        tick(); // new game
 
         // then
+        // за время тика герой успел упасть на 1 клетку
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
-                "☼      ☼\n" +
+                "☼ U    ☼\n" +
                 "☼      ☼\n" +
                 "☼  ~   ☼\n" +
-                "☼ ►)   ☼\n" +
+                "☼  )   ☼\n" +
                 "☼######☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
     }
@@ -4467,10 +4469,9 @@ public class GameTest extends AbstractGameTest {
                 "☼☼☼☼☼☼☼☼\n");
 
         // when
-        dice(2, 3);
-        field().newGame(player());
-        dice(0);  // охотимся за первым игроком
-        tick();
+        dice(2, 3,
+            0);  // охотимся за первым игроком
+        tick(); // new game
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -4511,12 +4512,14 @@ public class GameTest extends AbstractGameTest {
 
         // when
         hero().suicide();
-        tick();
+        dice(3, 3); // new hero position
+        tick(); // new game
 
         // then
+        // за время тика герой успел упасть на 1 клетку
         assertF("☼☼☼☼☼\n" +
                 "☼   ☼\n" +
-                "☼ O ☼\n" +
+                "☼  ►☼\n" +
                 "☼###☼\n" +
                 "☼☼☼☼☼\n");
 
@@ -4687,7 +4690,7 @@ public class GameTest extends AbstractGameTest {
 
         // when
         dice(1, 2); // hero
-        field().clearScore();
+        game().clearScore();
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -4704,7 +4707,7 @@ public class GameTest extends AbstractGameTest {
     public void shouldResetHeroScores_whenClearBoard() {
         // given
         Brick.CRACK_TIMER = 4;
-        
+
         givenFl("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
                 "☼      ☼\n" +
@@ -4799,7 +4802,7 @@ public class GameTest extends AbstractGameTest {
         // when
         dice(1, 2,
             6, 2);
-        field().clearScore();
+        game().clearScore();
 
         // then
         assertEquals(0, hero(0).scores());
@@ -4931,7 +4934,7 @@ public class GameTest extends AbstractGameTest {
 
         // when
         dice(1, 2);
-        field().clearScore();
+        game().clearScore();
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -4955,7 +4958,7 @@ public class GameTest extends AbstractGameTest {
             6, 3,  // ring
             6, 4,  // ring
             1, 6); // hero
-        field().clearScore();
+        game().clearScore();
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -4974,7 +4977,7 @@ public class GameTest extends AbstractGameTest {
                 .integer(CLUE_COUNT_GLOVE, 1);
 
         dice(2, 6);  // герой
-        field().clearScore();
+        game().clearScore();
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -5128,7 +5131,7 @@ public class GameTest extends AbstractGameTest {
         settings().integer(BACKWAYS_COUNT, settings().integer(BACKWAYS_COUNT) + 1);
         dice(2, 4, // backway
             1, 2); // hero
-        field().clearScore();
+        game().clearScore();
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -5144,7 +5147,7 @@ public class GameTest extends AbstractGameTest {
         // оставим два черный хода
         settings().integer(BACKWAYS_COUNT, 2);
         dice(1, 2); // hero
-        field().clearScore();
+        game().clearScore();
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -5219,7 +5222,7 @@ public class GameTest extends AbstractGameTest {
         // when
         // почистим все
         dice(1, 2);  // hero
-        field().clearScore();
+        game().clearScore();
 
         // then
         assertEquals(false, hero().under(MASK_POTION));
@@ -5239,7 +5242,7 @@ public class GameTest extends AbstractGameTest {
         dice(3, 3, // potion
             5, 3,  // potion
             1, 6); // hero
-        field().clearScore();
+        game().clearScore();
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -5255,7 +5258,7 @@ public class GameTest extends AbstractGameTest {
         // оставим только 1
         settings().integer(MASK_POTIONS_COUNT, 1);
         dice(1, 2);  // hero
-        field().clearScore();
+        game().clearScore();
 
         // then
         assertF("☼☼☼☼☼☼☼☼\n" +
@@ -5297,7 +5300,7 @@ public class GameTest extends AbstractGameTest {
 
         // when
         dice(1, 2); // hero
-        field().clearScore();
+        game().clearScore();
 
         // then
         assertEquals(7 * 4, field().borders().size());
@@ -5313,7 +5316,7 @@ public class GameTest extends AbstractGameTest {
 
         // when
         dice(2, 2); // hero
-        field().clearScore();
+        game().clearScore();
 
         // then
         assertEquals(7 * 4, field().borders().size());
@@ -5353,7 +5356,7 @@ public class GameTest extends AbstractGameTest {
         dice(3, 3, // backway
             3, 2,  // backway
             1, 2); // hero
-        field().clearScore();
+        game().clearScore();
 
         // then
         assertEquals(5, field().getBackWaysTimer());

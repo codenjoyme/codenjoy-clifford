@@ -30,36 +30,41 @@ import static com.codenjoy.dojo.services.round.RoundSettings.Keys.ROUNDS_ENABLED
 
 public class TestGameSettings extends GameSettings {
 
+    public TestGameSettings() {
+        update(this);
+    }
+
     /**
      * Here you can override the settings for all tests.
      */
-    public TestGameSettings() {
-        initScore(CUMULATIVELY);
-        bool(ROUNDS_ENABLED, false);
+    public static GameSettings update(GameSettings settings) {
+        return settings
+                .initScore(CUMULATIVELY)
+                .bool(ROUNDS_ENABLED, false)
 
-        integer(HERO_DIED_PENALTY, -0);
-        integer(KILL_OTHER_HERO_SCORE, 20);
-        integer(KILL_ENEMY_HERO_SCORE, 50);
+                .integer(HERO_DIED_PENALTY, -0)
+                .integer(KILL_OTHER_HERO_SCORE, 20)
+                .integer(KILL_ENEMY_HERO_SCORE, 50)
 
-        integer(SUICIDE_PENALTY, -0);
-        integer(MASK_TICKS, 15);
-        integer(MASK_POTIONS_COUNT, 0);
-        integer(BACKWAY_TICKS, 10);
-        integer(BACKWAYS_COUNT, 0);
+                .integer(SUICIDE_PENALTY, -0)
+                .integer(MASK_TICKS, 15)
+                .integer(MASK_POTIONS_COUNT, 0)
+                .integer(BACKWAY_TICKS, 10)
+                .integer(BACKWAYS_COUNT, 0)
 
-        integer(CLUE_COUNT_KNIFE, 0);
-        integer(CLUE_COUNT_GLOVE, 0);
-        integer(CLUE_COUNT_RING, 0);
-        integer(CLUE_SCORE_KNIFE, 1);
-        integer(CLUE_SCORE_GLOVE, 5);
-        integer(CLUE_SCORE_RING, 10);
+                .integer(CLUE_COUNT_KNIFE, 0)
+                .integer(CLUE_COUNT_GLOVE, 0)
+                .integer(CLUE_COUNT_RING, 0)
+                .integer(CLUE_SCORE_KNIFE, 1)
+                .integer(CLUE_SCORE_GLOVE, 5)
+                .integer(CLUE_SCORE_RING, 10)
 
-        integer(AMMO_CLIP_COUNT, 0);
+                .integer(AMMO_CLIP_COUNT, 0)
 
-        integer(ROBBERS_COUNT, 0);
+                .integer(ROBBERS_COUNT, 0)
 
-        integer(HANDGUN_CLIP_SIZE, 12);
-        integer(HANDGUN_TICKS_PER_SHOOT, 0);
-        bool(HANDGUN_UNLIMITED_AMMO, true);
+                .integer(HANDGUN_CLIP_SIZE, 12)
+                .integer(HANDGUN_TICKS_PER_SHOOT, 0)
+                .bool(HANDGUN_UNLIMITED_AMMO, true);
     }
 }

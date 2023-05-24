@@ -171,6 +171,30 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         // then
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
+
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼     ►☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
+
+        // when
+        tick();
+
+        // then
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
+
+        assertF("☼☼☼☼☼☼☼☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼      ☼\n" +
+                "☼     ►☼\n" +
+                "☼######☼\n" +
+                "☼      ☼\n" +
+                "☼☼☼☼☼☼☼☼\n");
     }
 
     @Test
@@ -943,33 +967,31 @@ public class KeyDoorGameTest extends AbstractGameTest {
         assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=1}");
 
         // when
-        dice(1, 5,  // key
-             2, 5,  // key
-             3, 5); // key
         hero().die();
-        tick();
-
-        verifyAllEvents("[HERO_DIED]");
 
         // then
+        assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=1}");
+        assertEquals(false, hero().isAlive());
+
+        // when
+        dice(1, 3,  // new hero position
+             1, 5,  // place for key, will not generate
+             2, 5,  // --
+             3, 5); // --
+        tick(); // new game
+
+        // then
+        verifyAllEvents("[HERO_DIED]");
+
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼      ☼\n" +
-                "☼+-!   ☼\n" +
                 "☼      ☼\n" +
-                "☼    O ☼\n" +
+                "☼      ☼\n" +
+                "☼►     ☼\n" +
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
 
-        assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=1}");
-
-        assertEquals(false, hero().isAlive());
-
-        // when
-        dice(1, 3);
-        game().newGame();
-
-        // then
         assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
     }
 
@@ -1042,33 +1064,21 @@ public class KeyDoorGameTest extends AbstractGameTest {
 
         // when
         // тут не будет генерации, но если будет мы заметим
-        dice(1, 5,  // key
-             2, 5,  // key
-             3, 5); // key
         hero().die();
-        tick();
-
-        verifyAllEvents("[HERO_DIED]");
 
         // then
-        assertF("☼☼☼☼☼☼☼☼\n" +
-                "☼   +-!☼\n" +
-                "☼      ☼\n" +
-                "☼      ☼\n" +
-                "☼    O ☼\n" +
-                "☼######☼\n" +
-                "☼      ☼\n" +
-                "☼☼☼☼☼☼☼☼\n");
-
         assertHeroKeys("{GOLD=1, SILVER=1, BRONZE=1}");
         assertEquals(false, hero().isAlive());
 
         // when
-        dice(1, 3);
-        game().newGame();
+        dice(1, 3,  // new hero position
+             1, 5,  // key
+             2, 5,  // key
+             3, 5); // key
+        tick();
 
         // then
-        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
+        verifyAllEvents("[HERO_DIED]");
 
         assertF("☼☼☼☼☼☼☼☼\n" +
                 "☼   +-!☼\n" +
@@ -1078,6 +1088,8 @@ public class KeyDoorGameTest extends AbstractGameTest {
                 "☼######☼\n" +
                 "☼      ☼\n" +
                 "☼☼☼☼☼☼☼☼\n");
+
+        assertHeroKeys("{GOLD=0, SILVER=0, BRONZE=0}");
     }
 
     private void assertHeroKeys(String expected) {
