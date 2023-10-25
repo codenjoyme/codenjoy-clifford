@@ -37,39 +37,6 @@ winning the game.
   be opened / closed with matching keys. When you open the door,
   the key disappears from the detective's inventory.
 
-## Settings
-
-The parameters will change[(?)](#ask) as the game progresses. 
-The default values are shown in the table below:
-
-| Action | Settings name | Points |
-|--------|--------|--------|
-| Number of potions on the map | MASK_POTIONS_COUNT | 0[(?)](#ask) |
-| Potion duration (ticks) | MASK_TICKS | 15[(?)](#ask) |
-| Number of back doors on the map | BACKWAYS_COUNT | 5[(?)](#ask) |
-| Number of ticks before changing the position of the back doors | BACKWAY_TICKS | 50[(?)](#ask) |
-| Number of robbers | ROBBERS_COUNT | 3[(?)](#ask) |
-| Whether to generate new keys on the map | GENERATE_KEYS | false[(?)](#ask) |
-| Number of clues-glove on the map | CLUE_COUNT_GLOVE | 20[(?)](#ask) |
-| Points for clue-glove | CLUE_SCORE_GLOVE | 1[(?)](#ask) |
-| Increment points for the next collected clues-gloves in a series without deaths | CLUE_SCORE_GLOVE_INCREMENT | 1[(?)](#ask) |
-| Number of clues-knife on the map | CLUE_COUNT_KNIFE | 10[(?)](#ask) |
-| Points for clue-knife | CLUE_SCORE_KNIFE | 2[(?)](#ask) |
-| Increment points for the next collected clues-knife in a series without deaths | CLUE_SCORE_KNIFE_INCREMENT | 1[(?)](#ask) |
-| Number of clues-ring on the map | CLUE_COUNT_RING | 5[(?)](#ask) |
-| Points for clue-ring | CLUE_SCORE_RING | 5[(?)](#ask) |
-| Increment points for the next collected clues-ring in a series without deaths | CLUE_SCORE_RING_INCREMENT | 1[(?)](#ask) |
-| The number of cartridges in the clip | HANDGUN_CLIP_SIZE | 12[(?)](#ask) |
-| Number of ticks per cooldown | HANDGUN_TICKS_PER_SHOOT | 0[(?)](#ask) |
-| Unlimited ammo mode  | HANDGUN_UNLIMITED_AMMO | true[(?)](#ask) |
-| Ammo clip count  | AMMO_CLIP_COUNT | 0[(?)](#ask) |
-| Points for winning a round | ROUND_WIN_SCORE | 20[(?)](#ask) |
-| Points for killing another player (as shadow or buried) | KILL_OTHER_HERO_SCORE | 20[(?)](#ask) |
-| Points for killing enemy player (as shadow or buried) | KILL_ENEMY_HERO_SCORE 50[(?)](#ask) |
-| Death penalty | HERO_DIED_PENALTY | -1[(?)](#ask) |
-| Penalty for suicide | SUICIDE_PENALTY | -10[(?)](#ask) |
-| Counting score mode | SCORE_COUNTING_TYPE | 0 (0 - Accumulate points consistently, 1 - Maximum points from the event, 2 - Maximum points from the series)[(?)](#ask) |
-
 ## Cases
 
 ## Hints
