@@ -357,10 +357,15 @@ If you are not sure what to do try to implement the following algorithms:
 * Avoid robbers and other heroes.
 * Try to shoot another heroes.
 
-## Settings
+## <a id="ask"></a> Settings
 
-The parameters will change[(?)](#ask) as the game progresses.
-The default values are shown in the table below:
+The parameters will change as the game progresses.
+You can always see the settings of the current game
+[here](/codenjoy-contest/rest/settings/player).
+Please ask Sensei about current game settings. You can find Sensei in
+the chat that the organizers have provided to discuss issues.
+
+All settings are shown in the table below:
 
 | Action | Settings name |
 |--------|---------------|
@@ -392,13 +397,6 @@ The default values are shown in the table below:
 
 
 ## FAQ
-
-## <a id="ask"></a> Ask Sensei
-
-You can always see the settings of the current game
-[here](/codenjoy-contest/rest/settings/player).
-Please ask Sensei about current game settings. You can find Sensei in
-the chat that the organizers have provided to discuss issues.
 
 ## Client and API
 
