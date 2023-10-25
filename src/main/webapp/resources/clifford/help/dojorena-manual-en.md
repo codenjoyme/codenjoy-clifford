@@ -357,6 +357,11 @@ If you are not sure what to do try to implement the following algorithms:
 * Avoid robbers and other heroes.
 * Try to shoot another heroes.
 
+## Settings
+
+The parameters will change[(?)](#ask) as the game progresses.
+The default values are shown in the table below:
+
 | Settings name | Action |
 |---------------|--------|
 | HANDGUN_TICKS_PER_SHOOT | [Game] Gun recharge |
